@@ -1,0 +1,75 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"BonnieRobloxRIP, Marshmallow997"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.52"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "Bonnie's Source Engine",
+		"description": "Run. Think. Shoot. Live. Source. Created by BonnieRobloxRIP and Marshmallow997. Property of: The Bonnie Team.",
+		"min_engine_version": [
+			1,
+			20,
+			0
+		],
+		"uuid": "6955110f-0e08-4f20-ad14-ee1b4e90a5ba",
+		"version": [
+			1,
+			0,
+			1
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "df87aa93-a0cd-4e11-a3ed-f40bce4c1363",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"type": "script",
+			"language": "javascript",
+			"uuid": "cdbeb598-4e57-41fb-9d57-95a34a802a1d",
+			"entry": "scripts/main.js",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "bcef5411-6ca3-4ed1-81a7-3f326de0fa9f",
+			"version": [
+				1,
+				0,
+				1
+			]
+		},
+		{
+			"module_name": "@minecraft/server",
+			"version": "2.4.0-beta"
+		},
+		{
+			"module_name": "@minecraft/server-ui",
+			"version": "2.1.0-beta"
+		},
+		{
+			"module_name": "@minecraft/server-admin",
+			"version": "1.0.0-beta"
+		}
+	]
+}
