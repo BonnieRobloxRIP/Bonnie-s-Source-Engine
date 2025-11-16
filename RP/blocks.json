@@ -43,42 +43,6 @@
 		"sound": "stone",
 		"textures": "brr_skybox_brush"
 	},
-	"brr:black_metal_wall001a": {
-		"sound": "stone",
-		"textures": "brr_black_metal_wall001a"
-	},
-	"brr:black_metal_wall001b": {
-		"sound": "stone",
-		"textures": "brr_black_metal_wall001b"
-	},
-	"brr:black_metal_wall001c": {
-		"sound": "stone",
-		"textures": "brr_black_metal_wall001c"
-	},
-	"brr:black_metal_wall001d": {
-		"sound": "stone",
-		"textures": "brr_black_metal_wall001d"
-	},
-	"brr:black_metal_wall001e": {
-		"sound": "stone",
-		"textures": "brr_black_metal_wall001e"
-	},
-	"brr:black_metal_wall001f": {
-		"sound": "stone",
-		"textures": "brr_black_metal_wall001f"
-	},
-	"brr:white_wall_tile001a": {
-		"sound": "stone",
-		"textures": "brr_white_wall_tile001a"
-	},
-	"brr:white_wall_tile001b": {
-		"sound": "stone",
-		"textures": "brr_white_wall_tile001b"
-	},
-	"brr:info_playerspawn": {
-		"sound": "stone",
-		"textures": "brr_info_playerspawn"
-	},
 	"brr:dev_measuregeneric01": {
 		"sound": "stone",
 		"textures": "brr_dev_measuregeneric01"
