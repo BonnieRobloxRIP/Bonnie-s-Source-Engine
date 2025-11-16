@@ -1,0 +1,23 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:skybox_brush",
+			"is_experimental": false,
+			"menu_category": {
+				"category": "equipment",
+				"is_hidden_in_commands": false
+			}
+		},
+		"components": {
+			"minecraft:collision_box": true,
+			"minecraft:material_instances": {
+				"*": {
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:light_dampening": 15,
+			"minecraft:destructible_by_explosion": false
+		}
+	}
+}
