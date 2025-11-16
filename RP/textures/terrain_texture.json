@@ -1,0 +1,77 @@
+{
+	"num_mip_levels": 4,
+	"padding": 8,
+	"resource_pack_name": "Bonnie's Source Engine",
+	"texture_name": "atlas.terrain",
+	"texture_data": {
+		"brr_trigger_tool": {
+			"textures": "textures/blocks/brr_trigger"
+		},
+		"brr_func_train": {
+			"textures": "textures/blocks/func_train"
+		},
+		"brr_areaportal_tool": {
+			"textures": "textures/blocks/brr_areaPortal"
+		},
+		"brr_nodraw_brush": {
+			"textures": "textures/blocks/brr_nodraw"
+		},
+		"brr_nodraw_portable_brush": {
+			"textures": "textures/blocks/brr_nodrawPortable"
+		},
+		"brr_skip_tool": {
+			"textures": "textures/blocks/brr_skip"
+		},
+		"brr_skybox_brush": {
+			"textures": "textures/blocks/brr_skybox"
+		},
+		"brr_playerclip_brush": {
+			"textures": "textures/blocks/brr_playerClip"
+		},
+		"brr_invisible_brush": {
+			"textures": "textures/blocks/brr_invisible"
+		},
+		"brr_blocklight_tool": {
+			"textures": "textures/blocks/brr_blockLight"
+		},
+		"brr_black_metal_wall001a": {
+			"textures": "textures/blocks/black_wall001a"
+		},
+		"brr_black_metal_wall001b": {
+			"textures": "textures/blocks/black_wall001b"
+		},
+		"brr_black_metal_wall001c": {
+			"textures": "textures/blocks/black_wall001c"
+		},
+		"brr_black_metal_wall001d": {
+			"textures": "textures/blocks/black_wall001d"
+		},
+		"brr_black_metal_wall001e": {
+			"textures": "textures/blocks/black_wall001e"
+		},
+		"brr_black_metal_wall001f": {
+			"textures": "textures/blocks/black_wall001f"
+		},
+		"brr_white_wall_tile001a": {
+			"textures": "textures/blocks/white_wall_tile001a"
+		},
+		"brr_white_wall_tile001b": {
+			"textures": "textures/blocks/white_wall_tile001b"
+		},
+		"brr_info_playerspawn": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_dev_measuregeneric01": {
+			"textures": "textures/blocks/dev_measuregeneric01"
+		},
+		"brr_dev_measuregeneric02": {
+			"textures": "textures/blocks/dev_measuregeneric02"
+		},
+		"brr_dev_measurewall01a": {
+			"textures": "textures/blocks/dev_measurewall01a"
+		},
+		"brr_dev_measurewall01d": {
+			"textures": "textures/blocks/dev_measurewall01d"
+		}
+	}
+}
