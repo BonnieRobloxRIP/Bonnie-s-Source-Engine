@@ -2,7 +2,7 @@
 	"format_version": "1.21.0",
 	"minecraft:block": {
 		"description": {
-			"identifier": "brr:dev_measuregeneric01",
+			"identifier": "brr:dev_measuregeneric03",
 			"is_experimental": false,
 			"menu_category": {
 				"category": "construction",
@@ -11,7 +11,7 @@
 		},
 		"components": {
 			"minecraft:destructible_by_explosion": false,
-			"minecraft:map_color": "#db7c08",
+			"minecraft:map_color": "#4b6070",
 			"minecraft:destructible_by_mining": {
 				"seconds_to_destroy": 2
 			}

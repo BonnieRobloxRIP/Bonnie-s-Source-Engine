@@ -2,12 +2,8 @@
 	"format_version": "1.21.0",
 	"minecraft:block": {
 		"description": {
-			"identifier": "brr:playerclip_brush",
-			"is_experimental": false,
-			"menu_category": {
-				"category": "equipment",
-				"is_hidden_in_commands": false
-			}
+			"identifier": "brr:data",
+			"is_experimental": false
 		},
 		"components": {
 			"minecraft:collision_box": false,
@@ -17,7 +13,8 @@
 				}
 			},
 			"minecraft:light_dampening": 0,
-			"minecraft:destructible_by_explosion": false
+			"minecraft:destructible_by_explosion": false,
+			"minecraft:selection_box": false
 		}
 	}
 }

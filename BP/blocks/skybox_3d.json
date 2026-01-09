@@ -10,13 +10,6 @@
 			}
 		},
 		"components": {
-			"minecraft:collision_box": true,
-			"minecraft:material_instances": {
-				"*": {
-					"render_method": "alpha_test"
-				}
-			},
-			"minecraft:light_dampening": 15,
 			"minecraft:destructible_by_explosion": false
 		}
 	}

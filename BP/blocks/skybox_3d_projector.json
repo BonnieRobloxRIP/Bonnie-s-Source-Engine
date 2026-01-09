@@ -1,0 +1,27 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:skybox_3d_projector",
+			"is_experimental": false,
+			"menu_category": {
+				"category": "equipment",
+				"is_hidden_in_commands": false
+			}
+		},
+		"components": {
+			"minecraft:geometry": "geometry.skybox_3d_projector",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "brr_skybox_3d_projector",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:collision_box": false,
+			"minecraft:destructible_by_explosion": false,
+			"minecraft:flammable": false,
+			"minecraft:light_dampening": 0,
+			"minecraft:map_color": "#37ACFF"
+		}
+	}
+}
