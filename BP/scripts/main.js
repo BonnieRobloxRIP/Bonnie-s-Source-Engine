@@ -1,4 +1,4 @@
-import { world, system, CommandPermissionLevel, CustomCommandParamType } from "@minecraft/server";
+import { world, system, CommandPermissionLevel, CustomCommandParamType } from "@minecraft/server"; // help wanted to finish the mod. dm me on discord.
 import { ModalFormData } from "@minecraft/server-ui";
 
 let visible = false;
@@ -389,4 +389,5 @@ world.beforeEvents.playerInteractWithBlock.subscribe((data) => {
         }
     }
 })
+
 
