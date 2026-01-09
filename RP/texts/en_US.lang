@@ -1,0 +1,25 @@
+tile.brr:trigger_tool.name=Trigger Tool
+tile.brr:func_train.name=Function Train Node
+tile.brr:areaportal_tool.name=Area Portal Tool
+tile.brr:blocklight_tool.name=Block Light Tool
+tile.brr:invisible_brush.name=Invisible Brush
+tile.brr:nodraw_portable_brush.name=Nodraw Portable Brush
+tile.brr:nodraw_brush.name=Nodraw Brush
+tile.brr:playerclip_brush.name=Player Clip Brush
+tile.brr:skip_tool.name=Skip Tool
+tile.brr:skybox_brush.name=3D Skybox Brush
+tile.brr:info_playerspawn.name=Information: Playerspawn
+
+tile.brr:dev_measuregeneric01.name=Developer Tile 01
+tile.brr:dev_measuregeneric02.name=Developer Tile 02
+tile.brr:dev_measuregeneric03.name=Developer Tile 03
+tile.brr:dev_measuregeneric04.name=Developer Tile 04
+tile.brr:dev_measurewall01a.name=Developer Wall 01a
+tile.brr:dev_measurewall01b.name=Developer Wall 01b
+tile.brr:dev_measurewall01c.name=Developer Wall 01c
+tile.brr:dev_measurewall01d.name=Developer Wall 01d
+tile.brr:data_light.name=data_light
+
+tile.brr:blockbullets_brush.name=Block Bullets Brush
+tile.brr:npcclip_tool.name=NPC Clip Tool
+tile.brr:skybox_3d_projector.name=Skybox 3D Projector

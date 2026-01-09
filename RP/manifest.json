@@ -6,7 +6,7 @@
 		],
 		"generated_with": {
 			"bridge": [
-				"2.7.52"
+				"2.7.54"
 			],
 			"dash": [
 				"0.11.7"
@@ -14,18 +14,18 @@
 		}
 	},
 	"header": {
-		"name": "Bonnie's Source Engine",
-		"description": "Run. Think. Shoot. Live. Source. Created by BonnieRobloxRIP for the BLACK MESA map",
+		"name": "Bonnie's Source Engine RP",
+		"description": "Run. Think. Shoot. Live. Source. Map Maker Tools.",
 		"min_engine_version": [
 			1,
 			20,
-			0
+			124
 		],
 		"uuid": "bcef5411-6ca3-4ed1-81a7-3f326de0fa9f",
 		"version": [
 			1,
 			0,
-			1
+			5
 		]
 	},
 	"modules": [
@@ -45,7 +45,7 @@
 			"version": [
 				1,
 				0,
-				1
+				5
 			]
 		}
 	]
