@@ -1,0 +1,105 @@
+{
+	"resource_pack_name": "Bonnie's Source Engine",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"brr_info_playerspawn": {
+			"textures": "textures/items/info_playerspawn"
+		},
+		"brr_info_target_areaportal": {
+			"textures": "textures/items/info_target_areaportal"
+		},
+		"brr_ambient_generic": {
+			"textures": "textures/items/ambient_generic"
+		},
+		"brr_env_explosion": {
+			"textures": "textures/items/env_explosion"
+		},
+		"brr_env_fire": {
+			"textures": "textures/items/env_fire"
+		},
+		"brr_env_particles": {
+			"textures": "textures/items/env_particles"
+		},
+		"brr_env_spark": {
+			"textures": "textures/items/env_spark"
+		},
+		"brr_filter_class": {
+			"textures": "textures/items/filter_class"
+		},
+		"brr_filter_multiple": {
+			"textures": "textures/items/filter_multiple"
+		},
+		"brr_filter_name": {
+			"textures": "textures/items/filter_name"
+		},
+		"brr_filter_team": {
+			"textures": "textures/items/filter_team"
+		},
+		"brr_fnaf_ai": {
+			"textures": "textures/items/fnaf_ai"
+		},
+		"brr_fnaf_ai_manager": {
+			"textures": "textures/items/fnaf_ai_manager"
+		},
+		"brr_fnaf_camera": {
+			"textures": "textures/items/fnaf_camera"
+		},
+		"brr_fnaf_power_manager": {
+			"textures": "textures/items/fnaf_power_manager"
+		},
+		"brr_game_end": {
+			"textures": "textures/items/game_end"
+		},
+		"brr_game_text": {
+			"textures": "textures/items/game_text"
+		},
+		"brr_info_landmark": {
+			"textures": "textures/items/info_landmark"
+		},
+		"brr_logic_auto": {
+			"textures": "textures/items/logic_auto"
+		},
+		"brr_logic_branch": {
+			"textures": "textures/items/logic_branch"
+		},
+		"brr_logic_case": {
+			"textures": "textures/items/logic_case"
+		},
+		"brr_logic_compare": {
+			"textures": "textures/items/logic_compare"
+		},
+		"brr_logic_coop_manager": {
+			"textures": "textures/items/logic_coop_manager"
+		},
+		"brr_logic_multicompare": {
+			"textures": "textures/items/logic_multicompare"
+		},
+		"brr_logic_random_outputs": {
+			"textures": "textures/items/logic_random_outputs"
+		},
+		"brr_logic_relay": {
+			"textures": "textures/items/logic_relay"
+		},
+		"brr_logic_script": {
+			"textures": "textures/items/logic_script"
+		},
+		"brr_logic_timer": {
+			"textures": "textures/items/logic_timer"
+		},
+		"brr_math_counter": {
+			"textures": "textures/items/math_counter"
+		},
+		"brr_multi_manager": {
+			"textures": "textures/items/multi_manager"
+		},
+		"brr_npc_maker": {
+			"textures": "textures/items/npc_maker"
+		},
+		"brr_scripted_sentence": {
+			"textures": "textures/items/scripted_sentence"
+		},
+		"brr_trigger_relay": {
+			"textures": "textures/items/trigger_relay"
+		}
+	}
+}

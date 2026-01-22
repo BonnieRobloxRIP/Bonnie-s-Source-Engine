@@ -1,0 +1,125 @@
+{
+	"num_mip_levels": 4,
+	"padding": 8,
+	"resource_pack_name": "Bonnie's Source Engine",
+	"texture_name": "atlas.terrain",
+	"texture_data": {
+		"brr_trigger_tool": {
+			"textures": "textures/blocks/brr_trigger"
+		},
+		"brr_func_train": {
+			"textures": "textures/blocks/func_train"
+		},
+		"brr_areaportal_tool": {
+			"textures": "textures/blocks/brr_areaPortal"
+		},
+		"brr_nodraw_brush": {
+			"textures": "textures/blocks/brr_nodraw"
+		},
+		"brr_nodraw_portable_brush": {
+			"textures": "textures/blocks/brr_nodrawPortable"
+		},
+		"brr_skip_tool": {
+			"textures": "textures/blocks/brr_skip"
+		},
+		"brr_skybox_brush": {
+			"textures": "textures/blocks/brr_skybox"
+		},
+		"brr_playerclip_brush": {
+			"textures": "textures/blocks/brr_playerClip"
+		},
+		"brr_invisible_brush": {
+			"textures": "textures/blocks/brr_invisible"
+		},
+		"brr_blocklight_tool": {
+			"textures": "textures/blocks/brr_blockLight"
+		},
+		"brr_dev_measuregeneric01": {
+			"textures": "textures/blocks/dev_measuregeneric01"
+		},
+		"brr_dev_measuregeneric02": {
+			"textures": "textures/blocks/dev_measuregeneric02"
+		},
+		"brr_dev_measurewall01a": {
+			"textures": "textures/blocks/dev_measurewall01a"
+		},
+		"brr_dev_measurewall01d": {
+			"textures": "textures/blocks/dev_measurewall01d"
+		},
+		"nothing": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_data_light": {
+			"textures": "textures/blocks/data_light"
+		},
+		"brr_dev_measuregeneric03": {
+			"textures": "textures/blocks/dev_measuregeneric03"
+		},
+		"brr_dev_measuregeneric04": {
+			"textures": "textures/blocks/dev_measuregeneric04"
+		},
+		"brr_dev_measurewall01b": {
+			"textures": "textures/blocks/dev_measurewall01b"
+		},
+		"brr_dev_measurewall01c": {
+			"textures": "textures/blocks/dev_measurewall01c"
+		},
+		"brr_brush_blockbullets": {
+			"textures": "textures/blocks/brr_blockBullets"
+		},
+		"brr_npcclip_tool": {
+			"textures": "textures/blocks/brr_npcClip"
+		},
+		"brr_skybox_3d_projector": {
+			"textures": "textures/blocks/skybox_3d_projector"
+		},
+		"brr_tool_trigger": {
+			"textures": "textures/blocks/brr_trigger"
+		},
+		"brr_tool_areaportal": {
+			"textures": "textures/blocks/brr_areaPortal"
+		},
+		"brr_tool_blockbullets": {
+			"textures": "textures/blocks/brr_blockBullets"
+		},
+		"brr_tool_blocklight": {
+			"textures": "textures/blocks/brr_blockLight"
+		},
+		"brr_tool_invisible": {
+			"textures": "textures/blocks/brr_invisible"
+		},
+		"brr_tool_nodraw": {
+			"textures": "textures/blocks/brr_nodraw"
+		},
+		"brr_tool_nodraw_portalable": {
+			"textures": "textures/blocks/brr_nodrawPortable"
+		},
+		"brr_tool_npcclip": {
+			"textures": "textures/blocks/brr_npcClip"
+		},
+		"brr_tool_playerclip": {
+			"textures": "textures/blocks/brr_playerClip"
+		},
+		"brr_tool_3d_skybox": {
+			"textures": "textures/blocks/brr_skybox"
+		},
+		"brr_data": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_data_collision": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_tool_skip": {
+			"textures": "textures/blocks/brr_skip"
+		},
+		"brr_info_target_areaportal_block": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_tool_3d_skybox_projector": {
+			"textures": "textures/blocks/skybox_3d_projector"
+		},
+		"brr_game_nametag_block": {
+			"textures": "textures/blocks/nothing"
+		}
+	}
+}
