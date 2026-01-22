@@ -14,24 +14,24 @@
 		}
 	},
 	"header": {
-		"name": "Bonnie's Source Engine RP",
-		"description": "Run. Think. Shoot. Live. Source. Map Maker Tools.",
+		"name": "Bonnie's Source Engine",
+		"description": "Run. Think. Shoot. Live. Source. Created by BonnieRobloxRIP and Marshmallow997. Property of: The Bonnie Team.",
 		"min_engine_version": [
 			1,
-			20,
-			124
+			21,
+			130
 		],
-		"uuid": "bcef5411-6ca3-4ed1-81a7-3f326de0fa9f",
+		"uuid": "3a601308-2998-48ae-b4db-13a157398e44",
 		"version": [
 			1,
 			0,
-			5
+			2
 		]
 	},
 	"modules": [
 		{
 			"type": "resources",
-			"uuid": "594232d8-91c1-4fb8-9d4b-c311e9437f3b",
+			"uuid": "9e89b9b8-a478-4317-a857-ef6a0db92ed5",
 			"version": [
 				1,
 				0,
@@ -41,12 +41,15 @@
 	],
 	"dependencies": [
 		{
-			"uuid": "6955110f-0e08-4f20-ad14-ee1b4e90a5ba",
+			"uuid": "7f638fc9-d6e7-4827-908c-acbb3736c03a",
 			"version": [
 				1,
 				0,
-				5
+				2
 			]
 		}
+	],
+	"capabilities": [
+		"pbr"
 	]
 }

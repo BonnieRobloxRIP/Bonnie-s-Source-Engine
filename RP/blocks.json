@@ -4,64 +4,57 @@
 		1,
 		0
 	],
-	"brr:trigger_tool": {
+	"brr:tool_trigger": {
 		"sound": "stone",
-		"textures": "brr_trigger_tool"
+		"textures": "brr_tool_trigger"
 	},
-	"brr:func_train": {
-		"sound": "stone"
-	},
-	"brr:areaportal_tool": {
+	"brr:tool_areaportal": {
 		"sound": "stone",
-		"textures": "brr_areaportal_tool"
+		"textures": "brr_tool_areaportal"
 	},
-	"brr:blocklight_tool": {
+	"brr:tool_blocklight": {
 		"sound": "stone",
-		"textures": "brr_blocklight_tool"
+		"textures": "brr_tool_blocklight"
 	},
-	"brr:invisible_brush": {
+	"brr:tool_blockbullets": {
 		"sound": "stone",
-		"textures": "brr_invisible_brush"
+		"textures": "brr_tool_blockbullets"
 	},
-	"brr:playerclip_brush": {
+	"brr:tool_skip": {
 		"sound": "stone",
-		"textures": "brr_playerclip_brush"
+		"textures": "brr_tool_skip"
 	},
-	"brr:nodraw_brush": {
+	"brr:tool_nodraw": {
 		"sound": "stone",
-		"textures": "brr_nodraw_brush"
+		"textures": "brr_tool_nodraw"
 	},
-	"brr:nodraw_portable_brush": {
+	"brr:tool_nodraw_portalable": {
 		"sound": "stone",
-		"textures": "brr_nodraw_portable_brush"
+		"textures": "brr_tool_nodraw_portalable"
 	},
-	"brr:skip_tool": {
+	"brr:tool_playerclip": {
 		"sound": "stone",
-		"textures": "brr_skip_tool"
+		"textures": "brr_tool_playerclip"
 	},
-	"brr:skybox_brush": {
+	"brr:tool_npcclip": {
 		"sound": "stone",
-		"textures": "brr_skybox_brush"
+		"textures": "brr_tool_npcclip"
 	},
-	"brr:info_playerspawn": {
+	"brr:tool_invisible": {
 		"sound": "stone",
-		"textures": "brr_info_playerspawn"
+		"textures": "brr_tool_invisible"
 	},
-	"brr:dev_measuregeneric01": {
+	"brr:tool_3d_skybox": {
 		"sound": "stone",
-		"textures": "brr_dev_measuregeneric01"
+		"textures": "brr_tool_3d_skybox"
 	},
-	"brr:dev_measuregeneric02": {
+	"brr:info_playerspawn_block": {
 		"sound": "stone",
-		"textures": "brr_dev_measuregeneric02"
+		"textures": "nothing"
 	},
-	"brr:dev_measurewall01a": {
+	"brr:info_target_areaportal_block": {
 		"sound": "stone",
-		"textures": "brr_dev_measurewall01a"
-	},
-	"brr:dev_measurewall01d": {
-		"sound": "stone",
-		"textures": "brr_dev_measurewall01d"
+		"textures": "nothing"
 	},
 	"brr:data": {
 		"sound": "stone",
@@ -71,9 +64,13 @@
 		"sound": "stone",
 		"textures": "nothing"
 	},
-	"brr:data_light": {
+	"brr:dev_measuregeneric01": {
 		"sound": "stone",
-		"textures": "nothing"
+		"textures": "brr_dev_measuregeneric01"
+	},
+	"brr:dev_measuregeneric02": {
+		"sound": "stone",
+		"textures": "brr_dev_measuregeneric02"
 	},
 	"brr:dev_measuregeneric03": {
 		"sound": "stone",
@@ -83,6 +80,10 @@
 		"sound": "stone",
 		"textures": "brr_dev_measuregeneric04"
 	},
+	"brr:dev_measurewall01a": {
+		"sound": "stone",
+		"textures": "brr_dev_measurewall01a"
+	},
 	"brr:dev_measurewall01b": {
 		"sound": "stone",
 		"textures": "brr_dev_measurewall01b"
@@ -91,15 +92,151 @@
 		"sound": "stone",
 		"textures": "brr_dev_measurewall01c"
 	},
-	"brr:blockbullets_brush": {
+	"brr:dev_measurewall01d": {
 		"sound": "stone",
-		"textures": "brr_brush_blockbullets"
+		"textures": "brr_dev_measurewall01d"
 	},
-	"brr:npcclip_tool": {
-		"sound": "stone",
-		"textures": "brr_npcclip_tool"
-	},
-	"brr:skybox_3d_projector": {
+	"brr:tool_3d_skybox_projector": {
 		"sound": "stone"
+	},
+	"brr:game_nametag_block": {
+		"sound": "stone",
+		"textures": "brr_game_nametag_block"
+	},
+	"brr:ambient_generic_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:assault_point_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:assault_rally_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:bullseye_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:env_explosion_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:env_fire_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:env_particle_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:env_spark_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:filter_class_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:filter_multiple_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:filter_name_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:filter_team_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:fnaf_ai_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:fnaf_ai_manager_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:fnaf_camera_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:fnaf_power_manager_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:game_end_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:game_text_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:info_landmark_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:logic_auto_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:logic_branch_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:logic_case_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:logic_compare_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:logic_coop_manager_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:logic_multicompare_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:logic_random_outputs_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:logic_relay_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:logic_script_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:logic_timer_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:math_counter_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:multi_manager_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:npc_maker_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:scripted_sentence_block": {
+		"sound": "stone",
+		"textures": "nothing"
+	},
+	"brr:trigger_relay_block": {
+		"sound": "stone",
+		"textures": "nothing"
 	}
 }
