@@ -1,9 +1,9 @@
 {
-	"format_version": "1.12.0",
+	"format_version": "1.21.20",
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.skybox_3d_projector",
+				"identifier": "geometry.tool_3d_skybox_projector",
 				"texture_width": 32,
 				"texture_height": 32,
 				"visible_bounds_width": 2,
@@ -34,10 +34,68 @@
 								5,
 								8
 							],
-							"uv": [
-								0,
-								0
-							]
+							"uv": {
+								"north": {
+									"uv": [
+										12,
+										19
+									],
+									"uv_size": [
+										4,
+										5
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										18
+									],
+									"uv_size": [
+										8,
+										5
+									]
+								},
+								"south": {
+									"uv": [
+										20,
+										0
+									],
+									"uv_size": [
+										4,
+										5
+									]
+								},
+								"west": {
+									"uv": [
+										18,
+										13
+									],
+									"uv_size": [
+										8,
+										5
+									]
+								},
+								"up": {
+									"uv": [
+										18,
+										18
+									],
+									"uv_size": [
+										4,
+										8
+									]
+								},
+								"down": {
+									"uv": [
+										8,
+										27
+									],
+									"uv_size": [
+										4,
+										-8
+									]
+								}
+							}
 						},
 						{
 							"origin": [
@@ -51,8 +109,8 @@
 								2
 							],
 							"uv": [
-								20,
-								19
+								10,
+								6
 							]
 						},
 						{
@@ -77,8 +135,8 @@
 								0
 							],
 							"uv": [
-								20,
-								13
+								10,
+								0
 							]
 						},
 						{
@@ -93,8 +151,8 @@
 								1.8
 							],
 							"uv": [
-								0,
-								21
+								10,
+								11
 							]
 						},
 						{
@@ -109,8 +167,8 @@
 								1
 							],
 							"uv": [
-								6,
-								21
+								10,
+								14
 							]
 						},
 						{
@@ -125,8 +183,8 @@
 								1
 							],
 							"uv": [
-								10,
-								21
+								14,
+								14
 							]
 						},
 						{
@@ -141,8 +199,8 @@
 								1
 							],
 							"uv": [
-								14,
-								21
+								0,
+								16
 							]
 						},
 						{
@@ -157,8 +215,8 @@
 								1
 							],
 							"uv": [
-								14,
-								23
+								16,
+								11
 							]
 						},
 						{
@@ -174,7 +232,7 @@
 							],
 							"uv": [
 								0,
-								13
+								0
 							]
 						},
 						{
@@ -189,13 +247,151 @@
 								4
 							],
 							"uv": [
-								10,
-								13
+								0,
+								8
 							]
 						}
 					]
 				}
-			]
+			],
+			"item_display_transforms": {
+				"thirdperson_righthand": {
+					"rotation": [
+						70,
+						0,
+						0
+					],
+					"translation": [
+						0,
+						0,
+						0
+					],
+					"scale": [
+						1,
+						1,
+						1
+					],
+					"rotation_pivot": [
+						0,
+						0,
+						0
+					],
+					"scale_pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				"thirdperson_lefthand": {
+					"rotation": [
+						70,
+						0,
+						0
+					],
+					"translation": [
+						0,
+						0,
+						0
+					],
+					"scale": [
+						1,
+						1,
+						1
+					],
+					"rotation_pivot": [
+						0,
+						0,
+						0
+					],
+					"scale_pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				"gui": {
+					"rotation": [
+						-153.56,
+						43.03,
+						-179.03
+					],
+					"translation": [
+						0,
+						0,
+						0
+					],
+					"scale": [
+						1,
+						1,
+						1
+					],
+					"rotation_pivot": [
+						0,
+						0,
+						0
+					],
+					"scale_pivot": [
+						0,
+						0,
+						0
+					],
+					"fit_to_frame": false
+				},
+				"head": {
+					"rotation": [
+						0,
+						0,
+						0
+					],
+					"translation": [
+						0,
+						5.5,
+						-3
+					],
+					"scale": [
+						3,
+						3,
+						3
+					],
+					"rotation_pivot": [
+						0,
+						0,
+						0
+					],
+					"scale_pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				"fixed": {
+					"rotation": [
+						-180,
+						90,
+						-180
+					],
+					"translation": [
+						0,
+						0,
+						0
+					],
+					"scale": [
+						1,
+						1,
+						1
+					],
+					"rotation_pivot": [
+						0,
+						0,
+						0
+					],
+					"scale_pivot": [
+						0,
+						0,
+						0
+					]
+				}
+			}
 		}
 	]
 }
