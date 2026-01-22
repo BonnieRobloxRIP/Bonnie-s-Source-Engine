@@ -1,11 +1,11 @@
 {
-	"format_version": "1.16.100",
+	"format_version": "1.10.0",
 	"particle_effect": {
 		"description": {
-			"identifier": "brr:npc_maker",
+			"identifier": "brr:assault_rally",
 			"basic_render_parameters": {
 				"material": "particles_blend",
-				"texture": "textures/blocks/npc_maker"
+				"texture": "textures/blocks/assault_rally"
 			}
 		},
 		"components": {
