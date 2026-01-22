@@ -1,0 +1,19 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:info_landmark",
+			"menu_category": {
+				"category": "equipment",
+				"is_hidden_in_commands": false,
+				"group": "logic_blocks"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_info_landmark",
+			"minecraft:block_placer": {
+				"block": "brr:info_landmark_block"
+			}
+		}
+	}
+}

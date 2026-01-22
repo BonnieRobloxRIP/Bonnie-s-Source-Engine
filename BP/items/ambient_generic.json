@@ -1,0 +1,19 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:ambient_generic",
+			"menu_category": {
+				"category": "equipment",
+				"is_hidden_in_commands": false,
+				"group": "logic_blocks"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_ambient_generic",
+			"minecraft:block_placer": {
+				"block": "brr:ambient_generic_block"
+			}
+		}
+	}
+}

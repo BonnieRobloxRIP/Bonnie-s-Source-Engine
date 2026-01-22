@@ -1,0 +1,19 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:npc_maker",
+			"menu_category": {
+				"category": "equipment",
+				"is_hidden_in_commands": false,
+				"group": "logic_blocks"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_npc_maker",
+			"minecraft:block_placer": {
+				"block": "brr:npc_maker_block"
+			}
+		}
+	}
+}

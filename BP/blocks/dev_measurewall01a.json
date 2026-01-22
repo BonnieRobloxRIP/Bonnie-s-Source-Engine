@@ -6,15 +6,16 @@
 			"is_experimental": false,
 			"menu_category": {
 				"category": "construction",
-				"is_hidden_in_commands": false
+				"is_hidden_in_commands": false,
+				"group": "dev_decor"
 			}
 		},
 		"components": {
 			"minecraft:destructible_by_explosion": false,
-			"minecraft:map_color": "#db7c08",
 			"minecraft:destructible_by_mining": {
 				"seconds_to_destroy": 2
-			}
+			},
+			"minecraft:map_color": "#db7c08"
 		}
 	}
 }

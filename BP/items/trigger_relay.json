@@ -1,0 +1,19 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:trigger_relay",
+			"menu_category": {
+				"category": "equipment",
+				"is_hidden_in_commands": false,
+				"group": "logic_blocks"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_trigger_relay",
+			"minecraft:block_placer": {
+				"block": "brr:trigger_relay_block"
+			}
+		}
+	}
+}

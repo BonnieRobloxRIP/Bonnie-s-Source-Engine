@@ -1,0 +1,21 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:info_playerspawn",
+			"menu_category": {
+				"category": "equipment",
+				"is_hidden_in_commands": false,
+				"group": "logic_blocks"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_info_playerspawn",
+			"minecraft:block_placer": {
+				"block": "brr:info_playerspawn_block"
+			},
+			"minecraft:allow_off_hand": true,
+			"minecraft:can_destroy_in_creative": true
+		}
+	}
+}

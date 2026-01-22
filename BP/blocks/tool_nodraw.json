@@ -1,0 +1,27 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:tool_nodraw",
+			"is_experimental": false,
+			"menu_category": {
+				"category": "equipment",
+				"is_hidden_in_commands": false,
+				"group": "tool_blocks"
+			}
+		},
+		"components": {
+			"minecraft:destructible_by_explosion": false,
+			"minecraft:destructible_by_mining": false,
+			"minecraft:collision_box": true,
+			"minecraft:selection_box": true,
+			"minecraft:material_instances": {
+				"*": {
+					"render_method": "alpha_test",
+					"ambient_occlusion": false
+				}
+			},
+			"minecraft:light_dampening": 0
+		}
+	}
+}
