@@ -2,11 +2,11 @@
 	"format_version": 2,
 	"metadata": {
 		"authors": [
-			"BonnieRobloxRIP, Marshmallow997"
+			"BonnieRobloxRIP"
 		],
 		"generated_with": {
 			"bridge": [
-				"2.7.52"
+				"2.7.54"
 			],
 			"dash": [
 				"0.11.7"
@@ -18,20 +18,20 @@
 		"description": "Run. Think. Shoot. Live. Source. Created by BonnieRobloxRIP and Marshmallow997. Property of: The Bonnie Team.",
 		"min_engine_version": [
 			1,
-			20,
-			0
+			21,
+			130
 		],
-		"uuid": "6955110f-0e08-4f20-ad14-ee1b4e90a5ba",
+		"uuid": "7f638fc9-d6e7-4827-908c-acbb3736c03a",
 		"version": [
 			1,
 			0,
-			1
+			2
 		]
 	},
 	"modules": [
 		{
 			"type": "data",
-			"uuid": "df87aa93-a0cd-4e11-a3ed-f40bce4c1363",
+			"uuid": "95e2464b-5a16-4c1c-94ef-fd6b4c232466",
 			"version": [
 				1,
 				0,
@@ -41,7 +41,7 @@
 		{
 			"type": "script",
 			"language": "javascript",
-			"uuid": "cdbeb598-4e57-41fb-9d57-95a34a802a1d",
+			"uuid": "f65459c5-3e8a-4f0b-b71f-e982af2d58d3",
 			"entry": "scripts/main.js",
 			"version": [
 				1,
@@ -52,24 +52,27 @@
 	],
 	"dependencies": [
 		{
-			"uuid": "bcef5411-6ca3-4ed1-81a7-3f326de0fa9f",
+			"uuid": "3a601308-2998-48ae-b4db-13a157398e44",
 			"version": [
 				1,
 				0,
-				1
+				2
 			]
 		},
 		{
 			"module_name": "@minecraft/server",
-			"version": "2.4.0-beta"
+			"version": "2.5.0-beta"
 		},
 		{
 			"module_name": "@minecraft/server-ui",
-			"version": "2.1.0-beta"
+			"version": "2.0.0"
 		},
 		{
 			"module_name": "@minecraft/server-admin",
 			"version": "1.0.0-beta"
 		}
+	],
+	"capabilities": [
+		"pbr"
 	]
 }
