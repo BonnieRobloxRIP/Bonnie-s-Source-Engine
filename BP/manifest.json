@@ -25,7 +25,7 @@
 		"version": [
 			1,
 			0,
-			2
+			8
 		]
 	},
 	"modules": [
@@ -56,12 +56,12 @@
 			"version": [
 				1,
 				0,
-				2
+				8
 			]
 		},
 		{
 			"module_name": "@minecraft/server",
-			"version": "2.5.0-beta"
+			"version": "2.6.0-beta"
 		},
 		{
 			"module_name": "@minecraft/server-ui",
