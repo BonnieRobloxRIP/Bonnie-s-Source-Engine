@@ -1,25 +1,31 @@
 import { world, system, CommandPermissionLevel, CustomCommandParamType } from "@minecraft/server";
-import { ModalFormData } from "@minecraft/server-ui";
+import "./handler/chat_system.js";
+import { evaluateCondition, validateConditionRequirements } from "./handler/condition_executer.js";
 import { conditionTools } from "./tool_ui/conditions_tools.js";
-import { chatRank, nametagRank, emojiCommand } from "./handler/chat_system.js"; // do not remove these bruv
-chatRank;
-nametagRank;
-emojiCommand;
-// ------------------------------------
+import { areaPortalToolUI } from "./tool_ui/tool_areaportal.js";
+import { infoPlayerspawnUI } from "./tool_ui/info_playerspawn.js";
+import { infoTargetAreaportalUI } from "./tool_ui/info_target_areaportal.js";
+import { toolInvisibleUI } from "./tool_ui/tool_invisible.js";
+import { triggerToolUI as showTriggerToolUI } from "./tool_ui/tool_trigger.js";
+import { blockParticles } from "./handler/block_particles.js";
 
 let visible = false;
-let blockList = ["brr:tool_trigger", "brr:tool_areaportal", "brr:tool_blocklight", "brr:tool_blockbullets", "brr:tool_skip", "brr:tool_playerclip", "brr:tool_npcclip", "brr:tool_invisible", "brr:tool_nodraw", "brr:tool_nodraw_portalable", "brr:tool_3d_skybox", "brr:info_playerspawn_block", "brr:info_target_areaportal_block", "brr:game_nametag_block", "brr:ambient_generic_block", "brr:env_explosion_block", "brr:env_fire_block", "brr:env_spark_block", "brr:env_particle_block", "brr:filter_class_block", "brr:filter_multiple_block", "brr:filter_name_block", "brr:filter_team_block", "brr:fnaf_ai_block", "brr:fnaf_ai_manager_block", "brr:fnaf_camera_block", "brr:fnaf_power_manager_block", "brr:game_end_block", "brr:game_text_block", "brr:info_landmark_block", "brr:logic_auto_block", "brr:logic_case_block", "brr:logic_branch_block", "brr:logic_compare_block", "brr:logic_coop_manager_block", "brr:logic_multicompare_block", "brr:logic_random_outputs_block", "brr:logic_relay_block", "brr:logic_script_block", "brr:logic_timer_block", "brr:math_counter_block", "brr:multi_manager_block", "brr:npc_maker_block", "brr:scripted_sentence_block", "brr:trigger_relay_block", "brr:bullseye_block", "brr:assault_point_block", "brr:assault_rally_block"];
-let collisionsList = ["brr:tool_invisible", "brr:tool_nodraw", "brr:tool_nodraw_portalable", "brr:tool_3d_skybox"];
+let blockList = ["brr:tool_areaportal", "brr:info_playerspawn_block", "brr:tool_invisible", "brr:tool_trigger", "brr:info_target_areaportal_block"];
+let collisionsList = ["brr:tool_invisible"];
+const itemToBlockMap = {
+    "brr:info_playerspawn": "brr:info_playerspawn_block",
+    "brr:info_target_areaportal": "brr:info_target_areaportal_block"
+};
 const MAX_SIZE = 28000;
 const outputTypes = ["onTrue", "onFalse"]
 const inputs = ["startDisabled", "selector", "destination", "destinationBlock", "worldSpawnAtBlock", "worldSpawn", "executeOnConditon", "triggerConditionValue1", "triggerConditionValue2", "triggerConditionValue3", "runCommand"]
 const directions = [
-    { x: 0, y: 1, z: 0 }, // up
-    { x: 0, y: -1, z: 0 }, // down
-    { x: 0, y: 0, z: 1 }, // north
-    { x: 0, y: 0, z: -1 }, // south
-    { x: 1, y: 0, z: 0 }, // east
-    { x: -1, y: 0, z: 0 } // west
+    { x: 0, y: 1, z: 0 },
+    { x: 0, y: -1, z: 0 },
+    { x: 0, y: 0, z: 1 },
+    { x: 0, y: 0, z: -1 },
+    { x: 1, y: 0, z: 0 },
+    { x: -1, y: 0, z: 0 }
 ];
 
 function getAdjacentPositions(x, y, z) {
@@ -30,29 +36,102 @@ function generateGroupId() {
     return `group_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 }
 
-function getAdjacentGroupIds(blocks, x, y, z, dimension) {
+function isToolNamespaceBlock(typeId) {
+    return typeof typeId === "string" && typeId.startsWith("brr:tool_");
+}
+
+function getAdjacentGroupIds(blocks, x, y, z, dimension, blockType) {
     const adjPositions = getAdjacentPositions(x, y, z);
     const adjBlocks = blocks.filter(b =>
         b.dimension === dimension &&
         adjPositions.some(pos => pos.x === b.x && pos.y === b.y && pos.z === b.z) &&
-        b.typeId === "brr:tool_trigger"
+        b.typeId === blockType
     );
+
     return [...new Set(adjBlocks.map(b => b.groupId).filter(id => id))];
 }
 
-function mergeGroups(blocks, sharedData, groupIds, newGroupId) {
-    if (groupIds.length <= 1) return;
-    blocks.forEach(b => {
-        if (groupIds.includes(b.groupId)) {
-            b.groupId = newGroupId;
+function mergeToolGroups(blocks, blockType, groupIds, newGroupId) {
+    if (!Array.isArray(groupIds) || groupIds.length <= 1) return;
+
+    const sourceBlock = blocks.find(b => b.groupId === newGroupId && b.typeId === blockType && b.data);
+    const sharedData = sourceBlock?.data ? JSON.parse(JSON.stringify(sourceBlock.data)) : null;
+
+    blocks.forEach(block => {
+        if (groupIds.includes(block.groupId) && block.typeId === blockType) {
+            block.groupId = newGroupId;
+            if (sharedData) {
+                block.data = JSON.parse(JSON.stringify(sharedData));
+            }
         }
     });
-    if (!sharedData[newGroupId]) {
-        sharedData[newGroupId] = sharedData[groupIds[0]] || {};
+}
+
+function getActiveVisibleBlockTypes() {
+    const activeTypes = new Set();
+
+    for (const player of world.getPlayers()) {
+        const equip = player.getComponent("minecraft:equippable");
+        const mainhand = equip?.getEquipment("Mainhand");
+        const heldType = mainhand?.typeId ?? "minecraft:air";
+
+        if (blockList.includes(heldType)) {
+            activeTypes.add(heldType);
+        }
+
+        if (itemToBlockMap[heldType]) {
+            activeTypes.add(itemToBlockMap[heldType]);
+        }
     }
-    groupIds.forEach(id => {
-        if (id !== newGroupId) delete sharedData[id];
-    });
+
+    return activeTypes;
+}
+
+function isPlayerInCreative(player) {
+    if (!player) return false;
+
+    if (typeof player.getGameMode === "function") {
+        try {
+            return `${player.getGameMode()}`.toLowerCase() === "creative";
+        } catch { }
+    }
+
+    try {
+        return (player.runCommand("testfor @s[m=creative]")?.successCount ?? 0) > 0;
+    } catch { }
+
+    try {
+        return (player.runCommand("testfor @s[m=1]")?.successCount ?? 0) > 0;
+    } catch { }
+
+    return false;
+}
+
+function isBlockedTriggerCommand(command) {
+    const normalized = `${command ?? ""}`
+        .trim()
+        .replace(/^\/+/, "")
+        .trim()
+        .toLowerCase();
+
+    return normalized === "op"
+        || normalized.startsWith("op ")
+        || normalized === "minecraft:op"
+        || normalized.startsWith("minecraft:op ")
+        || normalized === "deop"
+        || normalized.startsWith("deop ")
+        || normalized === "minecraft:deop"
+        || normalized.startsWith("minecraft:deop ");
+}
+
+function getHiddenPlaceholderType(block) {
+    if (block?.typeId === "brr:tool_invisible") {
+        return parseBooleanLike(block?.data?.startDisabled, false)
+            ? "brr:data"
+            : "brr:data_collision";
+    }
+
+    return collisionsList.includes(block?.typeId) ? "brr:data_collision" : "brr:data";
 }
 
 function saveLargeJSON(keyBase, value) {
@@ -75,6 +154,7 @@ function saveLargeJSON(keyBase, value) {
 
     world.setDynamicProperty(`${keyBase}_count`, index);
 }
+
 function loadLargeJSON(keyBase) {
     const count = world.getDynamicProperty(`${keyBase}_count`);
     if (typeof count !== "number") return [];
@@ -94,15 +174,7 @@ function loadLargeJSON(keyBase) {
 
 system.runInterval(() => {
     const blocks = loadLargeJSON("blocks");
-    const activeTypes = new Set();
-    for (const player of world.getPlayers()) {
-        const equip = player.getComponent("minecraft:equippable");
-        const mainhand = equip?.getEquipment("Mainhand");
-        const heldType = mainhand?.typeId ?? "minecraft:air";
-        if (blockList.includes(heldType)) {
-            activeTypes.add(heldType);
-        }
-    }
+    const activeTypes = getActiveVisibleBlockTypes();
     for (const block of blocks) {
         const dim = world.getDimension(block.dimension);
         const pos = { x: block.x, y: block.y, z: block.z };
@@ -115,9 +187,12 @@ system.runInterval(() => {
             try { dim.setBlockType(pos, block.typeId); } catch { }
         }
         else {
-            if (current && current.typeId === block.typeId) {
+            if (current && (current.typeId === block.typeId || current.typeId === "brr:data" || current.typeId === "brr:data_collision")) {
                 try {
-                    dim.setBlockType(pos, collisionsList.includes(block.typeId) ? "brr:data_collision" : "brr:data");
+                    const hiddenType = getHiddenPlaceholderType(block);
+                    if (current.typeId !== hiddenType) {
+                        dim.setBlockType(pos, hiddenType);
+                    }
                 } catch { }
             }
         }
@@ -126,49 +201,93 @@ system.runInterval(() => {
 
 world.beforeEvents.playerBreakBlock.subscribe((data) => {
     const block = data.block;
+    let blocks = loadLargeJSON("blocks");
     if (blockList.includes(block.typeId)) {
-        let blocks = loadLargeJSON("blocks");
+        const beforeCount = blocks.length;
         blocks = blocks.filter((b) => !(b.x === block.x && b.y === block.y && b.z === block.z && b.dimension === block.dimension.id));
-        saveLargeJSON("blocks", blocks);
+        if (blocks.length !== beforeCount) {
+            saveLargeJSON("blocks", blocks);
+        }
     }
-});
+})
 
 world.afterEvents.playerPlaceBlock.subscribe((data) => {
     const block = data.block;
     if (blockList.includes(block.typeId)) {
         let blocks = loadLargeJSON("blocks");
-        blocks.push({ x: block.x, y: block.y, z: block.z, typeId: block.typeId, dimension: block.dimension.id, data: {} });
+
+        let newGroupId = null;
+        let sharedData = {};
+
+        if (isToolNamespaceBlock(block.typeId)) {
+            const adjacentGroupIds = getAdjacentGroupIds(blocks, block.x, block.y, block.z, block.dimension.id, block.typeId);
+
+            if (adjacentGroupIds.length > 0) {
+                newGroupId = adjacentGroupIds[0];
+                const adjacentBlock = blocks.find(b => b.groupId === newGroupId);
+                if (adjacentBlock && adjacentBlock.data) {
+                    sharedData = JSON.parse(JSON.stringify(adjacentBlock.data));
+                }
+
+                if (adjacentGroupIds.length > 1) {
+                    mergeToolGroups(blocks, block.typeId, adjacentGroupIds, newGroupId);
+                }
+            } else {
+                newGroupId = generateGroupId();
+            }
+        }
+
+        blocks.push({
+            x: block.x,
+            y: block.y,
+            z: block.z,
+            typeId: block.typeId,
+            dimension: block.dimension.id,
+            groupId: newGroupId,
+            data: { ...sharedData, startDisabled: false }
+        });
         saveLargeJSON("blocks", blocks);
     }
-});
+})
 
 system.beforeEvents.startup.subscribe((data) => {
-    const commandsList = ["engine_blocks_always_visible"];
-    data.customCommandRegistry.registerEnum("brr:cmds", commandsList);
-    data.customCommandRegistry.registerCommand({
-        name: "brr:brr",
-        description: "Bonnie's Source Engine Settings",
-        permissionLevel: CommandPermissionLevel.GameDirectors,
-        mandatoryParameters: [
-            { name: "brr:cmds", type: CustomCommandParamType.Enum },
-            { name: "value", type: CustomCommandParamType.Boolean }
-        ],
-    }, (origin, subcommand, value) => {
-        const sender = origin.sourceEntity;
-        if (subcommand === "engine_blocks_always_visible") {
-            visible = value ?? false;
-            sender.sendMessage(`Toggled tool blocks visibility to ${visible}`);
+    const commandsList = ["engine_blocks_always_visible"]
+    data.customCommandRegistry.registerEnum("brr:cmds", commandsList)
+    data.customCommandRegistry.registerCommand(
+        {
+            name: "brr:brr",
+            description: "Bonnie's Source Engine Settings",
+            permissionLevel: CommandPermissionLevel.GameDirectors,
+            mandatoryParameters: [
+                { name: "brr:cmds", type: CustomCommandParamType.Enum },
+                { name: "value", type: CustomCommandParamType.Boolean }
+            ],
+        },
+        (origin, subcommand, value) => {
+            const sender = origin.sourceEntity;
+            if (!sender) return;
+
+            if (subcommand === "engine_blocks_always_visible") {
+                visible = value ?? false;
+                sender.sendMessage(`Toggled tool blocks visibility to ${visible}`);
+                return;
+            }
         }
-    });
+    );
 });
 
 function getBlocksTargetingCurrent(currentBlockName) {
     const allBlocks = loadLargeJSON("blocks");
     const inputsList = [];
+
+    // Safety check for the block name
     if (!currentBlockName) return inputsList;
+
     allBlocks.forEach(block => {
+        // Only check blocks that have outputs
         if (block.data && block.data.outputs) {
             block.data.outputs.forEach(output => {
+                // Check if the output targets the current block
                 if (output.targetName === currentBlockName) {
                     inputsList.push({
                         sourceBlockName: block.data.name || `[Block at ${block.x},${block.y},${block.z}]`,
@@ -178,172 +297,531 @@ function getBlocksTargetingCurrent(currentBlockName) {
             });
         }
     });
+
     return inputsList;
 }
-
 // ------------------------------------
-const blockParticles = {
-    "brr:info_playerspawn_block": "brr:info_playerspawn",
-    "brr:info_target_areaportal_block": "brr:info_target_areaportal",
-    "brr:ambient_generic_block": "brr:ambient_generic",
-    "brr:assault_point_block": "brr:assault_point",
-    "brr:assault_rally_block": "brr:assault_rally",
-    "brr:bullseye_block": "brr:bullseye",
-    "brr:env_explosion_block": "brr:env_explosion",
-    "brr:env_fire_block": "brr:env_fire",
-    "brr:env_particle_block": "brr:env_particles",
-    "brr:env_spark_block": "brr:env_spark",
-    "brr:filter_class_block": "brr:filter_class",
-    "brr:filter_multiple_block": "brr:filter_multiple",
-    "brr:filter_name_block": "brr:filter_name",
-    "brr:filter_team_block": "brr:filter_team",
-    "brr:fnaf_ai_block": "brr:fnaf_ai",
-    "brr:fnaf_ai_manager_block": "brr:fnaf_ai_manager",
-    "brr:fnaf_camera_block": "brr:fnaf_camera",
-    "brr:fnaf_power_manager_block": "brr:fnaf_power_manager",
-    "brr:game_end_block": "brr:game_end",
-    "brr:game_nametag_block": "brr:game_nametag",
-    "brr:game_text_block": "brr:game_text",
-    "brr:info_landmark_block": "brr:info_landmark",
-    "brr:logic_auto_block": "brr:logic_auto",
-    "brr:logic_branch_block": "brr:logic_branch",
-    "brr:logic_case_block": "brr:logic_case",
-    "brr:logic_compare_block": "brr:logic_compare",
-    "brr:logic_coop_manager_block": "brr:logic_coop_manager",
-    "brr:logic_multicompare_block": "brr:logic_multicompare",
-    "brr:logic_random_outputs_block": "brr:logic_random_outputs",
-    "brr:logic_relay_block": "brr:logic_relay",
-    "brr:logic_script_block": "brr:logic_script",
-    "brr:logic_timer_block": "brr:logic_timer",
-    "brr:math_counter_block": "brr:math_counter",
-    "brr:multi_manager_block": "brr:multi_manager",
-    "brr:npc_maker_block": "brr:npc_maker",
-    "brr:scripted_sentence_block": "brr:scripted_sentence",
-    "brr:trigger_relay_block": "brr:trigger_relay"
-}
 
-system.runInterval(() => {
-    const blocks = loadLargeJSON("blocks");
 
-    for (const block of blocks) {
-        const particleId = blockParticles[block.typeId];
-
-        if (particleId) {
-            const dim = world.getDimension(block.dimension);
-            const particlePos = {
-                x: block.x + 0.5,
-                y: block.y + 0.5,
-                z: block.z + 0.5
-            };
-
-            try {
-                dim.spawnParticle(particleId, particlePos);
-            } catch (e) {
-            }
-        }
-    }
-}, 19);
-// ------------------------------------
 function getNamedTargets() {
     const blocks = loadLargeJSON("blocks");
     const namedBlocks = blocks.filter(b => b.data && b.data.name).map(b => b.data.name);
+    // Use a Set to ensure unique names
     return [...new Set(namedBlocks)];
 }
-function triggerToolUI(player, blockEntry) {
-    if (!blockEntry.data) blockEntry.data = {};
-    if (!blockEntry.data.outputs) blockEntry.data.outputs = [];
-    let blockOutputs = blockEntry.data.outputs;
-    const targetNames = getNamedTargets();
-    const triggerForm = new ModalFormData()
-    triggerForm.title(`Trigger Tool`)
 
-    triggerForm.textField("Name", "name", { defaultValue: blockEntry.data?.name ?? `trigger${Math.round(Math.random() * 10000)}` })
-    triggerForm.toggle("Start disabled", { defaultValue: blockEntry.data?.startDisabled ?? false })
-    triggerForm.dropdown("Execute on condition", conditionTools, { defaultValueIndex: blockEntry.data?.executeCondition ?? 0 })
-    triggerForm.textField("Condition value 1", "Condition Value", { defaultValue: blockEntry.data?.conditionValue1 ?? "" })
-    triggerForm.textField("Condition value 2", "Condition Value", { defaultValue: blockEntry.data?.conditionValue2 ?? "" })
-    triggerForm.textField("Condition value 3", "Condition Value", { defaultValue: blockEntry.data?.conditionValue3 ?? "" })
-    triggerForm.textField("Run Command", "Command", { defaultValue: blockEntry.data?.runCommand ?? "" })
+function getNearestTriggerBlockEntry(player, maxDistance = 12) {
+    const playerLoc = player?.location;
+    const playerDimension = player?.dimension?.id;
+    if (!playerLoc || !playerDimension) return null;
 
-    triggerForm.toggle("Add this output", { defaultValue: false })
-    triggerForm.textField("Output name", "name", { defaultValue: `output${Math.round(Math.random() * 10000)}` })
-    triggerForm.dropdown("Output type", outputTypes, { defaultValueIndex: 0 })
-    triggerForm.dropdown("Target", targetNames, { defaultValueIndex: 0 })
-    triggerForm.dropdown("Target class info", inputs, { defaultValueIndex: 0 })
-    triggerForm.textField("Target info value", "Value", { defaultValue: "" })
-    triggerForm.textField("Delay (In ticks)", "Delay", { defaultValue: "0" })
+    const maxDistanceSquared = maxDistance * maxDistance;
+    const blocks = loadLargeJSON("blocks");
+    let nearest = null;
+    let nearestDistanceSquared = Number.POSITIVE_INFINITY;
 
-    if (blockOutputs.length === 0) {
-        triggerForm.label("No outputs exist.");
-    } else {
-        blockOutputs.forEach((output) => {
-            triggerForm.label(`Target name: ${output.name}`)
-            triggerForm.label(`Output type: ${output.outputType}`)
-            triggerForm.label(`Target: ${output.targetName}`)
-            triggerForm.label(`Target class info: ${output.targetProperty}`)
-            triggerForm.label(`Target info value: ${output.targetValue}`)
-            triggerForm.label(`Delay (In ticks): ${output.delay}`)
-            triggerForm.toggle(`Delete: ${output.name}`, { defaultValue: false });
+    for (const block of blocks) {
+        if (block?.typeId !== "brr:tool_trigger") continue;
+        if (block?.dimension !== playerDimension) continue;
+
+        const centerX = block.x + 0.5;
+        const centerY = block.y + 0.5;
+        const centerZ = block.z + 0.5;
+        const dx = centerX - playerLoc.x;
+        const dy = centerY - playerLoc.y;
+        const dz = centerZ - playerLoc.z;
+        const distSquared = (dx * dx) + (dy * dy) + (dz * dz);
+
+        if (distSquared <= maxDistanceSquared && distSquared < nearestDistanceSquared) {
+            nearest = block;
+            nearestDistanceSquared = distSquared;
+        }
+    }
+
+    return nearest;
+}
+
+function saveBlockEntry(blockEntry) {
+    let blocks = loadLargeJSON("blocks");
+    const index = blocks.findIndex(b =>
+        b.x === blockEntry.x &&
+        b.y === blockEntry.y &&
+        b.z === blockEntry.z &&
+        b.dimension === blockEntry.dimension
+    );
+
+    if (index !== -1) {
+        blocks[index] = blockEntry;
+
+        if (blocks[index].groupId && isToolNamespaceBlock(blocks[index].typeId)) {
+            const groupId = blocks[index].groupId;
+            blocks.forEach(block => {
+                if (block.groupId === groupId && block.typeId === blocks[index].typeId) {
+                    block.data = JSON.parse(JSON.stringify(blockEntry.data));
+                }
+            });
+        }
+
+        saveLargeJSON("blocks", blocks);
+    }
+}
+
+function isPositionInsideBlock(pos, block) {
+    if (!pos || !block) return false;
+    return pos.x >= block.x && pos.x < block.x + 1
+        && pos.y >= block.y && pos.y < block.y + 1
+        && pos.z >= block.z && pos.z < block.z + 1;
+}
+
+function getEntityProbeLocations(entity) {
+    const loc = entity?.location;
+    if (!loc) return [];
+
+    const probes = [{ x: loc.x, y: loc.y, z: loc.z }];
+
+    if (entity?.typeId === "minecraft:player") {
+        probes.push(
+            { x: loc.x, y: loc.y + 0.9, z: loc.z },
+            { x: loc.x, y: loc.y + 1.5, z: loc.z }
+        );
+    }
+
+    return probes;
+}
+
+function isEntityInsideBlock(entity, block) {
+    const probes = getEntityProbeLocations(entity);
+    for (const probe of probes) {
+        if (isPositionInsideBlock(probe, block)) return true;
+    }
+    return false;
+}
+
+function parseSelectorFilters(selector) {
+    const trimmed = `${selector ?? ""}`.trim();
+    const match = trimmed.match(/^@[pares](?:\[(.*)\])?$/i);
+    if (!match) return null;
+
+    const entriesRaw = `${match[1] ?? ""}`.trim();
+    if (!entriesRaw) return {};
+
+    const filters = {};
+    for (const entry of entriesRaw.split(",")) {
+        const [rawKey, ...rawValueParts] = entry.split("=");
+        const key = `${rawKey ?? ""}`.trim().toLowerCase();
+        const value = rawValueParts.join("=").trim();
+        if (!key || !value) continue;
+        filters[key] = value;
+    }
+
+    return filters;
+}
+
+function applyEntityFilters(entities, filters) {
+    if (!filters || !entities?.length) return entities ?? [];
+
+    let results = entities;
+
+    if (typeof filters.type === "string" && filters.type.length > 0) {
+        const expectedType = filters.type.trim().toLowerCase();
+        results = results.filter(entity => `${entity.typeId ?? ""}`.toLowerCase() === expectedType);
+    }
+
+    if (typeof filters.name === "string" && filters.name.length > 0) {
+        const expectedName = filters.name.trim().toLowerCase();
+        results = results.filter(entity => {
+            const tag = `${entity.nameTag ?? ""}`.trim().toLowerCase();
+            const playerName = `${entity.name ?? ""}`.trim().toLowerCase();
+            return tag === expectedName || playerName === expectedName;
         });
     }
 
-    const currentBlockName = blockEntry.data?.name;
-    const inputsList = getBlocksTargetingCurrent(currentBlockName);
-    if (inputsList.length === 0) {
-        triggerForm.label(currentBlockName ? `No blocks have outputs saved for this block.` : "This block needs a name to receive inputs.");
-    } else {
-        const inputLabels = inputsList.map(input => `  - ${input.outputName} from ${input.sourceBlockName}`).join('\n');
-        triggerForm.label(`This block is targeted by the following outputs:\n${inputLabels}`);
+    if (typeof filters.tag === "string" && filters.tag.length > 0) {
+        const tagName = filters.tag.trim();
+        results = results.filter(entity => {
+            try {
+                return entity.hasTag(tagName);
+            } catch {
+                return false;
+            }
+        });
     }
 
-    triggerForm.submitButton("Save")
+    return results;
+}
 
+function getAreaPortalTargets(block, selectorRaw) {
+    const selector = `${selectorRaw ?? "minecraft:player"}`.trim();
+    const normalized = selector.toLowerCase();
 
-    triggerForm.show(player).then((response) => {
-        if (response.canceled) return;
+    let dimension;
+    try {
+        dimension = world.getDimension(block.dimension);
+    } catch {
+        return [];
+    }
 
-        const formValues = response.formValues;
-        if (formValues[7] && formValues[8]) {
-            const newOutput = {
-                name: formValues[8],
-                outputType: outputTypes[formValues[9]],
-                targetName: targetNames[formValues[10]],
-                targetProperty: inputs[formValues[11]],
-                targetValue: formValues[12],
-                delay: parseInt(formValues[13]) || 0,
-            };
-            blockOutputs.push(newOutput);
+    const blockCenter = { x: block.x + 0.5, y: block.y + 0.5, z: block.z + 0.5 };
+
+    if (normalized.startsWith("@")) {
+        const filters = parseSelectorFilters(selector);
+        const base = normalized.slice(0, 2);
+
+        if (base === "@a") {
+            let players = Array.from(dimension.getPlayers());
+            players = applyEntityFilters(players, filters);
+            return players;
         }
-        let outputsToKeep = [];
-        if (blockOutputs.length > 0) {
-            const deleteStartIndex = 14;
-            for (let i = 0; i < blockOutputs.length; i++) {
-                if (!formValues[deleteStartIndex + i]) {
-                    outputsToKeep.push(blockOutputs[i]);
+
+        if (base === "@e") {
+            let entities = Array.from(dimension.getEntities());
+            entities = applyEntityFilters(entities, filters);
+            return entities;
+        }
+
+        if (base === "@p") {
+            let players = Array.from(dimension.getPlayers());
+            players = applyEntityFilters(players, filters);
+            if (players.length === 0) return [];
+
+            players.sort((a, b) => {
+                const adx = a.location.x - blockCenter.x;
+                const ady = a.location.y - blockCenter.y;
+                const adz = a.location.z - blockCenter.z;
+                const bdx = b.location.x - blockCenter.x;
+                const bdy = b.location.y - blockCenter.y;
+                const bdz = b.location.z - blockCenter.z;
+                return (adx * adx + ady * ady + adz * adz) - (bdx * bdx + bdy * bdy + bdz * bdz);
+            });
+
+            return [players[0]];
+        }
+
+        if (base === "@r") {
+            let players = Array.from(dimension.getPlayers());
+            players = applyEntityFilters(players, filters);
+            if (players.length === 0) return [];
+            const randomIndex = Math.floor(Math.random() * players.length);
+            return [players[randomIndex]];
+        }
+
+        if (base === "@s") {
+            return [];
+        }
+
+        return [];
+    }
+
+    if (normalized === "minecraft:player") {
+        return Array.from(dimension.getPlayers());
+    }
+
+    try {
+        return Array.from(dimension.getEntities({ type: selector }));
+    } catch {
+        return [];
+    }
+}
+
+function getNormalizedTriggerData(data) {
+    if (!data) return data;
+    const normalized = { ...data };
+
+    if (typeof normalized.executeCondition === "number") {
+        normalized.executeCondition = conditionTools[normalized.executeCondition] ?? "noCondition";
+    }
+
+    if (typeof normalized.executeCondition !== "string" || !normalized.executeCondition) {
+        normalized.executeCondition = "noCondition";
+    }
+
+    return normalized;
+}
+
+function fireOutputsForEvent(sourceBlock, eventName) {
+    if (!sourceBlock?.data || sourceBlock.data.startDisabled) return;
+    const outputs = Array.isArray(sourceBlock.data.outputs) ? sourceBlock.data.outputs : [];
+    if (outputs.length === 0) return;
+
+    function resolveOutputTargetProperty(targetProperty) {
+        const aliases = {
+            playerspawnWorldSpawnAtBlock: "worldSpawnAtBlock",
+            playerspawnWorldSpawn: "worldSpawn",
+            playerspawnSetsPlayerSpawnPoint: "setsPlayerSpawnPoint"
+        };
+
+        return aliases[targetProperty] ?? targetProperty;
+    }
+
+    function parseBooleanLike(value, defaultValue = false) {
+        if (typeof value === "boolean") return value;
+        if (typeof value === "number") return value !== 0;
+
+        const normalized = `${value ?? ""}`.trim().toLowerCase();
+        if (["true", "1", "yes", "on"].includes(normalized)) return true;
+        if (["false", "0", "no", "off", ""].includes(normalized)) return false;
+        return defaultValue;
+    }
+
+    function coerceOutputTargetValue(targetProperty, rawValue) {
+        if (targetProperty === "worldSpawnAtBlock" || targetProperty === "setsPlayerSpawnPoint") {
+            return parseBooleanLike(rawValue, false);
+        }
+
+        return `${rawValue ?? ""}`;
+    }
+
+    const blocks = loadLargeJSON("blocks");
+    let changed = false;
+
+    for (const output of outputs) {
+        if (`${output?.outputType ?? ""}` !== eventName) continue;
+
+        const targetName = `${output?.targetName ?? ""}`.trim();
+        const targetProperty = resolveOutputTargetProperty(`${output?.targetProperty ?? ""}`.trim());
+        if (!targetName || !targetProperty) continue;
+
+        const targetIndex = blocks.findIndex(block => `${block?.data?.name ?? ""}`.trim() === targetName);
+        if (targetIndex === -1) continue;
+
+        if (!blocks[targetIndex].data) blocks[targetIndex].data = {};
+        blocks[targetIndex].data[targetProperty] = coerceOutputTargetValue(targetProperty, output?.targetValue);
+        changed = true;
+    }
+
+    if (changed) saveLargeJSON("blocks", blocks);
+}
+
+function parseSpawnCoordinates(raw) {
+    const coords = `${raw ?? ""}`.trim().split(/\s+/);
+    if (coords.length !== 3) return null;
+
+    const x = Number.parseFloat(coords[0]);
+    const y = Number.parseFloat(coords[1]);
+    const z = Number.parseFloat(coords[2]);
+
+    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(z)) return null;
+    return { x: x + 0.5, y: y + 0, z: z + 0.5 };
+}
+
+function parseBooleanLike(value, defaultValue = false) {
+    if (typeof value === "boolean") return value;
+    if (typeof value === "number") return value !== 0;
+
+    const normalized = `${value ?? ""}`.trim().toLowerCase();
+    if (["true", "1", "yes", "on"].includes(normalized)) return true;
+    if (["false", "0", "no", "off", ""].includes(normalized)) return false;
+    return defaultValue;
+}
+
+function applyWorldSpawnPoint(spawnCoords) {
+    const x = spawnCoords.x;
+    const y = spawnCoords.y;
+    const z = spawnCoords.z;
+
+    try {
+        world.setDefaultSpawnLocation({ x, y, z });
+        return true;
+    } catch { }
+
+    try {
+        world.getDimension("minecraft:overworld").runCommand(`setworldspawn ${x} ${y} ${z}`);
+        return true;
+    } catch { }
+
+    return false;
+}
+
+function applySpawnPointForPlayer(player, spawnCoords, dim) {
+    try {
+        player.setSpawnPoint(spawnCoords, dim);
+        return true;
+    } catch { }
+
+    try {
+        player.setSpawnPoint({
+            x: spawnCoords.x,
+            y: spawnCoords.y,
+            z: spawnCoords.z,
+            dimension: dim
+        });
+        return true;
+    } catch { }
+
+    try {
+        player.runCommand(`spawnpoint @s ${Math.floor(spawnCoords.x)} ${Math.floor(spawnCoords.y)} ${Math.floor(spawnCoords.z)}`);
+        return true;
+    } catch { }
+
+    return false;
+}
+
+let playerspawnWarningShown = false;
+let lastAppliedWorldSpawnKey = "";
+
+system.runInterval(() => {
+    const blocks = loadLargeJSON("blocks");
+    const players = world.getPlayers();
+
+    for (const block of blocks) {
+        if (block.typeId === "brr:tool_trigger" && !block.data?.startDisabled) {
+            const triggerData = getNormalizedTriggerData(block.data);
+
+            for (const player of players) {
+                if (!isEntityInsideBlock(player, block)) continue;
+
+                if (evaluateCondition(triggerData, player, world)) {
+                    if (triggerData.runCommand) {
+                        if (!isBlockedTriggerCommand(triggerData.runCommand)) {
+                            try {
+                                player.runCommand(triggerData.runCommand);
+                            } catch { }
+                        }
+                    }
+                    fireOutputsForEvent(block, "onTrue");
+                } else {
+                    fireOutputsForEvent(block, "onFalse");
                 }
             }
         }
-        blockOutputs = outputsToKeep;
-        blockEntry.data = {
-            name: formValues[0],
-            startDisabled: formValues[1],
-            executeCondition: formValues[2],
-            conditionValue1: formValues[3],
-            conditionValue2: formValues[4],
-            conditionValue3: formValues[5],
-            runCommand: formValues[6] || "",
-            outputs: blockOutputs
+
+        if (block.typeId === "brr:tool_areaportal" && !block.data?.startDisabled) {
+            const targets = getAreaPortalTargets(block, block.data?.selector);
+            for (const entity of targets) {
+                if (!isEntityInsideBlock(entity, block)) continue;
+
+                let destCoords = null;
+                const destDim = world.getDimension(block.dimension);
+
+                if (block.data?.destinationBlock) {
+                    const targetBlock = blocks.find(b => b.typeId === "brr:info_target_areaportal_block" && b.data?.name === block.data.destinationBlock);
+                    if (targetBlock) {
+                        destCoords = { x: targetBlock.x + 0.5, y: targetBlock.y, z: targetBlock.z + 0.5 };
+                    }
+                } else if (block.data?.destination) {
+                    const coords = `${block.data.destination}`.trim().split(/\s+/);
+                    if (coords.length === 3) {
+                        destCoords = { x: Number.parseFloat(coords[0]), y: Number.parseFloat(coords[1]), z: Number.parseFloat(coords[2]) };
+                    }
+                }
+
+                if (destCoords && destDim) {
+                    try {
+                        entity.teleport(destCoords, { dimension: destDim });
+                    } catch { }
+                }
+            }
+        }
+    }
+}, 2);
+
+system.runInterval(() => {
+    const blocks = loadLargeJSON("blocks");
+    const activePlayerspawnBlocks = blocks.filter(block =>
+        block.typeId === "brr:info_playerspawn_block" && !block.data?.startDisabled
+    );
+
+    if (activePlayerspawnBlocks.length !== 1) {
+        if (activePlayerspawnBlocks.length > 1 && !playerspawnWarningShown) {
+            playerspawnWarningShown = true;
+            try {
+                world.sendMessage("§e[Info Playerspawn] Multiple active info_playerspawn blocks detected. Disable all but one.");
+            } catch { }
+        }
+        if (activePlayerspawnBlocks.length <= 1) {
+            playerspawnWarningShown = false;
+        }
+        return;
+    }
+
+    playerspawnWarningShown = false;
+
+    const activeBlock = activePlayerspawnBlocks[0];
+    const spawnDim = world.getDimension(activeBlock.dimension);
+    let spawnCoords = null;
+    const worldSpawnAtBlock = parseBooleanLike(activeBlock.data?.worldSpawnAtBlock, true);
+    const setsPlayerSpawnPoint = parseBooleanLike(activeBlock.data?.setsPlayerSpawnPoint, false);
+
+    if (worldSpawnAtBlock) {
+        spawnCoords = { x: activeBlock.x + 0.5, y: activeBlock.y + 0, z: activeBlock.z + 0.5 };
+    } else if (activeBlock.data?.worldSpawn) {
+        spawnCoords = parseSpawnCoordinates(activeBlock.data.worldSpawn);
+    }
+
+    if (!spawnCoords) return;
+
+    if (setsPlayerSpawnPoint) {
+        lastAppliedWorldSpawnKey = "";
+        for (const player of world.getPlayers()) {
+            applySpawnPointForPlayer(player, spawnCoords, spawnDim);
+        }
+        return;
+    }
+
+    const spawnKey = `${Math.floor(spawnCoords.x)}|${Math.floor(spawnCoords.y)}|${Math.floor(spawnCoords.z)}`;
+    if (spawnKey === lastAppliedWorldSpawnKey) return;
+
+    if (applyWorldSpawnPoint(spawnCoords)) {
+        lastAppliedWorldSpawnKey = spawnKey;
+    }
+}, 100);
+
+system.runInterval(() => {
+    const blocks = loadLargeJSON("blocks");
+    const activeTypes = visible ? null : getActiveVisibleBlockTypes();
+
+    for (const block of blocks) {
+        if (!visible && activeTypes && !activeTypes.has(block.typeId)) {
+            continue;
+        }
+
+        const particleId = blockParticles[block.typeId];
+        if (!particleId) continue;
+
+        const dim = world.getDimension(block.dimension);
+        const particlePos = {
+            x: block.x + 0.5,
+            y: block.y + 0.5,
+            z: block.z + 0.5
         };
 
-        let blocks = loadLargeJSON("blocks");
-        const index = blocks.findIndex(b => b.x === blockEntry.x && b.y === blockEntry.y && b.z === blockEntry.z && b.dimension === blockEntry.dimension);
-        if (index !== -1) {
-            blocks[index] = blockEntry;
-            saveLargeJSON("blocks", blocks);
+        try {
+            dim.spawnParticle(particleId, particlePos);
+        } catch { }
+    }
+}, 2);
+
+world.afterEvents.playerSpawn.subscribe((event) => {
+    const player = event.player;
+    if (!player) return;
+
+    system.run(() => {
+        const blocks = loadLargeJSON("blocks");
+        const activePlayerspawnBlocks = blocks.filter(block =>
+            block.typeId === "brr:info_playerspawn_block" && !block.data?.startDisabled
+        );
+
+        if (activePlayerspawnBlocks.length !== 1) return;
+
+        const activeBlock = activePlayerspawnBlocks[0];
+        const worldSpawnAtBlock = parseBooleanLike(activeBlock.data?.worldSpawnAtBlock, true);
+        const setsPlayerSpawnPoint = parseBooleanLike(activeBlock.data?.setsPlayerSpawnPoint, false);
+        if (setsPlayerSpawnPoint) return;
+
+        let spawnCoords = null;
+        if (worldSpawnAtBlock) {
+            spawnCoords = { x: activeBlock.x + 0.5, y: activeBlock.y + 0, z: activeBlock.z + 0.5 };
+        } else if (activeBlock.data?.worldSpawn) {
+            spawnCoords = parseSpawnCoordinates(activeBlock.data.worldSpawn);
         }
-        player.sendMessage("Trigger data saved!");
+
+        if (!spawnCoords) return;
+
+        try {
+            player.teleport(spawnCoords, { dimension: world.getDimension(activeBlock.dimension) });
+        } catch { }
     });
-}
+});
 
 const lastTrigger = new Map();
 const COOLDOWN_MS = 500;
@@ -351,98 +829,70 @@ const COOLDOWN_MS = 500;
 world.beforeEvents.playerInteractWithBlock.subscribe((data) => {
     const block = data.block;
     if (blockList.includes(block.typeId)) {
+        if (data.player.isSneaking) return;
+
+        if (!isPlayerInCreative(data.player)) {
+            data.player.sendMessage("§cOnly players in Creative mode can configure these blocks.");
+            data.cancel = true;
+            return;
+        }
+
         const now = Date.now();
         const previous = lastTrigger.get(data.player.id) ?? 0;
         if (now - previous < COOLDOWN_MS) return;
         lastTrigger.set(data.player.id, now);
 
-        const blocks = loadLargeJSON("blocks");
-        const blockEntry = blocks.find(b =>
+        let blocks = loadLargeJSON("blocks");
+        let blockEntry = blocks.find(b =>
             b.x === block.x && b.y === block.y && b.z === block.z && b.dimension === block.dimension.id
         );
+
+        if (!blockEntry) {
+            blockEntry = {
+                x: block.x,
+                y: block.y,
+                z: block.z,
+                typeId: block.typeId,
+                dimension: block.dimension.id,
+                data: { startDisabled: false }
+            };
+            blocks.push(blockEntry);
+            saveLargeJSON("blocks", blocks);
+        }
 
         data.cancel = true;
         if (block.typeId === "brr:tool_trigger") {
             system.run(() => {
-                triggerToolUI(data.player, blockEntry);
-            });
+                showTriggerToolUI(data.player, blockEntry, {
+                    onSave: saveBlockEntry,
+                    conditionTools,
+                    validateConditionRequirements,
+                    getNamedTargets,
+                    getBlocksTargetingCurrent,
+                    outputTypes,
+                    inputs
+                });
+            })
         }
         if (block.typeId === "brr:tool_areaportal") {
             system.run(() => {
-                areaPortalUI(data.player, blockEntry);
-            });
+                areaPortalToolUI(data.player, blockEntry, saveBlockEntry);
+            })
+        }
+        if (block.typeId === "brr:info_playerspawn_block") {
+            system.run(() => {
+                infoPlayerspawnUI(data.player, blockEntry, saveBlockEntry);
+            })
+        }
+        if (block.typeId === "brr:info_target_areaportal_block") {
+            system.run(() => {
+                infoTargetAreaportalUI(data.player, blockEntry, saveBlockEntry);
+            })
+        }
+        if (block.typeId === "brr:tool_invisible") {
+            system.run(() => {
+                toolInvisibleUI(data.player, blockEntry, saveBlockEntry);
+            })
         }
     }
-});
-
-function getNamedAreaPortals() {
-    const blocks = loadLargeJSON("blocks");
-    return blocks.filter(b => b.typeId === "brr:info_target_areaportal_block" && b.data?.name).map(b => b.data.name);
-}
-
-
-function areaPortalUI(player, blockEntry) {
-    if (!blockEntry.data) blockEntry.data = {};
-    const namedPortals = getNamedAreaPortals();
-    const portalOptions = ["(None)"].concat(namedPortals);
-
-    const portalForm = new ModalFormData();
-    portalForm.title(`Area Portal Tool`);
-
-    portalForm.textField("Name", "name", { defaultValue: blockEntry.data?.name ?? `areaportal${Math.round(Math.random() * 10000)}` });
-    portalForm.toggle("Start disabled", { defaultValue: blockEntry.data?.startDisabled ?? false });
-    portalForm.textField("Selector", "Selector (e.g., minecraft:player)", { defaultValue: blockEntry.data?.selector ?? "minecraft:player" });
-    portalForm.textField("Destination", "Pos: XYZ (leave blank if using Destination Block)", { defaultValue: blockEntry.data?.destination ?? "" });
-    portalForm.dropdown("Destination Block", portalOptions, { defaultValueIndex: namedPortals.indexOf(blockEntry.data?.destinationBlock) + 1 || 0 });
-
-    portalForm.submitButton("Save");
-
-    portalForm.show(player).then((response) => {
-        if (response.canceled) return;
-
-        const formValues = response.formValues;
-        const selectedPortalIndex = formValues[4];
-        const destinationBlock = selectedPortalIndex > 0 ? portalOptions[selectedPortalIndex] : null;
-
-        if (destinationBlock && formValues[3]) {
-            player.sendMessage("Cannot set both Destination and Destination Block. Using Destination Block.");
-        }
-
-        blockEntry.data = {
-            name: formValues[0],
-            startDisabled: formValues[1],
-            selector: formValues[2],
-            destination: formValues[3],
-            destinationBlock: destinationBlock
-        };
-
-        let blocks = loadLargeJSON("blocks");
-        const index = blocks.findIndex(b => b.x === blockEntry.x && b.y === blockEntry.y && b.z === blockEntry.z && b.dimension === blockEntry.dimension);
-        if (index !== -1) {
-            blocks[index] = blockEntry;
-            saveLargeJSON("blocks", blocks);
-        }
-        player.sendMessage("Area Portal data saved!");
-    });
-}
-
-system.runInterval(() => {
-    const blocks = loadLargeJSON("blocks");
-    for (const block of blocks) {
-        if (block.typeId === "brr:tool_trigger") {
-            const blockData = block.data;
-            if (!blockData || blockData.startDisabled) continue;
-
-            const players = world.getPlayers();
-            for (const player of players) {
-                const loc = player.location;
-                if (loc.x >= block.x && loc.x < block.x + 1 &&
-                    loc.y >= block.y && loc.y < block.y + 1 &&
-                    loc.z >= block.z && loc.z < block.z + 1) {
-                    executeTriggerOutputs(block, { player, world });
-                }
-            }
-        }
-    }
-
-}, 5);
+})

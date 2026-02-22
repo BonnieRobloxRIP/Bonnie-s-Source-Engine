@@ -1,4 +1,4 @@
-import { world, system } from "@minecraft/server";
+import { world, system, CommandPermissionLevel } from "@minecraft/server";
 import { ModalFormData, ActionFormData } from "@minecraft/server-ui";
 
 const emojis = [
@@ -221,26 +221,73 @@ const emojis = [
     { id: ":rabbit6:", emoji: "", displayName: "Rabbit 6" }
 ]
 
-world.afterEvents.itemUse.subscribe((eventData) => {
-    const player = eventData.source;
-    const itemId = eventData.itemStack.typeId;
+try {
+    world.afterEvents.itemUse.subscribe((eventData) => {
+        const player = eventData.source;
+        const itemId = eventData.itemStack.typeId;
 
-    if (itemId === "minecraft:paper") {
-        showDinoSpeecherMenu(player);
-        return;
+        if (itemId === "minecraft:paper") {
+            showDinoSpeecherMenu(player);
+            return;
+        }
+    })
+} catch { }
+
+function getCustomNametagParts(player, context) {
+    try {
+        const raw = player.getDynamicProperty("brr_nametag");
+        if (typeof raw !== "string" || raw.length === 0) return { prefix: "", suffix: "" };
+
+        const data = JSON.parse(raw);
+        if (context === "chat") {
+            if (typeof data?.chatPrefix === "string" || typeof data?.chatSuffix === "string") {
+                return {
+                    prefix: `${data?.chatPrefix ?? ""}`,
+                    suffix: `${data?.chatSuffix ?? ""}`
+                };
+            }
+        }
+
+        if (context === "username") {
+            if (typeof data?.usernamePrefix === "string" || typeof data?.usernameSuffix === "string") {
+                return {
+                    prefix: `${data?.usernamePrefix ?? ""}`,
+                    suffix: `${data?.usernameSuffix ?? ""}`
+                };
+            }
+        }
+
+        const legacyNametag = `${data?.nametag ?? ""}`.trim();
+        if (!legacyNametag) return { prefix: "", suffix: "" };
+
+        const formattedLegacyTag = `[${legacyNametag}§r] `;
+        const isChatContext = context === "chat";
+        const isUsernameContext = context === "username";
+        const enabledForContext = (isChatContext && Boolean(data?.worksInChat)) || (isUsernameContext && Boolean(data?.worksInUsernames));
+        if (!enabledForContext) return { prefix: "", suffix: "" };
+
+        const wantsPrefix = data?.prefix !== false;
+        const wantsSuffix = Boolean(data?.suffix);
+        return {
+            prefix: wantsPrefix ? formattedLegacyTag : "",
+            suffix: wantsSuffix ? formattedLegacyTag : ""
+        };
+    } catch {
+        return { prefix: "", suffix: "" };
     }
-})
+}
 
 export function sendRankedMessage(player, rawMessage) {
     const tags = player.getTags();
     const rankPrefix = chatRank(player, tags);
+    const nametagParts = getCustomNametagParts(player, "chat");
 
     let processedMessage = rawMessage;
     for (const emoji of emojis) {
         processedMessage = processedMessage.replaceAll(emoji.id, emoji.emoji);
     }
 
-    const text = `§r${rankPrefix}§r${player.name}: §f${processedMessage}`;
+    const text = `§r${rankPrefix}${nametagParts.prefix}§r${player.name}${nametagParts.suffix}: §f${processedMessage}`;
     world.sendMessage({ rawtext: [{ text: text }] });
 }
 
@@ -262,14 +309,13 @@ export function chatRank(player, tags) {
     if (tags.includes("grinder")) rankPrefix += "[§6§lGRINDER§r]";
     if (tags.includes("mace_god")) rankPrefix += "[§5§lMace God§r]";
     if (tags.includes("frog")) rankPrefix += "[§2§lFr§ao§bg§r]";
-    if (tags.includes("his_reward")) rankPrefix += "[§c§lUr Average Clash Royale Player §qBiggest Frog§b Red Moshi Likes skibidi toilet§a Absolute Bonniema §eLEGENDARY §pPUMPKIN§d Bonnie Mafia Warrior §1 Cookie Hater 67§r]";
-    if (tags.includes("adopted")) rankPrefix += "[§d§l§oAdopted§r]";
-    if (tags.includes("Attention")) rankPrefix += "[§n§l§o Dog eater §r]";
-    if (tags.includes("nigger")) rankPrefix += "[§0§l§o NIGGER §r]";
     if (tags.includes("tank")) rankPrefix += "[§8§lTank§r]";
-    if (tags.includes("gooner")) rankPrefix += "[§f§lGooner§r]";
     if (tags.includes("icecream")) rankPrefix += "[§r]";
     if (tags.includes("skull")) rankPrefix += "[§r]";
+    if (tags.includes("yt")) rankPrefix += "[§4You§fTuber§r]";
+
+    if (tags.includes("lobby") && !tags.includes("game")) rankPrefix += "[§b§lLobby§r] ";
+    if (tags.includes("game")) rankPrefix += "[§a§lGamer§r] ";
 
     return rankPrefix;
 }
@@ -293,41 +339,45 @@ export function nametagRank(player, tags) {
     if (tags.includes("grinder")) rankPrefix += "[§6§lGRINDER§r]";
     if (tags.includes("mace_god")) rankPrefix += "[§5§lMace God§r]";
     if (tags.includes("frog")) rankPrefix += "[§2§lFr§ao§bg§r]";
-    if (tags.includes("his_reward")) rankPrefix += "[§c§lUr Average Clash Royale Player §qBiggest Frog§b Red Moshi Likes skibidi toilet§a Absolute Bonniema §eLEGENDARY §pPUMPKIN§d Bonnie Mafia Warrior §1 Cookie Hater 67§r]";
-    if (tags.includes("nigger")) rankPrefix += "[§0§l§o NIGGER §r]";
     if (tags.includes("stop")) rankPrefix += "[§4§l§oAFK§r]";
     if (tags.includes("tank")) rankPrefix += "[§8§lTank§r]";
-    if (tags.includes("gooner")) rankPrefix += "[§f§lGooner§r]";
     if (tags.includes("icecream")) rankPrefix += "[§r]";
     if (tags.includes("skull")) rankPrefix += "[§r]";
+    if (tags.includes("yt")) rankPrefix += "[§4You§fTuber§r]";
+
+    if (tags.includes("lobby") && !tags.includes("game")) rankPrefix += "[§b§lLobby§r] ";
+    if (tags.includes("game")) rankPrefix += "[§a§lGamer§r] ";
 
     return rankPrefix;
 }
 
 export function handleMessage() {
-    world.beforeEvents.chatSend.subscribe((data) => {
-        const player = data.sender;
-        const tags = player.getTags();
-        let message = data.message;
+    try {
+        world.beforeEvents.chatSend.subscribe((data) => {
+            const player = data.sender;
+            const tags = player.getTags();
+            let message = data.message;
+            const nametagParts = getCustomNametagParts(player, "chat");
 
-        if (message.toLowerCase() === "!emojis") {
+            if (message.toLowerCase() === "!emojis") {
+                data.cancel = true;
+                player.sendMessage("§cPlease use /brr:emojis instead.");
+                return;
+            }
+
+            // Replace emojis with their respective unicode character
+            for (const emoji of emojis) {
+                message = message.replaceAll(emoji.id, emoji.emoji);
+            }
+
+            const rankPrefix = chatRank(player, tags);
+
+            // Send the message
+            const text = `§r${rankPrefix}${nametagParts.prefix}§r${player.name}${nametagParts.suffix}: §f${message}`;
+            world.sendMessage({ rawtext: [{ text: text }] });
             data.cancel = true;
-            player.sendMessage("§cPlease use /brr:emojis instead.");
-            return;
-        }
-
-        // Replace emojis with their respective unicode character
-        for (const emoji of emojis) {
-            message = message.replaceAll(emoji.id, emoji.emoji);
-        }
-
-        const rankPrefix = chatRank(player, tags);
-
-        // Send the message
-        const text = `§r${rankPrefix}§r${player.name}: §f${message}`;
-        world.sendMessage({ rawtext: [{ text: text }] });
-        data.cancel = true;
-    });
+        });
+    } catch { }
 
     system.runInterval(() => {
         const allPlayers = world.getPlayers();
@@ -337,22 +387,27 @@ export function handleMessage() {
         for (const player of allPlayers) {
             const tags = player.getTags();
             const rankPrefix = nametagRank(player, tags, bothDevsOnline);
-            player.nameTag = `${rankPrefix}${player.name}`;
+            const nametagParts = getCustomNametagParts(player, "username");
+            player.nameTag = `${rankPrefix}${nametagParts.prefix}${player.name}${nametagParts.suffix}`;
         }
     }, 20);
 }
-handleMessage();
+try {
+    handleMessage();
+} catch { }
 
 // Item use
-world.afterEvents.itemUse.subscribe((eventData) => {
-    const player = eventData.source;
-    const itemId = eventData.itemStack.typeId;
+try {
+    world.afterEvents.itemUse.subscribe((eventData) => {
+        const player = eventData.source;
+        const itemId = eventData.itemStack.typeId;
 
-    if (itemId === "brr:dino_speecher") {
-        showDinoSpeecherMenu(player);
-        return;
-    }
-});
+        if (itemId === "brr:dino_speecher") {
+            showDinoSpeecherMenu(player);
+            return;
+        }
+    });
+} catch { }
 
 // Emoji command
 export function emojiCommand(data) {
@@ -438,30 +493,44 @@ export function showCategoryMenu(player, category) {
 }
 
 export function showDinoSpeecherMenu(player) {
+    const TARGET_PROPERTY = "brr_dino_speecher_target";
+
     // Get all players for the dropdown
     const allPlayers = world.getPlayers();
-    const playerNames = allPlayers.map(p => p.name);
+    const playerNames = allPlayers
+        .map(p => `${p?.name ?? ""}`.trim())
+        .filter(name => name.length > 0);
 
     // Add "None" as the first option for public chat
     const options = ["None (Public Chat)", ...playerNames];
-    const dropdownOptions = options.map(o => ({ text: o }));
+
+    const savedTargetRaw = `${player.getDynamicProperty(TARGET_PROPERTY) ?? ""}`.trim();
+    const savedTarget = savedTargetRaw.toLowerCase() === "none" ? "" : savedTargetRaw;
+    const defaultValueIndex = savedTarget ? Math.max(0, options.indexOf(savedTarget)) : 0;
 
     const form = new ModalFormData()
         .title("Dino Speecher ")
-        .dropdown("Select a player to whisper to:", dropdownOptions) // Default is first option
+        .dropdown("Select a player to whisper to:", options, { defaultValueIndex })
         .textField("Message:", "Type your message here...");
 
     form.show(player).then(response => {
         if (response.canceled) return;
 
         const [selectionIndex, rawMessage] = response.formValues;
+        const messageText = `${rawMessage ?? ""}`;
+
+        const selectedTargetName = options[selectionIndex] ?? options[0];
+        const targetToStore = selectionIndex === 0 ? "none" : selectedTargetName;
+        try {
+            player.setDynamicProperty(TARGET_PROPERTY, targetToStore);
+        } catch { }
 
         // Make sure message isn't empty
-        if (!rawMessage || rawMessage.trim().length === 0) return;
+        if (messageText.trim().length === 0) return;
 
         if (selectionIndex === 0) {
             // - Option 1: Public Chat (None selected)
-            sendRankedMessage(player, rawMessage);
+            sendRankedMessage(player, messageText);
         } else {
             // - Option 2: Private Whisper
             const targetName = options[selectionIndex];
@@ -473,7 +542,7 @@ export function showDinoSpeecherMenu(player) {
                 const rankPrefix = chatRank(player, tags);
 
                 // Process Emojis manually for the whisper
-                let processedMessage = rawMessage;
+                let processedMessage = messageText;
                 for (const emoji of emojis) {
                     processedMessage = processedMessage.replaceAll(emoji.id, emoji.emoji);
                 }

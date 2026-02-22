@@ -11,21 +11,9 @@ export let outputClassInfoTargets = [
     "areaportalDestination",
     "areaportalDestinationBlock",
 
-    "playerclipExcludePlayers",
-    "playerclipExcludeOperators",
-    "playerclipExcludeCreativeMode",
-    "playerclipBlockTexture",
-
     "playerspawnWorldSpawnAtBlock",
     "playerspawnWorldSpawn",
-
-    "nametagUsernames",
-    "nametagChat",
-    "nametagNametag",
-    "nametagCondition",
-    "nametagConditionValue1",
-    "nametagConditionValue2",
-    "nametagConditionValue3",
+    "playerspawnSetsPlayerSpawnPoint"
 ]
 
 export const outputTypes = [
