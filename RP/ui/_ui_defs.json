@@ -1,0 +1,6 @@
+{
+	"ui_defs": [
+		"ui/button.json",
+		"ui/main_menu.json"
+	]
+}
