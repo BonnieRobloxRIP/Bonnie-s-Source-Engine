@@ -2,6 +2,45 @@ import { ModalFormData } from "@minecraft/server-ui";
 import { world } from "@minecraft/server";
 import { addDecorativeSection, addReadOnlyListSection } from "./ui_formatting.js";
 
+// SECTION: Invisible Runtime Helpers
+export function getHiddenPlaceholderType(block, options) {
+    const {
+        toolsEnabled,
+        collisionBlockTypes,
+        lightBlockTypes,
+        parseBooleanLike,
+        shouldEnableNpcclipCollision,
+        npcclipOptions
+    } = options ?? {};
+
+    if (!toolsEnabled && collisionBlockTypes?.includes(block?.typeId)) {
+        return "brr:data";
+    }
+
+    if (block?.typeId === "brr:tool_invisible") {
+        return parseBooleanLike?.(block?.data?.startDisabled, false)
+            ? "brr:data"
+            : "brr:data_collision";
+    }
+
+    if (block?.typeId === "brr:tool_playerclip") {
+        return "brr:data";
+    }
+
+    if (block?.typeId === "brr:tool_npcclip") {
+        return shouldEnableNpcclipCollision?.(block, npcclipOptions)
+            ? "brr:data_collision"
+            : "brr:data";
+    }
+
+    if (lightBlockTypes?.includes(block?.typeId)) {
+        return "brr:data_blocklight";
+    }
+
+    return collisionBlockTypes?.includes(block?.typeId) ? "brr:data_collision" : "brr:data";
+}
+
+// SECTION: Invisible UI Data Helpers
 function loadLargeJSON(keyBase) {
     const count = world.getDynamicProperty(`${keyBase}_count`);
     if (typeof count !== "number") return [];
@@ -40,6 +79,7 @@ function getBlocksTargetingCurrent(currentBlockName) {
     return inputsList;
 }
 
+// SECTION: Invisible UI
 export function toolInvisibleUI(player, blockEntry, onSave) {
     if (!blockEntry.data) blockEntry.data = {};
 

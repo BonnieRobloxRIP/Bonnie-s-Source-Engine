@@ -3,6 +3,7 @@ import { world } from "@minecraft/server";
 import { outputClassInfoTargets, outputTypes } from "./output_ci_targets.js";
 import { addDecorativeSection, addReadOnlyListSection } from "./ui_formatting.js";
 
+// SECTION: Target AreaPortal UI Data Helpers
 function loadLargeJSON(keyBase) {
     const count = world.getDynamicProperty(`${keyBase}_count`);
     if (typeof count !== "number") return [];
@@ -47,6 +48,7 @@ function getBlocksTargetingCurrent(currentBlockName) {
     return inputsList;
 }
 
+// SECTION: Target AreaPortal UI
 export function infoTargetAreaportalUI(player, blockEntry, onSave) {
     if (!blockEntry.data) blockEntry.data = {};
     if (!Array.isArray(blockEntry.data.outputs)) blockEntry.data.outputs = [];

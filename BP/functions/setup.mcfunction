@@ -1,4 +1,3 @@
-# gamerules
 gamerule commandblockoutput false
 gamerule commandblocksenabled true
 gamerule dodaylightcycle false
@@ -36,7 +35,6 @@ difficulty peaceful
 time set 500
 setworldspawn 0 1 -1
 clearspawnpoint @a
-# world
 fill -16 -64 -16 16 -64 16 air
 setblock 0 0 0 brr:dev_measuregeneric02
 tp @a 0 1 0

@@ -2,24 +2,32 @@ import { world, system, CommandPermissionLevel, CustomCommandParamType } from "@
 import "./handler/chat_system.js";
 import { evaluateCondition, validateConditionRequirements } from "./handler/condition_executer.js";
 import { conditionTools } from "./tool_ui/conditions_tools.js";
-import { areaPortalToolUI } from "./tool_ui/tool_areaportal.js";
-import { infoPlayerspawnUI } from "./tool_ui/info_playerspawn.js";
+import { areaPortalToolUI, handleAreaPortalBlock } from "./tool_ui/tool_areaportal.js";
+import { infoPlayerspawnUI, getPlayerspawnSpawnConfig, getActivePlayerspawnBlocks, applySpawnPointForPlayer, applyWorldSpawnPoint } from "./tool_ui/info_playerspawn.js";
 import { infoTargetAreaportalUI } from "./tool_ui/info_target_areaportal.js";
-import { toolInvisibleUI } from "./tool_ui/tool_invisible.js";
-import { triggerToolUI as showTriggerToolUI } from "./tool_ui/tool_trigger.js";
+import { toolInvisibleUI, getHiddenPlaceholderType } from "./tool_ui/tool_invisible.js";
+import { toolPlayerclipUI, applyPlayerclipRepel } from "./tool_ui/tool_playerclip.js";
+import { toolNpcclipUI, shouldEnableNpcclipCollision } from "./tool_ui/tool_npcclip.js";
+import { triggerToolUI as showTriggerToolUI, fireOutputsForEvent, getNormalizedTriggerData, isBlockedTriggerCommand } from "./tool_ui/tool_trigger.js";
 import { blockParticles } from "./handler/block_particles.js";
 
+// SECTION: Global State & Constants
 let visible = false;
-let blockList = ["brr:tool_areaportal", "brr:info_playerspawn_block", "brr:tool_invisible", "brr:tool_trigger", "brr:info_target_areaportal_block"];
-let collisionsList = ["brr:tool_invisible"];
-const itemToBlockMap = {
+let toolsEnabled = true;
+const PLAYERCLIP_PUSH_COOLDOWN_MS = 140;
+const TRIGGER_INTERACT_COOLDOWN_MS = 500;
+const playerclipPushCooldowns = new Map();
+const TOOL_BLOCK_TYPES = ["brr:tool_areaportal", "brr:info_playerspawn_block", "brr:tool_invisible", "brr:tool_trigger", "brr:info_target_areaportal_block", "brr:tool_blocklight", "brr:tool_playerclip", "brr:tool_npcclip"];
+const COLLISION_BLOCK_TYPES = ["brr:tool_invisible", "brr:tool_playerclip", "brr:tool_npcclip"];
+const LIGHT_BLOCK_TYPES = ["brr:tool_blocklight"];
+const ITEM_TO_BLOCK_MAP = {
     "brr:info_playerspawn": "brr:info_playerspawn_block",
     "brr:info_target_areaportal": "brr:info_target_areaportal_block"
 };
 const MAX_SIZE = 28000;
-const outputTypes = ["onTrue", "onFalse"]
-const inputs = ["startDisabled", "selector", "destination", "destinationBlock", "worldSpawnAtBlock", "worldSpawn", "executeOnConditon", "triggerConditionValue1", "triggerConditionValue2", "triggerConditionValue3", "runCommand"]
-const directions = [
+const TRIGGER_OUTPUT_TYPES = ["onTrue", "onFalse"];
+const TRIGGER_INPUTS = ["startDisabled", "selector", "destination", "destinationBlock", "worldSpawnAtBlock", "worldSpawn", "executeOnConditon", "triggerConditionValue1", "triggerConditionValue2", "triggerConditionValue3", "runCommand", "playerclipExcludeOperators", "playerclipExcludeGamemode", "playerclipExcludeSelector", "npcclipExcludeSelector"];
+const ADJACENT_DIRECTIONS = [
     { x: 0, y: 1, z: 0 },
     { x: 0, y: -1, z: 0 },
     { x: 0, y: 0, z: 1 },
@@ -28,8 +36,9 @@ const directions = [
     { x: -1, y: 0, z: 0 }
 ];
 
+// SECTION: Block Grouping & Placement Helpers
 function getAdjacentPositions(x, y, z) {
-    return directions.map(dir => ({ x: x + dir.x, y: y + dir.y, z: z + dir.z }));
+    return ADJACENT_DIRECTIONS.map(dir => ({ x: x + dir.x, y: y + dir.y, z: z + dir.z }));
 }
 
 function generateGroupId() {
@@ -75,18 +84,19 @@ function getActiveVisibleBlockTypes() {
         const mainhand = equip?.getEquipment("Mainhand");
         const heldType = mainhand?.typeId ?? "minecraft:air";
 
-        if (blockList.includes(heldType)) {
+        if (TOOL_BLOCK_TYPES.includes(heldType)) {
             activeTypes.add(heldType);
         }
 
-        if (itemToBlockMap[heldType]) {
-            activeTypes.add(itemToBlockMap[heldType]);
+        if (ITEM_TO_BLOCK_MAP[heldType]) {
+            activeTypes.add(ITEM_TO_BLOCK_MAP[heldType]);
         }
     }
 
     return activeTypes;
 }
 
+// SECTION: Player & Proximity Helpers
 function isPlayerInCreative(player) {
     if (!player) return false;
 
@@ -107,33 +117,62 @@ function isPlayerInCreative(player) {
     return false;
 }
 
-function isBlockedTriggerCommand(command) {
-    const normalized = `${command ?? ""}`
-        .trim()
-        .replace(/^\/+/, "")
-        .trim()
-        .toLowerCase();
+function isPlayerOperator(player) {
+    if (!player) return false;
 
-    return normalized === "op"
-        || normalized.startsWith("op ")
-        || normalized === "minecraft:op"
-        || normalized.startsWith("minecraft:op ")
-        || normalized === "deop"
-        || normalized.startsWith("deop ")
-        || normalized === "minecraft:deop"
-        || normalized.startsWith("minecraft:deop ");
+    try {
+        return (player.runCommand("testfor @s[haspermission={operator=true}]")?.successCount ?? 0) > 0;
+    } catch { }
+
+    return false;
 }
 
-function getHiddenPlaceholderType(block) {
-    if (block?.typeId === "brr:tool_invisible") {
-        return parseBooleanLike(block?.data?.startDisabled, false)
-            ? "brr:data"
-            : "brr:data_collision";
+function getPlayerGameMode(player) {
+    if (!player) return "";
+
+    if (typeof player.getGameMode === "function") {
+        try {
+            return `${player.getGameMode()}`.trim().toLowerCase();
+        } catch { }
     }
 
-    return collisionsList.includes(block?.typeId) ? "brr:data_collision" : "brr:data";
+    const modeChecks = [
+        ["survival", "testfor @s[m=survival]", "testfor @s[m=0]"],
+        ["creative", "testfor @s[m=creative]", "testfor @s[m=1]"],
+        ["adventure", "testfor @s[m=adventure]", "testfor @s[m=2]"],
+        ["spectator", "testfor @s[m=spectator]", "testfor @s[m=6]"]
+    ];
+
+    for (const [modeName, ...tests] of modeChecks) {
+        for (const test of tests) {
+            try {
+                if ((player.runCommand(test)?.successCount ?? 0) > 0) {
+                    return modeName;
+                }
+            } catch { }
+        }
+    }
+
+    return "";
 }
 
+function isPositionNearBlock(pos, block, expand = 0.35) {
+    if (!pos || !block) return false;
+
+    return pos.x >= block.x - expand && pos.x <= block.x + 1 + expand
+        && pos.y >= block.y - expand && pos.y <= block.y + 1 + expand
+        && pos.z >= block.z - expand && pos.z <= block.z + 1 + expand;
+}
+
+function isEntityNearBlock(entity, block, expand = 0.35) {
+    const probes = getEntityProbeLocations(entity);
+    for (const probe of probes) {
+        if (isPositionNearBlock(probe, block, expand)) return true;
+    }
+    return false;
+}
+
+// SECTION: Dynamic Property Storage Helpers
 function saveLargeJSON(keyBase, value) {
     const json = JSON.stringify(value);
     let index = 0;
@@ -172,6 +211,7 @@ function loadLargeJSON(keyBase) {
     }
 }
 
+// SECTION: Block Visibility & Placeholder Updates
 system.runInterval(() => {
     const blocks = loadLargeJSON("blocks");
     const activeTypes = getActiveVisibleBlockTypes();
@@ -187,9 +227,16 @@ system.runInterval(() => {
             try { dim.setBlockType(pos, block.typeId); } catch { }
         }
         else {
-            if (current && (current.typeId === block.typeId || current.typeId === "brr:data" || current.typeId === "brr:data_collision")) {
+            if (current && (current.typeId === block.typeId || current.typeId === "brr:data" || current.typeId === "brr:data_collision" || current.typeId === "brr:data_blocklight")) {
                 try {
-                    const hiddenType = getHiddenPlaceholderType(block);
+                    const hiddenType = getHiddenPlaceholderType(block, {
+                        toolsEnabled,
+                        collisionBlockTypes: COLLISION_BLOCK_TYPES,
+                        lightBlockTypes: LIGHT_BLOCK_TYPES,
+                        parseBooleanLike,
+                        shouldEnableNpcclipCollision,
+                        npcclipOptions: getNpcclipRuntimeOptions()
+                    });
                     if (current.typeId !== hiddenType) {
                         dim.setBlockType(pos, hiddenType);
                     }
@@ -199,10 +246,11 @@ system.runInterval(() => {
     }
 }, 5);
 
+// SECTION: Block Registry Sync Events
 world.beforeEvents.playerBreakBlock.subscribe((data) => {
     const block = data.block;
     let blocks = loadLargeJSON("blocks");
-    if (blockList.includes(block.typeId)) {
+    if (TOOL_BLOCK_TYPES.includes(block.typeId)) {
         const beforeCount = blocks.length;
         blocks = blocks.filter((b) => !(b.x === block.x && b.y === block.y && b.z === block.z && b.dimension === block.dimension.id));
         if (blocks.length !== beforeCount) {
@@ -213,7 +261,7 @@ world.beforeEvents.playerBreakBlock.subscribe((data) => {
 
 world.afterEvents.playerPlaceBlock.subscribe((data) => {
     const block = data.block;
-    if (blockList.includes(block.typeId)) {
+    if (TOOL_BLOCK_TYPES.includes(block.typeId)) {
         let blocks = loadLargeJSON("blocks");
 
         let newGroupId = null;
@@ -250,8 +298,10 @@ world.afterEvents.playerPlaceBlock.subscribe((data) => {
     }
 })
 
+// SECTION: Startup Commands & Persisted Toggles
 system.beforeEvents.startup.subscribe((data) => {
-    const commandsList = ["engine_blocks_always_visible"]
+    const commandsList = ["engine_blocks_always_visible", "tools_enabled"]
+
     data.customCommandRegistry.registerEnum("brr:cmds", commandsList)
     data.customCommandRegistry.registerCommand(
         {
@@ -269,25 +319,33 @@ system.beforeEvents.startup.subscribe((data) => {
 
             if (subcommand === "engine_blocks_always_visible") {
                 visible = value ?? false;
+                world.setDynamicProperty("engine_blocks_always_visible", visible);
                 sender.sendMessage(`Toggled tool blocks visibility to ${visible}`);
+                return;
+            } else if (subcommand === "tools_enabled") {
+                toolsEnabled = value ?? false;
+                world.setDynamicProperty("tools_enabled", toolsEnabled);
+                sender.sendMessage(`Toggled tools to ${toolsEnabled}`);
                 return;
             }
         }
     );
 });
 
+system.run(() => {
+    visible = parseBooleanLike(world.getDynamicProperty("engine_blocks_always_visible"), false);
+    toolsEnabled = parseBooleanLike(world.getDynamicProperty("tools_enabled"), true);
+});
+
+// SECTION: Named Target & Block Data Helpers
 function getBlocksTargetingCurrent(currentBlockName) {
     const allBlocks = loadLargeJSON("blocks");
     const inputsList = [];
-
-    // Safety check for the block name
     if (!currentBlockName) return inputsList;
 
     allBlocks.forEach(block => {
-        // Only check blocks that have outputs
         if (block.data && block.data.outputs) {
             block.data.outputs.forEach(output => {
-                // Check if the output targets the current block
                 if (output.targetName === currentBlockName) {
                     inputsList.push({
                         sourceBlockName: block.data.name || `[Block at ${block.x},${block.y},${block.z}]`,
@@ -300,45 +358,30 @@ function getBlocksTargetingCurrent(currentBlockName) {
 
     return inputsList;
 }
-// ------------------------------------
-
 
 function getNamedTargets() {
     const blocks = loadLargeJSON("blocks");
     const namedBlocks = blocks.filter(b => b.data && b.data.name).map(b => b.data.name);
-    // Use a Set to ensure unique names
     return [...new Set(namedBlocks)];
 }
 
-function getNearestTriggerBlockEntry(player, maxDistance = 12) {
-    const playerLoc = player?.location;
-    const playerDimension = player?.dimension?.id;
-    if (!playerLoc || !playerDimension) return null;
-
-    const maxDistanceSquared = maxDistance * maxDistance;
+function getNamedTargetEntries() {
     const blocks = loadLargeJSON("blocks");
-    let nearest = null;
-    let nearestDistanceSquared = Number.POSITIVE_INFINITY;
+    const seen = new Set();
+    const entries = [];
 
     for (const block of blocks) {
-        if (block?.typeId !== "brr:tool_trigger") continue;
-        if (block?.dimension !== playerDimension) continue;
+        const name = `${block?.data?.name ?? ""}`.trim();
+        if (!name || seen.has(name)) continue;
 
-        const centerX = block.x + 0.5;
-        const centerY = block.y + 0.5;
-        const centerZ = block.z + 0.5;
-        const dx = centerX - playerLoc.x;
-        const dy = centerY - playerLoc.y;
-        const dz = centerZ - playerLoc.z;
-        const distSquared = (dx * dx) + (dy * dy) + (dz * dz);
-
-        if (distSquared <= maxDistanceSquared && distSquared < nearestDistanceSquared) {
-            nearest = block;
-            nearestDistanceSquared = distSquared;
-        }
+        seen.add(name);
+        entries.push({
+            name,
+            typeId: `${block?.typeId ?? ""}`
+        });
     }
 
-    return nearest;
+    return entries;
 }
 
 function saveBlockEntry(blockEntry) {
@@ -366,6 +409,7 @@ function saveBlockEntry(blockEntry) {
     }
 }
 
+// SECTION: Selector & Block Hitbox Helpers
 function isPositionInsideBlock(pos, block) {
     if (!pos || !block) return false;
     return pos.x >= block.x && pos.x < block.x + 1
@@ -411,10 +455,18 @@ function parseSelectorFilters(selector) {
         const key = `${rawKey ?? ""}`.trim().toLowerCase();
         const value = rawValueParts.join("=").trim();
         if (!key || !value) continue;
-        filters[key] = value;
+        if (!Array.isArray(filters[key])) filters[key] = [];
+        filters[key].push(value);
     }
 
     return filters;
+}
+
+function getSelectorFilterValues(filters, key) {
+    const raw = filters?.[key];
+    if (Array.isArray(raw)) return raw.filter(value => `${value ?? ""}`.trim().length > 0);
+    if (typeof raw === "string" && raw.trim().length > 0) return [raw.trim()];
+    return [];
 }
 
 function applyEntityFilters(entities, filters) {
@@ -422,188 +474,88 @@ function applyEntityFilters(entities, filters) {
 
     let results = entities;
 
-    if (typeof filters.type === "string" && filters.type.length > 0) {
-        const expectedType = filters.type.trim().toLowerCase();
-        results = results.filter(entity => `${entity.typeId ?? ""}`.toLowerCase() === expectedType);
-    }
+    const typeFilters = getSelectorFilterValues(filters, "type");
+    for (const rawType of typeFilters) {
+        const trimmed = rawType.trim().toLowerCase();
+        if (!trimmed) continue;
 
-    if (typeof filters.name === "string" && filters.name.length > 0) {
-        const expectedName = filters.name.trim().toLowerCase();
+        const isNegated = trimmed.startsWith("!");
+        const expectedType = isNegated ? trimmed.slice(1) : trimmed;
+        if (!expectedType) continue;
+
         results = results.filter(entity => {
-            const tag = `${entity.nameTag ?? ""}`.trim().toLowerCase();
-            const playerName = `${entity.name ?? ""}`.trim().toLowerCase();
-            return tag === expectedName || playerName === expectedName;
+            const actualType = `${entity.typeId ?? ""}`.trim().toLowerCase();
+            const matches = actualType === expectedType;
+            return isNegated ? !matches : matches;
         });
     }
 
-    if (typeof filters.tag === "string" && filters.tag.length > 0) {
-        const tagName = filters.tag.trim();
+    const nameFilters = getSelectorFilterValues(filters, "name");
+    for (const rawName of nameFilters) {
+        const trimmed = rawName.trim().toLowerCase();
+        if (!trimmed) continue;
+
+        const isNegated = trimmed.startsWith("!");
+        const expectedName = isNegated ? trimmed.slice(1) : trimmed;
+        if (!expectedName) continue;
+
         results = results.filter(entity => {
+            const tag = `${entity.nameTag ?? ""}`.trim().toLowerCase();
+            const playerName = `${entity.name ?? ""}`.trim().toLowerCase();
+            const matches = tag === expectedName || playerName === expectedName;
+            return isNegated ? !matches : matches;
+        });
+    }
+
+    const tagFilters = getSelectorFilterValues(filters, "tag");
+    for (const rawTag of tagFilters) {
+        const trimmed = rawTag.trim();
+        if (!trimmed) continue;
+
+        const isNegated = trimmed.startsWith("!");
+        const tagName = isNegated ? trimmed.slice(1) : trimmed;
+        if (!tagName) continue;
+
+        results = results.filter(entity => {
+            let hasTag = false;
             try {
-                return entity.hasTag(tagName);
-            } catch {
+                hasTag = entity.hasTag(tagName);
+            } catch { }
+
+            return isNegated ? !hasTag : hasTag;
+        });
+    }
+
+    const gamemodeFilters = [
+        ...getSelectorFilterValues(filters, "gamemode"),
+        ...getSelectorFilterValues(filters, "m")
+    ];
+
+    for (const rawGamemode of gamemodeFilters) {
+        const trimmed = rawGamemode.trim().toLowerCase();
+        if (!trimmed) continue;
+
+        const isNegated = trimmed.startsWith("!");
+        const expectedGamemode = isNegated ? trimmed.slice(1) : trimmed;
+        if (!expectedGamemode) continue;
+
+        results = results.filter(entity => {
+            if (`${entity?.typeId ?? ""}` !== "minecraft:player") {
                 return false;
             }
+
+            const actualGamemode = getPlayerGameMode(entity);
+            if (!actualGamemode) return false;
+
+            const matches = actualGamemode === expectedGamemode;
+            return isNegated ? !matches : matches;
         });
     }
 
     return results;
 }
 
-function getAreaPortalTargets(block, selectorRaw) {
-    const selector = `${selectorRaw ?? "minecraft:player"}`.trim();
-    const normalized = selector.toLowerCase();
-
-    let dimension;
-    try {
-        dimension = world.getDimension(block.dimension);
-    } catch {
-        return [];
-    }
-
-    const blockCenter = { x: block.x + 0.5, y: block.y + 0.5, z: block.z + 0.5 };
-
-    if (normalized.startsWith("@")) {
-        const filters = parseSelectorFilters(selector);
-        const base = normalized.slice(0, 2);
-
-        if (base === "@a") {
-            let players = Array.from(dimension.getPlayers());
-            players = applyEntityFilters(players, filters);
-            return players;
-        }
-
-        if (base === "@e") {
-            let entities = Array.from(dimension.getEntities());
-            entities = applyEntityFilters(entities, filters);
-            return entities;
-        }
-
-        if (base === "@p") {
-            let players = Array.from(dimension.getPlayers());
-            players = applyEntityFilters(players, filters);
-            if (players.length === 0) return [];
-
-            players.sort((a, b) => {
-                const adx = a.location.x - blockCenter.x;
-                const ady = a.location.y - blockCenter.y;
-                const adz = a.location.z - blockCenter.z;
-                const bdx = b.location.x - blockCenter.x;
-                const bdy = b.location.y - blockCenter.y;
-                const bdz = b.location.z - blockCenter.z;
-                return (adx * adx + ady * ady + adz * adz) - (bdx * bdx + bdy * bdy + bdz * bdz);
-            });
-
-            return [players[0]];
-        }
-
-        if (base === "@r") {
-            let players = Array.from(dimension.getPlayers());
-            players = applyEntityFilters(players, filters);
-            if (players.length === 0) return [];
-            const randomIndex = Math.floor(Math.random() * players.length);
-            return [players[randomIndex]];
-        }
-
-        if (base === "@s") {
-            return [];
-        }
-
-        return [];
-    }
-
-    if (normalized === "minecraft:player") {
-        return Array.from(dimension.getPlayers());
-    }
-
-    try {
-        return Array.from(dimension.getEntities({ type: selector }));
-    } catch {
-        return [];
-    }
-}
-
-function getNormalizedTriggerData(data) {
-    if (!data) return data;
-    const normalized = { ...data };
-
-    if (typeof normalized.executeCondition === "number") {
-        normalized.executeCondition = conditionTools[normalized.executeCondition] ?? "noCondition";
-    }
-
-    if (typeof normalized.executeCondition !== "string" || !normalized.executeCondition) {
-        normalized.executeCondition = "noCondition";
-    }
-
-    return normalized;
-}
-
-function fireOutputsForEvent(sourceBlock, eventName) {
-    if (!sourceBlock?.data || sourceBlock.data.startDisabled) return;
-    const outputs = Array.isArray(sourceBlock.data.outputs) ? sourceBlock.data.outputs : [];
-    if (outputs.length === 0) return;
-
-    function resolveOutputTargetProperty(targetProperty) {
-        const aliases = {
-            playerspawnWorldSpawnAtBlock: "worldSpawnAtBlock",
-            playerspawnWorldSpawn: "worldSpawn",
-            playerspawnSetsPlayerSpawnPoint: "setsPlayerSpawnPoint"
-        };
-
-        return aliases[targetProperty] ?? targetProperty;
-    }
-
-    function parseBooleanLike(value, defaultValue = false) {
-        if (typeof value === "boolean") return value;
-        if (typeof value === "number") return value !== 0;
-
-        const normalized = `${value ?? ""}`.trim().toLowerCase();
-        if (["true", "1", "yes", "on"].includes(normalized)) return true;
-        if (["false", "0", "no", "off", ""].includes(normalized)) return false;
-        return defaultValue;
-    }
-
-    function coerceOutputTargetValue(targetProperty, rawValue) {
-        if (targetProperty === "worldSpawnAtBlock" || targetProperty === "setsPlayerSpawnPoint") {
-            return parseBooleanLike(rawValue, false);
-        }
-
-        return `${rawValue ?? ""}`;
-    }
-
-    const blocks = loadLargeJSON("blocks");
-    let changed = false;
-
-    for (const output of outputs) {
-        if (`${output?.outputType ?? ""}` !== eventName) continue;
-
-        const targetName = `${output?.targetName ?? ""}`.trim();
-        const targetProperty = resolveOutputTargetProperty(`${output?.targetProperty ?? ""}`.trim());
-        if (!targetName || !targetProperty) continue;
-
-        const targetIndex = blocks.findIndex(block => `${block?.data?.name ?? ""}`.trim() === targetName);
-        if (targetIndex === -1) continue;
-
-        if (!blocks[targetIndex].data) blocks[targetIndex].data = {};
-        blocks[targetIndex].data[targetProperty] = coerceOutputTargetValue(targetProperty, output?.targetValue);
-        changed = true;
-    }
-
-    if (changed) saveLargeJSON("blocks", blocks);
-}
-
-function parseSpawnCoordinates(raw) {
-    const coords = `${raw ?? ""}`.trim().split(/\s+/);
-    if (coords.length !== 3) return null;
-
-    const x = Number.parseFloat(coords[0]);
-    const y = Number.parseFloat(coords[1]);
-    const z = Number.parseFloat(coords[2]);
-
-    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(z)) return null;
-    return { x: x + 0.5, y: y + 0, z: z + 0.5 };
-}
-
+// SECTION: Runtime Option Builders
 function parseBooleanLike(value, defaultValue = false) {
     if (typeof value === "boolean") return value;
     if (typeof value === "number") return value !== 0;
@@ -614,58 +566,91 @@ function parseBooleanLike(value, defaultValue = false) {
     return defaultValue;
 }
 
-function applyWorldSpawnPoint(spawnCoords) {
-    const x = spawnCoords.x;
-    const y = spawnCoords.y;
-    const z = spawnCoords.z;
-
-    try {
-        world.setDefaultSpawnLocation({ x, y, z });
-        return true;
-    } catch { }
-
-    try {
-        world.getDimension("minecraft:overworld").runCommand(`setworldspawn ${x} ${y} ${z}`);
-        return true;
-    } catch { }
-
-    return false;
+function getSelectorRuntimeOptions() {
+    return {
+        parseSelectorFilters,
+        applyEntityFilters
+    };
 }
 
-function applySpawnPointForPlayer(player, spawnCoords, dim) {
-    try {
-        player.setSpawnPoint(spawnCoords, dim);
-        return true;
-    } catch { }
+function getNpcclipRuntimeOptions() {
+    return {
+        toolsEnabled,
+        parseBooleanLike,
+        isEntityNearBlock,
+        ...getSelectorRuntimeOptions()
+    };
+}
 
-    try {
-        player.setSpawnPoint({
-            x: spawnCoords.x,
-            y: spawnCoords.y,
-            z: spawnCoords.z,
-            dimension: dim
+function getPlayerclipRuntimeOptions() {
+    return {
+        parseBooleanLike,
+        isEntityNearBlock,
+        isPlayerOperator,
+        getPlayerGameMode,
+        ...getSelectorRuntimeOptions(),
+        playerclipPushCooldowns,
+        cooldownMs: PLAYERCLIP_PUSH_COOLDOWN_MS
+    };
+}
+
+function getOutputRuntimeOptions() {
+    return {
+        loadBlocks: loadLargeJSON,
+        saveBlocks: saveLargeJSON,
+        parseBooleanLike
+    };
+}
+
+
+// SECTION: Block UI Dispatch
+function openToolUIForBlock(player, blockEntry) {
+    if (!player || !blockEntry?.typeId) return;
+
+    if (blockEntry.typeId === "brr:tool_trigger") {
+        showTriggerToolUI(player, blockEntry, {
+            onSave: saveBlockEntry,
+            conditionTools,
+            validateConditionRequirements,
+            getNamedTargets,
+            getNamedTargetEntries,
+            getBlocksTargetingCurrent,
+            outputTypes: TRIGGER_OUTPUT_TYPES,
+            inputs: TRIGGER_INPUTS
         });
-        return true;
-    } catch { }
+        return;
+    }
 
-    try {
-        player.runCommand(`spawnpoint @s ${Math.floor(spawnCoords.x)} ${Math.floor(spawnCoords.y)} ${Math.floor(spawnCoords.z)}`);
-        return true;
-    } catch { }
+    const blockToolUIs = {
+        "brr:tool_areaportal": areaPortalToolUI,
+        "brr:info_playerspawn_block": infoPlayerspawnUI,
+        "brr:info_target_areaportal_block": infoTargetAreaportalUI,
+        "brr:tool_invisible": toolInvisibleUI,
+        "brr:tool_playerclip": toolPlayerclipUI,
+        "brr:tool_npcclip": toolNpcclipUI
+    };
 
-    return false;
+    const toolUI = blockToolUIs[blockEntry.typeId];
+    if (typeof toolUI === "function") {
+        toolUI(player, blockEntry, saveBlockEntry);
+    }
 }
 
+// SECTION: Playerspawn Runtime State
 let playerspawnWarningShown = false;
 let lastAppliedWorldSpawnKey = "";
 
+// SECTION: Trigger & AreaPortal Runtime Loop
 system.runInterval(() => {
+    if (!toolsEnabled) return;
+
     const blocks = loadLargeJSON("blocks");
     const players = world.getPlayers();
+    const outputRuntimeOptions = getOutputRuntimeOptions();
 
     for (const block of blocks) {
         if (block.typeId === "brr:tool_trigger" && !block.data?.startDisabled) {
-            const triggerData = getNormalizedTriggerData(block.data);
+            const triggerData = getNormalizedTriggerData(block.data, conditionTools);
 
             for (const player of players) {
                 if (!isEntityInsideBlock(player, block)) continue;
@@ -678,48 +663,50 @@ system.runInterval(() => {
                             } catch { }
                         }
                     }
-                    fireOutputsForEvent(block, "onTrue");
+                    fireOutputsForEvent(block, "onTrue", outputRuntimeOptions);
                 } else {
-                    fireOutputsForEvent(block, "onFalse");
+                    fireOutputsForEvent(block, "onFalse", outputRuntimeOptions);
                 }
             }
         }
 
         if (block.typeId === "brr:tool_areaportal" && !block.data?.startDisabled) {
-            const targets = getAreaPortalTargets(block, block.data?.selector);
-            for (const entity of targets) {
-                if (!isEntityInsideBlock(entity, block)) continue;
-
-                let destCoords = null;
-                const destDim = world.getDimension(block.dimension);
-
-                if (block.data?.destinationBlock) {
-                    const targetBlock = blocks.find(b => b.typeId === "brr:info_target_areaportal_block" && b.data?.name === block.data.destinationBlock);
-                    if (targetBlock) {
-                        destCoords = { x: targetBlock.x + 0.5, y: targetBlock.y, z: targetBlock.z + 0.5 };
-                    }
-                } else if (block.data?.destination) {
-                    const coords = `${block.data.destination}`.trim().split(/\s+/);
-                    if (coords.length === 3) {
-                        destCoords = { x: Number.parseFloat(coords[0]), y: Number.parseFloat(coords[1]), z: Number.parseFloat(coords[2]) };
-                    }
-                }
-
-                if (destCoords && destDim) {
-                    try {
-                        entity.teleport(destCoords, { dimension: destDim });
-                    } catch { }
-                }
-            }
+            handleAreaPortalBlock(block, blocks, {
+                isEntityInsideBlock,
+                ...getSelectorRuntimeOptions()
+            });
         }
     }
 }, 2);
 
+// SECTION: Playerclip Runtime Loop
 system.runInterval(() => {
+    if (!toolsEnabled) return;
+
     const blocks = loadLargeJSON("blocks");
-    const activePlayerspawnBlocks = blocks.filter(block =>
-        block.typeId === "brr:info_playerspawn_block" && !block.data?.startDisabled
+    const playerclipBlocks = blocks.filter(block =>
+        block?.typeId === "brr:tool_playerclip" && !parseBooleanLike(block?.data?.startDisabled, false)
     );
+    if (playerclipBlocks.length === 0) return;
+
+    const players = world.getPlayers();
+    const playerclipRuntimeOptions = getPlayerclipRuntimeOptions();
+    for (const block of playerclipBlocks) {
+        for (const player of players) {
+            applyPlayerclipRepel(player, block, playerclipRuntimeOptions);
+        }
+    }
+}, 2);
+
+// SECTION: Playerspawn Runtime Loop
+system.runInterval(() => {
+    if (!toolsEnabled) {
+        playerspawnWarningShown = false;
+        return;
+    }
+
+    const blocks = loadLargeJSON("blocks");
+    const activePlayerspawnBlocks = getActivePlayerspawnBlocks(blocks);
 
     if (activePlayerspawnBlocks.length !== 1) {
         if (activePlayerspawnBlocks.length > 1 && !playerspawnWarningShown) {
@@ -737,18 +724,10 @@ system.runInterval(() => {
     playerspawnWarningShown = false;
 
     const activeBlock = activePlayerspawnBlocks[0];
-    const spawnDim = world.getDimension(activeBlock.dimension);
-    let spawnCoords = null;
-    const worldSpawnAtBlock = parseBooleanLike(activeBlock.data?.worldSpawnAtBlock, true);
-    const setsPlayerSpawnPoint = parseBooleanLike(activeBlock.data?.setsPlayerSpawnPoint, false);
+    const spawnConfig = getPlayerspawnSpawnConfig(activeBlock, parseBooleanLike);
+    if (!spawnConfig) return;
 
-    if (worldSpawnAtBlock) {
-        spawnCoords = { x: activeBlock.x + 0.5, y: activeBlock.y + 0, z: activeBlock.z + 0.5 };
-    } else if (activeBlock.data?.worldSpawn) {
-        spawnCoords = parseSpawnCoordinates(activeBlock.data.worldSpawn);
-    }
-
-    if (!spawnCoords) return;
+    const { spawnDim, spawnCoords, setsPlayerSpawnPoint } = spawnConfig;
 
     if (setsPlayerSpawnPoint) {
         lastAppliedWorldSpawnKey = "";
@@ -766,6 +745,7 @@ system.runInterval(() => {
     }
 }, 100);
 
+// SECTION: Tool Particle Rendering Loop
 system.runInterval(() => {
     const blocks = loadLargeJSON("blocks");
     const activeTypes = visible ? null : getActiveVisibleBlockTypes();
@@ -791,44 +771,39 @@ system.runInterval(() => {
     }
 }, 2);
 
+// SECTION: Player Spawn Handling
 world.afterEvents.playerSpawn.subscribe((event) => {
+    if (!toolsEnabled) return;
+
     const player = event.player;
     if (!player) return;
 
     system.run(() => {
         const blocks = loadLargeJSON("blocks");
-        const activePlayerspawnBlocks = blocks.filter(block =>
-            block.typeId === "brr:info_playerspawn_block" && !block.data?.startDisabled
-        );
+        const activePlayerspawnBlocks = getActivePlayerspawnBlocks(blocks);
 
         if (activePlayerspawnBlocks.length !== 1) return;
 
         const activeBlock = activePlayerspawnBlocks[0];
-        const worldSpawnAtBlock = parseBooleanLike(activeBlock.data?.worldSpawnAtBlock, true);
-        const setsPlayerSpawnPoint = parseBooleanLike(activeBlock.data?.setsPlayerSpawnPoint, false);
-        if (setsPlayerSpawnPoint) return;
-
-        let spawnCoords = null;
-        if (worldSpawnAtBlock) {
-            spawnCoords = { x: activeBlock.x + 0.5, y: activeBlock.y + 0, z: activeBlock.z + 0.5 };
-        } else if (activeBlock.data?.worldSpawn) {
-            spawnCoords = parseSpawnCoordinates(activeBlock.data.worldSpawn);
-        }
-
-        if (!spawnCoords) return;
+        const spawnConfig = getPlayerspawnSpawnConfig(activeBlock, parseBooleanLike);
+        if (!spawnConfig || spawnConfig.setsPlayerSpawnPoint) return;
 
         try {
-            player.teleport(spawnCoords, { dimension: world.getDimension(activeBlock.dimension) });
+            player.teleport(spawnConfig.spawnCoords, { dimension: spawnConfig.spawnDim });
         } catch { }
     });
 });
 
+// SECTION: Tool Interaction & UI Opening
 const lastTrigger = new Map();
-const COOLDOWN_MS = 500;
 
 world.beforeEvents.playerInteractWithBlock.subscribe((data) => {
     const block = data.block;
-    if (blockList.includes(block.typeId)) {
+    if (TOOL_BLOCK_TYPES.includes(block.typeId)) {
+        if (!toolsEnabled) {
+            return;
+        }
+
         if (data.player.isSneaking) return;
 
         if (!isPlayerInCreative(data.player)) {
@@ -839,7 +814,7 @@ world.beforeEvents.playerInteractWithBlock.subscribe((data) => {
 
         const now = Date.now();
         const previous = lastTrigger.get(data.player.id) ?? 0;
-        if (now - previous < COOLDOWN_MS) return;
+        if (now - previous < TRIGGER_INTERACT_COOLDOWN_MS) return;
         lastTrigger.set(data.player.id, now);
 
         let blocks = loadLargeJSON("blocks");
@@ -861,38 +836,8 @@ world.beforeEvents.playerInteractWithBlock.subscribe((data) => {
         }
 
         data.cancel = true;
-        if (block.typeId === "brr:tool_trigger") {
-            system.run(() => {
-                showTriggerToolUI(data.player, blockEntry, {
-                    onSave: saveBlockEntry,
-                    conditionTools,
-                    validateConditionRequirements,
-                    getNamedTargets,
-                    getBlocksTargetingCurrent,
-                    outputTypes,
-                    inputs
-                });
-            })
-        }
-        if (block.typeId === "brr:tool_areaportal") {
-            system.run(() => {
-                areaPortalToolUI(data.player, blockEntry, saveBlockEntry);
-            })
-        }
-        if (block.typeId === "brr:info_playerspawn_block") {
-            system.run(() => {
-                infoPlayerspawnUI(data.player, blockEntry, saveBlockEntry);
-            })
-        }
-        if (block.typeId === "brr:info_target_areaportal_block") {
-            system.run(() => {
-                infoTargetAreaportalUI(data.player, blockEntry, saveBlockEntry);
-            })
-        }
-        if (block.typeId === "brr:tool_invisible") {
-            system.run(() => {
-                toolInvisibleUI(data.player, blockEntry, saveBlockEntry);
-            })
-        }
+        system.run(() => {
+            openToolUIForBlock(data.player, blockEntry);
+        });
     }
 })

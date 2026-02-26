@@ -7,7 +7,7 @@
 			"menu_category": {
 				"category": "construction",
 				"is_hidden_in_commands": false,
-				"group": "dev_decor"
+				"group": "itemGroup.name.dev_decor"
 			}
 		},
 		"components": {

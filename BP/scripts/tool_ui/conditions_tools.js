@@ -1,3 +1,4 @@
+// SECTION: Trigger Condition Catalog
 export let conditionTools = [
     "noCondition",
     "ifPlayerNameIs",

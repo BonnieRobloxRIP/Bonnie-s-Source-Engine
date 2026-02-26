@@ -1,8 +1,92 @@
 import { ModalFormData } from "@minecraft/server-ui";
 import { world } from "@minecraft/server";
-import { outputClassInfoTargets, outputTypes } from "./output_ci_targets.js";
+import { outputClassInfoTargets, outputTypes, getOutputTargetLabel, isOutputTargetSupportedByBlockType } from "./output_ci_targets.js";
 import { addDecorativeSection, addReadOnlyListSection } from "./ui_formatting.js";
 
+// SECTION: Playerspawn Runtime Helpers
+export function parseSpawnCoordinates(raw) {
+    const coords = `${raw ?? ""}`.trim().split(/\s+/);
+    if (coords.length !== 3) return null;
+
+    const x = Number.parseFloat(coords[0]);
+    const y = Number.parseFloat(coords[1]);
+    const z = Number.parseFloat(coords[2]);
+
+    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(z)) return null;
+    return { x: x + 0.5, y: y + 0, z: z + 0.5 };
+}
+
+export function applyWorldSpawnPoint(spawnCoords) {
+    const x = spawnCoords.x;
+    const y = spawnCoords.y;
+    const z = spawnCoords.z;
+
+    try {
+        world.setDefaultSpawnLocation({ x, y, z });
+        return true;
+    } catch { }
+
+    try {
+        world.getDimension("minecraft:overworld").runCommand(`setworldspawn ${x} ${y} ${z}`);
+        return true;
+    } catch { }
+
+    return false;
+}
+
+export function applySpawnPointForPlayer(player, spawnCoords, dim) {
+    try {
+        player.setSpawnPoint(spawnCoords, dim);
+        return true;
+    } catch { }
+
+    try {
+        player.setSpawnPoint({
+            x: spawnCoords.x,
+            y: spawnCoords.y,
+            z: spawnCoords.z,
+            dimension: dim
+        });
+        return true;
+    } catch { }
+
+    try {
+        player.runCommand(`spawnpoint @s ${Math.floor(spawnCoords.x)} ${Math.floor(spawnCoords.y)} ${Math.floor(spawnCoords.z)}`);
+        return true;
+    } catch { }
+
+    return false;
+}
+
+export function getActivePlayerspawnBlocks(blocks) {
+    return blocks.filter(block =>
+        block.typeId === "brr:info_playerspawn_block" && !block.data?.startDisabled
+    );
+}
+
+export function getPlayerspawnSpawnConfig(activeBlock, parseBooleanLikeFn) {
+    if (!activeBlock || typeof parseBooleanLikeFn !== "function") return null;
+
+    const worldSpawnAtBlock = parseBooleanLikeFn(activeBlock.data?.worldSpawnAtBlock, true);
+    const setsPlayerSpawnPoint = parseBooleanLikeFn(activeBlock.data?.setsPlayerSpawnPoint, false);
+
+    let spawnCoords = null;
+    if (worldSpawnAtBlock) {
+        spawnCoords = { x: activeBlock.x + 0.5, y: activeBlock.y + 0, z: activeBlock.z + 0.5 };
+    } else if (activeBlock.data?.worldSpawn) {
+        spawnCoords = parseSpawnCoordinates(activeBlock.data.worldSpawn);
+    }
+
+    if (!spawnCoords) return null;
+
+    return {
+        spawnCoords,
+        setsPlayerSpawnPoint,
+        spawnDim: world.getDimension(activeBlock.dimension)
+    };
+}
+
+// SECTION: Playerspawn UI Data Helpers
 function loadLargeJSON(keyBase) {
     const count = world.getDynamicProperty(`${keyBase}_count`);
     if (typeof count !== "number") return [];
@@ -26,6 +110,25 @@ function getNamedTargets() {
     return [...new Set(namedBlocks)];
 }
 
+function getNamedTargetEntries() {
+    const blocks = loadLargeJSON("blocks");
+    const seen = new Set();
+    const entries = [];
+
+    for (const block of blocks) {
+        const name = `${block?.data?.name ?? ""}`.trim();
+        if (!name || seen.has(name)) continue;
+
+        seen.add(name);
+        entries.push({
+            name,
+            typeId: `${block?.typeId ?? ""}`
+        });
+    }
+
+    return entries;
+}
+
 function getBlocksTargetingCurrent(currentBlockName) {
     const allBlocks = loadLargeJSON("blocks");
     const inputsList = [];
@@ -47,13 +150,17 @@ function getBlocksTargetingCurrent(currentBlockName) {
     return inputsList;
 }
 
+// SECTION: Playerspawn UI
 export function infoPlayerspawnUI(player, blockEntry, onSave) {
     if (!blockEntry.data) blockEntry.data = {};
     if (!Array.isArray(blockEntry.data.outputs)) blockEntry.data.outputs = [];
 
     const blockOutputs = [...blockEntry.data.outputs];
-    const namedTargets = getNamedTargets();
-    const targetOptions = namedTargets.length > 0 ? namedTargets : ["(No named blocks)"];
+    const namedTargetEntries = getNamedTargetEntries();
+    const targetOptions = namedTargetEntries.length > 0
+        ? namedTargetEntries.map(entry => `${entry.name} (${`${entry.typeId ?? ""}`.replace(/^brr:/, "") || "Unknown"})`)
+        : ["(No named blocks)"];
+    const classInfoOptions = outputClassInfoTargets.map(target => getOutputTargetLabel(target));
 
     const playerspawnForm = new ModalFormData();
     playerspawnForm.title("Info Playerspawn Block");
@@ -68,11 +175,11 @@ export function infoPlayerspawnUI(player, blockEntry, onSave) {
 
     addDecorativeSection(playerspawnForm, "Outputs");
     playerspawnForm.toggle("Add this output", { defaultValue: false });
-    playerspawnForm.textField("Output Name", "name", { defaultValue: `output${Math.round(Math.random() * 10000)}` });
+    playerspawnForm.textField("Output Name (optional)", "Auto-generated if blank", { defaultValue: "" });
     playerspawnForm.dropdown("Output Type", outputTypes, { defaultValueIndex: 0 });
     playerspawnForm.dropdown("Output Target", targetOptions, { defaultValueIndex: 0 });
-    playerspawnForm.dropdown("Target Class Info", outputClassInfoTargets, { defaultValueIndex: 0 });
-    playerspawnForm.textField("Target Info Value", "Value", { defaultValue: "" });
+    playerspawnForm.dropdown("Target Class Info", classInfoOptions, { defaultValueIndex: 0 });
+    playerspawnForm.textField("Target Info Value", "Use true/false for toggles", { defaultValue: "" });
     playerspawnForm.textField("Delay (in ticks)", "0", { defaultValue: "0" });
 
     addDecorativeSection(playerspawnForm, "Existing Outputs");
@@ -83,7 +190,7 @@ export function infoPlayerspawnUI(player, blockEntry, onSave) {
             playerspawnForm.label(`Output name: ${output?.name || "(unnamed)"}`);
             playerspawnForm.label(`Output type: ${output?.outputType || "none"}`);
             playerspawnForm.label(`Target: ${output?.targetName || "(none)"}`);
-            playerspawnForm.label(`Target class info: ${output?.targetProperty || "(none)"}`);
+            playerspawnForm.label(`Target class info: ${getOutputTargetLabel(output?.targetProperty)}`);
             playerspawnForm.label(`Target value: ${output?.targetValue || ""}`);
             playerspawnForm.label(`Delay: ${output?.delay ?? 0}`);
             playerspawnForm.toggle(`Delete: ${output?.name || "(unnamed output)"}`, { defaultValue: false });
@@ -118,27 +225,49 @@ export function infoPlayerspawnUI(player, blockEntry, onSave) {
         const setsPlayerSpawnPoint = Boolean(formData[cursor++]);
 
         const addOutput = Boolean(formData[cursor++]);
-        const outputName = `${formData[cursor++] ?? ""}`.trim();
+        const outputNameRaw = `${formData[cursor++] ?? ""}`.trim();
         const outputTypeIndex = Number(formData[cursor++]);
         const outputTargetIndex = Number(formData[cursor++]);
         const outputTargetPropertyIndex = Number(formData[cursor++]);
-        const outputTargetValue = `${formData[cursor++] ?? ""}`;
+        const outputTargetValueRaw = `${formData[cursor++] ?? ""}`;
         const outputDelayRaw = Number.parseInt(`${formData[cursor++] ?? "0"}`, 10);
         const outputDelay = Number.isFinite(outputDelayRaw) ? Math.max(0, outputDelayRaw) : 0;
+        const outputTargetProperty = outputClassInfoTargets[outputTargetPropertyIndex] ?? outputClassInfoTargets[0] ?? "startDisabled";
+        const selectedTargetEntry = namedTargetEntries[outputTargetIndex];
+        const selectedTargetName = `${selectedTargetEntry?.name ?? ""}`.trim();
+        const selectedTargetType = `${selectedTargetEntry?.typeId ?? ""}`.trim();
+        const outputName = outputNameRaw || `out_${outputTypes[outputTypeIndex] ?? "none"}_${selectedTargetName || "target"}_${Date.now().toString().slice(-4)}`;
+
+        let outputTargetValue = outputTargetValueRaw;
+        if (outputTargetProperty === "startDisabled"
+            || outputTargetProperty === "playerspawnWorldSpawnAtBlock"
+            || outputTargetProperty === "playerspawnSetsPlayerSpawnPoint"
+            || outputTargetProperty === "playerclipExcludeOperators") {
+            const normalized = outputTargetValueRaw.trim().toLowerCase();
+            if (["1", "true", "yes", "on"].includes(normalized)) outputTargetValue = "true";
+            if (["0", "false", "no", "off", ""].includes(normalized)) outputTargetValue = "false";
+        }
 
         let nextOutputs = blockOutputs;
-        if (addOutput && outputName) {
-            const selectedTarget = targetOptions[outputTargetIndex] ?? "";
-            if (selectedTarget && selectedTarget !== "(No named blocks)") {
-                nextOutputs.push({
-                    name: outputName,
-                    outputType: outputTypes[outputTypeIndex] ?? outputTypes[0] ?? "none",
-                    targetName: selectedTarget,
-                    targetProperty: outputClassInfoTargets[outputTargetPropertyIndex] ?? outputClassInfoTargets[0] ?? "startDisabled",
-                    targetValue: outputTargetValue,
-                    delay: outputDelay
-                });
+        if (addOutput) {
+            if (!selectedTargetName) {
+                player.sendMessage("§cChoose a valid Output Target before adding an output.");
+                return;
             }
+
+            if (!isOutputTargetSupportedByBlockType(outputTargetProperty, selectedTargetType)) {
+                player.sendMessage(`§c${getOutputTargetLabel(outputTargetProperty)} is not valid for the selected target block type.`);
+                return;
+            }
+
+            nextOutputs.push({
+                name: outputName,
+                outputType: outputTypes[outputTypeIndex] ?? outputTypes[0] ?? "none",
+                targetName: selectedTargetName,
+                targetProperty: outputTargetProperty,
+                targetValue: outputTargetValue,
+                delay: outputDelay
+            });
         }
 
         if (blockOutputs.length > 0) {

@@ -1,0 +1,15 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:dino_speecher",
+			"menu_category": {
+				"category": "equipment",
+				"group": "brr:itemGroup.name.tools"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_dino_speecher"
+		}
+	}
+}

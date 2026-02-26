@@ -221,18 +221,6 @@ const emojis = [
     { id: ":rabbit6:", emoji: "", displayName: "Rabbit 6" }
 ]
 
-try {
-    world.afterEvents.itemUse.subscribe((eventData) => {
-        const player = eventData.source;
-        const itemId = eventData.itemStack.typeId;
-
-        if (itemId === "minecraft:paper") {
-            showDinoSpeecherMenu(player);
-            return;
-        }
-    })
-} catch { }
-
 function getCustomNametagParts(player, context) {
     try {
         const raw = player.getDynamicProperty("brr_nametag");
@@ -300,7 +288,7 @@ export function chatRank(player, tags) {
     }
 
     // Special Tags
-    if (tags.includes("mega_vip")) rankPrefix += "[§l§aM§2E§sG§bA §sV.§2I.§aP.§r] ";
+    if (tags.includes("mega_vip")) rankPrefix += "[§l§o§aM§2E§sG§bA §sV.§2I.§aP.§r] ";
     if (tags.includes("vip") && !tags.includes("mega_vip")) rankPrefix += "[§e§l§oV.§gI.§6P.§r] ";
 
     // Fun Tags
@@ -330,7 +318,7 @@ export function nametagRank(player, tags) {
     }
 
     // Special tags
-    if (tags.includes("mega_vip")) rankPrefix += "[§l§aM§2E§sG§bA §sV.§2I.§aP.§r] ";
+    if (tags.includes("mega_vip")) rankPrefix += "[§l§o§aM§2E§sG§bA §sV.§2I.§aP.§r] ";
     if (tags.includes("vip") && !tags.includes("mega_vip")) rankPrefix += "[§e§l§oV.§gI.§6P.§r] ";
 
     // Fun Tags

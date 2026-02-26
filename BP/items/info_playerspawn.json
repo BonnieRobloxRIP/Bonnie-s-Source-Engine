@@ -6,7 +6,7 @@
 			"menu_category": {
 				"category": "equipment",
 				"is_hidden_in_commands": false,
-				"group": "logic_blocks"
+				"group": "itemGroup.name.logic_blocks"
 			}
 		},
 		"components": {

@@ -3,19 +3,11 @@
 	"metadata": {
 		"authors": [
 			"BonnieRobloxRIP"
-		],
-		"generated_with": {
-			"bridge": [
-				"2.7.54"
-			],
-			"dash": [
-				"0.11.7"
-			]
-		}
+		]
 	},
 	"header": {
 		"name": "Bonnie's Source Engine",
-		"description": "Run. Think. Shoot. Live. Source. Created by BonnieRobloxRIP and Marshmallow997. Property of: The Bonnie Team.",
+		"description": "Run. Think. Shoot. Live. Source. Created by BonnieRobloxRIP. Property of: The Bonnie Team.",
 		"min_engine_version": [
 			1,
 			21,
@@ -25,7 +17,7 @@
 		"version": [
 			1,
 			0,
-			8
+			10
 		]
 	},
 	"modules": [
@@ -56,7 +48,7 @@
 			"version": [
 				1,
 				0,
-				8
+				10
 			]
 		},
 		{

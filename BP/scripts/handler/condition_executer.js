@@ -118,9 +118,12 @@ function wasEntityRecentlyDamagedFromSource(entity, worldObj, expectedSource, wi
 	return knownCause === expected || knownCause.includes(expected);
 }
 
-function getPlayerItemCountLike(entity, itemTypeId) {
-	const normalizedTypeId = (itemTypeId || "").trim().toLowerCase();
-	if (!normalizedTypeId) return 0;
+function normalizeItemTypeId(itemTypeId) {
+	return (itemTypeId || "").trim().toLowerCase();
+}
+
+function countInventoryItems(entity, normalizedTypeId) {
+	if (!entity || !normalizedTypeId) return 0;
 
 	let total = 0;
 	try {
@@ -134,6 +137,13 @@ function getPlayerItemCountLike(entity, itemTypeId) {
 	} catch { }
 
 	return total;
+}
+
+function getPlayerItemCountLike(entity, itemTypeId) {
+	const normalizedTypeId = normalizeItemTypeId(itemTypeId);
+	if (!normalizedTypeId) return 0;
+
+	return countInventoryItems(entity, normalizedTypeId);
 }
 
 function resolveEntitiesBySelector(player, selectorRaw, radiusRaw = "") {
@@ -240,19 +250,10 @@ function normalizeEquipmentSlot(rawSlot) {
 }
 
 function getPlayerItemCount(player, itemTypeId) {
-	const normalizedTypeId = (itemTypeId || "").trim().toLowerCase();
+	const normalizedTypeId = normalizeItemTypeId(itemTypeId);
 	if (!normalizedTypeId) return 0;
 
-	let total = 0;
-	try {
-		const inventory = player.getComponent("inventory")?.container;
-		if (inventory) {
-			for (let i = 0; i < inventory.size; i++) {
-				const item = inventory.getItem(i);
-				if (item?.typeId?.toLowerCase() === normalizedTypeId) total += item.amount ?? 1;
-			}
-		}
-	} catch { }
+	let total = countInventoryItems(player, normalizedTypeId);
 
 	try {
 		const equip = player.getComponent("minecraft:equippable");
