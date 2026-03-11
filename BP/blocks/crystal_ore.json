@@ -1,0 +1,55 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:crystal_ore",
+			"menu_category": {
+				"category": "nature",
+				"group": "minecraft:itemGroup.name.ore"
+			}
+		},
+		"components": {
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 30,
+				"item_specific_speeds": [
+					{
+						"item": "wooden_pickaxe",
+						"destroy_speed": 25
+					},
+					{
+						"item": "copper_pickaxe",
+						"destroy_speed": 22
+					},
+					{
+						"item": "golden_pickaxe",
+						"destroy_speed": 15
+					},
+					{
+						"item": "stone_pickaxe",
+						"destroy_speed": 18
+					},
+					{
+						"item": "iron_pickaxe",
+						"destroy_speed": 14
+					},
+					{
+						"item": "diamond_pickaxe",
+						"destroy_speed": 10
+					},
+					{
+						"item": "netherite_pickaxe",
+						"destroy_speed": 8
+					},
+					{
+						"item": "brr:crystal_pickaxe",
+						"destroy_speed": 5
+					}
+				]
+			},
+			"minecraft:destructible_by_explosion": {
+				"explosion_resistance": 15
+			},
+			"minecraft:map_color": "#D795FF"
+		}
+	}
+}
