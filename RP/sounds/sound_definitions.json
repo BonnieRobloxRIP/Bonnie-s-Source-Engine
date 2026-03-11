@@ -1,0 +1,234 @@
+{
+	"format_version": "1.14.0",
+	"sound_definitions": {
+		"music.game.skywars": {
+			"category": "music",
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/music/hardcore",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"music.lobby.skywars": {
+			"category": "music",
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/music/game06",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"music.lobby.blast": {
+			"category": "music",
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/music/blasted",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.number": {
+			"category": "music",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/number",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.number_block": {
+			"category": "block",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/number_block",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.afterbody_block": {
+			"category": "block",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/afterbody_block",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.afterbody": {
+			"category": "music",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/afterbody",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.otsukare_summer": {
+			"category": "music",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/otsukare_summer",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.otsukare_summer_block": {
+			"category": "block",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/otsukare_summer_block",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.shika_block": {
+			"category": "block",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/shika_block",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.shika": {
+			"category": "music",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/shika",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.getdown_block": {
+			"category": "block",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/getdown_block",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.getdown": {
+			"category": "music",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/getdown",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.aiduaemve_block": {
+			"category": "block",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/ai_dua_em_ve_block",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.aiduaemve": {
+			"category": "music",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/ai_dua_em_ve",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"emote.tpose_move": {
+			"category": "block",
+			"max_distance": 15,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/tpose_move",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"sfx.game.landmine": {
+			"category": "block",
+			"max_distance": 35,
+			"min_distance": 4,
+			"__use_legacy_max_distance": true,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/emotes/landmine",
+					"stream": true,
+					"volume": 3
+				}
+			]
+		}
+	}
+}

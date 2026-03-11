@@ -1,0 +1,72 @@
+{
+	"resource_pack_name": "Skywars",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"brr_sk_vote_skyblock": {
+			"textures": "textures/items/vote_skyblock"
+		},
+		"brr_sk_vote_stoneyhaven": {
+			"textures": "textures/items/vote_stoney_haven"
+		},
+		"brr_sk_island_egg": {
+			"textures": "textures/items/vote_skyblock"
+		},
+		"brr_sk_game_stop": {
+			"textures": "textures/items/game_stop"
+		},
+		"brr_sk_game_start": {
+			"textures": "textures/items/game_start"
+		},
+		"brr_sk_settings": {
+			"textures": "textures/items/settings"
+		},
+		"brr_sk_music_yes": {
+			"textures": "textures/items/music_yes"
+		},
+		"brr_sk_music_no": {
+			"textures": "textures/items/music_no"
+		},
+		"brr_sk_spectate": {
+			"textures": "textures/items/spectate"
+		},
+		"brr_bridge_maker": {
+			"textures": "textures/items/bridge_maker"
+		},
+		"brr_crystal_pickaxe": {
+			"textures": "textures/items/crystalpickaxe"
+		},
+		"brr_crystal_shovel": {
+			"textures": "textures/items/crystalshovel"
+		},
+		"brr_crystal_sword": {
+			"textures": "textures/items/crystalsword"
+		},
+		"brr_crystal_axe": {
+			"textures": "textures/items/crystalaxe"
+		},
+		"brr_crystal_helmet": {
+			"textures": "textures/items/crystalhelmet"
+		},
+		"brr_crystal_chestplate": {
+			"textures": "textures/items/crystalchestplate"
+		},
+		"brr_crystal_leggings": {
+			"textures": "textures/items/crystalleggings"
+		},
+		"brr_crystal_boots": {
+			"textures": "textures/items/crystalboots"
+		},
+		"brr_crystal_rod": {
+			"textures": "textures/items/crystalrod"
+		},
+		"brr_crystal_shard": {
+			"textures": "textures/items/crystalshard"
+		},
+		"brr_crystal": {
+			"textures": "textures/items/purplecrystal"
+		},
+		"brr_crystal_plate": {
+			"textures": "textures/items/refined_crystal"
+		}
+	}
+}

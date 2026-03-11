@@ -1,0 +1,17 @@
+{
+	"num_mip_levels": 4,
+	"padding": 8,
+	"resource_pack_name": "Skywars",
+	"texture_name": "atlas.terrain",
+	"texture_data": {
+		"brr_spawn": {
+			"textures": "textures/blocks/spawn"
+		},
+		"brr_sk_rgb_block": {
+			"textures": "textures/blocks/rgb"
+		},
+		"brr_crystal_ore": {
+			"textures": "textures/blocks/purplecrystalore"
+		}
+	}
+}
