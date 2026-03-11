@@ -1,0 +1,74 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"BonnieRobloxRIP"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.54"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "Skywars",
+		"description": "Fighting and shi",
+		"min_engine_version": [
+			1,
+			21,
+			120
+		],
+		"uuid": "9ff35d30-3517-40c5-baa6-122090d06b5e",
+		"version": [
+			1,
+			0,
+			6
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "6e9f8b0a-45cd-4321-86eb-d73a1373c919",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"type": "script",
+			"language": "javascript",
+			"uuid": "4192eb58-f042-467c-b4aa-9359c17846a5",
+			"entry": "scripts/main.js",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "eafc6c3c-e1c9-4cd7-9887-6fa38c6cc6e8",
+			"version": [
+				1,
+				0,
+				6
+			]
+		},
+		{
+			"module_name": "@minecraft/server",
+			"version": "2.6.0-beta"
+		},
+		{
+			"module_name": "@minecraft/server-ui",
+			"version": "2.0.0"
+		}
+	],
+	"capabilities": [
+		"pbr"
+	]
+}
