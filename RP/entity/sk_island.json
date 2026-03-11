@@ -1,0 +1,24 @@
+{
+	"format_version": "1.20.80",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:sk_island",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/sk_island"
+			},
+			"geometry": {
+				"default": "geometry.sk_island"
+			},
+			"render_controllers": [
+				"controller.render.sk_island"
+			],
+			"spawn_egg": {
+				"texture": "brr_sk_island_egg",
+				"texture_index": 0
+			}
+		}
+	}
+}

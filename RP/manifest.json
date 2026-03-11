@@ -1,0 +1,55 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"BonnieRobloxRIP"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.54"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "Skywars",
+		"description": "Fighting and shi",
+		"min_engine_version": [
+			1,
+			21,
+			120
+		],
+		"uuid": "eafc6c3c-e1c9-4cd7-9887-6fa38c6cc6e8",
+		"version": [
+			1,
+			0,
+			6
+		]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "5e194ccc-c0b2-4638-8080-e626eea46b9d",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "9ff35d30-3517-40c5-baa6-122090d06b5e",
+			"version": [
+				1,
+				0,
+				6
+			]
+		}
+	],
+	"capabilities": [
+		"pbr"
+	]
+}
