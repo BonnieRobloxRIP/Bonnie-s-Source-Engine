@@ -1,0 +1,17 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:crystal_plate",
+			"menu_category": {
+				"category": "items",
+				"group": "brr:itemGroup.name.skywars",
+				"is_hidden_in_commands": false
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_crystal_plate",
+			"minecraft:glint": true
+		}
+	}
+}

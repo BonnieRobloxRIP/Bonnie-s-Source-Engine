@@ -1,0 +1,16 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:sk_settings",
+			"menu_category": {
+				"category": "items",
+				"group": "itemGroup.name.skywars",
+				"is_hidden_in_commands": false
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_sk_settings"
+		}
+	}
+}

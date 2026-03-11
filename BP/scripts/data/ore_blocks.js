@@ -1,0 +1,16 @@
+export const oreBlocks = [
+	{ ID: "minecraft:coal_ore", function: "game_functions/blocks/coal" },
+	{ ID: "minecraft:deepslate_coal_ore", function: "game_functions/blocks/coal" },
+	{ ID: "minecraft:copper_ore", function: "game_functions/blocks/copper" },
+	{ ID: "minecraft:deepslate_copper_ore", function: "game_functions/blocks/copper" },
+	{ ID: "minecraft:iron_ore", function: "game_functions/blocks/iron" },
+	{ ID: "minecraft:deepslate_iron_ore", function: "game_functions/blocks/iron" },
+	{ ID: "minecraft:gold_ore", function: "game_functions/blocks/gold" },
+	{ ID: "minecraft:deepslate_gold_ore", function: "game_functions/blocks/gold" },
+	{ ID: "minecraft:diamond_ore", function: "game_functions/blocks/diamond" },
+	{ ID: "minecraft:deepslate_diamond_ore", function: "game_functions/blocks/diamond" },
+	{ ID: "minecraft:emerald_ore", function: "game_functions/blocks/emerald" },
+	{ ID: "minecraft:deepslate_emerald_ore", function: "game_functions/blocks/emerald" },
+	{ ID: "minecraft:ancient_debris", function: "game_functions/blocks/netherite" },
+	{ ID: "brr:crystal_ore", function: "game_functions/blocks/crystal" },
+];
