@@ -1,119 +1,29 @@
 import { world, system } from "@minecraft/server";
-import { SHOP_CATALOG, SHOP_CATEGORY_RULES } from "./shop_items.js";
+import { ActionFormData } from "@minecraft/server-ui";
+import { SHOP_CATALOG, SHOP_CATEGORY_RULES, CATEGORY_ORDER, CATEGORY_DISPLAY, SHOP_PRICES } from "./shop_items.js";
 
 const CURRENCY_OBJECTIVE_IDS = ["coins_storage"];
 const WINS_OBJECTIVE_IDS = ["win_storage"];
 const FREE_COINS_TAG = "brr";
-const COLOR_CODE_PATTERN = /§./g;
-const COINS_LINE_PATTERNS = /^(\d[\d,]*)\s+Coins(?:\s+)?$/i;
-const WINS_LINE_PATTERNS = /^(\d[\d,]*)\s+Wins(?:\s+)?$/i;
 
-const shopItemsBySignKey = new Map();
 const shopItemsByKey = new Map();
-
 for (const item of SHOP_CATALOG) {
 	shopItemsByKey.set(item.key, item);
-
-	for (const signKey of item.signKeys) {
-		shopItemsBySignKey.set(normalizeSignLine(signKey), item);
-	}
 }
 
-const lastShopUseTickByPlayer = new Map();
 const equippedOrderByPlayerCategory = new Map();
 
-function getCurrentTick() {
-	return system.currentTick ?? 0;
-}
-
-function isSignBlock(block) {
-	return typeof block?.typeId === "string" && block.typeId.includes("sign");
-}
-
-function stripFormattingCodes(text) {
-	return typeof text === "string" ? text.replace(COLOR_CODE_PATTERN, "") : "";
-}
-
-function normalizeSignLine(text) {
-	return stripFormattingCodes(text)
-		.replace(/\s+/g, " ")
-		.trim()
-		.toLowerCase();
-}
-
-function parseRequiredAmount(line, patterns) {
-	const plainLine = stripFormattingCodes(line).trim();
-	const normalizedPatterns = Array.isArray(patterns)
-		? patterns
-		: patterns
-			? [patterns]
-			: [];
-
-	for (const pattern of normalizedPatterns) {
-		const match = plainLine.match(pattern);
-		if (!match) continue;
-
-		const numericText = (match[1] ?? "").replace(/,/g, "");
-		const amount = Number(numericText);
-		if (Number.isFinite(amount) && amount > 0) {
-			return amount;
+function showForm(player, form, retries = 3) {
+	return form.show(player).then((response) => {
+		if (response.canceled && response.cancelationReason === "UserBusy" && retries > 0) {
+			return new Promise((resolve) => {
+				system.runTimeout(() => {
+					resolve(showForm(player, form, retries - 1));
+				}, 20);
+			});
 		}
-	}
-
-	return 0;
-}
-
-function getSignText(block) {
-	const signComponent = block.getComponent("minecraft:sign");
-	if (!signComponent) return "";
-
-	if (typeof signComponent.getText === "function") {
-		return signComponent.getText() ?? "";
-	}
-
-	if (typeof signComponent.getTextFace === "function") {
-		const frontText = signComponent.getTextFace("front") ?? "";
-		if (frontText) return frontText;
-		return signComponent.getTextFace("back") ?? "";
-	}
-
-	return "";
-}
-
-function parseShopDataFromSign(block) {
-	const signText = getSignText(block);
-	if (!signText) return null;
-
-	const lines = signText
-		.split("\n")
-		.map((line) => line.trim())
-		.filter((line) => line.length > 0);
-
-	if (lines.length === 0) return null;
-
-	const itemLine = lines.find((line) => shopItemsBySignKey.has(normalizeSignLine(line)));
-	if (!itemLine) return null;
-
-	const itemConfig = shopItemsBySignKey.get(normalizeSignLine(itemLine));
-	if (!itemConfig) return null;
-
-	let requiredCoins = 0;
-	let requiredWins = 0;
-
-	for (const line of lines) {
-		if (requiredCoins <= 0) {
-			requiredCoins = parseRequiredAmount(line, COINS_LINE_PATTERNS);
-		}
-
-		if (requiredWins <= 0) {
-			requiredWins = parseRequiredAmount(line, WINS_LINE_PATTERNS);
-		}
-	}
-
-	if (itemConfig.requiresCoins && requiredCoins <= 0) return null;
-	if (itemConfig.requiresWins && requiredWins <= 0) return null;
-
-	return { itemConfig, requiredCoins, requiredWins };
+		return response;
+	});
 }
 
 function getObjectiveScore(player, objectiveId) {
@@ -127,7 +37,6 @@ function getObjectiveScore(player, objectiveId) {
 			const participant = objective
 				.getParticipants()
 				.find((entry) => entry.displayName === player.name);
-
 			if (!participant) return 0;
 			return objective.getScore(participant) ?? 0;
 		} catch {
@@ -142,7 +51,6 @@ function resolveObjectiveId(objectiveIds) {
 			return objectiveId;
 		}
 	}
-
 	return null;
 }
 
@@ -163,16 +71,16 @@ function setObjectiveScore(player, objectiveId, score) {
 	}
 }
 
-function isInteractionOnCooldown(player) {
-	const currentTick = getCurrentTick();
-	const lastTick = lastShopUseTickByPlayer.get(player.id) ?? -999;
+function getPlayerCoins(player) {
+	const objectiveId = resolveObjectiveId(CURRENCY_OBJECTIVE_IDS);
+	if (!objectiveId) return 0;
+	return getObjectiveScore(player, objectiveId);
+}
 
-	if (currentTick - lastTick < 5) {
-		return true;
-	}
-
-	lastShopUseTickByPlayer.set(player.id, currentTick);
-	return false;
+function getPlayerWins(player) {
+	const objectiveId = resolveObjectiveId(WINS_OBJECTIVE_IDS);
+	if (!objectiveId) return 0;
+	return getObjectiveScore(player, objectiveId);
 }
 
 function sendRawText(player, text) {
@@ -180,10 +88,7 @@ function sendRawText(player, text) {
 }
 
 function sendPurchaseAnnouncement(player, announcementMessage) {
-	if (typeof announcementMessage !== "string" || announcementMessage.length === 0) {
-		return;
-	}
-
+	if (typeof announcementMessage !== "string" || announcementMessage.length === 0) return;
 	const playerName = player?.nameTag || player?.name || "Unknown";
 	const message = announcementMessage.replace(/\{player\}/gi, playerName);
 	world.sendMessage(message);
@@ -192,11 +97,7 @@ function sendPurchaseAnnouncement(player, announcementMessage) {
 function getCategoryMaxEquipped(category) {
 	const categoryRule = SHOP_CATEGORY_RULES[category];
 	const configuredLimit = categoryRule?.maxEquipped;
-
-	if (typeof configuredLimit === "number" && configuredLimit > 0) {
-		return configuredLimit;
-	}
-
+	if (typeof configuredLimit === "number" && configuredLimit > 0) return configuredLimit;
 	return 1;
 }
 
@@ -210,9 +111,7 @@ function getPlayerCategoryOrderKey(playerId, category) {
 }
 
 function equipOwnedItem(player, itemConfig) {
-	if (!itemConfig.category || !itemConfig.equipTag) {
-		return false;
-	}
+	if (!itemConfig.category || !itemConfig.equipTag) return false;
 
 	const categoryMaxEquipped = getCategoryMaxEquipped(itemConfig.category);
 	const categoryPurchaseAgain = getCategoryPurchaseAgain(itemConfig.category);
@@ -220,40 +119,25 @@ function equipOwnedItem(player, itemConfig) {
 	const existingOrder = equippedOrderByPlayerCategory.get(playerCategoryOrderKey) ?? [];
 
 	const currentlyEquippedKeys = [];
-
 	for (const catalogItem of SHOP_CATALOG) {
-		if (catalogItem.category !== itemConfig.category || !catalogItem.equipTag) {
-			continue;
-		}
-
-		if (player.hasTag(catalogItem.equipTag)) {
-			currentlyEquippedKeys.push(catalogItem.key);
-		}
+		if (catalogItem.category !== itemConfig.category || !catalogItem.equipTag) continue;
+		if (player.hasTag(catalogItem.equipTag)) currentlyEquippedKeys.push(catalogItem.key);
 	}
 
-	const orderedEquippedKeys = existingOrder.filter((itemKey) => currentlyEquippedKeys.includes(itemKey));
-	for (const itemKey of currentlyEquippedKeys) {
-		if (!orderedEquippedKeys.includes(itemKey)) {
-			orderedEquippedKeys.push(itemKey);
-		}
+	const orderedEquippedKeys = existingOrder.filter((k) => currentlyEquippedKeys.includes(k));
+	for (const k of currentlyEquippedKeys) {
+		if (!orderedEquippedKeys.includes(k)) orderedEquippedKeys.push(k);
 	}
 
 	player.addTag(itemConfig.equipTag);
-
-	if (!orderedEquippedKeys.includes(itemConfig.key)) {
-		orderedEquippedKeys.push(itemConfig.key);
-	}
+	if (!orderedEquippedKeys.includes(itemConfig.key)) orderedEquippedKeys.push(itemConfig.key);
 
 	while (orderedEquippedKeys.length > categoryMaxEquipped) {
 		const unequippedItemKey = orderedEquippedKeys.shift();
-		if (!unequippedItemKey || unequippedItemKey === itemConfig.key) {
-			continue;
-		}
+		if (!unequippedItemKey || unequippedItemKey === itemConfig.key) continue;
 
 		const unequippedItemConfig = shopItemsByKey.get(unequippedItemKey);
-		if (!unequippedItemConfig?.equipTag) {
-			continue;
-		}
+		if (!unequippedItemConfig?.equipTag) continue;
 
 		let didUnequip = false;
 		let didRemoveOwnership = false;
@@ -268,95 +152,128 @@ function equipOwnedItem(player, itemConfig) {
 			didRemoveOwnership = true;
 		}
 
-		if (didUnequip) {
-			sendRawText(
-				player,
-				`§7Unequipped §f${unequippedItemConfig.displayName}`
-			);
-		}
-
-		if (didRemoveOwnership) {
-			sendRawText(player, `§cRemoved §f${unequippedItemConfig.displayName}§c from your owned items to keep things fair`);
-		}
+		if (didUnequip) sendRawText(player, `§7Unequipped §f${unequippedItemConfig.displayName}`);
+		if (didRemoveOwnership) sendRawText(player, `§cRemoved §f${unequippedItemConfig.displayName}§c from your owned items`);
 	}
 
 	equippedOrderByPlayerCategory.set(playerCategoryOrderKey, orderedEquippedKeys);
-
-	if (itemConfig.equipMessage) {
-		sendRawText(player, itemConfig.equipMessage);
-	}
-
+	if (itemConfig.equipMessage) sendRawText(player, itemConfig.equipMessage);
 	return true;
 }
 
-function handleShopSignInteraction(player, block) {
-	if (!player || !block || !isSignBlock(block)) return;
-	if (isInteractionOnCooldown(player)) return;
+function unequipItem(player, itemConfig) {
+	if (!itemConfig.equipTag || !player.hasTag(itemConfig.equipTag)) return false;
+	player.removeTag(itemConfig.equipTag);
+	sendRawText(player, `§7Unequipped §f${itemConfig.displayName}`);
 
-	const shopData = parseShopDataFromSign(block);
-	if (!shopData) return;
+	const playerCategoryOrderKey = getPlayerCategoryOrderKey(player.id, itemConfig.category);
+	const existingOrder = equippedOrderByPlayerCategory.get(playerCategoryOrderKey) ?? [];
+	equippedOrderByPlayerCategory.set(
+		playerCategoryOrderKey,
+		existingOrder.filter((k) => k !== itemConfig.key)
+	);
+	return true;
+}
 
-	const { itemConfig, requiredCoins, requiredWins } = shopData;
+function canAccessMembershipRequirement(player, itemConfig) {
+	const requiresVip = itemConfig.requiresVip === true;
+	const requiresMegaVip = itemConfig.requiresMegaVip === true;
 
-	if (player.hasTag(itemConfig.ownershipTag)) {
-		const alreadyEquipped = !!itemConfig.equipTag && player.hasTag(itemConfig.equipTag);
-		if (alreadyEquipped) {
-			sendRawText(player, "§3You already own this bro");
-			return;
-		}
-
-		const didEquip = equipOwnedItem(player, itemConfig);
-		if (!didEquip) {
-			sendRawText(player, "§3You already own this bro");
-		}
-		return;
+	if (!requiresVip && !requiresMegaVip) {
+		return true;
 	}
 
-	if (itemConfig.requiresWins) {
-		const winsObjectiveId = resolveObjectiveId(WINS_OBJECTIVE_IDS);
-		if (!winsObjectiveId) {
-			player.sendMessage("§cShop error: wins objective not found.");
-			return;
-		}
+	const hasVip = player.hasTag("vip");
+	const hasMegaVip = player.hasTag("mega_vip");
 
-		const currentWins = getObjectiveScore(player, winsObjectiveId);
-		if (currentWins < requiredWins) {
-			const isNetheriteItem =
-				typeof itemConfig.key === "string" && itemConfig.key.toLowerCase().includes("netherite");
+	if (requiresVip && requiresMegaVip) {
+		return hasVip || hasMegaVip;
+	}
 
+	if (requiresVip) {
+		return hasVip;
+	}
+
+	return hasMegaVip;
+}
+
+function getMembershipRequirementText(itemConfig) {
+	const requiresVip = itemConfig.requiresVip === true;
+	const requiresMegaVip = itemConfig.requiresMegaVip === true;
+
+	if (requiresVip && requiresMegaVip) return "§6Requires §eVIP §for §aMega VIP";
+	if (requiresVip) return "§6Requires §eVIP";
+	if (requiresMegaVip) return "§6Requires §aMega VIP";
+	return "";
+}
+
+function getMembershipRequirementFailMessage(player, itemConfig) {
+	const requiresVip = itemConfig.requiresVip === true;
+	const requiresMegaVip = itemConfig.requiresMegaVip === true;
+	const hasVip = player.hasTag("vip");
+	const hasMegaVip = player.hasTag("mega_vip");
+
+	if (requiresMegaVip && !hasMegaVip && !requiresVip) {
+		return "§4You need to be a Mega Vip for this item.";
+	}
+
+	if (requiresVip && !hasVip && !requiresMegaVip) {
+		return "§4You need to be vip for this item";
+	}
+
+	if (requiresVip && requiresMegaVip && !hasVip && !hasMegaVip) {
+		return "§4You need to be vip for this item";
+	}
+
+	return "§cYou do not meet this item's membership requirement.";
+}
+
+function attemptPurchase(player, itemConfig) {
+	const prices = SHOP_PRICES[itemConfig.key] ?? {};
+	const coinCost = prices.coinCost ?? 0;
+	const winsCost = prices.winsCost ?? 0;
+
+	if (!canAccessMembershipRequirement(player, itemConfig)) {
+		player.sendMessage(getMembershipRequirementFailMessage(player, itemConfig));
+		player.runCommand("playsound note.bass @s");
+		return false;
+	}
+
+	if (itemConfig.requiresWins && winsCost > 0) {
+		const currentWins = getPlayerWins(player);
+		if (currentWins < winsCost) {
+			const isNetheriteItem = typeof itemConfig.key === "string" && itemConfig.key.toLowerCase().includes("netherite");
 			if (isNetheriteItem) {
 				player.sendMessage("§4Not enough wins.. You wouldn't even make it this far, lol");
 			} else {
 				player.sendMessage("§4Not enough Wins");
 			}
-
 			player.runCommand("playsound note.bass @s");
-			return;
+			return false;
 		}
 	}
 
-	if (itemConfig.requiresCoins) {
+	if (itemConfig.requiresCoins && coinCost > 0) {
 		const currencyObjectiveId = resolveObjectiveId(CURRENCY_OBJECTIVE_IDS);
 		if (!currencyObjectiveId) {
 			player.sendMessage("§cShop error: coins objective not found.");
-			return;
+			return false;
 		}
 
 		const currentCoins = getObjectiveScore(player, currencyObjectiveId);
-
-		if (currentCoins < requiredCoins) {
+		if (currentCoins < coinCost) {
 			player.sendMessage("§4Not enough Coins");
 			player.runCommand("playsound note.bass @s");
-			return;
+			return false;
 		}
 
 		const shouldSpendCoins = !player.hasTag(FREE_COINS_TAG);
 		if (shouldSpendCoins) {
-			const updatedCoins = currentCoins - requiredCoins;
+			const updatedCoins = currentCoins - coinCost;
 			const scoreUpdated = setObjectiveScore(player, currencyObjectiveId, updatedCoins);
 			if (!scoreUpdated) {
-				player.sendMessage("§cShop error: coins objective not found.");
-				return;
+				player.sendMessage("§cShop error: failed to update coins.");
+				return false;
 			}
 		}
 	}
@@ -366,16 +283,194 @@ function handleShopSignInteraction(player, block) {
 	player.sendMessage(`§aPurchased §f${itemConfig.displayName}`);
 	sendPurchaseAnnouncement(player, itemConfig.announcementMessage);
 	player.runCommand("playsound random.orb @s");
+	return true;
 }
 
-world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
-	const player = event.player;
-	const block = event.block;
-	system.run(() => {
-		handleShopSignInteraction(player, block);
-	});
-});
+function getItemIcon(itemConfig) {
+	const key = itemConfig.key;
 
-world.afterEvents.playerInteractWithBlock.subscribe((event) => {
-	handleShopSignInteraction(event.player, event.block);
-});
+	if (key.endsWith("_sword")) {
+		const mat = key.replace("_sword", "").replace("wooden", "wood");
+		return `textures/items/${mat}_sword`;
+	}
+	if (key.endsWith("_pickaxe") && !key.startsWith("enchanted")) {
+		const mat = key.replace("_pickaxe", "").replace("wooden", "wood");
+		return `textures/items/${mat}_pickaxe`;
+	}
+	if (key.endsWith("_axe")) {
+		const mat = key.replace("_axe", "").replace("wooden", "wood");
+		return `textures/items/${mat}_axe`;
+	}
+	if (key.endsWith("_shovel")) {
+		const mat = key.replace("_shovel", "").replace("wooden", "wood");
+		return `textures/items/${mat}_shovel`;
+	}
+	if (key.endsWith("_spear")) {
+		const mat = key.replace("_spear", "").replace("wooden", "wood");
+		return `textures/items/${mat}_spear`;
+	}
+	if (key.endsWith("_armor") && !key.startsWith("god") && !key.startsWith("enchanted") && !key.startsWith("crystal")) {
+		const mat = key.replace("_armor", "");
+		return `textures/items/${mat}_chestplate`;
+	}
+	if (key.endsWith("_spear")) return `textures/items/${mat}_spear`;
+	if (key.endsWith("_potion")) return "textures/items/potion_bottle_splash_water";
+
+	const iconMap = {
+		bow: "textures/items/bow_standby",
+		shield: "textures/items/shield",
+		totem: "textures/items/totem",
+		snowball: "textures/items/snowball",
+		milk: "textures/items/bucket_milk",
+		flint_and_steel: "textures/items/flint_and_steel",
+		shears: "textures/items/shears",
+		furnace: "textures/blocks/blast_furnace_front_off",
+		trident: "textures/items/trident",
+		mace: "textures/items/mace",
+		ender_pearl: "textures/items/ender_pearl",
+		wind_charge: "textures/items/wind_charge",
+		golden_apple: "textures/items/apple_golden",
+		enchanted_golden_apple: "textures/items/apple_golden",
+		enchanted_gold_pickaxe: "textures/items/gold_pickaxe",
+		enchanted_gold_armor: "textures/items/gold_chestplate",
+		elytra: "textures/items/elytra",
+		god_armor: "textures/items/netherite_chestplate",
+		crystal_armor: "textures/items/crystalchestplate",
+		rgb_blocks: "textures/blocks/wool_colored_red",
+		gluon_gun: "textures/items/gluon_gun",
+		tau_cannon: "textures/items/tau_cannon",
+		hive_hand: "textures/items/breeze_rod",
+		glock17: "textures/items/glock17",
+		crowbar: "textures/items/crowbar",
+		vip: "textures/items/gold_ingot",
+		mega_vip: "textures/items/nether_star",
+	};
+
+	if (iconMap[key]) return iconMap[key];
+
+	const catDisplay = CATEGORY_DISPLAY[itemConfig.category];
+	return catDisplay?.icon;
+}
+
+function buildItemButtonLabel(player, itemConfig) {
+	const prices = SHOP_PRICES[itemConfig.key] ?? {};
+	const owned = player.hasTag(itemConfig.ownershipTag);
+	const equipped = itemConfig.equipTag && player.hasTag(itemConfig.equipTag);
+	const configuredSignKey = Array.isArray(itemConfig.signKeys)
+		? itemConfig.signKeys.find((entry) => typeof entry === "string" && entry.length > 0)
+		: null;
+
+	let label = configuredSignKey ?? itemConfig.displayName;
+
+	if (equipped) {
+		label += "\n§a§lEQUIPPED §r§ftap to unequip";
+	} else if (owned) {
+		label += "\n§b§lOWNED";
+		if (itemConfig.equipTag) label += " §r§ftap to equip";
+	} else {
+		const membershipRequirementText = getMembershipRequirementText(itemConfig);
+		if (membershipRequirementText && !canAccessMembershipRequirement(player, itemConfig)) {
+			label += `\n${membershipRequirementText}`;
+		}
+
+		const costParts = [];
+		const coinCost = prices.coinCost ?? 0;
+		const winsCost = prices.winsCost ?? 0;
+		if (coinCost > 0) costParts.push(`§e§l${coinCost} Coins`);
+		if (winsCost > 0) costParts.push(`§b§l${winsCost} Wins`);
+		if (costParts.length > 0) {
+			label += `\n${costParts.join(" §f+ ")}`;
+		} else {
+			label += "\n§a§o§lFREE";
+		}
+	}
+
+	return label;
+}
+
+export function openShopUI(player) {
+	if (!player?.isValid) return;
+
+	const coins = getPlayerCoins(player);
+	const wins = getPlayerWins(player);
+
+	const form = new ActionFormData()
+		.title("§l§8SHOP")
+		.body(`§e§lCoins: §f${coins}    §bWins: §f${wins}\n\n§fSelect a category to browse`);
+
+	const categories = CATEGORY_ORDER.filter((cat) => {
+		return SHOP_CATALOG.some((item) => item.category === cat);
+	});
+
+	for (const cat of categories) {
+		const display = CATEGORY_DISPLAY[cat];
+		form.button(display?.displayName ?? cat, display?.icon);
+	}
+
+	showForm(player, form).then((response) => {
+		if (response.canceled) return;
+		const selectedCategory = categories[response.selection];
+		if (!selectedCategory) return;
+		system.run(() => openCategoryUI(player, selectedCategory));
+	});
+}
+
+function openCategoryUI(player, category) {
+	if (!player?.isValid) return;
+
+	const coins = getPlayerCoins(player);
+	const wins = getPlayerWins(player);
+	const display = CATEGORY_DISPLAY[category];
+
+	const items = SHOP_CATALOG.filter((item) => item.category === category);
+
+	const form = new ActionFormData()
+		.title(display?.displayName ?? category)
+		.body(`§eCoins: §f${coins}    §bWins: §f${wins}`);
+
+	for (const item of items) {
+		form.button(buildItemButtonLabel(player, item), getItemIcon(item));
+		const itemPriceConfig = SHOP_PRICES[item.key] ?? {};
+		if (itemPriceConfig.description) {
+			form.label(`§8§o${itemPriceConfig.description}`);
+		}
+	}
+
+	form.button("§c\u2190 Back");
+
+	showForm(player, form).then((response) => {
+		if (response.canceled) return;
+		if (response.selection === items.length) {
+			system.run(() => openShopUI(player));
+			return;
+		}
+
+		const selectedItem = items[response.selection];
+		if (!selectedItem) return;
+
+		system.run(() => handleItemInteraction(player, selectedItem, category));
+	});
+}
+
+function handleItemInteraction(player, itemConfig, category) {
+	if (!player?.isValid) return;
+
+	const owned = player.hasTag(itemConfig.ownershipTag);
+	const equipped = itemConfig.equipTag && player.hasTag(itemConfig.equipTag);
+
+	if (equipped) {
+		unequipItem(player, itemConfig);
+	} else if (owned) {
+		if (itemConfig.equipTag) {
+			equipOwnedItem(player, itemConfig);
+		} else {
+			sendRawText(player, "§3You already own this bro");
+		}
+	} else {
+		attemptPurchase(player, itemConfig);
+	}
+
+	system.runTimeout(() => {
+		if (player?.isValid) openCategoryUI(player, category);
+	}, 5);
+}

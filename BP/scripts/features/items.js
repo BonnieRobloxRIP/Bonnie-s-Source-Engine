@@ -1,8 +1,9 @@
 import { system, world } from "@minecraft/server";
 import { ModalFormData } from "@minecraft/server-ui";
 import { addTagToPlayer, getPlayerTags, isEntityValid, removeTagFromPlayer, runPlayerCommand } from "../core/entity_utils.js";
+import { openShopUI } from "./shop/shop.js";
 
-const itemsMap = ["brr:sk_game_start", "brr:sk_game_stop", "brr:sk_music_yes", "brr:sk_music_no", "brr:sk_settings", "brr:sk_spectate"];
+const itemsMap = ["brr:sk_game_start", "brr:sk_game_stop", "brr:sk_music_yes", "brr:sk_music_no", "brr:sk_settings", "brr:sk_spectate", "brr:sk_store"];
 const usableItemIds = new Set(itemsMap);
 
 function openSettingsForm(player) {
@@ -60,6 +61,9 @@ function handleMappedItemUse(player, itemTypeId) {
 			break;
 		case "brr:sk_spectate":
 			addTagToPlayer(player, "spectator");
+			break;
+		case "brr:sk_store":
+			openShopUI(player);
 			break;
 	}
 }

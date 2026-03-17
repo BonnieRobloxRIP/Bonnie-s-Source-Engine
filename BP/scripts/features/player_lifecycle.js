@@ -30,6 +30,11 @@ world.afterEvents.playerSpawn.subscribe((event) => {
 
 		if (getPlayerTags(player).includes("game")) {
 			runPlayerCommand(player, "tp @s 0 1 -1");
+			runPlayerCommand(player, "tag @s remove voted");
+			runPlayerCommand(player, "scoreboard players reset @s music");
+		}
+		if (getPlayerTags(player).includes("lobby")) {
+			runPlayerCommand(player, "scoreboard players reset @s music");
 		}
 	});
 });

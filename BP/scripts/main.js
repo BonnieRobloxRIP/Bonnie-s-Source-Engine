@@ -4,3 +4,4 @@ import "./features/player_lifecycle.js";
 import "./features/gameplay.js";
 import "./features/items.js";
 import "./features/bridge_throw.js";
+import "./features/voting_system.js";

@@ -11,7 +11,8 @@ export const SHOP_CATEGORY_RULES = {
     vip: { maxEquipped: 1, purchaseAgain: true },
     megavip: { maxEquipped: 1, purchaseAgain: true },
     brrtech: { maxEquipped: 1, purchaseAgain: true },
-    cages: { maxEquipped: 1, purchaseAgain: false }
+    cages: { maxEquipped: 1, purchaseAgain: false },
+    passes: { maxEquipped: 1, purchaseAgain: false }
 };
 
 export const SHOP_CATALOG = [
@@ -770,6 +771,7 @@ export const SHOP_CATALOG = [
         ownershipTag: "vip_enchanted_gold_pickaxe",
         requiresCoins: false,
         requiresWins: false,
+        requiresVip: true,
         category: "pickaxes",
         equipTag: "vip_enchanted_gold_pickaxeE",
         equipMessage: "§bEquipped §d§lEnchanted Gold Pickaxe"
@@ -781,6 +783,7 @@ export const SHOP_CATALOG = [
         ownershipTag: "vip_enchanted_gold_armor",
         requiresCoins: false,
         requiresWins: false,
+        requiresVip: true,
         category: "armor",
         equipTag: "vip_enchanted_gold_armorE",
         equipMessage: "§bEquipped §d§lEnchanted Gold Armor"
@@ -790,6 +793,8 @@ export const SHOP_CATALOG = [
         displayName: "Ender Pearl",
         signKeys: ["§9§lEnder Pearl"],
         ownershipTag: "vip_ender_pearl",
+        requiresVip: true,
+        requiresMegaVip: false,
         requiresCoins: true,
         requiresWins: true,
         category: "vip",
@@ -801,6 +806,8 @@ export const SHOP_CATALOG = [
         displayName: "Wind Charge",
         signKeys: ["§9§lWind Charge"],
         ownershipTag: "vip_wind_charge",
+        requiresVip: true,
+        requiresMegaVip: false,
         requiresCoins: true,
         requiresWins: true,
         category: "vip",
@@ -812,6 +819,8 @@ export const SHOP_CATALOG = [
         displayName: "Golden Apple",
         signKeys: ["§6§lGolden Apple"],
         ownershipTag: "vip_golden_apple",
+        requiresVip: true,
+        requiresMegaVip: false,
         requiresCoins: true,
         requiresWins: false,
         category: "vip",
@@ -823,6 +832,8 @@ export const SHOP_CATALOG = [
         displayName: "Enchanted Golden Apple",
         signKeys: ["§d§lEnchanted Golden Apple"],
         ownershipTag: "vip_enchanted_golden_apple",
+        requiresVip: true,
+        requiresMegaVip: false,
         requiresCoins: true,
         requiresWins: true,
         category: "vip",
@@ -836,6 +847,7 @@ export const SHOP_CATALOG = [
         ownershipTag: "vip_rgb_blocks",
         requiresCoins: false,
         requiresWins: false,
+        requiresVip: true,
         category: "blocks",
         equipTag: "vip_rgb_blocksE",
         equipMessage: "§bEquipped §4§lR§2G§bB §fBlocks"
@@ -847,6 +859,8 @@ export const SHOP_CATALOG = [
         ownershipTag: "megavip_god_armor",
         requiresCoins: false,
         requiresWins: true,
+        requiresVip: true,
+        requiresMegaVip: true,
         category: "armor",
         equipTag: "megavip_god_armorE",
         equipMessage: "§bEquipped §u§lGod Armor",
@@ -859,6 +873,8 @@ export const SHOP_CATALOG = [
         ownershipTag: "megavip_trident",
         requiresCoins: true,
         requiresWins: true,
+        requiresVip: true,
+        requiresMegaVip: true,
         category: "equipments",
         equipTag: "megavip_tridentE",
         equipMessage: "§bEquipped §u§lTrident"
@@ -870,6 +886,8 @@ export const SHOP_CATALOG = [
         ownershipTag: "megavip_elytra",
         requiresCoins: false,
         requiresWins: false,
+        requiresVip: true,
+        requiresMegaVip: true,
         category: "megavip",
         equipTag: "megavip_elytraE",
         equipMessage: "§bEquipped §u§lElytra"
@@ -881,6 +899,8 @@ export const SHOP_CATALOG = [
         ownershipTag: "megavip_mace",
         requiresCoins: true,
         requiresWins: true,
+        requiresVip: true,
+        requiresMegaVip: true,
         category: "equipments",
         equipTag: "megavip_maceE",
         equipMessage: "§bEquipped §u§lMace",
@@ -893,6 +913,8 @@ export const SHOP_CATALOG = [
         ownershipTag: "potion_invisibility",
         requiresCoins: true,
         requiresWins: true,
+        requiresVip: true,
+        requiresMegaVip: true,
         category: "potions",
         equipTag: "potion_invisibilityE",
         equipMessage: "§bEquipped §u§lInvisibility Potion"
@@ -931,12 +953,35 @@ export const SHOP_CATALOG = [
         equipMessage: "§bEquipped §g§o§lHive Hand"
     },
     {
+        key: "glock17",
+        displayName: "Glock 17",
+        signKeys: ["§g§o§lGlock 17"],
+        ownershipTag: "brr_glock17",
+        requiresCoins: true,
+        requiresWins: true,
+        category: "brrtech",
+        equipTag: "brr_glock17E",
+        equipMessage: "§bEquipped §g§o§lGlock 17"
+    },
+    {
+        key: "crowbar",
+        displayName: "Crowbar",
+        signKeys: ["§g§o§lCrowbar"],
+        ownershipTag: "brr_crowbar",
+        requiresCoins: true,
+        requiresWins: true,
+        category: "brrtech",
+        equipTag: "brr_crowbarE",
+        equipMessage: "§bEquipped §g§o§lCrowbar"
+    },
+    {
         key: "vip",
         displayName: "§e§l§oV.§gI.§6P.",
         signKeys: ["§e§l§oV.§gI.§6P."],
         ownershipTag: "vip",
         requiresCoins: true,
         requiresWins: true,
+        category: "passes",
         announcementMessage: "§b{player} §eIs now a §e§l§oV.§gI.§6P.",
     },
     {
@@ -946,6 +991,7 @@ export const SHOP_CATALOG = [
         ownershipTag: "mega_vip",
         requiresCoins: true,
         requiresWins: true,
+        category: "passes",
         announcementMessage: "§b{player} §uIs now a §l§o§aM§2E§sG§bA §sV.§2I.§aP.",
     },
     {
@@ -1090,5 +1136,269 @@ export const SHOP_CATALOG = [
         category: "cages",
         equipTag: "bassalting_floater_cageE",
         equipMessage: "§bEquipped §8§lBassalting Floater Cage"
+    },
+    {
+        key: "azalea_tree_cage",
+        displayName: "Azalea tree Cage",
+        signKeys: ["§3§lAzalea tree Cage"],
+        ownershipTag: "azalea_tree_cage",
+        requiresCoins: true,
+        requiresWins: true,
+        category: "cages",
+        equipTag: "azalea_tree_cageE",
+        equipMessage: "§bEquipped §3§lAzalea tree Cage"
+    },
+    {
+        key: "candy_land_cage",
+        displayName: "Candy Land Cage",
+        signKeys: ["§c§lCandy Land Cage"],
+        ownershipTag: "candy_land_cage",
+        requiresCoins: true,
+        requiresWins: false,
+        category: "cages",
+        equipTag: "candy_land_cageE",
+        equipMessage: "§bEquipped §c§lCandy Land Cage"
+    },
+    {
+        key: "eaten_cage",
+        displayName: "Eaten Cage",
+        signKeys: ["§f§lEaten Cage"],
+        ownershipTag: "eaten_cage",
+        requiresCoins: true,
+        requiresWins: false,
+        category: "cages",
+        equipTag: "eaten_cageE",
+        equipMessage: "§bEquipped §f§lEaten Cage"
+    },
+    {
+        key: "spruce_tree",
+        displayName: "Spruce Tree Cage",
+        signKeys: ["§f§lSpruce Tree Cage"],
+        ownershipTag: "spruce_tree",
+        requiresCoins: true,
+        requiresWins: false,
+        category: "cages",
+        equipTag: "spruce_treeE",
+        equipMessage: "§bEquipped §f§lSpruce Tree Cage"
+    },
+    {
+        key: "bamboo_forest",
+        displayName: "Bamboo Forest Cage",
+        signKeys: ["§a§lBamboo Forest Cage"],
+        ownershipTag: "bamboo_forest",
+        requiresCoins: true,
+        requiresWins: false,
+        category: "cages",
+        equipTag: "bamboo_forestE",
+        equipMessage: "§bEquipped §a§lBamboo Forest Cage"
+    },
+    {
+        key: "spawn_cage",
+        displayName: "The Litteral Spawn Cage",
+        signKeys: ["§f§lThe Litteral Spawn Cage"],
+        ownershipTag: "spawn_cage",
+        requiresCoins: true,
+        requiresWins: false,
+        category: "cages",
+        equipTag: "spawn_cageE",
+        equipMessage: "§bEquipped §f§lThe Litteral Spawn Cage"
+    },
+    {
+        key: "jail_cage",
+        displayName: "Jail Cage",
+        signKeys: ["§8§lJail Cage"],
+        ownershipTag: "jail_cage",
+        requiresCoins: true,
+        requiresWins: false,
+        category: "cages",
+        equipTag: "jail_cageE",
+        equipMessage: "§bEquipped §8§lJail Cage"
+    },
+    {
+        key: "gay_cage",
+        displayName: "RGB Cage",
+        signKeys: ["§d§lRGB Cage"],
+        ownershipTag: "gay_cage",
+        requiresCoins: true,
+        requiresWins: false,
+        category: "cages",
+        equipTag: "gay_cageE",
+        equipMessage: "§bEquipped §d§lRGB Cage"
+    },
+    {
+        key: "antimass_spectrometer_cage",
+        displayName: "Anit-mass Spectrometer",
+        signKeys: ["§6§o§lAnit-mass Spectrometer"],
+        ownershipTag: "antimass_spectrometer_cage",
+        requiresCoins: true,
+        requiresWins: true,
+        requiresVip: true,
+        category: "cages",
+        equipTag: "antimass_spectrometer_cageE",
+        equipMessage: "§bEquipped §6§o§lAnit-mass Spectrometer"
+    },
+    {
+        key: "heavenly_cage",
+        displayName: "Heavenly Cage",
+        signKeys: ["§b§o§lHeavenly Cage"],
+        ownershipTag: "heavenly_cage",
+        requiresCoins: true,
+        requiresWins: true,
+        requiresVip: true,
+        category: "cages",
+        equipTag: "heavenly_cageE",
+        equipMessage: "§bEquipped §b§o§lHeavenly Cage"
     }
 ];
+
+export const CATEGORY_ORDER = [
+    "swords", "pickaxes", "axes", "shovels", "spears",
+    "armor", "potions", "blocks", "equipments",
+    "vip", "megavip", "brrtech", "cages", "passes"
+];
+
+export const CATEGORY_DISPLAY = {
+    swords: { displayName: "§f§lSwords", icon: "textures/items/diamond_sword" },
+    pickaxes: { displayName: "§f§lPickaxes", icon: "textures/items/diamond_pickaxe" },
+    axes: { displayName: "§f§lAxes", icon: "textures/items/diamond_axe" },
+    shovels: { displayName: "§f§lShovels", icon: "textures/items/diamond_shovel" },
+    spears: { displayName: "§f§lSpears", icon: "textures/items/trident" },
+    armor: { displayName: "§f§lArmor", icon: "textures/items/diamond_chestplate" },
+    potions: { displayName: "§f§lPotions", icon: "textures/items/potion_bottle_splash_heal" },
+    blocks: { displayName: "§f§lBlocks", icon: "textures/blocks/grass_side_carried" },
+    equipments: { displayName: "§f§lEquipment", icon: "textures/items/bow_standby" },
+    vip: { displayName: "§e§l§oV.§gI.§6P.", icon: "textures/items/gold_ingot" },
+    megavip: { displayName: "§l§o§aM§2E§sG§bA §sV.§2I.§aP.", icon: "textures/items/nether_star" },
+    brrtech: { displayName: "§g§lBRR Tech", icon: "textures/items/breeze_rod" },
+    cages: { displayName: "§b§lCages", icon: "textures/blocks/glass" },
+    passes: { displayName: "§f§lPasses", icon: "textures/items/name_tag" },
+};
+
+// Prices are placeholder values - adjust to match your intended economy
+export const SHOP_PRICES = {
+    // Swords
+    wooden_sword: { coinCost: 25, winsCost: 0 },
+    copper_sword: { coinCost: 75, winsCost: 0 },
+    stone_sword: { coinCost: 150, winsCost: 0 },
+    gold_sword: { coinCost: 225, winsCost: 0 },
+    iron_sword: { coinCost: 350, winsCost: 0 },
+    diamond_sword: { coinCost: 1000, winsCost: 25 },
+    netherite_sword: { coinCost: 5000, winsCost: 125 },
+    // Pickaxes
+    wooden_pickaxe: { coinCost: 25, winsCost: 0 },
+    copper_pickaxe: { coinCost: 75, winsCost: 0 },
+    stone_pickaxe: { coinCost: 150, winsCost: 0 },
+    gold_pickaxe: { coinCost: 225, winsCost: 0 },
+    iron_pickaxe: { coinCost: 350, winsCost: 0 },
+    diamond_pickaxe: { coinCost: 1000, winsCost: 25 },
+    netherite_pickaxe: { coinCost: 2000, winsCost: 125 },
+    // Axes
+    wooden_axe: { coinCost: 25, winsCost: 0 },
+    copper_axe: { coinCost: 75, winsCost: 0 },
+    stone_axe: { coinCost: 150, winsCost: 0 },
+    gold_axe: { coinCost: 225, winsCost: 0 },
+    iron_axe: { coinCost: 350, winsCost: 0 },
+    diamond_axe: { coinCost: 1000, winsCost: 25 },
+    netherite_axe: { coinCost: 5000, winsCost: 125 },
+    // Shovels
+    wooden_shovel: { coinCost: 25, winsCost: 0 },
+    copper_shovel: { coinCost: 75, winsCost: 0 },
+    stone_shovel: { coinCost: 150, winsCost: 0 },
+    gold_shovel: { coinCost: 225, winsCost: 0 },
+    iron_shovel: { coinCost: 350, winsCost: 0 },
+    diamond_shovel: { coinCost: 1000, winsCost: 25 },
+    netherite_shovel: { coinCost: 5000, winsCost: 125 },
+    // Spears
+    wooden_spear: { coinCost: 25, winsCost: 0 },
+    copper_spear: { coinCost: 75, winsCost: 0 },
+    stone_spear: { coinCost: 150, winsCost: 0 },
+    gold_spear: { coinCost: 225, winsCost: 0 },
+    iron_spear: { coinCost: 350, winsCost: 0 },
+    diamond_spear: { coinCost: 1000, winsCost: 25 },
+    netherite_spear: { coinCost: 5000, winsCost: 125 },
+    // Armor (wins-based)
+    leather_armor: { coinCost: 0, winsCost: 2 },
+    copper_armor: { coinCost: 0, winsCost: 9 },
+    chainmail_armor: { coinCost: 0, winsCost: 15 },
+    gold_armor: { coinCost: 0, winsCost: 25 },
+    iron_armor: { coinCost: 0, winsCost: 40 },
+    diamond_armor: { coinCost: 0, winsCost: 80 },
+    netherite_armor: { coinCost: 0, winsCost: 125 },
+    crystal_armor: { coinCost: 0, winsCost: 250, description: "Something nice" },
+    enchanted_gold_armor: { coinCost: 0, winsCost: 0, description: "Something good? :P" },
+    god_armor: { coinCost: 0, winsCost: 320, description: "God had no hand in making this thing." },
+    // Potions
+    speed_potion: { coinCost: 50, winsCost: 0, description: "Gotta go fast" },
+    jump_potion: { coinCost: 50, winsCost: 0, description: "+1 block" },
+    strength_potion: { coinCost: 1800, winsCost: 0, description: "Termnator" },
+    health_potion: { coinCost: 150, winsCost: 0, description: "hmmmm +4 hearts" },
+    damage_potion: { coinCost: 250, winsCost: 0, description: "Just a scratch" },
+    poison_potion: { coinCost: 2250, winsCost: 15, description: "Bonnie's favourite" },
+    wither_potion: { coinCost: 1500, winsCost: 15, description: "Gas chamber" },
+    regeneration_potion: { coinCost: 1000, winsCost: 10, description: "Restore the missing aspect" },
+    turtlemaster_potion: { coinCost: 3250, winsCost: 50, description: "Ammo sponge" },
+    invisibility_potion: { coinCost: 8000, winsCost: 150, description: "Sneaky" },
+    // Blocks
+    grass_block: { coinCost: 100, winsCost: 0 },
+    glass_block: { coinCost: 100, winsCost: 0 },
+    planks_block: { coinCost: 200, winsCost: 0 },
+    dev_block: { coinCost: 200, winsCost: 0 },
+    leaves_block: { coinCost: 100, winsCost: 0 },
+    cobblestone_block: { coinCost: 200, winsCost: 0 },
+    wool_block: { coinCost: 100, winsCost: 0 },
+    obsidian_block: { coinCost: 800, winsCost: 25 },
+    rgb_blocks: { coinCost: 0, winsCost: 0, description: "Party mode" },
+    // Equipment
+    bow: { coinCost: 1800, winsCost: 25 },
+    shield: { coinCost: 600, winsCost: 0 },
+    totem: { coinCost: 2500, winsCost: 0 },
+    snowball: { coinCost: 350, winsCost: 0 },
+    milk: { coinCost: 50, winsCost: 0 },
+    flint_and_steel: { coinCost: 750, winsCost: 0 },
+    shears: { coinCost: 50, winsCost: 0 },
+    furnace: { coinCost: 5, winsCost: 0 },
+    trident: { coinCost: 7500, winsCost: 150 },
+    mace: { coinCost: 11250, winsCost: 175, description: "Dino's favourite" },
+    // VIP pickaxe/armor (free perks)
+    enchanted_gold_pickaxe: { coinCost: 0, winsCost: 0, description: "VIP exclusive" },
+    // VIP items
+    ender_pearl: { coinCost: 6450, winsCost: 95 },
+    wind_charge: { coinCost: 3500, winsCost: 65 },
+    golden_apple: { coinCost: 5000, winsCost: 0 },
+    enchanted_golden_apple: { coinCost: 10000, winsCost: 76 },
+    // Mega VIP
+    elytra: { coinCost: 6000, winsCost: 100, description: "Mega VIP exclusive" },
+    // BRR Tech
+    gluon_gun: { coinCost: 45000, winsCost: 400 },
+    tau_cannon: { coinCost: 31650, winsCost: 270 },
+    hive_hand: { coinCost: 11345, winsCost: 100 },
+    glock17: { coinCost: 3000, winsCost: 25 },
+    crowbar: { coinCost: 500, winsCost: 5 },
+    // Passes
+    vip: { coinCost: 5000, winsCost: 25, description: "x2 coins and haste 1" },
+    mega_vip: { coinCost: 20000, winsCost: 125, description: "x3 coins, haste 2 and +2 hearts permamently" },
+    // Cages
+    default_cage: { coinCost: 0, winsCost: 0, description: "by BonnieRobloxRIP" },
+    purple_cage: { coinCost: 50, winsCost: 0, description: "by BonnieRobloxRIP" },
+    fire_cage: { coinCost: 100, winsCost: 0, description: "by BonnieRobloxRIP" },
+    dev_cage: { coinCost: 401, winsCost: 0, description: "by BonnieRobloxRIP" },
+    nether_cage: { coinCost: 500, winsCost: 0, description: "by BonnieRobloxRIP" },
+    fish_tank_cage: { coinCost: 500, winsCost: 0, description: "by BonnieRobloxRIP" },
+    amethyst_cage: { coinCost: 1250, winsCost: 5, description: "by BonnieRobloxRIP" },
+    cherry_blossom_cage: { coinCost: 1250, winsCost: 10, description: "by BonnieRobloxRIP" },
+    mini_island_cage: { coinCost: 1250, winsCost: 10, description: "by BonnieRobloxRIP" },
+    ancient_city_cage: { coinCost: 1500, winsCost: 10, description: "by FZtheDesigner" },
+    diamond_sword_cage: { coinCost: 1500, winsCost: 10, description: "by DinoDanie21" },
+    copper_airship_cage: { coinCost: 600, winsCost: 0, description: "by DinoDanie21" },
+    bassalting_floater_cage: { coinCost: 550, winsCost: 0, description: "by DinoDanie21" },
+    azalea_tree_cage: { coinCost: 1250, winsCost: 5, description: "by Marshmallow997" },
+    candy_land_cage: { coinCost: 150, winsCost: 0 },
+    eaten_cage: { coinCost: 150, winsCost: 0 },
+    spruce_tree: { coinCost: 350, winsCost: 0, description: "by DinoDanie21" },
+    bamboo_forest: { coinCost: 550, winsCost: 0, description: "by DinoDanie21" },
+    spawn_cage: { coinCost: 900, winsCost: 0, description: "by BonnieRobloxRIP" },
+    jail_cage: { coinCost: 750, winsCost: 0, description: "by DinoDanie21" },
+    gay_cage: { coinCost: 200, winsCost: 0, description: "by DinoDanie21" },
+    antimass_spectrometer_cage: { coinCost: 10000, winsCost: 50, description: "by BonnieRobloxRIP" },
+    heavenly_cage: { coinCost: 5000, winsCost: 45, description: "by DinoDanie21" }
+};
