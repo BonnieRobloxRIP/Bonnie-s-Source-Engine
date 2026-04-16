@@ -1,0 +1,7 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "flood_button_red",
+		"metalness_emissive_roughness": "flood_button_blue_mer"
+	}
+}

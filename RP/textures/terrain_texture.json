@@ -1,0 +1,19 @@
+{
+	"texture_data": {
+		"brr_flood_button_blue": {
+			"textures": "textures/blocks/flood_button_blue"
+		},
+		"brr_flood_button_red": {
+			"textures": "textures/blocks/flood_button_red"
+		},
+		"brr_flood_button_green": {
+			"textures": "textures/blocks/flood_button_green"
+		},
+		"brr_flood_button_orange": {
+			"textures": "textures/blocks/flood_button_orange"
+		},
+		"brr_flood_button": {
+			"textures": "textures/blocks/flood_button_blue"
+		}
+	}
+}

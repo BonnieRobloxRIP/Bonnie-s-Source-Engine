@@ -1,0 +1,459 @@
+{
+    "format_version": "1.14.0",
+    "sound_definitions": {
+        "sfx.alarm.lift": {
+            "category": "block",
+            "max_distance": 125,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/alarm/liftalarm",
+                    "volume": 1,
+                    "stream": true
+                }
+            ]
+        },
+        "sfx.alarm.hard": {
+            "category": "block",
+            "max_distance": 125,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/alarm/hardmode",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.alarm.extreme": {
+            "category": "block",
+            "max_distance": 125,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/alarm/extreme_mode_alarm",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.doors.opening": {
+            "category": "block",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/doors/opening",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.doors.opened": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/doors/opened",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.doors.closed": {
+            "category": "block",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/doors/closed",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.doors.tunnelopen": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/doors/tunnelopen",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.doors.liftsepparate": {
+            "category": "block",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/doors/liftsepparate",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.elevator.lift": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/elevator/lift",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.elevator.loop": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/elevator/loop",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.elevator.stop": {
+            "category": "music",
+            "sounds": [
+                {
+                    "name": "sounds/sfx/elevator/stop",
+                    "sounds": true
+                }
+            ]
+        },
+        "sfx.elevator.move": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/elevator/extremelift",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.elevator.fall": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/elevator/fall",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.glassbreaking": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/effects/brokenglass",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "sfx.powerdown": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/effects/powerdown",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "sfx.engine.1": {
+            "category": "block",
+            "max_distance": 125,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/engine/engine",
+                    "stream": true,
+                    "volume": 3
+                }
+            ]
+        },
+        "sfx.engine.2": {
+            "category": "block",
+            "max_distance": 125,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/engine/engine2",
+                    "stream": true,
+                    "volume": 3
+                }
+            ]
+        },
+        "sfx.engine.3": {
+            "category": "block",
+            "max_distance": 125,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/engine/engine3",
+                    "stream": true,
+                    "volume": 3
+                }
+            ]
+        },
+        "sfx.engine.4": {
+            "category": "block",
+            "max_distance": 125,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/engine/engine4",
+                    "stream": true,
+                    "volume": 3
+                }
+            ]
+        },
+        "flood_button.1": {
+            "category": "block",
+            "max_distance": 25,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/flood_button/flood_button_pressed1",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "flood_button.2": {
+            "category": "block",
+            "max_distance": 25,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/flood_button/flood_button_pressed2",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "flood_button.3": {
+            "category": "block",
+            "max_distance": 25,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/flood_button/flood_button_pressed3",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "flood_button.4": {
+            "category": "block",
+            "max_distance": 25,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/flood_button/flood_button_pressed4",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "flood_button.5": {
+            "category": "block",
+            "max_distance": 25,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/flood_button/flood_button_pressed5",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "flood_button.6": {
+            "category": "block",
+            "max_distance": 25,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/flood_button/flood_button_pressed6",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "flood_button.7": {
+            "category": "block",
+            "max_distance": 25,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/flood_button/flood_button_pressed7",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "flood_button.8": {
+            "category": "block",
+            "max_distance": 25,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/flood_button/flood_button_pressed8",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "flood_button.9": {
+            "category": "block",
+            "max_distance": 25,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/flood_button/flood_button_pressed9",
+                    "stream": true,
+                    "volume": 2
+                }
+            ]
+        },
+        "flood_button.press": {
+            "category": "block",
+            "max_distance": 25,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/flood_button/flood_button_press",
+                    "stream": true,
+                    "volume": 0.8
+                }
+            ]
+        },
+        "silo_door.open": {
+            "category": "block",
+            "max_distance": 55,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/doors/silo_door_open",
+                    "stream": true,
+                    "volume": 3
+                }
+            ]
+        },
+        "silo_door.opened": {
+            "category": "block",
+            "max_distance": 55,
+            "min_distance": 3,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/sfx/doors/silo_door_opened",
+                    "stream": true,
+                    "volume": 3
+                }
+            ]
+        },
+        "music.lobby": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/music/lobby",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "music.training": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/music/training",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "music.easygame": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/music/easygame",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "music.mediumgame": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/music/mediumgame",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "music.hardgame": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/music/hardgame",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "music.glitchgame": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/music/glitchgame",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "music.extremegame": {
+            "category": "music",
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/music/extremegame",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        }
+    }
+}

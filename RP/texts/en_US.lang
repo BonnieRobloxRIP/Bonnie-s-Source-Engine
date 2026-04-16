@@ -1,0 +1,3 @@
+item.spawn_egg.entity.brr:flood_room.name=Spawn flood room
+entity.brr:flood_room.name=flood room
+tile.brr:flood_button.name=Flood Button
