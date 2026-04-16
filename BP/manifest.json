@@ -1,0 +1,74 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"BonnieRobloxRIP"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.54"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "Flood Escape",
+		"description": "Locked in a flooding facility, you and your team must work together to push buttons, find the way out, crack the code and escape before the flood takes you!",
+		"min_engine_version": [
+			1,
+			26,
+			0
+		],
+		"uuid": "6ab2d442-6399-42a7-a643-c2a0440819d1",
+		"version": [
+			1,
+			0,
+			3
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "2ef7bd9b-8e38-432b-8c6e-a05b48aafc50",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"type": "script",
+			"language": "javascript",
+			"uuid": "19c72da1-fdfc-43d0-b0d1-6cafeb369492",
+			"entry": "scripts/main.js",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "f59b13a7-ce68-45df-a4ff-aad3510e535b",
+			"version": [
+				1,
+				0,
+				3
+			]
+		},
+		{
+			"module_name": "@minecraft/server",
+			"version": "2.7.0-beta"
+		},
+		{
+			"module_name": "@minecraft/server-ui",
+			"version": "2.0.0"
+		}
+	],
+	"capabilities": [
+		"pbr"
+	]
+}
