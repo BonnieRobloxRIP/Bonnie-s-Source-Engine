@@ -1,0 +1,194 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:flood_button",
+			"menu_category": {
+				"category": "items",
+				"group": "brr:itemGroup.name.FE",
+				"is_hidden_in_commands": false
+			},
+			"states": {
+				"brr:pressed": [
+					false,
+					true
+				],
+				"brr:button_type": [
+					"parkour",
+					"exit",
+					"mechanical"
+				]
+			},
+			"traits": {
+				"minecraft:placement_position": {
+					"enabled_states": [
+						"minecraft:block_face"
+					]
+				}
+			}
+		},
+		"components": {
+			"minecraft:geometry": "geometry.flood_button",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "brr_flood_button_blue",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:item_visual": {
+				"geometry": "geometry.flood_button",
+				"material_instances": {
+					"*": {
+						"texture": "brr_flood_button_blue",
+						"render_method": "blend"
+					}
+				}
+			},
+			"minecraft:liquid_detection": {
+				"detection_rules": [
+					{
+						"can_contain_liquid": true,
+						"liquid_type": "water",
+						"on_liquid_touches": "no_reaction"
+					}
+				]
+			},
+			"minecraft:destructible_by_explosion": false,
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 99999
+			},
+			"minecraft:flammable": false,
+			"minecraft:collision_box": {
+				"origin": [
+					-7,
+					0,
+					-7
+				],
+				"size": [
+					14,
+					4,
+					14
+				]
+			},
+			"minecraft:selection_box": {
+				"origin": [
+					-7,
+					0,
+					-7
+				],
+				"size": [
+					14,
+					4,
+					14
+				]
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_state('brr:pressed') == true",
+				"components": {
+					"minecraft:geometry": "geometry.flood_button_pressed",
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_flood_button_red",
+							"render_method": "blend"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('brr:pressed') == false && query.block_state('brr:button_type') == 'parkour'",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_flood_button_blue",
+							"render_method": "blend"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('brr:pressed') == false && query.block_state('brr:button_type') == 'exit'",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_flood_button_green",
+							"render_method": "blend"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('brr:pressed') == false && query.block_state('brr:button_type') == 'mechanical'",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_flood_button_orange",
+							"render_method": "blend"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:block_face') == 'down'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							180,
+							0,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:block_face') == 'north'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							-90,
+							0,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:block_face') == 'south'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							90,
+							0,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:block_face') == 'east'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							0,
+							-90
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:block_face') == 'west'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							0,
+							90
+						]
+					}
+				}
+			}
+		]
+	}
+}
