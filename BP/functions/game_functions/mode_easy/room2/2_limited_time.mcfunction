@@ -29,7 +29,7 @@ execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless m
 # // essential
 execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run scoreboard players add endless_end endless 0
 # // tp player to start
-execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run tp @a[tag=endless] ^-4.5 ^2 ^-11 facing ^-4.5 ^3 ^-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run tp @a[tag=endless] ^-3.5 ^2 ^-11 facing ^-3.5 ^2 ^-8
 execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run tag @a[tag=endless] remove endlesstunnel
 # // = End =
 execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run scoreboard players set loaded endless 1

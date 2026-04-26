@@ -15,5 +15,6 @@ function lobby_functions/animations/engines
 function lobby_functions/animations/fans
 function lobby_functions/animations/lights
 # = TEMPORARY =
-execute as @a at @s if block ~ ~ ~ water run kill @s
-kill @a[tag=lobby, x=-12, y=-35, z=27, dx=23, dy=2, dz=29]
+execute as @a[tag=easy] at @s if block ~ ~ ~ water run kill @s
+execute as @a[tag=endless] at @s if block ~ ~ ~ water run kill @s
+kill @a[tag=lobby, tag=!host, x=-12, y=-35, z=27, dx=23, dy=2, dz=29]

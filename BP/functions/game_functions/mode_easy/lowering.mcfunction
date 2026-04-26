@@ -146,6 +146,7 @@ execute if score lift easy matches 440 run structure load mystructure:MainElevat
 execute if score lift easy matches 445 run structure load mystructure:MainElevator 6 -34 50
 execute if score lift easy matches 450 run structure load mystructure:MainElevator 6 -35 50
 # // Entering Room 1
+execute if score lift easy matches 455 run structure load lobby:LiftBorder 5 -59 49
 execute if score lift easy matches 455 run structure load mystructure:MainElevator 6 -36 50
 execute if score lift easy matches 460 run structure load mystructure:MainElevator 6 -37 50
 execute if score lift easy matches 465 run structure load mystructure:MainElevator 6 -38 50
@@ -168,6 +169,7 @@ execute if score lift easy matches 540 run scoreboard players set started easy 1
 # // Raise elevator back to the surface
 execute if score lift easy matches 550 run structure load mystructure:MainElevatorOpen3 6 -48 50
 execute if score lift easy matches 560 run structure load mystructure:MainElevatorOpen3 6 -47 50
+execute if score lift easy matches 565 run structure load lobby:LiftBorderRemove 5 -59 49
 execute if score lift easy matches 570 run structure load mystructure:MainElevatorOpen3 6 -46 50
 execute if score lift easy matches 578 run structure load mystructure:MainElevatorOpen3 6 -45 50
 execute if score lift easy matches 585 run structure load mystructure:MainElevatorOpen3 6 -44 50

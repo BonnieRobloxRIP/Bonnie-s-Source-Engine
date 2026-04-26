@@ -49,6 +49,7 @@ execute if score r2_timer_ms easy matches 20.. run scoreboard players set r2_tim
 execute if score r2_timer_s easy matches ..0 run scoreboard players add flood2 easy 1
 # // flood part
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 0 run tellraw @a[tag=easy] {"rawtext":[{"text":"§3Water is rising!"}]}
+execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 0 run fill ^3 ^3 ^3 ^-3 ^3 ^-3 air destroy
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 0 run playsound sfx.glassbreaking @a[tag=easy]
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 0 run structure load mystructure:EMR2V1F1 ~-6 ~3 ~-6 0_degrees none block_by_block 1
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 2 if score r2_timer_s easy matches 0 run structure load mystructure:EMR2V1F2 ~-6 ~4 ~-6 0_degrees none block_by_block 1
