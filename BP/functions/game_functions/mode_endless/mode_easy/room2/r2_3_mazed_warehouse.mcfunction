@@ -20,6 +20,10 @@ execute if score endless_timer_ms endless matches 20.. run scoreboard players re
 execute if score endless_timer_ms endless matches 20.. run scoreboard players set endless_timer_ms endless 0
 execute if score endless_timer_s endless matches ..0 run scoreboard players add flood endless 1
 # // flood part
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 0 run playsound sfx.doors.opened @a[tag=endless] ~-2.5 ~3 ~-8 1 0.7
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 0 run structure load mystructure:EasyTunnelDoor2 ~-3 ~2 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 5 run structure load mystructure:EasyTunnelDoor1 ~-3 ~2 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 5 run structure load mystructure:NuhUh ~-3 ~2 ~-13
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 0 run tellraw @a[tag=endless] {"rawtext":[{"text":"§3Water is rising!"}]}
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 0 run structure load mystructure:EMR2V3F1 ~-6 ~2 ~-6 0_degrees none block_by_block 1
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 2 if score endless_timer_s endless matches 0 run structure load mystructure:EMR2V3F2 ~-6 ~3 ~-6 0_degrees none block_by_block 1

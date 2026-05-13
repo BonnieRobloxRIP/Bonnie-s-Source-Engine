@@ -1,6 +1,6 @@
 # = SYSTEM RUN =
 # - Open entrance door -
-execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 1 run structure load mystructure:EasyTunnelDoor2  ~-3 ~4 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 1 run structure load mystructure:EasyTunnelDoor2 ~-3 ~4 ~-8
 execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 run structure load mystructure:EasyTunnelDoor3 ~-3 ~4 ~-8
 execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 run playsound sfx.doors.tunnelopen @a[tag=endless] ~-2.5 ~5 ~-8
 # - Level title -
@@ -48,6 +48,10 @@ execute if score endless_timer_ms endless matches 20.. run scoreboard players re
 execute if score endless_timer_ms endless matches 20.. run scoreboard players set endless_timer_ms endless 0
 execute if score endless_timer_s endless matches ..0 run scoreboard players add flood endless 1
 # // flood part
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 0 run playsound sfx.doors.opened @a[tag=endless] ~-2.5 ~5 ~-8 1 0.7
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 0 run structure load mystructure:EasyTunnelDoor2 ~-3 ~4 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 0 run structure load mystructure:EasyTunnelDoor1 ~-3 ~4 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 0 run structure load mystructure:NuhUh ~-3 ~4 ~-13
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 0 run tellraw @a[tag=endless] {"rawtext":[{"text":"§3Water is rising!"}]}
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 0 run fill ^3 ^3 ^3 ^-3 ^3 ^-3 air destroy
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 0 run playsound sfx.glassbreaking @a[tag=endless]

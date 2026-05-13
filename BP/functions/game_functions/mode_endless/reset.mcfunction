@@ -43,6 +43,37 @@ scoreboard players reset R3B7 endless
 scoreboard players reset R3B8 endless
 scoreboard players reset R3B9 endless
 scoreboard players reset R3B10 endless
+# // active buttons
+scoreboard players reset R1B1a endless
+scoreboard players reset R1B2a endless
+scoreboard players reset R1B3a endless
+scoreboard players reset R1B4a endless
+scoreboard players reset R1B5a endless
+scoreboard players reset R1B6a endless
+scoreboard players reset R1B7a endless
+scoreboard players reset R1B8a endless
+scoreboard players reset R1B9a endless
+scoreboard players reset R1B10a endless
+scoreboard players reset R2B1a endless
+scoreboard players reset R2B2a endless
+scoreboard players reset R2B3a endless
+scoreboard players reset R2B4a endless
+scoreboard players reset R2B5a endless
+scoreboard players reset R2B6a endless
+scoreboard players reset R2B7a endless
+scoreboard players reset R2B8a endless
+scoreboard players reset R2B9a endless
+scoreboard players reset R2B10a endless
+scoreboard players reset R3B1a endless
+scoreboard players reset R3B2a endless
+scoreboard players reset R3B3a endless
+scoreboard players reset R3B4a endless
+scoreboard players reset R3B5a endless
+scoreboard players reset R3B6a endless
+scoreboard players reset R3B7a endless
+scoreboard players reset R3B8a endless
+scoreboard players reset R3B9a endless
+scoreboard players reset R3B10a endless
 # // flooding
 scoreboard players reset flood endless
 scoreboard players reset endless_timer_s endless
@@ -51,6 +82,13 @@ scoreboard players reset endless_timer_ms endless
 scoreboard players reset p_tunnel endless
 scoreboard players reset endless_transition endless
 scoreboard players reset endless_end endless
+# // core
+scoreboard players reset core endless
+scoreboard players reset core1 endless
+scoreboard players reset core_laser1 endless
+scoreboard players reset core_laser2 endless
+scoreboard players reset core_laser3 endless
+scoreboard players reset core_laser4 endless
 # = STRUCTURES =
 # // unload
 execute as @e[type=brr:flood_room, name=endless] at @s run structure load mystructure:EndlessRemove ~-16 ~1 ~-16

@@ -38,6 +38,13 @@ scoreboard players reset endless_timer_ms endless
 scoreboard players reset p_tunnel endless
 scoreboard players reset endless_transition endless
 scoreboard players reset endless_end endless
+# // core
+scoreboard players reset core endless
+scoreboard players reset core1 endless
+scoreboard players reset core_laser1 endless
+scoreboard players reset core_laser2 endless
+scoreboard players reset core_laser3 endless
+scoreboard players reset core_laser4 endless
 # // essential
 scoreboard players add loaded endless 0
 # = MAKE CHANGES =

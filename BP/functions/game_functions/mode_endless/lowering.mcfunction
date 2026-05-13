@@ -9,6 +9,7 @@ execute as @a[tag=endless] at @s run tag @s remove lobby
 execute if score start endless matches 1 if score lift endless matches 1 run scoreboard players operation p_game endless = p_lift endless
 # // Create entity
 execute if score start endless matches 1 if score lift endless matches 1 run summon brr:flood_room 76 -59 37 0 0 * endless
+execute if score start endless matches 1 if score lift endless matches 1 run effect @e[type=brr:flood_room] water_breathing infinite 255 true
 # // Lower door
 execute if score lift endless matches 1 run structure load mystructure:EndlessDoor 27 25 35
 execute if score lift endless matches 10 run structure load mystructure:EndlessDoor 27 24 35

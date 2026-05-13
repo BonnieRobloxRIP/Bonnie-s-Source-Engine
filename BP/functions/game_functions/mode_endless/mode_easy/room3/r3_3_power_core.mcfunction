@@ -1,0 +1,201 @@
+# = SYSTEM RUN =
+# - Open entrance door -
+execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 1 run structure load mystructure:EasyTunnelDoor2  ~-2 ~3 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 run structure load mystructure:EasyTunnelDoor3 ~-2 ~3 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 run playsound sfx.doors.tunnelopen @a[tag=endless] ~3.5 ~4 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 run tellraw @a[tag=endless] {"rawtext":[{"text": "§aAdditional Objective: §2Stabilize the core before the water reaches it!"}]}
+# - Level title -
+execute as @a[tag=endless] at @s if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 if score started endless matches 1 run title @a[tag=endless] subtitle §2Power Core
+execute as @a[tag=endless] at @s if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 if score started endless matches 1 run titleraw @a[tag=endless] title {"rawtext":[{"text": "§aROOM "}, {"score":{"name": "room_count", "objective": "endless"}}]}
+# - Test for buttons -
+# // Button 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players add R3B1a endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1a endless matches 50 if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players set core1 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1a endless matches 50 if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players reset core endless
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1a endless matches 1 if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run structure load mystructure:EMR3V3M1 ^6 ^8 ^-2 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1a endless matches 1 if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run structure load mystructure:CoreBlaster1 ^ ^19 ^-6 180_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1a endless matches 25 if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run structure load mystructure:CoreBlaster2 ^ ^19 ^-6 180_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1a endless matches 50 if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run structure load mystructure:CoreBlaster3 ^ ^19 ^-6 180_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1a endless matches 50 if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players set core_laser1 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1a endless matches 99.. if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players set R3B1 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B1a endless matches 99.. if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players set core1 endless 0
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B1a endless matches 99.. if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players reset R3B1a endless
+# // Button 2
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B2 endless matches 0 if block ^5 ^13 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players add R3B2a endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B2 endless matches 0 if score R3B2a endless matches 50 if block ^5 ^13 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players set core1 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B2 endless matches 0 if score R3B2a endless matches 50 if block ^5 ^13 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players reset core endless
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B2 endless matches 0 if score R3B2a endless matches 1 if block ^5 ^13 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run structure load mystructure:CoreBlaster1 ^3 ^19 ^ 270_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B2 endless matches 0 if score R3B2a endless matches 25 if block ^5 ^13 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run structure load mystructure:CoreBlaster2 ^3 ^19 ^ 270_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B2 endless matches 0 if score R3B2a endless matches 50 if block ^5 ^13 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run structure load mystructure:CoreBlaster3 ^3 ^19 ^ 270_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B2 endless matches 0 if score R3B2a endless matches 50 if block ^5 ^13 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players set core_laser2 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B2 endless matches 0 if score R3B2a endless matches 99.. if block ^5 ^13 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players set R3B2 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B2 endless matches 1 if score R3B2a endless matches 99.. if block ^5 ^13 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players set core1 endless 0
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B2 endless matches 1 if score R3B2a endless matches 99.. if block ^5 ^13 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players reset R3B2a endless
+# // Button 3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 0 if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players add R3B3a endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 0 if score R3B3a endless matches 50 if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players set core1 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 0 if score R3B3a endless matches 50 if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players reset core endless
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 0 if score R3B3a endless matches 1 if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run structure load mystructure:EMR3V3M2 ^2 ^15 ^-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 0 if score R3B3a endless matches 1 if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run structure load mystructure:CoreBlaster1 ^ ^19 ^3 
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 0 if score R3B3a endless matches 25 if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run structure load mystructure:CoreBlaster2 ^ ^19 ^3 
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 0 if score R3B3a endless matches 50 if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run structure load mystructure:CoreBlaster3 ^ ^19 ^3 
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 0 if score R3B3a endless matches 50 if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players set core_laser3 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 0 if score R3B3a endless matches 99.. if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players set R3B3 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 1 if score R3B3a endless matches 99.. if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players set core1 endless 0
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B3 endless matches 1 if score R3B3a endless matches 99.. if block ^-5 ^19 ^5 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players reset R3B3a endless
+# // Exit Button
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players add R3B4a endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 40 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players set core1 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 40 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players reset core endless
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 40 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run fill ^7 ^20 ^3 ^4 ^20 ^4 air
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 50 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run fill ^7 ^21 ^3 ^4 ^21 ^4 air
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 50 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run tellraw @a[tag=endless] {"rawtext":[{"text": "§aTunnel Gate has been Opened!"}]}
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 50 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run structure load mystructure:EMR3V3M2 ^6 ^17 ^3 90_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 1 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run structure load mystructure:CoreBlaster1 ^-6 ^19 ^ 90_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 25 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run structure load mystructure:CoreBlaster2 ^-6 ^19 ^ 90_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 50 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run structure load mystructure:CoreBlaster3 ^-6 ^19 ^ 90_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 50 if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players set core_laser4 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 0 if score R3B4a endless matches 120.. if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players set R3B4 endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B4 endless matches 1 if score R3B4a endless matches 120.. if block ^-6 ^20 ^-5 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players reset R3B4a endless
+# // - Flooding -
+execute if score started endless matches 1 if score p_game endless matches 1.. if score endless_end endless matches 0 run scoreboard players add endless_timer_ms endless 1
+execute if score endless_timer_ms endless matches 20.. run scoreboard players remove endless_timer_s endless 1
+execute if score endless_timer_ms endless matches 20.. run scoreboard players set endless_timer_ms endless 0
+execute if score endless_timer_s endless matches ..0 run scoreboard players add flood endless 1
+# // flood part
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 0 run playsound sfx.doors.opened @a[tag=endless] ~-3.5 ~4 ~-8 1 0.7
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 0 run structure load mystructure:EasyTunnelDoor2 ~-2 ~3 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 5 run structure load mystructure:EasyTunnelDoor1 ~-2 ~3 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 5 run structure load mystructure:NuhUh ~-2 ~3 ~-13
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 0 run tellraw @a[tag=endless] {"rawtext":[{"text":"§3Water is rising!"}]}
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F1 ~-6 ~2 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 2 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F2 ~-6 ~3 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 3 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F3 ~-6 ~4 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 4 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F4 ~-6 ~5 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 5 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F5 ~-6 ~6 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 6 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F6 ~-6 ~7 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 7 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F7 ~-6 ~8 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 8 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F8 ~-6 ~9 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 9 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F9 ~-6 ~10 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 10 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F10 ~-6 ~11 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 11 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F11 ~-6 ~12 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 12 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F12 ~-6 ~13 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 12 if score endless_timer_s endless matches 0 if score R3B4 endless matches 0 run scoreboard players set core1 endless 2
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 12 if score endless_timer_s endless matches 0 if score R3B4 endless matches 0 run scoreboard players reset core endless
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 13 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F13 ~-6 ~14 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 14 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F14 ~-6 ~15 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 15 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F15 ~-6 ~16 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 16 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F16 ~-6 ~17 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 17 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F17 ~-6 ~18 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 18 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F18 ~-6 ~19 ~-6 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 19 if score endless_timer_s endless matches 0 run structure load mystructure:EMR3V3F19 ~-6 ~20 ~-6 0_degrees none block_by_block 1
+# // flood end
+execute if score endless_timer_s endless matches ..0 run scoreboard players set endless_timer_s endless 4
+execute if score flood endless matches 18 if score endless_timer_ms endless matches 10 run scoreboard players set endless_end endless 1
+# // exit tunnel
+execute as @s[type=brr:flood_room, name=endless] at @s run tag @a[tag=endless, x=~8, y=~20, z=~2, dx=6, dy=1, dz=1] add endlesstunnel
+execute as @s[type=brr:flood_room, name=endless] at @s run tag @a[tag=endless, x=~7, y=~20, z=~2, dx=0, dy=1, dz=1] remove endlesstunnel
+# // exit player count
+scoreboard players set p_tunnel endless 0
+execute as @a[tag=endlesstunnel] at @s run scoreboard players add p_tunnel endless 1
+# // transition into room 3
+execute if score p_tunnel endless = p_game endless run scoreboard players set endless_end endless 1
+execute if score endless_end endless matches 1 run scoreboard players add endless_transition endless 1
+execute if score endless_transition endless matches 1 as @s[type=brr:flood_room, name=endless] at @s run playsound sfx.doors.opened @a[tag=endless] ~8 ~20.5 ~3.5 1 0.7
+execute if score endless_transition endless matches 1 as @s[type=brr:flood_room, name=endless] at @s run structure load mystructure:EasyTunnelDoor2 ~8 ~20 ~3 270_degrees
+execute if score endless_transition endless matches 10 as @s[type=brr:flood_room, name=endless] at @s run structure load mystructure:EasyTunnelDoor1 ~8 ~20 ~3 270_degrees
+execute if score endless_transition endless matches 10 as @s[type=brr:flood_room, name=endless] at @s positioned ~ ~2 ~ run fill ~-6 ~1 ~-6 ~6 ~20 ~6 water
+execute if score endless_transition endless matches 10.. run scoreboard players reset core endless
+execute if score endless_transition endless matches 10.. run scoreboard players reset core1 endless
+execute if score endless_transition endless matches 10.. run scoreboard players reset core_laser1 endless
+execute if score endless_transition endless matches 10.. run scoreboard players reset core_laser2 endless
+execute if score endless_transition endless matches 10.. run scoreboard players reset core_laser3 endless
+execute if score endless_transition endless matches 10.. run scoreboard players reset core_laser4 endless
+execute if score endless_transition endless matches 31.. run function game_functions/mode_endless/reset_room
+
+
+# // = Power Core Special =
+# // Particles
+execute if score core_laser1 endless matches 1 run particle brr:power_core_laser_beam3 ^ ^20 ^-4
+execute if score core_laser1 endless matches 1 run particle brr:power_core_laser_spiral3 ^ ^20 ^-4
+execute if score core_laser2 endless matches 1 run particle brr:power_core_laser_beam2 ^4 ^20 ^
+execute if score core_laser2 endless matches 1 run particle brr:power_core_laser_spiral2 ^4 ^20 ^
+execute if score core_laser3 endless matches 1 run particle brr:power_core_laser_beam4 ^ ^20 ^4
+execute if score core_laser3 endless matches 1 run particle brr:power_core_laser_spiral4 ^ ^20 ^4
+execute if score core_laser4 endless matches 1 run particle brr:power_core_laser_beam ^-4 ^20 ^
+execute if score core_laser4 endless matches 1 run particle brr:power_core_laser_spiral ^-4 ^20 ^
+# // Scores
+execute if score core1 endless matches 0..2 run scoreboard players add core endless 1
+# // Core animations
+# // - Normal -
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 0 if score core endless matches 1 run structure load mystructure:Core1 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 0 if score core endless matches 25 run structure load mystructure:Core2 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 0 if score core endless matches 35 run structure load mystructure:Core3 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 0 if score core endless matches 50 run structure load mystructure:Core4 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 0 if score core endless matches 66 run structure load mystructure:Core3 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 0 if score core endless matches 80 run structure load mystructure:Core2 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 0 if score core endless matches 94.. run scoreboard players set core endless 0
+# // - Hit by a blaster -
+# // button 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score core1 endless matches 1 if score core endless matches 1 run structure load mystructure:CoreEmpty ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score core1 endless matches 1 if score core endless matches 1 run structure load mystructure:CoreHit1 ^-2 ^12 ^-2
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score core1 endless matches 1 if score core endless matches 3 run structure load mystructure:CoreHit2 ^-2 ^12 ^-2
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score core1 endless matches 1 if score core endless matches 7 run structure load mystructure:CoreHit3 ^-2 ^12 ^-2
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score core1 endless matches 1 if score core endless matches 11 run structure load mystructure:CoreHit4 ^-2 ^12 ^-2
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score core1 endless matches 1 if score core endless matches 15 run structure load mystructure:CoreHit5 ^-2 ^12 ^-2
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score core1 endless matches 1 if score core endless matches 20 run structure load mystructure:Core5 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score core1 endless matches 1 if score core endless matches 25 run structure load mystructure:Core1 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score core1 endless matches 1 if score core endless matches 49 run scoreboard players reset core endless
+
+# // button 2
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 0 if score core1 endless matches 1 if score core endless matches 1 run structure load mystructure:CoreEmpty ^-3 ^11 ^-3 90_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 0 if score core1 endless matches 1 if score core endless matches 1 run structure load mystructure:CoreHit1 ^-2 ^12 ^-2 90_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 0 if score core1 endless matches 1 if score core endless matches 3 run structure load mystructure:CoreHit2 ^-2 ^12 ^-2 90_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 0 if score core1 endless matches 1 if score core endless matches 7 run structure load mystructure:CoreHit3 ^-2 ^12 ^-2 90_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 0 if score core1 endless matches 1 if score core endless matches 11 run structure load mystructure:CoreHit4 ^-2 ^12 ^-2 90_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 0 if score core1 endless matches 1 if score core endless matches 15 run structure load mystructure:CoreHit5 ^-2 ^12 ^-2 90_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 0 if score core1 endless matches 1 if score core endless matches 20 run structure load mystructure:Core5 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 0 if score core1 endless matches 1 if score core endless matches 25 run structure load mystructure:Core1 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 0 if score core1 endless matches 1 if score core endless matches 49 run scoreboard players reset core endless
+# // button 3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 0 if score core1 endless matches 1 if score core endless matches 1 run structure load mystructure:CoreEmpty ^-3 ^11 ^-3 180_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 0 if score core1 endless matches 1 if score core endless matches 1 run structure load mystructure:CoreHit1 ^-2 ^12 ^-2 180_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 0 if score core1 endless matches 1 if score core endless matches 3 run structure load mystructure:CoreHit2 ^-2 ^12 ^-2 180_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 0 if score core1 endless matches 1 if score core endless matches 7 run structure load mystructure:CoreHit3 ^-2 ^12 ^-2 180_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 0 if score core1 endless matches 1 if score core endless matches 11 run structure load mystructure:CoreHit4 ^-2 ^12 ^-2 180_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 0 if score core1 endless matches 1 if score core endless matches 15 run structure load mystructure:CoreHit5 ^-2 ^12 ^-2 180_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 0 if score core1 endless matches 1 if score core endless matches 20 run structure load mystructure:Core5 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 0 if score core1 endless matches 1 if score core endless matches 25 run structure load mystructure:Core1 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 0 if score core1 endless matches 1 if score core endless matches 49 run scoreboard players reset core endless
+# // button 4
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 1 run structure load mystructure:CoreEmpty ^-3 ^11 ^-3 270_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 1 run structure load mystructure:CoreHit1 ^-2 ^12 ^-2 270_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 3 run structure load mystructure:CoreHit2 ^-2 ^12 ^-2 270_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 7 run structure load mystructure:CoreHit3 ^-2 ^12 ^-2 270_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 11 run structure load mystructure:CoreHit4 ^-2 ^12 ^-2 270_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 15 run structure load mystructure:CoreHit5 ^-2 ^12 ^-2 270_degrees
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 20 run structure load mystructure:Core3 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 25 run structure load mystructure:Core4 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 30 run structure load mystructure:Core3 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 40 run structure load mystructure:Core2 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 44 run structure load mystructure:Core1 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 49 run structure load mystructure:Core5 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 49 run tellraw @a[tag=endless] {"rawtext":[{"text": "§2Objective Complete: §aYou successfully stabilized the core!"}]}
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 55 run structure load mystructure:CoreStable ^-3 ^11 ^-3 0_degrees none block_by_block 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 1 if score core endless matches 60 run scoreboard players set core1 endless 3
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 1 if score R3B2 endless matches 1 if score R3B3 endless matches 1 if score R3B4 endless matches 0 if score core1 endless matches 3 if score core endless matches 60.. run scoreboard players reset core endless
+# // - Game Over -
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 1 run tellraw @a[tag=endless] {"rawtext":[{"text": "§2Objective Failed: §4You failed to contain the core! "}]}
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 1 run structure load mystructure:CoreEmpty ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 1 run structure load mystructure:CoreCritical1 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 5 run structure load mystructure:CoreCritical2 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 11 run structure load mystructure:CoreCritical3 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 13 run structure load mystructure:CoreCritical4 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 15 run structure load mystructure:CoreCritical5 ^-3 ^11 ^-3
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 17 run camera @a[tag=endless] fade time 0 3 3 color 144 0 0
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 19 run title @a[tag=endless] times 40 100 20
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 19 run title @a[tag=endless] title §4Game Over
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 35 run kill @a[tag=endless]
+execute as @s[type=brr:flood_room, name=endless] at @s if score core1 endless matches 2 if score core endless matches 35 run tag @a[tag=endless] remove endless
+# // kill parts
+execute as @a[tag=endless] at @s if block ~ ~-1 ~ white_stained_glass run kill @s
