@@ -12,7 +12,6 @@ scoreboard players set timer_ms easy 0
 scoreboard players reset alarm easy
 structure load mystructure:EasyStateAvailable 5 93 49
 # // game
-# // room 1
 scoreboard players set r1_timer_ms easy 0
 scoreboard players set r1_timer_s easy 20
 scoreboard players set r2_timer_ms easy 0
@@ -23,16 +22,68 @@ scoreboard players reset R1B1 easy
 scoreboard players reset R1B2 easy
 scoreboard players reset R1B3 easy
 scoreboard players reset R1B4 easy
+scoreboard players reset R1B5 easy
+scoreboard players reset R1B6 easy
+scoreboard players reset R1B7 easy
+scoreboard players reset R1B8 easy
+scoreboard players reset R1B9 easy
+scoreboard players reset R1B10 easy
 scoreboard players reset R2B1 easy
 scoreboard players reset R2B2 easy
 scoreboard players reset R2B3 easy
 scoreboard players reset R2B4 easy
 scoreboard players reset R2B5 easy
 scoreboard players reset R2B6 easy
+scoreboard players reset R2B7 easy
+scoreboard players reset R2B8 easy
+scoreboard players reset R2B9 easy
+scoreboard players reset R2B10 easy
 scoreboard players reset R3B1 easy
 scoreboard players reset R3B2 easy
 scoreboard players reset R3B3 easy
 scoreboard players reset R3B4 easy
+scoreboard players reset R3B5 easy
+scoreboard players reset R3B6 easy
+scoreboard players reset R3B7 easy
+scoreboard players reset R3B8 easy
+scoreboard players reset R3B9 easy
+scoreboard players reset R3B10 easy
+scoreboard players reset R1B1a easy
+scoreboard players reset R1B2a easy
+scoreboard players reset R1B3a easy
+scoreboard players reset R1B4a easy
+scoreboard players reset R1B5a easy
+scoreboard players reset R1B6a easy
+scoreboard players reset R1B7a easy
+scoreboard players reset R1B8a easy
+scoreboard players reset R1B9a easy
+scoreboard players reset R1B10a easy
+scoreboard players reset R2B1a easy
+scoreboard players reset R2B2a easy
+scoreboard players reset R2B3a easy
+scoreboard players reset R2B4a easy
+scoreboard players reset R2B5a easy
+scoreboard players reset R2B6a easy
+scoreboard players reset R2B7a easy
+scoreboard players reset R2B8a easy
+scoreboard players reset R2B9a easy
+scoreboard players reset R2B10a easy
+scoreboard players reset R3B1a easy
+scoreboard players reset R3B2a easy
+scoreboard players reset R3B3a easy
+scoreboard players reset R3B4a easy
+scoreboard players reset R3B5a easy
+scoreboard players reset R3B6a easy
+scoreboard players reset R3B7a easy
+scoreboard players reset R3B8a easy
+scoreboard players reset R3B9a easy
+scoreboard players reset R3B10a easy
+scoreboard players reset core easy
+scoreboard players reset core1 easy
+scoreboard players reset core_laser1 easy
+scoreboard players reset core_laser2 easy
+scoreboard players reset core_laser3 easy
+scoreboard players reset core_laser4 easy
 scoreboard players set loaded1 easy 0
 scoreboard players set loaded2 easy 0
 scoreboard players set loaded3 easy 0
@@ -44,6 +95,8 @@ scoreboard players reset room2 easy
 scoreboard players reset room3 easy
 scoreboard players reset p_game easy
 scoreboard players reset p_lift easy
+scoreboard players reset p_amount easy
+scoreboard players reset p_won easy
 scoreboard players reset r1_end easy
 scoreboard players reset r2_end easy
 scoreboard players reset r3_end easy

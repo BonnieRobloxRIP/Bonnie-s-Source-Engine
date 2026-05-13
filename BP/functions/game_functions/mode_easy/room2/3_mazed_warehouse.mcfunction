@@ -1,13 +1,18 @@
 # = LOADING =
+# // Load Positioning From Anchor
+execute as @s[type=brr:flood_room, name=easy_room1_anchor] at @s if score loaded2 easy matches 0 run summon brr:flood_room ^3 ^-2 ^8 0 0 * easy_room2
+execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run kill @e[type=brr:flood_room, name=easy_room1_anchor]
 # // Level
-execute as @s[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run structure load mystructure:EasyRoom2V3 ~-7 ~1 ~-7
+execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run structure load mystructure:EasyRoom2V3 ~-7 ~1 ~-7
+# // Next Room Anchor
+execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run summon brr:flood_room ^3 ^19 ^14 0 0 * easy_room2_anchor
 # // - Scores -
 # // buttons
-execute as @s[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run scoreboard players add R2B1 easy 0
+execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run scoreboard players add R2B1 easy 0
 # // essential
-execute as @s[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run scoreboard players add r2_end easy 0
+execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run scoreboard players add r2_end easy 0
 # // = End =
-execute as @s[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run scoreboard players set loaded2 easy 1
+execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run scoreboard players set loaded2 easy 1
 
 # = LOADING ENDLESS =
 execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 1 run scoreboard players set loaded endless 0

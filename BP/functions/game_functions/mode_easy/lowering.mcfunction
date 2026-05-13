@@ -158,6 +158,7 @@ execute if score lift easy matches 495 run structure load mystructure:MainElevat
 execute if score lift easy matches 505 run structure load mystructure:MainElevator 6 -44 50
 execute if score lift easy matches 520 run structure load mystructure:MainElevator 6 -45 50
 # // Release players
+execute if score lift easy matches 530 run structure load lobby:LiftBorderPrecaution 5 -59 49
 execute if score lift easy matches 530 run playsound sfx.doors.liftsepparate @a 8 -49 52
 execute if score lift easy matches 530 run structure load mystructure:MainElevatorOpen1 6 -49 50
 execute if score lift easy matches 532 run structure load mystructure:MainElevatorOpen2 6 -49 50
@@ -328,5 +329,4 @@ execute if score lift easy matches 955 run structure load mystructure:EasyStateB
 execute if score lift easy matches 955 if score p_game easy matches 0 run scoreboard players set reset easy 1
 execute if score lift easy matches 955 run scoreboard players set lift easy 0
 # = RESET =
-execute if score reset easy matches 1 if score p_game easy matches 0 if score lift easy matches -1 if score start easy matches 2 run tellraw @a {"rawtext":[{"text": "§2Easy Mode: §4All Players Died!"}]}
 execute if score reset easy matches 1 if score p_game easy matches 0 if score lift easy matches -40 if score start easy matches 2 run function game_functions/mode_easy/reset

@@ -1,6 +1,6 @@
 # = SYSTEM RUN =
 # - Open entrance door -
-execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 21 if score r3_timer_ms easy matches 1 run structure load mystructure:EasyTunnelDoor2  ~3 ~2 ~-8
+execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 21 if score r3_timer_ms easy matches 1 run structure load mystructure:EasyTunnelDoor2 ~3 ~2 ~-8
 execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 21 if score r3_timer_ms easy matches 10 run structure load mystructure:EasyTunnelDoor3 ~3 ~2 ~-8
 execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 21 if score r3_timer_ms easy matches 10 run playsound sfx.doors.tunnelopen @a[tag=easy] ~3.5 ~3 ~-8
 # - Level title -
@@ -43,6 +43,10 @@ execute if score r3_timer_ms easy matches 20.. run scoreboard players remove r3_
 execute if score r3_timer_ms easy matches 20.. run scoreboard players set r3_timer_ms easy 0
 execute if score r3_timer_s easy matches ..0 run scoreboard players add flood3 easy 1
 # // flood part
+execute as @s[type=brr:flood_room, name=easy_room3] at @s if score flood3 easy matches 1 if score r3_timer_s easy matches 3 if score r3_timer_ms easy matches 0 run playsound sfx.doors.opened @a[tag=easy] ~3.5 ~3 ~-8 1 0.7
+execute as @s[type=brr:flood_room, name=easy_room3] at @s if score flood3 easy matches 1 if score r3_timer_s easy matches 3 if score r3_timer_ms easy matches 0 run structure load mystructure:EasyTunnelDoor2 ~3 ~2 ~-8
+execute as @s[type=brr:flood_room, name=easy_room3] at @s if score flood3 easy matches 1 if score r3_timer_s easy matches 3 if score r3_timer_ms easy matches 5 run structure load mystructure:EasyTunnelDoor1 ~3 ~2 ~-8
+execute as @s[type=brr:flood_room, name=easy_room3] at @s if score flood3 easy matches 1 if score r3_timer_s easy matches 3 if score r3_timer_ms easy matches 5 run structure load mystructure:NuhUh ~3 ~2 ~-13
 execute as @s[type=brr:flood_room, name=easy_room3] at @s if score flood3 easy matches 1 if score r3_timer_s easy matches 0 run tellraw @a[tag=easy] {"rawtext":[{"text":"§3Water is rising!"}]}
 execute as @s[type=brr:flood_room, name=easy_room3] at @s if score flood3 easy matches 1 if score r3_timer_s easy matches 0 run structure load mystructure:EMR3V1F1 ~-6 ~2 ~-6 0_degrees none block_by_block 1
 execute as @s[type=brr:flood_room, name=easy_room3] at @s if score flood3 easy matches 2 if score r3_timer_s easy matches 0 run structure load mystructure:EMR3V1F2 ~-6 ~3 ~-6 0_degrees none block_by_block 1
