@@ -6,7 +6,7 @@ execute if score difficulty endless matches 1 run scoreboard players random room
 # // Level
 execute if score difficulty endless matches 1 if score room endless matches 1 run scoreboard players random variant endless 1 4
 execute if score difficulty endless matches 1 if score room endless matches 2 run scoreboard players random variant endless 1 4
-execute if score difficulty endless matches 1 if score room endless matches 3 run scoreboard players random variant endless 1 3
+execute if score difficulty endless matches 1 if score room endless matches 3 run scoreboard players random variant endless 1 4
 # = SCORES =
 execute if score difficulty endless matches 1 if score room endless matches 1 run scoreboard players set endless_timer_s endless 20
 execute if score difficulty endless matches 2 if score room endless matches 1 run scoreboard players set endless_timer_s endless 15

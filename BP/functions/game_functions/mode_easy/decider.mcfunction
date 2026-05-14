@@ -1,7 +1,7 @@
 # = ROOMS =
 scoreboard players random room1 easy 1 4
 scoreboard players random room2 easy 1 4
-scoreboard players random room3 easy 1 3
+scoreboard players random room3 easy 1 4
 # = EXIT ROOM =
 
 # = SCORES =
