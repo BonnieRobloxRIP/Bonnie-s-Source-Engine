@@ -1,0 +1,13 @@
+{
+	"texture_data": {
+		"brr_fe_spectate": {
+			"textures": "textures/items/spectate"
+		},
+		"brr_soda_red": {
+			"textures": "textures/items/red_soda"
+		},
+		"brr_soda_purple": {
+			"textures": "textures/items/soda"
+		}
+	}
+}

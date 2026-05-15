@@ -14,6 +14,12 @@
 		},
 		"brr_flood_button": {
 			"textures": "textures/blocks/flood_button_blue"
+		},
+		"brr_flood_exit_blue": {
+			"textures": "textures/blocks/exit_code_blue"
+		},
+		"brr_flood_exit_red": {
+			"textures": "textures/blocks/exit_code_red"
 		}
 	}
 }

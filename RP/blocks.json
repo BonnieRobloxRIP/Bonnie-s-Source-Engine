@@ -6,5 +6,8 @@
 	],
 	"brr:flood_button": {
 		"sound": "stone"
+	},
+	"brr:flood_exit_button": {
+		"sound": "stone"
 	}
 }
