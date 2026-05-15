@@ -10,7 +10,7 @@ execute as @a at @s run scoreboard players operation @s display_hard = @s storag
 execute as @a at @s run scoreboard players operation @s display_extreme = @s storage_extreme
 execute as @a at @s run scoreboard players operation @s display_endless = @s storage_endless
 # = ROTATE SCOREBOARD DISPLAY =
-scoreboard players add display lobby 1
+#scoreboard players add display lobby 1
 execute if score display lobby matches 1 run scoreboard objectives setdisplay belowname display_easy
 execute if score display lobby matches 1 run scoreboard objectives setdisplay sidebar display_easy
 execute if score display lobby matches 200 run scoreboard objectives setdisplay belowname display_medium

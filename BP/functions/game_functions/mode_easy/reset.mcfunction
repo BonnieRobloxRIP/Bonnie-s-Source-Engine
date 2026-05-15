@@ -10,7 +10,7 @@ scoreboard players set start easy 0
 scoreboard players set timer_s easy 20
 scoreboard players set timer_ms easy 0
 scoreboard players reset alarm easy
-structure load mystructure:EasyStateAvailable 5 93 49
+structure load "easy:EasyStateAvailable" 5 93 49
 # // game
 scoreboard players set r1_timer_ms easy 0
 scoreboard players set r1_timer_s easy 20
@@ -108,10 +108,10 @@ scoreboard players reset r2_transition easy
 scoreboard players reset r3_transition easy
 # = STRUCTURES =
 # // unload
-execute as @e[type=brr:flood_room, name=easy_room1] at @s run structure load mystructure:EasyRoom1 ~-7 ~1 ~-7
-execute as @e[type=brr:flood_room, name=easy_room2] at @s run structure load mystructure:Room2Remove ~-7 ~1 ~-7
-execute as @e[type=brr:flood_room, name=easy_room3] at @s run structure load mystructure:Room3Remove ~-16 ~1 ~-7
-structure load mystructure:EasyRoom1 1 -58 45
+execute as @e[type=brr:flood_room, name=easy_room1] at @s run structure load "easy/room1:EasyRoom1" ~-7 ~1 ~-7
+execute as @e[type=brr:flood_room, name=easy_room2] at @s run structure load "easy/room2:Room2Remove" ~-7 ~1 ~-7
+execute as @e[type=brr:flood_room, name=easy_room3] at @s run structure load "easy/room3:Room3Remove" ~-16 ~1 ~-7
+structure load "easy/room1:EasyRoom1" 1 -58 45
 # // kill
 execute as @e[type=brr:flood_room, name=easy_room1] at @s run kill @s
 execute as @e[type=brr:flood_room, name=easy_room2] at @s run kill @s

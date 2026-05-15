@@ -6,8 +6,11 @@ execute as @a[tag=easylift] at @s if score start easy matches 0 run titleraw @s 
 execute as @a[tag=easylift] at @s if score start easy matches 1 if score alarm easy matches 1 run titleraw @s actionbar {"rawtext":[{"text": "§2Lowering."}]}
 execute as @a[tag=easylift] at @s if score start easy matches 1 if score alarm easy matches 5 run titleraw @s actionbar {"rawtext":[{"text": "§2Lowering.."}]}
 execute as @a[tag=easylift] at @s if score start easy matches 1 if score alarm easy matches 10 run titleraw @s actionbar {"rawtext":[{"text": "§2Lowering..."}]}
-# // Normal
-
+# // Medium
+execute as @a[tag=mediumlift] at @s if score start medium matches 0 run titleraw @s actionbar {"rawtext":[{"text": "§eMedium Mode: §fLowering in §e§l"}, {"score": {"name": "timer_s", "objective": "medium"}}, {"text": "§r§f Seconds."}]}
+execute as @a[tag=mediumlift] at @s if score start medium matches 1 if score alarm medium matches 1 run titleraw @s actionbar {"rawtext":[{"text": "§eLowering."}]}
+execute as @a[tag=mediumlift] at @s if score start medium matches 1 if score alarm medium matches 5 run titleraw @s actionbar {"rawtext":[{"text": "§eLowering.."}]}
+execute as @a[tag=mediumlift] at @s if score start medium matches 1 if score alarm medium matches 10 run titleraw @s actionbar {"rawtext":[{"text": "§eLowering..."}]}
 # // Hard
 
 # // Extreme
@@ -18,7 +21,7 @@ execute as @a[tag=endlesslift] at @s if score start endless matches 1 run titler
 # = WHEN IN ELEVATOR & GAMEMODE IS FULL =
 # // Easy
 
-# // Normal
+# // Medium
 
 # // Hard
 
@@ -29,7 +32,7 @@ execute as @a[tag=endlesslift] at @s if score start endless matches 1 run titler
 # = WHEN IN-ROUND =
 # // Easy
 
-# // Normal
+# // Medium
 
 # // Hard
 

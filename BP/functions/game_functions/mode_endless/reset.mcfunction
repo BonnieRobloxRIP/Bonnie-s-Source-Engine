@@ -91,7 +91,7 @@ scoreboard players reset core_laser3 endless
 scoreboard players reset core_laser4 endless
 # = STRUCTURES =
 # // unload
-execute as @e[type=brr:flood_room, name=endless] at @s run structure load mystructure:EndlessRemove ~-16 ~1 ~-16
+execute as @e[type=brr:flood_room, name=endless] at @s run structure load "endless:EndlessRemove" ~-16 ~1 ~-16
 # // kill
 execute as @e[type=brr:flood_room, name=endless] at @s run kill @s
 # = PLAYERS =
@@ -100,4 +100,4 @@ tag @a[x=23, y=23, z=38, dx=0,dy=1,dz=0] remove endless
 tag @a[x=23, y=23, z=38, dx=0,dy=1,dz=0] remove endlesslift
 tag @a[x=23, y=23, z=38, dx=0,dy=1,dz=0] remove endlesstunnel
 # = FINISH =
-tellraw @a[tag=lobby] {"rawtext":[{"text":"§9Endless Mode has been Reset!"}]}
+tellraw @a[tag=lobby] {"rawtext":[{"text":"Â§9Endless Mode has been Reset!"}]}

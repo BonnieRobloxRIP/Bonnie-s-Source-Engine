@@ -3,7 +3,7 @@
 execute as @s[type=brr:flood_room, name=easy_room1_anchor] at @s if score loaded2 easy matches 0 run summon brr:flood_room ^4 ^-2 ^8 0 0 * easy_room2
 execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run kill @e[type=brr:flood_room, name=easy_room1_anchor]
 # // Level
-execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run structure load mystructure:EasyRoom2V4 ~-7 ~1 ~-7
+execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run structure load "easy/room2/4_extra_buttons:EasyRoom2V4" ~-7 ~1 ~-7
 # // Next Room Anchor
 execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy matches 0 run summon brr:flood_room ^-4 ^19 ^14 0 0 * easy_room2_anchor
 # // - Scores -
@@ -23,9 +23,9 @@ execute as @e[type=brr:flood_room, name=easy_room2] at @s if score loaded2 easy 
 # = LOADING ENDLESS =
 execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 1 run scoreboard players set loaded endless 0
 # // Level
-execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load mystructure:EasyTunnel ~-5 ~1 ~-14
-execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load mystructure:EasyRoom2 ~-7 ~1 ~-7
-execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load mystructure:EasyRoom2V4 ~-7 ~1 ~-7
+execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load "easy:EasyTunnel" ~-5 ~1 ~-14
+execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load "easy/room2:EasyRoom2" ~-7 ~1 ~-7
+execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load "easy/room2/4_extra_buttons:EasyRoom2V4" ~-7 ~1 ~-7
 # // - Scores -
 # // buttons
 execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run scoreboard players add R2B1 endless 0

@@ -7,8 +7,4 @@
 
 # // Extreme
 
-# // Endless
-
-# // Training
-
 # // Medium Mode's monorail segment

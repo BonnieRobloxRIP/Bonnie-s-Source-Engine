@@ -3,7 +3,7 @@
 execute as @s[type=brr:flood_room, name=easy_room2_anchor] at @s if score loaded3 easy matches 0 run summon brr:flood_room ^2 ^-3 ^8 0 0 * easy_room3
 execute as @e[type=brr:flood_room, name=easy_room3] at @s if score loaded3 easy matches 0 run kill @e[type=brr:flood_room, name=easy_room2_anchor]
 # // Level
-execute as @e[type=brr:flood_room, name=easy_room3] at @s if score loaded3 easy matches 0 run structure load mystructure:EasyRoom3V3 ~-7 ~1 ~-7
+execute as @e[type=brr:flood_room, name=easy_room3] at @s if score loaded3 easy matches 0 run structure load "easy/room3/3_power_core:EasyRoom3V3" ~-7 ~1 ~-7
 # // Exit Room Anchor
 # soon
 # // - Scores -
@@ -22,9 +22,9 @@ execute as @e[type=brr:flood_room, name=easy_room3] at @s if score loaded3 easy 
 # = LOADING ENDLESS =
 execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 1 run scoreboard players set loaded endless 0
 # // Level
-execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load mystructure:EasyTunnel ~-3 ~2 ~-14
-execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load mystructure:EasyRoom3 ~-7 ~1 ~-7
-execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load mystructure:EasyRoom3V3 ~-7 ~1 ~-7
+execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load "easy:EasyTunnel" ~-3 ~2 ~-14
+execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load "easy/room3:EasyRoom3" ~-7 ~1 ~-7
+execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run structure load "easy/room3/3_power_core:EasyRoom3V3" ~-7 ~1 ~-7
 # // - Scores -
 # // buttons
 execute as @s[type=brr:flood_room, name=endless] at @s if score loaded endless matches 0 run scoreboard players add R3B1 endless 0

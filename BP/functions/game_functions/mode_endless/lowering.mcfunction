@@ -11,16 +11,16 @@ execute if score start endless matches 1 if score lift endless matches 1 run sco
 execute if score start endless matches 1 if score lift endless matches 1 run summon brr:flood_room 76 -59 37 0 0 * endless
 execute if score start endless matches 1 if score lift endless matches 1 run effect @e[type=brr:flood_room] water_breathing infinite 255 true
 # // Lower door
-execute if score lift endless matches 1 run structure load mystructure:EndlessDoor 27 25 35
-execute if score lift endless matches 10 run structure load mystructure:EndlessDoor 27 24 35
-execute if score lift endless matches 20 run structure load mystructure:EndlessDoor 27 23 35
-execute if score lift endless matches 30 run structure load mystructure:EndlessDoor1 27 23 35
+execute if score lift endless matches 1 run structure load "endless:EndlessDoor" 27 25 35
+execute if score lift endless matches 10 run structure load "endless:EndlessDoor" 27 24 35
+execute if score lift endless matches 20 run structure load "endless:EndlessDoor" 27 23 35
+execute if score lift endless matches 30 run structure load "endless:EndlessDoor1" 27 23 35
 # // Open Door
-execute if score lift endless matches -1 run tellraw @a {"rawtext":[{"text":"§9Endless Mode: §4All players died!"}]}
-execute if score lift endless matches -1 run structure load mystructure:EndlessDoor 27 23 35
-execute if score lift endless matches -10 run structure load mystructure:EndlessDoor 27 24 35
-execute if score lift endless matches -20 run structure load mystructure:EndlessDoor 27 25 35
-execute if score lift endless matches -30 run structure load mystructure:EndlessDoor 27 26 35
+execute if score lift endless matches -1 run tellraw @a {"rawtext":[{"text":"Â§9Endless Mode: Â§4All players died!"}]}
+execute if score lift endless matches -1 run structure load "endless:EndlessDoor" 27 23 35
+execute if score lift endless matches -10 run structure load "endless:EndlessDoor" 27 24 35
+execute if score lift endless matches -20 run structure load "endless:EndlessDoor" 27 25 35
+execute if score lift endless matches -30 run structure load "endless:EndlessDoor" 27 26 35
 execute if score reset endless matches 1 if score lift endless matches -30 run function game_functions/mode_endless/reset
 # // hmmmm
 execute if score lift endless matches 30 run scoreboard players set started endless 1
