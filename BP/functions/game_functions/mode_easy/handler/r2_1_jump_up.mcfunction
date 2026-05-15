@@ -4,8 +4,8 @@ execute as @s[type=brr:flood_room, name=easy_room2] at @s if score started2 easy
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score started2 easy matches 1 if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 10 run structure load "easy:EasyTunnelDoor3" ~-3 ~4 ~-8
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score started2 easy matches 1 if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 10 run playsound sfx.doors.tunnelopen @a[tag=easy] ~-2.5 ~5 ~-8
 # - Level title -
-execute as @a[tag=easy] at @s if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 10 if score started2 easy matches 1 run title @a[tag=easy] subtitle Â§2Jump Up!
-execute as @a[tag=easy] at @s if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 10 if score started2 easy matches 1 run title @a[tag=easy] title Â§aROOM 2
+execute as @a[tag=easy] at @s if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 10 if score started2 easy matches 1 run title @a[tag=easy] subtitle §2Jump Up!
+execute as @a[tag=easy] at @s if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 10 if score started2 easy matches 1 run title @a[tag=easy] title §aROOM 2
 # - Test for buttons -
 # // Button 1
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score R2B1 easy matches 0 if block ^6 ^8 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run structure load "easy/room2/1_jump_up:EMR2V1M1" ^-4 ^4 ^-2 0_degrees none block_by_block 1
@@ -39,7 +39,7 @@ execute as @s[type=brr:flood_room, name=easy_room2] at @s if score R2B5 easy mat
 execute as @e[type=brr:flood_room, name=easy_room2] at @s if score R2B6 easy matches 0 if block ^-6 ^19 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players add R2B6a easy 1
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score R2B6 easy matches 0 if score R2B6a easy matches 1 if block ^-6 ^19 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run fill ^3 ^19 ^7 ^4 ^19 ^7 air
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score R2B6 easy matches 0 if score R2B6a easy matches 10 if block ^-6 ^19 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run fill ^3 ^20 ^7 ^4 ^20 ^7 air
-execute as @s[type=brr:flood_room, name=easy_room2] at @s if score R2B6 easy matches 0 if score R2B6a easy matches 10 if block ^-6 ^19 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run tellraw @a[tag=easy] {"rawtext":[{"text": "Â§aTunnel Gate has been Opened!"}]}
+execute as @s[type=brr:flood_room, name=easy_room2] at @s if score R2B6 easy matches 0 if score R2B6a easy matches 10 if block ^-6 ^19 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run tellraw @a[tag=easy] {"rawtext":[{"text": "§aTunnel Gate has been Opened!"}]}
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score R2B6 easy matches 0 if score R2B6a easy matches 10.. if block ^-6 ^19 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players set R2B6 easy 1
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score R2B6 easy matches 1 if score R2B6a easy matches 10.. if block ^-6 ^19 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players reset R2B6a easy
 # // - Flooding -
@@ -52,7 +52,7 @@ execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy m
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 3 if score r2_timer_ms easy matches 0 run structure load "easy:EasyTunnelDoor2" ~-3 ~4 ~-8
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 3 if score r2_timer_ms easy matches 5 run structure load "easy:EasyTunnelDoor1" ~-3 ~4 ~-8
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 3 if score r2_timer_ms easy matches 5 run structure load "easy:NuhUh" ~-3 ~4 ~-13
-execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 0 run tellraw @a[tag=easy] {"rawtext":[{"text":"Â§3Water is rising!"}]}
+execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 0 run tellraw @a[tag=easy] {"rawtext":[{"text":"§3Water is rising!"}]}
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 0 run fill ^3 ^3 ^3 ^-3 ^3 ^-3 air destroy
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 0 run playsound sfx.glassbreaking @a[tag=easy]
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score flood2 easy matches 1 if score r2_timer_s easy matches 0 run structure load "easy/room2/1_jump_up:EMR2V1F1" ~-6 ~3 ~-6 0_degrees none block_by_block 1

@@ -2,8 +2,6 @@
 scoreboard players random room1 easy 1 4
 scoreboard players random room2 easy 1 4
 scoreboard players random room3 easy 1 4
-# = EXIT ROOM =
-
 # = SCORES =
 scoreboard players set loaded1 easy 0
 scoreboard players set loaded2 easy 0
@@ -32,6 +30,7 @@ execute if score room3 easy matches 1 as @e[type=brr:flood_room, name=easy_room2
 execute if score room3 easy matches 2 as @e[type=brr:flood_room, name=easy_room2_anchor] at @s run function game_functions/mode_easy/room3/2_absurd_pipeline
 execute if score room3 easy matches 3 as @e[type=brr:flood_room, name=easy_room2_anchor] at @s run function game_functions/mode_easy/room3/3_power_core
 execute if score room3 easy matches 4 as @e[type=brr:flood_room, name=easy_room2_anchor] at @s run function game_functions/mode_easy/room3/4_wooden_highground
-
+# // exit room
+execute as @e[type=brr:flood_room, name=easy_room3_anchor] at @s run function game_functions/mode_easy/room_exit/exit_room
 
 effect @e[type=brr:flood_room] water_breathing infinite 255 true

@@ -5,7 +5,7 @@ execute as @e[type=brr:flood_room, name=easy_room3] at @s if score loaded3 easy 
 # // Level
 execute as @e[type=brr:flood_room, name=easy_room3] at @s if score loaded3 easy matches 0 run structure load "easy/room3/4_wooden_highground:EasyRoom3V4" ~-7 ~1 ~-7
 # // Exit Room Anchor
-# soon
+execute as @e[type=brr:flood_room, name=easy_room3] at @s if score loaded3 easy matches 0 run summon brr:flood_room ^9 ^19 ^4 0 0 * easy_room3_anchor
 # // - Scores -
 # // buttons
 execute as @e[type=brr:flood_room, name=easy_room3] at @s if score loaded3 easy matches 0 run scoreboard players add R3B1 easy 0

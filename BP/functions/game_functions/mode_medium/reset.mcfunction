@@ -102,10 +102,10 @@ scoreboard players reset r2_transition medium
 scoreboard players reset r3_transition medium
 # = STRUCTURES =
 # // unload
-execute as @e[type=brr:flood_room, name=medium_room1] at @s run structure load "medium:MediumRoom1" ~-7 ~1 ~-7
-execute as @e[type=brr:flood_room, name=medium_room2] at @s run structure load "easy/room2:Room2Remove" ~-7 ~1 ~-7 180_degrees
-execute as @e[type=brr:flood_room, name=medium_room3] at @s run structure load "easy/room3:Room3Remove" ~-16 ~1 ~-7 180_degrees
-structure load "medium:MediumRoom1" 1 -58 45
+execute as @e[type=brr:flood_room, name=medium_room1] at @s run structure load "medium/room1:MediumRoom1" ~-7 ~1 ~-14
+execute as @e[type=brr:flood_room, name=medium_room2] at @s run structure load "easy/room2:Room2Remove" ~-7 ~1 ~-14 180_degrees
+execute as @e[type=brr:flood_room, name=medium_room3] at @s run structure load "easy/room3:Room3Remove" ~-16 ~1 ~-14 180_degrees
+structure load "medium/room1:MediumRoom1" -7 -58 17
 # // kill
 execute as @e[type=brr:flood_room, name=medium_room1] at @s run kill @s
 execute as @e[type=brr:flood_room, name=medium_room2] at @s run kill @s

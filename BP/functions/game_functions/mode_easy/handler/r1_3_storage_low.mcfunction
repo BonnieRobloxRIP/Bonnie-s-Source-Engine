@@ -1,7 +1,7 @@
 # = SYSTEM RUN =
 # - Level title -
-execute as @a[tag=easy] at @s if score r1_timer_s easy matches 20 if score r1_timer_ms easy matches 10 if score started easy matches 1 run title @a[tag=easy] subtitle Â§2Storage Low
-execute as @a[tag=easy] at @s if score r1_timer_s easy matches 20 if score r1_timer_ms easy matches 10 if score started easy matches 1 run title @a[tag=easy] title Â§aROOM 1
+execute as @a[tag=easy] at @s if score r1_timer_s easy matches 20 if score r1_timer_ms easy matches 10 if score started easy matches 1 run title @a[tag=easy] subtitle §2Storage Low
+execute as @a[tag=easy] at @s if score r1_timer_s easy matches 20 if score r1_timer_ms easy matches 10 if score started easy matches 1 run title @a[tag=easy] title §aROOM 1
 execute as @a[tag=easy] at @s run tag @s add easy_music
 # - Test for buttons -
 # // Button 1
@@ -20,7 +20,7 @@ execute as @s[type=brr:flood_room, name=easy_room1] at @s if score R1B2 easy mat
 execute as @s[type=brr:flood_room, name=easy_room1] at @s if score R1B2 easy matches 0 if score R1B2a easy matches 10 if block ^6 ^21 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="west"] run structure load "easy/room1/3_storage_low:EMR1V3M2c" ^2 ^16 ^5 0_degrees none block_by_block 1
 execute as @s[type=brr:flood_room, name=easy_room1] at @s if score R1B2 easy matches 0 if score R1B2a easy matches 1 if block ^6 ^21 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="west"] run fill ^3 ^18 ^7 ^4 ^18 ^7 air
 execute as @s[type=brr:flood_room, name=easy_room1] at @s if score R1B2 easy matches 0 if score R1B2a easy matches 10 if block ^6 ^21 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="west"] run fill ^3 ^19 ^7 ^4 ^19 ^7 air
-execute as @s[type=brr:flood_room, name=easy_room1] at @s if score R1B2 easy matches 0 if score R1B2a easy matches 10 if block ^6 ^21 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="west"] run tellraw @a[tag=easy] {"rawtext":[{"text": "Â§aTunnel Gate has been Opened!"}]}
+execute as @s[type=brr:flood_room, name=easy_room1] at @s if score R1B2 easy matches 0 if score R1B2a easy matches 10 if block ^6 ^21 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="west"] run tellraw @a[tag=easy] {"rawtext":[{"text": "§aTunnel Gate has been Opened!"}]}
 execute as @s[type=brr:flood_room, name=easy_room1] at @s if score R1B2 easy matches 0 if score R1B2a easy matches 10.. if block ^6 ^21 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="west"] run scoreboard players set R1B2 easy 1
 execute as @s[type=brr:flood_room, name=easy_room1] at @s if score R1B2 easy matches 1 if score R1B2a easy matches 10.. if block ^6 ^21 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="west"] run scoreboard players reset R1B2a easy
 # // - Flooding -
@@ -29,7 +29,7 @@ execute if score r1_timer_ms easy matches 20.. run scoreboard players remove r1_
 execute if score r1_timer_ms easy matches 20.. run scoreboard players set r1_timer_ms easy 0
 execute if score r1_timer_s easy matches ..0 run scoreboard players add flood1 easy 1
 # // flood part
-execute as @s[type=brr:flood_room, name=easy_room1] at @s if score flood1 easy matches 1 if score r1_timer_s easy matches 0 run tellraw @a[tag=easy] {"rawtext":[{"text":"Â§3Water is rising!"}]}
+execute as @s[type=brr:flood_room, name=easy_room1] at @s if score flood1 easy matches 1 if score r1_timer_s easy matches 0 run tellraw @a[tag=easy] {"rawtext":[{"text":"§3Water is rising!"}]}
 execute as @s[type=brr:flood_room, name=easy_room1] at @s if score flood1 easy matches 1 if score r1_timer_s easy matches 0 run structure load "easy/room1/3_storage_low:EMR1V3F1" ~-6 ~2 ~-6 0_degrees none block_by_block 1
 execute as @s[type=brr:flood_room, name=easy_room1] at @s if score flood1 easy matches 2 if score r1_timer_s easy matches 0 run structure load "easy/room1/3_storage_low:EMR1V3F2" ~-6 ~3 ~-6 0_degrees none block_by_block 1
 execute as @s[type=brr:flood_room, name=easy_room1] at @s if score flood1 easy matches 3 if score r1_timer_s easy matches 0 run structure load "easy/room1/3_storage_low:EMR1V3F3" ~-6 ~4 ~-6 0_degrees none block_by_block 1

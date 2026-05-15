@@ -98,7 +98,8 @@ execute if score loaded endless matches 1 if score difficulty endless matches 1 
 execute if score started easy matches 1 run scoreboard players set p_game easy 0
 execute as @a[tag=easy] at @s if score started easy matches 1 run scoreboard players add p_game easy 1
 # // Medium
-
+execute if score started medium matches 1 run scoreboard players set p_game medium 0
+execute as @a[tag=medium] at @s if score started eamediumsy matches 1 run scoreboard players add p_game medium 1
 # // Hard
 
 # // Extreme
@@ -113,8 +114,12 @@ execute if score start easy matches 2 if score p_game easy matches 0 if score re
 execute if score reset easy matches 1 if score lift easy matches -1 if score start easy matches 2 if score p_game easy < p_amount easy unless score p_won easy matches 1.. run tellraw @a {"rawtext":[{"text": "§2Easy Mode: §4All Players Died!"}]}
 execute if score reset easy matches 1 if score lift easy matches -1 if score start easy matches 2 if score p_win easy < p_amount easy unless score p_won easy = p_amount easy if score p_game easy matches 1.. run tellraw @a {"rawtext":[{"text": "§2Easy Mode: §6Some Players Escaped!"}]}
 execute if score reset easy matches 1 if score lift easy matches -1 if score start easy matches 2 if score p_won easy = p_amount easy run tellraw @a {"rawtext":[{"text": "§2Easy Mode: §aAll Players Escaped!"}]}
-# // Mediumw
-
+# // Medium
+execute if score start medium matches 2 if score p_game medium matches 0 if score reset medium matches 0 run scoreboard players set lift medium 0
+execute if score start medium matches 2 if score p_game medium matches 0 if score reset medium matches 0 run scoreboard players set reset medium 1
+execute if score reset medium matches 1 if score lift medium matches -1 if score start medium matches 2 if score p_game medium < p_amount medium unless score p_won medium matches 1.. run tellraw @a {"rawtext":[{"text": "§eMedium Mode: §4All Players Died!"}]}
+execute if score reset medium matches 1 if score lift medium matches -1 if score start medium matches 2 if score p_win medium < p_amount medium unless score p_won medium = p_amount medium if score p_game medium matches 1.. run tellraw @a {"rawtext":[{"text": "§eMedium Mode: §6Some Players Escaped!"}]}
+execute if score reset medium matches 1 if score lift medium matches -1 if score start medium matches 2 if score p_won medium = p_amount medium run tellraw @a {"rawtext":[{"text": "§eMedium Mode: §aAll Players Escaped!"}]}
 # // Hard
 
 # // Extreme

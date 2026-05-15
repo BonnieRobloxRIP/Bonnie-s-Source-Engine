@@ -16,7 +16,7 @@ execute if score lift endless matches 10 run structure load "endless:EndlessDoor
 execute if score lift endless matches 20 run structure load "endless:EndlessDoor" 27 23 35
 execute if score lift endless matches 30 run structure load "endless:EndlessDoor1" 27 23 35
 # // Open Door
-execute if score lift endless matches -1 run tellraw @a {"rawtext":[{"text":"Â§9Endless Mode: Â§4All players died!"}]}
+execute if score lift endless matches -1 run tellraw @a {"rawtext":[{"text":"§9Endless Mode: §4All players died!"}]}
 execute if score lift endless matches -1 run structure load "endless:EndlessDoor" 27 23 35
 execute if score lift endless matches -10 run structure load "endless:EndlessDoor" 27 24 35
 execute if score lift endless matches -20 run structure load "endless:EndlessDoor" 27 25 35

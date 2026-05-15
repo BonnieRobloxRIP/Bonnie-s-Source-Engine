@@ -100,4 +100,4 @@ tag @a[x=23, y=23, z=38, dx=0,dy=1,dz=0] remove endless
 tag @a[x=23, y=23, z=38, dx=0,dy=1,dz=0] remove endlesslift
 tag @a[x=23, y=23, z=38, dx=0,dy=1,dz=0] remove endlesstunnel
 # = FINISH =
-tellraw @a[tag=lobby] {"rawtext":[{"text":"Â§9Endless Mode has been Reset!"}]}
+tellraw @a[tag=lobby] {"rawtext":[{"text":"§9Endless Mode has been Reset!"}]}

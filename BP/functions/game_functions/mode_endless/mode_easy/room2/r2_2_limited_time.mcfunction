@@ -5,8 +5,8 @@ execute as @s[type=brr:flood_room, name=endless] at @s if score started endless 
 execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 run playsound sfx.doors.tunnelopen @a[tag=endless] ~-3.5 ~3 ~-8
 execute as @a[tag=endless] at @s run tag @s add endless_music
 # - Level title -
-execute as @a[tag=endless] at @s if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 if score started endless matches 1 run title @a[tag=endless] subtitle Â§2Limited Time
-execute as @a[tag=endless] at @s if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 if score started endless matches 1 run titleraw @a[tag=endless] title {"rawtext":[{"text": "Â§aROOM "}, {"score":{"name": "room_count", "objective": "endless"}}]}
+execute as @a[tag=endless] at @s if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 if score started endless matches 1 run title @a[tag=endless] subtitle §2Limited Time
+execute as @a[tag=endless] at @s if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 if score started endless matches 1 run titleraw @a[tag=endless] title {"rawtext":[{"text": "§aROOM "}, {"score":{"name": "room_count", "objective": "endless"}}]}
 # - Test for buttons -
 # // Button 1
 execute as @s[type=brr:flood_room, name=endless] at @s if score R2B1 endless matches 0 if block ^-6 ^6 ^6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players add R2B1a endless 1
@@ -41,7 +41,7 @@ execute as @e[type=brr:flood_room, name=endless] at @s if score R2B5 endless mat
 execute as @s[type=brr:flood_room, name=endless] at @s if score R2B5 endless matches 0 if score R2B5a endless matches 1 if block ^6 ^11 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="south"] run structure load "easy/room2/2_limited_time:EMR2V2M5" ^-1 ^7 ^-1 0_degrees none block_by_block 2
 execute as @s[type=brr:flood_room, name=endless] at @s if score R2B5 endless matches 0 if score R2B5a endless matches 1 if block ^6 ^11 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="south"] run fill ^-4 ^19 ^7 ^-5 ^19 ^7 air
 execute as @s[type=brr:flood_room, name=endless] at @s if score R2B5 endless matches 0 if score R2B5a endless matches 10 if block ^6 ^11 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="south"] run fill ^-4 ^20 ^7 ^-5 ^20 ^7 air
-execute as @s[type=brr:flood_room, name=endless] at @s if score R2B5 endless matches 0 if score R2B5a endless matches 10 if block ^6 ^11 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="south"] run tellraw @a[tag=endless] {"rawtext":[{"text": "Â§aTunnel Gate has been Opened!"}]}
+execute as @s[type=brr:flood_room, name=endless] at @s if score R2B5 endless matches 0 if score R2B5a endless matches 10 if block ^6 ^11 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="south"] run tellraw @a[tag=endless] {"rawtext":[{"text": "§aTunnel Gate has been Opened!"}]}
 execute as @s[type=brr:flood_room, name=endless] at @s if score R2B5 endless matches 0 if score R2B5a endless matches 10.. if block ^6 ^11 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players set R2B5 endless 1
 execute as @s[type=brr:flood_room, name=endless] at @s if score R2B5 endless matches 1 if score R2B5a endless matches 10.. if block ^6 ^11 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players reset R2B5a endless
 # // - Flooding -
@@ -54,7 +54,7 @@ execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless ma
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 0 run structure load "easy:EasyTunnelDoor2" ~-4 ~2 ~-8
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 5 run structure load "easy:EasyTunnelDoor1" ~-4 ~2 ~-8
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 3 if score endless_timer_ms endless matches 5 run structure load "easy:NuhUh" ~-4 ~2 ~-13
-execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 0 run tellraw @a[tag=endless] {"rawtext":[{"text":"Â§3Water is rising!"}]}
+execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 0 run tellraw @a[tag=endless] {"rawtext":[{"text":"§3Water is rising!"}]}
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 1 if score endless_timer_s endless matches 0 run structure load "easy/room2/2_limited_time:EMR2V2F1" ~-6 ~2 ~-6 0_degrees none block_by_block 1
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 2 if score endless_timer_s endless matches 0 run structure load "easy/room2/2_limited_time:EMR2V2F2" ~-6 ~3 ~-6 0_degrees none block_by_block 1
 execute as @s[type=brr:flood_room, name=endless] at @s if score flood endless matches 3 if score endless_timer_s endless matches 0 run structure load "easy/room2/2_limited_time:EMR2V2F3" ~-6 ~4 ~-6 0_degrees none block_by_block 1

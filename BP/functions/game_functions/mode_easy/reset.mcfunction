@@ -87,6 +87,7 @@ scoreboard players reset core_laser4 easy
 scoreboard players set loaded1 easy 0
 scoreboard players set loaded2 easy 0
 scoreboard players set loaded3 easy 0
+scoreboard players set loaded4 easy 0
 scoreboard players reset flood1 easy
 scoreboard players reset flood2 easy
 scoreboard players reset flood3 easy
@@ -111,11 +112,13 @@ scoreboard players reset r3_transition easy
 execute as @e[type=brr:flood_room, name=easy_room1] at @s run structure load "easy/room1:EasyRoom1" ~-7 ~1 ~-7
 execute as @e[type=brr:flood_room, name=easy_room2] at @s run structure load "easy/room2:Room2Remove" ~-7 ~1 ~-7
 execute as @e[type=brr:flood_room, name=easy_room3] at @s run structure load "easy/room3:Room3Remove" ~-16 ~1 ~-7
+execute as @e[type=brr:flood_room, name=easy_exit] at @s run structure load "easy/exit_room:EasyExitRoomRemove" ~-5 ~-2 ~-7
 structure load "easy/room1:EasyRoom1" 1 -58 45
 # // kill
 execute as @e[type=brr:flood_room, name=easy_room1] at @s run kill @s
 execute as @e[type=brr:flood_room, name=easy_room2] at @s run kill @s
 execute as @e[type=brr:flood_room, name=easy_room3] at @s run kill @s
+execute as @e[type=brr:flood_room, name=easy_exit] at @s run kill @s
 # = PLAYERS =
 tp @a[tag=easy] 0 86 -16
 # = FINISH =
