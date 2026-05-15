@@ -32,7 +32,7 @@
 			"minecraft:material_instances": {
 				"*": {
 					"texture": "brr_flood_button_blue",
-					"render_method": "alpha_test"
+					"render_method": "blend"
 				}
 			},
 			"minecraft:item_visual": {
