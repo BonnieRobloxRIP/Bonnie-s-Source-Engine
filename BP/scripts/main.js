@@ -1,7 +1,9 @@
 import { world } from "@minecraft/server";
 import { registerFloodButtonSystems } from "./flood_button.js";
+import { registerFloodExitButtonSystems } from "./flood_exit_button.js";
 
 registerFloodButtonSystems();
+registerFloodExitButtonSystems();
 
 world.afterEvents.entityDie.subscribe((event) => {
 	try {

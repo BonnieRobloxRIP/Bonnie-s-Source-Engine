@@ -19,6 +19,7 @@ const FLOOD_BUTTON_FALLBACK_PLAYER_HEIGHT = 1.8;
 const FLOOD_BUTTON_CONFIG_TOOL_ITEM = "minecraft:blaze_rod";
 const FLOOD_BUTTON_PRESS_SOUND_ID = "flood_button.press";
 const FLOOD_BUTTON_SOUND_VARIANT_COUNT = 9;
+const FLOOD_BUTTON_EXIT_SOUND_VARIANT_COUNT = 4;
 
 const FLOOD_BUTTON_COLLISION_ORIGIN = { x: -7 / 16, y: 0, z: -7 / 16 };
 const FLOOD_BUTTON_COLLISION_SIZE = { x: 14 / 16, y: 4 / 16, z: 14 / 16 };
@@ -212,6 +213,14 @@ function getFloodButtonFace(block) {
 		return block.permutation.getState(FLOOD_BUTTON_FACE_STATE) ?? "up";
 	} catch {
 		return "up";
+	}
+}
+
+function getFloodButtonType(block) {
+	try {
+		return block.permutation.getState(FLOOD_BUTTON_TYPE_STATE) ?? "parkour";
+	} catch {
+		return "parkour";
 	}
 }
 
@@ -540,7 +549,12 @@ function spawnFloodButtonActivationParticles(block) {
 	}
 }
 
-function getRandomFloodButtonSoundId() {
+function getRandomFloodButtonSoundId(buttonType) {
+	if (buttonType === "exit") {
+		const soundIndex = Math.floor(Math.random() * FLOOD_BUTTON_EXIT_SOUND_VARIANT_COUNT) + 1;
+		return `flood_button.exit.${soundIndex}`;
+	}
+
 	const soundIndex = Math.floor(Math.random() * FLOOD_BUTTON_SOUND_VARIANT_COUNT) + 1;
 	return `flood_button.${soundIndex}`;
 }
@@ -552,9 +566,10 @@ function playFloodButtonActivationSound(block) {
 			y: block.location.y + 0.5,
 			z: block.location.z + 0.5,
 		};
+		const buttonType = getFloodButtonType(block);
 
 		block.dimension.playSound(FLOOD_BUTTON_PRESS_SOUND_ID, soundLocation);
-		block.dimension.playSound(getRandomFloodButtonSoundId(), soundLocation);
+		block.dimension.playSound(getRandomFloodButtonSoundId(buttonType), soundLocation);
 	} catch (error) {
 		console.warn(`[Flood Escape] Failed to play flood button activation sounds: ${error}`);
 	}
