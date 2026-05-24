@@ -1,0 +1,136 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:crafting_items_catalog": {
+    "categories": [
+      {
+        "category_name": "equipment",
+        "groups": [
+          {
+            "group_identifier": {
+              "icon": "brr:builder_copy",
+              "name": "brr:itemGroup.name.brr_tools"
+            },
+            "items": [
+              "brr:engine_locator",
+              "brr:builder_destroy",
+              "brr:builder_copy",
+              "brr:builder_fill",
+              "brr:builder_displace",
+              "brr:builder_shape",
+              "brr:builder_rotate",
+              "brr:dino_speecher"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:plush_brr",
+              "name": "brr:itemGroup.name.plushies"
+            },
+            "items": [
+              "brr:plush_brr",
+              "brr:plush_mmr",
+              "brr:plush_alastor",
+              "brr:plush_bs_colette",
+              "brr:plush_bs_janet",
+              "brr:plush_bs_melodie",
+              "brr:plush_fnf_tabi",
+              "brr:plush_niceninjapro",
+              "brr:plush_riverplayz",
+              "brr:plush_sans",
+              "brr:plush_seal",
+              "brr:plush_springtrap",
+              "brr:plush_tds_accelerator",
+              "brr:plush_tds_engineer",
+              "brr:plush_tensiveyt",
+              "brr:plush_velvette",
+              "brr:plush_william_afton"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:logic_auto",
+              "name": "brr:itemGroup.name.logic_blocks"
+            },
+            "items": [
+              "brr:logic_auto",
+              "brr:logic_branch",
+              "brr:logic_case",
+              "brr:logic_compare",
+              "brr:logic_coop_manager",
+              "brr:logic_random_outputs",
+              "brr:logic_timer"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:game_nametag",
+              "name": "brr:itemGroup.name.game_tools"
+            },
+            "items": [
+              "brr:game_nametag"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:gaussammo",
+              "name": "brr:itemGroup.name.ammo"
+            },
+            "items": [
+              "brr:9mmclip",
+              "brr:357_ammobox",
+              "brr:gaussammo"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:glock17",
+              "name": "brr:itemGroup.name.weapons"
+            },
+            "items": [
+              "brr:crowbar",
+              "brr:glock17",
+              "brr:magnum357",
+              "brr:gluon_gun",
+              "brr:tau_cannon"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:collar",
+              "name": "brr:itemGroup.name.cutie_pie"
+            },
+            "items": [
+              "brr:collar",
+              "brr:leash",
+              "brr:sit"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:info_playerspawn",
+              "name": "brr:itemGroup.name.info_blocks"
+            },
+            "items": [
+              "brr:info_playerspawn",
+              "brr:info_target_areaportal"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:tool_trigger",
+              "name": "brr:itemGroup.name.tool_blocks"
+            },
+            "items": [
+              "brr:tool_trigger",
+              "brr:tool_areaportal",
+              "brr:tool_invisible",
+              "brr:tool_blocklight",
+              "brr:tool_playerclip",
+              "brr:tool_npcclip"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

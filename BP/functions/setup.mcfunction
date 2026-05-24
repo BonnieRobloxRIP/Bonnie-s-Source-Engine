@@ -38,3 +38,6 @@ clearspawnpoint @a
 fill -16 -64 -16 16 -64 16 air
 setblock 0 0 0 brr:dev_measuregeneric02
 tp @a 0 1 0
+tag @s add host
+tellraw @s {"rawtext":[{"text": "You are now the host of the world under BRR standards. Added tag 'host' on you"}]}
+tellraw @s {"rawtext":[{"text": "Successfully turned the world into a proper BRR game template. All necessary gamerules have been changed. This is created for Flat Void Worlds only. Do not use in regular ones unless you know what you're doing"}]}

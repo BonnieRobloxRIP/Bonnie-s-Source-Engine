@@ -5,7 +5,6 @@
 			"identifier": "brr:gaussammo",
 			"menu_category": {
 				"category": "equipment",
-				"group": "brr:itemGroup.name.weapons_ammo",
 				"is_hidden_in_commands": false
 			}
 		},
