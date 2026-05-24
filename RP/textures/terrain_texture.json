@@ -1,0 +1,116 @@
+{
+	"num_mip_levels": 4,
+	"padding": 8,
+	"resource_pack_name": "Bonnie's Source Engine",
+	"texture_name": "atlas.terrain",
+	"texture_data": {
+		"brr_dev_measuregeneric01": {
+			"textures": "textures/blocks/dev_measuregeneric01"
+		},
+		"brr_dev_measuregeneric02": {
+			"textures": "textures/blocks/dev_measuregeneric02"
+		},
+		"brr_dev_measurewall01a": {
+			"textures": "textures/blocks/dev_measurewall01a"
+		},
+		"brr_dev_measurewall01d": {
+			"textures": "textures/blocks/dev_measurewall01d"
+		},
+		"nothing": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_dev_measuregeneric03": {
+			"textures": "textures/blocks/dev_measuregeneric03"
+		},
+		"brr_dev_measuregeneric04": {
+			"textures": "textures/blocks/dev_measuregeneric04"
+		},
+		"brr_dev_measurewall01b": {
+			"textures": "textures/blocks/dev_measurewall01b"
+		},
+		"brr_dev_measurewall01c": {
+			"textures": "textures/blocks/dev_measurewall01c"
+		},
+		"brr_tool_trigger": {
+			"textures": "textures/blocks/brr_trigger"
+		},
+		"brr_tool_areaportal": {
+			"textures": "textures/blocks/brr_areaPortal"
+		},
+		"brr_tool_invisible": {
+			"textures": "textures/blocks/brr_invisible"
+		},
+		"brr_data": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_data_collision": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_data_blocklight": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_info_target_areaportal_block": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_tool_blocklight": {
+			"textures": "textures/blocks/brr_blockLight"
+		},
+		"brr_tool_playerclip": {
+			"textures": "textures/blocks/brr_playerClip"
+		},
+		"brr_tool_npcclip": {
+			"textures": "textures/blocks/brr_npcClip"
+		},
+		"brr_plush_brr": {
+			"textures": "textures/blocks/bonnie_plush"
+		},
+		"brr_plush_mmr": {
+			"textures": "textures/blocks/marshmallow997_plush"
+		},
+		"brr_plush_tds_accelerator": {
+			"textures": "textures/blocks/accelerator_plush"
+		},
+		"brr_plush_alastor": {
+			"textures": "textures/blocks/alastor_plush"
+		},
+		"brr_plush_bs_colette": {
+			"textures": "textures/blocks/colette_plush"
+		},
+		"brr_plush_tds_engineer": {
+			"textures": "textures/blocks/engineer_plush"
+		},
+		"brr_plush_bs_janet": {
+			"textures": "textures/blocks/janet_plush"
+		},
+		"brr_plush_bs_melodie": {
+			"textures": "textures/blocks/melodie_plush"
+		},
+		"brr_plush_riverplayz": {
+			"textures": "textures/blocks/riverplayz_plush"
+		},
+		"brr_plush_sans": {
+			"textures": "textures/blocks/sans_plush"
+		},
+		"brr_plush_seal": {
+			"textures": "textures/blocks/seal_plush"
+		},
+		"brr_plush_springtrap": {
+			"textures": "textures/blocks/springtrap_plush"
+		},
+		"brr_plush_fnf_tabi": {
+			"textures": "textures/blocks/tabi_plush"
+		},
+		"brr_plush_william_afton": {
+			"textures": "textures/blocks/william_plush"
+		},
+		"brr_plush_tensiveyt": {
+			"textures": "textures/blocks/tensiveyt_plush"
+		},
+		"brr_plush_velvette": {
+			"textures": "textures/blocks/velvette_plush"
+		},
+		"brr_plush_niceninjapro": {
+			"textures": "textures/blocks/niceninjapro_plush"
+		}
+	}
+}
