@@ -1,0 +1,219 @@
+{
+  "namespace": "logic_branch",
+  "$schema": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/ui.schema.json",
+
+  "category_selection_pannel": {
+    "type": "panel",
+    "size": [200, 20],
+    "offset": ["66%", 46],
+    "anchor_from": "top_left",
+    "anchor_to": "top_right",
+    "controls": [
+      {
+        "toogle_none_selected": {
+          "type": "stack_panel",
+          "size": ["100%", "100%"],
+          "layer": 1,
+          "orientation": "horizontal",
+          "controls": [
+            { "select_catagory_toggle@server_form.select_catagory_toggle": { "$name": "toggleLBHome", "$text": "Class", "$index": 10, "$toggle_size": [75, 20], "$padding": [75, 20] } },
+            { "select_catagory_toggle@server_form.select_catagory_toggle": { "$name": "toggleLBInteract", "$text": "Branch", "$index": 11, "$toggle_size": [75, 20], "$padding": [75, 20] } },
+            { "select_catagory_toggle@server_form.select_catagory_toggle": { "$name": "toggleLBHit", "$text": "Output", "$index": 12, "$toggle_size": [75, 20], "$padding": [75, 20] } }
+          ]
+        }
+      }
+    ]
+  },
+
+  "category_content_panel": {
+    "type": "panel",
+    "size": ["48%", "100%"],
+    "layer": 6,
+    "offset": ["-10.5%", "21%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "controls": [
+      {
+        "class_screen": {
+          "type": "stack_panel",
+          "size": ["100%", "100%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "option_text_edit@server_form.option_text_edit": { "collection_index": 3 } },
+            { "slider_text": { "type": "label", "text": "" } },
+            { "option_text_edit2@server_form.option_text_edit": { "collection_index": 6 } },
+            { "slider_text2": { "type": "label", "text": "" } },
+            { "option_text_edit3@server_form.option_text_edit": { "collection_index": 7 } },
+            { "slider_text3": { "type": "label", "text": "" } },
+            { "option_text_edit4@server_form.option_text_edit": { "collection_index": 8 } },
+            { "slider_text4": { "type": "label", "text": "" } },
+            { "option_text_edit5@server_form.option_text_edit": { "collection_index": 10 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLBHome",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "class_screen3": {
+          "type": "stack_panel",
+          "size": ["77%", "100%"],
+          "offset": ["79.2%", "50%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "toggle_1@server_form.option_toggle": { "collection_index": 4 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLBHome",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "branch_screen": {
+          "type": "stack_panel",
+          "size": ["100%", "100%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "option_text_edit@server_form.option_text_edit": { "collection_index": 13 } },
+            { "slider_text": { "type": "label", "text": "" } },
+            { "option_text_edit2@server_form.option_text_edit": { "collection_index": 14 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLBInteract",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "branch_screen2": {
+          "type": "stack_panel",
+          "size": ["77%", "100%"],
+          "offset": ["79.2%", "-3% + 3px"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "slider_text": { "type": "label", "text": "" } },
+            { "option_dropdown@server_form.option_dropdown": { "collection_index": 5 } },
+            { "slider_text2": { "type": "label", "text": "" } },
+            { "option_dropdown2@server_form.option_dropdown": { "collection_index": 11 } },
+            { "slider_text3": { "type": "label", "text": "" } },
+            { "option_dropdown3@server_form.option_dropdown": { "collection_index": 12 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLBInteract",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "branch_screen3": {
+          "type": "stack_panel",
+          "size": ["77%", "100%"],
+          "offset": ["79.2%", "50%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "toggle_1@server_form.option_toggle": { "collection_index": 9 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLBInteract",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "output_screen": {
+          "type": "stack_panel",
+          "size": ["100%", "100%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "option_text_edit@server_form.option_text_edit": { "collection_index": 19 } },
+            { "slider_text": { "type": "label", "text": "" } },
+            { "option_text_edit2@server_form.option_text_edit": { "collection_index": 23 } },
+            { "slider_text2": { "type": "label", "text": "" } },
+            { "option_text_edit3@server_form.option_text_edit": { "collection_index": 24 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLBHit",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "output_screen2": {
+          "type": "stack_panel",
+          "size": ["77%", "100%"],
+          "offset": ["79.2%", "-3% + 3px"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "slider_text": { "type": "label", "text": "" } },
+            { "option_dropdown@server_form.option_dropdown": { "collection_index": 20 } },
+            { "slider_text2": { "type": "label", "text": "" } },
+            { "option_dropdown2@server_form.option_dropdown": { "collection_index": 21 } },
+            { "slider_text3": { "type": "label", "text": "" } },
+            { "option_dropdown3@server_form.option_dropdown": { "collection_index": 22 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLBHit",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "output_screen3": {
+          "type": "stack_panel",
+          "size": ["77%", "100%"],
+          "offset": ["79.2%", "50%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "toggle_1@server_form.option_toggle": { "collection_index": 18 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLBHit",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

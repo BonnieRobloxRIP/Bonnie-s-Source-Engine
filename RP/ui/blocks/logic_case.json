@@ -1,0 +1,235 @@
+{
+  "namespace": "logic_case",
+  "$schema": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/ui.schema.json",
+
+  "category_selection_pannel": {
+    "type": "panel",
+    "size": [220, 20],
+    "offset": ["66% + 21px", 46],
+    "anchor_from": "top_left",
+    "anchor_to": "top_right",
+    "controls": [
+      {
+        "toogle_none_selected": {
+          "type": "stack_panel",
+          "size": ["100%", "100%"],
+          "layer": 1,
+          "orientation": "horizontal",
+          "controls": [
+            { "select_catagory_toggle@server_form.select_catagory_toggle": { "$name": "toggleLCHome", "$text": "Class", "$index": 10, "$toggle_size": [55, 20], "$padding": [55, 20] } },
+            { "select_catagory_toggle@server_form.select_catagory_toggle": { "$name": "toggleLCInteract", "$text": "Cases", "$index": 11, "$toggle_size": [55, 20], "$padding": [55, 20] } },
+            { "select_catagory_toggle@server_form.select_catagory_toggle": { "$name": "toggleLCHit", "$text": "Output", "$index": 12, "$toggle_size": [55, 20], "$padding": [55, 20] } },
+            { "select_catagory_toggle@server_form.select_catagory_toggle": { "$name": "toggleLCExist", "$text": "Existing", "$index": 13, "$toggle_size": [55, 20], "$padding": [55, 20] } }
+          ]
+        }
+      }
+    ]
+  },
+
+  "category_content_panel": {
+    "type": "panel",
+    "size": ["48%", "100%"],
+    "layer": 6,
+    "offset": ["-10.5%", "21%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "controls": [
+      {
+        "class_screen": {
+          "type": "stack_panel",
+          "size": ["100%", "100%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "option_text_edit@server_form.option_text_edit": { "collection_index": 3 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLCHome",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "class_screen3": {
+          "type": "stack_panel",
+          "size": ["77%", "100%"],
+          "offset": ["79.2%", "50%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "toggle_1@server_form.option_toggle": { "collection_index": 4 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLCHome",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "cases_screen": {
+          "type": "stack_panel",
+          "size": ["100%", "100%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "option_text_edit@server_form.option_text_edit": { "collection_index": 10 } },
+            { "slider_text": { "type": "label", "text": "" } },
+            { "option_text_edit2@server_form.option_text_edit": { "collection_index": 11 } },
+            { "slider_text2": { "type": "label", "text": "" } },
+            { "option_text_edit3@server_form.option_text_edit": { "collection_index": 12 } },
+            { "slider_text3": { "type": "label", "text": "" } },
+            { "option_text_edit4@server_form.option_text_edit": { "collection_index": 14 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLCInteract",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "cases_screen2": {
+          "type": "stack_panel",
+          "size": ["77%", "100%"],
+          "offset": ["79.2%", "-3% + 3px"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "slider_text": { "type": "label", "text": "" } },
+            { "option_dropdown@server_form.option_dropdown": { "collection_index": 9 } },
+            { "slider_text2": { "type": "label", "text": "" } },
+            { "option_dropdown2@server_form.option_dropdown": { "collection_index": 13 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLCInteract",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "cases_screen3": {
+          "type": "stack_panel",
+          "size": ["77%", "100%"],
+          "offset": ["79.2%", "50%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "toggle_1@server_form.option_toggle": { "collection_index": 8 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLCInteract",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "output_screen": {
+          "type": "stack_panel",
+          "size": ["100%", "100%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "option_text_edit@server_form.option_text_edit": { "collection_index": 23 } },
+            { "slider_text": { "type": "label", "text": "" } },
+            { "option_text_edit2@server_form.option_text_edit": { "collection_index": 27 } },
+            { "slider_text2": { "type": "label", "text": "" } },
+            { "option_text_edit3@server_form.option_text_edit": { "collection_index": 28 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLCHit",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "output_screen2": {
+          "type": "stack_panel",
+          "size": ["77%", "100%"],
+          "offset": ["79.2%", "-3% + 3px"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "slider_text": { "type": "label", "text": "" } },
+            { "option_dropdown@server_form.option_dropdown": { "collection_index": 24 } },
+            { "slider_text2": { "type": "label", "text": "" } },
+            { "option_dropdown2@server_form.option_dropdown": { "collection_index": 25 } },
+            { "slider_text3": { "type": "label", "text": "" } },
+            { "option_dropdown3@server_form.option_dropdown": { "collection_index": 26 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLCHit",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "output_screen3": {
+          "type": "stack_panel",
+          "size": ["77%", "100%"],
+          "offset": ["79.2%", "50%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "toggle_1@server_form.option_toggle": { "collection_index": 22 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLCHit",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "existing_screen": {
+          "type": "stack_panel",
+          "size": ["100%", "100%"],
+          "orientation": "vertical",
+          "collection_name": "custom_form",
+          "controls": [
+            { "text_data@server_form.custom_label": { "collection_index": 18 } },
+            { "text_inputs_header@server_form.custom_label": { "collection_index": 34 } },
+            { "text_inputs@server_form.custom_label": { "collection_index": 36 } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "toggleLCExist",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

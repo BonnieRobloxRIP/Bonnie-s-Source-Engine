@@ -1,0 +1,96 @@
+tile.brr:tool_trigger.name=Trigger Tool
+tile.brr:tool_areaportal.name=Area Portal Tool
+tile.brr:tool_invisible.name=Invisible Tool
+tile.brr:tool_blocklight.name=Blocklight Tool
+tile.brr:tool_playerclip.name=Playerclip Tool
+tile.brr:tool_npcclip.name=NPC Clip Tool
+
+item.brr:info_playerspawn=info_playespawn
+item.brr:info_target_areaportal=info_target_areaportal
+item.brr:game_nametag=game_nametag
+item.brr:logic_auto=logic_auto
+item.brr:logic_branch=logic_branch
+item.brr:logic_case=logic_case
+item.brr:logic_compare=logic_compare
+item.brr:logic_coop_manager=logic_coop_manager
+item.brr:logic_random_outputs=logic_random_outputs
+item.brr:logic_timer=logic_timer
+
+tile.brr:dev_measuregeneric01.name=Developer Tile 01
+tile.brr:dev_measuregeneric02.name=Developer Tile 02
+tile.brr:dev_measuregeneric03.name=Developer Tile 03
+tile.brr:dev_measuregeneric04.name=Developer Tile 04
+tile.brr:dev_measurewall01a.name=Developer Wall 01a
+tile.brr:dev_measurewall01b.name=Developer Wall 01b
+tile.brr:dev_measurewall01c.name=Developer Wall 01c
+tile.brr:dev_measurewall01d.name=Developer Wall 01d
+
+tile.brr:data.name=data
+tile.brr:data_collision.name=data_collision
+tile.brr:data_blocklight.name=data_blocklight
+
+tile.brr:info_playerspawn_block.name=info_playerspawn_block
+tile.brr:info_target_areaportal_block.name=info_target_areaportal_block
+tile.brr:game_nametag_block.name=game_nametag_block
+tile.brr:logic_auto_block.name=logic_auto_block
+tile.brr:logic_branch_block.name=logic_branch_block
+tile.brr:logic_case_block.name=logic_case_block
+tile.brr:logic_compare_block.name=logic_compare_block
+tile.brr:logic_coop_manager_block.name=logic_coop_manager_block
+tile.brr:logic_random_outputs_block.name=logic_random_outputs_block
+tile.brr:logic_timer_block.name=logic_timer_block
+
+item.brr:dino_speecher=Dino Speecher
+item.brr:builder_copy=Builder Copy
+item.brr:builder_destroy=Builder Destroy
+item.brr:builder_displace=Builder Displace
+item.brr:builder_fill=Builder Fill
+item.brr:builder_rotate=Builder Rotate
+item.brr:builder_shape=Builder Shape
+item.brr:engine_locator=Engine Locator
+
+
+brr:itemGroup.name.dev_decor=Developer Decoration
+brr:itemGroup.name.tool_blocks=Tool Blocks
+brr:itemGroup.name.logic_blocks=Logic Blocks
+brr:itemGroup.name.info_blocks=Info Blocks
+brr:itemGroup.name.game_tools=Game Blocks
+brr:itemGroup.name.brr_tools=Builder Tools
+brr:itemGroup.name.ammo=Weapon Ammunition
+brr:itemGroup.name.weapons=Weapons
+brr:itemGroup.name.cutie_pie=Misc Unrelated Items
+brr:itemGroup.name.plushies=Plushies
+
+
+item.brr:gluon_gun=Gluon Gun
+item.brr:tau_cannon=Tau Cannon
+item.brr:crowbar=Crowbar
+item.brr:glock17=Glock 17
+item.brr:glock17_empty=Glock17 Empty
+item.brr:magnum357=Magnum .357
+item.brr:magnum357_empty=Magnum .357 Empty
+item.brr:gaussammo=Gauss Ammo
+item.brr:9mmclip=9mm Clip
+item.brr.collar.name=Collar
+item.brr.leash.name=Leash
+item.brr.sit.name=Sit
+action.hint.exit.player=Crouch to dismount
+
+item.brr:357_ammobox=357 Ammo Box
+tile.brr:plush_brr.name=BonnieRobloxRIP Plush
+tile.brr:plush_mmr.name=Marshmallow997 Plush
+tile.brr:plush_tds_accelerator.name=Accelerator TDS Plush
+tile.brr:plush_alastor.name=Alastor Plush
+tile.brr:plush_bs_colette.name=Colette Plush
+tile.brr:plush_tds_engineer.name=Engineer TDS Plush
+tile.brr:plush_bs_janet.name=Janet Plush
+tile.brr:plush_bs_melodie.name=Melodie Plush
+tile.brr:plush_riverplayz.name=Riverplayz Plush
+tile.brr:plush_sans.name=Sans Plush
+tile.brr:plush_seal.name=Seal Plush
+tile.brr:plush_springtrap.name=Springtrap Plush
+tile.brr:plush_fnf_tabi.name=Tabi Plush
+tile.brr:plush_william_afton.name=William Afton Plush
+tile.brr:plush_tensiveyt.name=TensiveYT Plush
+tile.brr:plush_velvette.name=Velvette Plush
+tile.brr:plush_niceninjapro.name=Niceninjapro
