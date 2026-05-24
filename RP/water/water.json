@@ -1,0 +1,26 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:water_settings": {
+        "description": {
+            "identifier": "minecraft:water"
+        },
+        "particle_concentrations": {
+            "chlorophyll": 0.01161,
+            "suspended_sediment": 0.313,
+            "cdom": 0.1
+        },
+        "waves": {
+            "enabled": true,
+            "frequency": 1.45,
+            "octaves": 12,
+            "depth": 0.115,
+            "speed": 5.85,
+            "pull": 0.69,
+            "mix": 0.35,
+            "frequency_scaling": 1.24,
+            "speed_scaling": 1.14,
+            "direction_increment": 151,
+            "shape": 1.4
+        }
+    }
+}

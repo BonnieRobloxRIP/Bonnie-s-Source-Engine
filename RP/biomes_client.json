@@ -1,0 +1,109 @@
+{
+    "biomes": {
+        "default": {
+            "fog_identifier": "brr:fog_default"
+        },
+        "ocean": {
+            "fog_identifier": "brr:fog_ocean"
+        },
+        "deep_ocean": {
+            "fog_identifier": "brr:fog_deep_ocean"
+        },
+        "cold_ocean": {
+            "fog_identifier": "brr:fog_ocean"
+        },
+        "deep_cold_ocean": {
+            "fog_identifier": "brr:fog_deep_ocean"
+        },
+        "lukewarm_ocean": {
+            "fog_identifier": "brr:fog_ocean"
+        },
+        "deep_lukewarm_ocean": {
+            "fog_identifier": "brr:fog_deep_ocean"
+        },
+        "warm_ocean": {
+            "fog_identifier": "brr:fog_ocean"
+        },
+        "frozen_ocean": {
+            "fog_identifier": "brr:fog_ocean"
+        },
+        "forest": {
+            "fog_identifier": "brr:fog_forest"
+        },
+        "birch_forest": {
+            "fog_identifier": "brr:fog_forest"
+        },
+        "roofed_forest": {
+            "fog_identifier": "brr:fog_forest"
+        },
+        "dark_forest": {
+            "fog_identifier": "brr:fog_forest"
+        },
+        "jungle": {
+            "fog_identifier": "brr:fog_forest"
+        },
+        "jungle_edge": {
+            "fog_identifier": "brr:fog_forest"
+        },
+        "bamboo_jungle": {
+            "fog_identifier": "brr:fog_forest"
+        },
+        "swampland": {
+            "fog_identifier": "brr:fog_swamp"
+        },
+        "mangrove_swamp": {
+            "fog_identifier": "brr:fog_swamp"
+        },
+        "desert": {
+            "fog_identifier": "brr:fog_desert"
+        },
+        "desert_hills": {
+            "fog_identifier": "brr:fog_desert"
+        },
+        "mesa": {
+            "fog_identifier": "brr:fog_desert"
+        },
+        "mesa_bryce": {
+            "fog_identifier": "brr:fog_desert"
+        },
+        "mesa_plateau": {
+            "fog_identifier": "brr:fog_desert"
+        },
+        "savanna": {
+            "fog_identifier": "brr:fog_desert"
+        },
+        "savanna_plateau": {
+            "fog_identifier": "brr:fog_desert"
+        },
+        "hell": {
+            "fog_identifier": "brr:fog_nether"
+        },
+        "soulsand_valley": {
+            "fog_identifier": "brr:fog_nether"
+        },
+        "crimson_forest": {
+            "fog_identifier": "brr:fog_nether"
+        },
+        "warped_forest": {
+            "fog_identifier": "brr:fog_nether"
+        },
+        "basalt_deltas": {
+            "fog_identifier": "brr:fog_nether"
+        },
+        "the_end": {
+            "fog_identifier": "brr:fog_end"
+        },
+        "small_end_islands": {
+            "fog_identifier": "brr:fog_end"
+        },
+        "end_midlands": {
+            "fog_identifier": "brr:fog_end"
+        },
+        "end_highlands": {
+            "fog_identifier": "brr:fog_end"
+        },
+        "end_barrens": {
+            "fog_identifier": "brr:fog_end"
+        }
+    }
+}

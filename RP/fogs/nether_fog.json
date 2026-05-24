@@ -1,0 +1,57 @@
+{
+    "format_version": "1.21.90",
+    "minecraft:fog_settings": {
+        "description": {
+            "identifier": "brr:fog_nether"
+        },
+        "distance": {
+            "air": {
+                "fog_start": 0.5,
+                "fog_end": 0.75,
+                "fog_color": "#8B4513",
+                "render_distance_type": "render"
+            },
+            "lava": {
+                "fog_start": 0.0,
+                "fog_end": 0.5,
+                "fog_color": "#FF6B1A",
+                "render_distance_type": "fixed"
+            },
+            "lava_resistance": {
+                "fog_start": 1.5,
+                "fog_end": 3.0,
+                "fog_color": "#FF6B1A",
+                "render_distance_type": "fixed"
+            }
+        },
+        "volumetric": {
+            "density": {
+                "air": {
+                    "max_density": 0.25,
+                    "uniform": false,
+                    "max_density_height": 40,
+                    "zero_density_height": 100
+                }
+            },
+            "media_coefficients": {
+                "air": {
+                    "scattering": [
+                        0.055,
+                        0.04,
+                        0.03
+                    ],
+                    "absorption": [
+                        0.03,
+                        0.02,
+                        0.015
+                    ]
+                }
+            },
+            "henyey_greenstein_g": {
+                "air": {
+                    "henyey_greenstein_g": 0.7
+                }
+            }
+        }
+    }
+}

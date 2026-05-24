@@ -1,0 +1,147 @@
+{
+	"format_version": [
+		1,
+		1,
+		0
+	],
+	"brr:tool_trigger": {
+		"sound": "stone"
+	},
+	"brr:tool_areaportal": {
+		"sound": "stone"
+	},
+	"brr:tool_invisible": {
+		"sound": "stone"
+	},
+	"brr:info_playerspawn_block": {
+		"sound": "stone"
+	},
+	"brr:info_target_areaportal_block": {
+		"sound": "stone"
+	},
+	"brr:game_nametag_block": {
+		"sound": "stone"
+	},
+	"brr:logic_auto_block": {
+		"sound": "stone"
+	},
+	"brr:logic_branch_block": {
+		"sound": "stone"
+	},
+	"brr:logic_case_block": {
+		"sound": "stone"
+	},
+	"brr:logic_compare_block": {
+		"sound": "stone"
+	},
+	"brr:logic_coop_manager_block": {
+		"sound": "stone"
+	},
+	"brr:logic_random_outputs_block": {
+		"sound": "stone"
+	},
+	"brr:logic_timer_block": {
+		"sound": "stone"
+	},
+	"brr:data": {
+		"sound": "stone"
+	},
+	"brr:data_collision": {
+		"sound": "stone"
+	},
+	"brr:dev_measuregeneric01": {
+		"sound": "stone",
+		"textures": "brr_dev_measuregeneric01"
+	},
+	"brr:dev_measuregeneric02": {
+		"sound": "stone",
+		"textures": "brr_dev_measuregeneric02"
+	},
+	"brr:dev_measuregeneric03": {
+		"sound": "stone",
+		"textures": "brr_dev_measuregeneric03"
+	},
+	"brr:dev_measuregeneric04": {
+		"sound": "stone",
+		"textures": "brr_dev_measuregeneric04"
+	},
+	"brr:dev_measurewall01a": {
+		"sound": "stone",
+		"textures": "brr_dev_measurewall01a"
+	},
+	"brr:dev_measurewall01b": {
+		"sound": "stone",
+		"textures": "brr_dev_measurewall01b"
+	},
+	"brr:dev_measurewall01c": {
+		"sound": "stone",
+		"textures": "brr_dev_measurewall01c"
+	},
+	"brr:dev_measurewall01d": {
+		"sound": "stone",
+		"textures": "brr_dev_measurewall01d"
+	},
+	"brr:data_blocklight": {
+		"sound": "stone"
+	},
+	"brr:tool_blocklight": {
+		"sound": "stone"
+	},
+	"brr:tool_playerclip": {
+		"sound": "stone"
+	},
+	"brr:tool_npcclip": {
+		"sound": "stone"
+	},
+	"brr:plush_brr": {
+		"sound": "cloth"
+	},
+	"brr:plush_mmr": {
+		"sound": "cloth"
+	},
+	"brr:plush_tds_accelerator": {
+		"sound": "cloth"
+	},
+	"brr:plush_alastor": {
+		"sound": "cloth"
+	},
+	"brr:plush_bs_colette": {
+		"sound": "cloth"
+	},
+	"brr:plush_tds_engineer": {
+		"sound": "cloth"
+	},
+	"brr:plush_bs_janet": {
+		"sound": "cloth"
+	},
+	"brr:plush_bs_melodie": {
+		"sound": "cloth"
+	},
+	"brr:plush_riverplayz": {
+		"sound": "cloth"
+	},
+	"brr:plush_sans": {
+		"sound": "cloth"
+	},
+	"brr:plush_seal": {
+		"sound": "cloth"
+	},
+	"brr:plush_springtrap": {
+		"sound": "cloth"
+	},
+	"brr:plush_fnf_tabi": {
+		"sound": "cloth"
+	},
+	"brr:plush_william_afton": {
+		"sound": "cloth"
+	},
+	"brr:plush_tensiveyt": {
+		"sound": "cloth"
+	},
+	"brr:plush_velvette": {
+		"sound": "cloth"
+	},
+	"brr:plush_niceninjapro": {
+		"sound": "cloth"
+	}
+}

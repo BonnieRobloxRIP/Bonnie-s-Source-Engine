@@ -1,0 +1,205 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:local_light_settings": {
+        "minecraft:light_block": {
+            "light_color": "#FFD55A",
+            "light_type": "static_light"
+        },
+        "minecraft:torch": {
+            "light_color": "#FFD55A",
+            "light_type": "point_light"
+        },
+        "minecraft:lantern": {
+            "light_color": "#FFD55A",
+            "light_type": "point_light"
+        },
+        "minecraft:soul_torch": {
+            "light_color": "#4cbcff",
+            "light_type": "point_light"
+        },
+        "minecraft:soul_lantern": {
+            "light_color": "#4cbcff",
+            "light_type": "point_light"
+        },
+        "minecraft:redstone_torch": {
+            "light_color": "#ff0000",
+            "light_type": "point_light"
+        },
+        "minecraft:end_rod": {
+            "light_color": "#FFFFFF",
+            "light_type": "point_light"
+        },
+        "minecraft:sea_lantern": {
+            "light_color": "#4cbcff",
+            "light_type": "static_light"
+        },
+        "minecraft:glowstone": {
+            "light_color": "#FFE28F",
+            "light_type": "static_light"
+        },
+        "minecraft:shroomlight": {
+            "light_color": "#FFAA63",
+            "light_type": "static_light"
+        },
+        "minecraft:magma": {
+            "light_color": "#FF5A1F",
+            "light_type": "static_light"
+        },
+        "minecraft:campfire": {
+            "light_color": "#FFB84B",
+            "light_type": "static_light"
+        },
+        "minecraft:soul_campfire": {
+            "light_color": "#59F0FF",
+            "light_type": "static_light"
+        },
+        "minecraft:ochre_froglight": {
+            "light_color": "#FFD55A",
+            "light_type": "static_light"
+        },
+        "minecraft:verdant_froglight": {
+            "light_color": "#b0ff57",
+            "light_type": "static_light"
+        },
+        "minecraft:pearlescent_froglight": {
+            "light_color": "#e491ff",
+            "light_type": "static_light"
+        },
+        "minecraft:copper_torch": {
+            "light_color": "#b0ff57",
+            "light_type": "point_light"
+        },
+        "minecraft:copper_lantern": {
+            "light_color": "#b0ff57",
+            "light_type": "point_light"
+        },
+        "brr:dyn_light_white": {
+            "light_color": "#FFFDF4",
+            "light_type": "point_light"
+        },
+        "brr:dyn_light_warm": {
+            "light_color": "#FFC66B",
+            "light_type": "point_light"
+        },
+        "brr:dyn_light_cyan": {
+            "light_color": "#56E8FF",
+            "light_type": "point_light"
+        },
+        "brr:dyn_light_red": {
+            "light_color": "#FF5959",
+            "light_type": "point_light"
+        },
+        "brr:dyn_light_green": {
+            "light_color": "#8EFF63",
+            "light_type": "point_light"
+        },
+        "brr:dyn_light_pink": {
+            "light_color": "#F2A4FF",
+            "light_type": "point_light"
+        },
+        "minecraft:beacon": {
+            "light_color": "#D5ECFF",
+            "light_type": "static_light"
+        },
+        "minecraft:conduit": {
+            "light_color": "#45E4FF",
+            "light_type": "static_light"
+        },
+        "minecraft:end_gateway": {
+            "light_color": "#D38CFF",
+            "light_type": "static_light"
+        },
+        "minecraft:end_portal": {
+            "light_color": "#A673FF",
+            "light_type": "static_light"
+        },
+        "minecraft:lava": {
+            "light_color": "#ff4a00",
+            "light_type": "static_light"
+        },
+        "minecraft:lava_cauldron": {
+            "light_color": "#ff4a00",
+            "light_type": "static_light"
+        },
+        "minecraft:fire": {
+            "light_color": "#e43300",
+            "light_type": "static_light"
+        },
+        "minecraft:furnace": {
+            "light_color": "#e43300",
+            "light_type": "static_light"
+        },
+        "minecraft:blast_furnace": {
+            "light_color": "#e43300",
+            "light_type": "static_light"
+        },
+        "minecraft:smoker": {
+            "light_color": "#e43300",
+            "light_type": "static_light"
+        },
+        "minecraft:portal": {
+            "light_color": "#B569FF",
+            "light_type": "static_light"
+        },
+        "minecraft:respawn_anchor": {
+            "light_color": "#5d00c5",
+            "light_type": "static_light"
+        },
+        "minecraft:crying_obsidian": {
+            "light_color": "#5d00c5",
+            "light_type": "static_light"
+        },
+        "minecraft:enchanting_table": {
+            "light_color": "#4cbcff",
+            "light_type": "static_light"
+        },
+        "minecraft:ender_chest": {
+            "light_color": "#6B53FF",
+            "light_type": "static_light"
+        },
+        "minecraft:sculk_catalyst": {
+            "light_color": "#6CF5FF",
+            "light_type": "static_light"
+        },
+        "minecraft:glow_lichen": {
+            "light_color": "#86F2D4",
+            "light_type": "static_light"
+        },
+        "minecraft:amethyst_cluster": {
+            "light_color": "#C48CFF",
+            "light_type": "static_light"
+        },
+        "minecraft:large_amethyst_bud": {
+            "light_color": "#C28AFF",
+            "light_type": "static_light"
+        },
+        "minecraft:medium_amethyst_bud": {
+            "light_color": "#C28AFF",
+            "light_type": "static_light"
+        },
+        "minecraft:small_amethyst_bud": {
+            "light_color": "#C28AFF",
+            "light_type": "static_light"
+        },
+        "minecraft:brewing_stand": {
+            "light_color": "#FFD791",
+            "light_type": "static_light"
+        },
+        "minecraft:dragon_egg": {
+            "light_color": "#8F77FF",
+            "light_type": "static_light"
+        },
+        "minecraft:end_portal_frame": {
+            "light_color": "#4cbcff",
+            "light_type": "static_light"
+        },
+        "minecraft:sculk_sensor": {
+            "light_color": "#4cbcff",
+            "light_type": "static_light"
+        },
+        "minecraft:sea_pickle": {
+            "light_color": "#00ff78",
+            "light_type": "static_light"
+        }
+    }
+}
