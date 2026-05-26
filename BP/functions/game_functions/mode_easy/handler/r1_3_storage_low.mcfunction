@@ -1,7 +1,7 @@
 # = SYSTEM RUN =
 # - Level title -
-execute as @a[tag=easy] at @s if score r1_timer_s easy matches 20 if score r1_timer_ms easy matches 10 if score started easy matches 1 run title @a[tag=easy] subtitle §2Storage Low
-execute as @a[tag=easy] at @s if score r1_timer_s easy matches 20 if score r1_timer_ms easy matches 10 if score started easy matches 1 run title @a[tag=easy] title §aROOM 1
+execute as @a[tag=easy] at @s if score r1_timer_s easy matches 21 if score r1_timer_ms easy matches 10 if score started easy matches 1 run title @a[tag=easy] subtitle §2Storage Low
+execute as @a[tag=easy] at @s if score r1_timer_s easy matches 21 if score r1_timer_ms easy matches 10 if score started easy matches 1 run title @a[tag=easy] title §aROOM 1
 execute as @a[tag=easy] at @s run tag @s add easy_music
 # - Test for buttons -
 # // Button 1

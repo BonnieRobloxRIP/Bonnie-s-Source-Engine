@@ -91,7 +91,7 @@ execute as @s[type=brr:flood_room, name=easy_room3] at @s if score flood3 easy m
 execute as @s[type=brr:flood_room, name=easy_room3] at @s if score flood3 easy matches 19 if score r3_timer_s easy matches 0 run structure load "easy/room3/3_power_core:EMR3V3F19" ~-6 ~20 ~-6 0_degrees none block_by_block 1
 # // flood end
 execute if score r3_timer_s easy matches ..0 run scoreboard players set r3_timer_s easy 4
-execute if score flood3 easy matches 18 if score r3_timer_ms easy matches 10 run scoreboard players set r3_end easy 1
+execute if score flood3 easy matches 19 if score r3_timer_ms easy matches 10 run scoreboard players set r3_end easy 1
 # // exit tunnel
 execute as @s[type=brr:flood_room, name=easy_room3] at @s run tag @a[tag=easy, x=~8, y=~20, z=~2, dx=6, dy=1, dz=1] add easytunnel3
 execute as @s[type=brr:flood_room, name=easy_room3] at @s run tag @a[tag=easy, x=~7, y=~20, z=~2, dx=0, dy=1, dz=1] remove easytunnel3

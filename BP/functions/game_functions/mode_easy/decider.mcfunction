@@ -6,7 +6,7 @@ scoreboard players random room3 easy 1 4
 scoreboard players set loaded1 easy 0
 scoreboard players set loaded2 easy 0
 scoreboard players set loaded3 easy 0
-scoreboard players set started4 easy 0
+scoreboard players set loaded4 easy 0
 # = Players =
 execute as @a[tag=easylift] at @s run tag @s add easy
 execute as @a[tag=easy] at @s run tag @s remove easylift

@@ -1,5 +1,5 @@
 # // Scores
-scoreboard players add fan lobby 1
+#scoreboard players add fan lobby 1
 execute if score fan lobby matches 6.. run scoreboard players set fan lobby 0
 # // Animations
 # // Fans

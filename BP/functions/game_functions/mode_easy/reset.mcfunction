@@ -13,11 +13,13 @@ scoreboard players reset alarm easy
 structure load "easy:EasyStateAvailable" 5 93 49
 # // game
 scoreboard players set r1_timer_ms easy 0
-scoreboard players set r1_timer_s easy 20
+scoreboard players set r1_timer_s easy 21
 scoreboard players set r2_timer_ms easy 0
 scoreboard players set r2_timer_s easy 21
 scoreboard players set r3_timer_ms easy 0
 scoreboard players set r3_timer_s easy 21
+scoreboard players set r4_timer_ms easy 0
+scoreboard players set r4_timer_s easy 31
 scoreboard players reset R1B1 easy
 scoreboard players reset R1B2 easy
 scoreboard players reset R1B3 easy
@@ -101,12 +103,25 @@ scoreboard players reset p_won easy
 scoreboard players reset r1_end easy
 scoreboard players reset r2_end easy
 scoreboard players reset r3_end easy
+scoreboard players reset r4_end easy
 scoreboard players reset p_tunnel1 easy
 scoreboard players reset p_tunnel2 easy
 scoreboard players reset p_tunnel3 easy
 scoreboard players reset r1_transition easy
 scoreboard players reset r2_transition easy
 scoreboard players reset r3_transition easy
+scoreboard players reset r4_transition easy
+scoreboard players reset left_code1 easy
+scoreboard players reset left_code2 easy
+scoreboard players reset left_code3 easy
+scoreboard players reset right_code1 easy
+scoreboard players reset right_code2 easy
+scoreboard players reset right_code3 easy
+scoreboard players reset code_match easy
+scoreboard players reset left_code easy
+scoreboard players reset right_code easy
+scoreboard players reset door easy
+scoreboard players reset exit_door easy
 # = STRUCTURES =
 # // unload
 execute as @e[type=brr:flood_room, name=easy_room1] at @s run structure load "easy/room1:EasyRoom1" ~-7 ~1 ~-7

@@ -87,7 +87,6 @@ execute if score r3_end easy matches 1 run scoreboard players add r3_transition 
 execute if score r3_transition easy matches 1 as @s[type=brr:flood_room, name=easy_room3] at @s run playsound sfx.doors.opened @a[tag=easy] ~8 ~19.5 ~4.5 1 0.7
 execute if score r3_transition easy matches 1 as @s[type=brr:flood_room, name=easy_room3] at @s run structure load "easy:EasyTunnelDoor2" ~8 ~19 ~4 270_degrees
 execute if score r3_transition easy matches 10 as @s[type=brr:flood_room, name=easy_room3] at @s run structure load "easy:EasyTunnelDoor1" ~8 ~19 ~4 270_degrees
-execute if score r3_transition easy matches 10 as @s[type=brr:flood_room, name=easy_room3] at @s positioned ~ ~2 ~ run fill ~-6 ~ ~-6 ~6 ~19 ~6 water
 execute if score r3_transition easy matches 10 run scoreboard players set started4 easy 1
 execute if score r3_transition easy matches 10.. run scoreboard players reset R3B1 easy
 execute if score r3_transition easy matches 10.. run scoreboard players reset R3B2 easy

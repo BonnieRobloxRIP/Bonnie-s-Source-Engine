@@ -16,6 +16,9 @@ function lobby_functions/animations/fans
 function lobby_functions/animations/lights
 # = TEMPORARY =
 execute as @a[tag=easy] at @s if block ~ ~ ~ water run kill @s
+execute as @a[tag=medium] at @s if block ~ ~ ~ water run kill @s
+execute as @a[tag=hard] at @s if block ~ ~ ~ water run kill @s
+execute as @a[tag=extreme] at @s if block ~ ~ ~ water run kill @s
 execute as @a[tag=endless] at @s if block ~ ~ ~ water run kill @s
 kill @a[tag=lobby, tag=!host, x=-12, y=-35, z=27, dx=23, dy=2, dz=29]
 

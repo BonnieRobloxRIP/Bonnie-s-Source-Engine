@@ -1,7 +1,7 @@
 # = HANDLES BOTH ENGINES AT ONCE =
 # - SCORES -
-scoreboard players add engine lobby 1
-scoreboard players add enginesound lobby 1
+#scoreboard players add engine lobby 1
+#scoreboard players add enginesound lobby 1
 execute if score enginesound lobby matches 42.. run scoreboard players set enginesound lobby 0
 execute if score engine lobby matches 19.. run scoreboard players set engine lobby 0
 # - ANIMATIONS -

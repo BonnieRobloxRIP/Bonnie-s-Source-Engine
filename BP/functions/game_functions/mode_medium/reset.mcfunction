@@ -13,11 +13,11 @@ scoreboard players reset alarm medium
 structure load "medium:MediumStateAvailable" -3 93 50
 # // game
 scoreboard players set r1_timer_ms medium 0
-scoreboard players set r1_timer_s medium 20
+scoreboard players set r1_timer_s medium 16
 scoreboard players set r2_timer_ms medium 0
-scoreboard players set r2_timer_s medium 21
+scoreboard players set r2_timer_s medium 16
 scoreboard players set r3_timer_ms medium 0
-scoreboard players set r3_timer_s medium 21
+scoreboard players set r3_timer_s medium 16
 scoreboard players reset R1B1 medium
 scoreboard players reset R1B2 medium
 scoreboard players reset R1B3 medium

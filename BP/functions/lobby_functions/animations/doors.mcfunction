@@ -33,8 +33,10 @@ execute if score doorright2 lobby matches 5.. run scoreboard players reset doorr
 execute if score ExtremeCenterDoor lobby matches 1 run scoreboard players add ecdoor lobby 1
 execute if score ExtremeCenterDoor lobby matches 3 run scoreboard players add ecdoor1 lobby 1
 execute if score ecdoor lobby matches 1 run structure load "lobby/doors:ExtremeCenterDoor1" -22 92 -19
+execute positioned -22 92 -18 as @a[tag=lobby, r=15] at @s if score ecdoor lobby matches 1 run  playsound heavy_metal_door.open @s
 execute if score ecdoor lobby matches 3 run structure load "lobby/doors:ExtremeCenterDoor1" -22 93 -19
 execute if score ecdoor lobby matches 5 run structure load "lobby/doors:ExtremeCenterDoor1" -22 94 -19
+execute positioned -22 92 -18 as @a[tag=lobby, r=15] at @s if score ecdoor1 lobby matches 1 run playsound heavy_metal_door.close @s
 execute if score ecdoor lobby matches 7 run structure load "lobby/doors:ExtremeCenterDoor1" -22 95 -19
 execute if score ecdoor lobby matches 7 run scoreboard players set ExtremeCenterDoor lobby 2
 execute if score ecdoor1 lobby matches 1 run structure load "lobby/doors:ExtremeCenterDoor1a" -22 95 -19

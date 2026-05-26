@@ -9,6 +9,7 @@ execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove easy_m
 execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove easytunnel1
 execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove easytunnel2
 execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove easytunnel3
+execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove easytunnel4
 execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove easylift
 execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove medium
 execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove medium_music
