@@ -136,5 +136,9 @@ execute as @e[type=brr:flood_room, name=easy_room3] at @s run kill @s
 execute as @e[type=brr:flood_room, name=easy_exit] at @s run kill @s
 # = PLAYERS =
 tp @a[tag=easy] 0 86 -16
+tp @a[tag=easylift2] 8 89 52
+gamemode a @a[tag=easylift2]
+tag @a[tag=spectator, tag=easylift2] remove spectator
+tag @a remove easylift2
 # = FINISH =
 tellraw @a[tag=lobby] {"rawtext":[{"text":"§aEasy Mode has been Reset!"}]}

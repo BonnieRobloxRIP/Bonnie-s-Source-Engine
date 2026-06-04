@@ -10,9 +10,9 @@ execute if score difficulty endless matches 1 if score room endless matches 1 ru
 execute if score difficulty endless matches 1 if score room endless matches 2 run scoreboard players random variant endless 1 4
 execute if score difficulty endless matches 1 if score room endless matches 3 run scoreboard players random variant endless 1 4
 # // Level = medium
-execute if score difficulty endless matches 2 if score room endless matches 1 run scoreboard players random variant endless 1 2
-execute if score difficulty endless matches 2 if score room endless matches 2 run scoreboard players set variant endless 1
-execute if score difficulty endless matches 2 if score room endless matches 3 run scoreboard players set variant endless 1
+execute if score difficulty endless matches 2 if score room endless matches 1 run scoreboard players random variant endless 1 3
+execute if score difficulty endless matches 2 if score room endless matches 2 run scoreboard players random variant endless 1 3
+execute if score difficulty endless matches 2 if score room endless matches 3 run scoreboard players random variant endless 1 3
 # = SCORES =
 execute if score difficulty endless matches 1 if score room endless matches 1..3 run scoreboard players set endless_timer_s endless 21
 execute if score difficulty endless matches 2 if score room endless matches 1..3 run scoreboard players set endless_timer_s endless 16
@@ -43,7 +43,7 @@ execute if score difficulty endless matches 2 if score room endless matches 1 if
 # // room 2
 execute if score difficulty endless matches 2 if score room endless matches 2 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_medium/room2/1_confusing_lines
 execute if score difficulty endless matches 2 if score room endless matches 2 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_medium/room2/2_advanced_tech
-execute if score difficulty endless matches 2 if score room endless matches 2 if score variant endless matches 3 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_medium/room2/3_mechanical_issue
+execute if score difficulty endless matches 2 if score room endless matches 2 if score variant endless matches 3 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_medium/room2/3_mechanical_bridges
 # // room 3
 execute if score difficulty endless matches 2 if score room endless matches 3 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_medium/room3/1_labyrinth
 execute if score difficulty endless matches 2 if score room endless matches 3 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_medium/room3/2_better_chances

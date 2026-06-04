@@ -78,6 +78,15 @@ scoreboard players reset R3B7a medium
 scoreboard players reset R3B8a medium
 scoreboard players reset R3B9a medium
 scoreboard players reset R3B10a medium
+scoreboard players reset R2C1 medium
+scoreboard players reset R2C2 medium
+scoreboard players reset R2C3 medium
+scoreboard players reset R2C4 medium
+scoreboard players reset R2C5 medium
+scoreboard players reset R2Code medium
+scoreboard players reset R2Code1 medium
+scoreboard players reset R2Animation medium
+scoreboard players reset R2Ambiance medium
 scoreboard players set loaded1 medium 0
 scoreboard players set loaded2 medium 0
 scoreboard players set loaded3 medium 0
@@ -100,6 +109,18 @@ scoreboard players reset p_tunnel3 medium
 scoreboard players reset r1_transition medium
 scoreboard players reset r2_transition medium
 scoreboard players reset r3_transition medium
+scoreboard players reset r4_transition medium
+scoreboard players reset left_code1 medium
+scoreboard players reset left_code2 medium
+scoreboard players reset left_code3 medium
+scoreboard players reset right_code1 medium
+scoreboard players reset right_code2 medium
+scoreboard players reset right_code3 medium
+scoreboard players reset code_match medium
+scoreboard players reset left_code medium
+scoreboard players reset right_code medium
+scoreboard players reset door medium
+scoreboard players reset exit_door medium
 # = STRUCTURES =
 # // unload
 execute as @e[type=brr:flood_room, name=medium_room1] at @s run structure load "medium/room1:MediumRoom1" ~-7 ~1 ~-14
@@ -112,5 +133,9 @@ execute as @e[type=brr:flood_room, name=medium_room2] at @s run kill @s
 execute as @e[type=brr:flood_room, name=medium_room3] at @s run kill @s
 # = PLAYERS =
 tp @a[tag=medium] 0 86 -16
+tp @a[tag=mediumlift2] 0 89 53
+gamemode a @a[tag=mediumlift2]
+tag @a[tag=spectator, tag=mediumlift2] remove spectator
+tag @a remove mediumlift2
 # = FINISH =
 tellraw @a[tag=lobby] {"rawtext":[{"text":"§eMedium Mode has been Reset!"}]}

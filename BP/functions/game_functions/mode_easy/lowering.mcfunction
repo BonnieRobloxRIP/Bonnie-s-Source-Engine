@@ -5,6 +5,7 @@ execute if score reset easy matches 1 run scoreboard players remove lift easy 1
 # = CORE EVENTS IN ORDER =
 # // - sound effects -
 execute if score lift easy matches 1 run playsound sfx.alarm.lift @a 8 91 52
+execute if score lift easy matches 1 run gamemode a @a[tag=easylift]
 # // silo door open
 execute if score lift easy matches 350 run playsound silo_door.open @a 8 -34 52
 execute if score lift easy matches 410 run stopsound @a silo_door.open
@@ -21,6 +22,8 @@ execute if score lift easy matches 15 run structure load "easy:EasyLiftDoor1" 6 
 execute if score lift easy matches 940 run structure load "easy:EasyLiftDoor2" 6 89 49
 execute if score lift easy matches 955 run structure load "easy:EasyLiftDoor3" 6 89 49
 # // lower the elevator
+execute if score lift easy matches 25 positioned 8 89 52 run playsound sfx.elevator.lift @a[r=20] ~ ~ ~
+execute if score lift easy matches 25 run playsound sfx.elevator.move @a[tag=easylift]
 execute if score lift easy matches 25 run structure load "lobby/elevators:MainElevator" 6 86 50
 execute if score lift easy matches 45 run structure load "lobby/elevators:MainElevator" 6 85 50
 execute if score lift easy matches 55 run structure load "lobby/elevators:MainElevator" 6 84 50
@@ -157,6 +160,8 @@ execute if score lift easy matches 485 run structure load "lobby/elevators:MainE
 execute if score lift easy matches 495 run structure load "lobby/elevators:MainElevator" 6 -43 50
 execute if score lift easy matches 505 run structure load "lobby/elevators:MainElevator" 6 -44 50
 execute if score lift easy matches 520 run structure load "lobby/elevators:MainElevator" 6 -45 50
+execute if score lift easy matches 520 run playsound sfx.elevator.stop @a[tag=easy]
+execute if score lift easy matches 520 run stopsound @a[tag=easy] sfx.elevator.move
 # // Release players
 execute if score lift easy matches 530 run playsound sfx.doors.liftsepparate @a 8 -49 52
 execute if score lift easy matches 530 run structure load "lobby/elevators:MainElevatorOpen1" 6 -49 50

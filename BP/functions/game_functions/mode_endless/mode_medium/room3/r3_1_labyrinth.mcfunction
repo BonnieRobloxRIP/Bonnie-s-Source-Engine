@@ -6,6 +6,7 @@ execute as @s[type=brr:flood_room, name=endless] at @s if score started endless 
 # - Level title -
 execute as @a[tag=endless] at @s if score endless_timer_s endless matches 16 if score endless_timer_ms endless matches 10 if score started endless matches 1 run title @a[tag=endless] subtitle §6Labyrinth
 execute as @a[tag=endless] at @s if score endless_timer_s endless matches 16 if score endless_timer_ms endless matches 10 if score started endless matches 1 run titleraw @a[tag=endless] title {"rawtext":[{"text": "§eROOM "}, {"score":{"name": "room_count", "objective": "endless"}}]}
+execute as @a[tag=endless] at @s run tag @s add endless_music
 # - Test for buttons -
 # // Button 1
 execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if block ^-6 ^3 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players add R3B1a endless 1

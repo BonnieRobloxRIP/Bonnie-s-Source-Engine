@@ -5,6 +5,7 @@ execute if score reset medium matches 1 run scoreboard players remove lift mediu
 # = CORE EVENTS IN ORDER =
 # // - sound effects -
 execute if score lift medium matches 1 run playsound sfx.alarm.lift @a 0 91 53
+execute if score lift medium matches 1 run gamemode a @a[tag=mediumlift]
 # // silo door open
 execute if score lift medium matches 720 run playsound silo_door.open @a 0 -34 31
 execute if score lift medium matches 840 run stopsound @a silo_door.open
@@ -166,6 +167,7 @@ execute as @a[tag=medium] at @s if score lift medium matches 580 run function ga
 execute if score lift medium matches 590 run structure load "lobby/elevators:MainElevator2" -2 -14 38
 execute as @a[tag=medium] at @s if score lift medium matches 590 run function game_functions/mode_medium/player_tp
 execute if score lift medium matches 600 run structure load "lobby/elevators:MainElevator2" -2 -14 37
+execute if score lift medium matches 600 run fill 1 -18 37 -1 -18 37 air
 execute as @a[tag=medium] at @s if score lift medium matches 600 run function game_functions/mode_medium/player_tp
 execute if score lift medium matches 610 run structure load "lobby/elevators:MainElevator2" -2 -14 36
 execute as @a[tag=medium] at @s if score lift medium matches 610 run function game_functions/mode_medium/player_tp
@@ -196,11 +198,12 @@ execute if score lift medium matches 690 run stopsound @a[tag=medium] sfx.elevat
 execute if score lift medium matches 690 run camerashake add @a[tag=medium] 0.3 0.5 positional 
 # // - Resuming the descend into the separate elevator shaft -
 execute if score lift medium matches 720 run playsound sfx.elevator.lift @a[tag=medium]
+execute if score lift medium matches 720 run playsound sfx.elevator.move @a[tag=mediumlift]
 execute if score lift medium matches 720 run structure load "lobby/elevators:MainElevator" -2 -15 29
-execute if score lift medium matches 740 run structure load "lobby/elevators:MainElevator" -2 -16 29
-execute if score lift medium matches 755 run structure load "lobby/elevators:MainElevator" -2 -17 29
-execute if score lift medium matches 765 run structure load "lobby/elevators:MainElevator" -2 -18 29
-execute if score lift medium matches 770 run structure load "lobby/elevators:MainElevator" -2 -19 29
+execute if score lift medium matches 735 run structure load "lobby/elevators:MainElevator" -2 -16 29
+execute if score lift medium matches 745 run structure load "lobby/elevators:MainElevator" -2 -17 29
+execute if score lift medium matches 755 run structure load "lobby/elevators:MainElevator" -2 -18 29
+execute if score lift medium matches 760 run structure load "lobby/elevators:MainElevator" -2 -19 29
 execute if score lift medium matches 775 run structure load "lobby/elevators:MainElevator" -2 -20 29
 execute if score lift medium matches 780 run structure load "lobby/elevators:MainElevator" -2 -21 29
 execute if score lift medium matches 785 run structure load "lobby/elevators:MainElevator" -2 -22 29
@@ -218,7 +221,7 @@ execute if score lift medium matches 840 run structure load "lobby/elevators:Mai
 execute if score lift medium matches 845 run structure load "lobby/elevators:MainElevator" -2 -34 29
 execute if score lift medium matches 850 run structure load "lobby/elevators:MainElevator" -2 -35 29
 # // Entering Room 1
-execute if score lift medium matches 850 run structure load "lobby:LiftBorderPrecaution" -3 -59 28
+execute if score lift medium matches 720 run structure load "lobby:LiftBorderPrecaution" -3 -59 28
 execute if score lift medium matches 855 run structure load "lobby/elevators:MainElevator" -2 -36 29
 execute if score lift medium matches 860 run structure load "lobby/elevators:MainElevator" -2 -37 29
 execute if score lift medium matches 865 run structure load "lobby/elevators:MainElevator" -2 -38 29
@@ -230,7 +233,7 @@ execute if score lift medium matches 895 run structure load "lobby/elevators:Mai
 execute if score lift medium matches 905 run structure load "lobby/elevators:MainElevator" -2 -44 29
 execute if score lift medium matches 920 run structure load "lobby/elevators:MainElevator" -2 -45 29
 execute if score lift medium matches 920 run playsound sfx.elevator.stop @a[tag=medium]
-execute if score lift medium matches 920 run stopsound @a[tag=medium] sfx.elevator.loop
+execute if score lift medium matches 920 run stopsound @a[tag=medium] sfx.elevator.move
 # // Release players
 execute if score lift medium matches 930 run playsound sfx.doors.liftsepparate @a 0 -49 31
 execute if score lift medium matches 930 run structure load "lobby/elevators:MainElevatorOpen1" -2 -49 29
@@ -435,15 +438,15 @@ execute if score alarm medium matches 4 run structure load "medium:MediumStateLo
 execute if score alarm medium matches 7 run structure load "medium:MediumStateLower3" -3 93 50
 execute if score alarm medium matches 10 run structure load "medium:MediumStateLower4" -3 93 50
 # // Sub-Engine Room Elevator Shaft Alarms
-execute if score alarm medium matches 1 run structure load "lobby/animated:MediumElevatorShaftAlarm1" -2 -11 36
-execute if score alarm medium matches 4 run structure load "lobby/animated:MediumElevatorShaftAlarm2" -2 -11 36
-execute if score alarm medium matches 7 run structure load "lobby/animated:MediumElevatorShaftAlarm3" -2 -11 36
-execute if score alarm medium matches 10 run structure load "lobby/animated:MediumElevatorShaftAlarm4" -2 -11 36
+execute if score alarm medium matches 1 run structure load "lobby/animated:mediumElevatorShaftAlarm1" -2 -11 36
+execute if score alarm medium matches 4 run structure load "lobby/animated:mediumElevatorShaftAlarm2" -2 -11 36
+execute if score alarm medium matches 7 run structure load "lobby/animated:mediumElevatorShaftAlarm3" -2 -11 36
+execute if score alarm medium matches 10 run structure load "lobby/animated:mediumElevatorShaftAlarm4" -2 -11 36
 execute if score alarm medium matches 12.. run scoreboard players set alarm medium 0
 # // change elevator status
 execute if score lift medium matches 1700 run scoreboard players set start medium 2
 execute if score lift medium matches 1700 run structure load "medium:MediumStateBusy" -3 93 50
-execute if score lift medium matches 1700 run structure load "lobby/animated:MediumElevatorShaftAlarmOff" -2 -11 36
+execute if score lift medium matches 1700 run structure load "lobby/animated:mediumElevatorShaftAlarmOff" -2 -11 36
 execute if score lift medium matches 1700 if score p_game medium matches 0 run scoreboard players set reset medium 1
 execute if score lift medium matches 1700 run scoreboard players set lift medium 0
 # = RESET =

@@ -1,22 +1,34 @@
 # = ELEVATOR TRIGGERS =
 # // Easy
-execute as @a[tag=lobby, tag=!easylift, x=6, y=89, z=50, dx=4, dy=3, dz=4] at @s unless score start easy matches 1..2 run tag @s add easylift
-execute as @a[tag=lobby, tag=!easylift, x=6, y=89, z=50, dx=4, dy=3, dz=4] at @s if score start easy matches 2 run title @s actionbar §2THERE'S A GAME CURRENTLY IN PROGRESS!
-execute as @a[tag=easylift, x=5, y=-33, z=48, dx=6, dy=129, dz=0] at @s run titleraw @s actionbar {"rawtext":[{"text": "§2Exiting Lift..."}]}
-execute as @a[tag=easylift, x=5, y=-33, z=48, dx=6, dy=129, dz=0] at @s run tag @s remove easylift
-execute as @a[tag=easylift, x=11, y=-33, z=50, dx=1, dy=129, dz=4] at @s run titleraw @s actionbar {"rawtext":[{"text": "§2Exiting Lift..."}]}
-execute as @a[tag=easylift, x=11, y=-33, z=50, dx=1, dy=129, dz=4] at @s run tag @s remove easylift
-execute as @a[tag=easylift, x=4, y=-33, z=50, dx=1, dy=129, dz=4] at @s run titleraw @s actionbar {"rawtext":[{"text": "§2Exiting Lift..."}]}
-execute as @a[tag=easylift, x=4, y=-33, z=50, dx=1, dy=129, dz=4] at @s run tag @s remove easylift
-execute as @a[tag=easylift, x=5, y=-33, z=55, dx=6, dy=129, dz=1] at @s run titleraw @s actionbar {"rawtext":[{"text": "§2Exiting Lift..."}]}
-execute as @a[tag=easylift, x=5, y=-33, z=55, dx=6, dy=129, dz=1] at @s run tag @s remove easylift
+execute as @a[tag=lobby, tag=easylift2] at @s if score start easy matches 2 run title @s actionbar §2THERE'S A GAME CURRENTLY IN PROGRESS!
+execute as @a[tag=lobby, tag=easylift2, hasitem={ item=brr:fe_spectate, quantity=0}] at @s if score start easy matches 2 run give @s brr:fe_spectate 1 0 {"minecraft:item_lock":{"mode": "lock_in_inventory"}}
+execute as @a[tag=easylift, tag=!spectator] at @s unless entity @s[x=5.5, y=23, z=49.5, dx=5, dy=68, dz=5] run titleraw @s actionbar {"rawtext":[{"text": "§2Exiting Lift..."}]}
+execute as @a[tag=easylift, tag=!spectator] at @s unless entity @s[x=5.5, y=23, z=49.5, dx=5, dy=68, dz=5] run tag @s remove easylift
+execute as @a[tag=easylift2, tag=!spectator] at @s unless entity @s[x=5.5, y=23, z=49.5, dx=5, dy=68, dz=5] run titleraw @s actionbar {"rawtext":[{"text": "§2Exiting Lift..."}]}
+execute as @a[tag=easylift2, tag=!spectator] at @s unless entity @s[x=5.5, y=23, z=49.5, dx=5, dy=68, dz=5] run tag @s remove easylift2
+execute as @a[tag=!spectator] at @s if entity @s[x=5.5, y=89, z=49.5, dx=5, dy=3, dz=5] unless score start easy matches 1..2 run tag @s add easylift
+execute as @a[tag=!spectator] at @s if entity @s[x=5.5, y=23, z=49.5, dx=5, dy=68, dz=5] if score start easy matches 1 unless score room1 easy matches 1.. run tag @s add easylift
+execute as @a[tag=!spectator] at @s if entity @s[x=5.5, y=89, z=49.5, dx=5, dy=3, dz=5] if score start easy matches 2 run tag @s add easylift2
 # // Medium
-execute as @a[tag=lobby, tag=!mediumlift, x=-2, y=89, z=51, dx=4, dy=3, dz=4] at @s unless score start medium matches 1..2 run tag @s add mediumlift
-execute as @a[tag=lobby, tag=!mediumlift, x=-2, y=89, z=51, dx=4, dy=3, dz=4] at @s if score start medium matches 2 run title @s actionbar §eTHERE'S A GAME CURRENTLY IN PROGRESS!
-execute as @a[tag=mediumlift, x=-3, y=-33, z=49, dx=6, dy=129, dz=0] at @s run titleraw @s actionbar {"rawtext":[{"text": "§eExiting Lift..."}]}
-execute as @a[tag=mediumlift, x=-3, y=-33, z=49, dx=6, dy=129, dz=0] at @s run tag @s remove mediumlift
+execute as @a[tag=lobby, tag=mediumlift2] at @s if score start medium matches 2 run title @s actionbar §eTHERE'S A GAME CURRENTLY IN PROGRESS!
+execute as @a[tag=lobby, tag=mediumlift2, hasitem={ item=brr:fe_spectate, quantity=0}] at @s if score start medium matches 2 run give @s brr:fe_spectate 1 0 {"minecraft:item_lock":{"mode": "lock_in_inventory"}}
+execute as @a[tag=mediumlift, tag=!spectator] at @s unless entity @s[x=-2.5, y=23, z=50.5, dx=5, dy=68, dz=5] run titleraw @s actionbar {"rawtext":[{"text": "§eExiting Lift..."}]}
+execute as @a[tag=mediumlift, tag=!spectator] at @s unless entity @s[x=-2.5, y=23, z=50.5, dx=5, dy=68, dz=5] run tag @s remove mediumlift
+execute as @a[tag=mediumlift2, tag=!spectator] at @s unless entity @s[x=-2.5, y=23, z=50.5, dx=5, dy=68, dz=5] run titleraw @s actionbar {"rawtext":[{"text": "§eExiting Lift..."}]}
+execute as @a[tag=mediumlift2, tag=!spectator] at @s unless entity @s[x=-2.5, y=23, z=50.5, dx=5, dy=68, dz=5] run tag @s remove mediumlift2
+execute as @a[tag=!spectator] at @s if entity @s[x=-2.5, y=89, z=50.5, dx=5, dy=3, dz=5] unless score start medium matches 1..2 run tag @s add mediumlift
+execute as @a[tag=!spectator] at @s if entity @s[x=-2.5, y=23, z=50.5, dx=5, dy=68, dz=5] if score start medium matches 1 unless score room1 medium matches 1.. run tag @s add mediumlift
+execute as @a[tag=!spectator] at @s if entity @s[x=-2.5, y=89, z=50.5, dx=5, dy=3, dz=5] if score start medium matches 2 run tag @s add mediumlift2
 # // Hard
-
+execute as @a[tag=lobby, tag=hardlift2] at @s if score start hard matches 2 run title @s actionbar §4THERE'S A GAME CURRENTLY IN PROGRESS!
+execute as @a[tag=lobby, tag=hardlift2, hasitem={ item=brr:fe_spectate, quantity=0}] at @s if score start hard matches 2 run give @s brr:fe_spectate 1 0 {"minecraft:item_lock":{"mode": "lock_in_inventory"}}
+execute as @a[tag=hardlift, tag=!spectator] at @s unless entity @s[x=-10.5, y=23, z=49.5, dx=5, dy=68, dz=5] run titleraw @s actionbar {"rawtext":[{"text": "§4Exiting Lift..."}]}
+execute as @a[tag=hardlift, tag=!spectator] at @s unless entity @s[x=-10.5, y=23, z=49.5, dx=5, dy=68, dz=5] run tag @s remove hardlift
+execute as @a[tag=hardlift2, tag=!spectator] at @s unless entity @s[x=-10.5, y=23, z=49.5, dx=5, dy=68, dz=5] run titleraw @s actionbar {"rawtext":[{"text": "§4Exiting Lift..."}]}
+execute as @a[tag=hardlift2, tag=!spectator] at @s unless entity @s[x=-10.5, y=23, z=49.5, dx=5, dy=68, dz=5] run tag @s remove hardlift2
+execute as @a[tag=!spectator] at @s if entity @s[x=-10.5, y=89, z=49.5, dx=5, dy=3, dz=5] unless score start hard matches 1..2 run tag @s add hardlift
+execute as @a[tag=!spectator] at @s if entity @s[x=-10.5, y=23, z=49.5, dx=5, dy=68, dz=5] if score start hard matches 1 unless score room1 hard matches 1.. run tag @s add hardlift
+execute as @a[tag=!spectator] at @s if entity @s[x=-10.5, y=89, z=49.5, dx=5, dy=3, dz=5] if score start hard matches 2 run tag @s add hardlift2
 # // Extreme
 
 # // Endless
@@ -43,7 +55,14 @@ execute if score timer_ms medium matches 20.. run scoreboard players set timer_m
 execute if score p_lift medium matches 0 run scoreboard players set timer_ms medium 19
 execute if score p_lift medium matches 0 run scoreboard players set timer_s medium 20
 # // Hard
-
+scoreboard players set p_lift hard 0
+execute as @a[tag=hardlift] at @s run scoreboard players add p_lift hard 1
+execute if score p_lift hard matches 1.. if score start hard matches 0 run scoreboard players add timer_ms hard 1
+execute if score timer_ms hard matches 20.. if score start hard matches 0 run scoreboard players remove timer_s hard 1
+execute if score timer_s hard matches 0 if score timer_ms hard matches 20.. run scoreboard players set start hard 1
+execute if score timer_ms hard matches 20.. run scoreboard players set timer_ms hard 0
+execute if score p_lift hard matches 0 run scoreboard players set timer_ms hard 19
+execute if score p_lift hard matches 0 run scoreboard players set timer_s hard 20
 # // Extreme
 
 # // Endless
@@ -80,11 +99,13 @@ execute if score started medium matches 1 if score room1 medium matches 2 as @e[
 execute if score started medium matches 1 if score room1 medium matches 3 as @e[type=brr:flood_room, name=medium_room1] at @s run function game_functions/mode_medium/handler/r1_3_dusty_bridges
 execute if score started2 medium matches 1 if score room2 medium matches 1 as @e[type=brr:flood_room, name=medium_room2] at @s run function game_functions/mode_medium/handler/r2_1_confusing_lines
 execute if score started2 medium matches 1 if score room2 medium matches 2 as @e[type=brr:flood_room, name=medium_room2] at @s run function game_functions/mode_medium/handler/r2_2_advanced_tech
-execute if score started2 medium matches 1 if score room2 medium matches 3 as @e[type=brr:flood_room, name=medium_room2] at @s run function game_functions/mode_medium/handler/r2_3_mechanical_issue
+execute if score started2 medium matches 1 if score room2 medium matches 3 as @e[type=brr:flood_room, name=medium_room2] at @s run function game_functions/mode_medium/handler/r2_3_mechanical_bridges
 execute if score started3 medium matches 1 if score room3 medium matches 1 as @e[type=brr:flood_room, name=medium_room3] at @s run function game_functions/mode_medium/handler/r3_1_labyrinth
 execute if score started3 medium matches 1 if score room3 medium matches 2 as @e[type=brr:flood_room, name=medium_room3] at @s run function game_functions/mode_medium/handler/r3_2_better_chances
 execute if score started3 medium matches 1 if score room3 medium matches 3 as @e[type=brr:flood_room, name=medium_room3] at @s run function game_functions/mode_medium/handler/r3_3_electric_tower
 # // Hard
+execute if score start hard matches 1 run function game_functions/mode_hard/lowering
+execute if score reset hard matches 1 run function game_functions/mode_hard/lowering
 
 # // Extreme
 
@@ -110,7 +131,7 @@ execute if score loaded endless matches 1 if score difficulty endless matches 2 
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 1 if score variant endless matches 3 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room1/r1_3_dusty_bridges
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 2 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room2/r2_1_confusing_lines
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 2 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room2/r2_2_advanced_tech
-execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 2 if score variant endless matches 3 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room2/r2_3_mechanical_issue
+execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 2 if score variant endless matches 3 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room2/r2_3_mechanical_bridges
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 3 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room3/r3_1_labyrinth
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 3 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room3/r3_2_better_chances
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 3 if score variant endless matches 3 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room3/r3_3_electric_tower
@@ -122,7 +143,8 @@ execute as @a[tag=easy] at @s if score started easy matches 1 run scoreboard pla
 execute if score started medium matches 1 run scoreboard players set p_game medium 0
 execute as @a[tag=medium] at @s if score started medium matches 1 run scoreboard players add p_game medium 1
 # // Hard
-
+execute if score started hard matches 1 run scoreboard players set p_game hard 0
+execute as @a[tag=hard] at @s if score started hard matches 1 run scoreboard players add p_game hard 1
 # // Extreme
 
 # // Endless
@@ -142,7 +164,11 @@ execute if score reset medium matches 1 if score lift medium matches -1 if score
 execute if score reset medium matches 1 if score lift medium matches -1 if score start medium matches 2 if score p_win medium < p_amount medium unless score p_won medium = p_amount medium if score p_game medium matches 1.. run tellraw @a {"rawtext":[{"text": "§eMedium Mode: §6Some Players Escaped!"}]}
 execute if score reset medium matches 1 if score lift medium matches -1 if score start medium matches 2 if score p_won medium = p_amount medium run tellraw @a {"rawtext":[{"text": "§eMedium Mode: §aAll Players Escaped!"}]}
 # // Hard
-
+execute if score start hard matches 2 if score p_game hard matches 0 if score reset hard matches 0 run scoreboard players set lift hard 0
+execute if score start hard matches 2 if score p_game hard matches 0 if score reset hard matches 0 run scoreboard players set reset hard 1
+execute if score reset hard matches 1 if score lift hard matches -1 if score start hard matches 2 if score p_game hard < p_amount hard unless score p_won hard matches 1.. run tellraw @a {"rawtext":[{"text": "§4§lHard Mode: §r§4All Players Died!"}]}
+execute if score reset hard matches 1 if score lift hard matches -1 if score start hard matches 2 if score p_win hard < p_amount hard unless score p_won hard = p_amount hard if score p_game hard matches 1.. run tellraw @a {"rawtext":[{"text": "§4§lHard Mode: §r§6Some Players Escaped!"}]}
+execute if score reset hard matches 1 if score lift hard matches -1 if score start hard matches 2 if score p_won hard = p_amount hard run tellraw @a {"rawtext":[{"text": "§4§lHard Mode: §r§aAll Players Escaped!"}]}
 # // Extreme
 
 # // Endless
@@ -158,3 +184,8 @@ execute as @a[tag=mediumtunnel3] at @s run scoreboard players add @s storage_med
 execute as @a[tag=mediumtunnel3] at @s run scoreboard players add p_won medium 1
 execute as @a[tag=mediumtunnel3] at @s run tellraw @a {"rawtext":[{"text": "§e§lMedium mode:§b "}, {"selector": "@s"}, {"text": " §r§6Escaped the Facility!"}]}
 execute as @a[tag=mediumtunnel3] at @s run tp @s 0 86 -16
+
+execute as @a[tag=hardtunnel3] at @s run scoreboard players add @s storage_hard 1
+execute as @a[tag=hardtunnel3] at @s run scoreboard players add p_won hard 1
+execute as @a[tag=hardtunnel3] at @s run tellraw @a {"rawtext":[{"text": "§4§lHard mode:§b "}, {"selector": "@s"}, {"text": " §r§6Escaped the Facility!"}]}
+execute as @a[tag=hardtunnel3] at @s run tp @s 0 86 -16

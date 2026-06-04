@@ -1,7 +1,7 @@
 # = ROOMS =
-scoreboard players random room1 medium 1 2
-scoreboard players set room2 medium 1
-scoreboard players set room3 medium 1
+scoreboard players random room1 medium 1 3
+scoreboard players random room2 medium 1 3
+scoreboard players random room3 medium 1 3
 # = EXIT ROOM =
 
 # = SCORES =
@@ -24,7 +24,7 @@ execute if score room1 medium matches 3 as @e[type=brr:flood_room, name=medium_r
 # // room 2
 execute if score room2 medium matches 1 as @e[type=brr:flood_room, name=medium_room1_anchor] at @s run function game_functions/mode_medium/room2/1_confusing_lines
 execute if score room2 medium matches 2 as @e[type=brr:flood_room, name=medium_room1_anchor] at @s run function game_functions/mode_medium/room2/2_advanced_tech
-execute if score room2 medium matches 3 as @e[type=brr:flood_room, name=medium_room1_anchor] at @s run function game_functions/mode_medium/room2/3_mechanical_issue
+execute if score room2 medium matches 3 as @e[type=brr:flood_room, name=medium_room1_anchor] at @s run function game_functions/mode_medium/room2/3_mechanical_bridges
 # // room 3
 execute if score room3 medium matches 1 as @e[type=brr:flood_room, name=medium_room2_anchor] at @s run function game_functions/mode_medium/room3/1_labyrinth
 execute if score room3 medium matches 2 as @e[type=brr:flood_room, name=medium_room2_anchor] at @s run function game_functions/mode_medium/room3/2_better_chances
