@@ -14,6 +14,7 @@ function lobby_functions/animations/elevators
 function lobby_functions/animations/engines
 function lobby_functions/animations/fans
 function lobby_functions/animations/lights
+function lobby_functions/misc/global_sfx
 # = TEMPORARY =
 execute as @a[tag=easy] at @s if block ~ ~ ~ water run kill @s
 execute as @a[tag=medium] at @s if block ~ ~ ~ water run kill @s
@@ -26,3 +27,7 @@ scoreboard players add button lobby 1
 execute if score button lobby matches 1 run setblock 12 89 48 brr:flood_button["minecraft:block_face"="up"]
 execute if score button lobby matches 1 run setblock 11 90 48 brr:flood_button["minecraft:block_face"="north"]
 execute if score button lobby matches 100.. run scoreboard players reset button lobby
+
+#gamemode c @a[tag=host, tag=!easy, tag=!medium, tag=!hard]
+
+

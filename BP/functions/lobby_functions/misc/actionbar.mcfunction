@@ -12,7 +12,10 @@ execute as @a[tag=mediumlift] at @s if score start medium matches 1 if score ala
 execute as @a[tag=mediumlift] at @s if score start medium matches 1 if score alarm medium matches 5 run titleraw @s actionbar {"rawtext":[{"text": "§eLowering.."}]}
 execute as @a[tag=mediumlift] at @s if score start medium matches 1 if score alarm medium matches 10 run titleraw @s actionbar {"rawtext":[{"text": "§eLowering..."}]}
 # // Hard
-
+execute as @a[tag=hardlift] at @s if score start hard matches 0 run titleraw @s actionbar {"rawtext":[{"text": "§4§lHard Mode: §r§fLowering in §4§l"}, {"score": {"name": "timer_s", "objective": "hard"}}, {"text": "§r§f Seconds."}]}
+execute as @a[tag=hardlift] at @s if score start hard matches 1 if score alarm hard matches 1 run titleraw @s actionbar {"rawtext":[{"text": "§4Lowering."}]}
+execute as @a[tag=hardlift] at @s if score start hard matches 1 if score alarm hard matches 5 run titleraw @s actionbar {"rawtext":[{"text": "§4Lowering.."}]}
+execute as @a[tag=hardlift] at @s if score start hard matches 1 if score alarm hard matches 10 run titleraw @s actionbar {"rawtext":[{"text": "§4Lowering..."}]}
 # // Extreme
 
 # // Endless
