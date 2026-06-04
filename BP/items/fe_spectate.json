@@ -1,0 +1,16 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:fe_spectate",
+			"menu_category": {
+				"category": "items",
+				"group": "brr:itemGroup.name.FE",
+				"is_hidden_in_commands": false
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_fe_spectate"
+		}
+	}
+}

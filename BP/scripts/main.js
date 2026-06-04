@@ -1,14 +1,45 @@
 import { world } from "@minecraft/server";
 import { registerFloodButtonSystems } from "./flood_button.js";
 import { registerFloodExitButtonSystems } from "./flood_exit_button.js";
+import { registerItemSystems } from "./items.js";
+
+const DEAD_PLAYER_SOUND_IDS = [
+	"sfx.ambiance.dead_player.1",
+	"sfx.ambiance.dead_player.2",
+	"sfx.ambiance.dead_player.3",
+];
+
+function getRandomDeadPlayerSoundId() {
+	const randomIndex = Math.floor(Math.random() * DEAD_PLAYER_SOUND_IDS.length);
+	return DEAD_PLAYER_SOUND_IDS[randomIndex];
+}
+
+function playDeadPlayerAmbianceForAllPlayers() {
+	const soundId = getRandomDeadPlayerSoundId();
+
+	for (const player of world.getAllPlayers()) {
+		try {
+			player.runCommand(`playsound ${soundId} @s`);
+		} catch {
+			// Keep death ambiance silent on failure to avoid log spam.
+		}
+	}
+}
 
 registerFloodButtonSystems();
 registerFloodExitButtonSystems();
+registerItemSystems();
 
 world.afterEvents.entityDie.subscribe((event) => {
 	try {
 		const deadEntity = event.deadEntity;
-		if (deadEntity.typeId !== "minecraft:player" || !deadEntity.hasTag("endless")) {
+		if (deadEntity.typeId !== "minecraft:player") {
+			return;
+		}
+
+		playDeadPlayerAmbianceForAllPlayers();
+
+		if (!deadEntity.hasTag("endless")) {
 			return;
 		}
 
