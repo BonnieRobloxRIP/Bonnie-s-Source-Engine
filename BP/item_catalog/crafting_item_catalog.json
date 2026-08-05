@@ -7,47 +7,6 @@
         "groups": [
           {
             "group_identifier": {
-              "icon": "brr:builder_copy",
-              "name": "brr:itemGroup.name.brr_tools"
-            },
-            "items": [
-              "brr:engine_locator",
-              "brr:builder_destroy",
-              "brr:builder_copy",
-              "brr:builder_fill",
-              "brr:builder_displace",
-              "brr:builder_shape",
-              "brr:builder_rotate",
-              "brr:dino_speecher"
-            ]
-          },
-          {
-            "group_identifier": {
-              "icon": "brr:plush_brr",
-              "name": "brr:itemGroup.name.plushies"
-            },
-            "items": [
-              "brr:plush_brr",
-              "brr:plush_mmr",
-              "brr:plush_alastor",
-              "brr:plush_bs_colette",
-              "brr:plush_bs_janet",
-              "brr:plush_bs_melodie",
-              "brr:plush_fnf_tabi",
-              "brr:plush_niceninjapro",
-              "brr:plush_riverplayz",
-              "brr:plush_sans",
-              "brr:plush_seal",
-              "brr:plush_springtrap",
-              "brr:plush_tds_accelerator",
-              "brr:plush_tds_engineer",
-              "brr:plush_tensiveyt",
-              "brr:plush_velvette",
-              "brr:plush_william_afton"
-            ]
-          },
-          {
-            "group_identifier": {
               "icon": "brr:logic_auto",
               "name": "brr:itemGroup.name.logic_blocks"
             },
@@ -124,9 +83,122 @@
               "brr:tool_trigger",
               "brr:tool_areaportal",
               "brr:tool_invisible",
-              "brr:tool_blocklight",
               "brr:tool_playerclip",
-              "brr:tool_npcclip"
+              "brr:tool_npcclip",
+              "brr:tool_blocklight"
+            ]
+          }
+        ]
+      },
+      {
+        "category_name": "construction",
+        "groups": [
+          {
+            "group_identifier": {
+              "icon": "brr:dev_measurewall01a",
+              "name": "brr:itemGroup.name.dev_decor"
+            },
+            "items": [
+              "brr:dev_measuregeneric01",
+              "brr:dev_measurewall01a",
+              "brr:dev_measuregeneric02",
+              "brr:dev_measurewall01d",
+              "brr:dev_measuregeneric03",
+              "brr:dev_measurewall01b",
+              "brr:dev_measuregeneric04",
+              "brr:dev_measurewall01c"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:plush_brr",
+              "name": "brr:itemGroup.name.plushies"
+            },
+            "items": [
+              "brr:plush_brr",
+              "brr:plush_mmr",
+              "brr:plush_alastor",
+              "brr:plush_bs_colette",
+              "brr:plush_bs_janet",
+              "brr:plush_bs_melodie",
+              "brr:plush_fnf_tabi",
+              "brr:plush_niceninjapro",
+              "brr:plush_riverplayz",
+              "brr:plush_sans",
+              "brr:plush_seal",
+              "brr:plush_springtrap",
+              "brr:plush_tds_accelerator",
+              "brr:plush_tds_engineer",
+              "brr:plush_tensiveyt",
+              "brr:plush_velvette",
+              "brr:plush_william_afton"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:bm_acunit01",
+              "name": "brr:itemGroup.name.bms_prop"
+            },
+            "items": [
+              "brr:bm_acunit01",
+              "brr:bm_acunit02",
+              "brr:bm_alarmbell",
+              "brr:bm_alarmbox",
+              "brr:bm_alarmpull"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:hev_charger",
+              "name": "brr:itemGroup.name.bms_prop_interactive"
+            },
+            "items": [
+              "brr:hev_charger",
+              "brr:health_charger"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "brr:bm_sign_notices",
+              "name": "brr:itemGroup.name.bms_sign"
+            },
+            "items": [
+              "brr:bm_sign_caution_001",
+              "brr:bm_sign_caution_002",
+              "brr:bm_sign_caution_003",
+              "brr:bm_sign_caution_004",
+              "brr:bm_sign_caution_005",
+              "brr:bm_sign_caution_006",
+              "brr:bm_sign_safety_001",
+              "brr:bm_sign_notices",
+              "brr:bm_sign_notice_001",
+              "brr:bm_sign_notice_002",
+              "brr:bm_sign_notice_003",
+              "brr:bm_sign_notice_004",
+              "brr:bm_sign_notice_005",
+              "brr:bm_sign_notice_006",
+              "brr:bm_sign_notice_007",
+              "brr:bm_sign_notice_008",
+              "brr:bm_sign_notice_009",
+              "brr:bm_sign_notice_010",
+              "brr:bm_sign_notice_011",
+              "brr:bm_sign_notice_012",
+              "brr:bm_sign_notice_013",
+              "brr:bm_sign_notice_014",
+              "brr:bm_sign_notice_015",
+              "brr:bm_sign_notice_016",
+              "brr:bm_sign_notice_017",
+              "brr:bm_sign_notice_018",
+              "brr:bm_sign_notice_019",
+              "brr:bm_sign_notice_020",
+              "brr:bm_sign_notice_021",
+              "brr:bm_sign_notice_022",
+              "brr:bm_sign_notice_023",
+              "brr:bm_sign_notice_024",
+              "brr:bm_sign_notice_025",
+              "brr:bm_sign_warning_001",
+              "brr:bm_sign_warning_002",
+              "brr:bm_sign_warning_003"
             ]
           }
         ]
