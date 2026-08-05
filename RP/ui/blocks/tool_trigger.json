@@ -69,7 +69,7 @@
     "type": "image",
     "layer": 0,
     "size": "@server_form.custom_form_bg_anim_start",
-    "texture": "textures/assets/reference"
+    "texture": "textures/ui/main_bg"
   },
 
   "category_selection_pannel": {

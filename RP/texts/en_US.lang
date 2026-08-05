@@ -1,3 +1,4 @@
+## Tool Blocks
 tile.brr:tool_trigger.name=Trigger Tool
 tile.brr:tool_areaportal.name=Area Portal Tool
 tile.brr:tool_invisible.name=Invisible Tool
@@ -5,17 +6,7 @@ tile.brr:tool_blocklight.name=Blocklight Tool
 tile.brr:tool_playerclip.name=Playerclip Tool
 tile.brr:tool_npcclip.name=NPC Clip Tool
 
-item.brr:info_playerspawn=info_playespawn
-item.brr:info_target_areaportal=info_target_areaportal
-item.brr:game_nametag=game_nametag
-item.brr:logic_auto=logic_auto
-item.brr:logic_branch=logic_branch
-item.brr:logic_case=logic_case
-item.brr:logic_compare=logic_compare
-item.brr:logic_coop_manager=logic_coop_manager
-item.brr:logic_random_outputs=logic_random_outputs
-item.brr:logic_timer=logic_timer
-
+## Developer Decoration
 tile.brr:dev_measuregeneric01.name=Developer Tile 01
 tile.brr:dev_measuregeneric02.name=Developer Tile 02
 tile.brr:dev_measuregeneric03.name=Developer Tile 03
@@ -25,13 +16,24 @@ tile.brr:dev_measurewall01b.name=Developer Wall 01b
 tile.brr:dev_measurewall01c.name=Developer Wall 01c
 tile.brr:dev_measurewall01d.name=Developer Wall 01d
 
+## Data Blocks
 tile.brr:data.name=data
 tile.brr:data_collision.name=data_collision
 tile.brr:data_blocklight.name=data_blocklight
 
+## Info Blocks
 tile.brr:info_playerspawn_block.name=info_playerspawn_block
 tile.brr:info_target_areaportal_block.name=info_target_areaportal_block
+## Info Items
+item.brr:info_playerspawn=info_playerspawn
+item.brr:info_target_areaportal=info_target_areaportal
+
+## Game Blocks
 tile.brr:game_nametag_block.name=game_nametag_block
+## Game Items
+item.brr:game_nametag=game_nametag
+
+## Logic Blocks
 tile.brr:logic_auto_block.name=logic_auto_block
 tile.brr:logic_branch_block.name=logic_branch_block
 tile.brr:logic_case_block.name=logic_case_block
@@ -40,16 +42,20 @@ tile.brr:logic_coop_manager_block.name=logic_coop_manager_block
 tile.brr:logic_random_outputs_block.name=logic_random_outputs_block
 tile.brr:logic_timer_block.name=logic_timer_block
 
+## Logic Items
+item.brr:logic_auto=logic_auto
+item.brr:logic_branch=logic_branch
+item.brr:logic_case=logic_case
+item.brr:logic_compare=logic_compare
+item.brr:logic_coop_manager=logic_coop_manager
+item.brr:logic_random_outputs=logic_random_outputs
+item.brr:logic_timer=logic_timer
+
+## Items
 item.brr:dino_speecher=Dino Speecher
-item.brr:builder_copy=Builder Copy
-item.brr:builder_destroy=Builder Destroy
-item.brr:builder_displace=Builder Displace
-item.brr:builder_fill=Builder Fill
-item.brr:builder_rotate=Builder Rotate
-item.brr:builder_shape=Builder Shape
-item.brr:engine_locator=Engine Locator
 
 
+## Item Groups
 brr:itemGroup.name.dev_decor=Developer Decoration
 brr:itemGroup.name.tool_blocks=Tool Blocks
 brr:itemGroup.name.logic_blocks=Logic Blocks
@@ -58,10 +64,13 @@ brr:itemGroup.name.game_tools=Game Blocks
 brr:itemGroup.name.brr_tools=Builder Tools
 brr:itemGroup.name.ammo=Weapon Ammunition
 brr:itemGroup.name.weapons=Weapons
-brr:itemGroup.name.cutie_pie=Misc Unrelated Items
+brr:itemGroup.name.cutie_pie=Misc Items
 brr:itemGroup.name.plushies=Plushies
+brr:itemGroup.name.bms_prop=Black Mesa Props
+brr:itemGroup.name.bms_prop_interactive=Black Mesa Interactive Props
+brr:itemGroup.name.bms_sign=Black Mesa Signs
 
-
+## Weapons
 item.brr:gluon_gun=Gluon Gun
 item.brr:tau_cannon=Tau Cannon
 item.brr:crowbar=Crowbar
@@ -69,14 +78,21 @@ item.brr:glock17=Glock 17
 item.brr:glock17_empty=Glock17 Empty
 item.brr:magnum357=Magnum .357
 item.brr:magnum357_empty=Magnum .357 Empty
+
+## Ammunition
 item.brr:gaussammo=Gauss Ammo
 item.brr:9mmclip=9mm Clip
+item.brr:357_ammobox=357 Ammo Box
+
+## Misc Items
 item.brr.collar.name=Collar
 item.brr.leash.name=Leash
 item.brr.sit.name=Sit
+
+## Actions
 action.hint.exit.player=Crouch to dismount
 
-item.brr:357_ammobox=357 Ammo Box
+## Plushies
 tile.brr:plush_brr.name=BonnieRobloxRIP Plush
 tile.brr:plush_mmr.name=Marshmallow997 Plush
 tile.brr:plush_tds_accelerator.name=Accelerator TDS Plush
@@ -93,4 +109,56 @@ tile.brr:plush_fnf_tabi.name=Tabi Plush
 tile.brr:plush_william_afton.name=William Afton Plush
 tile.brr:plush_tensiveyt.name=TensiveYT Plush
 tile.brr:plush_velvette.name=Velvette Plush
-tile.brr:plush_niceninjapro.name=Niceninjapro
+tile.brr:plush_niceninjapro.name=Niceninjapro Plush
+
+## Black Mesa Props
+tile.brr:bm_acunit01.name=AC Unit 01
+tile.brr:bm_acunit02.name=AC Unit 02
+tile.brr:bm_alarmbell.name=Alarm Bell
+tile.brr:bm_alarmbox.name=Alarm Box
+tile.brr:bm_alarmpull.name=Alarm Pull
+
+## Black Mesa Interactible Props
+tile.brr:hev_charger.name=H.E.V. Charger
+tile.brr:health_charger.name=Health Charger
+
+## Black Mesa Signs
+tile.brr:bm_sign_caution_001.name=Caution Sign 001
+tile.brr:bm_sign_caution_002.name=Caution Sign 002
+tile.brr:bm_sign_caution_003.name=Caution Sign 003
+tile.brr:bm_sign_caution_004.name=Caution Sign 004
+tile.brr:bm_sign_caution_005.name=Caution Sign 005
+tile.brr:bm_sign_caution_006.name=Caution Sign 006
+
+tile.brr:bm_sign_safety_001.name=Safety Sign 001
+
+tile.brr:bm_sign_notices.name=Notices Sign
+tile.brr:bm_sign_notice_001.name=Notice Sign 001
+tile.brr:bm_sign_notice_002.name=Notice Sign 002
+tile.brr:bm_sign_notice_003.name=Notice Sign 003
+tile.brr:bm_sign_notice_004.name=Notice Sign 004
+tile.brr:bm_sign_notice_005.name=Notice Sign 005
+tile.brr:bm_sign_notice_006.name=Notice Sign 006
+tile.brr:bm_sign_notice_007.name=Notice Sign 007
+tile.brr:bm_sign_notice_008.name=Notice Sign 008
+tile.brr:bm_sign_notice_009.name=Notice Sign 009
+tile.brr:bm_sign_notice_010.name=Notice Sign 010
+tile.brr:bm_sign_notice_011.name=Notice Sign 011
+tile.brr:bm_sign_notice_012.name=Notice Sign 012
+tile.brr:bm_sign_notice_013.name=Notice Sign 013
+tile.brr:bm_sign_notice_014.name=Notice Sign 014
+tile.brr:bm_sign_notice_015.name=Notice Sign 015
+tile.brr:bm_sign_notice_016.name=Notice Sign 016
+tile.brr:bm_sign_notice_017.name=Notice Sign 017
+tile.brr:bm_sign_notice_018.name=Notice Sign 018
+tile.brr:bm_sign_notice_019.name=Notice Sign 019
+tile.brr:bm_sign_notice_020.name=Notice Sign 020
+tile.brr:bm_sign_notice_021.name=Notice Sign 021
+tile.brr:bm_sign_notice_022.name=Notice Sign 022
+tile.brr:bm_sign_notice_023.name=Notice Sign 023
+tile.brr:bm_sign_notice_024.name=Notice Sign 024
+tile.brr:bm_sign_notice_025.name=Notice Sign 025
+
+tile.brr:bm_sign_warning_001.name=Warning Sign 001
+tile.brr:bm_sign_warning_002.name=Warning Sign 002
+tile.brr:bm_sign_warning_003.name=Warning Sign 003
