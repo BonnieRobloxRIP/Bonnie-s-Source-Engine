@@ -113,7 +113,7 @@
 		},
 		"components": {
 			"minecraft:experience_reward": {
-				"on_death": "Math.Min(query.player_level * 7, 100)"
+				"on_death": "math.min(query.player_level*7,100)"
 			},
 			"minecraft:type_family": {
 				"family": [
