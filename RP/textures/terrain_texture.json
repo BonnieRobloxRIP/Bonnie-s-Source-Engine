@@ -5,112 +5,292 @@
 	"texture_name": "atlas.terrain",
 	"texture_data": {
 		"brr_dev_measuregeneric01": {
-			"textures": "textures/blocks/dev_measuregeneric01"
-		},
-		"brr_dev_measuregeneric02": {
-			"textures": "textures/blocks/dev_measuregeneric02"
+			"textures": "textures/blocks/dev/dev_measuregeneric01"
 		},
 		"brr_dev_measurewall01a": {
-			"textures": "textures/blocks/dev_measurewall01a"
-		},
-		"brr_dev_measurewall01d": {
-			"textures": "textures/blocks/dev_measurewall01d"
-		},
-		"nothing": {
-			"textures": "textures/blocks/nothing"
-		},
-		"brr_dev_measuregeneric03": {
-			"textures": "textures/blocks/dev_measuregeneric03"
-		},
-		"brr_dev_measuregeneric04": {
-			"textures": "textures/blocks/dev_measuregeneric04"
+			"textures": "textures/blocks/dev/dev_measurewall01a"
 		},
 		"brr_dev_measurewall01b": {
-			"textures": "textures/blocks/dev_measurewall01b"
+			"textures": "textures/blocks/dev/dev_measurewall01b"
 		},
 		"brr_dev_measurewall01c": {
-			"textures": "textures/blocks/dev_measurewall01c"
+			"textures": "textures/blocks/dev/dev_measurewall01c"
+		},
+		"brr_dev_measurewall01d": {
+			"textures": "textures/blocks/dev/dev_measurewall01d"
+		},
+		"brr_dev_measuregeneric02": {
+			"textures": "textures/blocks/dev/dev_measuregeneric02"
+		},
+		"brr_dev_measuregeneric03": {
+			"textures": "textures/blocks/dev/dev_measuregeneric03"
+		},
+		"brr_dev_measuregeneric04": {
+			"textures": "textures/blocks/dev/dev_measuregeneric04"
 		},
 		"brr_tool_trigger": {
-			"textures": "textures/blocks/brr_trigger"
+			"textures": "textures/blocks/tool_blocks/brr_trigger"
 		},
 		"brr_tool_areaportal": {
-			"textures": "textures/blocks/brr_areaPortal"
-		},
-		"brr_tool_invisible": {
-			"textures": "textures/blocks/brr_invisible"
-		},
-		"brr_data": {
-			"textures": "textures/blocks/nothing"
-		},
-		"brr_data_collision": {
-			"textures": "textures/blocks/nothing"
-		},
-		"brr_data_blocklight": {
-			"textures": "textures/blocks/nothing"
-		},
-		"brr_info_target_areaportal_block": {
-			"textures": "textures/blocks/nothing"
+			"textures": "textures/blocks/tool_blocks/brr_areaPortal"
 		},
 		"brr_tool_blocklight": {
-			"textures": "textures/blocks/brr_blockLight"
+			"textures": "textures/blocks/tool_blocks/brr_blockLight"
+		},
+		"brr_tool_invisible": {
+			"textures": "textures/blocks/tool_blocks/brr_invisible"
 		},
 		"brr_tool_playerclip": {
-			"textures": "textures/blocks/brr_playerClip"
+			"textures": "textures/blocks/tool_blocks/brr_playerClip"
 		},
 		"brr_tool_npcclip": {
-			"textures": "textures/blocks/brr_npcClip"
+			"textures": "textures/blocks/tool_blocks/brr_npcClip"
+		},
+		"brr_info_target_areaportal_block": {
+			"textures": "textures/blocks/data/nothing"
+		},
+		"brr_data": {
+			"textures": "textures/blocks/data/nothing"
+		},
+		"brr_data_blocklight": {
+			"textures": "textures/blocks/data/nothing"
+		},
+		"brr_data_collision": {
+			"textures": "textures/blocks/data/nothing"
+		},
+		"nothing": {
+			"textures": "textures/blocks/data/nothing"
 		},
 		"brr_plush_brr": {
-			"textures": "textures/blocks/bonnie_plush"
+			"textures": "textures/blocks/plushies/bonnie_plush"
 		},
 		"brr_plush_mmr": {
-			"textures": "textures/blocks/marshmallow997_plush"
+			"textures": "textures/blocks/plushies/marshmallow997_plush"
 		},
 		"brr_plush_tds_accelerator": {
-			"textures": "textures/blocks/accelerator_plush"
+			"textures": "textures/blocks/plushies/accelerator_plush"
 		},
 		"brr_plush_alastor": {
-			"textures": "textures/blocks/alastor_plush"
+			"textures": "textures/blocks/plushies/alastor_plush"
 		},
 		"brr_plush_bs_colette": {
-			"textures": "textures/blocks/colette_plush"
+			"textures": "textures/blocks/plushies/colette_plush"
 		},
 		"brr_plush_tds_engineer": {
-			"textures": "textures/blocks/engineer_plush"
+			"textures": "textures/blocks/plushies/engineer_plush"
 		},
 		"brr_plush_bs_janet": {
-			"textures": "textures/blocks/janet_plush"
+			"textures": "textures/blocks/plushies/janet_plush"
 		},
 		"brr_plush_bs_melodie": {
-			"textures": "textures/blocks/melodie_plush"
+			"textures": "textures/blocks/plushies/melodie_plush"
 		},
 		"brr_plush_riverplayz": {
-			"textures": "textures/blocks/riverplayz_plush"
+			"textures": "textures/blocks/plushies/riverplayz_plush"
 		},
 		"brr_plush_sans": {
-			"textures": "textures/blocks/sans_plush"
+			"textures": "textures/blocks/plushies/sans_plush"
 		},
 		"brr_plush_seal": {
-			"textures": "textures/blocks/seal_plush"
+			"textures": "textures/blocks/plushies/seal_plush"
 		},
 		"brr_plush_springtrap": {
-			"textures": "textures/blocks/springtrap_plush"
+			"textures": "textures/blocks/plushies/springtrap_plush"
 		},
 		"brr_plush_fnf_tabi": {
-			"textures": "textures/blocks/tabi_plush"
+			"textures": "textures/blocks/plushies/tabi_plush"
 		},
 		"brr_plush_william_afton": {
-			"textures": "textures/blocks/william_plush"
+			"textures": "textures/blocks/plushies/william_plush"
 		},
 		"brr_plush_tensiveyt": {
-			"textures": "textures/blocks/tensiveyt_plush"
+			"textures": "textures/blocks/plushies/tensiveyt_plush"
 		},
 		"brr_plush_velvette": {
-			"textures": "textures/blocks/velvette_plush"
+			"textures": "textures/blocks/plushies/velvette_plush"
 		},
 		"brr_plush_niceninjapro": {
-			"textures": "textures/blocks/niceninjapro_plush"
+			"textures": "textures/blocks/plushies/niceninjapro_plush"
+		},
+		"brr_plush_brr_particle": {
+			"textures": "textures/particle/block_particles/plushies/bonnie_plush_particle"
+		},
+		"brr_plush_mmr_particle": {
+			"textures": "textures/particle/block_particles/plushies/marshmallow997_plush_particle"
+		},
+		"brr_plush_tds_accelerator_particle": {
+			"textures": "textures/particle/block_particles/plushies/accelerator_plush_particle"
+		},
+		"brr_plush_alastor_particle": {
+			"textures": "textures/particle/block_particles/plushies/alastor_plush_particle"
+		},
+		"brr_plush_bs_colette_particle": {
+			"textures": "textures/particle/block_particles/plushies/colette_plush_particle"
+		},
+		"brr_plush_tds_engineer_particle": {
+			"textures": "textures/particle/block_particles/plushies/engineer_plush_particle"
+		},
+		"brr_plush_bs_janet_particle": {
+			"textures": "textures/particle/block_particles/plushies/janet_plush_particle"
+		},
+		"brr_plush_bs_melodie_particle": {
+			"textures": "textures/particle/block_particles/plushies/melodie_plush_particle"
+		},
+		"brr_plush_riverplayz_particle": {
+			"textures": "textures/particle/block_particles/plushies/riverplayz_plush_particle"
+		},
+		"brr_plush_sans_particle": {
+			"textures": "textures/particle/block_particles/plushies/sans_plush_particle"
+		},
+		"brr_plush_seal_particle": {
+			"textures": "textures/particle/block_particles/plushies/seal_plush_particle"
+		},
+		"brr_plush_springtrap_particle": {
+			"textures": "textures/particle/block_particles/plushies/springtrap_plush_particle"
+		},
+		"brr_plush_fnf_tabi_particle": {
+			"textures": "textures/particle/block_particles/plushies/tabi_plush_particle"
+		},
+		"brr_plush_william_afton_particle": {
+			"textures": "textures/particle/block_particles/plushies/william_plush_particle"
+		},
+		"brr_plush_tensiveyt_particle": {
+			"textures": "textures/particle/block_particles/plushies/tensiveyt_plush_particle"
+		},
+		"brr_plush_velvette_particle": {
+			"textures": "textures/particle/block_particles/plushies/velvette_plush_particle"
+		},
+		"brr_plush_niceninjapro_particle": {
+			"textures": "textures/particle/block_particles/plushies/niceninjapro_plush_particle"
+		},
+		"brr_bm_acunit01": {
+			"textures": "textures/blocks/bms_props/acunit01"
+		},
+		"brr_bm_acunit02": {
+			"textures": "textures/blocks/bms_props/acunit02"
+		},
+		"brr_bm_alarmbell": {
+			"textures": "textures/blocks/bms_props/alarmbell"
+		},
+		"brr_bm_alarmbox": {
+			"textures": "textures/blocks/bms_props/alarmbox"
+		},
+		"brr_bm_alarmpull": {
+			"textures": "textures/blocks/bms_props/alarmpull"
+		},
+		"brr_caution_sign_001": {
+			"textures": "textures/blocks/bms_props/signs/decal_sign_caution_001e"
+		},
+		"brr_caution_sign_002": {
+			"textures": "textures/blocks/bms_props/signs/decal_sign_caution_001f"
+		},
+		"brr_caution_sign_003": {
+			"textures": "textures/blocks/bms_props/signs/decal_sign_caution_001i"
+		},
+		"brr_caution_sign_004": {
+			"textures": "textures/blocks/bms_props/signs/decal_sign_caution_001j"
+		},
+		"brr_caution_sign_005": {
+			"textures": "textures/blocks/bms_props/signs/decal_sign_caution_001l"
+		},
+		"brr_caution_sign_006": {
+			"textures": "textures/blocks/bms_props/signs/decal_sign_caution_c1a4radiation"
+		},
+		"brr_notices_sign": {
+			"textures": "textures/blocks/bms_props/signs/notices_sign"
+		},
+		"brr_notice_001": {
+			"textures": "textures/blocks/bms_props/signs/notice_ansi_smokingarea"
+		},
+		"brr_notice_002": {
+			"textures": "textures/blocks/bms_props/signs/notice_smok"
+		},
+		"brr_notice_003": {
+			"textures": "textures/blocks/bms_props/signs/notice_vert_smoking"
+		},
+		"brr_notice_004": {
+			"textures": "textures/blocks/bms_props/signs/notice_drumstoragearea"
+		},
+		"brr_notice_005": {
+			"textures": "textures/blocks/bms_props/signs/notice_hardhats"
+		},
+		"brr_notice_006": {
+			"textures": "textures/blocks/bms_props/signs/notice_limitedaccessarea"
+		},
+		"brr_notice_007": {
+			"textures": "textures/blocks/bms_props/signs/notice_maintenance"
+		},
+		"brr_notice_008": {
+			"textures": "textures/blocks/bms_props/signs/notice_noeatingordrinking"
+		},
+		"brr_notice_009": {
+			"textures": "textures/blocks/bms_props/signs/notice_thesedoors"
+		},
+		"brr_notice_010": {
+			"textures": "textures/blocks/bms_props/signs/notice_rect_authorizedpersonnelonly"
+		},
+		"brr_notice_011": {
+			"textures": "textures/blocks/bms_props/signs/notice_rect_chemsuit"
+		},
+		"brr_notice_012": {
+			"textures": "textures/blocks/bms_props/signs/notice_rect_coats"
+		},
+		"brr_notice_013": {
+			"textures": "textures/blocks/bms_props/signs/notice_rect_forkliftsprohibited"
+		},
+		"brr_notice_014": {
+			"textures": "textures/blocks/bms_props/signs/notice_rect_watchforforklifts"
+		},
+		"brr_notice_015": {
+			"textures": "textures/blocks/bms_props/signs/notice_rect_keepout"
+		},
+		"brr_notice_016": {
+			"textures": "textures/blocks/bms_props/signs/notice_rect_respirators"
+		},
+		"brr_notice_017": {
+			"textures": "textures/blocks/bms_props/signs/notice_vert_authorizedpersonnel"
+		},
+		"brr_notice_018": {
+			"textures": "textures/blocks/bms_props/signs/notice_vert_authorizedpersonnel_esp"
+		},
+		"brr_notice_019": {
+			"textures": "textures/blocks/bms_props/signs/notice_vert_authorizedpersonnelonly"
+		},
+		"brr_notice_020": {
+			"textures": "textures/blocks/bms_props/signs/notice_vert_dontblockdoor_esp"
+		},
+		"brr_notice_021": {
+			"textures": "textures/blocks/bms_props/signs/notice_vert_nofooddrink"
+		},
+		"brr_notice_022": {
+			"textures": "textures/blocks/bms_props/signs/notice_vert_swimmingforbidden"
+		},
+		"brr_notice_023": {
+			"textures": "textures/blocks/bms_props/signs/notice_vert_ties"
+		},
+		"brr_notice_024": {
+			"textures": "textures/blocks/bms_props/signs/notice_vert_washhands"
+		},
+		"brr_notice_025": {
+			"textures": "textures/blocks/bms_props/signs/notice_noadmittance"
+		},
+		"brr_warning_001": {
+			"textures": "textures/blocks/bms_props/signs/warning_ansi_dontenterpower"
+		},
+		"brr_warning_002": {
+			"textures": "textures/blocks/bms_props/signs/warning_ansi_faninuse"
+		},
+		"brr_warning_003": {
+			"textures": "textures/blocks/bms_props/signs/warning_ansi_smoking1"
+		},
+		"brr_safety_001": {
+			"textures": "textures/blocks/bms_props/signs/safety_firstaidstation"
+		},
+		"brr_hev_charger": {
+			"textures": "textures/blocks/bms_props/hev_charger"
+		},
+		"brr_health_charger": {
+			"textures": "textures/blocks/bms_props/health_charger"
 		}
 	}
 }
