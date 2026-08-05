@@ -2,12 +2,12 @@
     "format_version": "1.21.80",
     "minecraft:water_settings": {
         "description": {
-            "identifier": "minecraft:water"
+            "identifier": "pbr:water_swamp"
         },
         "particle_concentrations": {
-            "chlorophyll": 0,
+            "chlorophyll": 2.0,
             "suspended_sediment": 6.599999904632568,
-            "cdom": 0
+            "cdom": 9.0
         },
         "caustics": {
             "enabled": true,

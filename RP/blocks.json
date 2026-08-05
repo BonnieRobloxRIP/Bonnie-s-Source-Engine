@@ -143,5 +143,26 @@
 	},
 	"brr:plush_niceninjapro": {
 		"sound": "cloth"
+	},
+	"brr:bm_acunit01": {
+		"sound": "stone"
+	},
+	"brr:bm_acunit02": {
+		"sound": "stone"
+	},
+	"brr:bm_alarmbell": {
+		"sound": "stone"
+	},
+	"brr:bm_alarmbox": {
+		"sound": "stone"
+	},
+	"brr:bm_alarmpull": {
+		"sound": "stone"
+	},
+	"brr:hev_charger": {
+		"sound": "stone"
+	},
+	"brr:health_charger": {
+		"sound": "stone"
 	}
 }
