@@ -111,6 +111,19 @@
           },
           {
             "group_identifier": {
+              "icon": "brr:lambda_metalgrate",
+              "name": "brr:itemGroup.name.bms_blocks"
+            },
+            "items": [
+              "brr:lambda_metalgrate",
+              "brr:bms_metalgrate_01",
+              "brr:bms_metalgrate_02",
+              "brr:bms_metalgrate_03",
+              "brr:bms_metalgrate_04"
+            ]
+          },
+          {
+            "group_identifier": {
               "icon": "brr:plush_brr",
               "name": "brr:itemGroup.name.plushies"
             },
@@ -144,7 +157,8 @@
               "brr:bm_acunit02",
               "brr:bm_alarmbell",
               "brr:bm_alarmbox",
-              "brr:bm_alarmpull"
+              "brr:bm_alarmpull",
+              "brr:bm_barrel"
             ]
           },
           {
@@ -198,7 +212,26 @@
               "brr:bm_sign_notice_025",
               "brr:bm_sign_warning_001",
               "brr:bm_sign_warning_002",
-              "brr:bm_sign_warning_003"
+              "brr:bm_sign_warning_003",
+              "brr:bm_sign_danger_001",
+              "brr:bm_sign_danger_002",
+              "brr:bm_sign_danger_003",
+              "brr:bm_sign_danger_004",
+              "brr:bm_sign_danger_005",
+              "brr:bm_sign_danger_006",
+              "brr:bm_sign_danger_007",
+              "brr:bm_sign_danger_008",
+              "brr:bm_sign_danger_009",
+              "brr:bm_sign_danger_010",
+              "brr:bm_sign_danger_011",
+              "brr:bm_sign_danger_012",
+              "brr:bm_sign_danger_013",
+              "brr:bm_sign_danger_014",
+              "brr:bm_sign_danger_015",
+              "brr:bm_sign_danger_016",
+              "brr:bm_sign_danger_017",
+              "brr:bm_sign_danger_018",
+              "brr:bm_sign_danger_019"
             ]
           }
         ]
