@@ -149,7 +149,8 @@ execute if score lift easy matches 440 run structure load "lobby/elevators:MainE
 execute if score lift easy matches 445 run structure load "lobby/elevators:MainElevator" 6 -34 50
 execute if score lift easy matches 450 run structure load "lobby/elevators:MainElevator" 6 -35 50
 # // Entering Room 1
-execute if score lift easy matches 455 run structure load "lobby:LiftBorderPrecaution" 5 -59 49
+execute if score lift easy matches 329 run kill @a[x=5.5, y=23, z=49.5, dx=5, dy=68, dz=5, tag=easy]
+execute if score lift easy matches 329 run structure load "lobby:LiftBorderPrecaution" 5 -59 49
 execute if score lift easy matches 455 run structure load "lobby/elevators:MainElevator" 6 -36 50
 execute if score lift easy matches 460 run structure load "lobby/elevators:MainElevator" 6 -37 50
 execute if score lift easy matches 465 run structure load "lobby/elevators:MainElevator" 6 -38 50
@@ -169,6 +170,7 @@ execute if score lift easy matches 532 run structure load "lobby/elevators:MainE
 execute if score lift easy matches 534 run structure load "lobby/elevators:MainElevatorOpen3" 6 -49 50
 execute if score lift easy matches 538 run structure load "lobby/elevators:MainElevatorOpen2" 6 -49 50
 execute if score lift easy matches 540 run structure load "lobby/elevators:MainElevatorOpen3" 6 -49 50
+execute if score lift easy matches 540 run kill @a[x=5.5, y=-36, z=49.5, dx=5, dy=68, dz=5, tag=easy]
 # // begin game
 execute if score lift easy matches 540 run scoreboard players set started easy 1
 # // Raise elevator back to the surface

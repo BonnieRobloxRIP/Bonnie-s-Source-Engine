@@ -1,12 +1,12 @@
 # = SYSTEM RUN =
 # - Open entrance door -
-execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 21 if score r3_timer_ms easy matches 1 run structure load "easy:EasyTunnelDoor2" ~-2 ~3 ~-8
-execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 21 if score r3_timer_ms easy matches 10 run structure load "easy:EasyTunnelDoor3" ~-2 ~3 ~-8
-execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 21 if score r3_timer_ms easy matches 10 run playsound sfx.doors.tunnelopen @a[tag=easy] ~-3.5 ~4 ~-8
-execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 21 if score r3_timer_ms easy matches 10 run tellraw @a[tag=easy] {"rawtext":[{"text": "§aAdditional Objective: §2Stabilize the core before the water reaches it!"}]}
+execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 31 if score r3_timer_ms easy matches 1 run structure load "easy:EasyTunnelDoor2" ~-2 ~3 ~-8
+execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 31 if score r3_timer_ms easy matches 10 run structure load "easy:EasyTunnelDoor3" ~-2 ~3 ~-8
+execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 31 if score r3_timer_ms easy matches 10 run playsound sfx.doors.tunnelopen @a[tag=easy] ~-3.5 ~4 ~-8
+execute as @s[type=brr:flood_room, name=easy_room3] at @s if score started3 easy matches 1 if score r3_timer_s easy matches 31 if score r3_timer_ms easy matches 10 run tellraw @a[tag=easy] {"rawtext":[{"text": "§aAdditional Objective: §2Stabilize the core before the water reaches it!"}]}
 # - Level title -
-execute as @a[tag=easy] at @s if score r3_timer_s easy matches 21 if score r3_timer_ms easy matches 10 if score started3 easy matches 1 run title @a[tag=easy] subtitle §2Power Core
-execute as @a[tag=easy] at @s if score r3_timer_s easy matches 21 if score r3_timer_ms easy matches 10 if score started3 easy matches 1 run title @a[tag=easy] title §aROOM 3
+execute as @a[tag=easy] at @s if score r3_timer_s easy matches 31 if score r3_timer_ms easy matches 10 if score started3 easy matches 1 run title @a[tag=easy] subtitle §2Power Core
+execute as @a[tag=easy] at @s if score r3_timer_s easy matches 31 if score r3_timer_ms easy matches 10 if score started3 easy matches 1 run title @a[tag=easy] title §aROOM 3
 # - Test for buttons -
 # // Button 1
 execute as @s[type=brr:flood_room, name=easy_room3] at @s if score R3B1 easy matches 0 if block ^5 ^8 ^3 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="up"] run scoreboard players add R3B1a easy 1

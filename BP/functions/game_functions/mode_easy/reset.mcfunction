@@ -3,6 +3,7 @@ scoreboard players set started easy 0
 scoreboard players set started2 easy 0
 scoreboard players set started3 easy 0
 scoreboard players set started4 easy 0
+scoreboard players set started5 easy 0
 scoreboard players set reset easy 0
 # // lift
 scoreboard players reset lift easy
@@ -13,13 +14,15 @@ scoreboard players reset alarm easy
 structure load "easy:EasyStateAvailable" 5 93 49
 # // game
 scoreboard players set r1_timer_ms easy 0
-scoreboard players set r1_timer_s easy 21
+scoreboard players set r1_timer_s easy 31
 scoreboard players set r2_timer_ms easy 0
-scoreboard players set r2_timer_s easy 21
+scoreboard players set r2_timer_s easy 31
 scoreboard players set r3_timer_ms easy 0
-scoreboard players set r3_timer_s easy 21
+scoreboard players set r3_timer_s easy 31
 scoreboard players set r4_timer_ms easy 0
 scoreboard players set r4_timer_s easy 31
+scoreboard players set r5_timer_ms easy 0
+scoreboard players set r5_timer_s easy 21
 scoreboard players reset R1B1 easy
 scoreboard players reset R1B2 easy
 scoreboard players reset R1B3 easy
@@ -80,6 +83,7 @@ scoreboard players reset R3B7a easy
 scoreboard players reset R3B8a easy
 scoreboard players reset R3B9a easy
 scoreboard players reset R3B10a easy
+scoreboard players reset R5B1 easy
 scoreboard players reset core easy
 scoreboard players reset core1 easy
 scoreboard players reset core_laser1 easy
@@ -93,6 +97,8 @@ scoreboard players set loaded4 easy 0
 scoreboard players reset flood1 easy
 scoreboard players reset flood2 easy
 scoreboard players reset flood3 easy
+scoreboard players reset flood4 easy
+scoreboard players reset flood5 easy
 scoreboard players reset room1 easy
 scoreboard players reset room2 easy
 scoreboard players reset room3 easy
@@ -107,10 +113,13 @@ scoreboard players reset r4_end easy
 scoreboard players reset p_tunnel1 easy
 scoreboard players reset p_tunnel2 easy
 scoreboard players reset p_tunnel3 easy
+scoreboard players reset p_tunnel4 easy
+scoreboard players reset p_tunnel5 easy
 scoreboard players reset r1_transition easy
 scoreboard players reset r2_transition easy
 scoreboard players reset r3_transition easy
 scoreboard players reset r4_transition easy
+scoreboard players reset r5_transition easy
 scoreboard players reset left_code1 easy
 scoreboard players reset left_code2 easy
 scoreboard players reset left_code3 easy

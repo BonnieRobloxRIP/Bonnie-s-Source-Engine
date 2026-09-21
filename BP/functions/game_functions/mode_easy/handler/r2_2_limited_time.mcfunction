@@ -1,11 +1,11 @@
 # = SYSTEM RUN =
 # - Open entrance door -
-execute as @s[type=brr:flood_room, name=easy_room2] at @s if score started2 easy matches 1 if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 1 run structure load "easy:EasyTunnelDoor2"  ~-4 ~2 ~-8
-execute as @s[type=brr:flood_room, name=easy_room2] at @s if score started2 easy matches 1 if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 10 run structure load "easy:EasyTunnelDoor3" ~-4 ~2 ~-8
-execute as @s[type=brr:flood_room, name=easy_room2] at @s if score started2 easy matches 1 if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 10 run playsound sfx.doors.tunnelopen @a[tag=easy] ~-3.5 ~3 ~-8
+execute as @s[type=brr:flood_room, name=easy_room2] at @s if score started2 easy matches 1 if score r2_timer_s easy matches 31 if score r2_timer_ms easy matches 1 run structure load "easy:EasyTunnelDoor2"  ~-4 ~2 ~-8
+execute as @s[type=brr:flood_room, name=easy_room2] at @s if score started2 easy matches 1 if score r2_timer_s easy matches 31 if score r2_timer_ms easy matches 10 run structure load "easy:EasyTunnelDoor3" ~-4 ~2 ~-8
+execute as @s[type=brr:flood_room, name=easy_room2] at @s if score started2 easy matches 1 if score r2_timer_s easy matches 31 if score r2_timer_ms easy matches 10 run playsound sfx.doors.tunnelopen @a[tag=easy] ~-3.5 ~3 ~-8
 # - Level title -
-execute as @a[tag=easy] at @s if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 10 if score started2 easy matches 1 run title @a[tag=easy] subtitle §2Limited Time
-execute as @a[tag=easy] at @s if score r2_timer_s easy matches 21 if score r2_timer_ms easy matches 10 if score started2 easy matches 1 run title @a[tag=easy] title §aROOM 2
+execute as @a[tag=easy] at @s if score r2_timer_s easy matches 31 if score r2_timer_ms easy matches 10 if score started2 easy matches 1 run title @a[tag=easy] subtitle §2Limited Time
+execute as @a[tag=easy] at @s if score r2_timer_s easy matches 31 if score r2_timer_ms easy matches 10 if score started2 easy matches 1 run title @a[tag=easy] title §aROOM 2
 # - Test for buttons -
 # // Button 1
 execute as @s[type=brr:flood_room, name=easy_room2] at @s if score R2B1 easy matches 0 if block ^-6 ^6 ^6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players add R2B1a easy 1

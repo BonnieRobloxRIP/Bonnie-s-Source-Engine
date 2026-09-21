@@ -16,5 +16,8 @@ execute as @e[type=brr:flood_room, name=easy_exit] at @s if score loaded4 easy m
 # // essential
 execute as @e[type=brr:flood_room, name=easy_exit] at @s if score loaded4 easy matches 0 run scoreboard players add code_match easy 0
 execute as @e[type=brr:flood_room, name=easy_exit] at @s if score loaded4 easy matches 0 run scoreboard players add r4_end easy 0
+# // finale
+execute as @e[type=brr:flood_room, name=easy_exit] at @s if score loaded4 easy matches 0 run scoreboard players add r5_end easy 0
+execute as @e[type=brr:flood_room, name=easy_exit] at @s if score loaded4 easy matches 0 run scoreboard players add R5B1 easy 0
 # // = End =
 execute as @e[type=brr:flood_room, name=easy_exit] at @s if score loaded4 easy matches 0 run scoreboard players set loaded4 easy 1
