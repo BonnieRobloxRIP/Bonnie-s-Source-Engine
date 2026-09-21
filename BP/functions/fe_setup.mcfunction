@@ -61,3 +61,8 @@ scoreboard objectives add display_extreme dummy "§5§lExtreme Mode Wins"
 scoreboard objectives add display_endless dummy "§9§lEndless Mode Ranking"
 # // begin
 function game_functions/mode_easy/reset
+
+
+
+summon brr:engine_piston -8 23 4
+summon brr:engine_piston 8 23 4 180 0
