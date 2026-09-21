@@ -13,13 +13,18 @@ scoreboard players reset alarm hard
 structure load "hard:HardStateAvailable" -11 93 49
 # // game
 scoreboard players set r1_timer_ms hard 0
-scoreboard players set r1_timer_s hard 21
+scoreboard players set r1_timer_s hard 11
 scoreboard players set r2_timer_ms hard 0
-scoreboard players set r2_timer_s hard 21
+scoreboard players set r2_timer_s hard 11
 scoreboard players set r3_timer_ms hard 0
-scoreboard players set r3_timer_s hard 21
+scoreboard players set r3_timer_s hard 11
 scoreboard players set r4_timer_ms hard 0
-scoreboard players set r4_timer_s hard 31
+scoreboard players set r4_timer_s hard 22
+scoreboard players set r1_extended hard 0
+scoreboard players set r2_extended hard 0
+scoreboard players set r3_extended hard 0
+scoreboard players reset r3_animation hard
+scoreboard players reset soundtrack hard
 scoreboard players reset R1B1 hard
 scoreboard players reset R1B2 hard
 scoreboard players reset R1B3 hard
@@ -124,8 +129,8 @@ scoreboard players reset door hard
 scoreboard players reset exit_door hard
 # = STRUCTURES =
 # // unload
-execute as @e[type=brr:flood_room, name=hard_room1] at @s run structure load "hard/room1:hardRoom1" ~-7 ~1 ~-7
-execute as @e[type=brr:flood_room, name=hard_room2] at @s run structure load "easy/room2:Room2Remove" ~-7 ~1 ~-7
+execute as @e[type=brr:flood_room, name=hard_room1] at @s run structure load "hard/room1:HardRoom1" ~-14 ~1 ~-7
+execute as @e[type=brr:flood_room, name=hard_room2] at @s run structure load "easy/room2:Room2Remove" ~-14 ~1 ~-7
 execute as @e[type=brr:flood_room, name=hard_room3] at @s run structure load "easy/room3:Room3Remove" ~-16 ~1 ~-7
 execute as @e[type=brr:flood_room, name=hard_exit] at @s run structure load "hard/exit_room:HardExitRoomRemove" ~-5 ~-2 ~-7
 structure load "hard/room1:HardRoom1" -22 -58 45
@@ -134,6 +139,7 @@ execute as @e[type=brr:flood_room, name=hard_room1] at @s run kill @s
 execute as @e[type=brr:flood_room, name=hard_room2] at @s run kill @s
 execute as @e[type=brr:flood_room, name=hard_room3] at @s run kill @s
 execute as @e[type=brr:flood_room, name=hard_exit] at @s run kill @s
+execute as @e[type=brr:flood_room, name=laser, tag=hard] at @s run kill @s
 # = PLAYERS =
 tp @a[tag=hard] 0 86 -16
 tp @a[tag=hardlift2] -8 89 52

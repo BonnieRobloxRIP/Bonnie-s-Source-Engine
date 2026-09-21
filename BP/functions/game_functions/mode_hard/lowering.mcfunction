@@ -78,7 +78,6 @@ execute if score lift hard matches 231 run structure load "lobby/elevators:MainE
 execute if score lift hard matches 233 run structure load "lobby/elevators:MainElevator" -10 35 50
 execute if score lift hard matches 235 run structure load "lobby/elevators:MainElevator" -10 34 50
 execute if score lift hard matches 237 run structure load "lobby/elevators:MainElevator" -10 33 50
-execute if score lift hard matches 237 run scoreboard players random metal lobby 1 7
 execute if score lift hard matches 239 run structure load "lobby/elevators:MainElevator" -10 32 50
 execute if score lift hard matches 241 run structure load "lobby/elevators:MainElevator" -10 31 50
 execute if score lift hard matches 243 run structure load "lobby/elevators:MainElevator" -10 30 50
@@ -118,6 +117,7 @@ execute if score lift hard matches 314 run structure load "lobby/elevators:MainE
 execute if score lift hard matches 317 run structure load "lobby/elevators:MainElevator" -10 1 50
 execute if score lift hard matches 320 run structure load "lobby/elevators:MainElevator" -10 0 50
 # // = Short circuit =
+execute if score lift hard matches 320 run kill @a[x=-5.5, y=23, z=49.5, dx=5, dy=100, dz=5, tag=hard]
 execute if score lift hard matches 320 run structure load "hard:HardModeLightsOff" -11 -32 49 0_degrees none block_by_block 1
 execute if score lift hard matches 320 run structure load "hard:HardStateBusy" -11 93 49 0_degrees none block_by_block 1
 execute if score lift hard matches 320 run stopsound @a[tag=hard] sfx.elevator.move
@@ -133,6 +133,7 @@ execute if score lift hard matches 352 run structure load "hard:HardModeLightsOn
 execute if score lift hard matches 360 run structure load "hard:HardModeLightsOff" -11 -32 49
 execute if score lift hard matches 350..360 run particle brr:pipe_burst01 -9 6 48
 execute if score lift hard matches 390 run camerashake add @a[tag=hard] 1 0.4 positional
+execute if score lift hard matches 390 run scoreboard players random metal lobby 1 7
 execute if score lift hard matches 390 run structure load "lobby/elevators:MainElevator" -10 -1 50
 execute if score lift hard matches 500 run structure load "hard:HardModeLightsOn" -11 -32 49 0_degrees none block_by_block 5
 # // = Slowly resume =
@@ -175,7 +176,7 @@ execute if score lift hard matches 716 run structure load "lobby/elevators:MainE
 execute if score lift hard matches 720 run structure load "lobby/elevators:MainElevator" -10 -34 50
 execute if score lift hard matches 725 run structure load "lobby/elevators:MainElevator" -10 -35 50
 # // Entering Room 1
-execute if score lift hard matches 263 run structure load "lobby:LiftBorderPrecaution" 5 -59 49
+execute if score lift hard matches 263 run structure load "lobby:LiftBorderPrecaution" -11 -59 49
 execute if score lift hard matches 735 run structure load "lobby/elevators:MainElevator" -10 -36 50
 execute if score lift hard matches 740 run structure load "lobby/elevators:MainElevator" -10 -37 50
 execute if score lift hard matches 745 run structure load "lobby/elevators:MainElevator" -10 -38 50
@@ -190,18 +191,19 @@ execute if score lift hard matches 820 run playsound sfx.elevator.stop @a[tag=ha
 execute if score lift hard matches 820 run stopsound @a[tag=hard] sfx.elevator.move
 execute if score lift hard matches 820 run stopsound @a[tag=hard] sfx.ambiance.gamemode_shaft
 # // Release players
-execute if score lift hard matches 830 run playsound sfx.doors.liftsepparate @a 8 -49 52
+execute if score lift hard matches 830 run playsound sfx.doors.liftsepparate @a -8 -49 52
 execute if score lift hard matches 830 run structure load "lobby/elevators:MainElevatorOpen1" -10 -49 50
 execute if score lift hard matches 832 run structure load "lobby/elevators:MainElevatorOpen2" -10 -49 50
 execute if score lift hard matches 834 run structure load "lobby/elevators:MainElevatorOpen3" -10 -49 50
 execute if score lift hard matches 838 run structure load "lobby/elevators:MainElevatorOpen2" -10 -49 50
 execute if score lift hard matches 840 run structure load "lobby/elevators:MainElevatorOpen3" -10 -49 50
 # // begin game
+execute if score lift hard matches 840 run scoreboard players set soundtrack hard 2
 execute if score lift hard matches 840 run scoreboard players set started hard 1
 # // Raise elevator back to the surface
 execute if score lift hard matches 850 run structure load "lobby/elevators:MainElevatorOpen3" -10 -48 50
 execute if score lift hard matches 860 run structure load "lobby/elevators:MainElevatorOpen3" -10 -47 50
-execute if score lift hard matches 865 run structure load "lobby:LiftBorderRemove" 5 -59 49
+execute if score lift hard matches 865 run structure load "lobby:LiftBorderRemove" -11 -59 49
 execute if score lift hard matches 870 run structure load "lobby/elevators:MainElevatorOpen3" -10 -46 50
 execute if score lift hard matches 878 run structure load "lobby/elevators:MainElevatorOpen3" -10 -45 50
 execute if score lift hard matches 885 run structure load "lobby/elevators:MainElevatorOpen3" -10 -44 50

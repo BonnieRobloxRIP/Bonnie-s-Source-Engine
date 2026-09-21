@@ -1,7 +1,7 @@
 # = ROOMS =
-scoreboard players set room1 hard 1
-scoreboard players set room2 hard 1
-scoreboard players set room3 hard 1
+scoreboard players random room1 hard 1 2
+scoreboard players random room2 hard 1 2
+scoreboard players random room3 hard 1 2
 # = SCORES =
 scoreboard players set loaded1 hard 0
 scoreboard players set loaded2 hard 0
