@@ -8,7 +8,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/egon_fire",
+                    "name": "sounds/weapons/gluon/egon_fire",
                     "stream": true,
                     "volume": 1
                 }
@@ -21,7 +21,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/egon_fire_start",
+                    "name": "sounds/weapons/gluon/egon_fire_start",
                     "stream": true,
                     "volume": 1
                 }
@@ -34,7 +34,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/egon_fire_end",
+                    "name": "sounds/weapons/gluon/egon_fire_end",
                     "stream": true,
                     "volume": 1
                 }
@@ -47,7 +47,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/egon_hit1",
+                    "name": "sounds/weapons/gluon/egon_hit1",
                     "stream": true,
                     "volume": 1
                 }
@@ -60,7 +60,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/egon_hit2",
+                    "name": "sounds/weapons/gluon/egon_hit2",
                     "stream": true,
                     "volume": 1
                 }
@@ -73,7 +73,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/egon_hit3",
+                    "name": "sounds/weapons/gluon/egon_hit3",
                     "stream": true,
                     "volume": 1
                 }
@@ -86,7 +86,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/egon_hit4",
+                    "name": "sounds/weapons/gluon/egon_hit4",
                     "stream": true,
                     "volume": 1
                 }
@@ -99,7 +99,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/egon_hit5",
+                    "name": "sounds/weapons/gluon/egon_hit5",
                     "stream": true,
                     "volume": 1
                 }
@@ -112,7 +112,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_charged",
+                    "name": "sounds/weapons/gauss/gauss_charged",
                     "stream": true,
                     "volume": 1
                 }
@@ -125,7 +125,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_draw_admire",
+                    "name": "sounds/weapons/gauss/gauss_draw_admire",
                     "stream": true,
                     "volume": 1
                 }
@@ -138,7 +138,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_empty",
+                    "name": "sounds/weapons/gauss/gauss_empty",
                     "stream": true,
                     "volume": 1
                 }
@@ -151,7 +151,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_fire1",
+                    "name": "sounds/weapons/gauss/gauss_fire1",
                     "stream": true,
                     "volume": 1
                 }
@@ -164,7 +164,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_fire2",
+                    "name": "sounds/weapons/gauss/gauss_fire2",
                     "stream": true,
                     "volume": 1
                 }
@@ -177,7 +177,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_fire3",
+                    "name": "sounds/weapons/gauss/gauss_fire3",
                     "stream": true,
                     "volume": 1
                 }
@@ -190,7 +190,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_fire4",
+                    "name": "sounds/weapons/gauss/gauss_fire4",
                     "stream": true,
                     "volume": 1
                 }
@@ -203,7 +203,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_idle_fidget",
+                    "name": "sounds/weapons/gauss/gauss_idle_fidget",
                     "stream": true,
                     "volume": 1
                 }
@@ -216,7 +216,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_overcharged",
+                    "name": "sounds/weapons/gauss/gauss_overcharged",
                     "stream": true,
                     "volume": 1
                 }
@@ -229,7 +229,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_overcharged1",
+                    "name": "sounds/weapons/gauss/gauss_overcharged1",
                     "stream": true,
                     "volume": 1
                 }
@@ -242,7 +242,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_overcharged2",
+                    "name": "sounds/weapons/gauss/gauss_overcharged2",
                     "stream": true,
                     "volume": 1
                 }
@@ -255,7 +255,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_overcharged_fire3",
+                    "name": "sounds/weapons/gauss/gauss_overcharged_fire3",
                     "stream": true,
                     "volume": 1
                 }
@@ -268,7 +268,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_overcharging",
+                    "name": "sounds/weapons/gauss/gauss_overcharging",
                     "stream": true,
                     "volume": 1
                 }
@@ -281,7 +281,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_spin_loop",
+                    "name": "sounds/weapons/gauss/gauss_spin_loop",
                     "stream": true,
                     "volume": 1
                 }
@@ -294,7 +294,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_spinup",
+                    "name": "sounds/weapons/gauss/gauss_spinup",
                     "stream": true,
                     "volume": 1
                 }
@@ -307,7 +307,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/gauss_undercharge",
+                    "name": "sounds/weapons/gauss/gauss_undercharge",
                     "stream": true,
                     "volume": 1
                 }
@@ -320,7 +320,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/crowbar_hit1",
+                    "name": "sounds/weapons/crowbar/crowbar_hit1",
                     "stream": true,
                     "volume": 1
                 }
@@ -333,7 +333,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/crowbar_hit2",
+                    "name": "sounds/weapons/crowbar/crowbar_hit2",
                     "stream": true,
                     "volume": 1
                 }
@@ -346,7 +346,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/crowbar_hit3",
+                    "name": "sounds/weapons/crowbar/crowbar_hit3",
                     "stream": true,
                     "volume": 1
                 }
@@ -359,7 +359,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/crowbar_miss1",
+                    "name": "sounds/weapons/crowbar/crowbar_miss1",
                     "stream": true,
                     "volume": 1
                 }
@@ -372,7 +372,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/crowbar_miss2",
+                    "name": "sounds/weapons/crowbar/crowbar_miss2",
                     "stream": true,
                     "volume": 1
                 }
@@ -385,7 +385,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/crowbar_miss3",
+                    "name": "sounds/weapons/crowbar/crowbar_miss3",
                     "stream": true,
                     "volume": 1
                 }
@@ -398,7 +398,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/glock_draw_admire",
+                    "name": "sounds/weapons/glock/glock_draw_admire",
                     "stream": true,
                     "volume": 1
                 }
@@ -411,7 +411,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/glock_empty",
+                    "name": "sounds/weapons/glock/glock_empty",
                     "stream": true,
                     "volume": 1
                 }
@@ -424,7 +424,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/glock_fire",
+                    "name": "sounds/weapons/glock/glock_fire",
                     "stream": true,
                     "volume": 1
                 }
@@ -437,7 +437,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/glock_idle_fidget",
+                    "name": "sounds/weapons/glock/glock_idle_fidget",
                     "stream": true,
                     "volume": 1
                 }
@@ -450,7 +450,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/glock_reload_empty",
+                    "name": "sounds/weapons/glock/glock_reload_empty",
                     "stream": true,
                     "volume": 1
                 }
@@ -463,7 +463,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/glock_reload",
+                    "name": "sounds/weapons/glock/glock_reload",
                     "stream": true,
                     "volume": 1
                 }
@@ -476,7 +476,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/357_fire",
+                    "name": "sounds/weapons/magnum357/357_fire",
                     "stream": true,
                     "volume": 1
                 }
@@ -489,7 +489,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/357_centerfire",
+                    "name": "sounds/weapons/magnum357/357_centerfire",
                     "stream": true,
                     "volume": 1
                 }
@@ -502,7 +502,7 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/357_draw_admire",
+                    "name": "sounds/weapons/magnum357/357_draw_admire",
                     "stream": true,
                     "volume": 1
                 }
@@ -515,7 +515,59 @@
             "sounds": [
                 {
                     "load_on_low_memory": false,
-                    "name": "sounds/weapons/357_reload",
+                    "name": "sounds/weapons/magnum357/357_reload",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "interactable.hev_charger.deny": {
+            "category": "block",
+            "max_distance": 30,
+            "min_distance": 1,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/interactables/suitcharger_deny",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "interactable.hev_charger.start": {
+            "category": "block",
+            "max_distance": 30,
+            "min_distance": 1,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/interactables/suitcharger_start",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "interactable.health_charger.deny": {
+            "category": "block",
+            "max_distance": 30,
+            "min_distance": 1,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/interactables/healthcharger_deny",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "interactable.health_charger.start": {
+            "category": "block",
+            "max_distance": 30,
+            "min_distance": 1,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/interactables/healthcharger_start",
                     "stream": true,
                     "volume": 1
                 }
