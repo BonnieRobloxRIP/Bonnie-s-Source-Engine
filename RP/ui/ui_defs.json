@@ -13,6 +13,7 @@
     "ui/blocks/logic_compare.json",
     "ui/blocks/logic_coop_manager.json",
     "ui/blocks/logic_random_outputs.json",
-    "ui/blocks/logic_timer.json"
+    "ui/blocks/logic_timer.json",
+    "ui/blocks/game_nametag.json"
   ]
 }

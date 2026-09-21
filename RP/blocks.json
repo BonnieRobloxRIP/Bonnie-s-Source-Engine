@@ -164,5 +164,23 @@
 	},
 	"brr:health_charger": {
 		"sound": "stone"
+	},
+	"brr:bm_barrel": {
+		"sound": "iron"
+	},
+	"brr:lambda_metalgrate": {
+		"sound": "iron"
+	},
+	"brr:bms_metalgrate_01": {
+		"sound": "iron"
+	},
+	"brr:bms_metalgrate_02": {
+		"sound": "iron"
+	},
+	"brr:bms_metalgrate_03": {
+		"sound": "iron"
+	},
+	"brr:bms_metalgrate_04": {
+		"sound": "iron"
 	}
 }

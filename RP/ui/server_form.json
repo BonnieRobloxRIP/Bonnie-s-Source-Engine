@@ -166,12 +166,12 @@
     "anchor_to": "bottom_right",
     "size": [
       112,
-      25
+      22
     ],
     "$default_button_alpha": "@server_form.submit_button_appear_animation",
     "offset": [
       -41,
-      -62
+      -46
     ],
     "$new_ui_label_offset": [
       0,
@@ -218,11 +218,10 @@
   },
   "option_dropdown@settings_common.option_dropdown": {
     "size": [
-      "100% - 32px",
-      22
+      "100% - 10px",
+      36
     ],
-    "collection_index": "$index",
-    "$custom_option_label": "",
+    "$custom_option_label": "#custom_text",
     "$options_dropdown_toggle_label_font_type": "MinecraftTen",
     "$options_dropdown_toggle_label_font_scale": 0.8,
     "$radio_label_font_type": "pixel",
@@ -242,6 +241,13 @@
     "$dropdown_scroll_content_size": [
       "100%",
       "500%"
+    ],
+    "$label_bindings": [
+      {
+        "binding_name": "#custom_text",
+        "binding_type": "collection",
+        "binding_collection_name": "custom_form"
+      }
     ]
   },
   "option_toggle@settings_common.option_toggle": {
@@ -266,7 +272,7 @@
     "$indent_texture": "textures/ui/submit_button_bg",
     "$indent_hover_texture": "textures/ui/submit_button_bg_hover",
     "size": [
-      "100% - 32px",
+      "100% - 10px",
       28
     ],
     "$option_place_holder_text": "#custom_placeholder_text",
@@ -289,6 +295,212 @@
         "binding_name": "#custom_text",
         "binding_type": "collection",
         "binding_collection_name": "custom_form"
+      }
+    ]
+  },
+  "brr_help_toggle": {
+    "type": "panel",
+    "layer": 99,
+    "$name|default": "brr_help",
+    "$text|default": "? Help",
+    "controls": [
+      {
+        "custom_toggle@common_toggles.light_text_toggle": {
+          "$default_texture": "textures/ui/recipe_book_item_bg",
+          "$hover_texture": "textures/ui/recipe_book_item_bg",
+          "$pressed_texture": "textures/ui/recipe_book_item_bg",
+          "$pressed_no_hover_texture": "textures/ui/recipe_book_item_bg",
+          "$default_border_visible": false,
+          "$hover_border_visible": false,
+          "$default_text_color": [
+            1,
+            1,
+            1
+          ],
+          "$default_checked_text_color": [
+            1,
+            0.72,
+            0.2
+          ],
+          "$hover_text_color": [
+            1,
+            0.72,
+            0.2
+          ],
+          "$hover_checked_text_color": [
+            1,
+            0.72,
+            0.2
+          ],
+          "$toggle_view_binding_name": "$name",
+          "$button_text": "$text",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "$font_type": "MinecraftTen",
+          "$new_ui_label_offset": [
+            0,
+            -2
+          ]
+        }
+      }
+    ]
+  },
+  "brr_scroll_panel": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "clips_children": true,
+    "$content_control|default": "common.empty_panel",
+    "controls": [
+      {
+        "scroll@server_form.brr_scroll_view": {
+          "$content_control": "$content_control"
+        }
+      }
+    ]
+  },
+  "brr_scroll_view": {
+    "type": "scroll_view",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "scroll_speed": 10,
+    "scrollbar_track_button": "button.scrollbar_skip_track",
+    "scrollbar_touch_button": "button.scrollbar_touch",
+    "clips_children": true,
+    "always_listen_to_input": true,
+    "always_handle_pointer": true,
+    "always_handle_scrolling": true,
+    "scrollbar_always_visible": false,
+    "scrollbar_track": "track",
+    "scrollbar_box": "box",
+    "scroll_content": "scrolling_content",
+    "scroll_view_port": "scrolling_view_port",
+    "scroll_box_and_track_panel": "centered_panel",
+    "jump_to_bottom_on_update": false,
+    "$content_control|default": "common.empty_panel",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.scrollbar_touch",
+        "mapping_type": "pressed",
+        "button_up_right_of_first_refusal": true
+      }
+    ],
+    "controls": [
+      {
+        "scrolling_view_port": {
+          "type": "panel",
+          "size": [
+            "100%",
+            "100%c"
+          ]
+        }
+      },
+      {
+        "scrolling_content": {
+          "type": "panel",
+          "size": [
+            "100%",
+            "100%c"
+          ],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "controls": [
+            {
+              "column@$content_control": {}
+            }
+          ]
+        }
+      },
+      {
+        "bar_and_track": {
+          "type": "panel",
+          "size": [
+            3,
+            "100%"
+          ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "layer": 10,
+          "controls": [
+            {
+              "centered_panel": {
+                "type": "panel",
+                "size": [
+                  "100%",
+                  "100%"
+                ],
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "controls": [
+                  {
+                    "track": {
+                      "type": "scroll_track",
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "layer": 2,
+                      "button_mappings": [
+                        {
+                          "from_button_id": "button.menu_select",
+                          "to_button_id": "button.scrollbar_skip_track",
+                          "mapping_type": "pressed"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "scroll_box": {
+                      "type": "panel",
+                      "controls": [
+                        {
+                          "box": {
+                            "type": "scrollbar_box",
+                            "layer": 5,
+                            "anchor_from": "top_middle",
+                            "anchor_to": "top_middle",
+                            "contained": true,
+                            "draggable": "vertical",
+                            "button_mappings": [
+                              {
+                                "from_button_id": "button.menu_select",
+                                "to_button_id": "button.menu_select",
+                                "mapping_type": "pressed",
+                                "button_up_right_of_first_refusal": true
+                              }
+                            ],
+                            "controls": [
+                              {
+                                "thumb_visual": {
+                                  "type": "image",
+                                  "texture": "textures/ui/recipe_book_item_bg",
+                                  "size": [
+                                    3,
+                                    16
+                                  ],
+                                  "anchor_from": "center",
+                                  "anchor_to": "center",
+                                  "layer": 6
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     ]
   },
@@ -977,8 +1189,42 @@
       }
     ]
   },
+  "bm_no_anim_exit_push": {
+    "anim_type": "offset",
+    "duration": 0,
+    "from": [
+      0,
+      0
+    ],
+    "to": [
+      0,
+      0
+    ],
+    "play_event": "screen.exit_push",
+    "end_event": "screen.exit_end"
+  },
+  "bm_no_anim_exit_pop": {
+    "anim_type": "offset",
+    "duration": 0,
+    "from": [
+      0,
+      0
+    ],
+    "to": [
+      0,
+      0
+    ],
+    "play_event": "screen.exit_pop",
+    "end_event": "screen.exit_end"
+  },
   "third_party_server_screen@common.base_screen": {
     "$screen_content": "server_form.main_screen_content",
+    "$screen_animations": [
+      "@server_form.bm_no_anim_exit_push",
+      "@server_form.bm_no_anim_exit_pop"
+    ],
+    "$background_animations": [],
+    "$use_loading_bars": false,
     "button_mappings": [
       {
         "from_button_id": "button.menu_cancel",
@@ -1041,18 +1287,2336 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "(not ((#title_text = 'BM_MAIN::HUB') or (#title_text = 'BM_MAIN::CAMPAIGN::0') or (#title_text = 'BM_MAIN::CAMPAIGN::1') or (#title_text = 'BM_MAIN::CAMPAIGN::2') or (#title_text = 'BM_MAIN::CAMPAIGN::3')))",
+              "source_property_name": "((#title_text - 'BM_MAIN::') = #title_text)",
               "target_property_name": "#visible"
             }
           ]
         }
       },
       {
-        "black_mesa_long_form@server_form.black_mesa_long_form": {}
+        "black_mesa_long_form@server_form.bm_menu_root": {}
       }
     ]
   },
-  "black_mesa_long_form": {
+  "bm_fill": {
+    "type": "image",
+    "texture": "textures/ui/black_mesa/bm_solid",
+    "keep_ratio": false,
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "$fill_color|default": [
+      1,
+      1,
+      1
+    ],
+    "$fill_alpha|default": 1,
+    "color": "$fill_color",
+    "alpha": "$fill_alpha"
+  },
+  "bm_gap": {
+    "type": "panel",
+    "$gap_size|default": [
+      "100%",
+      4
+    ],
+    "size": "$gap_size"
+  },
+  "bm_click_none": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ]
+  },
+  "bm_hover_f0": {
+    "anim_type": "uv",
+    "duration": 0.05,
+    "from": [
+      0,
+      0
+    ],
+    "to": [
+      0,
+      0
+    ],
+    "next": "@server_form.bm_hover_f1"
+  },
+  "bm_hover_f1": {
+    "anim_type": "uv",
+    "duration": 0.05,
+    "from": [
+      0,
+      25
+    ],
+    "to": [
+      0,
+      25
+    ],
+    "next": "@server_form.bm_hover_f2"
+  },
+  "bm_hover_f2": {
+    "anim_type": "uv",
+    "duration": 0.05,
+    "from": [
+      0,
+      50
+    ],
+    "to": [
+      0,
+      50
+    ],
+    "next": "@server_form.bm_hover_f3"
+  },
+  "bm_hover_f3": {
+    "anim_type": "uv",
+    "duration": 0.05,
+    "from": [
+      0,
+      75
+    ],
+    "to": [
+      0,
+      75
+    ],
+    "next": "@server_form.bm_hover_f4"
+  },
+  "bm_hover_f4": {
+    "anim_type": "uv",
+    "duration": 100000,
+    "from": [
+      0,
+      100
+    ],
+    "to": [
+      0,
+      100
+    ]
+  },
+  "bm_hover_anim": {
+    "type": "image",
+    "$hover_texture|default": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha|default": 1,
+    "texture": "$hover_texture",
+    "uv": "@server_form.bm_hover_f0",
+    "uv_size": [
+      45,
+      25
+    ],
+    "keep_ratio": false,
+    "alpha": "$hover_alpha",
+    "size": [
+      "100%",
+      "100%"
+    ]
+  },
+  "bm_hover_still": {
+    "type": "image",
+    "$hover_texture|default": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha|default": 1,
+    "texture": "$hover_texture",
+    "uv": [
+      0,
+      100
+    ],
+    "uv_size": [
+      45,
+      25
+    ],
+    "keep_ratio": false,
+    "alpha": "$hover_alpha",
+    "size": [
+      "100%",
+      "100%"
+    ]
+  },
+  "bm_form_button": {
+    "type": "button",
+    "$hover_alpha|default": 1,
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "sound_name": "random.click",
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.form_button_click",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.form_button_click",
+        "mapping_type": "focused"
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "form_buttons"
+      }
+    ],
+    "controls": [
+      {
+        "default@common.empty_panel": {}
+      },
+      {
+        "hover@server_form.bm_hover_anim": {}
+      },
+      {
+        "pressed@server_form.bm_hover_still": {}
+      }
+    ]
+  },
+  "bm_exit_button": {
+    "type": "button",
+    "$hover_alpha|default": 1,
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "sound_name": "random.click",
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_exit",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_exit",
+        "mapping_type": "focused"
+      }
+    ],
+    "controls": [
+      {
+        "default@common.empty_panel": {}
+      },
+      {
+        "hover@server_form.bm_hover_anim": {}
+      },
+      {
+        "pressed@server_form.bm_hover_still": {}
+      }
+    ]
+  },
+  "bm_hit_slot": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "$slot_token|default": "[NONE]",
+    "controls": [
+      {
+        "hit@server_form.bm_form_button": {
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#form_button_text - $slot_token) = #form_button_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bm_text_slot": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "$slot_token|default": "[NONE]",
+    "$text_font|default": "default",
+    "$text_scale|default": 0.8,
+    "$text_color|default": [
+      1,
+      1,
+      1
+    ],
+    "controls": [
+      {
+        "slot_label": {
+          "type": "label",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [
+            "100%",
+            "default"
+          ],
+          "text_alignment": "left",
+          "text": "#slot_text",
+          "font_type": "$text_font",
+          "font_scale_factor": "$text_scale",
+          "color": "$text_color",
+          "shadow": false,
+          "bindings": [
+            {
+              "binding_name": "#form_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "form_buttons"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#form_button_text - $slot_token)",
+              "target_property_name": "#slot_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#form_button_text - $slot_token) = #form_button_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bm_hslot_t0@server_form.bm_hit_slot": {
+    "$slot_token": "[T0]",
+    "$hover_texture": "textures/ui/black_mesa/bm_orangeribbon_hover_anim"
+  },
+  "bm_hslot_t1@server_form.bm_hit_slot": {
+    "$slot_token": "[T1]",
+    "$hover_texture": "textures/ui/black_mesa/bm_orangeribbon_hover_anim"
+  },
+  "bm_hslot_t2@server_form.bm_hit_slot": {
+    "$slot_token": "[T2]",
+    "$hover_texture": "textures/ui/black_mesa/bm_orangeribbon_hover_anim"
+  },
+  "bm_hslot_t3@server_form.bm_hit_slot": {
+    "$slot_token": "[T3]",
+    "$hover_texture": "textures/ui/black_mesa/bm_orangeribbon_hover_anim"
+  },
+  "bm_hslot_t4@server_form.bm_hit_slot": {
+    "$slot_token": "[T4]",
+    "$hover_texture": "textures/ui/black_mesa/bm_orangeribbon_hover_anim"
+  },
+  "bm_hslot_hr@server_form.bm_hit_slot": {
+    "$slot_token": "[HR]",
+    "$hover_texture": "textures/ui/black_mesa/bm_button_hover_anim"
+  },
+  "bm_hslot_c0@server_form.bm_hit_slot": {
+    "$slot_token": "[C0]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.35
+  },
+  "bm_hslot_c1@server_form.bm_hit_slot": {
+    "$slot_token": "[C1]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.35
+  },
+  "bm_hslot_c2@server_form.bm_hit_slot": {
+    "$slot_token": "[C2]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.35
+  },
+  "bm_hslot_c3@server_form.bm_hit_slot": {
+    "$slot_token": "[C3]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.35
+  },
+  "bm_hslot_cb@server_form.bm_hit_slot": {
+    "$slot_token": "[CB]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim"
+  },
+  "bm_hslot_cs@server_form.bm_hit_slot": {
+    "$slot_token": "[CS]",
+    "$hover_texture": "textures/ui/black_mesa/bm_button_hover_anim"
+  },
+  "bm_hslot_cl@server_form.bm_hit_slot": {
+    "$slot_token": "[CL]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim"
+  },
+  "bm_hslot_cv@server_form.bm_hit_slot": {
+    "$slot_token": "[CV]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim"
+  },
+  "bm_hslot_cn@server_form.bm_hit_slot": {
+    "$slot_token": "[CN]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim"
+  },
+  "bm_hslot_osg@server_form.bm_hit_slot": {
+    "$slot_token": "[OSG]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim"
+  },
+  "bm_hslot_osa@server_form.bm_hit_slot": {
+    "$slot_token": "[OSA]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim"
+  },
+  "bm_hslot_osp@server_form.bm_hit_slot": {
+    "$slot_token": "[OSP]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim"
+  },
+  "bm_hslot_odc@server_form.bm_hit_slot": {
+    "$slot_token": "[ODC]",
+    "$hover_texture": "textures/ui/black_mesa/bm_button_hover_anim"
+  },
+  "bm_hslot_oac@server_form.bm_hit_slot": {
+    "$slot_token": "[OAC]",
+    "$hover_texture": "textures/ui/black_mesa/bm_button_hover_anim"
+  },
+  "bm_hslot_r0@server_form.bm_hit_slot": {
+    "$slot_token": "[R0]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.25
+  },
+  "bm_hslot_r1@server_form.bm_hit_slot": {
+    "$slot_token": "[R1]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.25
+  },
+  "bm_hslot_r2@server_form.bm_hit_slot": {
+    "$slot_token": "[R2]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.25
+  },
+  "bm_hslot_r3@server_form.bm_hit_slot": {
+    "$slot_token": "[R3]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.25
+  },
+  "bm_hslot_r4@server_form.bm_hit_slot": {
+    "$slot_token": "[R4]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.25
+  },
+  "bm_hslot_r5@server_form.bm_hit_slot": {
+    "$slot_token": "[R5]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.25
+  },
+  "bm_hslot_r6@server_form.bm_hit_slot": {
+    "$slot_token": "[R6]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.25
+  },
+  "bm_hslot_r7@server_form.bm_hit_slot": {
+    "$slot_token": "[R7]",
+    "$hover_texture": "textures/ui/black_mesa/bm_graybar_hover_anim",
+    "$hover_alpha": 0.25
+  },
+  "bm_tslot_hc@server_form.bm_text_slot": {
+    "$slot_token": "[HC]",
+    "$text_font": "smooth",
+    "$text_scale": 1.6
+  },
+  "bm_tslot_hd@server_form.bm_text_slot": {
+    "$slot_token": "[HD]",
+    "$text_scale": 0.65,
+    "$text_color": [
+      0.82,
+      0.82,
+      0.82
+    ]
+  },
+  "bm_tslot_c0@server_form.bm_text_slot": {
+    "$slot_token": "[C0]",
+    "$text_scale": 1
+  },
+  "bm_tslot_c1@server_form.bm_text_slot": {
+    "$slot_token": "[C1]",
+    "$text_scale": 1
+  },
+  "bm_tslot_c2@server_form.bm_text_slot": {
+    "$slot_token": "[C2]",
+    "$text_scale": 1
+  },
+  "bm_tslot_c3@server_form.bm_text_slot": {
+    "$slot_token": "[C3]",
+    "$text_scale": 1
+  },
+  "bm_slot_factory": {
+    "type": "collection_panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "collection_name": "form_buttons",
+    "bindings": [
+      {
+        "binding_name": "#form_button_contents",
+        "binding_name_override": "#collection_length"
+      }
+    ]
+  },
+  "bm_hit_t0@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_t0"
+      }
+    }
+  },
+  "bm_hit_t1@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_t1"
+      }
+    }
+  },
+  "bm_hit_t2@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_t2"
+      }
+    }
+  },
+  "bm_hit_t3@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_t3"
+      }
+    }
+  },
+  "bm_hit_t4@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_t4"
+      }
+    }
+  },
+  "bm_hit_hr@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_hr"
+      }
+    }
+  },
+  "bm_hit_c0@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_c0"
+      }
+    }
+  },
+  "bm_hit_c1@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_c1"
+      }
+    }
+  },
+  "bm_hit_c2@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_c2"
+      }
+    }
+  },
+  "bm_hit_c3@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_c3"
+      }
+    }
+  },
+  "bm_hit_cb@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_cb"
+      }
+    }
+  },
+  "bm_hit_cs@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_cs"
+      }
+    }
+  },
+  "bm_hit_cl@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_cl"
+      }
+    }
+  },
+  "bm_hit_cv@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_cv"
+      }
+    }
+  },
+  "bm_hit_cn@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_cn"
+      }
+    }
+  },
+  "bm_hit_osg@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_osg"
+      }
+    }
+  },
+  "bm_hit_osa@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_osa"
+      }
+    }
+  },
+  "bm_hit_osp@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_osp"
+      }
+    }
+  },
+  "bm_hit_odc@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_odc"
+      }
+    }
+  },
+  "bm_hit_oac@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_oac"
+      }
+    }
+  },
+  "bm_hit_r0@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_r0"
+      }
+    }
+  },
+  "bm_hit_r1@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_r1"
+      }
+    }
+  },
+  "bm_hit_r2@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_r2"
+      }
+    }
+  },
+  "bm_hit_r3@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_r3"
+      }
+    }
+  },
+  "bm_hit_r4@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_r4"
+      }
+    }
+  },
+  "bm_hit_r5@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_r5"
+      }
+    }
+  },
+  "bm_hit_r6@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_r6"
+      }
+    }
+  },
+  "bm_hit_r7@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_hslot_r7"
+      }
+    }
+  },
+  "bm_text_hc@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_tslot_hc"
+      }
+    }
+  },
+  "bm_text_hd@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_tslot_hd"
+      }
+    }
+  },
+  "bm_text_c0@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_tslot_c0"
+      }
+    }
+  },
+  "bm_text_c1@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_tslot_c1"
+      }
+    }
+  },
+  "bm_text_c2@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_tslot_c2"
+      }
+    }
+  },
+  "bm_text_c3@server_form.bm_slot_factory": {
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "server_form.bm_tslot_c3"
+      }
+    }
+  },
+  "bm_primary_button": {
+    "type": "panel",
+    "$button_size|default": [
+      58,
+      20
+    ],
+    "$button_text|default": "",
+    "$button_text_scale|default": 0.75,
+    "$click_ref|default": "server_form.bm_click_none",
+    "size": "$button_size",
+    "controls": [
+      {
+        "frame": {
+          "type": "image",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "texture": "textures/ui/black_mesa/bm_button",
+          "keep_ratio": false,
+          "layer": 1
+        }
+      },
+      {
+        "click@$click_ref": {
+          "layer": 2
+        }
+      },
+      {
+        "label": {
+          "type": "label",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "size": [
+            "100%",
+            "default"
+          ],
+          "text_alignment": "center",
+          "text": "$button_text",
+          "font_type": "default",
+          "font_scale_factor": "$button_text_scale",
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "shadow": false,
+          "layer": 3
+        }
+      }
+    ]
+  },
+  "bm_bar_button": {
+    "type": "panel",
+    "$button_size|default": [
+      50,
+      "100%"
+    ],
+    "$button_text|default": "",
+    "$click_ref|default": "server_form.bm_click_none",
+    "size": "$button_size",
+    "controls": [
+      {
+        "click@$click_ref": {
+          "layer": 1
+        }
+      },
+      {
+        "label": {
+          "type": "label",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [
+            0,
+            -1
+          ],
+          "size": [
+            "100%",
+            "default"
+          ],
+          "text_alignment": "center",
+          "text": "$button_text",
+          "font_type": "default",
+          "font_scale_factor": 0.75,
+          "color": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "shadow": false,
+          "layer": 2
+        }
+      }
+    ]
+  },
+  "bm_tab": {
+    "type": "panel",
+    "$tab_text|default": "TAB",
+    "$tab_size|default": [
+      54,
+      "100%"
+    ],
+    "$click_ref|default": "server_form.bm_click_none",
+    "$active_source|default": "(#title_text = 'BM_MAIN::NEVER')",
+    "size": "$tab_size",
+    "controls": [
+      {
+        "tab_label": {
+          "type": "label",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [
+            0,
+            -1
+          ],
+          "size": [
+            "100%",
+            "default"
+          ],
+          "text_alignment": "center",
+          "text": "$tab_text",
+          "font_type": "default",
+          "font_scale_factor": 0.8,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "shadow": false,
+          "layer": 2
+        }
+      },
+      {
+        "tab_active_line@server_form.bm_fill": {
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [
+            0,
+            -4
+          ],
+          "size": [
+            "100% - 14px",
+            1
+          ],
+          "$fill_color": [
+            1,
+            1,
+            1
+          ],
+          "layer": 3,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "$active_source",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "tab_click@$click_ref": {
+          "layer": 1
+        }
+      }
+    ]
+  },
+  "bm_subtab": {
+    "type": "panel",
+    "$subtab_text|default": "TAB",
+    "$subtab_size|default": [
+      58,
+      "100%"
+    ],
+    "$subtab_color|default": [
+      0.95,
+      0.95,
+      0.95
+    ],
+    "$active_source|default": "(#title_text = 'BM_MAIN::NEVER')",
+    "$inactive_source|default": "(not (#title_text = 'BM_MAIN::NEVER'))",
+    "$click_ref|default": "server_form.bm_click_none",
+    "size": "$subtab_size",
+    "controls": [
+      {
+        "subtab_click@$click_ref": {
+          "layer": 1
+        }
+      },
+      {
+        "subtab_label": {
+          "type": "label",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [
+            0,
+            -1
+          ],
+          "size": [
+            "100%",
+            "default"
+          ],
+          "text_alignment": "center",
+          "text": "$subtab_text",
+          "font_type": "default",
+          "font_scale_factor": 0.7,
+          "color": "$subtab_color",
+          "shadow": false,
+          "layer": 2,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "$inactive_source",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "subtab_label_active": {
+          "type": "label",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [
+            0,
+            -1
+          ],
+          "size": [
+            "100%",
+            "default"
+          ],
+          "text_alignment": "center",
+          "text": "$subtab_text",
+          "font_type": "default",
+          "font_scale_factor": 0.7,
+          "color": [
+            0.85,
+            0.47,
+            0.2
+          ],
+          "shadow": false,
+          "layer": 3,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "$active_source",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "subtab_active_line@server_form.bm_fill": {
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [
+            0,
+            -3
+          ],
+          "size": [
+            "100% - 12px",
+            1
+          ],
+          "$fill_color": [
+            0.85,
+            0.47,
+            0.2
+          ],
+          "layer": 3,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "$active_source",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bm_option_row": {
+    "type": "panel",
+    "$row_label|default": "OPTION",
+    "$row_value|default": "",
+    "$row_label_color|default": [
+      1,
+      1,
+      1
+    ],
+    "$click_ref|default": "server_form.bm_click_none",
+    "$row_size|default": [
+      "100%",
+      "13%"
+    ],
+    "size": "$row_size",
+    "controls": [
+      {
+        "row_click@$click_ref": {
+          "layer": 1
+        }
+      },
+      {
+        "row_label": {
+          "type": "label",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [
+            0,
+            0
+          ],
+          "size": [
+            "50%",
+            "default"
+          ],
+          "text_alignment": "right",
+          "text": "$row_label",
+          "font_type": "default",
+          "font_scale_factor": 0.7,
+          "color": "$row_label_color",
+          "shadow": false,
+          "layer": 2
+        }
+      },
+      {
+        "row_value": {
+          "type": "label",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [
+            "56%",
+            0
+          ],
+          "size": [
+            "30%",
+            "default"
+          ],
+          "text_alignment": "center",
+          "text": "$row_value",
+          "font_type": "default",
+          "font_scale_factor": 0.7,
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "shadow": false,
+          "layer": 2
+        }
+      },
+      {
+        "row_arrow": {
+          "type": "image",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [
+            "90%",
+            0
+          ],
+          "size": [
+            7,
+            11
+          ],
+          "texture": "textures/ui/black_mesa/bm_mainmenu_right_arrow",
+          "alpha": 0.85,
+          "layer": 2
+        }
+      }
+    ]
+  },
+  "bm_rows_game": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "row0@server_form.bm_option_row": {
+          "$row_label": "DIFFICULTY",
+          "$row_value": "NORMAL",
+          "$row_label_color": [
+            0.85,
+            0.47,
+            0.2
+          ],
+          "$click_ref": "server_form.bm_hit_r0"
+        }
+      },
+      {
+        "row1@server_form.bm_option_row": {
+          "$row_label": "ALWAYS RUN",
+          "$row_value": "NO",
+          "$click_ref": "server_form.bm_hit_r1"
+        }
+      },
+      {
+        "row2@server_form.bm_option_row": {
+          "$row_label": "VIEW ROLL",
+          "$row_value": "2.0",
+          "$click_ref": "server_form.bm_hit_r2"
+        }
+      },
+      {
+        "row3@server_form.bm_option_row": {
+          "$row_label": "FAST WEAPON SWITCH",
+          "$row_value": "NO",
+          "$click_ref": "server_form.bm_hit_r3"
+        }
+      },
+      {
+        "row4@server_form.bm_option_row": {
+          "$row_label": "AUTO WEAPON SWITCH",
+          "$row_value": "YES",
+          "$click_ref": "server_form.bm_hit_r4"
+        }
+      },
+      {
+        "row5@server_form.bm_option_row": {
+          "$row_label": "CLASSIC IRON-SIGHTS",
+          "$row_value": "NO",
+          "$click_ref": "server_form.bm_hit_r5"
+        }
+      },
+      {
+        "row6@server_form.bm_option_row": {
+          "$row_label": "AUTO CROUCH JUMP",
+          "$row_value": "NO",
+          "$click_ref": "server_form.bm_hit_r6"
+        }
+      }
+    ]
+  },
+  "bm_rows_audio": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "row0@server_form.bm_option_row": {
+          "$row_label": "MASTER VOLUME",
+          "$row_value": "100",
+          "$row_label_color": [
+            0.85,
+            0.47,
+            0.2
+          ],
+          "$click_ref": "server_form.bm_hit_r0"
+        }
+      },
+      {
+        "row1@server_form.bm_option_row": {
+          "$row_label": "SOUND EFFECT VOLUME",
+          "$row_value": "100",
+          "$click_ref": "server_form.bm_hit_r1"
+        }
+      },
+      {
+        "row2@server_form.bm_option_row": {
+          "$row_label": "MUSIC VOLUME",
+          "$row_value": "100",
+          "$click_ref": "server_form.bm_hit_r2"
+        }
+      },
+      {
+        "row3@server_form.bm_option_row": {
+          "$row_label": "SPEAKER CONFIGURATION",
+          "$row_value": "STEREO",
+          "$click_ref": "server_form.bm_hit_r3"
+        }
+      },
+      {
+        "row4@server_form.bm_option_row": {
+          "$row_label": "SOUND QUALITY",
+          "$row_value": "HIGH",
+          "$click_ref": "server_form.bm_hit_r4"
+        }
+      },
+      {
+        "row5@server_form.bm_option_row": {
+          "$row_label": "CAPTIONING",
+          "$row_value": "CLOSED CAPTIONS",
+          "$click_ref": "server_form.bm_hit_r5"
+        }
+      },
+      {
+        "row6@server_form.bm_option_row": {
+          "$row_label": "CAPTIONING LANGUAGE",
+          "$row_value": "ENGLISH",
+          "$click_ref": "server_form.bm_hit_r6"
+        }
+      }
+    ]
+  },
+  "bm_rows_perf": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "row0@server_form.bm_option_row": {
+          "$row_label": "RENDER DISTANCE",
+          "$row_value": "12 CHUNKS",
+          "$row_label_color": [
+            0.85,
+            0.47,
+            0.2
+          ],
+          "$row_size": [
+            "100%",
+            "11.5%"
+          ],
+          "$click_ref": "server_form.bm_hit_r0"
+        }
+      },
+      {
+        "row1@server_form.bm_option_row": {
+          "$row_label": "FIELD OF VIEW",
+          "$row_value": "90",
+          "$row_size": [
+            "100%",
+            "11.5%"
+          ],
+          "$click_ref": "server_form.bm_hit_r1"
+        }
+      },
+      {
+        "row2@server_form.bm_option_row": {
+          "$row_label": "DYNAMIC LIGHTS",
+          "$row_value": "ON",
+          "$row_size": [
+            "100%",
+            "11.5%"
+          ],
+          "$click_ref": "server_form.bm_hit_r2"
+        }
+      },
+      {
+        "row3@server_form.bm_option_row": {
+          "$row_label": "PARTICLE DENSITY",
+          "$row_value": "HIGH",
+          "$row_size": [
+            "100%",
+            "11.5%"
+          ],
+          "$click_ref": "server_form.bm_hit_r3"
+        }
+      },
+      {
+        "row4@server_form.bm_option_row": {
+          "$row_label": "LENS FLARE",
+          "$row_value": "ON",
+          "$row_size": [
+            "100%",
+            "11.5%"
+          ],
+          "$click_ref": "server_form.bm_hit_r4"
+        }
+      },
+      {
+        "row5@server_form.bm_option_row": {
+          "$row_label": "CHROMATIC ABERRATION",
+          "$row_value": "ON",
+          "$row_size": [
+            "100%",
+            "11.5%"
+          ],
+          "$click_ref": "server_form.bm_hit_r5"
+        }
+      },
+      {
+        "row6@server_form.bm_option_row": {
+          "$row_label": "RADIOACTIVE NOISE SHADER",
+          "$row_value": "ON",
+          "$row_size": [
+            "100%",
+            "11.5%"
+          ],
+          "$click_ref": "server_form.bm_hit_r6"
+        }
+      },
+      {
+        "row7@server_form.bm_option_row": {
+          "$row_label": "HUD POST PROCESSING",
+          "$row_value": "ON",
+          "$row_size": [
+            "100%",
+            "11.5%"
+          ],
+          "$click_ref": "server_form.bm_hit_r7"
+        }
+      }
+    ]
+  },
+  "bm_options_frame": {
+    "type": "panel",
+    "$panel_title|default": "GAME OPTIONS",
+    "$rows_ref|default": "server_form.bm_click_none",
+    "$show_footer|default": false,
+    "$state_source|default": "(#title_text = 'BM_MAIN::NEVER')",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [
+      "11%",
+      "25%"
+    ],
+    "size": [
+      "78%",
+      "58%"
+    ],
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "$state_source",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "header": {
+          "type": "panel",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "size": [
+            "100%",
+            "13%"
+          ],
+          "layer": 5,
+          "controls": [
+            {
+              "header_bg@server_form.bm_fill": {
+                "$fill_color": [
+                  0.13,
+                  0.13,
+                  0.13
+                ],
+                "$fill_alpha": 1,
+                "layer": 1
+              }
+            },
+            {
+              "header_title": {
+                "type": "label",
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [
+                  "3%",
+                  0
+                ],
+                "size": [
+                  "60%",
+                  "default"
+                ],
+                "text_alignment": "left",
+                "text": "$panel_title",
+                "font_type": "default",
+                "font_scale_factor": 1.1,
+                "color": [
+                  0.85,
+                  0.47,
+                  0.2
+                ],
+                "shadow": false,
+                "layer": 2
+              }
+            }
+          ]
+        }
+      },
+      {
+        "body@server_form.bm_fill": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            0,
+            "13%"
+          ],
+          "size": [
+            "100%",
+            "87%"
+          ],
+          "$fill_color": [
+            0.19,
+            0.19,
+            0.19
+          ],
+          "$fill_alpha": 1,
+          "layer": 1
+        }
+      },
+      {
+        "rows@$rows_ref": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            0,
+            "16%"
+          ],
+          "size": [
+            "96%",
+            "82%"
+          ],
+          "layer": 2
+        }
+      },
+      {
+        "scroll_track@server_form.bm_fill": {
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [
+            -3,
+            "15%"
+          ],
+          "size": [
+            3,
+            "82%"
+          ],
+          "$fill_color": [
+            0.3,
+            0.3,
+            0.3
+          ],
+          "layer": 3
+        }
+      },
+      {
+        "scroll_thumb@server_form.bm_fill": {
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [
+            -3,
+            "15%"
+          ],
+          "size": [
+            3,
+            "42%"
+          ],
+          "$fill_color": [
+            0.85,
+            0.47,
+            0.2
+          ],
+          "layer": 4
+        }
+      },
+      {
+        "footer": {
+          "type": "panel",
+          "anchor_from": "bottom_right",
+          "anchor_to": "bottom_right",
+          "offset": [
+            -6,
+            -5
+          ],
+          "size": [
+            "50%",
+            18
+          ],
+          "layer": 5,
+          "visible": "$show_footer",
+          "controls": [
+            {
+              "apply@server_form.bm_primary_button": {
+                "anchor_from": "right_middle",
+                "anchor_to": "right_middle",
+                "$button_text": "APPLY CHANGES",
+                "$button_text_scale": 0.62,
+                "$button_size": [
+                  70,
+                  16
+                ],
+                "$click_ref": "server_form.bm_hit_oac"
+              }
+            },
+            {
+              "discard@server_form.bm_primary_button": {
+                "anchor_from": "right_middle",
+                "anchor_to": "right_middle",
+                "offset": [
+                  -74,
+                  0
+                ],
+                "$button_text": "DISCARD CHANGES",
+                "$button_text_scale": 0.62,
+                "$button_size": [
+                  70,
+                  16
+                ],
+                "$click_ref": "server_form.bm_hit_odc"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bm_options_state": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "layer": 6,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#title_text - 'BM_MAIN::OPTIONS::') = #title_text))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "sub_header@server_form.bm_fill": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            0,
+            28
+          ],
+          "size": [
+            "100%",
+            26
+          ],
+          "$fill_color": [
+            0.11,
+            0.11,
+            0.12
+          ],
+          "$fill_alpha": 0.94,
+          "layer": 1,
+          "controls": [
+            {
+              "sub_tab_row": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [
+                  14,
+                  0
+                ],
+                "size": [
+                  "100%c",
+                  "100%"
+                ],
+                "controls": [
+                  {
+                    "sub_game@server_form.bm_subtab": {
+                      "$subtab_text": "GAME",
+                      "$subtab_size": [
+                        44,
+                        "100%"
+                      ],
+                      "$active_source": "(not ((#title_text - 'BM_MAIN::OPTIONS::GAME') = #title_text))",
+                      "$inactive_source": "((#title_text - 'BM_MAIN::OPTIONS::GAME') = #title_text)",
+                      "$click_ref": "server_form.bm_hit_osg"
+                    }
+                  },
+                  {
+                    "sub_audio@server_form.bm_subtab": {
+                      "$subtab_text": "AUDIO",
+                      "$subtab_size": [
+                        48,
+                        "100%"
+                      ],
+                      "$active_source": "(not ((#title_text - 'BM_MAIN::OPTIONS::AUDIO') = #title_text))",
+                      "$inactive_source": "((#title_text - 'BM_MAIN::OPTIONS::AUDIO') = #title_text)",
+                      "$click_ref": "server_form.bm_hit_osa"
+                    }
+                  },
+                  {
+                    "sub_perf@server_form.bm_subtab": {
+                      "$subtab_text": "PERFORMANCE",
+                      "$subtab_size": [
+                        76,
+                        "100%"
+                      ],
+                      "$active_source": "(not ((#title_text - 'BM_MAIN::OPTIONS::PERF') = #title_text))",
+                      "$inactive_source": "((#title_text - 'BM_MAIN::OPTIONS::PERF') = #title_text)",
+                      "$click_ref": "server_form.bm_hit_osp"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "frame_game@server_form.bm_options_frame": {
+          "$panel_title": "GAME OPTIONS",
+          "$rows_ref": "server_form.bm_rows_game",
+          "$state_source": "(not ((#title_text - 'BM_MAIN::OPTIONS::GAME') = #title_text))",
+          "layer": 2
+        }
+      },
+      {
+        "frame_audio@server_form.bm_options_frame": {
+          "$panel_title": "AUDIO OPTIONS",
+          "$rows_ref": "server_form.bm_rows_audio",
+          "$show_footer": true,
+          "$state_source": "(not ((#title_text - 'BM_MAIN::OPTIONS::AUDIO') = #title_text))",
+          "layer": 2
+        }
+      },
+      {
+        "frame_perf@server_form.bm_options_frame": {
+          "$panel_title": "PERFORMANCE OPTIONS",
+          "$rows_ref": "server_form.bm_rows_perf",
+          "$show_footer": true,
+          "$state_source": "(not ((#title_text - 'BM_MAIN::OPTIONS::PERF') = #title_text))",
+          "layer": 2
+        }
+      },
+      {
+        "options_back@server_form.bm_bar_button": {
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "offset": [
+            72,
+            0
+          ],
+          "$button_size": [
+            50,
+            28
+          ],
+          "$button_text": "BACK",
+          "$click_ref": "server_form.bm_hit_cb",
+          "layer": 4
+        }
+      }
+    ]
+  },
+  "bm_card": {
+    "type": "panel",
+    "$card_offset|default": [
+      "7.6%",
+      "34%"
+    ],
+    "$card_size|default": [
+      "20.9%",
+      "37%"
+    ],
+    "$chapter_label|default": "CHAPTER 1",
+    "$selected_title|default": "BM_MAIN::CAMPAIGN::0",
+    "$title_ref|default": "server_form.bm_text_c0",
+    "$click_ref|default": "server_form.bm_click_none",
+    "$thumb_texture|default": "textures/ui/black_mesa/bm_solid",
+    "$thumb_color|default": [
+      0.14,
+      0.14,
+      0.15
+    ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": "$card_offset",
+    "size": "$card_size",
+    "controls": [
+      {
+        "card_border@server_form.bm_fill": {
+          "$fill_color": [
+            0.702,
+            0.361,
+            0.137
+          ],
+          "layer": 1,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#title_text = $selected_title)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "card_back@server_form.bm_fill": {
+          "size": [
+            "100% - 2px",
+            "100% - 2px"
+          ],
+          "$fill_color": [
+            0.07,
+            0.07,
+            0.08
+          ],
+          "$fill_alpha": 0.6,
+          "layer": 2,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#title_text = $selected_title)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "card_thumb": {
+          "type": "image",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            "3%",
+            "1.5%"
+          ],
+          "size": [
+            "94%",
+            "55%"
+          ],
+          "texture": "$thumb_texture",
+          "color": "$thumb_color",
+          "keep_ratio": false,
+          "layer": 3
+        }
+      },
+      {
+        "card_title@$title_ref": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            "3%",
+            "60%"
+          ],
+          "size": [
+            "94%",
+            12
+          ],
+          "layer": 4
+        }
+      },
+      {
+        "card_chapter": {
+          "type": "label",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            "3%",
+            "72%"
+          ],
+          "size": [
+            "94%",
+            "default"
+          ],
+          "text_alignment": "left",
+          "text": "$chapter_label",
+          "font_type": "default",
+          "font_scale_factor": 0.6,
+          "color": [
+            0.72,
+            0.72,
+            0.72
+          ],
+          "shadow": false,
+          "layer": 4
+        }
+      },
+      {
+        "card_select@$click_ref": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            0,
+            0
+          ],
+          "size": [
+            "100%",
+            "82%"
+          ],
+          "layer": 5
+        }
+      },
+      {
+        "card_start@server_form.bm_primary_button": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            "3%",
+            "85%"
+          ],
+          "$button_size": [
+            "42%",
+            "12%"
+          ],
+          "$button_text": "START GAME",
+          "$button_text_scale": 0.7,
+          "$click_ref": "server_form.bm_hit_cs",
+          "layer": 6,
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#title_text = $selected_title)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bm_menu_title_image": {
+    "type": "image",
+    "size": [
+      "48%",
+      "11%x"
+    ],
+    "texture": "textures/ui/black_mesa/bm_menu_title",
+    "keep_ratio": false
+  },
+  "bm_hub_state": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "layer": 6,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#title_text - 'BM_MAIN::HUB') = #title_text))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "hub_save_block": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [
+            "4%",
+            "7%"
+          ],
+          "size": [
+            "64%",
+            "100%c"
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - 'BM_MAIN::HUB::SAVE') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "logo@server_form.bm_menu_title_image": {}
+            },
+            {
+              "gap_logo@server_form.bm_gap": {
+                "$gap_size": [
+                  "100%",
+                  11
+                ]
+              }
+            },
+            {
+              "save_kind": {
+                "type": "label",
+                "size": [
+                  "100%",
+                  "default"
+                ],
+                "text_alignment": "left",
+                "text": "MANUAL SAVE",
+                "font_type": "default",
+                "font_scale_factor": 0.55,
+                "color": [
+                  0.85,
+                  0.85,
+                  0.85
+                ],
+                "shadow": false
+              }
+            },
+            {
+              "gap_kind@server_form.bm_gap": {
+                "$gap_size": [
+                  "100%",
+                  3
+                ]
+              }
+            },
+            {
+              "save_chapter@server_form.bm_text_hc": {
+                "size": [
+                  "100%",
+                  17
+                ]
+              }
+            },
+            {
+              "gap_chapter@server_form.bm_gap": {
+                "$gap_size": [
+                  "100%",
+                  3
+                ]
+              }
+            },
+            {
+              "save_date@server_form.bm_text_hd": {
+                "size": [
+                  "100%",
+                  8
+                ]
+              }
+            },
+            {
+              "gap_date@server_form.bm_gap": {
+                "$gap_size": [
+                  "100%",
+                  10
+                ]
+              }
+            },
+            {
+              "resume_row": {
+                "type": "panel",
+                "size": [
+                  "100%",
+                  20
+                ],
+                "controls": [
+                  {
+                    "resume_button@server_form.bm_primary_button": {
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "$button_text": "RESUME",
+                      "$button_size": [
+                        64,
+                        20
+                      ],
+                      "$click_ref": "server_form.bm_hit_hr"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "hub_new_block": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [
+            "4%",
+            "7%"
+          ],
+          "size": [
+            "64%",
+            "100%c"
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - 'BM_MAIN::HUB::NEW') = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "welcome_line": {
+                "type": "label",
+                "size": [
+                  "100%",
+                  "default"
+                ],
+                "text_alignment": "left",
+                "text": "G O O D   M O R N I N G ,   A N D   W E L C O M E   T O   T H E",
+                "font_type": "default",
+                "font_scale_factor": 0.6,
+                "color": [
+                  0.92,
+                  0.92,
+                  0.92
+                ],
+                "shadow": false
+              }
+            },
+            {
+              "gap_welcome@server_form.bm_gap": {
+                "$gap_size": [
+                  "100%",
+                  7
+                ]
+              }
+            },
+            {
+              "logo@server_form.bm_menu_title_image": {}
+            },
+            {
+              "gap_title@server_form.bm_gap": {
+                "$gap_size": [
+                  "100%",
+                  7
+                ]
+              }
+            },
+            {
+              "facility_line": {
+                "type": "label",
+                "size": [
+                  "100%",
+                  "default"
+                ],
+                "text_alignment": "left",
+                "text": "R E S E A R C H   F A C I L I T Y",
+                "font_type": "default",
+                "font_scale_factor": 1,
+                "color": [
+                  1,
+                  1,
+                  1
+                ],
+                "shadow": false
+              }
+            },
+            {
+              "gap_facility@server_form.bm_gap": {
+                "$gap_size": [
+                  "100%",
+                  14
+                ]
+              }
+            },
+            {
+              "start_row": {
+                "type": "panel",
+                "size": [
+                  "100%",
+                  20
+                ],
+                "controls": [
+                  {
+                    "start_button@server_form.bm_primary_button": {
+                      "anchor_from": "left_middle",
+                      "anchor_to": "left_middle",
+                      "$button_text": "START GAME",
+                      "$button_size": [
+                        76,
+                        20
+                      ],
+                      "$click_ref": "server_form.bm_hit_hr"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bm_campaign_state": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "layer": 6,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#title_text - 'BM_MAIN::CAMPAIGN::') = #title_text))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "sub_header@server_form.bm_fill": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            0,
+            28
+          ],
+          "size": [
+            "100%",
+            26
+          ],
+          "$fill_color": [
+            0.11,
+            0.11,
+            0.12
+          ],
+          "$fill_alpha": 0.94,
+          "layer": 1,
+          "controls": [
+            {
+              "sub_tab_row": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [
+                  14,
+                  0
+                ],
+                "size": [
+                  "100%c",
+                  "100%"
+                ],
+                "controls": [
+                  {
+                    "sub_new_game@server_form.bm_subtab": {
+                      "$subtab_text": "NEW GAME",
+                      "$subtab_size": [
+                        56,
+                        "100%"
+                      ],
+                      "$active_source": "(not ((#title_text - 'BM_MAIN::CAMPAIGN::') = #title_text))",
+                      "$inactive_source": "((#title_text - 'BM_MAIN::CAMPAIGN::') = #title_text)",
+                      "$click_ref": "server_form.bm_hit_cn"
+                    }
+                  },
+                  {
+                    "sub_load_game@server_form.bm_subtab": {
+                      "$subtab_text": "LOAD GAME",
+                      "$subtab_size": [
+                        58,
+                        "100%"
+                      ],
+                      "$click_ref": "server_form.bm_hit_cl"
+                    }
+                  },
+                  {
+                    "sub_save_game@server_form.bm_subtab": {
+                      "$subtab_text": "SAVE GAME",
+                      "$subtab_size": [
+                        58,
+                        "100%"
+                      ],
+                      "$subtab_color": [
+                        0.45,
+                        0.45,
+                        0.45
+                      ],
+                      "$click_ref": "server_form.bm_hit_cv"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "card_0@server_form.bm_card": {
+          "$card_offset": [
+            "7.6%",
+            "34%"
+          ],
+          "$chapter_label": "CHAPTER 1",
+          "$selected_title": "BM_MAIN::CAMPAIGN::0",
+          "$title_ref": "server_form.bm_text_c0",
+          "$click_ref": "server_form.bm_hit_c0",
+          "$thumb_texture": "textures/ui/black_mesa/bm_ch1_card_thumbnail",
+          "$thumb_color": [
+            1,
+            1,
+            1
+          ],
+          "layer": 2
+        }
+      },
+      {
+        "card_1@server_form.bm_card": {
+          "$card_offset": [
+            "28.8%",
+            "34%"
+          ],
+          "$chapter_label": "CHAPTER 2",
+          "$selected_title": "BM_MAIN::CAMPAIGN::1",
+          "$title_ref": "server_form.bm_text_c1",
+          "$click_ref": "server_form.bm_hit_c1",
+          "layer": 2
+        }
+      },
+      {
+        "card_2@server_form.bm_card": {
+          "$card_offset": [
+            "50%",
+            "34%"
+          ],
+          "$chapter_label": "CHAPTER 3",
+          "$selected_title": "BM_MAIN::CAMPAIGN::2",
+          "$title_ref": "server_form.bm_text_c2",
+          "$click_ref": "server_form.bm_hit_c2",
+          "layer": 2
+        }
+      },
+      {
+        "card_3@server_form.bm_card": {
+          "$card_offset": [
+            "71.2%",
+            "34%"
+          ],
+          "$chapter_label": "CHAPTER 4",
+          "$selected_title": "BM_MAIN::CAMPAIGN::3",
+          "$title_ref": "server_form.bm_text_c3",
+          "$click_ref": "server_form.bm_hit_c3",
+          "layer": 2
+        }
+      },
+      {
+        "campaign_arrow": {
+          "type": "image",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            "93.5%",
+            "42%"
+          ],
+          "size": [
+            20,
+            30
+          ],
+          "texture": "textures/ui/black_mesa/bm_mainmenu_right_arrow",
+          "alpha": 0.8,
+          "layer": 3
+        }
+      },
+      {
+        "campaign_back@server_form.bm_bar_button": {
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "offset": [
+            72,
+            0
+          ],
+          "$button_size": [
+            50,
+            28
+          ],
+          "$button_text": "BACK",
+          "$click_ref": "server_form.bm_hit_cb",
+          "layer": 4
+        }
+      }
+    ]
+  },
+  "bm_menu_root": {
     "type": "panel",
     "anchor_from": "top_left",
     "anchor_to": "top_left",
@@ -1070,487 +3634,24 @@
       },
       {
         "binding_type": "view",
-        "source_property_name": "((#title_text = 'BM_MAIN::HUB') or (#title_text = 'BM_MAIN::CAMPAIGN::0') or (#title_text = 'BM_MAIN::CAMPAIGN::1') or (#title_text = 'BM_MAIN::CAMPAIGN::2') or (#title_text = 'BM_MAIN::CAMPAIGN::3'))",
+        "source_property_name": "(not ((#title_text - 'BM_MAIN::') = #title_text))",
         "target_property_name": "#visible"
       }
     ],
     "controls": [
       {
-        "bm_dimmer": {
-          "type": "image",
-          "size": [
-            "100%",
-            "100%"
+        "dimmer@server_form.bm_fill": {
+          "$fill_color": [
+            0.04,
+            0.04,
+            0.05
           ],
-          "texture": "textures/ui/main_bg",
-          "alpha": 0.58,
+          "$fill_alpha": 0.55,
           "layer": 0
         }
       },
       {
-        "bm_top_ribbon": {
-          "type": "image",
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [
-            0,
-            0
-          ],
-          "size": [
-            560,
-            46
-          ],
-          "texture": "textures/ui/black_mesa/bm_mainmenu_ribbon",
-          "layer": 3,
-          "controls": [
-            {
-              "bm_tab_row": {
-                "type": "stack_panel",
-                "orientation": "horizontal",
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [
-                  44,
-                  9
-                ],
-                "size": [
-                  464,
-                  22
-                ],
-                "layer": 5,
-                "collection_name": "form_buttons",
-                "controls": [
-                  {
-                    "tab0@server_form.bm_tab_button": {
-                      "$button_size": [
-                        88,
-                        22
-                      ],
-                      "$tab_text": "CAMPAIGN",
-                      "$tab_active": true
-                    }
-                  },
-                  {
-                    "tab1@server_form.bm_tab_button": {
-                      "$button_size": [
-                        88,
-                        22
-                      ],
-                      "$tab_text": "MULTIPLAYER",
-                      "$tab_active": false
-                    }
-                  },
-                  {
-                    "tab2@server_form.bm_tab_button": {
-                      "$button_size": [
-                        88,
-                        22
-                      ],
-                      "$tab_text": "OPTIONS",
-                      "$tab_active": false
-                    }
-                  },
-                  {
-                    "tab3@server_form.bm_tab_button": {
-                      "$button_size": [
-                        88,
-                        22
-                      ],
-                      "$tab_text": "ACHIEVEMENTS",
-                      "$tab_active": false
-                    }
-                  },
-                  {
-                    "tab4@server_form.bm_tab_button": {
-                      "$button_size": [
-                        112,
-                        22
-                      ],
-                      "$tab_text": "STEAM WORKSHOP",
-                      "$tab_active": false
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        "bm_hub_state": {
-          "type": "panel",
-          "size": [
-            "100%",
-            "100%"
-          ],
-          "layer": 6,
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'BM_MAIN::HUB')",
-              "target_property_name": "#visible"
-            }
-          ],
-          "controls": [
-            {
-              "bm_logo_label": {
-                "type": "label",
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [
-                  56,
-                  320
-                ],
-                "text": "BLACK MESA",
-                "font_type": "MinecraftTen",
-                "font_scale_factor": 3,
-                "color": [
-                  1,
-                  1,
-                  1
-                ],
-                "shadow": false,
-                "layer": 7
-              }
-            },
-            {
-              "bm_hub_text": {
-                "type": "label",
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [
-                  56,
-                  430
-                ],
-                "size": [
-                  640,
-                  72
-                ],
-                "text_alignment": "left",
-                "text": "#form_text",
-                "font_type": "MinecraftTen",
-                "font_scale_factor": 0.85,
-                "color": [
-                  1,
-                  1,
-                  1
-                ],
-                "shadow": false,
-                "layer": 7,
-                "bindings": [
-                  {
-                    "binding_name": "#form_text"
-                  }
-                ]
-              }
-            },
-            {
-              "bm_resume_button@server_form.bm_collection_button": {
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [
-                  56,
-                  500
-                ],
-                "$button_size": [
-                  132,
-                  36
-                ],
-                "$font_type": "MinecraftTen",
-                "$font_scale_factor": 0.75,
-                "$default_text_color": [
-                  1,
-                  1,
-                  1
-                ],
-                "$hover_text_color": [
-                  1,
-                  1,
-                  1
-                ],
-                "$pressed_text_color": [
-                  1,
-                  1,
-                  1
-                ],
-                "$default_button_texture": "textures/ui/black_mesa/bm_mainmenu_button",
-                "$hover_button_texture": "textures/ui/black_mesa/bm_mainmenu_button",
-                "$pressed_button_texture": "textures/ui/black_mesa/bm_mainmenu_button",
-                "$default_button_alpha": 1,
-                "$hover_button_alpha": 1,
-                "$pressed_button_alpha": 1,
-                "$button_text": "RESUME"
-              }
-            },
-            {
-              "bm_quit_button@server_form.bm_collection_button": {
-                "anchor_from": "bottom_left",
-                "anchor_to": "bottom_left",
-                "offset": [
-                  56,
-                  -14
-                ],
-                "$pressed_button_name": "button.menu_exit",
-                "$button_size": [
-                  80,
-                  20
-                ],
-                "$font_type": "MinecraftTen",
-                "$font_scale_factor": 0.72,
-                "$default_text_color": [
-                  1,
-                  1,
-                  1
-                ],
-                "$hover_text_color": [
-                  1,
-                  0.66,
-                  0.37
-                ],
-                "$pressed_text_color": [
-                  1,
-                  0.66,
-                  0.37
-                ],
-                "$default_button_texture": "textures/ui/main_bg",
-                "$hover_button_texture": "textures/ui/main_bg",
-                "$pressed_button_texture": "textures/ui/main_bg",
-                "$default_button_alpha": 0,
-                "$hover_button_alpha": 0,
-                "$pressed_button_alpha": 0,
-                "$button_text": "QUIT"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "bm_campaign_state": {
-          "type": "panel",
-          "size": [
-            "100%",
-            "100%"
-          ],
-          "layer": 6,
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "((#title_text = 'BM_MAIN::CAMPAIGN::0') or (#title_text = 'BM_MAIN::CAMPAIGN::1') or (#title_text = 'BM_MAIN::CAMPAIGN::2') or (#title_text = 'BM_MAIN::CAMPAIGN::3'))",
-              "target_property_name": "#visible"
-            }
-          ],
-          "controls": [
-            {
-              "bm_campaign_overlay": {
-                "type": "image",
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [
-                  0,
-                  58
-                ],
-                "size": [
-                  "100%",
-                  "100% - 110px"
-                ],
-                "texture": "textures/ui/main_bg",
-                "alpha": 0.35,
-                "layer": 1
-              }
-            },
-            {
-              "bm_campaign_caption": {
-                "type": "label",
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [
-                  104,
-                  210
-                ],
-                "size": [
-                  700,
-                  24
-                ],
-                "text_alignment": "left",
-                "text": "#form_text",
-                "font_type": "MinecraftTen",
-                "font_scale_factor": 0.8,
-                "color": [
-                  0.96,
-                  0.96,
-                  0.96
-                ],
-                "shadow": false,
-                "layer": 7,
-                "bindings": [
-                  {
-                    "binding_name": "#form_text"
-                  }
-                ]
-              }
-            },
-            {
-              "bm_card_row": {
-                "type": "panel",
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [
-                  104,
-                  262
-                ],
-                "size": [
-                  1120,
-                  194
-                ],
-                "layer": 7,
-                "controls": [
-                  {
-                    "chapter_0@server_form.bm_chapter_card": {
-                      "$offset": [
-                        0,
-                        0
-                      ],
-                      "$chapter_text": "CHAPTER 1",
-                      "$selected_title": "BM_MAIN::CAMPAIGN::0"
-                    }
-                  },
-                  {
-                    "chapter_1@server_form.bm_chapter_card": {
-                      "$offset": [
-                        290,
-                        0
-                      ],
-                      "$chapter_text": "CHAPTER 2",
-                      "$selected_title": "BM_MAIN::CAMPAIGN::1"
-                    }
-                  },
-                  {
-                    "chapter_2@server_form.bm_chapter_card": {
-                      "$offset": [
-                        580,
-                        0
-                      ],
-                      "$chapter_text": "CHAPTER 3",
-                      "$selected_title": "BM_MAIN::CAMPAIGN::2"
-                    }
-                  },
-                  {
-                    "chapter_3@server_form.bm_chapter_card": {
-                      "$offset": [
-                        870,
-                        0
-                      ],
-                      "$chapter_text": "CHAPTER 4",
-                      "$selected_title": "BM_MAIN::CAMPAIGN::3"
-                    }
-                  }
-                ]
-              }
-            },
-            {
-              "bm_campaign_back@server_form.bm_collection_button": {
-                "anchor_from": "bottom_left",
-                "anchor_to": "bottom_left",
-                "offset": [
-                  90,
-                  -14
-                ],
-                "$button_size": [
-                  94,
-                  20
-                ],
-                "$font_type": "MinecraftTen",
-                "$font_scale_factor": 0.72,
-                "$default_text_color": [
-                  1,
-                  1,
-                  1
-                ],
-                "$hover_text_color": [
-                  1,
-                  0.66,
-                  0.37
-                ],
-                "$pressed_text_color": [
-                  1,
-                  0.66,
-                  0.37
-                ],
-                "$default_button_texture": "textures/ui/main_bg",
-                "$hover_button_texture": "textures/ui/main_bg",
-                "$pressed_button_texture": "textures/ui/main_bg",
-                "$default_button_alpha": 0,
-                "$hover_button_alpha": 0,
-                "$pressed_button_alpha": 0,
-                "$button_text": "BACK"
-              }
-            },
-            {
-              "bm_campaign_start@server_form.bm_collection_button": {
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [
-                  112,
-                  508
-                ],
-                "$button_size": [
-                  132,
-                  36
-                ],
-                "$font_type": "MinecraftTen",
-                "$font_scale_factor": 0.75,
-                "$default_text_color": [
-                  1,
-                  1,
-                  1
-                ],
-                "$hover_text_color": [
-                  1,
-                  1,
-                  1
-                ],
-                "$pressed_text_color": [
-                  1,
-                  1,
-                  1
-                ],
-                "$default_button_texture": "textures/ui/black_mesa/bm_mainmenu_button",
-                "$hover_button_texture": "textures/ui/black_mesa/bm_mainmenu_button",
-                "$pressed_button_texture": "textures/ui/black_mesa/bm_mainmenu_button",
-                "$default_button_alpha": 1,
-                "$hover_button_alpha": 1,
-                "$pressed_button_alpha": 1,
-                "$button_text": "START GAME"
-              }
-            },
-            {
-              "bm_campaign_arrow": {
-                "type": "image",
-                "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "offset": [
-                  1238,
-                  328
-                ],
-                "size": [
-                  42,
-                  64
-                ],
-                "texture": "textures/ui/black_mesa/bm_mainmenu_right_arrow",
-                "layer": 8
-              }
-            }
-          ]
-        }
-      },
-      {
-        "bm_bottom_bar_backdrop": {
+        "bottom_bar": {
           "type": "image",
           "anchor_from": "bottom_left",
           "anchor_to": "bottom_left",
@@ -1560,505 +3661,154 @@
           ],
           "size": [
             "100%",
-            60
-          ],
-          "texture": "textures/ui/main_bg",
-          "alpha": 0.62,
-          "layer": 8
-        }
-      },
-      {
-        "bm_bottom_bar": {
-          "type": "image",
-          "anchor_from": "bottom_left",
-          "anchor_to": "bottom_left",
-          "offset": [
-            0,
-            0
-          ],
-          "size": [
-            "100%",
-            52
+            28
           ],
           "texture": "textures/ui/black_mesa/bm_mainmenu_bottom_bar",
-          "layer": 9
+          "keep_ratio": false,
+          "layer": 2
         }
       },
       {
-        "bm_hint_text": {
-          "type": "label",
-          "anchor_from": "bottom_middle",
-          "anchor_to": "bottom_middle",
+        "quit_button@server_form.bm_bar_button": {
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
           "offset": [
-            0,
-            -12
+            16,
+            0
           ],
-          "size": [
-            860,
-            22
+          "$button_size": [
+            50,
+            28
           ],
-          "text_alignment": "center",
-          "text": "A  D   NAVIGATE     [ARROWS]  CHANGE OPTIONS     [BACK]  DISCARD/BACK     [ENTER]  SELECT",
-          "font_type": "MinecraftTen",
-          "font_scale_factor": 0.68,
-          "color": [
-            1,
-            1,
-            1
-          ],
-          "shadow": false,
-          "layer": 10
-        }
-      }
-    ]
-  },
-  "bm_collection_button": {
-    "type": "button",
-    "$button_size|default": [
-      100,
-      20
-    ],
-    "$pressed_button_name|default": "button.form_button_click",
-    "$font_type|default": "MinecraftTen",
-    "$font_scale_factor|default": 0.72,
-    "$label_offset|default": [
-      0,
-      -1
-    ],
-    "$default_text_color|default": [
-      1,
-      1,
-      1
-    ],
-    "$hover_text_color|default": [
-      1,
-      1,
-      1
-    ],
-    "$pressed_text_color|default": [
-      1,
-      1,
-      1
-    ],
-    "$default_button_texture|default": "textures/ui/main_bg",
-    "$hover_button_texture|default": "textures/ui/main_bg",
-    "$pressed_button_texture|default": "textures/ui/main_bg",
-    "$default_button_alpha|default": 0,
-    "$hover_button_alpha|default": 0,
-    "$pressed_button_alpha|default": 0,
-    "size": "$button_size",
-    "sound_name": "random.click",
-    "default_control": "default",
-    "hover_control": "hover",
-    "pressed_control": "pressed",
-    "button_mappings": [
-      {
-        "from_button_id": "button.menu_select",
-        "to_button_id": "$pressed_button_name",
-        "mapping_type": "pressed"
-      },
-      {
-        "from_button_id": "button.menu_ok",
-        "to_button_id": "$pressed_button_name",
-        "mapping_type": "focused"
-      }
-    ],
-    "bindings": [
-      {
-        "binding_type": "collection_details",
-        "binding_collection_name": "form_buttons"
-      }
-    ],
-    "controls": [
-      {
-        "default": {
-          "type": "panel",
-          "size": [
-            "100%",
-            "100%"
-          ],
-          "controls": [
-            {
-              "bg": {
-                "type": "image",
-                "size": [
-                  "100%",
-                  "100%"
-                ],
-                "texture": "$default_button_texture",
-                "alpha": "$default_button_alpha"
-              }
-            },
-            {
-              "label": {
-                "type": "label",
-                "anchor_from": "center",
-                "anchor_to": "center",
-                "offset": "$label_offset",
-                "size": [
-                  "100%",
-                  "default"
-                ],
-                "text_alignment": "center",
-                "text": "$button_text",
-                "font_type": "$font_type",
-                "font_scale_factor": "$font_scale_factor",
-                "color": "$default_text_color",
-                "shadow": false
-              }
-            }
-          ]
+          "$button_text": "QUIT",
+          "$click_ref": "server_form.bm_exit_button",
+          "layer": 5
         }
       },
       {
-        "hover": {
-          "type": "panel",
-          "size": [
-            "100%",
-            "100%"
-          ],
-          "controls": [
-            {
-              "bg": {
-                "type": "image",
-                "size": [
-                  "100%",
-                  "100%"
-                ],
-                "texture": "$hover_button_texture",
-                "alpha": "$hover_button_alpha"
-              }
-            },
-            {
-              "label": {
-                "type": "label",
-                "anchor_from": "center",
-                "anchor_to": "center",
-                "offset": "$label_offset",
-                "size": [
-                  "100%",
-                  "default"
-                ],
-                "text_alignment": "center",
-                "text": "$button_text",
-                "font_type": "$font_type",
-                "font_scale_factor": "$font_scale_factor",
-                "color": "$hover_text_color",
-                "shadow": false
-              }
-            }
-          ]
-        }
-      },
-      {
-        "pressed": {
-          "type": "panel",
-          "size": [
-            "100%",
-            "100%"
-          ],
-          "controls": [
-            {
-              "bg": {
-                "type": "image",
-                "size": [
-                  "100%",
-                  "100%"
-                ],
-                "texture": "$pressed_button_texture",
-                "alpha": "$pressed_button_alpha"
-              }
-            },
-            {
-              "label": {
-                "type": "label",
-                "anchor_from": "center",
-                "anchor_to": "center",
-                "offset": "$label_offset",
-                "size": [
-                  "100%",
-                  "default"
-                ],
-                "text_alignment": "center",
-                "text": "$button_text",
-                "font_type": "$font_type",
-                "font_scale_factor": "$font_scale_factor",
-                "color": "$pressed_text_color",
-                "shadow": false
-              }
-            }
-          ]
-        }
-      }
-    ],
-    "$button_text|default": ""
-  },
-  "bm_tab_hover_wipe_in": {
-    "anim_type": "clip",
-    "from": 0,
-    "to": 1,
-    "duration": 0.12,
-    "easing": "out_quad"
-  },
-  "bm_tab_click_button@common.button": {
-    "$button_size|default": [
-      96,
-      22
-    ],
-    "size": "$button_size",
-    "$pressed_button_name": "button.form_button_click",
-    "$button_bindings": [
-      {
-        "binding_type": "collection_details",
-        "binding_collection_name": "form_buttons"
-      }
-    ],
-    "controls": [
-      {
-        "default@common.empty_panel": {}
-      },
-      {
-        "hover": {
-          "type": "image",
-          "size": [
-            "100%",
-            "100%"
-          ],
-          "texture": "textures/ui/main_bg",
-          "color": [
-            1,
-            1,
-            1
-          ],
-          "alpha": 0.5,
-          "clip_direction": "down",
-          "clip_ratio": 0,
-          "clip_pixelperfect": false,
-          "anims": [
-            "@server_form.bm_tab_hover_wipe_in"
-          ]
-        }
-      },
-      {
-        "pressed": {
-          "type": "image",
-          "size": [
-            "100%",
-            "100%"
-          ],
-          "texture": "textures/ui/main_bg",
-          "color": [
-            1,
-            1,
-            1
-          ],
-          "alpha": 0.6
-        }
-      }
-    ]
-  },
-  "bm_tab_button": {
-    "type": "panel",
-    "$button_size|default": [
-      96,
-      22
-    ],
-    "size": "$button_size",
-    "bindings": [
-      {
-        "binding_name": "#title_text"
-      },
-      {
-        "binding_type": "collection_details",
-        "binding_collection_name": "form_buttons"
-      }
-    ],
-    "controls": [
-      {
-        "tab_label": {
+        "hint_text": {
           "type": "label",
-          "anchor_from": "center",
-          "anchor_to": "center",
+          "anchor_from": "bottom_right",
+          "anchor_to": "bottom_right",
           "offset": [
-            0,
-            -1
+            -12,
+            -9
           ],
           "size": [
-            "100%",
+            "80%",
             "default"
           ],
-          "text_alignment": "center",
-          "text": "$tab_text",
-          "font_type": "MinecraftTen",
-          "font_scale_factor": 0.67,
+          "text_alignment": "right",
+          "text": "[A] [D] NAVIGATE      [<] [>] CHANGE OPTIONS      [ESC] DISCARD/BACK      [ENTER] SELECT",
+          "font_type": "default",
+          "font_scale_factor": 0.6,
           "color": [
-            1,
-            1,
-            1
+            0.92,
+            0.92,
+            0.92
           ],
-          "shadow": false
-        }
-      },
-      {
-        "tab_active_line": {
-          "type": "image",
-          "anchor_from": "bottom_middle",
-          "anchor_to": "bottom_middle",
-          "offset": [
-            0,
-            11
-          ],
-          "size": [
-            82,
-            4
-          ],
-          "texture": "textures/ui/black_mesa/bm_tab_active",
-          "visible": "$tab_active"
-        }
-      },
-      {
-        "tab_click@server_form.bm_tab_click_button": {
-          "$button_size": "$button_size"
-        }
-      }
-    ],
-    "$tab_text|default": "TAB",
-    "$tab_active|default": false
-  },
-  "bm_chapter_card": {
-    "type": "panel",
-    "$offset|default": [
-      0,
-      0
-    ],
-    "$panel_size|default": [
-      286,
-      194
-    ],
-    "$chapter_text|default": "CHAPTER",
-    "$selected_title|default": "BM_MAIN::CAMPAIGN::0",
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
-    "size": "$panel_size",
-    "offset": "$offset",
-    "bindings": [
-      {
-        "binding_type": "collection_details",
-        "binding_collection_name": "form_buttons"
-      },
-      {
-        "binding_name": "#title_text"
-      }
-    ],
-    "controls": [
-      {
-        "card_frame": {
-          "type": "image",
-          "size": "$panel_size",
-          "texture": "textures/ui/black_mesa/bm_chapter_card",
-          "alpha": 0.56,
-          "layer": 1
-        }
-      },
-      {
-        "card_frame_selected": {
-          "type": "image",
-          "size": "$panel_size",
-          "texture": "textures/ui/black_mesa/bm_chapter_card",
-          "alpha": 1,
-          "layer": 2,
-          "bindings": [
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = $selected_title)",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "card_thumb": {
-          "type": "image",
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [
-            8,
-            8
-          ],
-          "size": [
-            270,
-            112
-          ],
-          "texture": "textures/ui/main_bg",
-          "alpha": 0.32,
+          "shadow": false,
           "layer": 3
         }
       },
       {
-        "card_title": {
-          "type": "label",
+        "top_ribbon": {
+          "type": "image",
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [
-            8,
-            127
+            0,
+            0
           ],
           "size": [
-            270,
-            20
+            "52%",
+            28
           ],
-          "text_alignment": "left",
-          "text": "#chapter_title",
-          "font_type": "MinecraftTen",
-          "font_scale_factor": 0.86,
-          "color": [
-            1,
-            1,
-            1
-          ],
-          "shadow": false,
+          "texture": "textures/ui/black_mesa/bm_mainmenu_ribbon",
+          "keep_ratio": false,
           "layer": 4,
-          "bindings": [
+          "controls": [
             {
-              "binding_name": "#form_button_text",
-              "binding_name_override": "#chapter_title",
-              "binding_type": "collection",
-              "binding_collection_name": "form_buttons"
+              "tab_row": {
+                "type": "stack_panel",
+                "orientation": "horizontal",
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [
+                  "10%",
+                  0
+                ],
+                "size": [
+                  "100%c",
+                  "100%"
+                ],
+                "controls": [
+                  {
+                    "tab_campaign@server_form.bm_tab": {
+                      "$tab_text": "CAMPAIGN",
+                      "$tab_size": [
+                        54,
+                        "100%"
+                      ],
+                      "$click_ref": "server_form.bm_hit_t0",
+                      "$active_source": "(not ((#title_text - 'BM_MAIN::CAMPAIGN::') = #title_text))"
+                    }
+                  },
+                  {
+                    "tab_multiplayer@server_form.bm_tab": {
+                      "$tab_text": "MULTIPLAYER",
+                      "$tab_size": [
+                        70,
+                        "100%"
+                      ],
+                      "$click_ref": "server_form.bm_hit_t1"
+                    }
+                  },
+                  {
+                    "tab_options@server_form.bm_tab": {
+                      "$tab_text": "OPTIONS",
+                      "$tab_size": [
+                        50,
+                        "100%"
+                      ],
+                      "$click_ref": "server_form.bm_hit_t2",
+                      "$active_source": "(not ((#title_text - 'BM_MAIN::OPTIONS::') = #title_text))"
+                    }
+                  },
+                  {
+                    "tab_achievements@server_form.bm_tab": {
+                      "$tab_text": "ACHIEVEMENTS",
+                      "$tab_size": [
+                        74,
+                        "100%"
+                      ],
+                      "$click_ref": "server_form.bm_hit_t3"
+                    }
+                  },
+                  {
+                    "tab_workshop@server_form.bm_tab": {
+                      "$tab_text": "STEAM WORKSHOP",
+                      "$tab_size": [
+                        86,
+                        "100%"
+                      ],
+                      "$click_ref": "server_form.bm_hit_t4"
+                    }
+                  }
+                ]
+              }
             }
           ]
         }
       },
       {
-        "card_chapter_label": {
-          "type": "label",
-          "anchor_from": "top_left",
-          "anchor_to": "top_left",
-          "offset": [
-            8,
-            152
-          ],
-          "size": [
-            270,
-            16
-          ],
-          "text_alignment": "left",
-          "text": "$chapter_text",
-          "font_type": "MinecraftTen",
-          "font_scale_factor": 0.66,
-          "color": [
-            0.75,
-            0.75,
-            0.75
-          ],
-          "shadow": false,
-          "layer": 4
-        }
+        "hub_state@server_form.bm_hub_state": {}
       },
       {
-        "card_click@server_form.bm_collection_button": {
-          "$button_size": "$panel_size",
-          "$button_text": ""
-        }
+        "campaign_state@server_form.bm_campaign_state": {}
+      },
+      {
+        "options_state@server_form.bm_options_state": {}
       }
     ]
   }
