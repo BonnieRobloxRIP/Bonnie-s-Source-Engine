@@ -286,11 +286,116 @@
 		"brr_safety_001": {
 			"textures": "textures/blocks/bms_props/signs/safety_firstaidstation"
 		},
+		"brr_danger_001": {
+			"textures": "textures/blocks/bms_props/signs/danger_ansi_480volts"
+		},
+		"brr_danger_002": {
+			"textures": "textures/blocks/bms_props/signs/danger_ansi_corrosive"
+		},
+		"brr_danger_003": {
+			"textures": "textures/blocks/bms_props/signs/danger_ansi_noclimbing"
+		},
+		"brr_danger_004": {
+			"textures": "textures/blocks/bms_props/signs/danger_ansi_pinchpoints"
+		},
+		"brr_danger_005": {
+			"textures": "textures/blocks/bms_props/signs/danger_vert_confinedspace"
+		},
+		"brr_danger_006": {
+			"textures": "textures/blocks/bms_props/signs/danger_vert_entrapmenthazard"
+		},
+		"brr_danger_007": {
+			"textures": "textures/blocks/bms_props/signs/danger_vert_highvoltageenclosure"
+		},
+		"brr_danger_008": {
+			"textures": "textures/blocks/bms_props/signs/danger_vert_watchyourhands"
+		},
+		"brr_danger_009": {
+			"textures": "textures/blocks/bms_props/signs/danger_ansi_smoking2"
+		},
+		"brr_danger_010": {
+			"textures": "textures/blocks/bms_props/signs/danger_ansi_unauthorizedpersonnel"
+		},
+		"brr_danger_011": {
+			"textures": "textures/blocks/bms_props/signs/danger_hot"
+		},
+		"brr_danger_012": {
+			"textures": "textures/blocks/bms_props/signs/danger_keepaway"
+		},
+		"brr_danger_013": {
+			"textures": "textures/blocks/bms_props/signs/danger_keepfireaway"
+		},
+		"brr_danger_014": {
+			"textures": "textures/blocks/bms_props/signs/danger_keephandsclear"
+		},
+		"brr_danger_015": {
+			"textures": "textures/blocks/bms_props/signs/danger_keepout"
+		},
+		"brr_danger_016": {
+			"textures": "textures/blocks/bms_props/signs/danger_nonono"
+		},
+		"brr_danger_017": {
+			"textures": "textures/blocks/bms_props/signs/danger_confinedspace_129b"
+		},
+		"brr_danger_018": {
+			"textures": "textures/blocks/bms_props/signs/danger_confinedspace_337"
+		},
+		"brr_danger_019": {
+			"textures": "textures/blocks/bms_props/signs/danger_confinedspace_638"
+		},
 		"brr_hev_charger": {
 			"textures": "textures/blocks/bms_props/hev_charger"
 		},
+		"brr_hev_charger_full": {
+			"textures": "textures/blocks/bms_props/hev_charger_full"
+		},
+		"brr_hev_charger_used": {
+			"textures": "textures/blocks/bms_props/hev_charger_used"
+		},
+		"brr_hev_charger_half": {
+			"textures": "textures/blocks/bms_props/hev_charger_half"
+		},
+		"brr_hev_charger_empty": {
+			"textures": "textures/blocks/bms_props/hev_charger_empty"
+		},
 		"brr_health_charger": {
 			"textures": "textures/blocks/bms_props/health_charger"
+		},
+		"brr_health_charger_full": {
+			"textures": "textures/blocks/bms_props/health_charger_full"
+		},
+		"brr_health_charger_full2": {
+			"textures": "textures/blocks/bms_props/health_charger_full2"
+		},
+		"brr_health_charger_half": {
+			"textures": "textures/blocks/bms_props/health_charger_half"
+		},
+		"brr_health_charger_half2": {
+			"textures": "textures/blocks/bms_props/health_charger_half2"
+		},
+		"brr_health_charger_empty": {
+			"textures": "textures/blocks/bms_props/health_charger_empty"
+		},
+		"brr_health_charger_off": {
+			"textures": "textures/blocks/bms_props/health_charger_off"
+		},
+		"brr_barrel": {
+			"textures": "textures/blocks/bms_props/barrel"
+		},
+		"brr_lambda_metalgrate": {
+			"textures": "textures/blocks/bms_blocks/lambda_metalgrate_01"
+		},
+		"brr_bms_metalgrate_01": {
+			"textures": "textures/blocks/bms_blocks/flr_grt_c2a4_grate1a"
+		},
+		"brr_bms_metalgrate_02": {
+			"textures": "textures/blocks/bms_blocks/flr_grt_c2a4_grate1b"
+		},
+		"brr_bms_metalgrate_03": {
+			"textures": "textures/blocks/bms_blocks/flr_grt_c2a4_grate1c"
+		},
+		"brr_bms_metalgrate_04": {
+			"textures": "textures/blocks/bms_blocks/metal_grate_c2a2_rusty1"
 		}
 	}
 }

@@ -61,6 +61,9 @@
 		},
 		"brr_357_ammobox": {
 			"textures": "textures/items/ammo/357magnum_ammo"
+		},
+		"brr_scientist_01_egg": {
+			"textures": "textures/items/scientist_spawn_egg"
 		}
 	}
 }
