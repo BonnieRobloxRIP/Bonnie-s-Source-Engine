@@ -20,6 +20,8 @@ const FLOOD_BUTTON_CONFIG_TOOL_ITEM = "minecraft:blaze_rod";
 const FLOOD_BUTTON_PRESS_SOUND_ID = "flood_button.press";
 const FLOOD_BUTTON_SOUND_VARIANT_COUNT = 9;
 const FLOOD_BUTTON_EXIT_SOUND_VARIANT_COUNT = 4;
+const FLOOD_BUTTON_SPECTATOR_TAG = "spectator";
+const FLOOD_BUTTON_SPECTATOR_GAME_MODE = "spectator";
 
 const FLOOD_BUTTON_COLLISION_ORIGIN = { x: -7 / 16, y: 0, z: -7 / 16 };
 const FLOOD_BUTTON_COLLISION_SIZE = { x: 14 / 16, y: 4 / 16, z: 14 / 16 };
@@ -150,6 +152,10 @@ function handleFloodButtonConfigurationInteract(event) {
 	}
 
 	const player = event.player;
+	if (isPlayerInSpectatorMode(player)) {
+		return;
+	}
+
 	const playerKey = player.id ?? player.name;
 	if (floodButtonPlayersInConfigForm.has(playerKey)) {
 		return;
@@ -172,6 +178,26 @@ function handleFloodButtonConfigurationInteract(event) {
 				floodButtonPlayersInConfigForm.delete(playerKey);
 			});
 	});
+}
+
+function isPlayerInSpectatorMode(player) {
+	try {
+		if (player.hasTag(FLOOD_BUTTON_SPECTATOR_TAG)) {
+			return true;
+		}
+	} catch {
+		// Ignore and try game mode fallback.
+	}
+
+	try {
+		if (typeof player.getGameMode === "function") {
+			return `${player.getGameMode()}`.toLowerCase() === FLOOD_BUTTON_SPECTATOR_GAME_MODE;
+		}
+	} catch {
+		return false;
+	}
+
+	return false;
 }
 
 function setFloodButtonPressedState(block, pressed) {
@@ -474,6 +500,10 @@ function isPlayerTouchingFloodButtonFace(playerBounds, buttonBounds, faceDirecti
 }
 
 function shouldTriggerFloodButton(player, block) {
+	if (isPlayerInSpectatorMode(player)) {
+		return false;
+	}
+
 	if (isFloodButtonPressed(block)) {
 		return false;
 	}
@@ -638,6 +668,10 @@ export function registerFloodButtonSystems() {
 		try {
 			for (const player of world.getPlayers()) {
 				try {
+					if (isPlayerInSpectatorMode(player)) {
+						continue;
+					}
+
 					for (const candidateButton of getNearbyFloodButtons(player)) {
 						if (!shouldTriggerFloodButton(player, candidateButton)) {
 							continue;

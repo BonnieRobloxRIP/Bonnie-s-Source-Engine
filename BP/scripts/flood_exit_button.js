@@ -4,6 +4,8 @@ const FLOOD_EXIT_BUTTON_ID = "brr:flood_exit_button";
 const FLOOD_EXIT_BUTTON_PRESSED_STATE = "brr:pressed";
 const FLOOD_EXIT_BUTTON_EXIT_SOUND_VARIANT_COUNT = 9;
 const FLOOD_EXIT_BUTTON_SHARED_SOUND_VARIANT_COUNT = 9;
+const FLOOD_EXIT_BUTTON_SPECTATOR_TAG = "spectator";
+const FLOOD_EXIT_BUTTON_SPECTATOR_GAME_MODE = "spectator";
 
 let floodExitButtonSystemsInitialized = false;
 
@@ -54,6 +56,26 @@ function playFloodExitButtonActivationSounds(block) {
 	}
 }
 
+function isFloodExitButtonSpectator(player) {
+	try {
+		if (player.hasTag(FLOOD_EXIT_BUTTON_SPECTATOR_TAG)) {
+			return true;
+		}
+	} catch {
+		// Ignore and try game mode fallback.
+	}
+
+	try {
+		if (typeof player.getGameMode === "function") {
+			return `${player.getGameMode()}`.toLowerCase() === FLOOD_EXIT_BUTTON_SPECTATOR_GAME_MODE;
+		}
+	} catch {
+		return false;
+	}
+
+	return false;
+}
+
 function handleFloodExitButtonInteract(event) {
 	const isFirstEvent = event.isFirstEvent;
 	if (isFirstEvent === false) {
@@ -67,6 +89,11 @@ function handleFloodExitButtonInteract(event) {
 
 	if ("cancel" in event) {
 		event.cancel = true;
+	}
+
+	const player = event.player;
+	if (!player || isFloodExitButtonSpectator(player)) {
+		return;
 	}
 
 	const targetDimension = block.dimension;
