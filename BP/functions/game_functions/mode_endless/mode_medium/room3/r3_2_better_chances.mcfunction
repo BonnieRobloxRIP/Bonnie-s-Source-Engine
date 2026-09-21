@@ -15,7 +15,7 @@ execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless mat
 # // Position 3
 execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1P endless matches 3 if block ^-2 ^4 ^-4 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players add R3B1a endless 1
 # // Position 4
-execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1P endless matches 4 if block ^-6 ^4 ^4 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players add R3B1a endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1P endless matches 4 if block ^-6 ^4 ^3 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="east"] run scoreboard players add R3B1a endless 1
 # // Position 5
 execute as @s[type=brr:flood_room, name=endless] at @s if score R3B1 endless matches 0 if score R3B1P endless matches 5 if block ^-1 ^8 ^-3 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="west"] run scoreboard players add R3B1a endless 1
 # // Position 6

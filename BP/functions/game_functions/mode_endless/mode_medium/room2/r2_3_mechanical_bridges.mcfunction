@@ -9,7 +9,7 @@ execute as @a[tag=endless] at @s if score endless_timer_s endless matches 16 if 
 execute as @a[tag=endless] at @s run tag @s add endless_music
 # - Test for buttons -
 # // Button 1
-execute as @s[type=brr:flood_room, name=endless] at @s if score R2B1 endless matches 0 if block ^ ^9 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players add R2B1a endless 1
+execute as @s[type=brr:flood_room, name=endless] at @s if score R2B1 endless matches 0 if block ^ ^10 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players add R2B1a endless 1
 execute as @s[type=brr:flood_room, name=endless] at @s if score R2B1 endless matches 0 if score R2B1a endless matches 1 run playsound sfx.moving_part2.start @a[tag=endless]
 execute as @s[type=brr:flood_room, name=endless] at @s if score R2B1 endless matches 0 if score R2B1a endless matches 1 run structure load "medium/room2/3_mechanical_bridges:MMR2V3M1" ^-6 ^8 ^-1
 execute as @s[type=brr:flood_room, name=endless] at @s if score R2B1 endless matches 0 if score R2B1a endless matches 4 run structure load "medium/room2/3_mechanical_bridges:MMR2V3M1a" ^-6 ^8 ^-1

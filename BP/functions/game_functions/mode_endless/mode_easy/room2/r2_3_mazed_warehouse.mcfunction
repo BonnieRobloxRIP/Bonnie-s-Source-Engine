@@ -1,12 +1,12 @@
 # = SYSTEM RUN =
 # - Open entrance door -
-execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 1 run structure load "easy:EasyTunnelDoor2"  ~-3 ~2 ~-8
-execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 run structure load "easy:EasyTunnelDoor3" ~-3 ~2 ~-8
-execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 run playsound sfx.doors.tunnelopen @a[tag=endless] ~-2.5 ~3 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 31 if score endless_timer_ms endless matches 1 run structure load "easy:EasyTunnelDoor2"  ~-3 ~2 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 31 if score endless_timer_ms endless matches 10 run structure load "easy:EasyTunnelDoor3" ~-3 ~2 ~-8
+execute as @s[type=brr:flood_room, name=endless] at @s if score started endless matches 1 if score endless_timer_s endless matches 31 if score endless_timer_ms endless matches 10 run playsound sfx.doors.tunnelopen @a[tag=endless] ~-2.5 ~3 ~-8
 execute as @a[tag=endless] at @s run tag @s add endless_music
 # - Level title -
-execute as @a[tag=endless] at @s if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 if score started endless matches 1 run title @a[tag=endless] subtitle §2Mazed Warehouse
-execute as @a[tag=endless] at @s if score endless_timer_s endless matches 21 if score endless_timer_ms endless matches 10 if score started endless matches 1 run titleraw @a[tag=endless] title {"rawtext":[{"text": "§aROOM "}, {"score":{"name": "room_count", "objective": "endless"}}]}
+execute as @a[tag=endless] at @s if score endless_timer_s endless matches 31 if score endless_timer_ms endless matches 10 if score started endless matches 1 run title @a[tag=endless] subtitle §2Mazed Warehouse
+execute as @a[tag=endless] at @s if score endless_timer_s endless matches 31 if score endless_timer_ms endless matches 10 if score started endless matches 1 run titleraw @a[tag=endless] title {"rawtext":[{"text": "§aROOM "}, {"score":{"name": "room_count", "objective": "endless"}}]}
 # - Test for buttons -
 # // Exit Button
 execute as @e[type=brr:flood_room, name=endless] at @s if score R2B1 endless matches 0 if block ^-5 ^11 ^-6 brr:flood_button["brr:button_type"="exit","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players add R2B1a endless 1

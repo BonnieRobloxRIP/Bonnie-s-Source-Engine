@@ -30,6 +30,12 @@ scoreboard players reset R3B7 endless
 scoreboard players reset R3B8 endless
 scoreboard players reset R3B9 endless
 scoreboard players reset R3B10 endless
+# // Random buttons
+scoreboard players reset R1B1P endless
+scoreboard players reset R2B1P endless
+scoreboard players reset R3B1P endless
+# // Extra time
+scoreboard players set endless_extended endless 0
 # // flooding
 scoreboard players reset flood endless
 scoreboard players reset endless_timer_s endless

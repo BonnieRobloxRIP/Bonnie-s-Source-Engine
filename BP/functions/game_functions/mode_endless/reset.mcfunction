@@ -74,6 +74,12 @@ scoreboard players reset R3B7a endless
 scoreboard players reset R3B8a endless
 scoreboard players reset R3B9a endless
 scoreboard players reset R3B10a endless
+# // Random buttons
+scoreboard players reset R1B1P endless
+scoreboard players reset R2B1P endless
+scoreboard players reset R3B1P endless
+# // Extra time
+scoreboard players set endless_extended endless 0
 # // code buttons
 scoreboard players reset code_match endless
 scoreboard players reset R2Code endless
@@ -86,6 +92,7 @@ scoreboard players reset R2C5 endless
 # // animations
 scoreboard players reset R2Animation endless
 scoreboard players reset R2Ambiance endless
+scoreboard players reset r3_animation endless
 # // random button position
 scoreboard players reset R1B1P endless
 scoreboard players reset R2B1P endless
