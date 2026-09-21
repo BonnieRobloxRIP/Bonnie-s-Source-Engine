@@ -1,0 +1,35 @@
+{
+	"format_version": "1.20.80",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:engine_piston",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/engine_piston"
+			},
+			"geometry": {
+				"default": "geometry.engine_piston"
+			},
+			"render_controllers": [
+				"controller.render.engine_piston"
+			],
+			"scripts": {
+				"animate": [
+					"idle"
+				]
+			},
+			"spawn_egg": {
+				"texture": "brr_engine_piston_egg",
+				"texture_index": 0
+			},
+			"animations": {
+				"idle": "animation.engine_piston.idle"
+			},
+			"sound_effects": {
+				"engine": "sfx.engine.1"
+			}
+		}
+	}
+}

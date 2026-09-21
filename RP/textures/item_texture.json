@@ -8,6 +8,18 @@
 		},
 		"brr_soda_purple": {
 			"textures": "textures/items/soda"
+		},
+		"brr_fe_settings": {
+			"textures": "textures/items/settings"
+		},
+		"brr_fe_host_control_panel": {
+			"textures": "textures/items/host_panel"
+		},
+		"brr_fe_navigator": {
+			"textures": "textures/items/fe_icon"
+		},
+		"brr_engine_piston_egg": {
+			"textures": "textures/items/engine_piston_spawn"
 		}
 	}
 }

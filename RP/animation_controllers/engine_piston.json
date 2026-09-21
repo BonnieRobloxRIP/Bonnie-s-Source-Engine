@@ -1,0 +1,15 @@
+{
+    "format_version": "1.21.80",
+    "animation_controllers": {
+        "controller.animation.engine_piston.idle": {
+            "initial_state": "idle",
+            "states": {
+                "idle": {
+                    "animations": [
+                        "idle"
+                    ]
+                }
+            }
+        }
+    }
+}

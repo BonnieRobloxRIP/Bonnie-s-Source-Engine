@@ -9,5 +9,11 @@
 	},
 	"brr:flood_exit_button": {
 		"sound": "stone"
+	},
+	"brr:flood_pad": {
+		"sound": "stone"
+	},
+	"brr:flood_wall_pad": {
+		"sound": "stone"
 	}
 }

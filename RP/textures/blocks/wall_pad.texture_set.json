@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "wall_pad",
+		"metalness_emissive_roughness": "speed_pad_mer",
+		"normal": "speed_pad_normal"
+	}
+}

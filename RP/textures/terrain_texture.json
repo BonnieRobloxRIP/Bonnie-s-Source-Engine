@@ -20,6 +20,12 @@
 		},
 		"brr_flood_exit_red": {
 			"textures": "textures/blocks/exit_code_red"
+		},
+		"brr_flood_speed_pad": {
+			"textures": "textures/blocks/speed_pad"
+		},
+		"brr_flood_wall_pad": {
+			"textures": "textures/blocks/wall_pad"
 		}
 	}
 }

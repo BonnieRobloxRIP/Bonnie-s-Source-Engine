@@ -1,0 +1,7 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "electric_pulse",
+		"metalness_emissive_roughness": "electric_pulse_mer"
+	}
+}
