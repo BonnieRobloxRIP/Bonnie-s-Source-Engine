@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "lambda_metalgrate_01",
+		"metalness_emissive_roughness": "lambda_metalgrate_01_mer",
+		"normal": "lambda_metalgrate_01_normal"
+	}
+}
