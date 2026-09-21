@@ -32,9 +32,9 @@ execute as @a[tag=!spectator] at @s if entity @s[x=-10.5, y=89, z=49.5, dx=5, dy
 # // Extreme
 
 # // Endless
-execute as @a[tag=lobby, tag=!endlesslift, x=30, y=23, z=36, dx=4, dy=3, dz=4] at @s unless score start endless matches 1..2 run tag @s add endlesslift
-execute as @a[tag=endlesslift, x=28, y=23, z=35, dx=0, dy=129, dz=6] at @s run titleraw @s actionbar {"rawtext":[{"text": "§9Exiting Lift..."}]}
-execute as @a[tag=endlesslift, x=28, y=23, z=35, dx=0, dy=129, dz=6] at @s run tag @s remove endlesslift
+execute as @a[tag=endlesslift, tag=!spectator] at @s unless entity @s[x=29.5, y=23, z=35.5, dx=5, dy=5, dz=5] run titleraw @s actionbar {"rawtext":[{"text": "§9Exiting Lift..."}]}
+execute as @a[tag=endlesslift, tag=!spectator] at @s unless entity @s[x=29.5, y=23, z=35.5, dx=5, dy=5, dz=5] run tag @s remove endlesslift
+execute as @a[tag=!spectator] at @s if entity @s[x=29.5, y=23, z=35.5, dx=5, dy=5, dz=5] unless score start endless matches 1.. unless score started endless matches 1.. run tag @s add endlesslift
 # = SCORES =
 # // Easy
 scoreboard players set p_lift easy 0
@@ -82,15 +82,49 @@ execute if score started easy matches 1 if score room1 easy matches 1 as @e[type
 execute if score started easy matches 1 if score room1 easy matches 2 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_2_strange_warehouse
 execute if score started easy matches 1 if score room1 easy matches 3 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_3_storage_low
 execute if score started easy matches 1 if score room1 easy matches 4 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_4_alternative_way
+execute if score started easy matches 1 if score room1 easy matches 5 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_5_cb_box_trot
+execute if score started easy matches 1 if score room1 easy matches 6 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_6_cb_power_failure
+execute if score started easy matches 1 if score room1 easy matches 7 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_7_cb_side_floors
+execute if score started easy matches 1 if score room1 easy matches 8 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_8_cb_thin_glass
+execute if score started easy matches 1 if score room1 easy matches 9 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_9_cb_warehouse
+execute if score started easy matches 1 if score room1 easy matches 10 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_10_cb_warehouse_2
+execute if score started easy matches 1 if score room1 easy matches 11 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_11_cb_screen_warning
+execute if score started easy matches 1 if score room1 easy matches 12 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_12_stacked
+execute if score started easy matches 1 if score room1 easy matches 13 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_13_lack_of_space
+execute if score started easy matches 1 if score room1 easy matches 14 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_14_restocked
+execute if score started easy matches 1 if score room1 easy matches 15 as @e[type=brr:flood_room, name=easy_room1] at @s run function game_functions/mode_easy/handler/r1_15_around_and_above
 execute if score started2 easy matches 1 if score room2 easy matches 1 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_1_jump_up
 execute if score started2 easy matches 1 if score room2 easy matches 2 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_2_limited_time
 execute if score started2 easy matches 1 if score room2 easy matches 3 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_3_mazed_warehouse
 execute if score started2 easy matches 1 if score room2 easy matches 4 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_4_extra_buttons
+execute if score started2 easy matches 1 if score room2 easy matches 5 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_5_cb_power_required
+execute if score started2 easy matches 1 if score room2 easy matches 6 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_6_cb_the_complex
+execute if score started2 easy matches 1 if score room2 easy matches 7 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_7_cb_support
+execute if score started2 easy matches 1 if score room2 easy matches 8 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_8_cb_plumbing
+execute if score started2 easy matches 1 if score room2 easy matches 9 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_9_cb_filtering_system
+execute if score started2 easy matches 1 if score room2 easy matches 10 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_10_cb_beams
+execute if score started2 easy matches 1 if score room2 easy matches 11 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_11_overflow
+execute if score started2 easy matches 1 if score room2 easy matches 12 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_12_convenience
+execute if score started2 easy matches 1 if score room2 easy matches 13 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_13_wooden_supports
+execute if score started2 easy matches 1 if score room2 easy matches 14 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_14_greenhouse
+execute if score started2 easy matches 1 if score room2 easy matches 15 as @e[type=brr:flood_room, name=easy_room2] at @s run function game_functions/mode_easy/handler/r2_15_broken_shelves
 execute if score started3 easy matches 1 if score room3 easy matches 1 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_1_the_wall
 execute if score started3 easy matches 1 if score room3 easy matches 2 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_2_absurd_pipeline
 execute if score started3 easy matches 1 if score room3 easy matches 3 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_3_power_core
 execute if score started3 easy matches 1 if score room3 easy matches 4 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_4_wooden_highground
+execute if score started3 easy matches 1 if score room3 easy matches 5 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_5_cb_cooling_messup
+execute if score started3 easy matches 1 if score room3 easy matches 6 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_6_cb_power_tower
+execute if score started3 easy matches 1 if score room3 easy matches 7 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_7_cb_raising_towers
+execute if score started3 easy matches 1 if score room3 easy matches 8 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_8_cb_temporary_solution
+execute if score started3 easy matches 1 if score room3 easy matches 9 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_9_cb_no_access
+execute if score started3 easy matches 1 if score room3 easy matches 10 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_10_overgrown
+execute if score started3 easy matches 1 if score room3 easy matches 11 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_11_green_goods
+execute if score started3 easy matches 1 if score room3 easy matches 12 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_12_cargo_overload
+execute if score started3 easy matches 1 if score room3 easy matches 13 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_13_daily_mischief
+execute if score started3 easy matches 1 if score room3 easy matches 14 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_14_acceleration
+execute if score started3 easy matches 1 if score room3 easy matches 15 as @e[type=brr:flood_room, name=easy_room3] at @s run function game_functions/mode_easy/handler/r3_15_rabbits_nest
 execute if score started4 easy matches 1 as @e[type=brr:flood_room, name=easy_exit] at @s run function game_functions/mode_easy/handler/easy_exit_room
+execute if score started5 easy matches 1 as @e[type=brr:flood_room, name=easy_exit] at @s run function game_functions/mode_easy/handler/easy_exit_room_finale
 # // Medium
 execute if score start medium matches 1 run function game_functions/mode_medium/lowering
 execute if score reset medium matches 1 run function game_functions/mode_medium/lowering
@@ -106,7 +140,12 @@ execute if score started3 medium matches 1 if score room3 medium matches 3 as @e
 # // Hard
 execute if score start hard matches 1 run function game_functions/mode_hard/lowering
 execute if score reset hard matches 1 run function game_functions/mode_hard/lowering
-
+execute if score started hard matches 1 if score room1 hard matches 1 as @e[type=brr:flood_room, name=hard_room1] at @s run function game_functions/mode_hard/handler/r1_1_trapped
+execute if score started hard matches 1 if score room1 hard matches 2 as @e[type=brr:flood_room, name=hard_room1] at @s run function game_functions/mode_hard/handler/r1_2_interesting_paths
+execute if score started2 hard matches 1 if score room2 hard matches 1 as @e[type=brr:flood_room, name=hard_room2] at @s run function game_functions/mode_hard/handler/r2_1_ventilation_failure
+execute if score started2 hard matches 1 if score room2 hard matches 2 as @e[type=brr:flood_room, name=hard_room2] at @s run function game_functions/mode_hard/handler/r2_2_broken_system
+execute if score started3 hard matches 1 if score room3 hard matches 1 as @e[type=brr:flood_room, name=hard_room3] at @s run function game_functions/mode_hard/handler/r3_1_master_lift
+execute if score started3 hard matches 1 if score room3 hard matches 2 as @e[type=brr:flood_room, name=hard_room3] at @s run function game_functions/mode_hard/handler/r3_2_tesla_power
 # // Extreme
 
 # // Endless
@@ -117,14 +156,47 @@ execute if score loaded endless matches 1 if score difficulty endless matches 1 
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_2_strange_warehouse
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 3 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_3_storage_low
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 4 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_4_alternative_way
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 5 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_5_cb_box_trot
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 6 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_6_cb_power_failure
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 7 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_7_cb_side_floors
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 8 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_8_cb_thin_glass
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 9 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_9_cb_warehouse
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 10 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_10_cb_warehouse_2
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 11 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_11_cb_screen_warning
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 12 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_12_stacked
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 13 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_13_lack_of_space
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 14 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_14_restocked
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 1 if score variant endless matches 15 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room1/r1_15_around_and_above
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_1_jump_up
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_2_limited_time
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 3 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_3_mazed_warehouse
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 4 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_4_extra_buttons
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 5 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_5_cb_power_required
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 6 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_6_cb_the_complex
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 7 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_7_cb_support
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 8 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_8_cb_plumbing
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 9 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_9_cb_filtering_system
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 10 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_10_cb_beams
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 11 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_11_overflow
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 12 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_12_convenience
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 13 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_13_wooden_supports
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 14 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_14_greenhouse
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 2 if score variant endless matches 15 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room2/r2_15_broken_shelves
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_1_the_wall
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_2_absurd_pipeline
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 3 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_3_power_core
 execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 4 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_4_wooden_highground
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 5 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_5_cb_cooling_messup
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 6 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_6_cb_power_tower
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 7 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_7_cb_raising_towers
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 8 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_8_cb_temporary_solution
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 9 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_9_cb_no_access
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 10 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_10_overgrown
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 11 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_11_green_goods
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 12 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_12_cargo_overload
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 13 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_13_daily_mischief
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 14 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_14_acceleration
+execute if score loaded endless matches 1 if score difficulty endless matches 1 if score room endless matches 3 if score variant endless matches 15 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_easy/room3/r3_15_rabbits_nest
 # medium
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 1 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room1/r1_1_stone_platforms
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 1 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room1/r1_2_plenty_of_space
@@ -135,6 +207,13 @@ execute if score loaded endless matches 1 if score difficulty endless matches 2 
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 3 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room3/r3_1_labyrinth
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 3 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room3/r3_2_better_chances
 execute if score loaded endless matches 1 if score difficulty endless matches 2 if score room endless matches 3 if score variant endless matches 3 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_medium/room3/r3_3_electric_tower
+# hard
+execute if score loaded endless matches 1 if score difficulty endless matches 3 if score room endless matches 1 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_hard/room1/r1_1_trapped
+execute if score loaded endless matches 1 if score difficulty endless matches 3 if score room endless matches 1 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_hard/room1/r1_2_interesting_paths
+execute if score loaded endless matches 1 if score difficulty endless matches 3 if score room endless matches 2 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_hard/room2/r2_1_ventilation_failure
+execute if score loaded endless matches 1 if score difficulty endless matches 3 if score room endless matches 2 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_hard/room2/r2_2_broken_system
+execute if score loaded endless matches 1 if score difficulty endless matches 3 if score room endless matches 3 if score variant endless matches 1 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_hard/room3/r3_1_master_lift
+execute if score loaded endless matches 1 if score difficulty endless matches 3 if score room endless matches 3 if score variant endless matches 2 as @e[type=brr:flood_room, name=endless] at @s run function game_functions/mode_endless/mode_hard/room3/r3_2_tesla_power
 # = PLAYERCOUNTS =
 # // Easy
 execute if score started easy matches 1 run scoreboard players set p_game easy 0
@@ -155,19 +234,19 @@ execute as @a[tag=endless] at @s if score started endless matches 1 run scoreboa
 execute if score start easy matches 2 if score p_game easy matches 0 if score reset easy matches 0 run scoreboard players set lift easy 0
 execute if score start easy matches 2 if score p_game easy matches 0 if score reset easy matches 0 run scoreboard players set reset easy 1
 execute if score reset easy matches 1 if score lift easy matches -1 if score start easy matches 2 if score p_game easy < p_amount easy unless score p_won easy matches 1.. run tellraw @a {"rawtext":[{"text": "§2Easy Mode: §4All Players Died!"}]}
-execute if score reset easy matches 1 if score lift easy matches -1 if score start easy matches 2 if score p_win easy < p_amount easy unless score p_won easy = p_amount easy if score p_game easy matches 1.. run tellraw @a {"rawtext":[{"text": "§2Easy Mode: §6Some Players Escaped!"}]}
+execute if score reset easy matches 1 if score lift easy matches -1 if score start easy matches 2 if score p_won easy < p_amount easy unless score p_won easy = p_amount easy if score p_game easy matches 1.. run tellraw @a {"rawtext":[{"text": "§2Easy Mode: §6Some Players Escaped!"}]}
 execute if score reset easy matches 1 if score lift easy matches -1 if score start easy matches 2 if score p_won easy = p_amount easy run tellraw @a {"rawtext":[{"text": "§2Easy Mode: §aAll Players Escaped!"}]}
 # // Medium
 execute if score start medium matches 2 if score p_game medium matches 0 if score reset medium matches 0 run scoreboard players set lift medium 0
 execute if score start medium matches 2 if score p_game medium matches 0 if score reset medium matches 0 run scoreboard players set reset medium 1
 execute if score reset medium matches 1 if score lift medium matches -1 if score start medium matches 2 if score p_game medium < p_amount medium unless score p_won medium matches 1.. run tellraw @a {"rawtext":[{"text": "§eMedium Mode: §4All Players Died!"}]}
-execute if score reset medium matches 1 if score lift medium matches -1 if score start medium matches 2 if score p_win medium < p_amount medium unless score p_won medium = p_amount medium if score p_game medium matches 1.. run tellraw @a {"rawtext":[{"text": "§eMedium Mode: §6Some Players Escaped!"}]}
+execute if score reset medium matches 1 if score lift medium matches -1 if score start medium matches 2 if score p_won medium < p_amount medium unless score p_won medium = p_amount medium if score p_game medium matches 1.. run tellraw @a {"rawtext":[{"text": "§eMedium Mode: §6Some Players Escaped!"}]}
 execute if score reset medium matches 1 if score lift medium matches -1 if score start medium matches 2 if score p_won medium = p_amount medium run tellraw @a {"rawtext":[{"text": "§eMedium Mode: §aAll Players Escaped!"}]}
 # // Hard
 execute if score start hard matches 2 if score p_game hard matches 0 if score reset hard matches 0 run scoreboard players set lift hard 0
 execute if score start hard matches 2 if score p_game hard matches 0 if score reset hard matches 0 run scoreboard players set reset hard 1
 execute if score reset hard matches 1 if score lift hard matches -1 if score start hard matches 2 if score p_game hard < p_amount hard unless score p_won hard matches 1.. run tellraw @a {"rawtext":[{"text": "§4§lHard Mode: §r§4All Players Died!"}]}
-execute if score reset hard matches 1 if score lift hard matches -1 if score start hard matches 2 if score p_win hard < p_amount hard unless score p_won hard = p_amount hard if score p_game hard matches 1.. run tellraw @a {"rawtext":[{"text": "§4§lHard Mode: §r§6Some Players Escaped!"}]}
+execute if score reset hard matches 1 if score lift hard matches -1 if score start hard matches 2 if score p_won hard < p_amount hard unless score p_won hard = p_amount hard if score p_game hard matches 1.. run tellraw @a {"rawtext":[{"text": "§4§lHard Mode: §r§6Some Players Escaped!"}]}
 execute if score reset hard matches 1 if score lift hard matches -1 if score start hard matches 2 if score p_won hard = p_amount hard run tellraw @a {"rawtext":[{"text": "§4§lHard Mode: §r§aAll Players Escaped!"}]}
 # // Extreme
 
@@ -177,15 +256,21 @@ execute if score start endless matches 2 if score p_game endless matches 0 if sc
 # = TEMPORARY =
 execute as @a[tag=easytunnel4] at @s run scoreboard players add @s storage_easy 1
 execute as @a[tag=easytunnel4] at @s run scoreboard players add p_won easy 1
-execute as @a[tag=easytunnel4] at @s run tellraw @a {"rawtext":[{"text": "§2§lEasy mode:§b "}, {"selector": "@s"}, {"text": " §r§aEscaped the Facility!"}]}
+execute as @a[tag=easytunnel4] at @s run tellraw @a {"rawtext":[{"text": "§a§lEasy mode:§b "}, {"selector": "@s"}, {"text": " §r§2Escaped the Facility!"}]}
+execute as @a[tag=easytunnel4] at @s run tag @s add craftalog_badge_easy_win
 execute as @a[tag=easytunnel4] at @s run tp @s 0 86 -16
 
 execute as @a[tag=mediumtunnel3] at @s run scoreboard players add @s storage_medium 1
 execute as @a[tag=mediumtunnel3] at @s run scoreboard players add p_won medium 1
 execute as @a[tag=mediumtunnel3] at @s run tellraw @a {"rawtext":[{"text": "§e§lMedium mode:§b "}, {"selector": "@s"}, {"text": " §r§6Escaped the Facility!"}]}
+execute as @a[tag=mediumtunnel3] at @s run tag @s add craftalog_badge_medium_win
 execute as @a[tag=mediumtunnel3] at @s run tp @s 0 86 -16
 
 execute as @a[tag=hardtunnel3] at @s run scoreboard players add @s storage_hard 1
 execute as @a[tag=hardtunnel3] at @s run scoreboard players add p_won hard 1
-execute as @a[tag=hardtunnel3] at @s run tellraw @a {"rawtext":[{"text": "§4§lHard mode:§b "}, {"selector": "@s"}, {"text": " §r§6Escaped the Facility!"}]}
+execute as @a[tag=hardtunnel3] at @s run tellraw @a {"rawtext":[{"text": "§4§lHard mode:§b "}, {"selector": "@s"}, {"text": " §r§4Escaped the Facility!"}]}
+execute as @a[tag=hardtunnel3] at @s run tag @s add craftalog_badge_hard_win
 execute as @a[tag=hardtunnel3] at @s run tp @s 0 86 -16
+
+# // craftalog
+#difficulty peaceful
