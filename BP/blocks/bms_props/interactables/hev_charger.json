@@ -3,6 +3,18 @@
 	"minecraft:block": {
 		"description": {
 			"identifier": "brr:hev_charger",
+			"states": {
+				"brr:charge_level": [
+					0, 5, 10, 15, 20, 25, 30, 35,
+					40, 45, 50, 55, 60, 65, 70, 75
+				],
+				"brr:charge_high": [
+					1, 0
+				],
+				"brr:empty_animation": [
+					0, 1, 2
+				]
+			},
 			"menu_category": {
 				"category": "construction"
 			},
@@ -64,6 +76,121 @@
 			}
 		},
 		"permutations": [
+			{
+				"condition": "q.block_state('brr:charge_high') == 1 && q.block_state('brr:charge_level') > 0",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "brr_hev_charger_full", "render_method": "alpha_test" } }
+				}
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') >= 50",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "brr_hev_charger_used", "render_method": "alpha_test" } }
+				}
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') > 0 && q.block_state('brr:charge_level') < 50",
+				"components": {
+					"minecraft:material_instances": { "*": { "texture": "brr_hev_charger_half", "render_method": "alpha_test" } }
+				}
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 1 && q.block_state('brr:charge_level') == 5",
+				"components": { "minecraft:geometry": "geometry.hev_charger_95" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 1 && q.block_state('brr:charge_level') == 10",
+				"components": { "minecraft:geometry": "geometry.hev_charger_90" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 1 && q.block_state('brr:charge_level') == 15",
+				"components": { "minecraft:geometry": "geometry.hev_charger_85" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 1 && q.block_state('brr:charge_level') == 20",
+				"components": { "minecraft:geometry": "geometry.hev_charger_80" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 75",
+				"components": { "minecraft:geometry": "geometry.hev_charger_75" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 70",
+				"components": { "minecraft:geometry": "geometry.hev_charger_70" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 65",
+				"components": { "minecraft:geometry": "geometry.hev_charger_65" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 60",
+				"components": { "minecraft:geometry": "geometry.hev_charger_60" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 55",
+				"components": { "minecraft:geometry": "geometry.hev_charger_55" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 50",
+				"components": { "minecraft:geometry": "geometry.hev_charger_50" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 45",
+				"components": { "minecraft:geometry": "geometry.hev_charger_45" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 40",
+				"components": { "minecraft:geometry": "geometry.hev_charger_40" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 35",
+				"components": { "minecraft:geometry": "geometry.hev_charger_35" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 30",
+				"components": { "minecraft:geometry": "geometry.hev_charger_30" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 25",
+				"components": { "minecraft:geometry": "geometry.hev_charger_25" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 20",
+				"components": { "minecraft:geometry": "geometry.hev_charger_20" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 15",
+				"components": { "minecraft:geometry": "geometry.hev_charger_15" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 10",
+				"components": { "minecraft:geometry": "geometry.hev_charger_10" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 5",
+				"components": { "minecraft:geometry": "geometry.hev_charger_5" }
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 0 && q.block_state('brr:empty_animation') == 0",
+				"components": {
+					"minecraft:geometry": "geometry.hev_charger_empty",
+					"minecraft:material_instances": { "*": { "texture": "brr_hev_charger_empty", "render_method": "alpha_test" } }
+				}
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 0 && q.block_state('brr:empty_animation') == 1",
+				"components": {
+					"minecraft:geometry": "geometry.hev_charger_empty2",
+					"minecraft:material_instances": { "*": { "texture": "brr_hev_charger_empty", "render_method": "alpha_test" } }
+				}
+			},
+			{
+				"condition": "q.block_state('brr:charge_high') == 0 && q.block_state('brr:charge_level') == 0 && q.block_state('brr:empty_animation') == 2",
+				"components": {
+					"minecraft:geometry": "geometry.hev_charger_empty3",
+					"minecraft:material_instances": { "*": { "texture": "brr_hev_charger_empty", "render_method": "alpha_test" } }
+				}
+			},
 			{
 				"condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
 				"components": {
