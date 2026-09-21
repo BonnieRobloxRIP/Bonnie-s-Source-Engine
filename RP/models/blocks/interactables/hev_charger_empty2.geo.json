@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.hev_charger_empty",
+				"identifier": "geometry.hev_charger_empty2",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 2,
@@ -614,6 +614,7 @@
 					"name": "keyboard",
 					"parent": "base",
 					"pivot": [2.5, 6.4081, 6.34669],
+					"rotation": [-45, 0, 0],
 					"cubes": [
 						{
 							"origin": [0, 6.7, 6],
