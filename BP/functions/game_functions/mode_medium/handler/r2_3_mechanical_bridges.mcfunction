@@ -8,7 +8,7 @@ execute as @a[tag=medium] at @s if score r2_timer_s medium matches 16 if score r
 execute as @a[tag=medium] at @s if score r2_timer_s medium matches 16 if score r2_timer_ms medium matches 10 if score started2 medium matches 1 run title @a[tag=medium] title §eROOM 2
 # - Test for buttons -
 # // Button 1
-execute as @s[type=brr:flood_room, name=medium_room2] at @s if score R2B1 medium matches 0 if block ^ ^9 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players add R2B1a medium 1
+execute as @s[type=brr:flood_room, name=medium_room2] at @s if score R2B1 medium matches 0 if block ^ ^10 ^-6 brr:flood_button["brr:button_type"="parkour","brr:pressed"=true, "minecraft:block_face"="south"] run scoreboard players add R2B1a medium 1
 execute as @s[type=brr:flood_room, name=medium_room2] at @s if score R2B1 medium matches 0 if score R2B1a medium matches 1 run playsound sfx.moving_part2.start @a[tag=medium]
 execute as @s[type=brr:flood_room, name=medium_room2] at @s if score R2B1 medium matches 0 if score R2B1a medium matches 1 run structure load "medium/room2/3_mechanical_bridges:MMR2V3M1" ^-6 ^8 ^-1
 execute as @s[type=brr:flood_room, name=medium_room2] at @s if score R2B1 medium matches 0 if score R2B1a medium matches 4 run structure load "medium/room2/3_mechanical_bridges:MMR2V3M1a" ^-6 ^8 ^-1

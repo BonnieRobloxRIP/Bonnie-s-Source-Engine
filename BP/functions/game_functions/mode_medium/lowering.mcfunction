@@ -128,6 +128,7 @@ execute if score lift medium matches 395 run structure load "lobby/elevators:Mai
 execute if score lift medium matches 405 run structure load "lobby/elevators:MainElevator" -2 -13 51
 execute if score lift medium matches 415 run structure load "lobby/elevators:MainElevator" -2 -14 51
 execute if score lift medium matches 425 run structure load "lobby/elevators:MainElevator" -2 -15 51
+execute if score lift easy matches 425 run kill @a[x=-2.5, y=-6, z=50.5, dx=5, dy=100, dz=5, tag=medium]
 # // - de-attaching from the main falls -
 execute if score lift medium matches 430 run stopsound @a[tag=medium] sfx.elevator.move
 execute if score lift medium matches 430 run playsound sfx.elevator.stop @a[tag=medium]
@@ -438,10 +439,10 @@ execute if score alarm medium matches 4 run structure load "medium:MediumStateLo
 execute if score alarm medium matches 7 run structure load "medium:MediumStateLower3" -3 93 50
 execute if score alarm medium matches 10 run structure load "medium:MediumStateLower4" -3 93 50
 # // Sub-Engine Room Elevator Shaft Alarms
-execute if score alarm medium matches 1 run structure load "lobby/animated:mediumElevatorShaftAlarm1" -2 -11 36
-execute if score alarm medium matches 4 run structure load "lobby/animated:mediumElevatorShaftAlarm2" -2 -11 36
-execute if score alarm medium matches 7 run structure load "lobby/animated:mediumElevatorShaftAlarm3" -2 -11 36
-execute if score alarm medium matches 10 run structure load "lobby/animated:mediumElevatorShaftAlarm4" -2 -11 36
+execute if score alarm medium matches 1 run structure load "lobby/animated:MediumElevatorShaftAlarm1" -2 -11 36
+execute if score alarm medium matches 4 run structure load "lobby/animated:MediumElevatorShaftAlarm2" -2 -11 36
+execute if score alarm medium matches 7 run structure load "lobby/animated:MediumElevatorShaftAlarm3" -2 -11 36
+execute if score alarm medium matches 10 run structure load "lobby/animated:MediumElevatorShaftAlarm4" -2 -11 36
 execute if score alarm medium matches 12.. run scoreboard players set alarm medium 0
 # // change elevator status
 execute if score lift medium matches 1700 run scoreboard players set start medium 2
