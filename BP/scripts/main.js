@@ -52,7 +52,6 @@ import {
 } from "./handler/core/dynamic_lighting.js";
 import { registerBrrCommands } from "./handler/core/brr_commands.js";
 import { processBlackMesaMenuRequests } from "./handler/ui/black_mesa_menu.js";
-import "./antiexploit.js";
 
 const { world, system } = mc;
 const GameMode = mc.GameMode;
