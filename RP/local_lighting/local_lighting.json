@@ -26,7 +26,7 @@
             "light_type": "point_light"
         },
         "minecraft:end_rod": {
-            "light_color": "#FFFFFF",
+            "light_color": "#e8bdff",
             "light_type": "point_light"
         },
         "minecraft:sea_lantern": {

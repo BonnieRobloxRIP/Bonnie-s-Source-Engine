@@ -162,9 +162,6 @@
 					],
 					"transitions": [
 						{
-							"fp_reload": "query.is_using_item&&query.item_in_use_duration>1"
-						},
-						{
 							"fp_centerfire_to_idle": "query.any_animation_finished&&!query.is_sneaking"
 						},
 						{
@@ -177,9 +174,6 @@
 						"fp_centerfire2"
 					],
 					"transitions": [
-						{
-							"fp_reload": "query.is_using_item&&query.item_in_use_duration>1"
-						},
 						{
 							"fp_centerfire_to_idle": "query.any_animation_finished&&!query.is_sneaking"
 						},
@@ -204,10 +198,20 @@
 					],
 					"transitions": [
 						{
-							"fp_idle_to_centerfire": "query.any_animation_finished&&query.is_sneaking"
+							"fp_reload_recover": "query.any_animation_finished"
+						}
+					]
+				},
+				"fp_reload_recover": {
+					"animations": [
+						"fp_idle"
+					],
+					"transitions": [
+						{
+							"fp_idle_to_centerfire": "!query.is_using_item&&query.is_sneaking"
 						},
 						{
-							"fp_idle": "query.any_animation_finished"
+							"fp_idle": "!query.is_using_item"
 						}
 					]
 				}
@@ -374,9 +378,6 @@
 					],
 					"transitions": [
 						{
-							"tp_reload": "query.is_using_item&&query.item_in_use_duration>1"
-						},
-						{
 							"tp_centerfire_to_idle": "query.any_animation_finished&&!query.is_sneaking"
 						},
 						{
@@ -389,9 +390,6 @@
 						"tp_centerfire2"
 					],
 					"transitions": [
-						{
-							"tp_reload": "query.is_using_item&&query.item_in_use_duration>1"
-						},
 						{
 							"tp_centerfire_to_idle": "query.any_animation_finished&&!query.is_sneaking"
 						},
@@ -416,10 +414,20 @@
 					],
 					"transitions": [
 						{
-							"tp_idle_to_centerfire": "query.any_animation_finished&&query.is_sneaking"
+							"tp_reload_recover": "query.any_animation_finished"
+						}
+					]
+				},
+				"tp_reload_recover": {
+					"animations": [
+						"tp_idle"
+					],
+					"transitions": [
+						{
+							"tp_idle_to_centerfire": "!query.is_using_item&&query.is_sneaking"
 						},
 						{
-							"tp_idle": "query.any_animation_finished"
+							"tp_idle": "!query.is_using_item"
 						}
 					]
 				}

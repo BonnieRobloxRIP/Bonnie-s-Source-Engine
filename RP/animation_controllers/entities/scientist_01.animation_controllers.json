@@ -1,0 +1,49 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.scientist_01.general": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"animations": [
+						"idle"
+					],
+					"transitions": [
+						{
+							"moving": "variable.moving"
+						}
+					],
+					"blend_transition": 0.05
+				},
+				"moving": {
+					"animations": [
+						"walk"
+					],
+					"transitions": [
+						{
+							"default": "!variable.moving"
+						}
+					],
+					"blend_transition": 0.1
+				}
+			}
+		},
+		"controller.animation.scientist_01.blink": {
+			"initial_state": "eyes_open",
+			"states": {
+				"eyes_open": {
+					"transitions": [
+						{ "blinking": "variable.should_blink" }
+					]
+				},
+				"blinking": {
+					"animations": ["blink"],
+					"blend_transition": 0.05,
+					"transitions": [
+						{ "eyes_open": "query.all_animations_finished" }
+					]
+				}
+			}
+		}
+	}
+}

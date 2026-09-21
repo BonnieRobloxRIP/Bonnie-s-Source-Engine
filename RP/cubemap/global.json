@@ -6,10 +6,10 @@
         },
         "lighting": {
             "ambient_light_illuminance": {
-                "0.000000": 6,
-                "1.000000": 6
+                "0.000000": 3,
+                "1.000000": 3
             },
-            "sky_light_contribution": 0.1,
+            "sky_light_contribution": 0.06,
             "directional_light_contribution": 1,
             "affected_by_atmospheric_scattering": true,
             "affected_by_volumetric_scattering": true
