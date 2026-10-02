@@ -19,8 +19,18 @@ import {
     findEntityHit,
     applyWeaponDamage,
     registerWeaponTick,
-    pruneStalePlayerState
+    pruneStalePlayerState,
+    logWeaponError
 } from "./weapon_common.js";
+
+// Drives the attachable controller's query.mark_variant reload signal (see magnum357.animation_controllers.json).
+function triggerMagnumAnimationEvent(player, eventName) {
+    try {
+        player.triggerEvent(eventName);
+    } catch (error) {
+        logWeaponError(`triggerMagnumAnimationEvent(${eventName})`, error);
+    }
+}
 
 // SECTION: Magnum Constants
 const MAGNUM_ITEM_ID = "brr:magnum357";
@@ -195,6 +205,7 @@ function tryReload(player) {
     });
     reloadUntilTickByPlayer.set(player.id, tick + RELOAD_LOCK_TICKS);
     playSoundForPlayer(player, currentRounds <= 0 ? RELOAD_EMPTY_SOUND : RELOAD_SOUND);
+    triggerMagnumAnimationEvent(player, "brr:magnum_reload_start");
     return true;
 }
 
@@ -346,6 +357,7 @@ registerWeaponTick((players, tick, onlinePlayers) => {
         if (pendingReload && tick >= pendingReload.completeTick) {
             pendingReloadByPlayer.delete(player.id);
             setLoadedRounds(player, getLoadedRounds(player) + pendingReload.roundsToAdd);
+            triggerMagnumAnimationEvent(player, "brr:magnum_reload_end");
         }
 
         const mainhandTypeId = getMainhandTypeId(player);

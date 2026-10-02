@@ -42,9 +42,10 @@ export function getGameNametagTargets(block, selectorRaw, options) {
         }
 
         if (base === "@e") {
-            let entities = Array.from(dimension.getEntities());
-            entities = typeof applyEntityFilters === "function" ? applyEntityFilters(entities, filters) : entities;
-            return entities.filter(entity => entity?.typeId === "minecraft:player");
+            // Only players are ever returned, so skip enumerating every entity in the dimension.
+            let players = Array.from(dimension.getPlayers());
+            players = typeof applyEntityFilters === "function" ? applyEntityFilters(players, filters) : players;
+            return players;
         }
 
         return [];

@@ -33,7 +33,7 @@ export function getAreaPortalTargets(block, selectorRaw, options) {
         }
 
         if (base === "@e") {
-            let entities = Array.from(dimension.getEntities());
+            let entities = dimension.getEntities({ location: blockCenter, maxDistance: 3 });
             entities = typeof applyEntityFilters === "function" ? applyEntityFilters(entities, filters) : entities;
             return entities;
         }
@@ -89,7 +89,7 @@ export function getAreaPortalTargets(block, selectorRaw, options) {
     }
 
     try {
-        return Array.from(dimension.getEntities({ type: literal }));
+        return dimension.getEntities({ type: literal, location: blockCenter, maxDistance: 3 });
     } catch {
         return [];
     }

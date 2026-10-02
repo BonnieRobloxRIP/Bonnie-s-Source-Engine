@@ -110,7 +110,9 @@ export function fireOutputsForEvent(sourceBlock, eventName, options) {
 		if (targetIndex === -1) continue;
 
 		if (!blocks[targetIndex].data) blocks[targetIndex].data = {};
-		blocks[targetIndex].data[targetProperty] = coerceOutputTargetValue(targetProperty, output?.targetValue);
+		const nextValue = coerceOutputTargetValue(targetProperty, output?.targetValue);
+		if (blocks[targetIndex].data[targetProperty] === nextValue) continue;
+		blocks[targetIndex].data[targetProperty] = nextValue;
 		changed = true;
 	}
 
@@ -160,7 +162,9 @@ export function fireNamedOutput(sourceBlock, outputName, options) {
 		if (targetIndex === -1) continue;
 
 		if (!blocks[targetIndex].data) blocks[targetIndex].data = {};
-		blocks[targetIndex].data[targetProperty] = coerceValue(targetProperty, output?.targetValue);
+		const nextValue = coerceValue(targetProperty, output?.targetValue);
+		if (blocks[targetIndex].data[targetProperty] === nextValue) continue;
+		blocks[targetIndex].data[targetProperty] = nextValue;
 		changed = true;
 	}
 

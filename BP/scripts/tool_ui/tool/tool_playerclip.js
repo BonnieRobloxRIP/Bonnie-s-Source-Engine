@@ -33,9 +33,7 @@ export function selectorTargetsPlayer(selectorRaw, player, block, options) {
     }
 
     const filters = typeof parseSelectorFilters === "function" ? parseSelectorFilters(selector) : null;
-    let players = base === "@e"
-        ? Array.from(dimension.getEntities()).filter(entity => `${entity?.typeId ?? ""}` === "minecraft:player")
-        : Array.from(dimension.getPlayers());
+    let players = Array.from(dimension.getPlayers());
     players = typeof applyEntityFilters === "function" ? applyEntityFilters(players, filters) : players;
     if (players.length === 0) return false;
 

@@ -230,13 +230,37 @@ const emojis = [
 
 const DEV_NAMETAG_PLAYERS = new Set([
     "bonnierobloxrip",
-    "xxjustmaxxx7546"
+    "xxjustmaxxx7546",
+    "marshmallow997"
 ]);
 
 const DEV_NAMETAG_TAGS = new Set([
     "dev",
     "developer"
 ]);
+
+// SECTION: Unique Nametag Emoji (Bonnie & Marshmallow)
+const BONNIE_UNIQUE_USERNAME = "bonnierobloxrip";
+const MARSHMALLOW_UNIQUE_USERNAME = "marshmallow997";
+
+function getEmojiChar(id) {
+    return emojis.find((entry) => entry.id === id)?.emoji ?? "";
+}
+
+function getUniqueNametagEmoji(player, bothSpecialUsersOnline) {
+    const normalizedName = `${player?.name ?? ""}`.trim().toLowerCase();
+    const bonnieEmoji = getEmojiChar(":bonnie:");
+    const marshEmoji = getEmojiChar(":marsh:");
+    const ringEmoji = getEmojiChar(":ring2:");
+
+    if (normalizedName === BONNIE_UNIQUE_USERNAME) {
+        return bothSpecialUsersOnline ? `${bonnieEmoji}${ringEmoji}${marshEmoji}` : bonnieEmoji;
+    }
+    if (normalizedName === MARSHMALLOW_UNIQUE_USERNAME) {
+        return bothSpecialUsersOnline ? `${marshEmoji}${ringEmoji}${bonnieEmoji}` : marshEmoji;
+    }
+    return "";
+}
 
 const CHAT_MESSAGE_COOLDOWN_DEFAULT_MS = 1000;
 const CHAT_MESSAGE_COOLDOWN_PROPERTY = "brr_chat_message_cooldown_ms";
@@ -704,6 +728,12 @@ export function isDevNametagPlayer(playerOrName) {
     return false;
 }
 
+// Detects custom nametag text trying to impersonate the real dev tag (e.g. "Dev"/"Developer").
+export function isDevTagReplicationAttempt(rawText) {
+    const normalized = `${rawText ?? ""}`.replace(/§./g, "").trim().toLowerCase();
+    return DEV_NAMETAG_TAGS.has(normalized);
+}
+
 function sendWhisperMirrorToDevs(sender, targetName, processedMessage) {
     const senderTags = sender.getTags();
     const rankPrefix = chatRank(sender, senderTags);
@@ -840,10 +870,11 @@ export function chatRank(player, tags) {
     return rankPrefix;
 }
 
-export function nametagRank(player, tags) {
+export function nametagRank(player, tags, bothSpecialUsersOnline) {
     let rankPrefix = "";
 
-    if (player.name === "BonnieRobloxRIP") rankPrefix += " ";
+    const uniqueEmoji = getUniqueNametagEmoji(player, bothSpecialUsersOnline);
+    if (uniqueEmoji) rankPrefix += `${uniqueEmoji} `;
 
     if (isDevNametagPlayer(player)) {
         rankPrefix += "[§l§dDev§r] ";
@@ -985,14 +1016,15 @@ export function handleMessage() {
 
     system.runInterval(() => {
         const allPlayers = world.getPlayers();
-        const playerNames = allPlayers.map(p => p.name);
-        const bothDevsOnline = playerNames.includes("BonnieRobloxRIP");
+        const normalizedNames = allPlayers.map(p => `${p.name ?? ""}`.trim().toLowerCase());
+        const bothSpecialUsersOnline = normalizedNames.includes(BONNIE_UNIQUE_USERNAME) && normalizedNames.includes(MARSHMALLOW_UNIQUE_USERNAME);
 
         for (const player of allPlayers) {
             const tags = player.getTags();
-            const rankPrefix = nametagRank(player, tags, bothDevsOnline);
+            const rankPrefix = nametagRank(player, tags, bothSpecialUsersOnline);
             const nametagParts = getCustomNametagParts(player, "username");
-            player.nameTag = `${rankPrefix}${nametagParts.prefix}${player.name}${nametagParts.suffix}`;
+            const nextNameTag = `${rankPrefix}${nametagParts.prefix}${player.name}${nametagParts.suffix}`;
+            if (player.nameTag !== nextNameTag) player.nameTag = nextNameTag;
         }
     }, 20);
 }

@@ -5,7 +5,8 @@ import {
     setChatCooldownSeconds,
     setChatSpamBlockedMessage,
     executeMuteCommand,
-    executeUnmuteCommand
+    executeUnmuteCommand,
+    isDevTagReplicationAttempt
 } from "./handler/core/chat_system.js";
 import { evaluateCondition } from "./handler/core/condition_executer.js";
 import { conditionTools } from "./tool_ui/conditions_tools.js";
@@ -52,6 +53,7 @@ import {
 } from "./handler/core/dynamic_lighting.js";
 import { registerBrrCommands } from "./handler/core/brr_commands.js";
 import { processBlackMesaMenuRequests } from "./handler/ui/black_mesa_menu.js";
+import "./antiexploit.js";
 
 const { world, system } = mc;
 const GameMode = mc.GameMode;
@@ -68,6 +70,8 @@ const playerclipPushCooldowns = new Map();
 const playerclipLastSafePositions = new Map();
 const npcclipRepelCooldowns = new Map();
 const npcclipLastSafePositions = new Map();
+// Entities farther than this from an npcclip block cannot reach it within one 2-tick pass.
+const NPCCLIP_TRACK_RADIUS = 4;
 const TOOL_BLOCK_TYPES = new Set(["brr:tool_areaportal", "brr:info_playerspawn_block", "brr:tool_invisible", "brr:tool_trigger", "brr:info_target_areaportal_block", "brr:tool_blocklight", "brr:tool_playerclip", "brr:tool_npcclip", "brr:game_nametag_block", "brr:logic_auto_block", "brr:logic_branch_block", "brr:logic_case_block", "brr:logic_compare_block", "brr:logic_coop_manager_block", "brr:logic_random_outputs_block", "brr:logic_timer_block"]);
 const COLLISION_BLOCK_TYPES = ["brr:tool_invisible", "brr:tool_playerclip", "brr:tool_npcclip"];
 const LIGHT_BLOCK_TYPES = ["brr:tool_blocklight"];
@@ -827,6 +831,14 @@ function isPositionNearBlock(pos, block, expand = 0.35) {
         && pos.z >= block.z - expand && pos.z <= block.z + 1 + expand;
 }
 
+// Keys are `${entityId}|...`; drops entries for entities no longer tracked.
+function pruneMapByIdPrefix(map, keepIds) {
+    for (const key of map.keys()) {
+        const separator = key.indexOf("|");
+        if (!keepIds.has(separator === -1 ? key : key.slice(0, separator))) map.delete(key);
+    }
+}
+
 function isEntityNearBlock(entity, block, expand = 0.35) {
     const probes = getEntityProbeLocations(entity);
     for (const probe of probes) {
@@ -1345,24 +1357,28 @@ system.runInterval(() => {
     if (npcclipBlocks.length === 0) return;
 
     const npcclipRepelRuntimeOptions = getNpcclipRepelRuntimeOptions();
-    const entitiesByDimension = new Map();
+    const seenEntityIds = new Set();
 
     for (const block of npcclipBlocks) {
-        let entities = entitiesByDimension.get(block.dimension);
-        if (entities === undefined) {
-            try {
-                entities = world.getDimension(block.dimension)
-                    .getEntities({ excludeTypes: ["minecraft:player"] });
-            } catch {
-                entities = [];
-            }
-            entitiesByDimension.set(block.dimension, entities);
+        let entities;
+        try {
+            entities = world.getDimension(block.dimension).getEntities({
+                location: { x: block.x + 0.5, y: block.y + 0.5, z: block.z + 0.5 },
+                maxDistance: NPCCLIP_TRACK_RADIUS,
+                excludeTypes: ["minecraft:player"]
+            });
+        } catch {
+            continue;
         }
 
         for (const entity of entities) {
+            seenEntityIds.add(`${entity.id}`);
             applyNpcclipRepel(entity, block, npcclipRepelRuntimeOptions);
         }
     }
+
+    pruneMapByIdPrefix(npcclipLastSafePositions, seenEntityIds);
+    pruneMapByIdPrefix(npcclipRepelCooldowns, seenEntityIds);
 }, 2);
 
 // SECTION: Playerclip Runtime Loop
@@ -1381,6 +1397,10 @@ system.runInterval(() => {
             applyPlayerclipRepel(player, block, playerclipRuntimeOptions);
         }
     }
+
+    const onlineIds = new Set(players.map(player => `${player.id}`));
+    pruneMapByIdPrefix(playerclipLastSafePositions, onlineIds);
+    pruneMapByIdPrefix(playerclipPushCooldowns, onlineIds);
 }, 2);
 
 // SECTION: Playerspawn Runtime Loop
@@ -1433,6 +1453,20 @@ system.runInterval(() => {
 }, 100);
 
 // SECTION: Game Nametag Runtime Loop
+// Last value written per player id; undefined is a valid cached "cleared" state.
+const lastNametagPayloadByPlayer = new Map();
+
+function syncPlayerNametagProperty(player, playerId, value) {
+    if (lastNametagPayloadByPlayer.has(playerId) && lastNametagPayloadByPlayer.get(playerId) === value) return;
+
+    try {
+        if (player.getDynamicProperty("brr_nametag") !== value) {
+            player.setDynamicProperty("brr_nametag", value);
+        }
+        lastNametagPayloadByPlayer.set(playerId, value);
+    } catch { }
+}
+
 system.runInterval(() => {
     const blocks = getBlocksSnapshot();
     const activeNametagBlocks = blocks.filter(block =>
@@ -1450,6 +1484,7 @@ system.runInterval(() => {
     function formatNametag(rawNametag) {
         const trimmed = `${rawNametag ?? ""}`.trim();
         if (!trimmed) return "";
+        if (isDevTagReplicationAttempt(trimmed)) return "[§r§d§lRetard§r]";
         const withEmoji = applyEmojiReplacements(trimmed);
         return `[§r${withEmoji}§r]`;
     }
@@ -1492,14 +1527,14 @@ system.runInterval(() => {
         }
     }
 
+    const onlineIds = new Set();
     for (const player of allPlayers) {
         const playerId = `${player?.id ?? ""}`;
+        onlineIds.add(playerId);
         const bucket = playerBuckets.get(playerId);
 
         if (!bucket || bucket.entries.length === 0) {
-            try {
-                player.setDynamicProperty("brr_nametag", undefined);
-            } catch { }
+            syncPlayerNametagProperty(player, playerId, undefined);
             continue;
         }
 
@@ -1528,9 +1563,11 @@ system.runInterval(() => {
             usernameSuffix
         };
 
-        try {
-            player.setDynamicProperty("brr_nametag", JSON.stringify(payload));
-        } catch { }
+        syncPlayerNametagProperty(player, playerId, JSON.stringify(payload));
+    }
+
+    for (const playerId of lastNametagPayloadByPlayer.keys()) {
+        if (!onlineIds.has(playerId)) lastNametagPayloadByPlayer.delete(playerId);
     }
 }, 10);
 
@@ -1653,6 +1690,11 @@ world.beforeEvents.playerInteractWithBlock.subscribe((data) => {
     }
 
     if (TOOL_BLOCK_TYPES.has(block.typeId)) {
+        // Sneaking skips the config UI so players can place tool blocks on top of existing ones.
+        if (data.player.isSneaking) {
+            return;
+        }
+
         if (!toolsEnabled) {
             return;
         }

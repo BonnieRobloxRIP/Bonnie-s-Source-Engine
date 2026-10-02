@@ -23,23 +23,12 @@ export function selectorTargetsEntity(selectorRaw, entity, block, options) {
 
     const base = normalized.slice(0, 2);
     if (!["@e", "@a", "@p", "@r", "@s"].includes(base)) return false;
+    if (base !== "@e" && `${entity?.typeId ?? ""}` !== "minecraft:player") return false;
 
-    let dimension;
-    try {
-        dimension = world.getDimension(block.dimension);
-    } catch {
-        return false;
-    }
-
-    let entities = Array.from(dimension.getEntities());
+    // Selector filters are all per-entity, so testing just this entity avoids scanning the dimension.
     const filters = typeof parseSelectorFilters === "function" ? parseSelectorFilters(selector) : null;
-    entities = typeof applyEntityFilters === "function" ? applyEntityFilters(entities, filters) : entities;
-
-    if (base === "@a" || base === "@p" || base === "@r" || base === "@s") {
-        entities = entities.filter(candidate => `${candidate?.typeId ?? ""}` === "minecraft:player");
-    }
-
-    return entities.some(candidate => candidate?.id === entity.id);
+    const matches = typeof applyEntityFilters === "function" ? applyEntityFilters([entity], filters) : [entity];
+    return matches.length > 0;
 }
 
 export function shouldEnableNpcclipCollision(block, options) {
@@ -66,7 +55,11 @@ export function shouldEnableNpcclipCollision(block, options) {
         return false;
     }
 
-    const entities = Array.from(dimension.getEntities()).filter(entity => `${entity?.typeId ?? ""}` !== "minecraft:player");
+    const entities = dimension.getEntities({
+        location: { x: block.x + 0.5, y: block.y + 0.5, z: block.z + 0.5 },
+        maxDistance: 3,
+        excludeTypes: ["minecraft:player"]
+    });
     for (const entity of entities) {
         if (!isEntityNearBlock(entity, block, 0.45)) continue;
 

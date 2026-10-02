@@ -1,13 +1,12 @@
-import { world, system } from "@minecraft/server";
+import { world } from "@minecraft/server";
 
 // SECTION: Chunked Dynamic Property Storage
 const MAX_CHUNK_SIZE = 28000;
 const BLOCKS_KEY = "blocks";
-const CACHE_TTL_TICKS = 10;
 
 let cachedBlocks = null;
-let cachedAtTick = -1;
 let blocksRevision = 0;
+const lastSavedJsonByKey = new Map();
 
 export function loadLargeJSON(keyBase) {
     const count = world.getDynamicProperty(`${keyBase}_count`);
@@ -29,37 +28,37 @@ export function loadLargeJSON(keyBase) {
 
 export function saveLargeJSON(keyBase, value) {
     const json = JSON.stringify(value);
+    if (lastSavedJsonByKey.get(keyBase) === json) return;
 
     let index = 0;
-    while (world.getDynamicProperty(`${keyBase}_${index}`) !== undefined) {
-        world.setDynamicProperty(`${keyBase}_${index}`, undefined);
-        index++;
-    }
-
-    index = 0;
     for (let pos = 0; pos < json.length; pos += MAX_CHUNK_SIZE) {
         world.setDynamicProperty(`${keyBase}_${index}`, json.slice(pos, pos + MAX_CHUNK_SIZE));
         index++;
     }
     world.setDynamicProperty(`${keyBase}_count`, index);
 
+    // Clear leftover chunks from a previously longer payload.
+    while (world.getDynamicProperty(`${keyBase}_${index}`) !== undefined) {
+        world.setDynamicProperty(`${keyBase}_${index}`, undefined);
+        index++;
+    }
+    lastSavedJsonByKey.set(keyBase, json);
+
     if (keyBase === BLOCKS_KEY) {
         cachedBlocks = Array.isArray(value) ? value : [];
-        cachedAtTick = system.currentTick;
         blocksRevision++;
     }
 }
 
 // SECTION: Block Registry Cache
-// Reading the registry means re-parsing every dynamic property chunk, so every subsystem
-// shares this one tick-scoped cache instead of loading its own copy each loop.
+// All writes go through saveLargeJSON (which refreshes the cache), so the registry is only
+// re-parsed on first use or explicit refresh; re-parsing on a timer churned script memory.
 export function getBlocks(forceRefresh = false) {
-    if (!forceRefresh && cachedBlocks && (system.currentTick - cachedAtTick) < CACHE_TTL_TICKS) {
+    if (!forceRefresh && cachedBlocks) {
         return cachedBlocks;
     }
 
     cachedBlocks = loadLargeJSON(BLOCKS_KEY);
-    cachedAtTick = system.currentTick;
     return cachedBlocks;
 }
 
@@ -72,7 +71,7 @@ export function getBlocksRevision() {
 }
 
 export function invalidateBlocksCache() {
-    cachedAtTick = -1;
+    cachedBlocks = null;
 }
 
 // SECTION: Registry Queries

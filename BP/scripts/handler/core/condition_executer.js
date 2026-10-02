@@ -44,6 +44,15 @@ try {
 	});
 } catch { }
 
+try {
+	world.afterEvents.entityRemove.subscribe((event) => {
+		const id = `${event?.removedEntityId ?? ""}`;
+		lastKnownHealthByEntity.delete(id);
+		lastDamageTickByEntity.delete(id);
+		lastDamageCauseByEntity.delete(id);
+	});
+} catch { }
+
 // SECTION: Scoreboard and Tick Helpers
 function getObjective(worldObj, objectiveName) {
 	try {
@@ -186,7 +195,11 @@ function resolveEntitiesBySelector(player, selectorRaw, radiusRaw = "") {
 			});
 			return [players[0]];
 		}
-		if (selector === "@e") return player.dimension.getEntities().filter(withinRadius);
+		if (selector === "@e") {
+			return Number.isFinite(maxDistanceSq)
+				? player.dimension.getEntities({ location, maxDistance: optionalRadius })
+				: player.dimension.getEntities();
+		}
 	} catch { }
 
 	if (literalSelector.toLowerCase().startsWith("minecraft:")) {
