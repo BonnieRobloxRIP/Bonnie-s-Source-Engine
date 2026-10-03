@@ -6,6 +6,16 @@ function normalizeLiteralSelector(value) {
     return `${quoted ? quoted[2] : raw}`.trim().toLowerCase();
 }
 
+const NPCCLIP_PLAYER_CLEARANCE = 0.6;
+
+function canEntityWalk(entity) {
+    try {
+        return Boolean(entity?.getComponent("minecraft:movement"));
+    } catch {
+        return false;
+    }
+}
+
 // SECTION: Npcclip Runtime Helpers
 export function selectorTargetsEntity(selectorRaw, entity, block, options) {
     const selector = `${selectorRaw ?? ""}`.trim();
@@ -55,12 +65,28 @@ export function shouldEnableNpcclipCollision(block, options) {
         return false;
     }
 
+    const center = { x: block.x + 0.5, y: block.y + 0.5, z: block.z + 0.5 };
+
+    // The solid placeholder also blocks players, so stay passable while a player is on or next to it.
+    let nearbyPlayers;
+    try {
+        nearbyPlayers = dimension.getPlayers({ location: center, maxDistance: 3 });
+    } catch {
+        nearbyPlayers = [];
+    }
+    for (const player of nearbyPlayers) {
+        if (isEntityNearBlock(player, block, NPCCLIP_PLAYER_CLEARANCE)) return false;
+    }
+
     const entities = dimension.getEntities({
-        location: { x: block.x + 0.5, y: block.y + 0.5, z: block.z + 0.5 },
+        location: center,
         maxDistance: 3,
         excludeTypes: ["minecraft:player"]
     });
     for (const entity of entities) {
+        // Items, xp orbs, projectiles, armor stands and similar can't walk, so they must not
+        // turn the clip solid (they used to keep it solid for as long as they lay next to it).
+        if (!canEntityWalk(entity)) continue;
         if (!isEntityNearBlock(entity, block, 0.45)) continue;
 
         const isExcluded = excludeSelector.length > 0

@@ -876,15 +876,20 @@ system.runInterval(() => {
     const signature = `${visible}|${toolsEnabled}|${getBlocksRevision()}|${[...activeTypes].sort().join(",")}`;
     visibilityPassesSinceSweep++;
 
+    // Hidden npcclips switch between solid and passable depending on nearby mobs/players, so
+    // they are re-evaluated every pass even when nothing else changed.
+    let passBlocks = blocks;
     if (!blockVisibilityStateDirty
         && signature === lastVisibilitySignature
         && visibilityPassesSinceSweep < VISIBILITY_RESWEEP_PASSES) {
-        return;
+        if (visible || !toolsEnabled || activeTypes.has("brr:tool_npcclip")) return;
+        passBlocks = blocks.filter(block => block?.typeId === "brr:tool_npcclip");
+        if (passBlocks.length === 0) return;
+    } else {
+        lastVisibilitySignature = signature;
+        visibilityPassesSinceSweep = 0;
+        blockVisibilityStateDirty = false;
     }
-
-    lastVisibilitySignature = signature;
-    visibilityPassesSinceSweep = 0;
-    blockVisibilityStateDirty = false;
 
     const placeholderOptions = {
         toolsEnabled,
@@ -896,7 +901,7 @@ system.runInterval(() => {
     };
 
     const dimensions = new Map();
-    for (const block of blocks) {
+    for (const block of passBlocks) {
         let dim = dimensions.get(block.dimension);
         if (dim === undefined) {
             try {
