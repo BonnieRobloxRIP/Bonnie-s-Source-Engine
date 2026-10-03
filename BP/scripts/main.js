@@ -15,7 +15,7 @@ import { getPlayerspawnSpawnConfig, getActivePlayerspawnBlocks, applySpawnPointF
 import { getGameNametagTargets } from "./tool_ui/game/game_nametag.js";
 import { getHiddenPlaceholderType } from "./tool_ui/tool/tool_invisible.js";
 import { applyPlayerclipRepel } from "./tool_ui/tool/tool_playerclip.js";
-import { shouldEnableNpcclipCollision, applyNpcclipRepel } from "./tool_ui/tool/tool_npcclip.js";
+import { shouldEnableNpcclipCollision, applyNpcclipRepel, getNpcclipPositionKey } from "./tool_ui/tool/tool_npcclip.js";
 import { fireOutputsForEvent, getNormalizedTriggerData, isBlockedTriggerCommand } from "./tool_ui/tool/tool_trigger.js";
 import { blockParticles } from "./handler/core/block_particles.js";
 import "./handler/small.js";
@@ -910,16 +910,6 @@ system.runInterval(() => {
 
         const pos = { x: block.x, y: block.y, z: block.z };
 
-        if (visible) {
-            try { dim.setBlockType(pos, block.typeId); } catch { }
-            continue;
-        }
-
-        if (activeTypes.has(block.typeId)) {
-            try { dim.setBlockType(pos, block.typeId); } catch { }
-            continue;
-        }
-
         let current;
         try {
             current = dim.getBlock(pos);
@@ -927,7 +917,16 @@ system.runInterval(() => {
             continue;
         }
         if (!current) continue;
+        // Something else replaced this block (builder tools, /fill, /setblock, structures...), so it is
+        // a ghost registry entry: never resurrect it. Registry maintenance removes it from storage.
         if (current.typeId !== block.typeId && !PLACEHOLDER_BLOCK_TYPES.has(current.typeId)) continue;
+
+        if (visible || activeTypes.has(block.typeId)) {
+            if (current.typeId !== block.typeId) {
+                try { dim.setBlockType(pos, block.typeId); } catch { }
+            }
+            continue;
+        }
 
         const hiddenType = getHiddenPlaceholderType(block, placeholderOptions);
         if (current.typeId !== hiddenType) {
@@ -935,6 +934,62 @@ system.runInterval(() => {
         }
     }
 }, 10);
+
+// SECTION: Block Registry Maintenance
+// Removes duplicate entries at the same position and "ghost" entries whose block was removed
+// without a player breaking it (builder tools, commands, structures). Ghost entries otherwise
+// keep running clip/particle logic forever. Unloaded chunks are skipped and checked later.
+const REGISTRY_MAINTENANCE_INTERVAL_TICKS = 100;
+
+function runBlockRegistryMaintenance() {
+    const blocks = getBlocksSnapshot();
+    if (blocks.length === 0) return;
+
+    const lastIndexByPos = new Map();
+    blocks.forEach((block, index) => {
+        lastIndexByPos.set(getBlockPositionKey(block?.dimension, block?.x, block?.y, block?.z), index);
+    });
+
+    const dimensions = new Map();
+    const kept = [];
+    blocks.forEach((block, index) => {
+        if (!block || typeof block.typeId !== "string") return;
+        if (lastIndexByPos.get(getBlockPositionKey(block.dimension, block.x, block.y, block.z)) !== index) return;
+
+        let dim = dimensions.get(block.dimension);
+        if (dim === undefined) {
+            try {
+                dim = world.getDimension(block.dimension);
+            } catch {
+                dim = null;
+            }
+            dimensions.set(block.dimension, dim);
+        }
+
+        let current;
+        if (dim) {
+            try {
+                current = dim.getBlock({ x: block.x, y: block.y, z: block.z });
+            } catch {
+                current = undefined;
+            }
+        }
+
+        if (current && current.typeId !== block.typeId && !PLACEHOLDER_BLOCK_TYPES.has(current.typeId)) return;
+        kept.push(block);
+    });
+
+    if (kept.length !== blocks.length) {
+        saveLargeJSON("blocks", kept);
+    }
+}
+
+system.runInterval(() => {
+    if (world.getPlayers().length === 0) return;
+    try {
+        runBlockRegistryMaintenance();
+    } catch { }
+}, REGISTRY_MAINTENANCE_INTERVAL_TICKS);
 
 
 // SECTION: Block Registry Sync Events
@@ -966,7 +1021,11 @@ world.beforeEvents.playerBreakBlock.subscribe((data) => {
 world.afterEvents.playerPlaceBlock.subscribe((data) => {
     const block = data.block;
     if (TOOL_BLOCK_TYPES.has(block.typeId)) {
-        let blocks = getBlocksSnapshot(true);
+        const dimensionId = block.dimension.id;
+        // Drop any stale/duplicate entries already registered at this position before re-adding it.
+        let blocks = getBlocksSnapshot(true).filter(b =>
+            !(b.x === block.x && b.y === block.y && b.z === block.z && b.dimension === dimensionId)
+        );
 
         let newGroupId = null;
         let sharedData = {};
@@ -1260,7 +1319,6 @@ function getPlayerclipRuntimeOptions() {
 
 function getNpcclipRepelRuntimeOptions() {
     return {
-        parseBooleanLike,
         isEntityNearBlock,
         ...getSelectorRuntimeOptions(),
         npcclipRepelCooldowns,
@@ -1348,32 +1406,103 @@ system.runInterval(() => {
 }, 2);
 
 // SECTION: Npcclip Runtime Loop
-system.runInterval(() => {
-    if (!toolsEnabled) return;
+// Active npcclips are grouped per dimension into a position map plus 16-block query cells.
+// Each cell is queried once (instead of once per clip block), and every entity is handled once
+// against the clips around it, so cost scales with entities rather than clips x entities.
+const NPCCLIP_CELL_SIZE = 16;
+let npcclipIndexRevision = -1;
+let npcclipIndex = new Map();
 
-    const npcclipBlocks = getBlocksSnapshot().filter(block =>
-        block?.typeId === "brr:tool_npcclip" && !parseBooleanLike(block?.data?.startDisabled, false)
-    );
-    if (npcclipBlocks.length === 0) return;
+function getNpcclipIndex() {
+    const revision = getBlocksRevision();
+    if (revision === npcclipIndexRevision) return npcclipIndex;
+
+    const index = new Map();
+    for (const block of getBlocksSnapshot()) {
+        if (block?.typeId !== "brr:tool_npcclip") continue;
+        if (parseBooleanLike(block?.data?.startDisabled, false)) continue;
+
+        let dimEntry = index.get(block.dimension);
+        if (!dimEntry) {
+            dimEntry = { blocksByPos: new Map(), cells: new Map() };
+            index.set(block.dimension, dimEntry);
+        }
+        dimEntry.blocksByPos.set(getNpcclipPositionKey(block.x, block.y, block.z), block);
+
+        const cx = Math.floor(block.x / NPCCLIP_CELL_SIZE);
+        const cy = Math.floor(block.y / NPCCLIP_CELL_SIZE);
+        const cz = Math.floor(block.z / NPCCLIP_CELL_SIZE);
+        const cellKey = `${cx}|${cy}|${cz}`;
+        let cell = dimEntry.cells.get(cellKey);
+        if (!cell) {
+            cell = { minX: block.x, minY: block.y, minZ: block.z, maxX: block.x, maxY: block.y, maxZ: block.z };
+            dimEntry.cells.set(cellKey, cell);
+        } else {
+            cell.minX = Math.min(cell.minX, block.x);
+            cell.minY = Math.min(cell.minY, block.y);
+            cell.minZ = Math.min(cell.minZ, block.z);
+            cell.maxX = Math.max(cell.maxX, block.x);
+            cell.maxY = Math.max(cell.maxY, block.y);
+            cell.maxZ = Math.max(cell.maxZ, block.z);
+        }
+    }
+
+    npcclipIndex = index;
+    npcclipIndexRevision = revision;
+    return index;
+}
+
+system.runInterval(() => {
+    if (!toolsEnabled) {
+        npcclipLastSafePositions.clear();
+        npcclipRepelCooldowns.clear();
+        return;
+    }
+
+    const index = getNpcclipIndex();
+    if (index.size === 0) {
+        npcclipLastSafePositions.clear();
+        npcclipRepelCooldowns.clear();
+        return;
+    }
 
     const npcclipRepelRuntimeOptions = getNpcclipRepelRuntimeOptions();
     const seenEntityIds = new Set();
 
-    for (const block of npcclipBlocks) {
-        let entities;
+    for (const [dimensionId, dimEntry] of index) {
+        let dimension;
         try {
-            entities = world.getDimension(block.dimension).getEntities({
-                location: { x: block.x + 0.5, y: block.y + 0.5, z: block.z + 0.5 },
-                maxDistance: NPCCLIP_TRACK_RADIUS,
-                excludeTypes: ["minecraft:player"]
-            });
+            dimension = world.getDimension(dimensionId);
         } catch {
             continue;
         }
 
-        for (const entity of entities) {
-            seenEntityIds.add(`${entity.id}`);
-            applyNpcclipRepel(entity, block, npcclipRepelRuntimeOptions);
+        for (const cell of dimEntry.cells.values()) {
+            let entities;
+            try {
+                entities = dimension.getEntities({
+                    location: {
+                        x: cell.minX - NPCCLIP_TRACK_RADIUS,
+                        y: cell.minY - NPCCLIP_TRACK_RADIUS,
+                        z: cell.minZ - NPCCLIP_TRACK_RADIUS
+                    },
+                    volume: {
+                        x: cell.maxX - cell.minX + 1 + NPCCLIP_TRACK_RADIUS * 2,
+                        y: cell.maxY - cell.minY + 1 + NPCCLIP_TRACK_RADIUS * 2,
+                        z: cell.maxZ - cell.minZ + 1 + NPCCLIP_TRACK_RADIUS * 2
+                    },
+                    excludeTypes: ["minecraft:player"]
+                });
+            } catch {
+                continue;
+            }
+
+            for (const entity of entities) {
+                const entityId = `${entity.id}`;
+                if (seenEntityIds.has(entityId)) continue;
+                seenEntityIds.add(entityId);
+                applyNpcclipRepel(entity, dimEntry.blocksByPos, npcclipRepelRuntimeOptions);
+            }
         }
     }
 

@@ -75,12 +75,46 @@ export function shouldEnableNpcclipCollision(block, options) {
     return false;
 }
 
-export function applyNpcclipRepel(entity, block, options) {
-    if (!entity || !block) return;
+export function getNpcclipPositionKey(x, y, z) {
+    return `${x}|${y}|${z}`;
+}
+
+const NPCCLIP_NEAR_EXPAND = 0.45;
+
+// Returns the first active npcclip near the entity that does not exclude it. Only clips whose
+// cell is within NPCCLIP_NEAR_EXPAND of the entity can match, so just those positions are looked up.
+function findBlockingNpcclip(entity, location, blocksByPos, isEntityNearBlock, selectorOptions) {
+    const minX = Math.floor(location.x - 1 - NPCCLIP_NEAR_EXPAND);
+    const maxX = Math.floor(location.x + NPCCLIP_NEAR_EXPAND);
+    const minY = Math.floor(location.y - 1 - NPCCLIP_NEAR_EXPAND);
+    const maxY = Math.floor(location.y + NPCCLIP_NEAR_EXPAND);
+    const minZ = Math.floor(location.z - 1 - NPCCLIP_NEAR_EXPAND);
+    const maxZ = Math.floor(location.z + NPCCLIP_NEAR_EXPAND);
+
+    for (let x = minX; x <= maxX; x++) {
+        for (let y = minY; y <= maxY; y++) {
+            for (let z = minZ; z <= maxZ; z++) {
+                const block = blocksByPos.get(getNpcclipPositionKey(x, y, z));
+                if (!block || !isEntityNearBlock(entity, block, NPCCLIP_NEAR_EXPAND)) continue;
+
+                const excludeSelector = `${block?.data?.excludeSelector ?? ""}`.trim();
+                const isExcluded = excludeSelector.length > 0
+                    && selectorTargetsEntity(excludeSelector, entity, block, selectorOptions);
+                if (!isExcluded) return block;
+            }
+        }
+    }
+
+    return null;
+}
+
+// blocksByPos: Map of getNpcclipPositionKey -> active npcclip block, all in the entity's dimension.
+// Keeps a single last-safe position and cooldown per entity (keyed by entity id).
+export function applyNpcclipRepel(entity, blocksByPos, options) {
+    if (!entity || !(blocksByPos instanceof Map) || blocksByPos.size === 0) return;
     if (`${entity?.typeId ?? ""}` === "minecraft:player") return;
 
     const {
-        parseBooleanLike,
         isEntityNearBlock,
         parseSelectorFilters,
         applyEntityFilters,
@@ -89,40 +123,51 @@ export function applyNpcclipRepel(entity, block, options) {
         cooldownMs
     } = options ?? {};
 
-    if (entity?.dimension?.id !== block.dimension) return;
-    if (typeof parseBooleanLike !== "function" || typeof isEntityNearBlock !== "function") return;
+    if (typeof isEntityNearBlock !== "function") return;
     if (!(npcclipRepelCooldowns instanceof Map)) return;
     if (!(npcclipLastSafePositions instanceof Map)) return;
-    if (parseBooleanLike(block?.data?.startDisabled, false)) return;
 
-    const isNearBlock = isEntityNearBlock(entity, block, 0.45);
-    const blockKey = `${block.dimension}|${block.x}|${block.y}|${block.z}`;
-    const safePosKey = `${entity.id}|${blockKey}`;
+    let location;
+    let dimensionId;
+    try {
+        location = entity.location;
+        dimensionId = entity.dimension?.id;
+    } catch {
+        return;
+    }
+    if (!location || !dimensionId) return;
 
-    if (!isNearBlock) {
-        npcclipLastSafePositions.set(safePosKey, {
-            x: entity.location.x,
-            y: entity.location.y,
-            z: entity.location.z,
-            dimension: entity.dimension?.id
-        });
+    const entityId = `${entity.id}`;
+    const blockingClip = findBlockingNpcclip(entity, location, blocksByPos, isEntityNearBlock, {
+        parseSelectorFilters,
+        applyEntityFilters
+    });
+
+    if (!blockingClip) {
+        const safePos = npcclipLastSafePositions.get(entityId);
+        if (safePos) {
+            safePos.x = location.x;
+            safePos.y = location.y;
+            safePos.z = location.z;
+            safePos.dimension = dimensionId;
+        } else {
+            npcclipLastSafePositions.set(entityId, {
+                x: location.x,
+                y: location.y,
+                z: location.z,
+                dimension: dimensionId
+            });
+        }
         return;
     }
 
-    const excludeSelector = `${block?.data?.excludeSelector ?? ""}`.trim();
-    const isExcluded = excludeSelector.length > 0
-        ? selectorTargetsEntity(excludeSelector, entity, block, { parseSelectorFilters, applyEntityFilters })
-        : false;
-    if (isExcluded) return;
-
     const now = Date.now();
-    const cooldownKey = `${entity.id}|${blockKey}`;
-    const lastRepel = npcclipRepelCooldowns.get(cooldownKey) ?? 0;
+    const lastRepel = npcclipRepelCooldowns.get(entityId) ?? 0;
     if (now - lastRepel < (Number.isFinite(cooldownMs) ? cooldownMs : 140)) return;
-    npcclipRepelCooldowns.set(cooldownKey, now);
+    npcclipRepelCooldowns.set(entityId, now);
 
-    const lastSafePos = npcclipLastSafePositions.get(safePosKey);
-    if (lastSafePos && lastSafePos.dimension === entity.dimension?.id) {
+    const lastSafePos = npcclipLastSafePositions.get(entityId);
+    if (lastSafePos && lastSafePos.dimension === dimensionId) {
         try {
             entity.teleport(
                 {
