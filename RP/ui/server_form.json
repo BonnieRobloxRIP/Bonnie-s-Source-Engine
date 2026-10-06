@@ -33,48 +33,31 @@
     ],
     "$index|default": 1,
     "$name|default": "view_toggle",
+    "$group|default": "our_toggle",
     "$text|default": "Toggle",
     "size": "$padding",
     "controls": [
       {
         "custom_toggle@common_toggles.light_text_toggle": {
           "$default_texture": "textures/ui/recipe_book_item_bg",
-          "$default_size": [
-            170,
-            40
-          ],
-          "$hover_size": [
-            270,
-            140
-          ],
-          "$hover_checked_text_color": [
-            1,
-            1,
-            1
-          ],
-          "$default_checked_text_color": [
-            1,
-            1,
-            1
-          ],
+          "$default_size": ["100%", "100%"],
+          "$hover_size": ["100%", "100%"],
+          "$hover_checked_text_color": [1, 1, 1],
+          "$default_checked_text_color": [1, 1, 1],
           "$hover_text_color": [
             1,
             1,
             1
           ],
-          "$default_text_color": [
-            1,
-            1,
-            1
-          ],
+          "$default_text_color": [1, 1, 1],
           "$default_border_visible": false,
           "$hover_border_visible": false,
-          "$toggle_name": "our_toggle",
+          "$toggle_name": "$group",
           "$button_text": "$text",
           "size": "$toggle_size",
           "$toggle_view_binding_name": "$name",
           "$radio_toggle_group": true,
-          "$toggle_group_default_selected": 1,
+          "$toggle_group_default_selected": 0,
           "$toggle_group_forced_index": "$index",
           "anchor_from": "center",
           "anchor_to": "center",
@@ -212,13 +195,33 @@
       {
         "binding_name": "#custom_text",
         "binding_type": "collection",
+        "binding_condition": "always_when_visible",
+        "binding_collection_name": "custom_form"
+      }
+    ]
+  },
+  "brr_help_label": {
+    "type": "label",
+    "size": ["100%", "default"],
+    "text": "#custom_text",
+    "text_alignment": "left",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "color": [1, 1, 1],
+    "font_type": "default",
+    "shadow": false,
+    "bindings": [
+      {
+        "binding_name": "#custom_text",
+        "binding_type": "collection",
+        "binding_condition": "always_when_visible",
         "binding_collection_name": "custom_form"
       }
     ]
   },
   "option_dropdown@settings_common.option_dropdown": {
     "size": [
-      "100% - 10px",
+      "100%",
       36
     ],
     "$custom_option_label": "#custom_text",
@@ -230,7 +233,7 @@
       16,
       1
     ],
-    "$dropdown_content": "server_form.custom_dropdown_content",
+    "$dropdown_content": "server_form.brr_dropdown_content",
     "$dropdown_area": "generated_form",
     "$dropdown_name": "custom_dropdown",
     "$toggle_binding_type": "collection",
@@ -246,7 +249,38 @@
       {
         "binding_name": "#custom_text",
         "binding_type": "collection",
+        "binding_condition": "always_when_visible",
         "binding_collection_name": "custom_form"
+      }
+    ]
+  },
+  "brr_dropdown_content@server_form.custom_dropdown_content": {
+    "$radio_factory": {
+      "name": "buttons",
+      "control_name": "server_form.brr_dropdown_radio"
+    },
+    "$radio_bindings": [
+      {
+        "binding_name": "#custom_dropdown_length",
+        "binding_type": "collection",
+        "binding_condition": "always_when_visible",
+        "binding_name_override": "#collection_length",
+        "binding_collection_name": "custom_form"
+      }
+    ]
+  },
+  "brr_dropdown_radio@server_form.custom_dropdown_radio": {
+    "$toggle_binding_condition": "always_when_visible",
+    "$toggle_enabled_binding_condition": "always_when_visible",
+    "$radio_label_bindings": [
+      {
+        "binding_name": "#custom_radio_text",
+        "binding_type": "collection",
+        "binding_condition": "always_when_visible",
+        "binding_collection_name": "custom_dropdown"
+      },
+      {
+        "binding_type": "collection_details"
       }
     ]
   },
@@ -256,13 +290,16 @@
     "$toggle_state_binding_name": "#custom_toggle_state",
     "$option_binding_name": "#custom_toggle_state",
     "$toggle_binding_type": "collection",
+    "$toggle_binding_condition": "always_when_visible",
     "$toggle_enabled_binding_name": "#custom_toggle_enabled",
     "$toggle_enabled_binding_type": "collection",
+    "$toggle_enabled_binding_condition": "always_when_visible",
     "$toggle_grid_collection_name": "custom_form",
     "$label_bindings": [
       {
         "binding_name": "#custom_text",
         "binding_type": "collection",
+        "binding_condition": "always_when_visible",
         "binding_collection_name": "custom_form"
       }
     ]
@@ -272,7 +309,7 @@
     "$indent_texture": "textures/ui/submit_button_bg",
     "$indent_hover_texture": "textures/ui/submit_button_bg_hover",
     "size": [
-      "100% - 10px",
+      "100%",
       28
     ],
     "$option_place_holder_text": "#custom_placeholder_text",
@@ -282,6 +319,8 @@
     "$max_text_edit_length": 100,
     "$text_edit_box_content_binding_type": "collection",
     "$text_edit_box_content_binding_name": "#custom_input_text",
+    "$text_edit_box_binding_condition": "always_when_visible",
+    "$text_edit_box_placeholder_binding_condition": "always_when_visible",
     "$option_binding_name": "#custom_input_text",
     "$text_box_enabled_binding_name": "#custom_input_enabled",
     "$text_box_name": "custom_input",
@@ -294,6 +333,7 @@
       {
         "binding_name": "#custom_text",
         "binding_type": "collection",
+        "binding_condition": "always_when_visible",
         "binding_collection_name": "custom_form"
       }
     ]
@@ -303,6 +343,8 @@
     "layer": 99,
     "$name|default": "brr_help",
     "$text|default": "? Help",
+    "$group|default": "brr_help_mode",
+    "$index|default": 1,
     "controls": [
       {
         "custom_toggle@common_toggles.light_text_toggle": {
@@ -317,21 +359,21 @@
             1,
             1
           ],
-          "$default_checked_text_color": [
-            1,
-            0.72,
-            0.2
-          ],
+          "$default_checked_text_color": [1, 1, 1],
           "$hover_text_color": [
+            0,
             1,
-            0.72,
             0.2
           ],
           "$hover_checked_text_color": [
+            0,
             1,
-            0.72,
             0.2
           ],
+          "$toggle_name": "$group",
+          "$radio_toggle_group": true,
+          "$toggle_group_default_selected": 0,
+          "$toggle_group_forced_index": "$index",
           "$toggle_view_binding_name": "$name",
           "$button_text": "$text",
           "size": [
@@ -504,6 +546,30 @@
       }
     ]
   },
+  "default_custom_form@common_dialogs.main_panel_no_buttons": {
+    "$title_panel": "common_dialogs.standard_title_label",
+    "$title_size": [
+      "100% - 15px",
+      10
+    ],
+    "$title_max_size": [
+      "100% - 15px",
+      10
+    ],
+    "size": [
+      225,
+      200
+    ],
+    "$text_name": "#title_text",
+    "$title_text_binding_type": "none",
+    "$child_control": "server_form.custom_form_panel",
+    "layer": 2,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      }
+    ]
+  },
   "custom_form": {
     "type": "panel",
     "size": [
@@ -512,680 +578,7 @@
     ],
     "controls": [
       {
-        "default_custom_form@common_dialogs.main_panel_no_buttons": {
-          "$title_panel": "common_dialogs.standard_title_label",
-          "$title_size": [
-            "100% - 15px",
-            10
-          ],
-          "$title_max_size": [
-            "100% - 15px",
-            10
-          ],
-          "size": [
-            225,
-            200
-          ],
-          "$text_name": "#title_text",
-          "$title_text_binding_type": "none",
-          "$child_control": "server_form.custom_form_panel",
-          "layer": 2,
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(not (#title_text = 'Trigger Tool') and not (#title_text = 'Area Portal Tool') and not (#title_text = 'Tool Invisible') and not (#title_text = 'Tool Npcclip') and not (#title_text = 'Tool Playerclip') and not (#title_text = 'Info Playerspawn Block') and not (#title_text = 'Info Target AreaPortal Block') and not (#title_text = 'Logic Auto') and not (#title_text = 'Logic Branch') and not (#title_text = 'Logic Case') and not (#title_text = 'Logic Compare') and not (#title_text = 'Logic Coop Manager') and not (#title_text = 'Logic Random Outputs') and not (#title_text = 'Logic Timer') and not (#title_text = 'Game Nametag Block'))",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_trigger": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@tool_trigger.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@tool_trigger.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Trigger Tool')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_areaportal": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@tool_areaportal.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@tool_areaportal.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Area Portal Tool')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_invisible": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@tool_invisible.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@tool_invisible.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Tool Invisible')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_npcclip": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@tool_npcclip.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@tool_npcclip.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Tool Npcclip')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_playerclip": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@tool_playerclip.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@tool_playerclip.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Tool Playerclip')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_playerspawn": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@info_playerspawn.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@info_playerspawn.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Info Playerspawn Block')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_target_areaportal": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@info_target_areaportal.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@info_target_areaportal.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Info Target AreaPortal Block')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_auto": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@logic_auto.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@logic_auto.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Logic Auto')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_branch": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@logic_branch.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@logic_branch.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Logic Branch')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_case": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@logic_case.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@logic_case.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Logic Case')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_compare": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@logic_compare.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@logic_compare.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Logic Compare')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_coop": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@logic_coop_manager.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@logic_coop_manager.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Logic Coop Manager')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_random_outputs": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@logic_random_outputs.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@logic_random_outputs.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Logic Random Outputs')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_timer": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@logic_timer.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@logic_timer.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Logic Timer')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      },
-      {
-        "create_form_nametag": {
-          "type": "panel",
-          "offset": [
-            0,
-            10
-          ],
-          "size": [
-            360,
-            360
-          ],
-          "layer": 2,
-          "controls": [
-            {
-              "custom_form_bg@server_form.custom_form_bg": {}
-            },
-            {
-              "category_selection_pannel@game_nametag.category_selection_pannel": {}
-            },
-            {
-              "category_content_panel@game_nametag.category_content_panel": {}
-            },
-            {
-              "submit_button@server_form.submit_button": {
-                "layer": 999
-              }
-            },
-            {
-              "close_button@server_form.close_button": {}
-            }
-          ],
-          "bindings": [
-            {
-              "binding_name": "#title_text"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(#title_text = 'Game Nametag Block')",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
+        "router@brr_block_forms.router": {}
       }
     ]
   },

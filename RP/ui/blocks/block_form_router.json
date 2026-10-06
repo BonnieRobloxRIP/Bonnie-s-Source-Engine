@@ -1,0 +1,377 @@
+{
+  "namespace": "brr_block_forms",
+  "router": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "default_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "default_form_factory",
+            "control_name": "server_form.default_custom_form"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((not ((#title_text = 'Trigger Tool') or (#title_text = 'Area Portal Tool') or (#title_text = 'Tool Invisible') or (#title_text = 'Tool Playerclip') or (#title_text = 'Tool Npcclip') or (#title_text = 'Info Playerspawn Block') or (#title_text = 'Info Target AreaPortal Block') or (#title_text = 'Game Nametag Block') or (#title_text = 'Logic Auto') or (#title_text = 'Logic Branch') or (#title_text = 'Logic Case') or (#title_text = 'Logic Compare') or (#title_text = 'Logic Coop Manager') or (#title_text = 'Logic Random Outputs') or (#title_text = 'Logic Timer'))) * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "tool_trigger_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "tool_trigger_form_factory",
+            "control_name": "tool_trigger.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Trigger Tool') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "tool_areaportal_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "tool_areaportal_form_factory",
+            "control_name": "tool_areaportal.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Area Portal Tool') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "tool_invisible_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "tool_invisible_form_factory",
+            "control_name": "tool_invisible.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Tool Invisible') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "tool_playerclip_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "tool_playerclip_form_factory",
+            "control_name": "tool_playerclip.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Tool Playerclip') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "tool_npcclip_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "tool_npcclip_form_factory",
+            "control_name": "tool_npcclip.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Tool Npcclip') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "info_playerspawn_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "info_playerspawn_form_factory",
+            "control_name": "info_playerspawn.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Info Playerspawn Block') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "info_target_areaportal_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "info_target_areaportal_form_factory",
+            "control_name": "info_target_areaportal.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Info Target AreaPortal Block') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "game_nametag_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "game_nametag_form_factory",
+            "control_name": "game_nametag.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Game Nametag Block') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "logic_auto_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "logic_auto_form_factory",
+            "control_name": "logic_auto.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Logic Auto') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "logic_branch_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "logic_branch_form_factory",
+            "control_name": "logic_branch.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Logic Branch') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "logic_case_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "logic_case_form_factory",
+            "control_name": "logic_case.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Logic Case') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "logic_compare_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "logic_compare_form_factory",
+            "control_name": "logic_compare.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Logic Compare') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "logic_coop_manager_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "logic_coop_manager_form_factory",
+            "control_name": "logic_coop_manager.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Logic Coop Manager') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "logic_random_outputs_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "logic_random_outputs_form_factory",
+            "control_name": "logic_random_outputs.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Logic Random Outputs') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "logic_timer_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "logic_timer_form_factory",
+            "control_name": "logic_timer.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((#title_text = 'Logic Timer') * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

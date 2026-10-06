@@ -1,74 +1,183 @@
 {
   "namespace": "logic_random_outputs",
+  "form_panel": {
+    "type": "panel",
+    "offset": [0, 10],
+    "size": [360, 360],
+    "layer": 2,
+    "controls": [
+      {
+        "custom_form_bg@server_form.custom_form_bg": {}
+      },
+      {
+        "category_selection_pannel@logic_random_outputs.category_selection_pannel": {}
+      },
+      {
+        "category_content_panel@logic_random_outputs.category_content_panel": {}
+      },
+      {
+        "submit_button@logic_random_outputs.submit_button": {
+          "layer": 999
+        }
+      },
+      {
+        "close_button@server_form.close_button": {}
+      }
+    ]
+  },
   "category_selection_pannel": {
     "type": "panel",
-    "size": [285, 20],
-    "offset": ["89.58%", 46],
-    "anchor_from": "top_left",
-    "anchor_to": "top_right",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "main_tabs": {
+          "type": "panel",
+          "size": [250, 20],
+          "offset": [36, 46],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "logic_random_outputs_help",
+              "source_property_name": "(not #toggle_state)",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "tab_bar": {
+                "type": "stack_panel",
+                "size": ["100%", "100%"],
+                "layer": 1,
+                "orientation": "horizontal",
+                "controls": [
+                  {
+                    "tab_0@server_form.select_catagory_toggle": {
+                      "$name": "logic_random_outputs_tab0",
+                      "$group": "logic_random_outputs_tab",
+                      "$text": "Class",
+                      "$index": 0,
+                      "$toggle_size": [48, 20],
+                      "$padding": [50, 20]
+                    }
+                  },
+                  {
+                    "tab_1@server_form.select_catagory_toggle": {
+                      "$name": "logic_random_outputs_tab1",
+                      "$group": "logic_random_outputs_tab",
+                      "$text": "Slots",
+                      "$index": 1,
+                      "$toggle_size": [48, 20],
+                      "$padding": [50, 20]
+                    }
+                  },
+                  {
+                    "tab_2@server_form.select_catagory_toggle": {
+                      "$name": "logic_random_outputs_tab2",
+                      "$group": "logic_random_outputs_tab",
+                      "$text": "Output",
+                      "$index": 2,
+                      "$toggle_size": [48, 20],
+                      "$padding": [50, 20]
+                    }
+                  },
+                  {
+                    "tab_3@server_form.select_catagory_toggle": {
+                      "$name": "logic_random_outputs_tab3",
+                      "$group": "logic_random_outputs_tab",
+                      "$text": "Saved",
+                      "$index": 3,
+                      "$toggle_size": [48, 20],
+                      "$padding": [50, 20]
+                    }
+                  },
+                  {
+                    "tab_4@server_form.select_catagory_toggle": {
+                      "$name": "logic_random_outputs_tab4",
+                      "$group": "logic_random_outputs_tab",
+                      "$text": "Input",
+                      "$index": 4,
+                      "$toggle_size": [48, 20],
+                      "$padding": [50, 20]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "help_tabs": {
+          "type": "panel",
+          "size": [189, 20],
+          "offset": [36, 46],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "logic_random_outputs_help",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "tab_bar": {
+                "type": "stack_panel",
+                "size": ["100%", "100%"],
+                "layer": 1,
+                "orientation": "horizontal",
+                "controls": [
+                  {
+                    "tab_0@server_form.select_catagory_toggle": {
+                      "$name": "logic_random_outputs_help_tab0",
+                      "$group": "logic_random_outputs_help_tab",
+                      "$text": "Examples",
+                      "$index": 0,
+                      "$toggle_size": [61, 20],
+                      "$padding": [63, 20]
+                    }
+                  },
+                  {
+                    "tab_1@server_form.select_catagory_toggle": {
+                      "$name": "logic_random_outputs_help_tab1",
+                      "$group": "logic_random_outputs_help_tab",
+                      "$text": "Usage",
+                      "$index": 1,
+                      "$toggle_size": [61, 20],
+                      "$padding": [63, 20]
+                    }
+                  },
+                  {
+                    "tab_2@server_form.select_catagory_toggle": {
+                      "$name": "logic_random_outputs_help_tab2",
+                      "$group": "logic_random_outputs_help_tab",
+                      "$text": "Info",
+                      "$index": 2,
+                      "$toggle_size": [61, 20],
+                      "$padding": [63, 20]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "submit_button@server_form.submit_button": {
+    "size": [111, 23],
+    "offset": [-41, -62],
     "bindings": [
       {
         "binding_type": "view",
         "source_control_name": "logic_random_outputs_help",
         "source_property_name": "(not #toggle_state)",
         "target_property_name": "#visible"
-      }
-    ],
-    "controls": [
-      {
-        "tab_bar": {
-          "type": "stack_panel",
-          "size": ["100%", "100%"],
-          "layer": 1,
-          "orientation": "horizontal",
-          "controls": [
-            {
-              "tab_0@server_form.select_catagory_toggle": {
-                "$name": "logic_random_outputs_tab0",
-                "$text": "Class",
-                "$index": 10,
-                "$toggle_size": [57, 20],
-                "$padding": [57, 20]
-              }
-            },
-            {
-              "tab_1@server_form.select_catagory_toggle": {
-                "$name": "logic_random_outputs_tab1",
-                "$text": "Slots",
-                "$index": 11,
-                "$toggle_size": [57, 20],
-                "$padding": [57, 20]
-              }
-            },
-            {
-              "tab_2@server_form.select_catagory_toggle": {
-                "$name": "logic_random_outputs_tab2",
-                "$text": "Output",
-                "$index": 12,
-                "$toggle_size": [57, 20],
-                "$padding": [57, 20]
-              }
-            },
-            {
-              "tab_3@server_form.select_catagory_toggle": {
-                "$name": "logic_random_outputs_tab3",
-                "$text": "Saved",
-                "$index": 13,
-                "$toggle_size": [57, 20],
-                "$padding": [57, 20]
-              }
-            },
-            {
-              "tab_4@server_form.select_catagory_toggle": {
-                "$name": "logic_random_outputs_tab4",
-                "$text": "Input",
-                "$index": 14,
-                "$toggle_size": [57, 20],
-                "$padding": [57, 20]
-              }
-            }
-          ]
-        }
       }
     ]
   },
@@ -373,38 +482,46 @@
       }
     ]
   },
-  "tab5_text_content": {
+  "help0_content": {
     "type": "stack_panel",
     "orientation": "vertical",
-    "size": ["100% - 6px", "default"],
+    "size": ["100% - 6px", "100%c"],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "collection_name": "custom_form",
     "controls": [
       {
-        "t5_0@server_form.custom_label": {
+        "text@server_form.brr_help_label": {
           "collection_index": 23
         }
-      },
+      }
+    ]
+  },
+  "help1_content": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": ["100% - 6px", "100%c"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "collection_name": "custom_form",
+    "controls": [
       {
-        "t5_gap1": {
-          "type": "panel",
-          "size": ["100%", 14]
-        }
-      },
-      {
-        "t5_1@server_form.custom_label": {
+        "text@server_form.brr_help_label": {
           "collection_index": 24
         }
-      },
+      }
+    ]
+  },
+  "help2_content": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": ["100% - 6px", "100%c"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "collection_name": "custom_form",
+    "controls": [
       {
-        "t5_gap2": {
-          "type": "panel",
-          "size": ["100%", 14]
-        }
-      },
-      {
-        "t5_2@server_form.custom_label": {
+        "text@server_form.brr_help_label": {
           "collection_index": 25
         }
       }
@@ -434,8 +551,8 @@
             {
               "tab0_text": {
                 "type": "panel",
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
+                "size": ["83.33%", "63.33%"],
+                "offset": ["-10.53%", "-19.89%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -457,8 +574,8 @@
             {
               "tab0_toggle": {
                 "type": "panel",
-                "size": ["61.34%", "53.33%"],
-                "offset": ["73.38%", "-24.89%"],
+                "size": ["59.03%", "52.78%"],
+                "offset": ["70.49%", "-25.17%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -480,8 +597,8 @@
             {
               "tab1_text": {
                 "type": "panel",
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
+                "size": ["83.33%", "63.33%"],
+                "offset": ["-10.53%", "-19.89%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -503,8 +620,8 @@
             {
               "tab1_drop": {
                 "type": "panel",
-                "size": ["61.34%", "22.78%"],
-                "offset": ["73.38%", "-40.17%"],
+                "size": ["59.03%", "22.78%"],
+                "offset": ["70.49%", "-40.17%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -526,8 +643,8 @@
             {
               "tab1_toggle": {
                 "type": "panel",
-                "size": ["61.34%", "15.56%"],
-                "offset": ["73.38%", "-6%"],
+                "size": ["59.03%", "15%"],
+                "offset": ["70.49%", "-6.28%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -549,8 +666,8 @@
             {
               "tab2_text": {
                 "type": "panel",
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
+                "size": ["83.33%", "63.33%"],
+                "offset": ["-10.53%", "-19.89%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -572,8 +689,8 @@
             {
               "tab2_drop": {
                 "type": "panel",
-                "size": ["61.34%", "35.56%"],
-                "offset": ["73.38%", "-33.78%"],
+                "size": ["59.03%", "35.56%"],
+                "offset": ["70.49%", "-33.78%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -595,8 +712,8 @@
             {
               "tab2_toggle": {
                 "type": "panel",
-                "size": ["61.34%", "15.56%"],
-                "offset": ["73.38%", "-6%"],
+                "size": ["59.03%", "15%"],
+                "offset": ["70.49%", "-6.28%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -617,8 +734,8 @@
             },
             {
               "tab3_text@server_form.brr_scroll_panel": {
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
+                "size": ["83.33%", "63.33%"],
+                "offset": ["-10.53%", "-19.89%"],
                 "$content_control": "logic_random_outputs.tab3_text_content",
                 "bindings": [
                   {
@@ -633,8 +750,8 @@
             {
               "tab3_drop": {
                 "type": "panel",
-                "size": ["61.34%", "10%"],
-                "offset": ["73.38%", "-46.56%"],
+                "size": ["59.03%", "10%"],
+                "offset": ["70.49%", "-46.56%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -656,8 +773,8 @@
             {
               "tab3_toggle": {
                 "type": "panel",
-                "size": ["61.34%", "15.56%"],
-                "offset": ["73.38%", "-6%"],
+                "size": ["59.03%", "15%"],
+                "offset": ["70.49%", "-6.28%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -678,8 +795,8 @@
             },
             {
               "tab4_text@server_form.brr_scroll_panel": {
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
+                "size": ["83.33%", "63.33%"],
+                "offset": ["-10.53%", "-19.89%"],
                 "$content_control": "logic_random_outputs.tab4_text_content",
                 "bindings": [
                   {
@@ -708,10 +825,48 @@
           ],
           "controls": [
             {
-              "tab5_text@server_form.brr_scroll_panel": {
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
-                "$content_control": "logic_random_outputs.tab5_text_content"
+              "help0@server_form.brr_scroll_panel": {
+                "size": ["83.33%", "62.78%"],
+                "offset": ["-10.53%", "-19.61%"],
+                "$content_control": "logic_random_outputs.help0_content",
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "logic_random_outputs_help_tab0",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "help1@server_form.brr_scroll_panel": {
+                "size": ["83.33%", "62.78%"],
+                "offset": ["-10.53%", "-19.61%"],
+                "$content_control": "logic_random_outputs.help1_content",
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "logic_random_outputs_help_tab1",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "help2@server_form.brr_scroll_panel": {
+                "size": ["83.33%", "62.78%"],
+                "offset": ["-10.53%", "-19.61%"],
+                "$content_control": "logic_random_outputs.help2_content",
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "logic_random_outputs_help_tab2",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ]
               }
             }
           ]
@@ -719,11 +874,40 @@
       },
       {
         "help_toggle@server_form.brr_help_toggle": {
-          "size": ["64.81%", "6.11%"],
-          "offset": ["69.91%", "5.94%"],
+          "size": ["64.24%", "3.06%"],
+          "offset": ["70.2%", "3.86%"],
           "layer": 20,
           "$name": "logic_random_outputs_help",
-          "$text": "? Help"
+          "$group": "logic_random_outputs_help_mode",
+          "$index": 1,
+          "$text": "? Help",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "logic_random_outputs_help",
+              "source_property_name": "(not #toggle_state)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "back_toggle@server_form.brr_help_toggle": {
+          "size": ["64.24%", "6.11%"],
+          "offset": ["70.2%", "8.72%"],
+          "layer": 20,
+          "$name": "logic_random_outputs_back",
+          "$group": "logic_random_outputs_help_mode",
+          "$index": 0,
+          "$text": "Back",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "logic_random_outputs_help",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
         }
       }
     ]

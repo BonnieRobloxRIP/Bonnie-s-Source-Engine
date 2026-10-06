@@ -1,5 +1,6 @@
 {
   "ui_defs": [
+    "ui/blocks/block_form_router.json",
     "ui/blocks/tool_trigger.json",
     "ui/blocks/tool_areaportal.json",
     "ui/blocks/tool_invisible.json",

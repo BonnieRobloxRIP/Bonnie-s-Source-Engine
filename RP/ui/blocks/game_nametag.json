@@ -1,65 +1,173 @@
 {
   "namespace": "game_nametag",
+  "form_panel": {
+    "type": "panel",
+    "offset": [0, 10],
+    "size": [360, 360],
+    "layer": 2,
+    "controls": [
+      {
+        "custom_form_bg@server_form.custom_form_bg": {}
+      },
+      {
+        "category_selection_pannel@game_nametag.category_selection_pannel": {}
+      },
+      {
+        "category_content_panel@game_nametag.category_content_panel": {}
+      },
+      {
+        "submit_button@game_nametag.submit_button": {
+          "layer": 999
+        }
+      },
+      {
+        "close_button@server_form.close_button": {}
+      }
+    ]
+  },
   "category_selection_pannel": {
     "type": "panel",
-    "size": [288, 20],
-    "offset": ["90.00%", 46],
-    "anchor_from": "top_left",
-    "anchor_to": "top_right",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "main_tabs": {
+          "type": "panel",
+          "size": [252, 20],
+          "offset": [36, 46],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "game_nametag_help",
+              "source_property_name": "(not #toggle_state)",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "tab_bar": {
+                "type": "stack_panel",
+                "size": ["100%", "100%"],
+                "layer": 1,
+                "orientation": "horizontal",
+                "controls": [
+                  {
+                    "tab_0@server_form.select_catagory_toggle": {
+                      "$name": "game_nametag_tab0",
+                      "$group": "game_nametag_tab",
+                      "$text": "Class",
+                      "$index": 0,
+                      "$toggle_size": [61, 20],
+                      "$padding": [63, 20]
+                    }
+                  },
+                  {
+                    "tab_1@server_form.select_catagory_toggle": {
+                      "$name": "game_nametag_tab1",
+                      "$group": "game_nametag_tab",
+                      "$text": "Output",
+                      "$index": 1,
+                      "$toggle_size": [61, 20],
+                      "$padding": [63, 20]
+                    }
+                  },
+                  {
+                    "tab_2@server_form.select_catagory_toggle": {
+                      "$name": "game_nametag_tab2",
+                      "$group": "game_nametag_tab",
+                      "$text": "Saved",
+                      "$index": 2,
+                      "$toggle_size": [61, 20],
+                      "$padding": [63, 20]
+                    }
+                  },
+                  {
+                    "tab_3@server_form.select_catagory_toggle": {
+                      "$name": "game_nametag_tab3",
+                      "$group": "game_nametag_tab",
+                      "$text": "Input",
+                      "$index": 3,
+                      "$toggle_size": [61, 20],
+                      "$padding": [63, 20]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "help_tabs": {
+          "type": "panel",
+          "size": [189, 20],
+          "offset": [36, 46],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "game_nametag_help",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "tab_bar": {
+                "type": "stack_panel",
+                "size": ["100%", "100%"],
+                "layer": 1,
+                "orientation": "horizontal",
+                "controls": [
+                  {
+                    "tab_0@server_form.select_catagory_toggle": {
+                      "$name": "game_nametag_help_tab0",
+                      "$group": "game_nametag_help_tab",
+                      "$text": "Examples",
+                      "$index": 0,
+                      "$toggle_size": [61, 20],
+                      "$padding": [63, 20]
+                    }
+                  },
+                  {
+                    "tab_1@server_form.select_catagory_toggle": {
+                      "$name": "game_nametag_help_tab1",
+                      "$group": "game_nametag_help_tab",
+                      "$text": "Usage",
+                      "$index": 1,
+                      "$toggle_size": [61, 20],
+                      "$padding": [63, 20]
+                    }
+                  },
+                  {
+                    "tab_2@server_form.select_catagory_toggle": {
+                      "$name": "game_nametag_help_tab2",
+                      "$group": "game_nametag_help_tab",
+                      "$text": "Info",
+                      "$index": 2,
+                      "$toggle_size": [61, 20],
+                      "$padding": [63, 20]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "submit_button@server_form.submit_button": {
+    "size": [111, 23],
+    "offset": [-41, -62],
     "bindings": [
       {
         "binding_type": "view",
         "source_control_name": "game_nametag_help",
         "source_property_name": "(not #toggle_state)",
         "target_property_name": "#visible"
-      }
-    ],
-    "controls": [
-      {
-        "tab_bar": {
-          "type": "stack_panel",
-          "size": ["100%", "100%"],
-          "layer": 1,
-          "orientation": "horizontal",
-          "controls": [
-            {
-              "tab_0@server_form.select_catagory_toggle": {
-                "$name": "game_nametag_tab0",
-                "$text": "Class",
-                "$index": 10,
-                "$toggle_size": [72, 20],
-                "$padding": [72, 20]
-              }
-            },
-            {
-              "tab_1@server_form.select_catagory_toggle": {
-                "$name": "game_nametag_tab1",
-                "$text": "Output",
-                "$index": 11,
-                "$toggle_size": [72, 20],
-                "$padding": [72, 20]
-              }
-            },
-            {
-              "tab_2@server_form.select_catagory_toggle": {
-                "$name": "game_nametag_tab2",
-                "$text": "Saved",
-                "$index": 12,
-                "$toggle_size": [72, 20],
-                "$padding": [72, 20]
-              }
-            },
-            {
-              "tab_3@server_form.select_catagory_toggle": {
-                "$name": "game_nametag_tab3",
-                "$text": "Input",
-                "$index": 13,
-                "$toggle_size": [72, 20],
-                "$padding": [72, 20]
-              }
-            }
-          ]
-        }
       }
     ]
   },
@@ -319,38 +427,46 @@
       }
     ]
   },
-  "tab4_text_content": {
+  "help0_content": {
     "type": "stack_panel",
     "orientation": "vertical",
-    "size": ["100% - 6px", "default"],
+    "size": ["100% - 6px", "100%c"],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "collection_name": "custom_form",
     "controls": [
       {
-        "t4_0@server_form.custom_label": {
+        "text@server_form.brr_help_label": {
           "collection_index": 20
         }
-      },
+      }
+    ]
+  },
+  "help1_content": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": ["100% - 6px", "100%c"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "collection_name": "custom_form",
+    "controls": [
       {
-        "t4_gap1": {
-          "type": "panel",
-          "size": ["100%", 14]
-        }
-      },
-      {
-        "t4_1@server_form.custom_label": {
+        "text@server_form.brr_help_label": {
           "collection_index": 21
         }
-      },
+      }
+    ]
+  },
+  "help2_content": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": ["100% - 6px", "100%c"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "collection_name": "custom_form",
+    "controls": [
       {
-        "t4_gap2": {
-          "type": "panel",
-          "size": ["100%", 14]
-        }
-      },
-      {
-        "t4_2@server_form.custom_label": {
+        "text@server_form.brr_help_label": {
           "collection_index": 22
         }
       }
@@ -380,8 +496,8 @@
             {
               "tab0_text": {
                 "type": "panel",
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
+                "size": ["83.33%", "63.33%"],
+                "offset": ["-10.53%", "-19.89%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -403,8 +519,8 @@
             {
               "tab0_toggle": {
                 "type": "panel",
-                "size": ["61.34%", "53.33%"],
-                "offset": ["73.38%", "-24.89%"],
+                "size": ["59.03%", "52.78%"],
+                "offset": ["70.49%", "-25.17%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -426,8 +542,8 @@
             {
               "tab1_text": {
                 "type": "panel",
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
+                "size": ["83.33%", "63.33%"],
+                "offset": ["-10.53%", "-19.89%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -449,8 +565,8 @@
             {
               "tab1_drop": {
                 "type": "panel",
-                "size": ["61.34%", "35.56%"],
-                "offset": ["73.38%", "-33.78%"],
+                "size": ["59.03%", "35.56%"],
+                "offset": ["70.49%", "-33.78%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -472,8 +588,8 @@
             {
               "tab1_toggle": {
                 "type": "panel",
-                "size": ["61.34%", "15.56%"],
-                "offset": ["73.38%", "-6%"],
+                "size": ["59.03%", "15%"],
+                "offset": ["70.49%", "-6.28%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -494,8 +610,8 @@
             },
             {
               "tab2_text@server_form.brr_scroll_panel": {
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
+                "size": ["83.33%", "63.33%"],
+                "offset": ["-10.53%", "-19.89%"],
                 "$content_control": "game_nametag.tab2_text_content",
                 "bindings": [
                   {
@@ -510,8 +626,8 @@
             {
               "tab2_drop": {
                 "type": "panel",
-                "size": ["61.34%", "10%"],
-                "offset": ["73.38%", "-46.56%"],
+                "size": ["59.03%", "10%"],
+                "offset": ["70.49%", "-46.56%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -533,8 +649,8 @@
             {
               "tab2_toggle": {
                 "type": "panel",
-                "size": ["61.34%", "15.56%"],
-                "offset": ["73.38%", "-6%"],
+                "size": ["59.03%", "15%"],
+                "offset": ["70.49%", "-6.28%"],
                 "bindings": [
                   {
                     "binding_type": "view",
@@ -555,8 +671,8 @@
             },
             {
               "tab3_text@server_form.brr_scroll_panel": {
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
+                "size": ["83.33%", "63.33%"],
+                "offset": ["-10.53%", "-19.89%"],
                 "$content_control": "game_nametag.tab3_text_content",
                 "bindings": [
                   {
@@ -585,10 +701,48 @@
           ],
           "controls": [
             {
-              "tab4_text@server_form.brr_scroll_panel": {
-                "size": ["87.96%", "63.33%"],
-                "offset": ["-11.69%", "-19.89%"],
-                "$content_control": "game_nametag.tab4_text_content"
+              "help0@server_form.brr_scroll_panel": {
+                "size": ["83.33%", "62.78%"],
+                "offset": ["-10.53%", "-19.61%"],
+                "$content_control": "game_nametag.help0_content",
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "game_nametag_help_tab0",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "help1@server_form.brr_scroll_panel": {
+                "size": ["83.33%", "62.78%"],
+                "offset": ["-10.53%", "-19.61%"],
+                "$content_control": "game_nametag.help1_content",
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "game_nametag_help_tab1",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "help2@server_form.brr_scroll_panel": {
+                "size": ["83.33%", "62.78%"],
+                "offset": ["-10.53%", "-19.61%"],
+                "$content_control": "game_nametag.help2_content",
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "game_nametag_help_tab2",
+                    "source_property_name": "#toggle_state",
+                    "target_property_name": "#visible"
+                  }
+                ]
               }
             }
           ]
@@ -596,11 +750,40 @@
       },
       {
         "help_toggle@server_form.brr_help_toggle": {
-          "size": ["64.81%", "6.11%"],
-          "offset": ["69.91%", "5.94%"],
+          "size": ["64.24%", "3.06%"],
+          "offset": ["70.2%", "3.86%"],
           "layer": 20,
           "$name": "game_nametag_help",
-          "$text": "? Help"
+          "$group": "game_nametag_help_mode",
+          "$index": 1,
+          "$text": "? Help",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "game_nametag_help",
+              "source_property_name": "(not #toggle_state)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "back_toggle@server_form.brr_help_toggle": {
+          "size": ["64.24%", "6.11%"],
+          "offset": ["70.2%", "8.72%"],
+          "layer": 20,
+          "$name": "game_nametag_back",
+          "$group": "game_nametag_help_mode",
+          "$index": 0,
+          "$text": "Back",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "game_nametag_help",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
         }
       }
     ]
