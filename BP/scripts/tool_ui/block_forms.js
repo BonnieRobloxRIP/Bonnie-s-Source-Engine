@@ -68,7 +68,8 @@ export const INPUT_TAB_FIELDS = [
     info("__savedInputs", "Incoming inputs", (data, ctx) => ctx.inputSummary)
 ];
 
-// Shown by the Help toggle, which the JSON UI drives on its own - no script round trip.
+// Help shows these fields in separate Examples / Usage / Info tabs, without a script round trip.
+// Keep their order stable: navigation does not submit or rebuild the editable form.
 export const HELP_TAB_FIELDS = [
     info("__helpExamples", "Examples", (data, ctx) => ctx.helpExamples),
     info("__helpUsage", "Usage", (data, ctx) => ctx.helpUsage),

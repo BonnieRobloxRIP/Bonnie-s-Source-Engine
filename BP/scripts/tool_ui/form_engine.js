@@ -6,7 +6,7 @@ import {
     getOutputTargetLabel,
     isOutputTargetSupportedByBlockType
 } from "./output_ci_targets.js";
-import { getBlocks, getBlocksTargetingCurrent, getNamedTargetEntries } from "./shared_data_helpers.js";
+import { getBlockFormTargets } from "./shared_data_helpers.js";
 import { validateConditionRequirements } from "../handler/core/condition_executer.js";
 import { sendUiError, sendUiSaved } from "./ui_formatting.js";
 
@@ -30,12 +30,7 @@ export function buildContext(blockEntry, descriptor) {
     const entries = descriptor.list && Array.isArray(data[descriptor.list.key]) ? data[descriptor.list.key] : [];
     const slots = descriptor.slots ? normalizeSlots(data[descriptor.slots.key], descriptor.slots.count) : [];
 
-    const namedTargetEntries = getNamedTargetEntries();
-    const areaPortalTargets = getBlocks()
-        .filter(block => block.typeId === "brr:info_target_areaportal_block" && block.data?.name)
-        .map(block => `${block.data.name}`);
-
-    const inputs = getBlocksTargetingCurrent(data.name);
+    const { namedTargetEntries, areaPortalTargets, inputs } = getBlockFormTargets(data.name);
 
     return {
         outputs,

@@ -75,12 +75,24 @@ export function invalidateBlocksCache() {
 }
 
 // SECTION: Registry Queries
-export function getBlocksTargetingCurrent(currentBlockName) {
+export function getBlockFormTargets(currentBlockName) {
     const name = `${currentBlockName ?? ""}`.trim();
-    if (!name) return [];
-
     const inputs = [];
+    const namedTargetEntries = [];
+    const areaPortalTargets = [];
+    const seen = new Set();
+
     for (const block of getBlocks()) {
+        const blockName = `${block?.data?.name ?? ""}`.trim();
+        if (blockName && !seen.has(blockName)) {
+            seen.add(blockName);
+            namedTargetEntries.push({ name: blockName, typeId: `${block?.typeId ?? ""}` });
+        }
+        if (block?.typeId === "brr:info_target_areaportal_block" && block.data?.name) {
+            areaPortalTargets.push(`${block.data.name}`);
+        }
+        if (!name) continue;
+
         const outputs = block?.data?.outputs;
         if (!Array.isArray(outputs)) continue;
 
@@ -93,22 +105,15 @@ export function getBlocksTargetingCurrent(currentBlockName) {
         }
     }
 
-    return inputs;
+    return { namedTargetEntries, areaPortalTargets, inputs };
+}
+
+export function getBlocksTargetingCurrent(currentBlockName) {
+    return getBlockFormTargets(currentBlockName).inputs;
 }
 
 export function getNamedTargetEntries() {
-    const seen = new Set();
-    const entries = [];
-
-    for (const block of getBlocks()) {
-        const name = `${block?.data?.name ?? ""}`.trim();
-        if (!name || seen.has(name)) continue;
-
-        seen.add(name);
-        entries.push({ name, typeId: `${block?.typeId ?? ""}` });
-    }
-
-    return entries;
+    return getBlockFormTargets("").namedTargetEntries;
 }
 
 export function getNamedTargets() {
