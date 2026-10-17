@@ -1,0 +1,40 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.spas12.firstPerson": {
+			"initial_state": "hidden",
+			"states": {
+				"hidden": {
+					"animations": [
+						"fp_hidden"
+					]
+				}
+			}
+		},
+		"controller.animation.spas12.thirdPerson": {
+			"initial_state": "hidden",
+			"states": {
+				"hidden": {
+					"animations": [
+						"fp_hidden"
+					],
+					"transitions": [
+						{
+							"held_by_other": "!q.is_owner_identifier_any('minecraft:player')"
+						}
+					]
+				},
+				"held_by_other": {
+					"animations": [
+						"tp_idle"
+					],
+					"transitions": [
+						{
+							"hidden": "q.is_owner_identifier_any('minecraft:player')"
+						}
+					]
+				}
+			}
+		}
+	}
+}

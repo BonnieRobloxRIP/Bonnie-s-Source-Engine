@@ -1,0 +1,284 @@
+{
+	"format_version": "1.19.0",
+	"animation_controllers": {
+		"controller.animation.magnum357.firstPerson": {
+			"initial_state": "hidden",
+			"states": {
+				"hidden": {
+					"animations": [
+						"fp_hidden"
+					]
+				}
+			}
+		},
+		"controller.animation.magnum357.thirdPerson": {
+			"initial_state": "hidden",
+			"states": {
+				"hidden": {
+					"animations": [
+						"fp_hidden"
+					],
+					"transitions": [
+						{
+							"held_by_other": "!q.is_owner_identifier_any('minecraft:player')"
+						}
+					]
+				},
+				"held_by_other": {
+					"animations": [
+						"tp_idle"
+					],
+					"transitions": [
+						{
+							"hidden": "q.is_owner_identifier_any('minecraft:player')"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.magnum357.emptyFirstPerson": {
+			"initial_state": "fp_select_gate",
+			"states": {
+				"fp_select_gate": {
+					"transitions": [
+						{
+							"fp_draw_admire": "math.random(0,1)<0.12"
+						},
+						{
+							"fp_draw": "1"
+						}
+					]
+				},
+				"fp_draw_admire": {
+					"animations": [
+						"fp_draw_admire"
+					],
+					"transitions": [
+						{
+							"fp_idle_to_centerfire": "query.any_animation_finished&&query.is_sneaking"
+						},
+						{
+							"fp_idle": "query.any_animation_finished"
+						}
+					]
+				},
+				"fp_draw": {
+					"animations": [
+						"fp_draw"
+					],
+					"transitions": [
+						{
+							"fp_reload": "query.mark_variant==1"
+						},
+						{
+							"fp_idle_to_centerfire": "query.any_animation_finished&&query.is_sneaking"
+						},
+						{
+							"fp_idle": "query.any_animation_finished"
+						}
+					]
+				},
+				"fp_idle": {
+					"animations": [
+						"fp_idle"
+					],
+					"transitions": [
+						{
+							"fp_reload": "query.mark_variant==1"
+						},
+						{
+							"fp_idle_to_centerfire": "query.is_sneaking"
+						},
+						{
+							"fp_idle_fidget": "query.anim_time>=10&&math.random(0,1)<0.001"
+						}
+					]
+				},
+				"fp_idle_fidget": {
+					"animations": [
+						"fp_idle_fidget"
+					],
+					"transitions": [
+						{
+							"fp_reload": "query.mark_variant==1"
+						},
+						{
+							"fp_idle_to_centerfire": "query.is_sneaking"
+						},
+						{
+							"fp_idle": "query.any_animation_finished"
+						}
+					]
+				},
+				"fp_idle_to_centerfire": {
+					"animations": [
+						"fp_idle_to_centerfire"
+					],
+					"transitions": [
+						{
+							"fp_centerfire_idle": "query.any_animation_finished"
+						}
+					]
+				},
+				"fp_centerfire_idle": {
+					"animations": [
+						"fp_centerfire_idle"
+					],
+					"transitions": [
+						{
+							"fp_reload": "query.mark_variant==1"
+						},
+						{
+							"fp_centerfire_to_idle": "!query.is_sneaking"
+						}
+					]
+				},
+				"fp_centerfire_to_idle": {
+					"animations": [
+						"fp_centerfire_to_idle"
+					],
+					"transitions": [
+						{
+							"fp_idle": "query.any_animation_finished"
+						}
+					]
+				},
+				"fp_reload": {
+					"animations": [
+						"fp_reload"
+					],
+					"transitions": [
+						{
+							"fp_idle_to_centerfire": "query.any_animation_finished&&query.is_sneaking"
+						},
+						{
+							"fp_idle": "query.any_animation_finished"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.magnum357.emptyThirdPerson": {
+			"initial_state": "tp_select_gate",
+			"states": {
+				"tp_select_gate": {
+					"transitions": [
+						{
+							"tp_draw_admire": "math.random(0,1)<0.12"
+						},
+						{
+							"tp_draw": "1"
+						}
+					]
+				},
+				"tp_draw_admire": {
+					"animations": [
+						"tp_draw_admire"
+					],
+					"transitions": [
+						{
+							"tp_idle_to_centerfire": "query.any_animation_finished&&query.is_sneaking"
+						},
+						{
+							"tp_idle": "query.any_animation_finished"
+						}
+					]
+				},
+				"tp_draw": {
+					"animations": [
+						"tp_draw"
+					],
+					"transitions": [
+						{
+							"tp_reload": "query.mark_variant==1"
+						},
+						{
+							"tp_idle_to_centerfire": "query.any_animation_finished&&query.is_sneaking"
+						},
+						{
+							"tp_idle": "query.any_animation_finished"
+						}
+					]
+				},
+				"tp_idle": {
+					"animations": [
+						"tp_idle"
+					],
+					"transitions": [
+						{
+							"tp_reload": "query.mark_variant==1"
+						},
+						{
+							"tp_idle_to_centerfire": "query.is_sneaking"
+						},
+						{
+							"tp_idle_fidget": "query.anim_time>=10&&math.random(0,1)<0.001"
+						}
+					]
+				},
+				"tp_idle_fidget": {
+					"animations": [
+						"tp_idle_fidget"
+					],
+					"transitions": [
+						{
+							"tp_reload": "query.mark_variant==1"
+						},
+						{
+							"tp_idle_to_centerfire": "query.is_sneaking"
+						},
+						{
+							"tp_idle": "query.any_animation_finished"
+						}
+					]
+				},
+				"tp_idle_to_centerfire": {
+					"animations": [
+						"tp_idle_to_centerfire"
+					],
+					"transitions": [
+						{
+							"tp_centerfire_idle": "query.any_animation_finished"
+						}
+					]
+				},
+				"tp_centerfire_idle": {
+					"animations": [
+						"tp_centerfire_idle"
+					],
+					"transitions": [
+						{
+							"tp_reload": "query.mark_variant==1"
+						},
+						{
+							"tp_centerfire_to_idle": "!query.is_sneaking"
+						}
+					]
+				},
+				"tp_centerfire_to_idle": {
+					"animations": [
+						"tp_centerfire_to_idle"
+					],
+					"transitions": [
+						{
+							"tp_idle": "query.any_animation_finished"
+						}
+					]
+				},
+				"tp_reload": {
+					"animations": [
+						"tp_reload"
+					],
+					"transitions": [
+						{
+							"tp_idle_to_centerfire": "query.any_animation_finished&&query.is_sneaking"
+						},
+						{
+							"tp_idle": "query.any_animation_finished"
+						}
+					]
+				}
+			}
+		}
+	}
+}

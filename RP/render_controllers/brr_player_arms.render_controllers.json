@@ -1,0 +1,105 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.player.first_person_brr_arms": {
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Texture.default"
+			],
+			"part_visibility": [
+				{
+					"*": false
+				},
+				{
+					"rightArm": true
+				},
+				{
+					"rightSleeve": true
+				},
+				{
+					"leftArm": true
+				},
+				{
+					"leftSleeve": true
+				}
+			]
+		},
+		"controller.render.brr_glock17_vm": {
+			"geometry": "Geometry.brr_glock17_vm",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Texture.brr_glock17_vm"
+			],
+			"filter_lighting": true
+		},
+		"controller.render.brr_magnum357_vm": {
+			"geometry": "Geometry.brr_magnum357_vm",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Texture.brr_magnum357_vm"
+			],
+			"filter_lighting": true
+		},
+		"controller.render.brr_crowbar_vm": {
+			"geometry": "Geometry.brr_crowbar_vm",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Texture.brr_crowbar_vm"
+			],
+			"filter_lighting": true
+		},
+		"controller.render.brr_tau_cannon_vm": {
+			"geometry": "Geometry.brr_tau_cannon_vm",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Texture.brr_tau_cannon_vm"
+			],
+			"filter_lighting": true
+		},
+		"controller.render.brr_gluon_gun_vm": {
+			"geometry": "Geometry.brr_gluon_gun_vm",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Texture.brr_gluon_gun_vm"
+			],
+			"filter_lighting": true
+		},
+		"controller.render.brr_spas12_vm": {
+			"geometry": "Geometry.brr_spas12_vm",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Texture.brr_spas12_vm"
+			],
+			"filter_lighting": true
+		}
+	}
+}

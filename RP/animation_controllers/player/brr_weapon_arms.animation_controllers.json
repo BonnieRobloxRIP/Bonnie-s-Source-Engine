@@ -1,0 +1,3418 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.brr.player.weapon_arms": {
+			"initial_state": "none",
+			"states": {
+				"none": {
+					"transitions": [
+						{
+							"glock17_select_gate": "v.brr_held_glock17"
+						},
+						{
+							"magnum357_select_gate": "v.brr_held_magnum357"
+						},
+						{
+							"crowbar_select_gate": "v.brr_held_crowbar"
+						},
+						{
+							"tau_cannon_select_gate": "v.brr_held_tau_cannon"
+						},
+						{
+							"gluon_gun_select_gate": "v.brr_held_gluon_gun"
+						},
+						{
+							"spas12_select_gate": "v.brr_held_spas12"
+						}
+					]
+				},
+				"glock17_select_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_draw_admire": "math.random(0,1)<0.12"
+						},
+						{
+							"glock17_draw": "1"
+						}
+					]
+				},
+				"glock17_draw_admire": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_draw_admire": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_draw_admire_tp": "!v.is_first_person"
+						},
+						{
+							"brr_glock17_draw_admire_fpsound": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_glock17_draw_admire_sound": "!v.is_first_person&&!v.is_paperdoll"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_shot_a_gate": "query.mark_variant==3"
+						},
+						{
+							"glock17_shot_b_gate": "query.mark_variant==4"
+						},
+						{
+							"glock17_reload_gate": "query.mark_variant==2"
+						},
+						{
+							"glock17_rest_gate": "(q.life_time-v.brr_wpn_start)>=3.5"
+						},
+						{
+							"glock17_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"glock17_draw": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_draw": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_draw_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_shot_a_gate": "query.mark_variant==3"
+						},
+						{
+							"glock17_shot_b_gate": "query.mark_variant==4"
+						},
+						{
+							"glock17_reload_gate": "query.mark_variant==2"
+						},
+						{
+							"glock17_rest_gate": "(q.life_time-v.brr_wpn_start)>=0.8333"
+						},
+						{
+							"glock17_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"glock17_rest_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_idle_empty": "query.variant==1"
+						},
+						{
+							"glock17_idle": "1"
+						}
+					]
+				},
+				"glock17_idle": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_idle": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_idle_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_shot_a_gate": "query.mark_variant==3"
+						},
+						{
+							"glock17_shot_b_gate": "query.mark_variant==4"
+						},
+						{
+							"glock17_reload_gate": "query.mark_variant==2"
+						},
+						{
+							"glock17_idle_empty": "query.variant==1"
+						},
+						{
+							"glock17_idle_fidget": "(q.life_time-v.brr_wpn_start)>=10&&math.random(0,1)<0.001"
+						},
+						{
+							"glock17_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"glock17_idle_fidget": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_idle_fidget": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_idle_fidget_tp": "!v.is_first_person"
+						},
+						{
+							"brr_glock17_idle_fidget_fpsound": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_glock17_idle_fidget_sound": "!v.is_first_person&&!v.is_paperdoll"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_shot_a_gate": "query.mark_variant==3"
+						},
+						{
+							"glock17_shot_b_gate": "query.mark_variant==4"
+						},
+						{
+							"glock17_reload_gate": "query.mark_variant==2"
+						},
+						{
+							"glock17_rest_gate": "(q.life_time-v.brr_wpn_start)>=3.3333"
+						},
+						{
+							"glock17_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"glock17_idle_empty": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_idle_empty": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_idle_empty_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_reload_gate": "query.mark_variant==2"
+						},
+						{
+							"glock17_idle": "query.variant==0"
+						},
+						{
+							"glock17_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"glock17_shot_a_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_fire_empty": "query.variant==1"
+						},
+						{
+							"glock17_fire1": "1"
+						}
+					]
+				},
+				"glock17_shot_b_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_fire_empty": "query.variant==1"
+						},
+						{
+							"glock17_fire2": "1"
+						}
+					]
+				},
+				"glock17_fire1": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_fire1": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_fire1_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_shot_b_gate": "query.mark_variant==4"
+						},
+						{
+							"glock17_reload_gate": "query.mark_variant==2"
+						},
+						{
+							"glock17_rest_gate": "(q.life_time-v.brr_wpn_start)>=0.5714"
+						}
+					]
+				},
+				"glock17_fire2": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_fire2": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_fire2_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_shot_a_gate": "query.mark_variant==3"
+						},
+						{
+							"glock17_reload_gate": "query.mark_variant==2"
+						},
+						{
+							"glock17_rest_gate": "(q.life_time-v.brr_wpn_start)>=0.5714"
+						}
+					]
+				},
+				"glock17_fire_empty": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_fire_empty": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_fire_empty_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_reload_gate": "query.mark_variant==2"
+						},
+						{
+							"glock17_rest_gate": "(q.life_time-v.brr_wpn_start)>=0.3333"
+						}
+					]
+				},
+				"glock17_reload_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_reload_empty": "query.variant==1"
+						},
+						{
+							"glock17_reload": "1"
+						}
+					]
+				},
+				"glock17_reload": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_reload": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_reload_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_rest_gate": "query.mark_variant!=2"
+						}
+					]
+				},
+				"glock17_reload_empty": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_reload_empty": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_reload_empty_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_rest_gate": "query.mark_variant!=2"
+						}
+					]
+				},
+				"glock17_sprint_in": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_sprint_in": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_sprint_in_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_rest_gate": "query.mark_variant!=0"
+						},
+						{
+							"glock17_sprint_out": "!query.is_sprinting"
+						},
+						{
+							"glock17_sprint": "(q.life_time-v.brr_wpn_start)>=0.1333"
+						}
+					]
+				},
+				"glock17_sprint": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_sprint": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_sprint_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_rest_gate": "query.mark_variant!=0"
+						},
+						{
+							"glock17_sprint_out": "!query.is_sprinting"
+						}
+					]
+				},
+				"glock17_sprint_out": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_glock17_sprint_out": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_glock17_sprint_out_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_glock17"
+						},
+						{
+							"glock17_rest_gate": "query.mark_variant!=0"
+						},
+						{
+							"glock17_rest_gate": "(q.life_time-v.brr_wpn_start)>=0.6333"
+						}
+					]
+				},
+				"magnum357_select_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_draw_admire": "math.random(0,1)<0.12"
+						},
+						{
+							"magnum357_draw": "1"
+						}
+					]
+				},
+				"magnum357_draw_admire": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_draw_admire": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_draw_admire_tp": "!v.is_first_person"
+						},
+						{
+							"brr_magnum357_draw_admire_fpsound": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_magnum357_draw_admire_sound": "!v.is_first_person&&!v.is_paperdoll"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_reload": "query.mark_variant==1"
+						},
+						{
+							"magnum357_idle_to_centerfire": "query.is_sneaking"
+						},
+						{
+							"magnum357_idle": "(q.life_time-v.brr_wpn_start)>=4.3333"
+						},
+						{
+							"magnum357_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"magnum357_draw": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_draw": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_draw_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_fire_gate": "(query.mark_variant==3||query.mark_variant==4)&&!query.is_sneaking"
+						},
+						{
+							"magnum357_reload": "query.mark_variant==1"
+						},
+						{
+							"magnum357_idle_to_centerfire": "query.is_sneaking"
+						},
+						{
+							"magnum357_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						},
+						{
+							"magnum357_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"magnum357_idle": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_idle": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_idle_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_fire_gate": "(query.mark_variant==3||query.mark_variant==4)&&!query.is_sneaking"
+						},
+						{
+							"magnum357_reload": "query.mark_variant==1"
+						},
+						{
+							"magnum357_idle_to_centerfire": "query.is_sneaking"
+						},
+						{
+							"magnum357_idle_fidget": "(q.life_time-v.brr_wpn_start)>=10&&math.random(0,1)<0.001"
+						},
+						{
+							"magnum357_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"magnum357_idle_fidget": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_idle_fidget": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_idle_fidget_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_fire_gate": "(query.mark_variant==3||query.mark_variant==4)&&!query.is_sneaking"
+						},
+						{
+							"magnum357_reload": "query.mark_variant==1"
+						},
+						{
+							"magnum357_idle_to_centerfire": "query.is_sneaking"
+						},
+						{
+							"magnum357_idle": "(q.life_time-v.brr_wpn_start)>=4.3333"
+						},
+						{
+							"magnum357_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"magnum357_fire_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_fire1": "query.mark_variant==3"
+						},
+						{
+							"magnum357_fire2": "1"
+						}
+					]
+				},
+				"magnum357_fire1": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_fire1": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_fire1_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_fire2": "query.mark_variant==4"
+						},
+						{
+							"magnum357_reload": "query.mark_variant==1"
+						},
+						{
+							"magnum357_idle_to_centerfire": "(q.life_time-v.brr_wpn_start)>=0.6857&&query.is_sneaking"
+						},
+						{
+							"magnum357_idle": "(q.life_time-v.brr_wpn_start)>=0.6857"
+						}
+					]
+				},
+				"magnum357_fire2": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_fire2": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_fire2_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_fire1": "query.mark_variant==3"
+						},
+						{
+							"magnum357_reload": "query.mark_variant==1"
+						},
+						{
+							"magnum357_idle_to_centerfire": "(q.life_time-v.brr_wpn_start)>=0.6857&&query.is_sneaking"
+						},
+						{
+							"magnum357_idle": "(q.life_time-v.brr_wpn_start)>=0.6857"
+						}
+					]
+				},
+				"magnum357_idle_to_centerfire": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_idle_to_centerfire": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_idle_to_centerfire_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_centerfire_to_idle": "!query.is_sneaking"
+						},
+						{
+							"magnum357_centerfire_idle": "(q.life_time-v.brr_wpn_start)>=0.1667"
+						}
+					]
+				},
+				"magnum357_centerfire_idle": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_centerfire_idle": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_centerfire_idle_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_centerfire_fire_gate": "(query.mark_variant==3||query.mark_variant==4)"
+						},
+						{
+							"magnum357_reload": "query.mark_variant==1"
+						},
+						{
+							"magnum357_centerfire_to_idle": "!query.is_sneaking"
+						}
+					]
+				},
+				"magnum357_centerfire_fire_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_centerfire1": "query.mark_variant==3"
+						},
+						{
+							"magnum357_centerfire2": "1"
+						}
+					]
+				},
+				"magnum357_centerfire1": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_centerfire1": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_centerfire1_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_centerfire2": "query.mark_variant==4"
+						},
+						{
+							"magnum357_centerfire_to_idle": "(q.life_time-v.brr_wpn_start)>=1&&!query.is_sneaking"
+						},
+						{
+							"magnum357_centerfire_idle": "(q.life_time-v.brr_wpn_start)>=1"
+						}
+					]
+				},
+				"magnum357_centerfire2": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_centerfire2": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_centerfire2_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_centerfire1": "query.mark_variant==3"
+						},
+						{
+							"magnum357_centerfire_to_idle": "(q.life_time-v.brr_wpn_start)>=1&&!query.is_sneaking"
+						},
+						{
+							"magnum357_centerfire_idle": "(q.life_time-v.brr_wpn_start)>=1"
+						}
+					]
+				},
+				"magnum357_centerfire_to_idle": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_centerfire_to_idle": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_centerfire_to_idle_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_idle_to_centerfire": "query.is_sneaking"
+						},
+						{
+							"magnum357_idle": "(q.life_time-v.brr_wpn_start)>=0.1667"
+						}
+					]
+				},
+				"magnum357_reload": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_reload": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_reload_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_idle_to_centerfire": "!(query.mark_variant==1)&&query.is_sneaking"
+						},
+						{
+							"magnum357_idle": "!(query.mark_variant==1)"
+						}
+					]
+				},
+				"magnum357_sprint_in": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_sprint_in": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_sprint_in_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_idle": "query.mark_variant!=0"
+						},
+						{
+							"magnum357_sprint_out": "!query.is_sprinting"
+						},
+						{
+							"magnum357_sprint": "(q.life_time-v.brr_wpn_start)>=0.3333"
+						}
+					]
+				},
+				"magnum357_sprint": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_sprint": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_sprint_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_idle": "query.mark_variant!=0"
+						},
+						{
+							"magnum357_sprint_out": "!query.is_sprinting"
+						}
+					]
+				},
+				"magnum357_sprint_out": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_magnum357_sprint_out": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_magnum357_sprint_out_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_magnum357"
+						},
+						{
+							"magnum357_idle": "query.mark_variant!=0"
+						},
+						{
+							"magnum357_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_select_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_draw_admire": "math.random(0,1)<0.15"
+						},
+						{
+							"crowbar_draw_pick": "1"
+						}
+					]
+				},
+				"crowbar_draw_pick": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_draw1": "math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_draw2": "1"
+						}
+					]
+				},
+				"crowbar_draw_admire": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_draw_admire": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_draw_admire_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=4.1667"
+						},
+						{
+							"crowbar_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"crowbar_draw1": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_draw1": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_draw1_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.6667"
+						},
+						{
+							"crowbar_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"crowbar_draw2": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_draw2": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_draw2_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=1.1667"
+						},
+						{
+							"crowbar_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"crowbar_idle": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_idle": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_idle_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"crowbar_attack1_hit_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack1_hit_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack1_hit_a_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack2_hit_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack2_hit_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack2_hit_a_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack3_hit_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack3_hit_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack3_hit_a_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack4_hit_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack4_hit_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack4_hit_a_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack1_miss_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack1_miss_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack1_miss_a_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack2_miss_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack2_miss_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack2_miss_a_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack3_miss_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack3_miss_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack3_miss_a_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack4_miss_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack4_miss_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack4_miss_a_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_b": "query.mark_variant==10&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_b": "query.mark_variant==10&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_b": "query.mark_variant==10&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_b": "query.mark_variant==10"
+						},
+						{
+							"crowbar_attack1_miss_b": "query.mark_variant==11&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_b": "query.mark_variant==11&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_b": "query.mark_variant==11&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_b": "query.mark_variant==11"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack1_hit_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack1_hit_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack1_hit_b_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack2_hit_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack2_hit_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack2_hit_b_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack3_hit_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack3_hit_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack3_hit_b_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack4_hit_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack4_hit_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack4_hit_b_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack1_miss_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack1_miss_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack1_miss_b_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack2_miss_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack2_miss_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack2_miss_b_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack3_miss_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack3_miss_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack3_miss_b_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_attack4_miss_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_attack4_miss_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_attack4_miss_b_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_attack1_hit_a": "query.mark_variant==5&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_hit_a": "query.mark_variant==5&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_hit_a": "query.mark_variant==5&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_hit_a": "query.mark_variant==5"
+						},
+						{
+							"crowbar_attack1_miss_a": "query.mark_variant==6&&math.random(0,1)<0.25"
+						},
+						{
+							"crowbar_attack2_miss_a": "query.mark_variant==6&&math.random(0,1)<0.3333"
+						},
+						{
+							"crowbar_attack3_miss_a": "query.mark_variant==6&&math.random(0,1)<0.5"
+						},
+						{
+							"crowbar_attack4_miss_a": "query.mark_variant==6"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"crowbar_sprint_in": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_sprint_in": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_sprint_in_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_idle": "query.mark_variant!=0"
+						},
+						{
+							"crowbar_sprint_out": "!query.is_sprinting"
+						},
+						{
+							"crowbar_sprint": "(q.life_time-v.brr_wpn_start)>=0.1667"
+						}
+					]
+				},
+				"crowbar_sprint": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_sprint": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_sprint_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_idle": "query.mark_variant!=0"
+						},
+						{
+							"crowbar_sprint_out": "!query.is_sprinting"
+						}
+					]
+				},
+				"crowbar_sprint_out": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_crowbar_sprint_out": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_crowbar_sprint_out_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_crowbar"
+						},
+						{
+							"crowbar_idle": "query.mark_variant!=0"
+						},
+						{
+							"crowbar_idle": "(q.life_time-v.brr_wpn_start)>=0.3333"
+						}
+					]
+				},
+				"tau_cannon_select_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_draw_admire": "math.random(0,1)<0.25"
+						},
+						{
+							"tau_cannon_draw": "1"
+						}
+					]
+				},
+				"tau_cannon_draw_admire": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_draw_admire": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_draw_admire_tp": "!v.is_first_person"
+						},
+						{
+							"brr_tau_cannon_draw_admire_fpsound": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_tau_cannon_draw_admire_sound": "!v.is_first_person&&!v.is_paperdoll"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_charge": "query.mark_variant==8"
+						},
+						{
+							"tau_cannon_charged_fire": "query.mark_variant==7"
+						},
+						{
+							"tau_cannon_fire1": "query.mark_variant==3"
+						},
+						{
+							"tau_cannon_fire2": "query.mark_variant==4"
+						},
+						{
+							"tau_cannon_idle": "(q.life_time-v.brr_wpn_start)>=7.6667"
+						},
+						{
+							"tau_cannon_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"tau_cannon_draw": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_draw": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_draw_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_charge": "query.mark_variant==8"
+						},
+						{
+							"tau_cannon_charged_fire": "query.mark_variant==7"
+						},
+						{
+							"tau_cannon_fire1": "query.mark_variant==3"
+						},
+						{
+							"tau_cannon_fire2": "query.mark_variant==4"
+						},
+						{
+							"tau_cannon_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						},
+						{
+							"tau_cannon_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"tau_cannon_idle": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_idle": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_idle_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_charge": "query.mark_variant==8"
+						},
+						{
+							"tau_cannon_charged_fire": "query.mark_variant==7"
+						},
+						{
+							"tau_cannon_fire1": "query.mark_variant==3"
+						},
+						{
+							"tau_cannon_fire2": "query.mark_variant==4"
+						},
+						{
+							"tau_cannon_idle_fidget": "(q.life_time-v.brr_wpn_start)>=10&&math.random(0,1)<0.001"
+						},
+						{
+							"tau_cannon_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"tau_cannon_idle_fidget": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_idle_fidget": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_idle_fidget_tp": "!v.is_first_person"
+						},
+						{
+							"brr_tau_cannon_idle_fidget_fpsound": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_tau_cannon_idle_fidget_sound": "!v.is_first_person&&!v.is_paperdoll"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_charge": "query.mark_variant==8"
+						},
+						{
+							"tau_cannon_charged_fire": "query.mark_variant==7"
+						},
+						{
+							"tau_cannon_fire1": "query.mark_variant==3"
+						},
+						{
+							"tau_cannon_fire2": "query.mark_variant==4"
+						},
+						{
+							"tau_cannon_idle": "(q.life_time-v.brr_wpn_start)>=4.6667"
+						},
+						{
+							"tau_cannon_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"tau_cannon_fire1": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_fire1": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_fire1_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_charge": "query.mark_variant==8"
+						},
+						{
+							"tau_cannon_fire2": "query.mark_variant==4"
+						},
+						{
+							"tau_cannon_idle": "(q.life_time-v.brr_wpn_start)>=0.9667"
+						}
+					]
+				},
+				"tau_cannon_fire2": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_fire2": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_fire2_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_charge": "query.mark_variant==8"
+						},
+						{
+							"tau_cannon_fire1": "query.mark_variant==3"
+						},
+						{
+							"tau_cannon_idle": "(q.life_time-v.brr_wpn_start)>=0.9667"
+						}
+					]
+				},
+				"tau_cannon_charge": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_charge": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_charge_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_charged_fire": "query.mark_variant==7"
+						},
+						{
+							"tau_cannon_idle": "query.mark_variant==0"
+						},
+						{
+							"tau_cannon_charged": "(q.life_time-v.brr_wpn_start)>=10"
+						}
+					]
+				},
+				"tau_cannon_charged": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_charged": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_charged_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_charged_fire": "query.mark_variant==7"
+						},
+						{
+							"tau_cannon_idle": "query.mark_variant==0"
+						}
+					]
+				},
+				"tau_cannon_charged_fire": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_charged_fire": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_charged_fire_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_idle": "(q.life_time-v.brr_wpn_start)>=0.9667"
+						}
+					]
+				},
+				"tau_cannon_sprint_in": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_sprint_in": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_sprint_in_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_idle": "query.mark_variant!=0"
+						},
+						{
+							"tau_cannon_sprint_out": "!query.is_sprinting"
+						},
+						{
+							"tau_cannon_sprint": "(q.life_time-v.brr_wpn_start)>=0.6"
+						}
+					]
+				},
+				"tau_cannon_sprint": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_sprint": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_sprint_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_idle": "query.mark_variant!=0"
+						},
+						{
+							"tau_cannon_sprint_out": "!query.is_sprinting"
+						}
+					]
+				},
+				"tau_cannon_sprint_out": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_tau_cannon_sprint_out": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_tau_cannon_sprint_out_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_tau_cannon"
+						},
+						{
+							"tau_cannon_idle": "query.mark_variant!=0"
+						},
+						{
+							"tau_cannon_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"gluon_gun_select_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_gluon_gun"
+						},
+						{
+							"gluon_gun_draw_admire": "math.random(0,1)<0.25"
+						},
+						{
+							"gluon_gun_draw": "1"
+						}
+					]
+				},
+				"gluon_gun_draw_admire": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_gluon_gun_draw_admire": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_gluon_gun_draw_admire_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_gluon_gun"
+						},
+						{
+							"gluon_gun_fire": "query.mark_variant==9"
+						},
+						{
+							"gluon_gun_idle": "(q.life_time-v.brr_wpn_start)>=4.3333"
+						},
+						{
+							"gluon_gun_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"gluon_gun_draw": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_gluon_gun_draw": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_gluon_gun_draw_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_gluon_gun"
+						},
+						{
+							"gluon_gun_fire": "query.mark_variant==9"
+						},
+						{
+							"gluon_gun_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						},
+						{
+							"gluon_gun_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"gluon_gun_idle": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_gluon_gun_idle": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_gluon_gun_idle_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_gluon_gun"
+						},
+						{
+							"gluon_gun_fire": "query.mark_variant==9"
+						},
+						{
+							"gluon_gun_idle_fidget": "(q.life_time-v.brr_wpn_start)>=10&&math.random(0,1)<0.001"
+						},
+						{
+							"gluon_gun_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"gluon_gun_idle_fidget": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_gluon_gun_idle_fidget": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_gluon_gun_idle_fidget_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_gluon_gun"
+						},
+						{
+							"gluon_gun_fire": "query.mark_variant==9"
+						},
+						{
+							"gluon_gun_idle": "(q.life_time-v.brr_wpn_start)>=4"
+						},
+						{
+							"gluon_gun_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"gluon_gun_fire": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_gluon_gun_fire": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_gluon_gun_fire_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_gluon_gun"
+						},
+						{
+							"gluon_gun_fire_end": "!(query.mark_variant==9)"
+						}
+					]
+				},
+				"gluon_gun_fire_end": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_gluon_gun_fire_end": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_gluon_gun_fire_end_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_gluon_gun"
+						},
+						{
+							"gluon_gun_fire": "query.mark_variant==9"
+						},
+						{
+							"gluon_gun_idle": "(q.life_time-v.brr_wpn_start)>=0.6667"
+						}
+					]
+				},
+				"gluon_gun_sprint_in": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_gluon_gun_sprint_in": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_gluon_gun_sprint_in_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_gluon_gun"
+						},
+						{
+							"gluon_gun_idle": "query.mark_variant!=0"
+						},
+						{
+							"gluon_gun_sprint_out": "!query.is_sprinting"
+						},
+						{
+							"gluon_gun_sprint": "(q.life_time-v.brr_wpn_start)>=0.3333"
+						}
+					]
+				},
+				"gluon_gun_sprint": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_gluon_gun_sprint": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_gluon_gun_sprint_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_gluon_gun"
+						},
+						{
+							"gluon_gun_idle": "query.mark_variant!=0"
+						},
+						{
+							"gluon_gun_sprint_out": "!query.is_sprinting"
+						}
+					]
+				},
+				"gluon_gun_sprint_out": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_gluon_gun_sprint_out": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_gluon_gun_sprint_out_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_gluon_gun"
+						},
+						{
+							"gluon_gun_idle": "query.mark_variant!=0"
+						},
+						{
+							"gluon_gun_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"spas12_select_gate": {
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_draw_admire": "math.random(0,1)<0.12"
+						},
+						{
+							"spas12_draw": "1"
+						}
+					]
+				},
+				"spas12_draw_admire": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_draw_admire": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_draw_admire_tp": "!v.is_first_person"
+						},
+						{
+							"brr_spas12_draw_admire_fpsound": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_spas12_draw_admire_sound": "!v.is_first_person&&!v.is_paperdoll"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_fire_a": "query.mark_variant==3"
+						},
+						{
+							"spas12_fire_b": "query.mark_variant==4"
+						},
+						{
+							"spas12_double_a": "query.mark_variant==12"
+						},
+						{
+							"spas12_double_b": "query.mark_variant==13"
+						},
+						{
+							"spas12_reload_start": "query.mark_variant==14"
+						},
+						{
+							"spas12_idle": "(q.life_time-v.brr_wpn_start)>=3.8667"
+						},
+						{
+							"spas12_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"spas12_draw": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_draw": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_draw_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_fire_a": "query.mark_variant==3"
+						},
+						{
+							"spas12_fire_b": "query.mark_variant==4"
+						},
+						{
+							"spas12_double_a": "query.mark_variant==12"
+						},
+						{
+							"spas12_double_b": "query.mark_variant==13"
+						},
+						{
+							"spas12_reload_start": "query.mark_variant==14"
+						},
+						{
+							"spas12_idle": "(q.life_time-v.brr_wpn_start)>=0.6"
+						},
+						{
+							"spas12_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"spas12_idle": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_idle": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_idle_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_fire_a": "query.mark_variant==3"
+						},
+						{
+							"spas12_fire_b": "query.mark_variant==4"
+						},
+						{
+							"spas12_double_a": "query.mark_variant==12"
+						},
+						{
+							"spas12_double_b": "query.mark_variant==13"
+						},
+						{
+							"spas12_reload_start": "query.mark_variant==14"
+						},
+						{
+							"spas12_idle_fidget": "(q.life_time-v.brr_wpn_start)>=10&&math.random(0,1)<0.001"
+						},
+						{
+							"spas12_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"spas12_idle_fidget": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_idle_fidget": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_idle_fidget_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_fire_a": "query.mark_variant==3"
+						},
+						{
+							"spas12_fire_b": "query.mark_variant==4"
+						},
+						{
+							"spas12_double_a": "query.mark_variant==12"
+						},
+						{
+							"spas12_double_b": "query.mark_variant==13"
+						},
+						{
+							"spas12_reload_start": "query.mark_variant==14"
+						},
+						{
+							"spas12_idle": "(q.life_time-v.brr_wpn_start)>=2.7667"
+						},
+						{
+							"spas12_sprint_in": "query.is_sprinting"
+						}
+					]
+				},
+				"spas12_fire_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_fire_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_fire_a_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_pump_a": "(q.life_time-v.brr_wpn_start)>=0.3"
+						}
+					]
+				},
+				"spas12_fire_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_fire_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_fire_b_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_pump_b": "(q.life_time-v.brr_wpn_start)>=0.3"
+						}
+					]
+				},
+				"spas12_double_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_double_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_double_a_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_pump_a": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"spas12_double_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_double_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_double_b_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_pump_b": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"spas12_pump_a": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_pump_a": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_pump_a_tp": "!v.is_first_person"
+						},
+						{
+							"brr_spas12_pump_a_fpsound": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_spas12_pump_a_sound": "!v.is_first_person&&!v.is_paperdoll"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_fire_a": "query.mark_variant==3"
+						},
+						{
+							"spas12_fire_b": "query.mark_variant==4"
+						},
+						{
+							"spas12_double_a": "query.mark_variant==12"
+						},
+						{
+							"spas12_double_b": "query.mark_variant==13"
+						},
+						{
+							"spas12_reload_start": "query.mark_variant==14"
+						},
+						{
+							"spas12_idle": "(q.life_time-v.brr_wpn_start)>=0.5333"
+						}
+					]
+				},
+				"spas12_pump_b": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_pump_b": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_pump_b_tp": "!v.is_first_person"
+						},
+						{
+							"brr_spas12_pump_b_fpsound": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_spas12_pump_b_sound": "!v.is_first_person&&!v.is_paperdoll"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_fire_a": "query.mark_variant==3"
+						},
+						{
+							"spas12_fire_b": "query.mark_variant==4"
+						},
+						{
+							"spas12_double_a": "query.mark_variant==12"
+						},
+						{
+							"spas12_double_b": "query.mark_variant==13"
+						},
+						{
+							"spas12_reload_start": "query.mark_variant==14"
+						},
+						{
+							"spas12_idle": "(q.life_time-v.brr_wpn_start)>=0.5333"
+						}
+					]
+				},
+				"spas12_reload_start": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;",
+						"v.brr_reload_empty=query.variant==1;"
+					],
+					"animations": [
+						{
+							"brr_spas12_reload_start": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_reload_start_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_shell": "(q.life_time-v.brr_wpn_start)>=0.5&&query.mark_variant==14"
+						},
+						{
+							"spas12_reload_end": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				},
+				"spas12_shell": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_shell": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_shell_tp": "!v.is_first_person"
+						},
+						{
+							"brr_spas12_shell_fpsound": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_spas12_shell_sound": "!v.is_first_person&&!v.is_paperdoll"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_reload_end": "!(query.mark_variant==14)"
+						}
+					]
+				},
+				"spas12_reload_end": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_reload_end": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_reload_end_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_fire_a": "query.mark_variant==3"
+						},
+						{
+							"spas12_fire_b": "query.mark_variant==4"
+						},
+						{
+							"spas12_double_a": "query.mark_variant==12"
+						},
+						{
+							"spas12_double_b": "query.mark_variant==13"
+						},
+						{
+							"spas12_reload_start": "query.mark_variant==14"
+						},
+						{
+							"spas12_pump_a": "(q.life_time-v.brr_wpn_start)>=0.4667&&v.brr_reload_empty"
+						},
+						{
+							"spas12_idle": "(q.life_time-v.brr_wpn_start)>=0.4667"
+						}
+					]
+				},
+				"spas12_sprint_in": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_sprint_in": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_sprint_in_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_idle": "query.mark_variant!=0"
+						},
+						{
+							"spas12_sprint_out": "!query.is_sprinting"
+						},
+						{
+							"spas12_sprint": "(q.life_time-v.brr_wpn_start)>=0.3333"
+						}
+					]
+				},
+				"spas12_sprint": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_sprint": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_sprint_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_idle": "query.mark_variant!=0"
+						},
+						{
+							"spas12_sprint_out": "!query.is_sprinting"
+						}
+					]
+				},
+				"spas12_sprint_out": {
+					"on_entry": [
+						"v.brr_wpn_start=q.life_time;"
+					],
+					"animations": [
+						{
+							"brr_spas12_sprint_out": "v.is_first_person&&!v.is_paperdoll"
+						},
+						{
+							"brr_fp_walk": "v.is_first_person&&!v.is_paperdoll&&v.bob_animation"
+						},
+						{
+							"brr_spas12_sprint_out_tp": "!v.is_first_person"
+						}
+					],
+					"transitions": [
+						{
+							"none": "!v.brr_held_spas12"
+						},
+						{
+							"spas12_idle": "query.mark_variant!=0"
+						},
+						{
+							"spas12_idle": "(q.life_time-v.brr_wpn_start)>=0.5"
+						}
+					]
+				}
+			}
+		}
+	}
+}

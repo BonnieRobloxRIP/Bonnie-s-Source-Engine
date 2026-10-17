@@ -1,0 +1,1509 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.scientist_01.general": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"animations": [
+						"bm_idle"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;",
+						"v.idle_yaw = q.body_y_rotation;"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"turn_right": "v.turn_delta > 40"
+						},
+						{
+							"turn_left": "v.turn_delta < -40"
+						},
+						{
+							"gesture_gate": "q.life_time >= v.next_gesture"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0300": 0.97553,
+						"0.0600": 0.90451,
+						"0.0900": 0.79389,
+						"0.1200": 0.65451,
+						"0.1500": 0.5,
+						"0.1800": 0.34549,
+						"0.2100": 0.20611,
+						"0.2400": 0.09549,
+						"0.2700": 0.02447,
+						"0.3000": 0
+					}
+				},
+				"moving": {
+					"animations": [
+						"bm_walk"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"default": "!v.moving"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0250": 0.97553,
+						"0.0500": 0.90451,
+						"0.0750": 0.79389,
+						"0.1000": 0.65451,
+						"0.1250": 0.5,
+						"0.1500": 0.34549,
+						"0.1750": 0.20611,
+						"0.2000": 0.09549,
+						"0.2250": 0.02447,
+						"0.2500": 0
+					}
+				},
+				"gesture_gate": {
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"g_crossarms": "math.random(0, 1) < 0.0909"
+						},
+						{
+							"g_scratchchin": "math.random(0, 1) < 0.1000"
+						},
+						{
+							"g_scratchhead": "math.random(0, 1) < 0.1111"
+						},
+						{
+							"g_pinchnose": "math.random(0, 1) < 0.1250"
+						},
+						{
+							"g_adjust_tie": "math.random(0, 1) < 0.1429"
+						},
+						{
+							"g_adjust_belt": "math.random(0, 1) < 0.1667"
+						},
+						{
+							"g_brush_coat": "math.random(0, 1) < 0.2000"
+						},
+						{
+							"g_hands_on_hips": "math.random(0, 1) < 0.2500"
+						},
+						{
+							"g_slump_shoulders": "math.random(0, 1) < 0.3333"
+						},
+						{
+							"g_hands_wipe": "math.random(0, 1) < 0.5000"
+						},
+						{
+							"stretch": "1"
+						}
+					]
+				},
+				"react_gate": {
+					"on_entry": [
+						"v.react_seen = q.property('brr:react_n');"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"wave": "q.property('brr:react') == 1"
+						},
+						{
+							"wave_close": "q.property('brr:react') == 2"
+						},
+						{
+							"startle": "q.property('brr:react') == 3"
+						},
+						{
+							"ask_gate": "q.property('brr:react') == 4"
+						},
+						{
+							"answer_gate": "q.property('brr:react') == 5"
+						},
+						{
+							"default": "1"
+						}
+					]
+				},
+				"ask_gate": {
+					"on_entry": [
+						"v.next_gesture = q.life_time + math.random(10.0, 18.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"g_quote_marks": "math.random(0, 1) < 0.2000"
+						},
+						{
+							"g_what": "math.random(0, 1) < 0.2500"
+						},
+						{
+							"g_whiteboard_point": "math.random(0, 1) < 0.3333"
+						},
+						{
+							"g_hands_majestic": "math.random(0, 1) < 0.5000"
+						},
+						{
+							"g_scratchchin": "1"
+						}
+					]
+				},
+				"answer_gate": {
+					"on_entry": [
+						"v.next_gesture = q.life_time + math.random(10.0, 18.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"g_hands_dismissive": "math.random(0, 1) < 0.1667"
+						},
+						{
+							"g_hands_upset": "math.random(0, 1) < 0.2000"
+						},
+						{
+							"g_joke_point": "math.random(0, 1) < 0.2500"
+						},
+						{
+							"g_joke_laugh": "math.random(0, 1) < 0.3333"
+						},
+						{
+							"g_pinchnose": "math.random(0, 1) < 0.5000"
+						},
+						{
+							"g_crossarms": "1"
+						}
+					]
+				},
+				"death_gate": {
+					"transitions": [
+						{
+							"death_front": "math.random(0, 1) < 0.2500"
+						},
+						{
+							"death_back": "math.random(0, 1) < 0.3333"
+						},
+						{
+							"death_left": "math.random(0, 1) < 0.5000"
+						},
+						{
+							"death_right": "1"
+						}
+					]
+				},
+				"g_crossarms": {
+					"animations": [
+						"bm_g_crossarms"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 1.9667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_scratchchin": {
+					"animations": [
+						"bm_g_scratchchin"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 6.6333"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_scratchhead": {
+					"animations": [
+						"bm_g_scratchhead"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 3.6333"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_pinchnose": {
+					"animations": [
+						"bm_g_pinchnose"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 4.9667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_adjust_tie": {
+					"animations": [
+						"bm_g_adjust_tie"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 5.8"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_adjust_belt": {
+					"animations": [
+						"bm_g_adjust_belt"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 4.8"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_brush_coat": {
+					"animations": [
+						"bm_g_brush_coat"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 6.9667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_hands_on_hips": {
+					"animations": [
+						"bm_g_hands_on_hips"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 4.9667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_slump_shoulders": {
+					"animations": [
+						"bm_g_slump_shoulders"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 4.6333"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_hands_wipe": {
+					"animations": [
+						"bm_g_hands_wipe"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 5.3"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"stretch": {
+					"animations": [
+						"bm_stretch"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.next_gesture = q.life_time + math.random(6.0, 14.0);"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 3.3333"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"wave": {
+					"animations": [
+						"bm_wave"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 4"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"wave_close": {
+					"animations": [
+						"bm_wave_close"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 2.3333"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_quote_marks": {
+					"animations": [
+						"bm_g_quote_marks"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 2.8"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_what": {
+					"animations": [
+						"bm_g_what"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 2.0333"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_whiteboard_point": {
+					"animations": [
+						"bm_g_whiteboard_point"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 3.9667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_hands_majestic": {
+					"animations": [
+						"bm_g_hands_majestic"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 5.6333"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_hands_dismissive": {
+					"animations": [
+						"bm_g_hands_dismissive"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 4.3"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_hands_upset": {
+					"animations": [
+						"bm_g_hands_upset"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 2.9667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_joke_point": {
+					"animations": [
+						"bm_g_joke_point"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 2.9667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"g_joke_laugh": {
+					"animations": [
+						"bm_g_joke_laugh"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 2.4667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"startle": {
+					"animations": [
+						"bm_startle"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving && (q.life_time - v.state_start) > 0.8"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 2"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"turn_left": {
+					"animations": [
+						"bm_turn_left"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.idle_yaw = q.body_y_rotation;"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 1"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"turn_right": {
+					"animations": [
+						"bm_turn_right"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"on_exit": [
+						"v.idle_yaw = q.body_y_rotation;"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"react_gate": "q.property('brr:react_n') != v.react_seen"
+						},
+						{
+							"moving": "v.moving"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 1"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0350": 0.97553,
+						"0.0700": 0.90451,
+						"0.1050": 0.79389,
+						"0.1400": 0.65451,
+						"0.1750": 0.5,
+						"0.2100": 0.34549,
+						"0.2450": 0.20611,
+						"0.2800": 0.09549,
+						"0.3150": 0.02447,
+						"0.3500": 0
+					}
+				},
+				"hurt_gate_a": {
+					"on_entry": [
+						"v.hit_seen = v.hit_time;",
+						"v.react_seen = q.property('brr:react_n');"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"startle_behind_a": "math.random(0, 1) < 0.3"
+						},
+						{
+							"flinch_a": "1"
+						}
+					]
+				},
+				"flinch_a": {
+					"animations": [
+						"bm_flinch"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_b": "v.hit_time > v.hit_seen"
+						},
+						{
+							"moving": "v.moving && (q.life_time - v.state_start) > 0.5"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 0.6667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0400": 0.97553,
+						"0.0800": 0.90451,
+						"0.1200": 0.79389,
+						"0.1600": 0.65451,
+						"0.2000": 0.5,
+						"0.2400": 0.34549,
+						"0.2800": 0.20611,
+						"0.3200": 0.09549,
+						"0.3600": 0.02447,
+						"0.4000": 0
+					}
+				},
+				"startle_behind_a": {
+					"animations": [
+						"bm_startle_behind"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_b": "v.hit_time > v.hit_seen"
+						},
+						{
+							"moving": "v.moving && (q.life_time - v.state_start) > 0.5"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 1.6667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0400": 0.97553,
+						"0.0800": 0.90451,
+						"0.1200": 0.79389,
+						"0.1600": 0.65451,
+						"0.2000": 0.5,
+						"0.2400": 0.34549,
+						"0.2800": 0.20611,
+						"0.3200": 0.09549,
+						"0.3600": 0.02447,
+						"0.4000": 0
+					}
+				},
+				"hurt_gate_b": {
+					"on_entry": [
+						"v.hit_seen = v.hit_time;",
+						"v.react_seen = q.property('brr:react_n');"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"startle_behind_b": "math.random(0, 1) < 0.3"
+						},
+						{
+							"flinch_b": "1"
+						}
+					]
+				},
+				"flinch_b": {
+					"animations": [
+						"bm_flinch_b"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"moving": "v.moving && (q.life_time - v.state_start) > 0.5"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 0.6667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0400": 0.97553,
+						"0.0800": 0.90451,
+						"0.1200": 0.79389,
+						"0.1600": 0.65451,
+						"0.2000": 0.5,
+						"0.2400": 0.34549,
+						"0.2800": 0.20611,
+						"0.3200": 0.09549,
+						"0.3600": 0.02447,
+						"0.4000": 0
+					}
+				},
+				"startle_behind_b": {
+					"animations": [
+						"bm_startle_behind_b"
+					],
+					"on_entry": [
+						"v.state_start = q.life_time;"
+					],
+					"transitions": [
+						{
+							"death_gate": "!q.is_alive"
+						},
+						{
+							"hurt_gate_a": "v.hit_time > v.hit_seen"
+						},
+						{
+							"moving": "v.moving && (q.life_time - v.state_start) > 0.5"
+						},
+						{
+							"default": "(q.life_time - v.state_start) >= 1.6667"
+						}
+					],
+					"blend_transition": {
+						"0.0000": 1,
+						"0.0400": 0.97553,
+						"0.0800": 0.90451,
+						"0.1200": 0.79389,
+						"0.1600": 0.65451,
+						"0.2000": 0.5,
+						"0.2400": 0.34549,
+						"0.2800": 0.20611,
+						"0.3200": 0.09549,
+						"0.3600": 0.02447,
+						"0.4000": 0
+					}
+				},
+				"death_front": {
+					"animations": [
+						"bm_death_front"
+					],
+					"blend_transition": 0.15
+				},
+				"death_back": {
+					"animations": [
+						"bm_death_back"
+					],
+					"blend_transition": 0.15
+				},
+				"death_left": {
+					"animations": [
+						"bm_death_left"
+					],
+					"blend_transition": 0.15
+				},
+				"death_right": {
+					"animations": [
+						"bm_death_right"
+					],
+					"blend_transition": 0.15
+				}
+			}
+		},
+		"controller.animation.scientist_01.blink": {
+			"initial_state": "eyes_open",
+			"states": {
+				"eyes_open": {
+					"transitions": [
+						{
+							"blinking": "v.should_blink"
+						}
+					]
+				},
+				"blinking": {
+					"animations": [
+						"blink"
+					],
+					"blend_transition": 0.05,
+					"transitions": [
+						{
+							"double_blink": "q.all_animations_finished && math.random(0, 1) < 0.2"
+						},
+						{
+							"eyes_open": "q.all_animations_finished"
+						}
+					]
+				},
+				"double_blink": {
+					"animations": [
+						"blink"
+					],
+					"blend_transition": 0.05,
+					"transitions": [
+						{
+							"eyes_open": "q.all_animations_finished"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.scientist_01.take": {
+			"initial_state": "calm",
+			"states": {
+				"calm": {
+					"transitions": [
+						{
+							"take_a": "v.hit_time > v.take_seen"
+						}
+					]
+				},
+				"take_a": {
+					"animations": [
+						"take"
+					],
+					"on_entry": [
+						"v.take_seen = v.hit_time;"
+					],
+					"transitions": [
+						{
+							"take_b": "v.hit_time > v.take_seen"
+						},
+						{
+							"calm": "q.all_animations_finished"
+						}
+					]
+				},
+				"take_b": {
+					"animations": [
+						"take_b"
+					],
+					"on_entry": [
+						"v.take_seen = v.hit_time;"
+					],
+					"transitions": [
+						{
+							"take_a": "v.hit_time > v.take_seen"
+						},
+						{
+							"calm": "q.all_animations_finished"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.scientist_01.land": {
+			"initial_state": "grounded",
+			"states": {
+				"grounded": {
+					"transitions": [
+						{
+							"airborne": "!q.is_on_ground && q.is_alive"
+						}
+					]
+				},
+				"airborne": {
+					"on_entry": [
+						"v.air_start = q.life_time;"
+					],
+					"transitions": [
+						{
+							"landing": "q.is_on_ground && (q.life_time - v.air_start) > 0.25"
+						},
+						{
+							"grounded": "q.is_on_ground"
+						}
+					]
+				},
+				"landing": {
+					"on_entry": [
+						"v.land_strength = math.clamp((q.life_time - v.air_start) * 1.5, 0.35, 1.0);"
+					],
+					"animations": [
+						"land"
+					],
+					"transitions": [
+						{
+							"airborne": "!q.is_on_ground"
+						},
+						{
+							"grounded": "q.all_animations_finished"
+						}
+					]
+				}
+			}
+		}
+	}
+}

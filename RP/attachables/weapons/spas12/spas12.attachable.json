@@ -1,0 +1,39 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "brr:spas12",
+      "materials": {
+        "default": "entity_alphatest",
+        "enchanted": "entity_alphatest_glint"
+      },
+      "textures": {
+        "default": "textures/models/spas12",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "default": "geometry.spas12"
+      },
+      "animations": {
+        "fp_controller": "controller.animation.spas12.firstPerson",
+        "tp_controller": "controller.animation.spas12.thirdPerson",
+        "fp_idle": "animation.spas12.fp_idle",
+        "fp_hidden": "animation.spas12.fp_hidden",
+        "tp_idle": "animation.spas12.tp_idle"
+      },
+      "scripts": {
+        "animate": [
+          {
+            "fp_controller": "c.is_first_person"
+          },
+          {
+            "tp_controller": "!c.is_first_person"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.item_default"
+      ]
+    }
+  }
+}
