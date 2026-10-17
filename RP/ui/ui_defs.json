@@ -1,0 +1,26 @@
+{
+  "ui_defs": [
+    "ui/blocks/block_form_router.json",
+    "ui/blocks/tool_trigger.json",
+    "ui/blocks/tool_areaportal.json",
+    "ui/blocks/tool_invisible.json",
+    "ui/blocks/tool_playerclip.json",
+    "ui/blocks/tool_npcclip.json",
+    "ui/blocks/info_playerspawn.json",
+    "ui/blocks/info_target_areaportal.json",
+    "ui/blocks/game_nametag.json",
+    "ui/blocks/ambient_generic.json",
+    "ui/blocks/logic_auto.json",
+    "ui/blocks/logic_branch.json",
+    "ui/blocks/logic_case.json",
+    "ui/blocks/logic_compare.json",
+    "ui/blocks/logic_coop_manager.json",
+    "ui/blocks/logic_random_outputs.json",
+    "ui/blocks/logic_timer.json",
+    "ui/blocks/logic_relay.json",
+    "ui/blocks/filter_class.json",
+    "ui/blocks/filter_name.json",
+    "ui/blocks/filter_multiple.json",
+    "ui/blocks/math_counter.json"
+  ]
+}

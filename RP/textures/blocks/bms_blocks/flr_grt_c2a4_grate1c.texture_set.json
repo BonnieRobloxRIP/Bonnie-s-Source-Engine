@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "flr_grt_c2a4_grate1c",
+		"metalness_emissive_roughness": "flr_grt_c2a4_grate1c_mer",
+		"normal": "flr_grt_c2a4_grate1c_normal"
+	}
+}

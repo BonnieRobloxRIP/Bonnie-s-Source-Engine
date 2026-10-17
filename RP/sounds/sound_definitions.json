@@ -1,0 +1,4189 @@
+{
+    "format_version": "1.14.0",
+    "sound_definitions": {
+        "weapons.egon_fire": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_fire",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_fire_start": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_fire_start",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_fire_end": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_fire_end",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_hit1": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_hit1",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_hit2": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_hit2",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_hit3": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_hit3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_hit4": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_hit4",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_hit5": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_hit5",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.charged": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_charged",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.draw_admire": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_draw_admire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.empty": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_empty",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.fire1": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_fire1",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.fire2": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_fire2",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.fire3": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_fire3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.fire4": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_fire4",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.idle_fidget": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_idle_fidget",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.overcharged": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_overcharged",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.overcharged_fire1": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_overcharged1",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.overcharged_fire2": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_overcharged2",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.overcharged_fire3": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_overcharged_fire3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.overcharging": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_overcharging",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.spin_loop": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_spin_loop",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.spinup": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_spinup",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.undercharge": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_undercharge",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.hit1": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_hit1",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.hit2": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_hit2",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.hit3": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_hit3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.miss1": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_miss1",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.miss2": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_miss2",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.miss3": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_miss3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.draw_admire": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_draw_admire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.empty": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_empty",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.fire": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_fire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.idle_fidget": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_idle_fidget",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.reload_empty": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_reload_empty",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.reload": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_reload",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.357.fire": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/magnum357/357_fire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.357.centerfire": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/magnum357/357_centerfire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.357.draw_admire": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/magnum357/357_draw_admire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.357.reload": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/magnum357/357_reload",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "interactable.hev_charger.deny": {
+            "category": "block",
+            "max_distance": 30,
+            "min_distance": 1,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/interactables/suitcharger_deny",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "interactable.hev_charger.start": {
+            "category": "block",
+            "max_distance": 30,
+            "min_distance": 1,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/interactables/suitcharger_start",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "interactable.health_charger.deny": {
+            "category": "block",
+            "max_distance": 30,
+            "min_distance": 1,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/interactables/healthcharger_deny",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "interactable.health_charger.start": {
+            "category": "block",
+            "max_distance": 30,
+            "min_distance": 1,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/interactables/healthcharger_start",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ahgordon01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ahgordon01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ahgordon02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ahgordon02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ahgordon03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ahgordon03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ahgordon04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ahgordon04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.docfreeman01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/docfreeman01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.docfreeman02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/docfreeman02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.docfreeman03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/docfreeman03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.freeman01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/freeman01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.freeman02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/freeman02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.freeman03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/freeman03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hellodrfm01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hellodrfm01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hellodrfm02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hellodrfm02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hellodrfm03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hellodrfm03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hellodrfm04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hellodrfm04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hellodrfm05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hellodrfm05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hellodrfm06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hellodrfm06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hellodrfm07": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hellodrfm07",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hellodrfm08": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hellodrfm08",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hi01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hi01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hi02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hi02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hi03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hi03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.hi04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/hi04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.excuseme01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/excuseme01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.excuseme02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/excuseme02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.outofyourway01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/outofyourway01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.outofyourway02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/outofyourway02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.outofyourway03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/outofyourway03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pardonme01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pardonme01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pardonme02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pardonme02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pardonme03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pardonme03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pardonme04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pardonme04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pardonme05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pardonme05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pardonme06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pardonme06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorry01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorry01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorry02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorry02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorry03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorry03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorry04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorry04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorry05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorry05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorrydoc01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorrydoc01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorrydoc02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorrydoc02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorrydoc03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorrydoc03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorrydoc04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorrydoc04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorrydoc05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorrydoc05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorrydoc06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorrydoc06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorryfm01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorryfm01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorryfm02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorryfm02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorryfm03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorryfm03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorryfm04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorryfm04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorryfm05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorryfm05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorryfm06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorryfm06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.sorryfm07": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/sorryfm07",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.no01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/no01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.no02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/no02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.no03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/no03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.no04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/no04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.no05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/no05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.onyourside01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/onyourside01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.onyourside02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/onyourside02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.onyourside03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/onyourside03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.onyourside04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/onyourside04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.onyourside05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/onyourside05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.onyourside06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/onyourside06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.watchwhat01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/watchwhat01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.watchwhat02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/watchwhat02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.watchwhat03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/watchwhat03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.watchwhat04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/watchwhat04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.watchwhat05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/watchwhat05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.watchwhat06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/watchwhat06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.watchwhat07": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/watchwhat07",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.watchwhat08": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/watchwhat08",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.watchwhat09": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/watchwhat09",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.stopitfm01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/stopitfm01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.stopitfm02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/stopitfm02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.stopitfm03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/stopitfm03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.stopitfm04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/stopitfm04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.stopitfm05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/stopitfm05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.notthemanithought01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/notthemanithought01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.notthemanithought02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/notthemanithought02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.notthemanithought03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/notthemanithought03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.notthemanithought04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/notthemanithought04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.notthemanithought05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/notthemanithought05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.notthemanithought06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/notthemanithought06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.goodgod01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/goodgod01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.goodgod02_var01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/goodgod02_var01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.goodgod03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/goodgod03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.goodgod04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/goodgod04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.goodgod05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/goodgod05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.goodgod06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/goodgod06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.goodgod07_var01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/goodgod07_var01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.heretohelp01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/heretohelp01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.heretohelp02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/heretohelp02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.heretohelp03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/heretohelp03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.heretohelp04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/heretohelp04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.heretohelp05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/heretohelp05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.heretohelp06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/heretohelp06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.heretohelp07": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/heretohelp07",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pain01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pain01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pain02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pain02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pain03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pain03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pain04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pain04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pain05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pain05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pain06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pain06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pain07": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pain07",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pain08": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pain08",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.pain09": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/pain09",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ow01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ow01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ow02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ow02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ow03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ow03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ow04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ow04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ow05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ow05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ow06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ow06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ow07": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ow07",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.ow08": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/ow08",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre02": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre02",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre07": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre07",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre08": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre08",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre09": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre09",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre10": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre10",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre11": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre11",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre12": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre12",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre13": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre13",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre14": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre14",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre15": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre15",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre16": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre16",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre17": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre17",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre18": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre18",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre19": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre19",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre21": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre21",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre22": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre22",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre23": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre23",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre24": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre24",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre25": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre25",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre26": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre26",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre27": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre27",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre28": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre28",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre29": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre29",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre30": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre30",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre33": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre33",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre34": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre34",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre35": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre35",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre36": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre36",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre37": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre37",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre38_var01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre38_var01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre40": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre40",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre43": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre43",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre44": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre44",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre45": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre45",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre46": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre46",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre47": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre47",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.question_pre48": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/question_pre48",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre02_var01": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre02_var01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre03": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre03",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre04": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre04",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre05": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre05",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre06": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre06",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre07": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre07",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre08": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre08",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre09": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre09",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre10": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre10",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre11": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre11",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre12": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre12",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre14": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre14",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre15": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre15",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre16": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre16",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre17": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre17",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre18": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre18",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre19": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre19",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre20": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre20",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre21": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre21",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre22": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre22",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre23": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre23",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre24": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre24",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre25": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre25",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre26": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre26",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre27": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre27",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre28": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre28",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre29": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre29",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre30": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre30",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre31": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre31",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre32": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre32",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre33": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre33",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre34": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre34",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre35": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre35",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre36": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre36",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre37": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre37",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre38": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre38",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre39": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre39",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre40": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre40",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre41": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre41",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre42": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre42",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre43": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre43",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre44": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre44",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre45": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre45",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre46": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre46",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre47": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre47",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre48": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre48",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre49": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre49",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre50": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre50",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre51": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre51",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre52": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre52",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre53": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre53",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre54": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre54",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre55": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre55",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre56": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre56",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre57": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre57",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre58": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre58",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre59": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre59",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre60": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre60",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre61": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre61",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre62": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre62",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre63": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre63",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre64": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre64",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre65": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre65",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre66": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre66",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre67": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre67",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre68": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre68",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "npc.scientist_01.answer_pre69": {
+            "category": "neutral",
+            "max_distance": 24,
+            "min_distance": 2,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/npc/scientist_01/answer_pre69",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.shotgun.single": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/single",
+                    "stream": false,
+                    "volume": 0.9
+                }
+            ]
+        },
+        "weapons.shotgun.double": {
+            "category": "player",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/double",
+                    "stream": false,
+                    "volume": 0.9
+                }
+            ]
+        },
+        "weapons.shotgun.pump": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/pump",
+                    "stream": false,
+                    "volume": 0.6
+                }
+            ]
+        },
+        "weapons.shotgun.reload": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/reload1",
+                    "stream": false,
+                    "volume": 1
+                },
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/reload2",
+                    "stream": false,
+                    "volume": 1
+                },
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/reload3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.shotgun.empty": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/empty",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.shotgun.draw_admire": {
+            "category": "player",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/draw_admire01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "brr.plush.squeak": {
+            "category": "block",
+            "max_distance": 24,
+            "min_distance": 1,
+            "sounds": [
+                {
+                    "load_on_low_memory": true,
+                    "name": "sounds/plushies/plushie",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.draw_admire.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_draw_admire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.idle_fidget.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_idle_fidget",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.357.draw_admire.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/magnum357/357_draw_admire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.draw_admire.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_draw_admire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.idle_fidget.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_idle_fidget",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.shotgun.draw_admire.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/draw_admire01",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.shotgun.pump.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/pump",
+                    "stream": false,
+                    "volume": 0.6
+                }
+            ]
+        },
+        "weapons.shotgun.reload.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/reload1",
+                    "stream": false,
+                    "volume": 1
+                },
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/reload2",
+                    "stream": false,
+                    "volume": 1
+                },
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/reload3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_fire.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_fire",
+                    "stream": true,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_fire_start.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_fire_start",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_fire_end.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_fire_end",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_hit1.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_hit1",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_hit2.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_hit2",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_hit3.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_hit3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_hit4.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_hit4",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.egon_hit5.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gluon/egon_hit5",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.charged.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_charged",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.empty.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_empty",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.fire1.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_fire1",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.fire2.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_fire2",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.fire3.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_fire3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.fire4.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_fire4",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.overcharged.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_overcharged",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.overcharged_fire1.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_overcharged1",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.overcharged_fire2.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_overcharged2",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.overcharged_fire3.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_overcharged_fire3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.overcharging.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_overcharging",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.spin_loop.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_spin_loop",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.spinup.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_spinup",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.gauss.undercharge.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/gauss/gauss_undercharge",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.hit1.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_hit1",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.hit2.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_hit2",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.hit3.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_hit3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.miss1.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_miss1",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.miss2.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_miss2",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.crowbar.miss3.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/crowbar/crowbar_miss3",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.empty.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_empty",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.fire.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_fire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.reload_empty.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_reload_empty",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.glock.reload.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/glock/glock_reload",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.357.fire.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/magnum357/357_fire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.357.centerfire.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/magnum357/357_centerfire",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.357.reload.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/magnum357/357_reload",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
+        "weapons.shotgun.single.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/single",
+                    "stream": false,
+                    "volume": 0.9
+                }
+            ]
+        },
+        "weapons.shotgun.double.fp": {
+            "category": "music",
+            "max_distance": 64,
+            "min_distance": 8,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/double",
+                    "stream": false,
+                    "volume": 0.9
+                }
+            ]
+        },
+        "weapons.shotgun.empty.fp": {
+            "category": "music",
+            "max_distance": 20,
+            "min_distance": 4,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/weapons/shotgun/empty",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        }
+    }
+}
