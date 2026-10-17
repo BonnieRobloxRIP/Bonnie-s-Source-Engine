@@ -14,6 +14,13 @@
 					],
 					"y_rotation_offset": 180
 				}
+			},
+			"states": {
+				"brr:squish": [
+					0,
+					1,
+					2
+				]
 			}
 		},
 		"components": {
@@ -66,11 +73,12 @@
 						"on_liquid_touches": "no_reaction"
 					}
 				]
-			}
+			},
+			"brr:plush": {}
 		},
 		"permutations": [
 			{
-				"condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'north' && query.block_state('brr:squish') == 0",
 				"components": {
 					"minecraft:transformation": {
 						"rotation": [
@@ -82,7 +90,51 @@
 				}
 			},
 			{
-				"condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'north' && query.block_state('brr:squish') == 1",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							0,
+							0
+						],
+						"scale": [
+							1.18,
+							0.75,
+							1.18
+						],
+						"scale_pivot": [
+							0,
+							-0.5,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'north' && query.block_state('brr:squish') == 2",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							0,
+							0
+						],
+						"scale": [
+							0.94,
+							1.1,
+							0.94
+						],
+						"scale_pivot": [
+							0,
+							-0.5,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'south' && query.block_state('brr:squish') == 0",
 				"components": {
 					"minecraft:transformation": {
 						"rotation": [
@@ -94,7 +146,51 @@
 				}
 			},
 			{
-				"condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'south' && query.block_state('brr:squish') == 1",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							180,
+							0
+						],
+						"scale": [
+							1.18,
+							0.75,
+							1.18
+						],
+						"scale_pivot": [
+							0,
+							-0.5,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'south' && query.block_state('brr:squish') == 2",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							180,
+							0
+						],
+						"scale": [
+							0.94,
+							1.1,
+							0.94
+						],
+						"scale_pivot": [
+							0,
+							-0.5,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'west' && query.block_state('brr:squish') == 0",
 				"components": {
 					"minecraft:transformation": {
 						"rotation": [
@@ -106,12 +202,100 @@
 				}
 			},
 			{
-				"condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'west' && query.block_state('brr:squish') == 1",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							90,
+							0
+						],
+						"scale": [
+							1.18,
+							0.75,
+							1.18
+						],
+						"scale_pivot": [
+							0,
+							-0.5,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'west' && query.block_state('brr:squish') == 2",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							90,
+							0
+						],
+						"scale": [
+							0.94,
+							1.1,
+							0.94
+						],
+						"scale_pivot": [
+							0,
+							-0.5,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'east' && query.block_state('brr:squish') == 0",
 				"components": {
 					"minecraft:transformation": {
 						"rotation": [
 							0,
 							-90,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'east' && query.block_state('brr:squish') == 1",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							-90,
+							0
+						],
+						"scale": [
+							1.18,
+							0.75,
+							1.18
+						],
+						"scale_pivot": [
+							0,
+							-0.5,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'east' && query.block_state('brr:squish') == 2",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							-90,
+							0
+						],
+						"scale": [
+							0.94,
+							1.1,
+							0.94
+						],
+						"scale_pivot": [
+							0,
+							-0.5,
 							0
 						]
 					}
