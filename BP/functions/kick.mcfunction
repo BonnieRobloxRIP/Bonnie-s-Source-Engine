@@ -14,3 +14,5 @@ kick "JNHG" "You have been terminated from any BRR produced experience for attem
 #kick "HBrick123" "You have been terminated from any BRR produced experience for uncivilized behaviour and ragebait - Date: 11.6.2026 6:19 GMT+3 - BRR TECH"
 kick "WrightS625YT" "You have been terminated from any BRR produced experience for baiting and false reporting over guilt tripping - Date: 24.6.2026 0:19 GMT+3 - BRR TECH"
 kick "John44070" "You have been terminated from any BRR produced experience for griefing - Date: 18.9.2026 21:27 GMT+3 - BRR TECH"
+kick "N1CO 8b" "You have been terminated from any BRR produced experience - Date: 26.9.2026 03:24 GMT+3 - BRR TECH"
+kick ShakySea2537

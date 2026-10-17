@@ -1,0 +1,20 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:math_counter",
+			"menu_category": {
+				"category": "equipment",
+				"is_hidden_in_commands": false
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_math_counter",
+			"minecraft:block_placer": {
+				"block": "brr:math_counter_block"
+			},
+			"minecraft:allow_off_hand": true,
+			"minecraft:can_destroy_in_creative": true
+		}
+	}
+}

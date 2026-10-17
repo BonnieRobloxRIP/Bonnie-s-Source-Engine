@@ -5,9 +5,81 @@
 			"identifier": "brr:scientist_01",
 			"is_spawnable": true,
 			"is_summonable": true,
-			"is_experimental": false
+			"is_experimental": false,
+			"properties": {
+				"brr:react": {
+					"type": "int",
+					"range": [
+						0,
+						7
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:react_n": {
+					"type": "int",
+					"range": [
+						0,
+						15
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:provoked": {
+					"type": "bool",
+					"default": false,
+					"client_sync": true
+				}
+			}
 		},
-		"component_groups": {},
+		"component_groups": {
+			"brr:provoked": {
+				"minecraft:behavior.avoid_mob_type": {
+					"priority": 2,
+					"entity_types": [
+						{
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "player"
+							},
+							"max_dist": 7,
+							"walk_speed_multiplier": 1,
+							"sprint_speed_multiplier": 1.15
+						}
+					],
+					"remove_target": false
+				}
+			},
+			"brr:idle_ai": {
+				"minecraft:behavior.random_stroll": {
+					"priority": 4,
+					"speed_multiplier": 1.1,
+					"xz_dist": 10,
+					"y_dist": 2
+				},
+				"minecraft:behavior.look_at_player": {
+					"priority": 11
+				}
+			},
+			"brr:talking": {
+				"minecraft:behavior.look_at_entity": {
+					"priority": 1,
+					"look_distance": 6,
+					"probability": 1,
+					"look_time": [
+						30,
+						30
+					],
+					"angle_of_view_horizontal": 360,
+					"filters": {
+						"test": "is_family",
+						"subject": "other",
+						"value": "scientist"
+					}
+				}
+			}
+		},
 		"components": {
 			"minecraft:collision_box": {
 				"width": 0.8,
@@ -38,19 +110,69 @@
 			"minecraft:knockback_resistance": {
 				"value": 255
 			},
-			"minecraft:behavior.random_stroll": {
-				"priority": 4,
-				"speed_multiplier": 1.1,
-				"xz_dist": 10,
-				"y_dist": 2
-			},
-			"minecraft:behavior.look_at_player": {
-				"priority": 11
-			},
 			"minecraft:physics": {},
 			"minecraft:pushable_by_entity": {},
-			"minecraft:pushable_by_block": {}
+			"minecraft:pushable_by_block": {},
+			"minecraft:type_family": {
+				"family": [
+					"scientist",
+					"npc",
+					"mob"
+				]
+			}
 		},
-		"events": {}
+		"events": {
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"brr:idle_ai"
+					]
+				}
+			},
+			"brr:become_provoked": {
+				"add": {
+					"component_groups": [
+						"brr:provoked"
+					]
+				},
+				"set_property": {
+					"brr:provoked": true
+				}
+			},
+			"brr:calm_down": {
+				"remove": {
+					"component_groups": [
+						"brr:provoked"
+					]
+				},
+				"set_property": {
+					"brr:provoked": false
+				}
+			},
+			"brr:start_talking": {
+				"remove": {
+					"component_groups": [
+						"brr:idle_ai"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"brr:talking"
+					]
+				}
+			},
+			"brr:stop_talking": {
+				"remove": {
+					"component_groups": [
+						"brr:talking"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"brr:idle_ai"
+					]
+				}
+			}
+		}
 	}
 }

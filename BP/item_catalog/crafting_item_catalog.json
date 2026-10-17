@@ -17,7 +17,12 @@
               "brr:logic_compare",
               "brr:logic_coop_manager",
               "brr:logic_random_outputs",
-              "brr:logic_timer"
+              "brr:logic_relay",
+              "brr:logic_timer",
+              "brr:filter_class",
+              "brr:filter_name",
+              "brr:filter_multiple",
+              "brr:math_counter"
             ]
           },
           {
@@ -26,7 +31,8 @@
               "name": "brr:itemGroup.name.game_tools"
             },
             "items": [
-              "brr:game_nametag"
+              "brr:game_nametag",
+              "brr:ambient_generic"
             ]
           },
           {
@@ -37,6 +43,7 @@
             "items": [
               "brr:9mmclip",
               "brr:357_ammobox",
+              "brr:shotbox",
               "brr:gaussammo"
             ]
           },
@@ -49,6 +56,7 @@
               "brr:crowbar",
               "brr:glock17",
               "brr:magnum357",
+              "brr:spas12",
               "brr:gluon_gun",
               "brr:tau_cannon"
             ]
