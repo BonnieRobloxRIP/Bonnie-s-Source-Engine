@@ -1,0 +1,15 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:pinto_beans",
+			"materials": { "default": "raldi" },
+			"textures": { "default": "textures/characters/PintoBeans_Sheet" },
+			"geometry": { "default": "geometry.brr.pinto_beans" },
+			"animations": { "billboard": "animation.brr.raldi.billboard" },
+			"scripts": { "animate": ["billboard"] },
+			"render_controllers": ["controller.render.brr.pinto"],
+			"spawn_egg": { "texture": "brr_pinto_beans_spawn_egg" }
+		}
+	}
+}

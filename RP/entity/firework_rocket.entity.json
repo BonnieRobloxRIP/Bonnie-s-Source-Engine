@@ -1,0 +1,28 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:firework_rocket",
+			"materials": { "default": "raldi" },
+			"textures": {
+				"default": "textures/shot_entity/firework_rocket",
+				"spark": "textures/shot_entity/firework_rocket_spark"
+			},
+			"geometry": {
+				"default": "geometry.brr.projectile_firework",
+				"spark": "geometry.brr.projectile_firework_spark"
+			},
+			"animations": { "billboard": "animation.brr.projectile.billboard" },
+			"scripts": {
+				"pre_animation": [
+					"v.frame = math.mod(math.round((180 + (q.camera_rotation(1) - q.property('brr:yaw'))) / 22.5) + 64, 16);"
+				],
+				"animate": ["billboard"]
+			},
+			"render_controllers": [
+				"controller.render.brr.firework",
+				"controller.render.brr.firework_spark"
+			]
+		}
+	}
+}

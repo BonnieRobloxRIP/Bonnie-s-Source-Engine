@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "Floor01",
+		"metalness_emissive_roughness": "Floor01_mer",
+		"normal": "Floor01_normal"
+	}
+}

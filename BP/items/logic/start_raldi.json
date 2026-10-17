@@ -1,0 +1,21 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:start_raldi",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_start_raldi",
+			"minecraft:display_name": {
+				"value": "tile.brr:start_raldi.name"
+			},
+			"minecraft:block_placer": {
+				"block": "brr:start_raldi",
+				"replace_block_item": true
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:2d_tree",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_2d_tree",
+			"minecraft:block_placer": {
+				"block": "brr:2d_tree_block"
+			}
+		}
+	}
+}

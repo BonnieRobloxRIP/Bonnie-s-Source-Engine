@@ -1,0 +1,10 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.brr.monke_player": {
+			"geometry": "Geometry.monke",
+			"materials": [{ "*": "Material.monke" }],
+			"textures": ["Texture.monke"]
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:ceiling01_nolight",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:light_dampening": 15
+		}
+	}
+}

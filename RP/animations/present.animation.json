@@ -1,0 +1,13 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.brr.present.hide": {
+			"loop": true,
+			"bones": {
+				"sprite": {
+					"scale": [0, 0, 0]
+				}
+			}
+		}
+	}
+}

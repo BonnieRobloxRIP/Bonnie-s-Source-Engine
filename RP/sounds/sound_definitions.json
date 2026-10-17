@@ -1,0 +1,6374 @@
+{
+	"format_version": "1.14.0",
+	"sound_definitions": {
+		"exit.reached": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/blocks/exit_bang",
+					"volume": 1
+				}
+			]
+		},
+		"mus_victory": {
+			"category": "music",
+			"sounds": [
+				{
+					"name": "sounds/music/MUS_Victory",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"win.tink": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/win/tink",
+					"volume": 1
+				}
+			]
+		},
+		"win.caching": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/win/caching",
+					"volume": 1
+				}
+			]
+		},
+		"win.newrecord": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/win/die_newbest",
+					"volume": 1
+				}
+			]
+		},
+		"item.alarm_wind": {
+			"category": "neutral",
+			"min_distance": 4,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/items/alarm_clock_wind",
+					"volume": 1
+				}
+			]
+		},
+		"item.alarm_tick": {
+			"category": "neutral",
+			"min_distance": 2,
+			"max_distance": 12,
+			"sounds": [
+				{
+					"name": "sounds/items/tick",
+					"volume": 1
+				}
+			]
+		},
+		"item.alarm_bell": {
+			"category": "neutral",
+			"min_distance": 8,
+			"max_distance": 64,
+			"sounds": [
+				{
+					"name": "sounds/items/clock_bell",
+					"volume": 1
+				}
+			]
+		},
+		"achievement": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/ui/achivement",
+					"volume": 1
+				}
+			]
+		},
+		"menu.music": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/menu/mus_menu",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"menu.music_peter": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/menu/mus_menu-peter",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"menu.music_credits": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/menu/mus_results",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"menu.music_warning": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/menu/mus_errorscreen",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"menu.confirm": {
+			"category": "ui",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/menu/menu_confirm",
+					"volume": 1
+				}
+			]
+		},
+		"menu.vineboom": {
+			"category": "ui",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/menu/vineboom",
+					"volume": 1
+				}
+			]
+		},
+		"menu.click": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/menu/click",
+					"volume": 1
+				}
+			]
+		},
+		"menu.back": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/menu/back",
+					"volume": 1
+				}
+			]
+		},
+		"menu.back_nf": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/menu/back_nf",
+					"volume": 1
+				}
+			]
+		},
+		"menu.door": {
+			"category": "ui",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/menu/door_open",
+					"volume": 1
+				}
+			]
+		},
+		"menu.bus": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/ui/bus",
+					"volume": 1
+				}
+			]
+		},
+		"block.blinds_open": {
+			"category": "block",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/blinds_open",
+					"volume": 1
+				}
+			]
+		},
+		"mus_battle": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/music/mus_battle",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"mus_congrats": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/blocks/MUS_Congrats",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"beastproj": {
+			"category": "hostile",
+			"min_distance": 16,
+			"max_distance": 64,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beastproj",
+					"stream": false,
+					"volume": 1
+				}
+			]
+		},
+		"fall2": {
+			"category": "hostile",
+			"min_distance": 16,
+			"max_distance": 64,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/fall2",
+					"stream": false,
+					"volume": 1
+				}
+			]
+		},
+		"splat": {
+			"category": "hostile",
+			"min_distance": 16,
+			"max_distance": 64,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/splat",
+					"stream": false,
+					"volume": 1
+				}
+			]
+		},
+		"item.xp_explode": {
+			"category": "player",
+			"sounds": [
+				{
+					"name": "sounds/items/xp_explode",
+					"stream": false,
+					"volume": 1
+				}
+			]
+		},
+		"cow_teleport": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/cow_teleport",
+					"stream": false,
+					"volume": 1
+				}
+			]
+		},
+		"mus_cow": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/mus_Cow",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"polish_marker": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/items/polish_marker",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"mus_escapeintro": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/music/mus_escapeintro",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"mus_escapeloop": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/music/mus_escapeloop",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"machine_rev": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/music/machine_rev",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"machine_loop": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/music/machine_loop",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"coin_drop": {
+			"category": "block",
+			"min_distance": 2,
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/blocks/vending_coin_drop",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Vending machine dispenses an item"
+		},
+		"door.close": {
+			"category": "neutral",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/doors/door_close",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Normal Door Close"
+		},
+		"door.kickdown": {
+			"category": "neutral",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/doors/door_kickdown",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Door Kicked Down"
+		},
+		"door.lock": {
+			"category": "neutral",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/doors/door_lock",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Door Locked"
+		},
+		"door.lockopen": {
+			"category": "neutral",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/doors/door_lockopen",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Door Lock Opened"
+		},
+		"door.open": {
+			"category": "neutral",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/doors/door_open",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Normal Door Open"
+		},
+		"door.unlock": {
+			"category": "neutral",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/doors/door_unlock",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Door Unlock"
+		},
+		"door.raldi": {
+			"category": "music",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/doors/ral_door",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "You need to collect 2 notebooks before you can use these doors!"
+		},
+		"door.skinned": {
+			"category": "neutral",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/doors/skinned_door_scraped",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Door Skinned"
+		},
+		"door.swingopen": {
+			"category": "neutral",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/doors/swingdoor_open",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Swing Door Open"
+		},
+		"door.swingdoorlock": {
+			"category": "neutral",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/doors/SwingDoorLock_use",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Swing Door Lock Used"
+		},
+		"tape.vhs": {
+			"category": "neutral",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/tape/VHS_WWYAMC",
+					"stream": true,
+					"volume": 1
+				},
+				{
+					"name": "sounds/tape/VHS_TPW",
+					"stream": true,
+					"volume": 1
+				},
+				{
+					"name": "sounds/tape/VHS_TF2",
+					"stream": true,
+					"volume": 1
+				},
+				{
+					"name": "sounds/tape/VHS_Tacos",
+					"stream": true,
+					"volume": 1
+				},
+				{
+					"name": "sounds/tape/VHS_Megalo",
+					"stream": true,
+					"volume": 1
+				},
+				{
+					"name": "sounds/tape/VHS_Mariah",
+					"stream": true,
+					"volume": 1
+				},
+				{
+					"name": "sounds/tape/VHS_Jolly",
+					"stream": true,
+					"volume": 1
+				},
+				{
+					"name": "sounds/tape/VHS_Galaxy",
+					"stream": true,
+					"volume": 1
+				},
+				{
+					"name": "sounds/tape/vhs_forgis",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Mystery Tape Playing"
+		},
+		"raldi.slap": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"load_on_low_memory": true,
+					"name": "sounds/entity/slap",
+					"volume": 1
+				}
+			],
+			"subtitle": "Slap"
+		},
+		"raldi.allnotebooks": {
+			"category": "music",
+			"sounds": [
+				{
+					"load_on_low_memory": false,
+					"name": "sounds/characters/raldi/ral_allnotebooks_dt",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Raldi: All notebooks"
+		},
+		"chip.running": {
+			"category": "hostile",
+			"max_distance": 64,
+			"min_distance": 4,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/chip_running",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke: No running!"
+		},
+		"chip.faculty": {
+			"category": "hostile",
+			"max_distance": 64,
+			"min_distance": 4,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/chip_faculty",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke: No faculty!"
+		},
+		"chip.shit": {
+			"category": "hostile",
+			"max_distance": 64,
+			"min_distance": 4,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/chip_shit",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke: Wash your hands!"
+		},
+		"chip.escape": {
+			"category": "hostile",
+			"max_distance": 64,
+			"min_distance": 4,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/chip_escape",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke: No escaping!"
+		},
+		"chip.drinking": {
+			"category": "hostile",
+			"max_distance": 64,
+			"min_distance": 4,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/chip_drinking",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke: No drinking!"
+		},
+		"chip.jailtime": {
+			"category": "hostile",
+			"max_distance": 32,
+			"min_distance": 4,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/chip_jailtime",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke: Jail time"
+		},
+		"chip.kidnap": {
+			"category": "hostile",
+			"max_distance": 64,
+			"min_distance": 4,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/chip_kidnap",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke: No kidnapping!"
+		},
+		"chip.bullying": {
+			"category": "hostile",
+			"max_distance": 64,
+			"min_distance": 4,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/chip_bullying",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke: No bullying!"
+		},
+		"blo_sweet": {
+			"category": "hostile",
+			"max_distance": 40,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/british_bloke/blo_sweet",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"blo_thanks": {
+			"category": "hostile",
+			"max_distance": 40,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/british_bloke/blo_thanks",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"blo_chance": {
+			"category": "hostile",
+			"max_distance": 40,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/british_bloke/blo_chance",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_1": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_1",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_2": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_2",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_3": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_3",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_4": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_4",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_5": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_5",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_finish": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_finish",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_play": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_play",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_go": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_go",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_jail": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_jail",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_insolitare": {
+			"category": "hostile",
+			"max_distance": 24,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_insolitare",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_kidnap": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_kidnap",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_laugh": {
+			"category": "hostile",
+			"max_distance": 40,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_laugh",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"waterphone": {
+			"category": "hostile",
+			"max_distance": 40,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/waterphone",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_shoot": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_shoot",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"van_confused": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/vanman/van_confused",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"pinto_watch": {
+			"category": "hostile",
+			"max_distance": 40,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/pinto_beans/pinto_watch",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"reload": {
+			"category": "hostile",
+			"max_distance": 40,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/pinto_beans/reload",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"chip.scold": {
+			"category": "hostile",
+			"max_distance": 32,
+			"min_distance": 4,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/chip_scold02",
+					"stream": true,
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/chipfloke/chip_scold03",
+					"stream": true,
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/chipfloke/chip_scold04",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke scolds"
+		},
+		"crafters.fiesta": {
+			"category": "music",
+			"max_distance": 128,
+			"min_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/characters/arts_mexicano_crafters/mus_fiesta",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Fiesta!"
+		},
+		"glass": {
+			"category": "blocks",
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/items/glass",
+					"volume": 1
+				}
+			]
+		},
+		"drop_item": {
+			"category": "player",
+			"max_distance": 16,
+			"sounds": [
+				{
+					"name": "sounds/items/drop_item",
+					"volume": 1
+				}
+			]
+		},
+		"item.pickup": {
+			"category": "player",
+			"max_distance": 16,
+			"sounds": [
+				{
+					"name": "sounds/items/pickup",
+					"volume": 1
+				}
+			]
+		},
+		"item.ammo": {
+			"category": "player",
+			"max_distance": 16,
+			"sounds": [
+				{
+					"name": "sounds/items/ammo",
+					"volume": 1
+				}
+			]
+		},
+		"item.soda": {
+			"category": "player",
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/items/soda",
+					"volume": 1
+				}
+			]
+		},
+		"item.waterslurp": {
+			"category": "player",
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/items/WaterSlurp",
+					"volume": 1
+				}
+			]
+		},
+		"item.shoot": {
+			"category": "player",
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/items/shoot",
+					"volume": 1
+				}
+			]
+		},
+		"item.firework_shoot": {
+			"category": "player",
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/items/firework_shoot",
+					"volume": 1
+				}
+			]
+		},
+		"item.firework_explode": {
+			"category": "player",
+			"max_distance": 96,
+			"min_distance": 8,
+			"sounds": [
+				{
+					"name": "sounds/items/firework_explode",
+					"volume": 1
+				}
+			]
+		},
+		"block.washhands": {
+			"category": "block",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/washhands",
+					"volume": 1
+				}
+			]
+		},
+		"player.fart": {
+			"category": "player",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/player/fart01",
+					"volume": 1
+				},
+				{
+					"name": "sounds/player/fart02",
+					"volume": 1
+				},
+				{
+					"name": "sounds/player/fart04",
+					"volume": 1
+				},
+				{
+					"name": "sounds/player/fart05",
+					"volume": 1
+				},
+				{
+					"name": "sounds/player/fart06",
+					"volume": 1
+				},
+				{
+					"name": "sounds/player/fart07",
+					"volume": 1
+				}
+			]
+		},
+		"player.monke_transform": {
+			"category": "player",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/player/monketransform",
+					"volume": 1
+				}
+			]
+		},
+		"mus_monke": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/music/mus_monke",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"raldi.bonk": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/raldi/bonk",
+					"volume": 1
+				}
+			]
+		},
+		"raldi.scream": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/raldi/ral_scream",
+					"volume": 1
+				}
+			]
+		},
+		"prize.jesus": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/1pr_prize/1pr_jesus",
+					"volume": 1
+				}
+			]
+		},
+		"prize.running": {
+			"category": "hostile",
+			"max_distance": 48,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/1pr_prize/1pr_running",
+					"volume": 1
+				}
+			]
+		},
+		"prize.motor": {
+			"category": "hostile",
+			"max_distance": 24,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/1pr_prize/1pr_motor",
+					"volume": 0.6
+				}
+			]
+		},
+		"weep.intro": {
+			"category": "hostile",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/gotta_weep/gw_weepingtime",
+					"volume": 1
+				}
+			]
+		},
+		"weep.sweep": {
+			"category": "hostile",
+			"max_distance": 32,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/gotta_weep/gs_gottasweep",
+					"volume": 1
+				}
+			]
+		},
+		"walter.hi": {
+			"category": "neutral",
+			"max_distance": 24,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/walter/walter_hi",
+					"volume": 1
+				}
+			]
+		},
+		"walter.want": {
+			"category": "neutral",
+			"max_distance": 24,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/walter/walter_wantmeth",
+					"volume": 1
+				}
+			]
+		},
+		"walter.want_xmas": {
+			"category": "neutral",
+			"max_distance": 24,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/walter/walter_wantmeth_xmas",
+					"volume": 1
+				}
+			]
+		},
+		"walter.here": {
+			"category": "neutral",
+			"max_distance": 24,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/walter/walter_here",
+					"volume": 1
+				}
+			]
+		},
+		"walter.hellohere": {
+			"category": "neutral",
+			"max_distance": 24,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/walter/walter_hellohere",
+					"volume": 1
+				}
+			]
+		},
+		"walter.notready": {
+			"category": "neutral",
+			"max_distance": 24,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/walter/walter_notready",
+					"volume": 1
+				}
+			]
+		},
+		"walter.notfinished": {
+			"category": "neutral",
+			"max_distance": 24,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/walter/walter_notfinished",
+					"volume": 1
+				}
+			]
+		},
+		"walter.stickaround": {
+			"category": "neutral",
+			"max_distance": 24,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/walter/walt_sticking_around",
+					"volume": 1
+				}
+			]
+		},
+		"neil.random": {
+			"category": "hostile",
+			"max_distance": 64,
+			"min_distance": 2,
+			"sounds": [
+				{
+					"name": "sounds/characters/neil/neil_random01",
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/neil/neil_random_02",
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/neil/neil_random03",
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/neil/neil_random04",
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/neil/neil_random05",
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/neil/neil_random06",
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/neil/neil_random07",
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/neil/neil_random08",
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/neil/neil_random09",
+					"volume": 1
+				},
+				{
+					"name": "sounds/characters/neil/neil_random10",
+					"volume": 1
+				}
+			]
+		},
+		"neil.death": {
+			"category": "ui",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/characters/neil/neil_crashlaugh",
+					"volume": 1
+				}
+			]
+		},
+		"player.monke_poop": {
+			"category": "player",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/poop/monkepoop",
+					"volume": 1
+				}
+			]
+		},
+		"poop.rising": {
+			"category": "ui",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/poop/rising",
+					"volume": 1
+				}
+			]
+		},
+		"poop.scream": {
+			"category": "ui",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/poop/scream",
+					"volume": 1
+				}
+			]
+		},
+		"mus_diarrhea": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/poop/mus_diarrhea",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"block.sip": {
+			"category": "block",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/sip",
+					"volume": 1
+				}
+			]
+		},
+		"item.nom": {
+			"category": "player",
+			"max_distance": 16,
+			"sounds": [
+				{
+					"name": "sounds/items/nom",
+					"volume": 1
+				}
+			]
+		},
+		"raldi.seeplayer": {
+			"category": "hostile",
+			"sounds": [
+				{
+					"name": "sounds/characters/raldi/ral_seeplayer",
+					"volume": 1
+				}
+			],
+			"subtitle": "Raldi spotted you"
+		},
+		"raldi.crack": {
+			"category": "hostile",
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/raldi/ral_crack",
+					"volume": 1
+				}
+			],
+			"subtitle": "Raldi hits the pipe"
+		},
+		"raldi.high": {
+			"category": "hostile",
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/raldi/ral_high",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Raldi is getting high"
+		},
+		"raldi.style": {
+			"category": "music",
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/raldi/mus_style",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Raldi dances"
+		},
+		"radio.01": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_01",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"radio.02": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_02",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"radio.03": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_03",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"radio.04": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_04",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"radio.05": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_05",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"radio.06": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_06",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"radio.07": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_07",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"radio.08": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_08",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"radio.09": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_09",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"radio.10": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_10",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"radio.static": {
+			"category": "record",
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/mus_radio_static",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"beast.hey": {
+			"category": "hostile",
+			"min_distance": 4,
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beast_hey",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast: Hey!"
+		},
+		"beast.hey_xmas": {
+			"category": "hostile",
+			"min_distance": 4,
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beast_hey_xmas",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast: Hey!"
+		},
+		"beast.challengeinstruct": {
+			"category": "hostile",
+			"min_distance": 8,
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beast_challengeinstruct",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast explains the challenge"
+		},
+		"beast.challengeinstruct_xmas": {
+			"category": "hostile",
+			"min_distance": 8,
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beast_challengeinstruct_xmas",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast explains the challenge"
+		},
+		"beast.congrats": {
+			"category": "hostile",
+			"min_distance": 8,
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beast_congrats",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast: Congratulations!"
+		},
+		"beast.foundcard": {
+			"category": "hostile",
+			"min_distance": 16,
+			"max_distance": 64,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beast_foundcard",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast found out"
+		},
+		"beast.screech": {
+			"category": "hostile",
+			"min_distance": 16,
+			"max_distance": 64,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beast_screech",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast screeches"
+		},
+		"beast.wait": {
+			"category": "hostile",
+			"min_distance": 8,
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beast_wait",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast: Wait..."
+		},
+		"beast.challengecard": {
+			"category": "hostile",
+			"min_distance": 8,
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beast_challengecard",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast: Where's my card?"
+		},
+		"beast.encounter": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/beastencounter",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Encounter"
+		},
+		"present": {
+			"category": "neutral",
+			"min_distance": 4,
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/present/present",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Present"
+		},
+		"beast.mrbeastovania": {
+			"category": "music",
+			"min_distance": 128,
+			"max_distance": 128,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/mus_mrbeastovania",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Mrbeastovania"
+		},
+		"beast.la.00": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_00",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.01": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_01",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.02": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_02",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.03": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_03",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.04": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_04",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.05": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_05",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.06": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_06",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.07": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_07",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.08": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_08",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.09": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_09",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.10": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_10",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.11": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_11",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.12": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_12",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.13": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_13",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.14": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_14",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.15": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_15",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.16": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_16",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.17": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_17",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.18": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_18",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.19": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_19",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.20": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_20",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.21": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_21",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.22": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_22",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.23": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_23",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.24": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_24",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.25": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_25",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.26": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_26",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.27": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_27",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.28": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_28",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.29": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_29",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.30": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_30",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.31": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_31",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.32": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_32",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.33": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_33",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.34": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_34",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.35": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_35",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.36": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_36",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.37": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_37",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.38": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_38",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.39": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_39",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.40": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_40",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.41": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_41",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.42": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_42",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.43": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_43",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.44": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_44",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.45": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_45",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.46": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_46",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.47": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_47",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.48": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_48",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.49": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_49",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.50": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_50",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.51": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_51",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.52": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_52",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.53": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_53",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.54": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_54",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.55": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_55",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.56": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_56",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.57": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_57",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.58": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_58",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.59": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_59",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.60": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_60",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.61": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_61",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.62": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_62",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.63": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_63",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.64": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_64",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.65": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_65",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.66": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_66",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.67": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_67",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.68": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_68",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.69": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_69",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.70": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_70",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.71": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_71",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.72": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_72",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.73": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_73",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.74": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_74",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.75": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_75",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.76": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_76",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.77": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_77",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.78": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_78",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.79": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_79",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.80": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_80",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.81": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_81",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"beast.la.82": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/mrbeast/la/la_82",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "MrBeast's song"
+		},
+		"chip.whistle_seg.00": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/whistle/whistle_00",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke whistles"
+		},
+		"chip.whistle_seg.01": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/whistle/whistle_01",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke whistles"
+		},
+		"chip.whistle_seg.02": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/whistle/whistle_02",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke whistles"
+		},
+		"chip.whistle_seg.03": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/whistle/whistle_03",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke whistles"
+		},
+		"chip.whistle_seg.04": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/whistle/whistle_04",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke whistles"
+		},
+		"chip.whistle_seg.05": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 32,
+			"sounds": [
+				{
+					"name": "sounds/characters/chipfloke/whistle/whistle_05",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Chipfloke whistles"
+		},
+		"meme.cutscene.beast_encounter": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/cutscene/beast_encounter",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.modderator": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/modderator",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"phonedial": {
+			"category": "ui",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/phone/phonedial",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"phnpickup": {
+			"category": "ui",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/phone/phnpickup",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"ping": {
+			"category": "ui",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/phone/ping",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"notification": {
+			"category": "ui",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/phone/notification",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"noisescalling": {
+			"category": "ui",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/phone/mus_event_noise",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"hitman_kill": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/hitman/hitman_kill",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"hitman.00": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/hitman/segments/segments_00",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Hitman"
+		},
+		"hitman.01": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/hitman/segments/segments_01",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Hitman"
+		},
+		"hitman.02": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/hitman/segments/segments_02",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Hitman"
+		},
+		"hitman.03": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/hitman/segments/segments_03",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Hitman"
+		},
+		"hitman.04": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/hitman/segments/segments_04",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Hitman"
+		},
+		"hitman.05": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/hitman/segments/segments_05",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Hitman"
+		},
+		"hitman.06": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/hitman/segments/segments_06",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Hitman"
+		},
+		"hitman.07": {
+			"category": "hostile",
+			"min_distance": 2,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/hitman/segments/segments_07",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Hitman"
+		},
+		"vending.cranberry.00": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_00",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.01": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_01",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.02": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_02",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.03": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_03",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.04": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_04",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.05": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_05",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.06": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_06",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.07": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_07",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.08": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_08",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.09": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_09",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.10": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_10",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.11": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_11",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.12": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_12",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.13": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_13",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"vending.cranberry.14": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/blocks/cranberry/cranberry_14",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Sprite Cranberry vending machine"
+		},
+		"mus_cow.00": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_00",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.01": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_01",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.02": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_02",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.03": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_03",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.04": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_04",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.05": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_05",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.06": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_06",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.07": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_07",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.08": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_08",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.09": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_09",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.10": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_10",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.11": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_11",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.12": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_12",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.13": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_13",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.14": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_14",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.15": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_15",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.16": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_16",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.17": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_17",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.18": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_18",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.19": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_19",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.20": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_20",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.21": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_21",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.22": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_22",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.23": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_23",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.24": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_24",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.25": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_25",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.26": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_26",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.27": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_27",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.28": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_28",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.29": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_29",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.30": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_30",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.31": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_31",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.32": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_32",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.33": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_33",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.34": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_34",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.35": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_35",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.36": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_36",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.37": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_37",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.38": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_38",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.39": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_39",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.40": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_40",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.41": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_41",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.42": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_42",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.43": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_43",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.44": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_44",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.45": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_45",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.46": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_46",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.47": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_47",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.48": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_48",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.49": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_49",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.50": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_50",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.51": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_51",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.52": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_52",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.53": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_53",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.54": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_54",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.55": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_55",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.56": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_56",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.57": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_57",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.58": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_58",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.59": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_59",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.60": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_60",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.61": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_61",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.62": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_62",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.63": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_63",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.64": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_64",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.65": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_65",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.66": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_66",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.67": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_67",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.68": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_68",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.69": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_69",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.70": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_70",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.71": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_71",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.72": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_72",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.73": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_73",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.74": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_74",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.75": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_75",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.76": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_76",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.77": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_77",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.78": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_78",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.79": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_79",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.80": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_80",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.81": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_81",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.82": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_82",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.83": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_83",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.84": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_84",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.85": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_85",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.86": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_86",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.87": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_87",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.88": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_88",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.89": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_89",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.90": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_90",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.91": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_91",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.92": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_92",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.93": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_93",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.94": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_94",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.95": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_95",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.96": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_96",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.97": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_97",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.98": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_98",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.99": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_99",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.100": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_100",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.101": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_101",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.102": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_102",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.103": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_103",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.104": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_104",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.105": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_105",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.106": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_106",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.107": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_107",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.108": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_108",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.109": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_109",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.110": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_110",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"mus_cow.111": {
+			"category": "record",
+			"min_distance": 3,
+			"max_distance": 40,
+			"sounds": [
+				{
+					"name": "sounds/characters/polish_cow/theme/theme_111",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow's song"
+		},
+		"polish_marker.00": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/items/polish_marker_segments/polish_marker_segments_00",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow marker"
+		},
+		"polish_marker.01": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/items/polish_marker_segments/polish_marker_segments_01",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow marker"
+		},
+		"polish_marker.02": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/items/polish_marker_segments/polish_marker_segments_02",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow marker"
+		},
+		"polish_marker.03": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/items/polish_marker_segments/polish_marker_segments_03",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow marker"
+		},
+		"polish_marker.04": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/items/polish_marker_segments/polish_marker_segments_04",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow marker"
+		},
+		"polish_marker.05": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/items/polish_marker_segments/polish_marker_segments_05",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow marker"
+		},
+		"polish_marker.06": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/items/polish_marker_segments/polish_marker_segments_06",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow marker"
+		},
+		"polish_marker.07": {
+			"category": "record",
+			"min_distance": 2,
+			"max_distance": 24,
+			"sounds": [
+				{
+					"name": "sounds/items/polish_marker_segments/polish_marker_segments_07",
+					"stream": false,
+					"volume": 1
+				}
+			],
+			"subtitle": "Polish Cow marker"
+		},
+		"meme.item.gameboyvideo": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/item/gameboyvideo",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.m257zkqqsm2wzi6wg": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/m257zkqqsm2wzi6wg",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.m323941779_845447783406840_48342213910320": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/m323941779_845447783406840_48342213910320",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.advertising": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/advertising",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.asian_kid_falls_off_his_bike_meme": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/asian_kid_falls_off_his_bike_meme",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.baldi_3_rap": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/baldi_3_rap",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.baldi_drowns480p": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/baldi_drowns480p",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.baldis_basics_lets_go_to_the_farm": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/baldis_basics_lets_go_to_the_farm",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.boomerang": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/boomerang",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.bsitmwls70qhegt6": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/bsitmwls70qhegt6",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ddlvid_com_1607405118990782464": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ddlvid_com_1607405118990782464",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ddlvid_com_1610232224615473153": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ddlvid_com_1610232224615473153",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ddlvid_com_1636187964639449089_1": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ddlvid_com_1636187964639449089_1",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.deez_nuts_song_1": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/deez_nuts_song_1",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.devious_ahh_dog": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/devious_ahh_dog",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.fucked_up_fan": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/fucked_up_fan",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.gary_theres_a_bomb": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/gary_theres_a_bomb",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.hamburger": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/hamburger",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.hello_little_stylus": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/hello_little_stylus",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.i_got_so_many_questions": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/i_got_so_many_questions",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.i_let_the_bird_out_of_the_cage_but_rainb": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/i_let_the_bird_out_of_the_cage_but_rainb",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.irl_weird_route": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/irl_weird_route",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.k2_vgh4iiutxx_cj": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/k2_vgh4iiutxx_cj",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.lego_set_fixed": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/lego_set_fixed",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.lmao": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/lmao",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.lv_0_20230514002242": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/lv_0_20230514002242",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.marks_pizzeria": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/marks_pizzeria",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.moneg": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/moneg",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.my_fucking_computer_is_about_to_fly_bett": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/my_fucking_computer_is_about_to_fly_bett",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.papas_burgeria": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/papas_burgeria",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.peter_griffin_in_fortnite": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/peter_griffin_in_fortnite",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.pizzatowerscream": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/pizzatowerscream",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.player_jumpscare": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/player_jumpscare",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.pvz_be_like": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/pvz_be_like",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.rapidsave_com_hardest_geometry_edit_drop": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/rapidsave_com_hardest_geometry_edit_drop",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.rapidsave_com_listen_to_the_advice_3g4ze": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/rapidsave_com_listen_to_the_advice_3g4ze",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.rapidsave_com_mat_did_not_just_do_this_t": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/rapidsave_com_mat_did_not_just_do_this_t",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.rapidsave_com_mr_beast_africa_moment_gn2": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/rapidsave_com_mr_beast_africa_moment_gn2",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.rapidsave_com_real_minecraft_gameplay_dw": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/rapidsave_com_real_minecraft_gameplay_dw",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.rapidsave_com_skill_issue_59su9kxdjzqb1": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/rapidsave_com_skill_issue_59su9kxdjzqb1",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.rapidsave_com_smash_emsvpatgmtqa1": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/rapidsave_com_smash_emsvpatgmtqa1",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.rapidsave_com_who_won_whoes_next_you_dec": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/rapidsave_com_who_won_whoes_next_you_dec",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.rat": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/rat",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.rdt_20230827_200310": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/rdt_20230827_200310",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.redditsave_com_hey_you_redditor_lgurqrl7": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/redditsave_com_hey_you_redditor_lgurqrl7",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.redditsave_com_i_dont_understand_chinese": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/redditsave_com_i_dont_understand_chinese",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.redditsave_com_no_drugs_kijd16r6h77a1": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/redditsave_com_no_drugs_kijd16r6h77a1",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.redditsave_com_title_r95aj9cbu2s91": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/redditsave_com_title_r95aj9cbu2s91",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.redditsave_com_women_4847mo4pbmi91": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/redditsave_com_women_4847mo4pbmi91",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.sanwitch": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/sanwitch",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.skip_cutscene_2": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/skip_cutscene_2",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.snapinsta_app_330351338_1139402670077540": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/snapinsta_app_330351338_1139402670077540",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.snapsave_app_330451791_216548840868020_3": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/snapsave_app_330451791_216548840868020_3",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ssstwitter_com_1682652674494": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ssstwitter_com_1682652674494",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.t6bdatdae2yz0iop_1": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/t6bdatdae2yz0iop_1",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.testvideo": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/testvideo",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.this_is_a_platypus": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/this_is_a_platypus",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.trim_3d5febc8_756b_4847_be8e_589ee65e862": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/trim_3d5febc8_756b_4847_be8e_589ee65e862",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.trim_48a21c06_109f_4959_bae6_32036246743": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/trim_48a21c06_109f_4959_bae6_32036246743",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.trim_4ffe2b4e_3722_42bc_a0bf_a95a5a47f6a": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/trim_4ffe2b4e_3722_42bc_a0bf_a95a5a47f6a",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.trim_fb7c00a1_0354_40b1_8026_d2f8d23fa60": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/trim_fb7c00a1_0354_40b1_8026_d2f8d23fa60",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.twitter_20230223_193650": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/twitter_20230223_193650",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.twitter": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/twitter",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.twochad": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/twochad",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.v12044gd0000cgg6rl3c77u7ucn34ia0": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/v12044gd0000cgg6rl3c77u7ucn34ia0",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.vid_21600614_044906_299_2": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/vid_21600614_044906_299_2",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.video0_21": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/video0_21",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.video0_1_5_1": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/video0_1_5_1",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.watermelon_death_4": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/watermelon_death_4",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.wtf": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/wtf",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.x2download_app_baldi_in_harlem": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/x2download_app_baldi_in_harlem",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.y2mate_is_hey_put_some_socks_on_you_eh3a": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/y2mate_is_hey_put_some_socks_on_you_eh3a",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.youtube_066bkxjqmfq_256x130_h264": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/youtube_066bkxjqmfq_256x130_h264",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.youtube_ab0d9ygvjw8_1920x1008_h264": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/youtube_ab0d9ygvjw8_1920x1008_h264",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.youtube_c2og97q3qj8_684x480_h264": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/youtube_c2og97q3qj8_684x480_h264",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.youtube_vppixdhxn4e_640x360_h264": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/youtube_vppixdhxn4e_640x360_h264",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo01": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo01",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo02": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo02",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo03": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo03",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo04": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo04",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo05": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo05",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo06": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo06",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo07": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo07",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo08": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo08",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo09": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo09",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo10": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo10",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo11": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo11",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo12": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo12",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo13": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo13",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo14": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo14",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo15": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo15",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo16": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo16",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo17": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo17",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo18": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo18",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo19": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo19",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo20": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo20",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo21": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo21",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo22": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo22",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo23": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo23",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo24": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo24",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo25": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo25",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo26": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo26",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo27": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo27",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo28": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo28",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo29": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo29",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo30": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo30",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo31": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo31",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo32": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo32",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ytcpvideo33": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ytcpvideo33",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.normal.ywgd85mfvi6dqqak": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/normal/ywgd85mfvi6dqqak",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.m1213": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/m1213",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.m8mb_video_wla_elshq53k": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/m8mb_video_wla_elshq53k",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.can_you_believe_it_guys_christmas_is_jus": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/can_you_believe_it_guys_christmas_is_jus",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.cmas": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/cmas",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.felix_christmas_shit": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/felix_christmas_shit",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.geometry_dash_christmas_joy": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/geometry_dash_christmas_joy",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.homealone2": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/homealone2",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.jol": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/jol",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.jolly_gumball": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/jolly_gumball",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.screen_20251109_0822462": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/screen_20251109_0822462",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.screen_20251217_1438312": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/screen_20251217_1438312",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.services_instagram_post_dr8tpmsac9c_0": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/services_instagram_post_dr8tpmsac9c_0",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.shadow_gets_into_the_christmas_spirit_by": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/shadow_gets_into_the_christmas_spirit_by",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.ssstwitter_com_1764609590706": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/ssstwitter_com_1764609590706",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.ssstwitter_com_1765916295880": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/ssstwitter_com_1765916295880",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.tf2_jolly_video_meet_the_santa": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/tf2_jolly_video_meet_the_santa",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.uwcn_cc1cphh_mci": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/uwcn_cc1cphh_mci",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.v14044g50000d4qfglfog65t442rdong": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/v14044g50000d4qfglfog65t442rdong",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"meme.xmas.video_guru_20251211_211516428": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/memes/xmas/video_guru_20251211_211516428",
+					"stream": true,
+					"load_on_low_memory": true,
+					"volume": 1
+				}
+			]
+		},
+		"raldi.hi": {
+			"category": "hostile",
+			"min_distance": 4,
+			"max_distance": 48,
+			"sounds": [
+				{
+					"name": "sounds/characters/raldi/ral_hi",
+					"stream": true,
+					"volume": 1
+				}
+			],
+			"subtitle": "Raldi: Hi!"
+		},
+		"mus_crackhouse": {
+			"category": "music",
+			"sounds": [
+				{
+					"name": "sounds/music/mus_crackhouse",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"notebook.summer_inst": {
+			"category": "music",
+			"sounds": [
+				{
+					"name": "sounds/notebook/mus_summer_inst",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"notebook.summer_vocals": {
+			"category": "music",
+			"sounds": [
+				{
+					"name": "sounds/notebook/mus_summer_vocals",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"notebook.learn_2": {
+			"category": "music",
+			"sounds": [
+				{
+					"name": "sounds/notebook/mus_learn_2",
+					"stream": true,
+					"volume": 1
+				}
+			]
+		},
+		"notebook.question_9_10": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/notebook/question_9-10",
+					"volume": 1
+				}
+			]
+		},
+		"notebook.question_obama": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/notebook/question_obama",
+					"volume": 1
+				}
+			]
+		},
+		"notebook.question_fail": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/notebook/question_fail",
+					"volume": 1
+				}
+			]
+		},
+		"notebook.ding": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/notebook/ding",
+					"volume": 1
+				}
+			]
+		},
+		"notebook.slidewhistle": {
+			"category": "ui",
+			"sounds": [
+				{
+					"name": "sounds/notebook/slidewhist",
+					"volume": 1
+				}
+			]
+		}
+	}
+}

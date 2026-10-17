@@ -1,0 +1,17 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:british_bloke",
+			"materials": { "default": "raldi" },
+			"textures": { "default": "textures/characters/Bloke" },
+			"geometry": { "default": "geometry.brr.british_bloke" },
+			"animations": { "billboard": "animation.brr.raldi.billboard" },
+			"scripts": { "animate": ["billboard"] },
+			"render_controllers": [
+				{ "controller.render.brr.bloke": "q.property('brr:visible') == 1" }
+			],
+			"spawn_egg": { "texture": "brr_bloke_spawn_egg" }
+		}
+	}
+}

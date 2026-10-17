@@ -1,0 +1,71 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"BonnieRobloxRIP"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.54"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "Raldi's Crackhouse",
+		"description": "It's bout to go nuts",
+		"min_engine_version": [
+			1,
+			26,
+			0
+		],
+		"uuid": "3fae0984-4aed-41df-ac7a-2d387164343e",
+		"version": [
+			1,
+			0,
+			3
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "b060d564-1e32-4e04-be98-cb80d2852cd5",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"type": "script",
+			"language": "javascript",
+			"uuid": "699afc8a-901f-4c79-8f0f-fd2103af9989",
+			"entry": "scripts/main.js",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "60fca39d-7d4a-443e-98b9-7c3521225fe4",
+			"version": [
+				1,
+				0,
+				3
+			]
+		},
+		{
+			"module_name": "@minecraft/server",
+			"version": "2.9.0"
+		},
+		{
+			"module_name": "@minecraft/server-ui",
+			"version": "2.0.0"
+		}
+	]
+}

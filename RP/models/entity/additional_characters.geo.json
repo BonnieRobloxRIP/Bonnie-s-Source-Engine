@@ -1,0 +1,83 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.brr.pinto_beans",
+				"texture_width": 1128,
+				"texture_height": 496,
+				"visible_bounds_width": 7,
+				"visible_bounds_height": 5,
+				"visible_bounds_offset": [0, 2, 0]
+			},
+			"bones": [
+				{
+					"name": "sprite",
+					"pivot": [0, 18, 0],
+					"cubes": [
+						{
+							"origin": [-24.5, -0.7, -0.005],
+							"size": [49, 43.1, 0.01],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [1128, 496]},
+								"south": {"uv": [1128, 0], "uv_size": [-1128, 496]}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.brr.british_bloke",
+				"texture_width": 43,
+				"texture_height": 128,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 5,
+				"visible_bounds_offset": [0, 2, 0]
+			},
+			"bones": [
+				{
+					"name": "sprite",
+					"pivot": [0, 18, 0],
+					"cubes": [
+						{
+							"origin": [-8.0625, 0, -0.005],
+							"size": [16.125, 48, 0.01],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [43, 128]},
+								"south": {"uv": [43, 0], "uv_size": [-43, 128]}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.brr.vanman_jail",
+				"texture_width": 236,
+				"texture_height": 235,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 4,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "sprite",
+					"pivot": [0, 18, 0],
+					"cubes": [
+						{
+							"origin": [-18, 0, -0.005],
+							"size": [36, 35.85, 0.01],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [236, 235]},
+								"south": {"uv": [236, 0], "uv_size": [-236, 235]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

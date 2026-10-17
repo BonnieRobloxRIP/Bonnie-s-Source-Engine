@@ -1,0 +1,32 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.brr.bloke": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.default"]
+		},
+		"controller.render.brr.pinto": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.default"],
+			"uv_anim": {
+				"offset": [
+					"math.mod((q.property('brr:visual') == 1 ? q.property('brr:frame') + 1 : 0), 4.0) / 4.0",
+					"math.floor((q.property('brr:visual') == 1 ? q.property('brr:frame') + 1 : 0) / 4.0) / 2.0"
+				],
+				"scale": [0.25, 0.5]
+			}
+		},
+		"controller.render.brr.vanman_3d": {
+			"geometry": "Geometry.van",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.van"]
+		},
+		"controller.render.brr.vanman_jail": {
+			"geometry": "Geometry.jail",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.jail"]
+		}
+	}
+}

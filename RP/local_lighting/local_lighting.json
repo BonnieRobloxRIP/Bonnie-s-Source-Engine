@@ -1,0 +1,81 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:local_light_settings": {
+        "brr:ceiling01": {
+            "light_color": "#ffffff",
+            "light_type": "static_light"
+        },
+        "brr:raldi_drip_light": {
+            "light_color": "#00ff33",
+            "light_type": "point_light"
+        },
+        "brr:glock_bullet_light": {
+            "light_color": "#ffffff",
+            "light_type": "point_light"
+        },
+        "brr:invisible_ceiling_light": {
+            "light_color": "#ffffff",
+            "light_type": "static_light"
+        },
+        "brr:item_goldquarter_block": {
+            "light_color": "#ffff00",
+            "light_type": "static_light"
+        },
+        "brr:vending_bsoda": {
+            "light_color": "#439fff",
+            "light_type": "static_light"
+        },
+        "brr:vending_bsoda_free": {
+            "light_color": "#439fff",
+            "light_type": "static_light"
+        },
+        "brr:vending_bsoda_eth": {
+            "light_color": "#439fff",
+            "light_type": "static_light"
+        },
+        "brr:vending_alarm_clock": {
+            "light_color": "#5ec8ff",
+            "light_type": "static_light"
+        },
+        "brr:vending_energy": {
+            "light_color": "#ff1414",
+            "light_type": "static_light"
+        },
+        "brr:vending_hammer": {
+            "light_color": "#ff9933",
+            "light_type": "static_light"
+        },
+        "brr:vending_monkenator": {
+            "light_color": "#ffd700",
+            "light_type": "static_light"
+        },
+        "brr:vending_sprite_cranberry": {
+            "light_color": "#ff3355",
+            "light_type": "static_light"
+        },
+        "brr:vending_wd_nosquee": {
+            "light_color": "#ff4d88",
+            "light_type": "static_light"
+        },
+        "brr:vending_zesty": {
+            "light_color": "#ff8000",
+            "light_type": "static_light"
+        },
+        "brr:vending_zesty_eth": {
+            "light_color": "#ff8000",
+            "light_type": "static_light"
+        },
+        "brr:vending_peppermint_bar": {
+            "light_color": "#4dff88",
+            "light_type": "static_light"
+        },
+        "brr:vending_ornament": {
+            "light_color": "#ff2d2d",
+            "light_type": "static_light"
+        },
+        "brr:vending_pearl": {
+            "light_color": "#bd77ff",
+            "light_type": "static_light"
+        }
+    }
+}

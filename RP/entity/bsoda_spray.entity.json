@@ -1,0 +1,14 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:bsoda_spray",
+			"materials": { "default": "entity_alphatest" },
+			"textures": { "default": "textures/shot_entity/BSODASpray" },
+			"geometry": { "default": "geometry.brr.projectile_soda" },
+			"animations": { "billboard": "animation.brr.projectile.billboard" },
+			"scripts": { "animate": ["billboard"] },
+			"render_controllers": ["controller.render.default"]
+		}
+	}
+}

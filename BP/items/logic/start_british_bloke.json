@@ -1,0 +1,21 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:start_british_bloke",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_start_british_bloke",
+			"minecraft:display_name": {
+				"value": "tile.brr:start_british_bloke.name"
+			},
+			"minecraft:block_placer": {
+				"block": "brr:start_british_bloke",
+				"replace_block_item": true
+			}
+		}
+	}
+}

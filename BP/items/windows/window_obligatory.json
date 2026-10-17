@@ -1,0 +1,16 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:window_obligatory",
+			"menu_category": { "category": "construction" }
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_window_obligatory",
+			"minecraft:block_placer": {
+				"block": "brr:window_obligatory",
+				"replace_block_item": true
+			}
+		}
+	}
+}

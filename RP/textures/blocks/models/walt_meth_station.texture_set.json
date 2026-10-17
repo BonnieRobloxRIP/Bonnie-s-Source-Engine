@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "walt_meth_station",
+		"metalness_emissive_roughness": "walt_meth_station_mer",
+		"normal": "walt_meth_station_normal"
+	}
+}

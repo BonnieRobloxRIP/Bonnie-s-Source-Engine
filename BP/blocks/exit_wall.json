@@ -1,0 +1,335 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:exit_wall",
+			"menu_category": {
+				"category": "construction"
+			},
+			"states": {
+				"brr:exit_mode": [
+					0,
+					1,
+					2,
+					3
+				],
+				"brr:sign_piece": [
+					0,
+					1,
+					2,
+					3,
+					4
+				]
+			},
+			"traits": {
+				"minecraft:placement_direction": {
+					"enabled_states": [
+						"minecraft:cardinal_direction"
+					],
+					"y_rotation_offset": 180
+				}
+			}
+		},
+		"components": {
+			"minecraft:geometry": "minecraft:geometry.full_block",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "brr_nothing",
+					"render_method": "blend"
+				}
+			},
+			"minecraft:collision_box": false,
+			"minecraft:selection_box": true,
+			"minecraft:light_dampening": 0,
+			"minecraft:destructible_by_explosion": false,
+			"brr:exit_wall": {}
+		},
+		"permutations": [
+			{
+				"condition": "q.block_state('brr:exit_mode') == 2 || (q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 0)",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 1 && q.block_state('minecraft:cardinal_direction') == 'north'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"north": {
+							"texture": "brr_poster_exit_wall_bottom_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 2 && q.block_state('minecraft:cardinal_direction') == 'north'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"north": {
+							"texture": "brr_poster_exit_wall_bottom_right",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 3 && q.block_state('minecraft:cardinal_direction') == 'north'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"north": {
+							"texture": "brr_poster_exit_wall_top_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 4 && q.block_state('minecraft:cardinal_direction') == 'north'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"north": {
+							"texture": "brr_poster_exit_wall_top_right",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 1 && q.block_state('minecraft:cardinal_direction') == 'south'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"south": {
+							"texture": "brr_poster_exit_wall_bottom_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 2 && q.block_state('minecraft:cardinal_direction') == 'south'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"south": {
+							"texture": "brr_poster_exit_wall_bottom_right",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 3 && q.block_state('minecraft:cardinal_direction') == 'south'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"south": {
+							"texture": "brr_poster_exit_wall_top_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 4 && q.block_state('minecraft:cardinal_direction') == 'south'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"south": {
+							"texture": "brr_poster_exit_wall_top_right",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 1 && q.block_state('minecraft:cardinal_direction') == 'east'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"east": {
+							"texture": "brr_poster_exit_wall_bottom_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 2 && q.block_state('minecraft:cardinal_direction') == 'east'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"east": {
+							"texture": "brr_poster_exit_wall_bottom_right",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 3 && q.block_state('minecraft:cardinal_direction') == 'east'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"east": {
+							"texture": "brr_poster_exit_wall_top_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 4 && q.block_state('minecraft:cardinal_direction') == 'east'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"east": {
+							"texture": "brr_poster_exit_wall_top_right",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 1 && q.block_state('minecraft:cardinal_direction') == 'west'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"west": {
+							"texture": "brr_poster_exit_wall_bottom_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 2 && q.block_state('minecraft:cardinal_direction') == 'west'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"west": {
+							"texture": "brr_poster_exit_wall_bottom_right",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 3 && q.block_state('minecraft:cardinal_direction') == 'west'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"west": {
+							"texture": "brr_poster_exit_wall_top_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:exit_mode') == 3 && q.block_state('brr:sign_piece') == 4 && q.block_state('minecraft:cardinal_direction') == 'west'",
+				"components": {
+					"minecraft:collision_box": true,
+					"minecraft:light_dampening": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_wall01",
+							"render_method": "alpha_test"
+						},
+						"west": {
+							"texture": "brr_poster_exit_wall_top_right",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			}
+		]
+	}
+}

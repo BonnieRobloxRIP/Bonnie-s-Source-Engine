@@ -1,0 +1,32 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:chipfloke",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/characters/Chipfloke",
+				"mad": "textures/characters/Chipfloke_Mad"
+			},
+			"geometry": {
+				"default": "geometry.chipfloke"
+			},
+			"animations": {
+				"spin": "animation.chipfloke.spin",
+				"spin_chase": "animation.chipfloke.spin_chase"
+			},
+			"scripts": {
+				"animate": [
+					{ "spin": "q.property('brr:chasing') == 0" },
+					{ "spin_chase": "q.property('brr:chasing') == 1" }
+				]
+			},
+			"render_controllers": ["controller.render.brr.chipfloke"],
+			"spawn_egg": {
+				"texture": "brr_chipfloke_spawn_egg"
+			}
+		}
+	}
+}

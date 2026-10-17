@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "wall_molded",
+		"metalness_emissive_roughness": "wall_molded_mer",
+		"normal": "wall_molded_normal"
+	}
+}

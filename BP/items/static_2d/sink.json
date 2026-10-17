@@ -1,0 +1,18 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:sink",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_sink",
+			"minecraft:block_placer": {
+				"block": "brr:sink",
+				"replace_block_item": true
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:walter",
+			"materials": { "default": "raldi" },
+			"textures": {
+				"default": "textures/characters/walter",
+				"jolly": "textures/characters/walter_jolly"
+			},
+			"geometry": { "default": "geometry.brr.walter" },
+			"animations": { "billboard": "animation.brr.raldi.billboard" },
+			"scripts": { "animate": ["billboard"] },
+			"render_controllers": ["controller.render.brr.walter"],
+			"spawn_egg": { "texture": "brr_walter_spawn_egg" }
+		}
+	}
+}

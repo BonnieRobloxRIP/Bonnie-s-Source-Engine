@@ -1,0 +1,21 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:invisible_ceiling_light",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_invisible_ceiling_light",
+			"minecraft:display_name": {
+				"value": "tile.brr:invisible_ceiling_light.name"
+			},
+			"minecraft:block_placer": {
+				"block": "brr:invisible_ceiling_light",
+				"replace_block_item": true
+			}
+		}
+	}
+}

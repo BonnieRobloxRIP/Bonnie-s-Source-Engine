@@ -1,0 +1,18 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:ceiling01_off",
+			"states": {
+				"brr:escape_blackout": [false, true]
+			},
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:light_dampening": 15,
+			"brr:escape_ceiling": {}
+		}
+	}
+}

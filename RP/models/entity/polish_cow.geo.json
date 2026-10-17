@@ -1,0 +1,31 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.brr.polish_cow",
+				"texture_width": 222,
+				"texture_height": 186,
+				"visible_bounds_width": 4.6,
+				"visible_bounds_height": 3.45,
+				"visible_bounds_offset": [0, 1.15, 0]
+			},
+			"bones": [
+				{
+					"name": "sprite",
+					"pivot": [0, 15.41, 0],
+					"cubes": [
+						{
+							"origin": [-18.4, 0, -0.00575],
+							"size": [36.8, 30.83242, 0.0115],
+							"uv": {
+								"north": { "uv": [0, 0], "uv_size": [222, 186] },
+								"south": { "uv": [222, 0], "uv_size": [-222, 186] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

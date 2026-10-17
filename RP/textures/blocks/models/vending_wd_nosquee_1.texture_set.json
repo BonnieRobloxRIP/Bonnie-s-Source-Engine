@@ -1,0 +1,7 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "vending_wd_nosquee_1",
+		"metalness_emissive_roughness": "vending_1_mer"
+	}
+}

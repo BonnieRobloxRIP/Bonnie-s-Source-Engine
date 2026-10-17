@@ -1,0 +1,18 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:locker_white",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_locker_white",
+			"minecraft:block_placer": {
+				"block": "brr:locker_white",
+				"replace_block_item": true
+			}
+		}
+	}
+}

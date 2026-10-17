@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "wood01_cafeteria",
+		"metalness_emissive_roughness": "wood01_cafeteria_mer",
+		"normal": "wood01_cafeteria_normal"
+	}
+}

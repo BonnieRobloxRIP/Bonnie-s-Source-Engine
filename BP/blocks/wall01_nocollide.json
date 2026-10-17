@@ -1,0 +1,15 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:wall01_nocollide",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:light_dampening": 15,
+			"minecraft:collision_box": false
+		}
+	}
+}

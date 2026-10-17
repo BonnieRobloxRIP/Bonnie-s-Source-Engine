@@ -1,0 +1,31 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:mrbeast",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/characters/MrBeast"
+			},
+			"geometry": {
+				"default": "geometry.brr.mrbeast"
+			},
+			"animations": {
+				"billboard": "animation.brr.raldi.billboard",
+				"shake": "animation.brr.raldi.shake"
+			},
+			"scripts": {
+				"animate": [
+					"billboard",
+					{ "shake": "q.property('brr:still') == 0" }
+				]
+			},
+			"render_controllers": ["controller.render.brr.mrbeast"],
+			"spawn_egg": {
+				"texture": "brr_beast_spawn_egg"
+			}
+		}
+	}
+}

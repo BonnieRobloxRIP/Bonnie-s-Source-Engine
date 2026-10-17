@@ -1,0 +1,24 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:alarm_clock",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/items/AlarmClock_Sheet"
+			},
+			"geometry": {
+				"default": "geometry.brr.alarm_clock"
+			},
+			"animations": {
+				"billboard": "animation.brr.projectile.billboard"
+			},
+			"scripts": {
+				"animate": ["billboard"]
+			},
+			"render_controllers": ["controller.render.brr.alarm_clock"]
+		}
+	}
+}

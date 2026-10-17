@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "Ceiling01_NoLight",
+		"metalness_emissive_roughness": "Ceiling01_NoLight_mer",
+		"normal": "Ceiling01_NoLight_normal"
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:polish_cow",
+			"materials": { "default": "raldi" },
+			"textures": { "default": "textures/characters/PolishCow" },
+			"geometry": { "default": "geometry.brr.polish_cow" },
+			"animations": { "billboard": "animation.brr.raldi.billboard" },
+			"scripts": { "animate": ["billboard"] },
+			"render_controllers": ["controller.render.brr.polish_cow"],
+			"spawn_egg": { "texture": "brr_polish_cow_spawn_egg" }
+		}
+	}
+}

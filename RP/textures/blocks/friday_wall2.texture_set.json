@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "friday_wall2",
+		"metalness_emissive_roughness": "friday_wall2_mer",
+		"normal": "friday_wall2_normal"
+	}
+}

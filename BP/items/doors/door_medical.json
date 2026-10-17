@@ -1,0 +1,18 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:door_medical",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_medical_door",
+			"minecraft:block_placer": {
+				"block": "brr:door_medical",
+				"replace_block_item": true
+			}
+		}
+	}
+}

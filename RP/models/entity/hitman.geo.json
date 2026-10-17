@@ -1,0 +1,25 @@
+{
+    "format_version": "1.12.0",
+    "minecraft:geometry": [{
+        "description": {
+            "identifier": "geometry.brr.hitman",
+            "texture_width": 300,
+            "texture_height": 399,
+            "visible_bounds_width": 6,
+            "visible_bounds_height": 5,
+            "visible_bounds_offset": [0, 1.5, 0]
+        },
+        "bones": [{
+            "name": "sprite",
+            "pivot": [0, 18, 0],
+            "cubes": [{
+                "origin": [-18, 0, -0.005],
+                "size": [36, 47.88, 0.01],
+                "uv": {
+                    "north": { "uv": [0, 0], "uv_size": [300, 399] },
+                    "south": { "uv": [300, 0], "uv_size": [-300, 399] }
+                }
+            }]
+        }]
+    }]
+}

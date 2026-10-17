@@ -1,0 +1,209 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.brr.alarm_clock",
+				"texture_width": 256,
+				"texture_height": 256,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 4,
+				"visible_bounds_offset": [
+					0,
+					1.5,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "sprite",
+					"pivot": [
+						0,
+						24,
+						0
+					]
+				},
+				{
+					"name": "frame_0",
+					"parent": "sprite",
+					"pivot": [
+						0,
+						24,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-24,
+								0,
+								-0.005
+							],
+							"size": [
+								48,
+								48,
+								0.01
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										128,
+										128
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										128,
+										128
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "frame_1",
+					"parent": "sprite",
+					"pivot": [
+						0,
+						24,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-24,
+								0,
+								-0.005
+							],
+							"size": [
+								48,
+								48,
+								0.01
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										128,
+										0
+									],
+									"uv_size": [
+										128,
+										128
+									]
+								},
+								"south": {
+									"uv": [
+										128,
+										0
+									],
+									"uv_size": [
+										128,
+										128
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "frame_2",
+					"parent": "sprite",
+					"pivot": [
+						0,
+						24,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-24,
+								0,
+								-0.005
+							],
+							"size": [
+								48,
+								48,
+								0.01
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										128
+									],
+									"uv_size": [
+										128,
+										128
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										128
+									],
+									"uv_size": [
+										128,
+										128
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "frame_3",
+					"parent": "sprite",
+					"pivot": [
+						0,
+						24,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-24,
+								0,
+								-0.005
+							],
+							"size": [
+								48,
+								48,
+								0.01
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										128,
+										128
+									],
+									"uv_size": [
+										128,
+										128
+									]
+								},
+								"south": {
+									"uv": [
+										128,
+										128
+									],
+									"uv_size": [
+										128,
+										128
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

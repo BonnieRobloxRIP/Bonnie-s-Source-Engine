@@ -1,0 +1,21 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:exit_trigger",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_exit_trigger",
+			"minecraft:display_name": {
+				"value": "tile.brr:exit_trigger.name"
+			},
+			"minecraft:block_placer": {
+				"block": "brr:exit_trigger",
+				"replace_block_item": true
+			}
+		}
+	}
+}

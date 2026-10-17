@@ -1,0 +1,41 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.brr.beast_battle.scale": {
+      "loop": true,
+      "bones": {
+        "sprite": {
+          "scale": [
+            "q.property('brr:sx') * ((q.property('brr:visual') == 7 || q.property('brr:visual') == 12) ? math.clamp(q.life_time * 6, 0, 1) : 1)",
+            "q.property('brr:sy') * ((q.property('brr:visual') == 7 || q.property('brr:visual') == 12) ? math.clamp(q.life_time * 6, 0, 1) : 1)",
+            1
+          ]
+        }
+      }
+    },
+    "animation.brr.beast_battle.scroll_a": {
+      "loop": true,
+      "bones": {
+        "sprite": {
+          "position": [
+            "math.mod(q.life_time * 13.108, 50.415)",
+            "-math.mod(q.life_time * 13.108, 50.415)",
+            0
+          ]
+        }
+      }
+    },
+    "animation.brr.beast_battle.scroll_b": {
+      "loop": true,
+      "bones": {
+        "sprite": {
+          "position": [
+            "-math.mod(q.life_time * 13.108, 50.415)",
+            "math.mod(q.life_time * 13.108, 50.415)",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "brr:beast_battle_visual",
+      "materials": {
+        "default": "entity_alphablend",
+        "solid": "entity_alphatest"
+      },
+      "textures": {
+        "v0": "textures/ui/battle_beast/heart",
+        "v1": "textures/ui/battle_beast/MoneyProjectile",
+        "v2": "textures/ui/battle_beast/BeastProjectile",
+        "v3": "textures/ui/battle_beast/burger",
+        "v4": "textures/ui/battle_beast/bottom bun",
+        "v5": "textures/ui/battle_beast/patty",
+        "v6": "textures/ui/battle_beast/top bun",
+        "v7": "textures/ui/battle_beast/arena",
+        "v8": "textures/ui/battle_beast/BattleBG",
+        "v9": "textures/ui/battle_beast/BattleBG_ghost",
+        "v10": "textures/ui/Black",
+        "v11": "textures/ui/battle_beast/heart_empty",
+        "v12": "textures/ui/Black"
+      },
+      "geometry": {
+        "sprite": "geometry.brr.beast_battle_sprite",
+        "grid": "geometry.brr.beast_battle_grid"
+      },
+      "animations": {
+        "scale": "animation.brr.beast_battle.scale",
+        "scroll_a": "animation.brr.beast_battle.scroll_a",
+        "scroll_b": "animation.brr.beast_battle.scroll_b"
+      },
+      "scripts": {
+        "animate": [
+          "scale",
+          {
+            "scroll_a": "q.property('brr:visual') == 8"
+          },
+          {
+            "scroll_b": "q.property('brr:visual') == 9"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.brr.beast_battle"
+      ]
+    }
+  }
+}

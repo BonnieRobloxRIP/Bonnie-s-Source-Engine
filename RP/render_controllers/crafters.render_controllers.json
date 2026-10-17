@@ -1,0 +1,22 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.brr.crafters_idle": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.idle"]
+		},
+		"controller.render.brr.crafters_chase": {
+			"geometry": "Geometry.chase",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.chase"],
+			"uv_anim": {
+				"offset": [
+					"math.mod(q.property('brr:frame'), 4.0) / 4.0",
+					"math.floor(q.property('brr:frame') / 4.0) / 3.0"
+				],
+				"scale": [0.25, 0.3333333]
+			}
+		}
+	}
+}

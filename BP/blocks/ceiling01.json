@@ -1,0 +1,15 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:ceiling01",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:light_emission": 15,
+			"brr:escape_ceiling": {}
+		}
+	}
+}

@@ -1,0 +1,57 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.brr.crafters",
+				"texture_width": 40,
+				"texture_height": 57,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 4,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "sprite",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-16, 0, -0.005],
+							"size": [32, 42, 0.01],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [40, 57]},
+								"south": {"uv": [40, 0], "uv_size": [-40, 57]}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.brr.crafters_chase",
+				"texture_width": 446,
+				"texture_height": 660,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 4,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "sprite",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-16, 0, -0.005],
+							"size": [32, 47, 0.01],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [446, 660]},
+								"south": {"uv": [446, 0], "uv_size": [-446, 660]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

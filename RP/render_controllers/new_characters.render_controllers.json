@@ -1,0 +1,40 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.brr.simple_sprite": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.default"]
+		},
+		"controller.render.brr.first_prize": {
+			"arrays": {
+				"textures": {
+					"Array.views": ["Texture.view_00", "Texture.view_01", "Texture.view_02", "Texture.view_03", "Texture.view_04", "Texture.view_05", "Texture.view_06", "Texture.view_07", "Texture.view_08", "Texture.view_09", "Texture.view_10", "Texture.view_11", "Texture.view_12", "Texture.view_13", "Texture.view_14", "Texture.view_15"]
+				}
+			},
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Array.views[math.mod(math.round(v.view / 22.5), 16)]"]
+		},
+		"controller.render.brr.walter": {
+			"arrays": {
+				"textures": {
+					"Array.skins": ["Texture.default", "Texture.jolly"]
+				}
+			},
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Array.skins[q.property('brr:jolly')]"]
+		},
+		"controller.render.brr.neil": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.default"]
+		},
+		"controller.render.brr.neil_dead": {
+			"geometry": "Geometry.dead",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.dead"]
+		}
+	}
+}

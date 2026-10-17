@@ -1,0 +1,37 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:first_prize",
+			"materials": { "default": "raldi" },
+			"textures": {
+				"view_00": "textures/characters/first_prize/view_00",
+				"view_01": "textures/characters/first_prize/view_01",
+				"view_02": "textures/characters/first_prize/view_02",
+				"view_03": "textures/characters/first_prize/view_03",
+				"view_04": "textures/characters/first_prize/view_04",
+				"view_05": "textures/characters/first_prize/view_05",
+				"view_06": "textures/characters/first_prize/view_06",
+				"view_07": "textures/characters/first_prize/view_07",
+				"view_08": "textures/characters/first_prize/view_08",
+				"view_09": "textures/characters/first_prize/view_09",
+				"view_10": "textures/characters/first_prize/view_10",
+				"view_11": "textures/characters/first_prize/view_11",
+				"view_12": "textures/characters/first_prize/view_12",
+				"view_13": "textures/characters/first_prize/view_13",
+				"view_14": "textures/characters/first_prize/view_14",
+				"view_15": "textures/characters/first_prize/view_15"
+			},
+			"geometry": { "default": "geometry.brr.first_prize" },
+			"animations": { "billboard": "animation.brr.raldi.billboard" },
+			"scripts": {
+				"pre_animation": [
+					"v.view = math.mod(math.mod(q.camera_rotation(1) - q.body_y_rotation + 180, 360) + 360, 360);"
+				],
+				"animate": ["billboard"]
+			},
+			"render_controllers": ["controller.render.brr.first_prize"],
+			"spawn_egg": { "texture": "brr_first_prize_spawn_egg" }
+		}
+	}
+}

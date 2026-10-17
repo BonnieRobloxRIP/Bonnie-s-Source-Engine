@@ -1,0 +1,17 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:2d_kinda_filled_purple_potion",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_2d_kinda_filled_purple_potion",
+			"minecraft:block_placer": {
+				"block": "brr:2d_kinda_filled_purple_potion_block"
+			}
+		}
+	}
+}

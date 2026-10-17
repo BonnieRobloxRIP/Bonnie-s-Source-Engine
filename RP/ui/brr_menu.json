@@ -1,0 +1,2763 @@
+{
+	"namespace": "brr_menu",
+
+	// Main menu, driven by BP/scripts/main_menu.js. Form titles: "brr:menu:<screen>[|peter][|flash]".
+	// Every collection_index below matches the button order the script adds for that screen.
+
+	// ------------------------------------------------------------------ animations ----
+
+	"float_up": { "anim_type": "offset", "easing": "in_out_sine", "duration": 1.6, "from": [ 0, 4 ], "to": [ 0, -4 ], "next": "@brr_menu.float_down" },
+	"float_down": { "anim_type": "offset", "easing": "in_out_sine", "duration": 1.6, "from": [ 0, -4 ], "to": [ 0, 4 ], "next": "@brr_menu.float_up" },
+
+	// moves exactly one tile towards the bottom right, then starts over
+	"scroll_normal": { "anim_type": "offset", "easing": "linear", "duration": 24.24, "from": [ -960, -540 ], "to": [ 0, 0 ], "next": "@brr_menu.scroll_normal" },
+	"scroll_peter": { "anim_type": "offset", "easing": "linear", "duration": 24.24, "from": [ -960, -576 ], "to": [ 0, 0 ], "next": "@brr_menu.scroll_peter" },
+
+	"flash_fade": { "anim_type": "alpha", "easing": "linear", "duration": 0.6, "from": 1, "to": 0 },
+
+	// ------------------------------------------------------------------ root ----
+
+	"root": {
+		"type": "panel",
+		"size": [ "100%", "100%" ],
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{ "background@brr_menu.background": {} },
+			{ "main@brr_menu.main_screen": {} },
+			{ "play@brr_menu.play_screen": {} },
+			{ "credits@brr_menu.credits_screen": {} },
+			{ "trophies@brr_menu.trophies_screen": {} },
+			{ "audio@brr_menu.audio_screen": {} },
+			{ "gameplay@brr_menu.gameplay_screen": {} },
+			{ "loading@brr_menu.loading_screen": {} },
+			{ "boot@brr_menu.boot_screen": {} },
+			{ "warning@brr_menu.warning_screen": {} },
+			{ "flash@brr_menu.flash": {} }
+		]
+	},
+
+	// ------------------------------------------------------------------ background ----
+
+	// 4x4 copies of the texture at fixed positions, moved one tile to the bottom right then reset
+	"bg_scroller_normal": {
+		"type": "panel",
+		"anchor_from": "top_left",
+		"anchor_to": "top_left",
+		"size": [ 3840, 2160 ],
+		"layer": 2,
+		"anims": [ "@brr_menu.scroll_normal" ],
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "((((#title_text - '|peter') = #title_text) and ((#title_text - 'brr:menu:play') = #title_text)) and ((#title_text - 'brr:menu:main') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{ "t00": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 0, 0 ] } },
+			{ "t01": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 960, 0 ] } },
+			{ "t02": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 1920, 0 ] } },
+			{ "t03": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 2880, 0 ] } },
+			{ "t10": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 0, 540 ] } },
+			{ "t11": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 960, 540 ] } },
+			{ "t12": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 1920, 540 ] } },
+			{ "t13": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 2880, 540 ] } },
+			{ "t20": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 0, 1080 ] } },
+			{ "t21": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 960, 1080 ] } },
+			{ "t22": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 1920, 1080 ] } },
+			{ "t23": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 2880, 1080 ] } },
+			{ "t30": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 0, 1620 ] } },
+			{ "t31": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 960, 1620 ] } },
+			{ "t32": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 1920, 1620 ] } },
+			{ "t33": { "type": "image", "texture": "textures/ui/ScrollingBG", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 540 ], "offset": [ 2880, 1620 ] } }
+		]
+	},
+
+	// 4x4 copies of the texture at fixed positions, moved one tile to the bottom right then reset
+	"bg_scroller_peter": {
+		"type": "panel",
+		"anchor_from": "top_left",
+		"anchor_to": "top_left",
+		"size": [ 3840, 2304 ],
+		"layer": 2,
+		"anims": [ "@brr_menu.scroll_peter" ],
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(((not ((#title_text - '|peter') = #title_text)) and ((#title_text - 'brr:menu:play') = #title_text)) and ((#title_text - 'brr:menu:main') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{ "t00": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 0, 0 ] } },
+			{ "t01": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 960, 0 ] } },
+			{ "t02": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 1920, 0 ] } },
+			{ "t03": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 2880, 0 ] } },
+			{ "t10": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 0, 576 ] } },
+			{ "t11": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 960, 576 ] } },
+			{ "t12": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 1920, 576 ] } },
+			{ "t13": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 2880, 576 ] } },
+			{ "t20": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 0, 1152 ] } },
+			{ "t21": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 960, 1152 ] } },
+			{ "t22": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 1920, 1152 ] } },
+			{ "t23": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 2880, 1152 ] } },
+			{ "t30": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 0, 1728 ] } },
+			{ "t31": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 960, 1728 ] } },
+			{ "t32": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 1920, 1728 ] } },
+			{ "t33": { "type": "image", "texture": "textures/ui/peterScroll", "anchor_from": "top_left", "anchor_to": "top_left", "size": [ 960, 576 ], "offset": [ 2880, 1728 ] } }
+		]
+	},
+
+	"background": {
+		"type": "panel",
+		"size": [ "112%", "112%" ],
+		"clips_children": true,
+		"controls": [
+			// credits / options: plain white behind the scrolling heads (main menu has none)
+			{
+				"white": {
+					"type": "image",
+					"texture": "textures/ui/White",
+					"size": [ "100%", "100%" ],
+					"layer": 1,
+					"bindings": [
+						{ "binding_name": "#title_text" },
+						{ "binding_type": "view", "source_property_name": "(((#title_text - 'brr:menu:main') = #title_text) and ((#title_text - 'brr:menu:play') = #title_text))", "target_property_name": "#visible" }
+					]
+				}
+			},
+			// Native-size tiling uses a half-size copy of wall_tile_dark on the play screen.
+			{
+				"wall": {
+					"type": "image",
+					"texture": "textures/ui/menu/wall_tile_dark_small",
+					"tiled": true,
+					"size": [ "100%", "100%" ],
+					"layer": 1,
+					"bindings": [
+						{ "binding_name": "#title_text" },
+						{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:play') = #title_text))", "target_property_name": "#visible" }
+					]
+				}
+			},
+			{ "normal@brr_menu.bg_scroller_normal": {} },
+			{ "peter@brr_menu.bg_scroller_peter": {} },
+			// main screen: the heads scroll at white 0.392 over the menu camera's view (BGScroller images)
+			{
+				"normal_main@brr_menu.bg_scroller_normal": {
+					"alpha": 0.392,
+					"propagate_alpha": true,
+					"bindings": [
+						{ "binding_name": "#title_text" },
+						{ "binding_type": "view", "source_property_name": "(((#title_text - '|peter') = #title_text) and (not ((#title_text - 'brr:menu:main') = #title_text)))", "target_property_name": "#visible" }
+					]
+				}
+			},
+			{
+				"peter_main@brr_menu.bg_scroller_peter": {
+					"alpha": 0.392,
+					"propagate_alpha": true,
+					"bindings": [
+						{ "binding_name": "#title_text" },
+						{ "binding_type": "view", "source_property_name": "((not ((#title_text - '|peter') = #title_text)) and (not ((#title_text - 'brr:menu:main') = #title_text)))", "target_property_name": "#visible" }
+					]
+				}
+			}
+		]
+	},
+
+	"flash": {
+		"type": "image",
+		"texture": "textures/ui/White",
+		"size": [ "112%", "112%" ],
+		"layer": 60,
+		"alpha": 0,
+		"anims": [ "@brr_menu.flash_fade" ],
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - '|flash') = #title_text))", "target_property_name": "#visible" }
+		]
+	},
+
+	"shade": {
+		"type": "image",
+		"texture": "textures/ui/Black",
+		"size": [ "100%", "100%" ],
+		"alpha": "$shade_alpha",
+		"$shade_alpha|default": 0.35,
+		"layer": 3
+	},
+
+	// ------------------------------------------------------------------ shared controls ----
+
+	"label": {
+		"type": "label",
+		"text": "$btn_text",
+		"$btn_text|default": "#form_button_text",
+		"localize": false,
+		"shadow": true,
+		"color": "$text_color",
+		"$text_color|default": [ 1, 1, 1 ],
+		"font_size": "$font_size",
+		"$font_size|default": "large",
+		"font_scale_factor": "$text_scale",
+		"$text_scale|default": 1.0,
+		"text_alignment": "$text_align",
+		"$text_align|default": "left",
+		"anchor_from": "$text_anchor",
+		"anchor_to": "$text_anchor",
+		"$text_anchor|default": "left_middle",
+		"offset": "$text_offset",
+		"$text_offset|default": [ 0, 0 ],
+		"size": [ "default", "default" ],
+		"layer": 3,
+		"bindings": "$label_bindings",
+		"$label_bindings|default": [
+			{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" }
+		]
+	},
+
+	// text button: hovering makes the text bigger and yellow
+	"text_button": {
+		"type": "button",
+		"size": "$btn_size",
+		"$btn_size|default": [ "100%", 22 ],
+		"collection_index": "$index",
+		"$index|default": 0,
+		"default_control": "default",
+		"hover_control": "hover",
+		"pressed_control": "pressed",
+		"sound_name": "menu.click",
+		"sound_volume": 1.0,
+		"button_mappings": "$btn_mappings",
+		"$btn_mappings|default": [
+			{ "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+			{ "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "focused" }
+		],
+		"bindings": "$btn_bindings",
+		"$btn_bindings|default": [
+			{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+		],
+		"controls": [
+			{ "default@brr_menu.label": {} },
+			{ "hover@brr_menu.label": { "$text_color": [ 1, 0.87, 0 ], "$text_scale": 1.25 } },
+			{ "pressed@brr_menu.label": { "$text_color": [ 1, 0.87, 0 ], "$text_scale": 1.25 } }
+		]
+	},
+
+	"empty": { "type": "panel", "size": [ "100%", "100%" ] },
+
+	// invisible clickable area
+	"hitbox_button": {
+		"type": "button",
+		"collection_index": "$index",
+		"default_control": "default",
+		"hover_control": "hover",
+		"pressed_control": "pressed",
+		"button_mappings": [
+			{ "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" }
+		],
+		"bindings": [
+			{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+		],
+		"controls": [
+			{ "default@brr_menu.empty": {} },
+			{ "hover@brr_menu.empty": {} },
+			{ "pressed@brr_menu.empty": {} }
+		]
+	},
+
+	"back_image": {
+		"type": "image",
+		"texture": "textures/ui/menu/back_arrow",
+		"size": "$arrow_size",
+		"$arrow_size|default": [ "100%", "100%" ],
+		"anchor_from": "center",
+		"anchor_to": "center",
+		"color": "$arrow_color",
+		"$arrow_color|default": [ 1, 1, 1 ]
+	},
+
+	// button 0 on every sub screen; it plays "back", or "back_nf" with fart sounds off ("|nf", SpinningHoverButton)
+	// a collection panel like every other button holder, so collection_index is known on its buttons
+	"back_button": {
+		"type": "collection_panel",
+		"collection_name": "form_buttons",
+		"size": [ 26, 26 ],
+		"anchor_from": "top_left",
+		"anchor_to": "top_left",
+		"offset": [ 8, 8 ],
+		"layer": 20,
+		"controls": [
+			{
+				"normal@brr_menu.back_arrow_button": {
+					"$back_sound": "menu.back",
+					"bindings": [
+						{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" },
+						{ "binding_name": "#title_text" },
+						{ "binding_type": "view", "source_property_name": "((#title_text - '|nf') = #title_text)", "target_property_name": "#visible" }
+					]
+				}
+			},
+			{
+				"no_fart@brr_menu.back_arrow_button": {
+					"$back_sound": "menu.back_nf",
+					"bindings": [
+						{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" },
+						{ "binding_name": "#title_text" },
+						{ "binding_type": "view", "source_property_name": "(not ((#title_text - '|nf') = #title_text))", "target_property_name": "#visible" }
+					]
+				}
+			}
+		]
+	},
+
+	"back_arrow_button": {
+		"type": "button",
+		"size": [ "100%", "100%" ],
+		"collection_index": 0,
+		"default_control": "default",
+		"hover_control": "hover",
+		"pressed_control": "pressed",
+		"sound_name": "$back_sound",
+		"sound_volume": 1.0,
+		"button_mappings": [
+			{ "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+			{ "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "focused" }
+		],
+		"bindings": [
+			{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+		],
+		"controls": [
+			{ "default@brr_menu.back_image": {} },
+			{ "hover@brr_menu.back_image": { "$arrow_size": [ "120%", "120%" ] } },
+			{ "pressed@brr_menu.back_image": { "$arrow_size": [ "120%", "120%" ], "$arrow_color": [ 0.8, 0.8, 0.8 ] } }
+		]
+	},
+
+	"screen_title": {
+		"type": "label",
+		"text": "$title",
+		"localize": false,
+		"shadow": true,
+		"font_size": "large",
+		"font_scale_factor": 1.6,
+		"text_alignment": "center",
+		"anchor_from": "top_middle",
+		"anchor_to": "top_middle",
+		"offset": [ 0, 12 ],
+		"size": [ "default", "default" ],
+		"layer": 10
+	},
+
+	// ------------------------------------------------------------------ main ----
+
+	// Laid out from the original's 854x480 canvas (UI/MainMenu in level3): x% = x / 854, y% = y / 480.
+	// Behind it: the menu camera's view of the map (BP/scripts/menu_camera.js) under the scrolling heads.
+
+	// the character collage bobs like the original Floater (15 units, one sine period per 2pi seconds)
+	"collage_float_up": { "anim_type": "offset", "easing": "in_out_sine", "duration": 3.14, "from": [ 0, 8 ], "to": [ 0, -8 ], "next": "@brr_menu.collage_float_down" },
+	"collage_float_down": { "anim_type": "offset", "easing": "in_out_sine", "duration": 3.14, "from": [ 0, -8 ], "to": [ 0, 8 ], "next": "@brr_menu.collage_float_up" },
+
+	// Intro ("|intro", the first menu after joining), timed from the original IntroAnimation:
+	// white + team logo 0-4.7 s, splash line 4.7-7.6 s, white fades out by 8.1 s, then the UI flies in.
+	"intro_white_hold": { "anim_type": "alpha", "easing": "linear", "duration": 7.6, "from": 1, "to": 1, "next": "@brr_menu.intro_white_fade" },
+	"intro_white_fade": { "anim_type": "alpha", "easing": "linear", "duration": 0.5, "from": 1, "to": 0 },
+	"intro_logo_in": { "anim_type": "alpha", "easing": "linear", "duration": 0.5, "from": 0, "to": 1, "next": "@brr_menu.intro_logo_hold" },
+	"intro_logo_hold": { "anim_type": "alpha", "easing": "linear", "duration": 3.0, "from": 1, "to": 1, "next": "@brr_menu.intro_logo_out" },
+	"intro_logo_out": { "anim_type": "alpha", "easing": "linear", "duration": 1.2, "from": 1, "to": 0 },
+	"intro_text_wait": { "anim_type": "alpha", "easing": "linear", "duration": 4.7, "from": 0, "to": 0, "next": "@brr_menu.intro_text_hold" },
+	"intro_text_hold": { "anim_type": "alpha", "easing": "linear", "duration": 2.9, "from": 1, "to": 1, "next": "@brr_menu.intro_text_fade" },
+	"intro_text_fade": { "anim_type": "alpha", "easing": "linear", "duration": 0.5, "from": 1, "to": 0 },
+	"intro_panel_wait": { "anim_type": "offset", "easing": "linear", "duration": 8.1, "from": [ -320, 0 ], "to": [ -320, 0 ], "next": "@brr_menu.intro_panel_in" },
+	"intro_panel_in": { "anim_type": "offset", "easing": "out_back", "duration": 0.8, "from": [ -320, 0 ], "to": [ 0, 0 ] },
+	"intro_art_wait": { "anim_type": "offset", "easing": "linear", "duration": 8.2, "from": [ 0, 320 ], "to": [ 0, 320 ] , "next": "@brr_menu.intro_art_in" },
+	"intro_art_in": { "anim_type": "offset", "easing": "out_back", "duration": 0.8, "from": [ 0, 320 ], "to": [ 0, 0 ] },
+
+	// Everything on the main screen except the intro overlay. Shown twice: still, and (during the intro)
+	// with the fly-in animations, so going back to the main screen from a sub screen doesn't replay them.
+	"main_content": {
+		"type": "collection_panel",
+		"size": [ "100%", "100%" ],
+		"collection_name": "form_buttons",
+		"$panel_anims|default": [],
+		"$art_anims|default": [],
+		"controls": [
+			{
+				"side": {
+					"type": "collection_panel",
+					"size": [ "100%", "100%" ],
+					"collection_name": "form_buttons",
+					"anims": "$panel_anims",
+					"layer": 5,
+					"controls": [
+						// SidePanel: Rounded at black 0.588, 287 wide, full height
+						{
+							"panel": {
+								"type": "image",
+								"texture": "textures/ui/menu/rounded",
+								"color": [ 0, 0, 0 ],
+								"alpha": 0.588,
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"offset": [ "-0.19%", 0 ],
+								"size": [ "33.63%", "100%" ],
+								"layer": 1
+							}
+						},
+						{
+							"logo": {
+								"type": "image",
+								"texture": "textures/ui/logo_lined",
+								// centred where the original Logo sits (142.8, 89), box shaped like this texture (429x146)
+								"anchor_from": "top_left",
+								"anchor_to": "center",
+								"offset": [ "16.72%", "18.54%" ],
+								"size": [ "31.73%", "34.03%x" ],
+								"layer": 2,
+								"bindings": [
+									{ "binding_name": "#title_text" },
+									{ "binding_type": "view", "source_property_name": "((#title_text - '|peter') = #title_text)", "target_property_name": "#visible" }
+								]
+							}
+						},
+						{
+							"logo_peter": {
+								"type": "image",
+								"texture": "textures/ui/logo_PG",
+								"anchor_from": "top_left",
+								"anchor_to": "center",
+								"offset": [ "16.72%", "18.54%" ],
+								"size": [ "25%", "50.79%x" ],
+								"layer": 2,
+								"bindings": [
+									{ "binding_name": "#title_text" },
+									{ "binding_type": "view", "source_property_name": "(not ((#title_text - '|peter') = #title_text))", "target_property_name": "#visible" }
+								]
+							}
+						},
+						// 256x53.3 buttons, 4.66 apart, from 170.5 down, centred in the panel (no QUIT: the
+						// form still sends its slot, button 3, so the other indices stay put)
+						{
+							"buttons": {
+								"type": "stack_panel",
+								"orientation": "vertical",
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"offset": [ "1.73%", "35.52%" ],
+								"size": [ "29.98%", "100%c" ],
+								"layer": 3,
+								"collection_name": "form_buttons",
+								"controls": [
+									{ "play@brr_menu.main_button": { "$index": 0 } },
+									{ "pad0@brr_menu.main_button_gap": {} },
+									{ "trophies@brr_menu.main_button": { "$index": 5 } },
+									{ "pad1@brr_menu.main_button_gap": {} },
+									{ "credits@brr_menu.main_button": { "$index": 1 } },
+									{ "pad2@brr_menu.main_button_gap": {} },
+									{ "options@brr_menu.main_button": { "$index": 2 } }
+								]
+							}
+						}
+					]
+				}
+			},
+			// CharacterCollage: menuArt 512x384 centred at x 588 (the middle of the space right of the panel)
+			{
+				"collage": {
+					"type": "collection_panel",
+					"size": [ "100%", "100%" ],
+					"collection_name": "form_buttons",
+					"anims": "$art_anims",
+					"layer": 4,
+					"controls": [
+						{
+							"art_slot": {
+								"type": "collection_panel",
+								"anchor_from": "top_left",
+								"anchor_to": "center",
+								"offset": [ "68.85%", "50%" ],
+								"size": [ "59.95%", "75%x" ],
+								"collection_name": "form_buttons",
+								// the Floater bobs inside the slot; an offset animation on the slot itself would replace its position
+								"controls": [
+									{
+										"floater": {
+											"type": "collection_panel",
+											"size": [ "100%", "100%" ],
+											"collection_name": "form_buttons",
+											"anims": [ "@brr_menu.collage_float_up" ],
+											"controls": [
+									{
+										"normal": {
+											"type": "image",
+											"texture": "textures/ui/menuArt",
+											"size": [ "100%", "100%" ],
+											"layer": 1,
+											"bindings": [
+												{ "binding_name": "#title_text" },
+												{ "binding_type": "view", "source_property_name": "((#title_text - '|peter') = #title_text)", "target_property_name": "#visible" }
+											]
+										}
+									},
+									{
+										"peter": {
+											"type": "image",
+											"texture": "textures/ui/menuArtPeter",
+											"size": [ "100%", "100%" ],
+											"layer": 1,
+											"bindings": [
+												{ "binding_name": "#title_text" },
+												{ "binding_type": "view", "source_property_name": "(not ((#title_text - '|peter') = #title_text))", "target_property_name": "#visible" }
+											]
+										}
+									},
+									// PeterTrigger: 142x280, bottom 156 below the collage centre, 181 right of it
+									{
+										"peter_hitbox@brr_menu.text_button": {
+											"$index": 4,
+											"$btn_text": "",
+											"$label_bindings": [],
+											"$btn_size": [ "27.76%", "72.92%" ],
+											"anchor_from": "top_left",
+											"anchor_to": "top_left",
+											"offset": [ "71.48%", "17.71%" ],
+											"layer": 2
+										}
+									}
+											]
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"version": {
+					"type": "label",
+					"text": "#form_text",
+					"localize": false,
+					"shadow": true,
+					"color": [ 1, 1, 1 ],
+					"anchor_from": "bottom_left",
+					"anchor_to": "bottom_left",
+					"offset": [ "0.9%", -3 ],
+					"size": [ "default", "default" ],
+					"layer": 6,
+					"bindings": [ { "binding_name": "#form_text" } ]
+				}
+			}
+		]
+	},
+
+	// main menu buttons: centred text, white turning yellow and bigger on hover (ExpandingMenuButton)
+	"main_button@brr_menu.text_button": {
+		"$btn_size": [ "100%", "20.83%x" ],
+		"$text_anchor": "center",
+		"$text_align": "center",
+		"$font_size": "extra_large"
+	},
+
+	"main_button_gap": { "type": "panel", "size": [ "100%", "1.82%x" ] },
+
+	// white screen, team logo, then one random splash line (button 6, BP/scripts/intro_texts_data.js)
+	"intro_overlay": {
+		// a collection panel, so line_slot can read its button text
+		"type": "collection_panel",
+		"collection_name": "form_buttons",
+		"size": [ "100%", "100%" ],
+		"layer": 50,
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - '|intro') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{ "white": { "type": "image", "texture": "textures/ui/White", "size": [ "112%", "112%" ], "alpha": 0, "layer": 1, "anims": [ "@brr_menu.intro_white_hold" ] } },
+			{
+				"team": {
+					"type": "image",
+					"texture": "textures/ui/menu/team_splash",
+					"size": [ "103.42%y", "50.67%" ],
+					"alpha": 0,
+					"layer": 2,
+					"anims": [ "@brr_menu.intro_logo_in" ]
+				}
+			},
+			{
+				"line_slot": {
+					"type": "panel",
+					"size": [ "100%", "100%" ],
+					"collection_index": 6,
+					"layer": 2,
+					"bindings": [ { "binding_type": "collection_details", "binding_collection_name": "form_buttons" } ],
+					"controls": [
+						{
+							"line": {
+								"type": "label",
+								"text": "#form_button_text",
+								"localize": false,
+								"color": [ 0.2, 0.2, 0.2 ],
+								"text_alignment": "center",
+								"size": [ "95%", "default" ],
+								"alpha": 0,
+								"anims": [ "@brr_menu.intro_text_wait" ],
+								"bindings": [ { "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" } ]
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+
+	"main_screen": {
+		"type": "collection_panel",
+		"size": [ "100%", "100%" ],
+		"collection_name": "form_buttons",
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:main') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{
+				"still@brr_menu.main_content": {
+					"bindings": [
+						{ "binding_name": "#title_text" },
+						{ "binding_type": "view", "source_property_name": "((#title_text - '|intro') = #title_text)", "target_property_name": "#visible" }
+					]
+				}
+			},
+			{
+				"flying@brr_menu.main_content": {
+					"$panel_anims": [ "@brr_menu.intro_panel_wait" ],
+					"$art_anims": [ "@brr_menu.intro_art_wait" ],
+					"bindings": [
+						{ "binding_name": "#title_text" },
+						{ "binding_type": "view", "source_property_name": "(not ((#title_text - '|intro') = #title_text))", "target_property_name": "#visible" }
+					]
+				}
+			},
+			{ "intro@brr_menu.intro_overlay": {} }
+		]
+	},
+
+	// ------------------------------------------------------------------ boot ----
+
+	// The original's Loading screen (Startup scene): GameArt, the logo top left and "Loading" with
+	// cycling dots. The Unity/Rewired/studio splashes before it are left out.
+	"dots_on": { "anim_type": "alpha", "easing": "linear", "duration": 0.4, "from": 1, "to": 1, "next": "@brr_menu.dots_off" },
+	"dots_off": { "anim_type": "alpha", "easing": "linear", "duration": 0.8, "from": 0, "to": 0, "next": "@brr_menu.dots_on" },
+	"dots_wait_1": { "anim_type": "alpha", "easing": "linear", "duration": 0.4, "from": 0, "to": 0, "next": "@brr_menu.dots_on" },
+	"dots_wait_2": { "anim_type": "alpha", "easing": "linear", "duration": 0.8, "from": 0, "to": 0, "next": "@brr_menu.dots_on" },
+
+	"loading_dots": {
+		"type": "label",
+		"text": "$dots_text",
+		"localize": false,
+		"shadow": true,
+		"font_size": "extra_large",
+		"anchor_from": "top_left",
+		"anchor_to": "left_middle",
+		"offset": [ "7.2%", "81.5%" ],
+		"size": [ "default", "default" ],
+		"layer": 3
+	},
+
+	"boot_screen": {
+		"type": "panel",
+		"size": [ "100%", "100%" ],
+		"layer": 40,
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:boot') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{ "black": { "type": "image", "texture": "textures/ui/Black", "size": [ "112%", "112%" ], "layer": 0 } },
+			{ "art": { "type": "image", "texture": "textures/ui/boot/game_art", "size": [ "93.68%", "93.76%" ], "layer": 1 } },
+			{
+				"logo": {
+					"type": "image",
+					"texture": "textures/ui/logo_lined",
+					"anchor_from": "top_left",
+					"anchor_to": "top_left",
+					"offset": [ "7.2%", "5.73%" ],
+					"size": [ "31.73%", "59.41%x" ],
+					"layer": 2
+				}
+			},
+			{ "dots_1@brr_menu.loading_dots": { "$dots_text": "Loading.", "alpha": 0, "anims": [ "@brr_menu.dots_on" ] } },
+			{ "dots_2@brr_menu.loading_dots": { "$dots_text": "Loading..", "alpha": 0, "anims": [ "@brr_menu.dots_wait_1" ] } },
+			{ "dots_3@brr_menu.loading_dots": { "$dots_text": "Loading...", "alpha": 0, "anims": [ "@brr_menu.dots_wait_2" ] } }
+		]
+	},
+
+	// Content warning (Warning scene): the chair room, the text fading in, any key continues.
+	// "|accepted" fades to black while the music stops (WarningScreenAccepted).
+	"warning_text_wait": { "anim_type": "alpha", "easing": "linear", "duration": 1.0, "from": 0, "to": 0, "next": "@brr_menu.warning_text_in" },
+	"warning_text_in": { "anim_type": "alpha", "easing": "linear", "duration": 0.6, "from": 0, "to": 1 },
+	"warning_out": { "anim_type": "alpha", "easing": "linear", "duration": 1.5, "from": 0, "to": 1 },
+
+	"warning_screen": {
+		"type": "collection_panel",
+		"size": [ "100%", "100%" ],
+		"collection_name": "form_buttons",
+		"layer": 40,
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:warning') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{ "black": { "type": "image", "texture": "textures/ui/Black", "size": [ "112%", "112%" ], "layer": 0 } },
+			{ "room": { "type": "image", "texture": "textures/ui/boot/chair_bg", "size": [ "112%", "112%" ], "layer": 1 } },
+			{
+				"text": {
+					"type": "label",
+					"text": "WARNING!\nThis mod contains elements that may be considered inappropriate and triggering to some users.\nThese themes include:\n\nFlashing Lights\nSwear Words\nGun Violence\nDrug Use / Mentions\nCopyrighted Music\nTwitter Memes\n\nThese can be toggled and disabled from the main menu at any time (except the last one).\n\nANY KEY TO CONTINUE",
+					"localize": false,
+					"shadow": true,
+					"text_alignment": "center",
+					"offset": [ 0, "-4.71%" ],
+					"size": [ "56.2%", "default" ],
+					"alpha": 0,
+					"layer": 2,
+					"anims": [ "@brr_menu.warning_text_wait" ]
+				}
+			},
+			// the whole screen is the button: clicking or Enter continues (Escape does too, from the script)
+			{
+				"continue": {
+					"type": "button",
+					"size": [ "100%", "100%" ],
+					"collection_index": 0,
+					"layer": 3,
+					"default_control": "default",
+					"hover_control": "hover",
+					"pressed_control": "pressed",
+					"sound_name": "menu.confirm",
+					"sound_volume": 1.0,
+					"button_mappings": [
+						{ "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+						{ "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "global" }
+					],
+					"bindings": [ { "binding_type": "collection_details", "binding_collection_name": "form_buttons" } ],
+					"controls": [
+						{ "default@brr_menu.empty": {} },
+						{ "hover@brr_menu.empty": {} },
+						{ "pressed@brr_menu.empty": {} }
+					]
+				}
+			},
+			{
+				"out": {
+					"type": "image",
+					"texture": "textures/ui/Black",
+					"size": [ "100%", "100%" ],
+					"alpha": 0,
+					"layer": 4,
+					"anims": [ "@brr_menu.warning_out" ],
+					"bindings": [
+						{ "binding_name": "#title_text" },
+						{ "binding_type": "view", "source_property_name": "(not ((#title_text - '|accepted') = #title_text))", "target_property_name": "#visible" }
+					]
+				}
+			}
+		]
+	},
+
+	// ------------------------------------------------------------------ select gamemode ----
+
+	// One card per gamemode. $mode_texture is a 512x512 sheet: [0,0] normal, [256,0] highlighted.
+	// Button text (BP/scripts/run.js playScreen) is "<state>|<status>": "o" open, "v" open and
+	// voted for by this player, "l" locked (dimmed); the status line is shown under the description.
+	"mode_card_face": {
+		"type": "panel",
+		"size": [ "100%", "100%" ],
+		"controls": [
+			{ "border": { "type": "image", "texture": "textures/ui/White", "size": [ "100%", "100%" ], "color": "$border_color", "layer": 1 } },
+			{
+				"voted": {
+					"type": "image",
+					"texture": "textures/ui/White",
+					"size": [ "100%", "100%" ],
+					"color": [ 0.63, 0.94, 0.44 ],
+					"layer": 2,
+					"bindings": [
+						{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" },
+						{ "binding_type": "view", "source_property_name": "(('%.1s' * #form_button_text) = 'v')", "target_property_name": "#visible" }
+					]
+				}
+			},
+			{ "fill": { "type": "image", "texture": "textures/ui/Black", "size": [ "100% - 4px", "100% - 4px" ], "alpha": 0.85, "layer": 3 } },
+			{
+				"icon": {
+					"type": "image",
+					"texture": "$mode_texture",
+					"uv": "$card_uv",
+					"uv_size": [ 256, 256 ],
+					"anchor_from": "left_middle",
+					"anchor_to": "left_middle",
+					"offset": [ 10, 0 ],
+					"size": [ 76, 76 ],
+					"layer": 4
+				}
+			},
+			{
+				"title": {
+					"type": "label",
+					"text": "$mode_title",
+					"localize": false,
+					"shadow": true,
+					"color": [ 1, 1, 1 ],
+					"font_size": "large",
+					"font_scale_factor": 1.1,
+					"anchor_from": "top_left",
+					"anchor_to": "top_left",
+					"offset": [ 96, 10 ],
+					"size": [ "default", "default" ],
+					"layer": 4
+				}
+			},
+			{
+				"desc": {
+					"type": "label",
+					"text": "$mode_desc",
+					"localize": false,
+					"shadow": true,
+					"color": [ 0.95, 0.95, 0.95 ],
+					"font_scale_factor": 0.9,
+					"anchor_from": "top_left",
+					"anchor_to": "top_left",
+					"offset": [ 96, 30 ],
+					"size": [ "100% - 106px", "default" ],
+					"layer": 4
+				}
+			},
+			{
+				"status@brr_menu.trophy_text": {
+					"$text_source": "(#form_button_text - ('%.2s' * #form_button_text))",
+					"$text_color": [ 1, 0.87, 0 ],
+					"$text_anchor": "bottom_left",
+					"$text_offset": [ 96, -8 ],
+					"layer": 6
+				}
+			},
+			{
+				"locked": {
+					"type": "image",
+					"texture": "textures/ui/Black",
+					"size": [ "100%", "100%" ],
+					"alpha": 0.6,
+					"layer": 5,
+					"bindings": [
+						{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" },
+						{ "binding_type": "view", "source_property_name": "(('%.1s' * #form_button_text) = 'l')", "target_property_name": "#visible" }
+					]
+				}
+			}
+		]
+	},
+
+	"mode_card": {
+		"type": "button",
+		"size": [ "100%", 92 ],
+		"collection_index": "$index",
+		"default_control": "default",
+		"hover_control": "hover",
+		"pressed_control": "pressed",
+		"sound_name": "menu.click",
+		"sound_volume": 1.0,
+		"button_mappings": [
+			{ "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+			{ "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "focused" }
+		],
+		"bindings": [
+			{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+		],
+		"controls": [
+			{ "default@brr_menu.mode_card_face": { "$card_uv": [ 0, 0 ], "$border_color": [ 0.35, 0.35, 0.35 ] } },
+			{ "hover@brr_menu.mode_card_face": { "$card_uv": [ 256, 0 ], "$border_color": [ 1, 0.87, 0 ] } },
+			{ "pressed@brr_menu.mode_card_face": { "$card_uv": [ 256, 0 ], "$border_color": [ 1, 0.87, 0 ] } }
+		]
+	},
+
+	"play_bar": {
+		"type": "image",
+		"texture": "textures/ui/menu/wall_tile",
+		"tiled": true,
+		"size": [ "100%", "13.5%" ],
+		"layer": 4
+	},
+
+	"play_screen": {
+		"type": "collection_panel",
+		"size": [ "100%", "100%" ],
+		"collection_name": "form_buttons",
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:play') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{ "top_bar@brr_menu.play_bar": { "anchor_from": "top_middle", "anchor_to": "top_middle" } },
+			{ "bottom_bar@brr_menu.play_bar": { "anchor_from": "bottom_middle", "anchor_to": "bottom_middle" } },
+			{
+				"content": {
+					"type": "panel",
+					"size": [ "100%", "73%" ],
+					"controls": [
+						{
+							"raldi": {
+								"type": "image",
+								"texture": "textures/ui/RaldiMenu",
+								"size": [ 128, 128 ],
+								"anchor_from": "bottom_left",
+								"anchor_to": "bottom_left",
+								"layer": 5
+							}
+						}
+					]
+				}
+			},
+			{ "back@brr_menu.back_button": {} },
+			{
+				"title_slot": {
+					"type": "panel",
+					"anchor_from": "top_middle",
+					"anchor_to": "top_middle",
+					"size": [ "100%", "13.5%" ],
+					"layer": 6,
+					"controls": [
+						{
+							"title_float": {
+								"type": "panel",
+								"size": [ "100%", "100%" ],
+								"anims": [ "@brr_menu.float_up" ],
+								"controls": [
+									{
+										"title@brr_menu.screen_title": {
+											"$title": "Select Gamemode",
+											"anchor_from": "center",
+											"anchor_to": "center",
+											"offset": [ 0, 0 ],
+											"font_scale_factor": 2.0
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"modes": {
+					"type": "stack_panel",
+					"orientation": "vertical",
+					"anchor_from": "center",
+					"anchor_to": "center",
+					"offset": [ 0, 4 ],
+					"size": [ "90%", "100%c" ],
+					"max_size": [ 520, 400 ],
+					"layer": 6,
+					"collection_name": "form_buttons",
+					// order and indexes match MODES in BP/scripts/run.js
+					"controls": [
+						{
+							"story@brr_menu.mode_card": {
+								"$index": 1,
+								"$mode_texture": "textures/ui/GM_Story",
+								"$mode_title": "Story Mode",
+								"$mode_desc": "Collect all 10 notebooks, and then exit the crackhouse, to win!"
+							}
+						},
+						{ "gap": { "type": "panel", "size": [ "100%", 6 ] } },
+						{
+							"endless@brr_menu.mode_card": {
+								"$index": 2,
+								"$mode_texture": "textures/ui/GM_Endless",
+								"$mode_title": "Endless Mode",
+								"$mode_desc": "Collect as many notebooks as you can! How many can you collect?"
+							}
+						}
+					]
+				}
+			},
+			// vote countdown / "game in progress" line, centred in the bottom bar
+			{
+				"banner_slot": {
+					"type": "panel",
+					"anchor_from": "bottom_middle",
+					"anchor_to": "bottom_middle",
+					"size": [ "100%", "13.5%" ],
+					"layer": 7,
+					"controls": [
+						{
+							"banner": {
+								"type": "label",
+								"text": "#form_text",
+								"localize": false,
+								"shadow": true,
+								"color": [ 1, 0.87, 0 ],
+								"font_scale_factor": 1.2,
+								"text_alignment": "center",
+								"size": [ "default", "default" ],
+								"bindings": [ { "binding_name": "#form_text" } ]
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+
+	// ------------------------------------------------------------------ loading ----
+
+	// Shown while a run's map loads ("brr:menu:loading|bg<1-4>|tip:<tip>"), laid out like the
+	// original's LoadingScreen: the background fills the screen and slowly grows (SlowlyIncreaseSize,
+	// +2% a second), a dark strip along the bottom holds "Loading" with cycling dots (FunnyLoadingText)
+	// over the progress bar on the left and the tip on the right. The bus is a second progress
+	// slider: it drives from the right edge to the left as the bar fills, bobbing like the menu art.
+	// Positions are measured off the original at 1920x1080. The bar takes 5 seconds, matching
+	// LOAD_TICKS in BP/scripts/run.js.
+	"loading_fill": { "anim_type": "size", "easing": "linear", "duration": 5, "from": [ "0%", "100%" ], "to": [ "100%", "100%" ] },
+	"loading_zoom": { "anim_type": "size", "easing": "linear", "duration": 5, "from": [ "100%", "100%" ], "to": [ "110%", "110%" ] },
+	"loading_bus": { "anim_type": "offset", "easing": "linear", "duration": 5, "from": [ "-78.1%", "17.6%" ], "to": [ "-2.1%", "17.6%" ] },
+	"loading_fade": { "anim_type": "alpha", "easing": "linear", "duration": 0.5, "from": 1, "to": 0 },
+	// "Loading", "Loading.", "Loading..", "Loading..." for half a second each, round and round
+	"loading_text_on": { "anim_type": "alpha", "easing": "linear", "duration": 0.5, "from": 1, "to": 1, "next": "@brr_menu.loading_text_off" },
+	"loading_text_off": { "anim_type": "alpha", "easing": "linear", "duration": 1.5, "from": 0, "to": 0, "next": "@brr_menu.loading_text_on" },
+	"loading_text_wait_1": { "anim_type": "alpha", "easing": "linear", "duration": 0.5, "from": 0, "to": 0, "next": "@brr_menu.loading_text_on" },
+	"loading_text_wait_2": { "anim_type": "alpha", "easing": "linear", "duration": 1.0, "from": 0, "to": 0, "next": "@brr_menu.loading_text_on" },
+	"loading_text_wait_3": { "anim_type": "alpha", "easing": "linear", "duration": 1.5, "from": 0, "to": 0, "next": "@brr_menu.loading_text_on" },
+
+	"loading_background": {
+		"type": "image",
+		"texture": "$bg_texture",
+		"keep_ratio": false,
+		"anchor_from": "center",
+		"anchor_to": "center",
+		"size": [ "112%", "112%" ],
+		"layer": 1,
+		"anims": [ "@brr_menu.loading_zoom" ],
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "$bg_visible", "target_property_name": "#visible" }
+		]
+	},
+
+	"loading_text": {
+		"type": "label",
+		"text": "$loading_text",
+		"localize": false,
+		"shadow": true,
+		"font_size": "extra_large",
+		"anchor_from": "top_left",
+		"anchor_to": "top_left",
+		"offset": [ "8.6%", "18%" ],
+		"size": [ "default", "default" ],
+		"layer": 3
+	},
+
+	"loading_screen": {
+		"type": "panel",
+		"size": [ "100%", "100%" ],
+		"layer": 40,
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:loading') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{ "black": { "type": "image", "texture": "textures/ui/Black", "size": [ "112%", "112%" ], "layer": 0 } },
+			{ "bg1@brr_menu.loading_background": { "$bg_texture": "textures/ui/loading/bg1", "$bg_visible": "(not ((#title_text - '|bg1') = #title_text))" } },
+			{ "bg2@brr_menu.loading_background": { "$bg_texture": "textures/ui/loading/bg2", "$bg_visible": "(not ((#title_text - '|bg2') = #title_text))" } },
+			{ "bg3@brr_menu.loading_background": { "$bg_texture": "textures/ui/loading/bg3", "$bg_visible": "(not ((#title_text - '|bg3') = #title_text))" } },
+			{ "bg4@brr_menu.loading_background": { "$bg_texture": "textures/ui/loading/bg4", "$bg_visible": "(not ((#title_text - '|bg4') = #title_text))" } },
+			{
+				"bus_mover": {
+					"type": "panel",
+					"anchor_from": "top_right",
+					"anchor_to": "top_right",
+					"offset": [ "-2.1%", "17.6%" ],
+					"size": [ "19.8%", "92.4%x" ],
+					"layer": 2,
+					"anims": [ "@brr_menu.loading_bus" ],
+					"controls": [
+						{
+							"bus": {
+								"type": "image",
+								"texture": "textures/ui/loading/bus",
+								"size": [ "100%", "100%" ],
+								"anims": [ "@brr_menu.float_up" ]
+							}
+						}
+					]
+				}
+			},
+			{
+				"strip": {
+					"type": "image",
+					"texture": "textures/ui/Black",
+					"alpha": 0.55,
+					"anchor_from": "bottom_middle",
+					"anchor_to": "bottom_middle",
+					"size": [ "100%", "21%" ],
+					"layer": 2,
+					"controls": [
+						{ "text_0@brr_menu.loading_text": { "$loading_text": "Loading", "alpha": 0, "anims": [ "@brr_menu.loading_text_on" ] } },
+						{ "text_1@brr_menu.loading_text": { "$loading_text": "Loading.", "alpha": 0, "anims": [ "@brr_menu.loading_text_wait_1" ] } },
+						{ "text_2@brr_menu.loading_text": { "$loading_text": "Loading..", "alpha": 0, "anims": [ "@brr_menu.loading_text_wait_2" ] } },
+						{ "text_3@brr_menu.loading_text": { "$loading_text": "Loading...", "alpha": 0, "anims": [ "@brr_menu.loading_text_wait_3" ] } },
+						{
+							"bar": {
+								"type": "panel",
+								"anchor_from": "bottom_left",
+								"anchor_to": "bottom_left",
+								"offset": [ "2.2%", "-23%" ],
+								"size": [ "26.4%", "28%" ],
+								"layer": 3,
+								"controls": [
+									{ "track": { "type": "image", "texture": "textures/ui/White", "color": [ 0.13, 0.13, 0.13 ], "alpha": 0.85, "size": [ "100%", "100%" ], "layer": 1 } },
+									{
+										"fill": {
+											"type": "image",
+											"texture": "textures/ui/White",
+											"color": [ 0.85, 0.85, 0.85 ],
+											"anchor_from": "left_middle",
+											"anchor_to": "left_middle",
+											"size": [ "0%", "100%" ],
+											"layer": 2,
+											"anims": [ "@brr_menu.loading_fill" ]
+										}
+									}
+								]
+							}
+						},
+						{
+							"tip": {
+								"type": "label",
+								"text": "#tip_text",
+								"localize": false,
+								"shadow": true,
+								"font_size": "extra_large",
+								"text_alignment": "right",
+								"anchor_from": "right_middle",
+								"anchor_to": "right_middle",
+								"offset": [ "-2.1%", 0 ],
+								"size": [ "45%", "default" ],
+								"layer": 3,
+								"property_bag": { "#tip_text": "" },
+								// everything after "|tip:" in the title: strip each possible prefix
+								"bindings": [
+									{ "binding_name": "#title_text" },
+									{
+										"binding_type": "view",
+										"source_property_name": "((((#title_text - 'brr:menu:loading|bg1|tip:') - 'brr:menu:loading|bg2|tip:') - 'brr:menu:loading|bg3|tip:') - 'brr:menu:loading|bg4|tip:')",
+										"target_property_name": "#tip_text"
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"fade": {
+					"type": "image",
+					"texture": "textures/ui/Black",
+					"size": [ "100%", "100%" ],
+					"layer": 10,
+					"alpha": 0,
+					"anims": [ "@brr_menu.loading_fade" ]
+				}
+			}
+		]
+	},
+
+	// ------------------------------------------------------------------ credits ----
+
+	// <GENERATED by scripts_gen/gen_credits_ui.mjs> ----
+	// The original's Credits (level3: Credits > BG, Content, TopBar, BottomBar): dark bars 13.7% tall
+	// over the scene top and bottom, the list scrolling under the bottom bar. People turn yellow while
+	// hovered or focused, like CreditsMenuEntry.OnHover, and show their social link. Edit the data in
+	// the generator, not here: each section title needs its own animation pair (see the generator).
+
+	"credits_float_up_0": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			4
+		],
+		"to": [
+			0,
+			-4
+		],
+		"next": "@brr_menu.credits_float_down_0"
+	},
+
+	"credits_float_down_0": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			-4
+		],
+		"to": [
+			0,
+			4
+		],
+		"next": "@brr_menu.credits_float_up_0"
+	},
+
+	"credits_float_up_1": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			4
+		],
+		"to": [
+			0,
+			-4
+		],
+		"next": "@brr_menu.credits_float_down_1"
+	},
+
+	"credits_float_down_1": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			-4
+		],
+		"to": [
+			0,
+			4
+		],
+		"next": "@brr_menu.credits_float_up_1"
+	},
+
+	"credits_float_up_2": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			4
+		],
+		"to": [
+			0,
+			-4
+		],
+		"next": "@brr_menu.credits_float_down_2"
+	},
+
+	"credits_float_down_2": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			-4
+		],
+		"to": [
+			0,
+			4
+		],
+		"next": "@brr_menu.credits_float_up_2"
+	},
+
+	"credits_float_up_3": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			4
+		],
+		"to": [
+			0,
+			-4
+		],
+		"next": "@brr_menu.credits_float_down_3"
+	},
+
+	"credits_float_down_3": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			-4
+		],
+		"to": [
+			0,
+			4
+		],
+		"next": "@brr_menu.credits_float_up_3"
+	},
+
+	"credits_float_up_4": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			4
+		],
+		"to": [
+			0,
+			-4
+		],
+		"next": "@brr_menu.credits_float_down_4"
+	},
+
+	"credits_float_down_4": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			-4
+		],
+		"to": [
+			0,
+			4
+		],
+		"next": "@brr_menu.credits_float_up_4"
+	},
+
+	"credits_float_up_5": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			4
+		],
+		"to": [
+			0,
+			-4
+		],
+		"next": "@brr_menu.credits_float_down_5"
+	},
+
+	"credits_float_down_5": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			-4
+		],
+		"to": [
+			0,
+			4
+		],
+		"next": "@brr_menu.credits_float_up_5"
+	},
+
+	"credits_float_up_6": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			4
+		],
+		"to": [
+			0,
+			-4
+		],
+		"next": "@brr_menu.credits_float_down_6"
+	},
+
+	"credits_float_down_6": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			-4
+		],
+		"to": [
+			0,
+			4
+		],
+		"next": "@brr_menu.credits_float_up_6"
+	},
+
+	"credits_float_up_7": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			4
+		],
+		"to": [
+			0,
+			-4
+		],
+		"next": "@brr_menu.credits_float_down_7"
+	},
+
+	"credits_float_down_7": {
+		"anim_type": "offset",
+		"easing": "in_out_sine",
+		"duration": 1.6,
+		"from": [
+			0,
+			-4
+		],
+		"to": [
+			0,
+			4
+		],
+		"next": "@brr_menu.credits_float_up_7"
+	},
+
+	"credits_line": {
+		"type": "panel",
+		"size": [
+			"100%",
+			"100%c"
+		],
+		"$line_ignored|default": false,
+		"controls": [
+			{
+				"text": {
+					"type": "label",
+					"ignored": "$line_ignored",
+					"text": "$line_text",
+					"localize": false,
+					"shadow": true,
+					"font_size": "normal",
+					"font_scale_factor": "$line_scale",
+					"color": "$line_color",
+					"$line_color|default": [
+						1,
+						1,
+						1
+					],
+					"anchor_from": "top_left",
+					"anchor_to": "top_left",
+					"offset": "$line_offset",
+					"$line_offset|default": [
+						"4.4%",
+						0
+					],
+					"size": "$line_size",
+					"$line_size|default": [
+						"90%",
+						"default"
+					]
+				}
+			}
+		]
+	},
+
+	"credits_gap": {
+		"type": "panel",
+		"size": "$gap_size"
+	},
+
+	"credits_person_face": {
+		"type": "stack_panel",
+		"orientation": "vertical",
+		"size": [
+			"100%",
+			"100%c"
+		],
+		"controls": [
+			{
+				"top@brr_menu.credits_gap": {
+					"$gap_size": [
+						"100%",
+						8
+					]
+				}
+			},
+			{
+				"name@brr_menu.credits_line": {
+					"$line_text": "$credit_name",
+					"$line_scale": 5.7,
+					"$line_color": "$face_color"
+				}
+			},
+			{
+				"between@brr_menu.credits_gap": {
+					"$gap_size": [
+						"100%",
+						4
+					]
+				}
+			},
+			{
+				"role@brr_menu.credits_line": {
+					"$line_text": "$credit_role",
+					"$line_scale": 2.3,
+					"$line_size": [
+						"66%",
+						"default"
+					],
+					"$line_color": "$face_color",
+					"$line_ignored": "$no_role"
+				}
+			},
+			{
+				"social@brr_menu.credits_line": {
+					"$line_text": "$credit_link",
+					"$line_scale": 1.6,
+					"$line_color": [
+						0.75,
+						0.75,
+						0.75
+					],
+					"$line_ignored": "$hide_link"
+				}
+			},
+			{
+				"bottom@brr_menu.credits_gap": {
+					"$gap_size": [
+						"100%",
+						22
+					]
+				}
+			}
+		]
+	},
+
+	"credits_person": {
+		"type": "button",
+		"size": [
+			"100%",
+			"100%c"
+		],
+		"default_control": "default",
+		"hover_control": "hover",
+		"pressed_control": "hover",
+		"focus_enabled": true,
+		"button_mappings": [],
+		"controls": [
+			{
+				"default@brr_menu.credits_person_face": {
+					"$face_color": [
+						1,
+						1,
+						1
+					],
+					"$hide_link": true
+				}
+			},
+			{
+				"hover@brr_menu.credits_person_face": {
+					"$face_color": [
+						1,
+						0.922,
+						0.016
+					],
+					"$hide_link": "$no_link"
+				}
+			}
+		]
+	},
+
+	"credits_section": {
+		"type": "stack_panel",
+		"orientation": "vertical",
+		"size": [
+			"100%",
+			"100%c"
+		],
+		"controls": [
+			{
+				"top@brr_menu.credits_gap": {
+					"$gap_size": [
+						"100%",
+						30
+					]
+				}
+			},
+			{
+				"title_slot": {
+					"type": "panel",
+					"size": [
+						"100%",
+						"100%c"
+					],
+					"controls": [
+						{
+							"title_float": {
+								"type": "panel",
+								"size": [
+									"100%",
+									"100%c"
+								],
+								"anims": "$section_anims",
+								"disable_anim_fast_forward": true,
+								"controls": [
+									{
+										"title@brr_menu.credits_line": {
+											"$line_text": "$section_title",
+											"$line_scale": 6,
+											"$line_offset": [
+												"20.6%",
+												0
+											],
+											"$line_size": [
+												"79%",
+												"default"
+											]
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"bottom@brr_menu.credits_gap": {
+					"$gap_size": [
+						"100%",
+						30
+					]
+				}
+			}
+		]
+	},
+
+	"credits_content": {
+		"type": "stack_panel",
+		"orientation": "vertical",
+		"size": [
+			"100%",
+			"100%c"
+		],
+		"controls": [
+			{
+				"section_0@brr_menu.credits_section": {
+					"$section_title": "TRUE CREATORS",
+					"$section_anims": [
+						"@brr_menu.credits_float_up_0"
+					]
+				}
+			},
+			{
+				"person_0_0@brr_menu.credits_person": {
+					"$credit_name": "Cuzsie",
+					"$credit_role": "Creator, former main developer, programmer, musician, level and UI design",
+					"$credit_link": "youtube.com/cuzsie",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_0_1@brr_menu.credits_person": {
+					"$credit_name": "Ronezkj15",
+					"$credit_role": "Co-creator, former secondary developer, main musician, programmer, art, design help",
+					"$credit_link": "youtube.com/Ronezkj15",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"section_1@brr_menu.credits_section": {
+					"$section_title": "MINECRAFT PORT BY",
+					"$section_anims": [
+						"@brr_menu.credits_float_up_1"
+					]
+				}
+			},
+			{
+				"person_1_0@brr_menu.credits_person": {
+					"$credit_name": "BonnieRobloxRIP",
+					"$credit_role": "Planning, reworked assets, the map in general",
+					"$credit_link": "youtube.com/bonnierobloxrip",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_1_1@brr_menu.credits_person": {
+					"$credit_name": "Claude",
+					"$credit_role": "Heavy lifting, scripting, UI, the absolute goat",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"section_2@brr_menu.credits_section": {
+					"$section_title": "PROGRAMMING TEAM",
+					"$section_anims": [
+						"@brr_menu.credits_float_up_2"
+					]
+				}
+			},
+			{
+				"person_2_0@brr_menu.credits_person": {
+					"$credit_name": "Zaurzo",
+					"$credit_role": "Main developer",
+					"$credit_link": "github.com/Zaurzo",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_2_1@brr_menu.credits_person": {
+					"$credit_name": "Gordon Freakman",
+					"$credit_role": "Shaders and programming help, emotional support",
+					"$credit_link": "youtube.com/channel/UCszZtN0uE14YRWWNpXwYGCA",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_2_2@brr_menu.credits_person": {
+					"$credit_name": "sound",
+					"$credit_role": "Programming help",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"person_2_3@brr_menu.credits_person": {
+					"$credit_name": "Nicec00lkidd",
+					"$credit_role": "Programming help",
+					"$credit_link": "youtube.com/channel/UCkIEokiA8QxHnvxh7zc6N9w",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"section_3@brr_menu.credits_section": {
+					"$section_title": "MUSIC & SOUND TEAM",
+					"$section_anims": [
+						"@brr_menu.credits_float_up_3"
+					]
+				}
+			},
+			{
+				"person_3_0@brr_menu.credits_person": {
+					"$credit_name": "MoldyGH",
+					"$credit_role": "Composer for neil mode credits theme",
+					"$credit_link": "youtube.com/MoldyGH",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_3_1@brr_menu.credits_person": {
+					"$credit_name": "grza3",
+					"$credit_role": "Composer for edit mode save select theme",
+					"$credit_link": "youtube.com/@GLEEPCAT",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_3_2@brr_menu.credits_person": {
+					"$credit_name": "Similirity",
+					"$credit_role": "Composer",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"section_4@brr_menu.credits_section": {
+					"$section_title": "3D MODELING TEAM",
+					"$section_anims": [
+						"@brr_menu.credits_float_up_4"
+					]
+				}
+			},
+			{
+				"person_4_0@brr_menu.credits_person": {
+					"$credit_name": "Foxnap",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"person_4_1@brr_menu.credits_person": {
+					"$credit_name": "ToastGuy",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"section_5@brr_menu.credits_section": {
+					"$section_title": "BETATESTER TEAM",
+					"$section_anims": [
+						"@brr_menu.credits_float_up_5"
+					]
+				}
+			},
+			{
+				"person_5_0@brr_menu.credits_person": {
+					"$credit_name": "Foxnap\ngrza3",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"person_5_1@brr_menu.credits_person": {
+					"$credit_name": "Harryboi\nTheBuilderXD",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"person_5_2@brr_menu.credits_person": {
+					"$credit_name": "Envy\nTechSec",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"person_5_3@brr_menu.credits_person": {
+					"$credit_name": "thatcanadianspy\nG.F.B & Blu",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"person_5_4@brr_menu.credits_person": {
+					"$credit_name": "LuigiKirbo902\ntobosilly",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"person_5_5@brr_menu.credits_person": {
+					"$credit_name": "Cacti\nDillonLeft",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"person_5_6@brr_menu.credits_person": {
+					"$credit_name": "tuc_golden\nL_Con",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"person_5_7@brr_menu.credits_person": {
+					"$credit_name": "LuluBoss\nBaldiBall",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"person_5_8@brr_menu.credits_person": {
+					"$credit_name": "davey boi\nNephryte",
+					"$credit_role": "",
+					"$credit_link": "",
+					"$no_role": true,
+					"$no_link": true
+				}
+			},
+			{
+				"section_6@brr_menu.credits_section": {
+					"$section_title": "XMAS MODE",
+					"$section_anims": [
+						"@brr_menu.credits_float_up_6"
+					]
+				}
+			},
+			{
+				"person_6_0@brr_menu.credits_person": {
+					"$credit_name": "Goofus",
+					"$credit_role": "Energy Flavored Peppermint Bar sprite",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"person_6_1@brr_menu.credits_person": {
+					"$credit_name": "DevinSAA",
+					"$credit_role": "We Wish You A Merry Christmas VHS audio, wall decoration texture",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"person_6_2@brr_menu.credits_person": {
+					"$credit_name": "CrashMarkerGAMIN",
+					"$credit_role": "Posters",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"person_6_3@brr_menu.credits_person": {
+					"$credit_name": "reddishgilianxian6808",
+					"$credit_role": "Hanging Christmas lights texture",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"person_6_4@brr_menu.credits_person": {
+					"$credit_name": "MasonYeetBoi",
+					"$credit_role": "Present item sprite",
+					"$credit_link": "x.com/MasonYeetBoi",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_6_5@brr_menu.credits_person": {
+					"$credit_name": "ModdyGuy",
+					"$credit_role": "Jolly Crafters sprites",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"section_7@brr_menu.credits_section": {
+					"$section_title": "SPECIAL THANKS",
+					"$section_anims": [
+						"@brr_menu.credits_float_up_7"
+					]
+				}
+			},
+			{
+				"person_7_0@brr_menu.credits_person": {
+					"$credit_name": "WowzaboiModder",
+					"$credit_role": "Student model",
+					"$credit_link": "twitter.com/ModderWowzaboi",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_7_1@brr_menu.credits_person": {
+					"$credit_name": "GwladysDev",
+					"$credit_role": "Original creator of the Baldi gangam style animation",
+					"$credit_link": "twitter.com/GwladysDev",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_7_2@brr_menu.credits_person": {
+					"$credit_name": "tucgolden",
+					"$credit_role": "Chipfloke sprites, artist",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"person_7_3@brr_menu.credits_person": {
+					"$credit_name": "DonnieTheGuy",
+					"$credit_role": "Discord call remix FLP recreation",
+					"$credit_link": "youtube.com/@DonnieTheGuy",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_7_4@brr_menu.credits_person": {
+					"$credit_name": "Plllurple",
+					"$credit_role": "Polish Milk item sprite, textures",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"person_7_5@brr_menu.credits_person": {
+					"$credit_name": "SomiTheSilly",
+					"$credit_role": "Trans flag texture",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"person_7_6@brr_menu.credits_person": {
+					"$credit_name": "Bijuu Mike",
+					"$credit_role": "For being epic and always sticking around for Raldi's Crackhouse!",
+					"$credit_link": "youtube.com/@BijuuMike",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_7_7@brr_menu.credits_person": {
+					"$credit_name": "Anthony Hampton",
+					"$credit_role": "funny schoolhouse trouble guy!!!!! also huge raldi supporter lol",
+					"$credit_link": "youtube.com/@AnthonyHamptonVGM",
+					"$no_role": false,
+					"$no_link": false
+				}
+			},
+			{
+				"person_7_8@brr_menu.credits_person": {
+					"$credit_name": "mystman12",
+					"$credit_role": "Creator of Baldi's Basics Classic 1.4.3",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"person_7_9@brr_menu.credits_person": {
+					"$credit_name": "and YOU!, for playing!",
+					"$credit_role": "...or, i guess just scrolling the menus in this case",
+					"$credit_link": "",
+					"$no_role": false,
+					"$no_link": true
+				}
+			},
+			{
+				"under_bar@brr_menu.credits_gap": {
+					"$gap_size": [
+						"100%",
+						90
+					]
+				}
+			}
+		]
+	},
+	// </GENERATED by scripts_gen/gen_credits_ui.mjs> ----
+	"credits_bar": {
+		"type": "image",
+		"texture": "textures/ui/Black",
+		"alpha": "$bar_alpha",
+		"anchor_from": "$bar_anchor",
+		"anchor_to": "$bar_anchor",
+		"size": [ "100%", "13.7%" ],
+		"layer": 8
+	},
+
+	"credits_screen": {
+		"type": "collection_panel",
+		"size": [ "100%", "100%" ],
+		"collection_name": "form_buttons",
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:credits') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{ "shade@brr_menu.shade": {} },
+			{
+				"scroll@common.scrolling_panel": {
+					"anchor_from": "bottom_middle",
+					"anchor_to": "bottom_middle",
+					"size": [ "100%", "86.3%" ],
+					"layer": 6,
+					"$show_background": false,
+					"$scrolling_content": "brr_menu.credits_content",
+					"$scroll_size": [ 5, "100% - 4px" ],
+					"$scrolling_pane_size": [ "100% - 4px", "100% - 2px" ],
+					"$scrolling_pane_offset": [ 2, 0 ],
+					"$scroll_bar_right_padding_size": [ 0, 0 ]
+				}
+			},
+			{ "top_bar@brr_menu.credits_bar": { "$bar_alpha": 0.45, "$bar_anchor": "top_middle" } },
+			{
+				"title": {
+					"type": "label",
+					"text": "CREDITS",
+					"localize": false,
+					"shadow": true,
+					"font_size": "normal",
+					"font_scale_factor": 6,
+					"text_alignment": "center",
+					"anchor_from": "top_middle",
+					"anchor_to": "center",
+					"offset": [ 0, "6.85%" ],
+					"size": [ "default", "default" ],
+					"layer": 10
+				}
+			},
+			{ "bottom_bar@brr_menu.credits_bar": { "$bar_alpha": 0.4, "$bar_anchor": "bottom_middle" } },
+			{
+				"back@brr_menu.back_button": {
+					"anchor_from": "bottom_left",
+					"anchor_to": "center",
+					"offset": [ "4.2%", "-6.85%" ],
+					"size": [ 34, 34 ]
+				}
+			},
+			{
+				"hint": {
+					"type": "label",
+					"text": "[UP] and [DOWN] or scroll to browse,\nhover a name to see their social.",
+					"localize": false,
+					"shadow": true,
+					"font_size": "normal",
+					"font_scale_factor": 2,
+					"text_alignment": "right",
+					"anchor_from": "bottom_right",
+					"anchor_to": "right_middle",
+					"offset": [ "-2.9%", "-6.85%" ],
+					"size": [ "default", "default" ],
+					"layer": 10
+				}
+			}
+		]
+	},
+
+	// ------------------------------------------------------------------ trophies ----
+
+	// One card per trophy button. Button text is fixed width (BP/scripts/main_menu.js):
+	// [0..2) "A|" achieved / "N|" not, [2..34) name, [34..42) tier, [42..) description.
+	// Button 0 is the back arrow and button 1 ("R|...") the RESET LOCAL TROPHIES tab; neither gets a card.
+	// Colours and proportions are measured from the original at 1920x1080: panel 75% wide with a 17px
+	// (41,227,0) border on (150,102,0); cards 75% of the panel, (127,86,0), achieved ones outlined in
+	// (163,255,120); a grey-framed badge with a dark (75,52,0) tier tab, dimmed while locked.
+	"trophy_text": {
+		"type": "label",
+		"text": "#text",
+		"localize": false,
+		"shadow": true,
+		"color": "$text_color",
+		"$text_color|default": [ 1, 1, 1 ],
+		"font_size": "normal",
+		"font_scale_factor": "$text_scale",
+		"$text_scale|default": 1.0,
+		"text_alignment": "$text_align",
+		"$text_align|default": "left",
+		"anchor_from": "$text_anchor",
+		"anchor_to": "$text_anchor",
+		"$text_anchor|default": "top_left",
+		"offset": "$text_offset",
+		"$text_offset|default": [ 0, 0 ],
+		"size": "$text_size",
+		"$text_size|default": [ "default", "default" ],
+		"layer": 4,
+		"bindings": [
+			{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" },
+			{ "binding_type": "view", "source_property_name": "$text_source", "target_property_name": "#text" }
+		]
+	},
+
+	"trophy_status": {
+		"type": "label",
+		"text": "$status_text",
+		"localize": false,
+		"shadow": true,
+		"color": "$text_color",
+		"font_scale_factor": 1.4,
+		"anchor_from": "bottom_left",
+		"anchor_to": "bottom_left",
+		"offset": [ 14, -10 ],
+		"size": [ "default", "default" ],
+		"layer": 4,
+		"bindings": [
+			{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" },
+			{ "binding_type": "view", "source_property_name": "$status_visible", "target_property_name": "#visible" }
+		]
+	},
+
+	// rounded card shape, tinted
+	"trophy_shape": {
+		"type": "image",
+		"texture": "textures/ui/menu/rounded",
+		"color": "$shape_color",
+		"size": "$shape_size",
+		"$shape_size|default": [ "100%", "100%" ],
+		"layer": "$shape_layer",
+		"$shape_layer|default": 1,
+		"bindings": [
+			{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" },
+			{ "binding_type": "view", "source_property_name": "$shape_visible", "target_property_name": "#visible" }
+		]
+	},
+
+	"trophy_card": {
+		"type": "panel",
+		"size": [ "100%", 140 ],
+		"bindings": [
+			{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" },
+			{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" },
+			{ "binding_type": "view", "source_property_name": "((('%.2s' * #form_button_text) = 'A|') or (('%.2s' * #form_button_text) = 'N|'))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{
+				"card": {
+					"type": "panel",
+					"anchor_from": "top_middle",
+					"anchor_to": "top_middle",
+					"offset": [ 0, 14 ],
+					"size": [ "75%", 112 ],
+					"controls": [
+						// achieved: a light green outline around the card; locked: the plain card
+						{ "outline@brr_menu.trophy_shape": { "$shape_color": [ 0.639, 1, 0.471 ], "$shape_visible": "(('%.2s' * #form_button_text) = 'A|')" } },
+						{ "inner@brr_menu.trophy_shape": { "$shape_color": [ 0.486, 0.329, 0 ], "$shape_size": [ "100% - 10px", "100% - 10px" ], "$shape_layer": 2, "$shape_visible": "(('%.2s' * #form_button_text) = 'A|')" } },
+						{ "plain@brr_menu.trophy_shape": { "$shape_color": [ 0.498, 0.337, 0 ], "$shape_layer": 2, "$shape_visible": "(not (('%.2s' * #form_button_text) = 'A|'))" } },
+						{
+							"name@brr_menu.trophy_text": {
+								"$text_scale": 2.2,
+								"$text_offset": [ 14, 10 ],
+								"$text_size": [ "100% - 120px", "default" ],
+								"$text_source": "(('%.34s' * #form_button_text) - ('%.2s' * #form_button_text))"
+							}
+						},
+						{
+							"description@brr_menu.trophy_text": {
+								"$text_scale": 1.4,
+								"$text_offset": [ 14, 40 ],
+								"$text_size": [ "100% - 120px", "default" ],
+								"$text_source": "(#form_button_text - ('%.42s' * #form_button_text))"
+							}
+						},
+						{
+							"achieved@brr_menu.trophy_status": {
+								"$status_text": "Achieved!",
+								"$text_color": [ 0.639, 1, 0.471 ],
+								"$status_visible": "(('%.2s' * #form_button_text) = 'A|')"
+							}
+						},
+						{
+							"not_achieved@brr_menu.trophy_status": {
+								"$status_text": "Not achieved!",
+								"$text_color": [ 1, 0.55, 0.55 ],
+								"$status_visible": "(not (('%.2s' * #form_button_text) = 'A|'))"
+							}
+						},
+						{
+							"icon_frame": {
+								"type": "image",
+								"texture": "textures/ui/White",
+								"color": [ 0.576, 0.576, 0.576 ],
+								"anchor_from": "top_right",
+								"anchor_to": "top_right",
+								"offset": [ -24, 8 ],
+								"size": [ 76, 76 ],
+								"layer": 3,
+								"controls": [
+									{ "badge@brr_menu.icon": { "$icon_size": [ 70, 70 ], "layer": 1 } },
+									{
+										"locked_dim": {
+											"type": "image",
+											"texture": "textures/ui/Black",
+											"alpha": 0.6,
+											"size": [ 70, 70 ],
+											"layer": 2,
+											"bindings": [
+												{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" },
+												{ "binding_type": "view", "source_property_name": "(not (('%.2s' * #form_button_text) = 'A|'))", "target_property_name": "#visible" }
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"tier_tab": {
+								"type": "image",
+								"texture": "textures/ui/menu/rounded",
+								"color": [ 0.294, 0.204, 0 ],
+								"anchor_from": "top_right",
+								"anchor_to": "top_right",
+								"offset": [ -28, 84 ],
+								"size": [ 68, 18 ],
+								"layer": 3,
+								"controls": [
+									{
+										"tier@brr_menu.trophy_text": {
+											"$text_scale": 1.2,
+											"$text_anchor": "center",
+											"$text_align": "center",
+											"$text_size": [ "100%", "default" ],
+											"$text_source": "(('%.42s' * #form_button_text) - ('%.34s' * #form_button_text))",
+											"layer": 1
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+
+	"trophy_list": {
+		"type": "stack_panel",
+		"orientation": "vertical",
+		"size": [ "100%", "100%c" ],
+		"factory": { "name": "buttons", "control_name": "brr_menu.trophy_card" },
+		"collection_name": "form_buttons",
+		"bindings": [
+			{ "binding_name": "#form_button_length", "binding_name_override": "#collection_length" }
+		]
+	},
+
+	"trophy_tab_face": {
+		"type": "image",
+		"texture": "textures/ui/menu/rounded",
+		"color": "$tab_color",
+		"size": [ "100%", "100%" ],
+		"controls": [
+			{
+				"text": {
+					"type": "label",
+					"text": "#text",
+					"localize": false,
+					"shadow": true,
+					"color": [ 1, 1, 1 ],
+					"font_scale_factor": 1.2,
+					"text_alignment": "center",
+					"anchor_from": "top_middle",
+					"anchor_to": "top_middle",
+					"offset": [ 0, 6 ],
+					"size": [ "90%", "default" ],
+					"layer": 1,
+					"bindings": [
+						{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" },
+						{ "binding_type": "view", "source_property_name": "(#form_button_text - 'R|')", "target_property_name": "#text" }
+					]
+				}
+			}
+		]
+	},
+
+	// the original's RESET LOCAL TROPHIES tab, sitting on the panel's top right corner (button 1)
+	"trophy_reset_tab": {
+		"type": "collection_panel",
+		"collection_name": "form_buttons",
+		"anchor_from": "top_left",
+		"anchor_to": "top_left",
+		"offset": [ "74.06%", "10.65%" ],
+		"size": [ "11.82%", "7.6%" ],
+		"layer": 5,
+		"controls": [
+			{
+				"button": {
+					"type": "button",
+					"size": [ "100%", "100%" ],
+					"collection_index": 1,
+					"default_control": "default",
+					"hover_control": "hover",
+					"pressed_control": "pressed",
+					"sound_name": "menu.click",
+					"sound_volume": 1.0,
+					"button_mappings": [
+						{ "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+						{ "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "focused" }
+					],
+					"bindings": [
+						{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+					],
+					"controls": [
+						{ "default@brr_menu.trophy_tab_face": { "$tab_color": [ 0.012, 0.698, 0 ] } },
+						{ "hover@brr_menu.trophy_tab_face": { "$tab_color": [ 0.2, 0.85, 0.15 ] } },
+						{ "pressed@brr_menu.trophy_tab_face": { "$tab_color": [ 0.01, 0.55, 0 ] } }
+					]
+				}
+			}
+		]
+	},
+
+	"trophies_screen": {
+		"type": "collection_panel",
+		"size": [ "100%", "100%" ],
+		"collection_name": "form_buttons",
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:trophies') = #title_text))", "target_property_name": "#visible" }
+		],
+		"controls": [
+			{ "shade@brr_menu.shade": {} },
+			{ "back@brr_menu.back_button": {} },
+			{ "title@brr_menu.screen_title": { "$title": "TROPHIES" } },
+			{
+				"unlocked": {
+					"type": "label",
+					"text": "#form_text",
+					"localize": false,
+					"shadow": true,
+					"color": [ 1, 1, 1 ],
+					"font_scale_factor": 1.6,
+					"text_alignment": "center",
+					"anchor_from": "top_middle",
+					"anchor_to": "top_middle",
+					"offset": [ 0, "10.4%" ],
+					"size": [ "default", "default" ],
+					"layer": 10,
+					"bindings": [ { "binding_name": "#form_text" } ]
+				}
+			},
+			{ "reset@brr_menu.trophy_reset_tab": {} },
+			{
+				"panel": {
+					"type": "panel",
+					"anchor_from": "top_middle",
+					"anchor_to": "top_middle",
+					"offset": [ 0, "17.3%" ],
+					"size": [ "75%", "77.7%" ],
+					"layer": 6,
+					"controls": [
+						{ "border": { "type": "image", "texture": "textures/ui/White", "color": [ 0.161, 0.89, 0 ], "size": [ "100%", "100%" ], "layer": 1 } },
+						{ "fill": { "type": "image", "texture": "textures/ui/White", "color": [ 0.588, 0.4, 0 ], "size": [ "100% - 16px", "100% - 16px" ], "layer": 2 } },
+						{
+							"scroll@common.scrolling_panel": {
+								"size": [ "100% - 20px", "100% - 20px" ],
+								"layer": 3,
+								"$show_background": false,
+								"$scrolling_content": "brr_menu.trophy_list",
+								"$scroll_size": [ 5, "100% - 4px" ],
+								"$scrolling_pane_size": [ "100% - 4px", "100% - 2px" ],
+								"$scrolling_pane_offset": [ 2, 0 ],
+								"$scroll_bar_right_padding_size": [ 0, 0 ]
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+
+	// ------------------------------------------------------------------ options ----
+
+	"tab_underline": {
+		"type": "image",
+		"texture": "textures/ui/White",
+		"color": [ 1, 0.87, 0 ],
+		"anchor_from": "bottom_middle",
+		"anchor_to": "bottom_middle",
+		"size": [ "80%", 2 ],
+		"layer": 4,
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "$tab_active", "target_property_name": "#visible" }
+		]
+	},
+
+	// back arrow (0), tab buttons (1 audio, 2 gameplay) and the dark page; $page holds the tab content
+	"options_frame": {
+		"type": "collection_panel",
+		"size": [ "100%", "100%" ],
+		"collection_name": "form_buttons",
+		"controls": [
+			{ "shade@brr_menu.shade": {} },
+			{ "back@brr_menu.back_button": {} },
+			{ "title@brr_menu.screen_title": { "$title": "OPTIONS" } },
+			{
+				"page": {
+					"type": "collection_panel",
+					"anchor_from": "top_middle",
+					"anchor_to": "top_middle",
+					"offset": [ 0, 42 ],
+					"size": [ "86%", "100% - 52px" ],
+					"layer": 6,
+					"collection_name": "form_buttons",
+					"controls": [
+						{ "bg@brr_menu.shade": { "$shade_alpha": 0.8, "layer": 1 } },
+						{
+							"tabs": {
+								"type": "stack_panel",
+								"orientation": "horizontal",
+								"anchor_from": "top_middle",
+								"anchor_to": "top_middle",
+								"offset": [ 0, 4 ],
+								"size": [ 200, 24 ],
+								"layer": 3,
+								"collection_name": "form_buttons",
+								"controls": [
+									{
+										"audio_tab": {
+											"type": "collection_panel",
+											"size": [ "50%", "100%" ],
+											"collection_name": "form_buttons",
+											"controls": [
+												{ "button@brr_menu.text_button": { "$index": 1, "$btn_size": [ "100%", "100%" ], "$text_anchor": "center", "$text_align": "center" } },
+												{ "underline@brr_menu.tab_underline": { "$tab_active": "(not ((#title_text - 'brr:menu:audio') = #title_text))" } }
+											]
+										}
+									},
+									{
+										"gameplay_tab": {
+											"type": "collection_panel",
+											"size": [ "50%", "100%" ],
+											"collection_name": "form_buttons",
+											"controls": [
+												{ "button@brr_menu.text_button": { "$index": 2, "$btn_size": [ "100%", "100%" ], "$text_anchor": "center", "$text_align": "center" } },
+												{ "underline@brr_menu.tab_underline": { "$tab_active": "(not ((#title_text - 'brr:menu:gameplay') = #title_text))" } }
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"content": {
+								"type": "collection_panel",
+								"anchor_from": "top_left",
+								"anchor_to": "top_left",
+								"offset": [ 12, 36 ],
+								"size": [ "100% - 24px", "100% - 44px" ],
+								"layer": 3,
+								"collection_name": "form_buttons",
+								"controls": [ { "tab_content@$page": {} } ]
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+
+	"icon": {
+		"type": "image",
+		"texture": "#texture",
+		"size": "$icon_size",
+		"$icon_size|default": [ "100%", "100%" ],
+		"layer": 2,
+		"bindings": [
+			{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_texture", "binding_name_override": "#texture" }
+		]
+	},
+
+	"segment_hover": {
+		"type": "panel",
+		"size": [ "100%", "100%" ],
+		"controls": [
+			{ "frame": { "type": "image", "texture": "textures/ui/White", "color": [ 1, 0.87, 0 ], "size": [ "100% + 2px", "100% + 2px" ], "layer": 1 } },
+			{ "icon@brr_menu.icon": {} }
+		]
+	},
+
+	"segment_button": {
+		"type": "button",
+		"size": [ 10, 16 ],
+		"collection_index": "$index",
+		"default_control": "default",
+		"hover_control": "hover",
+		"pressed_control": "pressed",
+		"sound_name": "menu.click",
+		"sound_volume": 1.0,
+		"button_mappings": [
+			{ "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+			{ "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "focused" }
+		],
+		"bindings": [
+			{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+		],
+		"controls": [
+			{ "default@brr_menu.icon": {} },
+			{ "hover@brr_menu.segment_hover": {} },
+			{ "pressed@brr_menu.segment_hover": {} }
+		]
+	},
+
+	"gap": { "type": "panel", "size": [ 2, "100%" ] },
+
+	// label | 10 segments (first index $i) | percent | reset ($i + 10)
+	"slider_row": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": [ "100%", 20 ],
+		"collection_name": "form_buttons",
+		"controls": [
+			{
+				"name_slot": {
+					"type": "panel",
+					"size": [ 64, "100%" ],
+					"controls": [ { "name@brr_menu.label": { "$btn_text": "$row_name", "$label_bindings": [] } } ]
+				}
+			},
+			{ "s1@brr_menu.segment_button": { "$index": "$i1" } },
+			{ "g1@brr_menu.gap": {} },
+			{ "s2@brr_menu.segment_button": { "$index": "$i2" } },
+			{ "g2@brr_menu.gap": {} },
+			{ "s3@brr_menu.segment_button": { "$index": "$i3" } },
+			{ "g3@brr_menu.gap": {} },
+			{ "s4@brr_menu.segment_button": { "$index": "$i4" } },
+			{ "g4@brr_menu.gap": {} },
+			{ "s5@brr_menu.segment_button": { "$index": "$i5" } },
+			{ "g5@brr_menu.gap": {} },
+			{ "s6@brr_menu.segment_button": { "$index": "$i6" } },
+			{ "g6@brr_menu.gap": {} },
+			{ "s7@brr_menu.segment_button": { "$index": "$i7" } },
+			{ "g7@brr_menu.gap": {} },
+			{ "s8@brr_menu.segment_button": { "$index": "$i8" } },
+			{ "g8@brr_menu.gap": {} },
+			{ "s9@brr_menu.segment_button": { "$index": "$i9" } },
+			{ "g9@brr_menu.gap": {} },
+			{ "s10@brr_menu.segment_button": { "$index": "$i10" } },
+			{
+				"percent_slot": {
+					"type": "collection_panel",
+					"size": [ 44, "100%" ],
+					"collection_name": "form_buttons",
+					"controls": [
+						{
+							"percent@brr_menu.label": {
+								"collection_index": "$i1",
+								"$font_size": "normal",
+								"$text_anchor": "center",
+								"$text_align": "center"
+							}
+						}
+					]
+				}
+			},
+			{ "reset@brr_menu.text_button": { "$index": "$i_reset", "$btn_size": [ 50, "100%" ], "$font_size": "normal" } }
+		]
+	},
+
+	"toggle_face": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": [ "100%", "100%" ],
+		"controls": [
+			{
+				"box_slot": {
+					"type": "panel",
+					"size": [ 16, "100%" ],
+					"controls": [ { "box@brr_menu.icon": { "$icon_size": [ 14, 14 ] } } ]
+				}
+			},
+			{ "g@brr_menu.gap": { "size": [ 6, "100%" ] } },
+			{
+				"text_slot": {
+					"type": "panel",
+					"size": [ "fill", "100%" ],
+					"controls": [ { "text@brr_menu.label": {} } ]
+				}
+			}
+		]
+	},
+
+	"toggle_button": {
+		"type": "button",
+		"size": [ "100%", 20 ],
+		"collection_index": "$index",
+		"default_control": "default",
+		"hover_control": "hover",
+		"pressed_control": "pressed",
+		"sound_name": "menu.click",
+		"sound_volume": 1.0,
+		"button_mappings": [
+			{ "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+			{ "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "focused" }
+		],
+		"bindings": "$btn_bindings",
+		"$btn_bindings|default": [
+			{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+		],
+		"controls": [
+			{ "default@brr_menu.toggle_face": {} },
+			{ "hover@brr_menu.toggle_face": { "$text_color": [ 1, 0.87, 0 ], "$text_scale": 1.15 } },
+			{ "pressed@brr_menu.toggle_face": { "$text_color": [ 1, 0.87, 0 ], "$text_scale": 1.15 } }
+		]
+	},
+
+	// script order: music segments 3-12, music reset 13, sound segments 14-23, sound reset 24, toggles 25-26
+	"audio_page": {
+		"type": "stack_panel",
+		"orientation": "vertical",
+		"size": [ "100%", "100%c" ],
+		"collection_name": "form_buttons",
+		"controls": [
+			{ "music@brr_menu.slider_row": { "$row_name": "Music", "$i1": 3, "$i2": 4, "$i3": 5, "$i4": 6, "$i5": 7, "$i6": 8, "$i7": 9, "$i8": 10, "$i9": 11, "$i10": 12, "$i_reset": 13 } },
+			{ "pad0": { "type": "panel", "size": [ "100%", 8 ] } },
+			{ "sound@brr_menu.slider_row": { "$row_name": "Sound", "$i1": 14, "$i2": 15, "$i3": 16, "$i4": 17, "$i5": 18, "$i6": 19, "$i7": 20, "$i8": 21, "$i9": 22, "$i10": 23, "$i_reset": 24 } },
+			{ "pad1": { "type": "panel", "size": [ "100%", 14 ] } },
+			{ "licensed@brr_menu.toggle_button": { "$index": 25, "$btn_text": "Disable Licensed Audio", "$label_bindings": [] } },
+			{ "pad2": { "type": "panel", "size": [ "100%", 4 ] } },
+			{ "farts@brr_menu.toggle_button": { "$index": 26, "$btn_text": "Disable Fart Sounds", "$label_bindings": [] } }
+		]
+	},
+
+	// gameplay toggle; hidden when the script didn't add a button for this slot
+	"gameplay_cell": {
+		"type": "collection_panel",
+		"size": [ "50%", 22 ],
+		"collection_name": "form_buttons",
+		"controls": [
+			{
+				"toggle@brr_menu.toggle_button": {
+					"size": [ "100% - 8px", 20 ],
+					"anchor_from": "left_middle",
+					"anchor_to": "left_middle",
+					"$btn_bindings": [
+						{ "binding_type": "collection_details", "binding_collection_name": "form_buttons" },
+						{ "binding_type": "collection", "binding_collection_name": "form_buttons", "binding_name": "#form_button_text" },
+						{ "binding_type": "view", "source_property_name": "(not (#form_button_text = ''))", "target_property_name": "#visible" }
+					]
+				}
+			}
+		]
+	},
+
+	"gameplay_row": {
+		"type": "stack_panel",
+		"orientation": "horizontal",
+		"size": [ "100%", 22 ],
+		"collection_name": "form_buttons",
+		"controls": [
+			{ "left@brr_menu.gameplay_cell": { "$index": "$left" } },
+			{ "right@brr_menu.gameplay_cell": { "$index": "$right" } }
+		]
+	},
+
+	// two columns, filled row by row from button 3 (GAMEPLAY_TOGGLES in main_menu.js)
+	"gameplay_page": {
+		"type": "stack_panel",
+		"orientation": "vertical",
+		"size": [ "100%", "100%c" ],
+		"collection_name": "form_buttons",
+		"controls": [
+			{ "r0@brr_menu.gameplay_row": { "$left": 3, "$right": 4 } },
+			{ "r1@brr_menu.gameplay_row": { "$left": 5, "$right": 6 } },
+			{ "r2@brr_menu.gameplay_row": { "$left": 7, "$right": 8 } },
+			{ "r3@brr_menu.gameplay_row": { "$left": 9, "$right": 10 } },
+			{ "r4@brr_menu.gameplay_row": { "$left": 11, "$right": 12 } }
+		]
+	},
+
+	"audio_screen@brr_menu.options_frame": {
+		"$page": "brr_menu.audio_page",
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:audio') = #title_text))", "target_property_name": "#visible" }
+		]
+	},
+
+	"gameplay_screen@brr_menu.options_frame": {
+		"$page": "brr_menu.gameplay_page",
+		"bindings": [
+			{ "binding_name": "#title_text" },
+			{ "binding_type": "view", "source_property_name": "(not ((#title_text - 'brr:menu:gameplay') = #title_text))", "target_property_name": "#visible" }
+		]
+	}
+}

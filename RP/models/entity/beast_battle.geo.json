@@ -1,0 +1,125 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.brr.beast_battle_sprite",
+        "texture_width": 16,
+        "texture_height": 16,
+        "visible_bounds_width": 200,
+        "visible_bounds_height": 200,
+        "visible_bounds_offset": [
+          0,
+          0,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "sprite",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -8,
+                -8,
+                -0.01
+              ],
+              "size": [
+                16,
+                16,
+                0.02
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    16,
+                    16
+                  ]
+                },
+                "south": {
+                  "uv": [
+                    16,
+                    0
+                  ],
+                  "uv_size": [
+                    -16,
+                    16
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": {
+        "identifier": "geometry.brr.beast_battle_grid",
+        "texture_width": 1600,
+        "texture_height": 1600,
+        "visible_bounds_width": 200,
+        "visible_bounds_height": 200,
+        "visible_bounds_offset": [
+          0,
+          0,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "sprite",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -201.66,
+                -201.66,
+                -0.01
+              ],
+              "size": [
+                403.32,
+                403.32,
+                0.02
+              ],
+              "uv": {
+                "north": {
+                  "uv": [
+                    0,
+                    0
+                  ],
+                  "uv_size": [
+                    1600,
+                    1600
+                  ]
+                },
+                "south": {
+                  "uv": [
+                    1600,
+                    0
+                  ],
+                  "uv_size": [
+                    -1600,
+                    1600
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

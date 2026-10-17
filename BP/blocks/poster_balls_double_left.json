@@ -1,0 +1,189 @@
+{
+	"format_version": "1.26.40",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:poster_balls_double_left",
+			"menu_category": {
+				"category": "construction"
+			},
+			"traits": {
+				"minecraft:multi_block": {
+					"direction": "up",
+					"parts": 3,
+					"enabled_states": [
+						"minecraft:multi_block_part"
+					]
+				},
+				"minecraft:placement_direction": {
+					"enabled_states": [
+						"minecraft:cardinal_direction"
+					],
+					"y_rotation_offset": 180
+				}
+			},
+			"states": {
+				"brr:locked": [
+					false,
+					true
+				]
+			}
+		},
+		"components": {
+			"minecraft:light_dampening": 15,
+			"minecraft:material_instances": {
+				"up": {
+					"texture": "brr_nothing",
+					"render_method": "alpha_test"
+				},
+				"down": {
+					"texture": "brr_nothing",
+					"render_method": "alpha_test"
+				},
+				"east": {
+					"texture": "brr_nothing",
+					"render_method": "alpha_test"
+				},
+				"west": {
+					"texture": "brr_nothing",
+					"render_method": "alpha_test"
+				},
+				"*": {
+					"texture": "brr_poster_balls_bottom_left",
+					"render_method": "alpha_test"
+				},
+				"south": {
+					"texture": "brr_poster_balls_slight_bottom_right",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:geometry": {
+				"identifier": "geometry.brr_balls_poster_double"
+			},
+			"minecraft:collision_box": false,
+			"minecraft:selection_box": true,
+			"minecraft:movable": {
+				"movement_type": "immovable",
+				"sticky": "none"
+			},
+			"brr:balls_poster": {}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							0,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							180,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							90,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							-90,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:multi_block_part') == 1",
+				"components": {
+					"minecraft:material_instances": {
+						"up": {
+							"texture": "brr_nothing",
+							"render_method": "alpha_test"
+						},
+						"down": {
+							"texture": "brr_nothing",
+							"render_method": "alpha_test"
+						},
+						"east": {
+							"texture": "brr_nothing",
+							"render_method": "alpha_test"
+						},
+						"west": {
+							"texture": "brr_nothing",
+							"render_method": "alpha_test"
+						},
+						"*": {
+							"texture": "brr_poster_balls_mid_left",
+							"render_method": "alpha_test"
+						},
+						"south": {
+							"texture": "brr_poster_balls_slight_mid_right",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:multi_block_part') == 2",
+				"components": {
+					"minecraft:material_instances": {
+						"up": {
+							"texture": "brr_nothing",
+							"render_method": "alpha_test"
+						},
+						"down": {
+							"texture": "brr_nothing",
+							"render_method": "alpha_test"
+						},
+						"east": {
+							"texture": "brr_nothing",
+							"render_method": "alpha_test"
+						},
+						"west": {
+							"texture": "brr_nothing",
+							"render_method": "alpha_test"
+						},
+						"*": {
+							"texture": "brr_poster_balls_top_left",
+							"render_method": "alpha_test"
+						},
+						"south": {
+							"texture": "brr_poster_balls_slight_top_right",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('brr:locked')",
+				"components": {
+					"minecraft:collision_box": true
+				}
+			}
+		]
+	}
+}

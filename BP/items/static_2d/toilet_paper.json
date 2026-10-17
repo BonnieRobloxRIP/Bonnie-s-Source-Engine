@@ -1,0 +1,18 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:toilet_paper",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_toilet_paper",
+			"minecraft:block_placer": {
+				"block": "brr:toilet_paper",
+				"replace_block_item": true
+			}
+		}
+	}
+}

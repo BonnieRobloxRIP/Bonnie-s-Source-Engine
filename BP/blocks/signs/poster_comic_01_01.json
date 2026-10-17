@@ -1,0 +1,126 @@
+{
+	"format_version": "1.26.40",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:poster_comic_01_01",
+			"menu_category": {
+				"category": "construction"
+			},
+			"traits": {
+				"minecraft:multi_block": {
+					"direction": "up",
+					"parts": 3,
+					"enabled_states": [
+						"minecraft:multi_block_part"
+					]
+				},
+				"minecraft:placement_direction": {
+					"enabled_states": [
+						"minecraft:cardinal_direction"
+					],
+					"y_rotation_offset": 180
+				}
+			}
+		},
+		"components": {
+			"minecraft:geometry": {
+				"identifier": "geometry.brr_poster_slice"
+			},
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "brr_poster_comic_01_01_bottom",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:selection_box": {
+				"origin": [
+					-8,
+					0,
+					7
+				],
+				"size": [
+					16,
+					16,
+					1
+				]
+			},
+			"minecraft:collision_box": false,
+			"minecraft:movable": {
+				"movement_type": "immovable",
+				"sticky": "none"
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							0,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							180,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							90,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							-90,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:multi_block_part') == 1",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_poster_comic_01_01_mid",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:multi_block_part') == 2",
+				"components": {
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "brr_poster_comic_01_01_top",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			}
+		]
+	}
+}

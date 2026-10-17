@@ -1,0 +1,71 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.brr.raldi_shake": {
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": ["Texture.shake"]
+		},
+		"controller.render.brr.raldi_dance": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.dance"],
+			"uv_anim": {
+				"offset": [
+					"math.mod(q.property('brr:frame'), 15.0) / 15.0",
+					"math.floor(q.property('brr:frame') / 15.0) / 13.0"
+				],
+				"scale": [0.0666667, 0.0769231]
+			}
+		},
+		"controller.render.brr.raldi_wave": {
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": ["Texture.wave"],
+			"uv_anim": {
+				"offset": [
+					"math.mod(q.property('brr:frame'), 6.0) / 6.0",
+					"math.floor(q.property('brr:frame') / 6.0) / 6.0"
+				],
+				"scale": [0.1666667, 0.1666667]
+			}
+		},
+		"controller.render.brr.raldi_idle_wave": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.idle_wave"]
+		},
+		"controller.render.brr.raldi_move": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.move"],
+			"uv_anim": {
+				"offset": ["q.property('brr:frame') / 5.0", 0],
+				"scale": [0.2, 1]
+			}
+		},
+		"controller.render.brr.raldi_crackpipe": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.crackpipe"]
+		},
+		"controller.render.brr.raldi_drip": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.drip"]
+		},
+		"controller.render.brr.raldi_dead": {
+			"geometry": "Geometry.dead",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.dead"]
+		}
+	}
+}

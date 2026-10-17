@@ -1,0 +1,1213 @@
+{
+	"texture_data": {
+		"brr_wall01": {
+			"textures": "textures/blocks/Wall01"
+		},
+		"brr_faculty_wall": {
+			"textures": "textures/blocks/faculty_wall"
+		},
+		"brr_faculty_wall_cutout": {
+			"textures": "textures/blocks/faculty_wall"
+		},
+		"brr_wall_molded": {
+			"textures": "textures/blocks/wall_molded"
+		},
+		"brr_floor01": {
+			"textures": "textures/blocks/Floor01"
+		},
+		"brr_ceiling01_nolight": {
+			"textures": "textures/blocks/Ceiling01_NoLight"
+		},
+		"brr_ceiling01_off": {
+			"textures": "textures/blocks/Ceiling01_Off"
+		},
+		"brr_ceiling01": {
+			"textures": "textures/blocks/Ceiling01"
+		},
+		"brr_grass": {
+			"textures": "textures/blocks/Grass"
+		},
+		"brr_board_69": {
+			"textures": "textures/blocks/Board_69"
+		},
+		"brr_board_amogus": {
+			"textures": "textures/blocks/Board_Amogus"
+		},
+		"brr_board_baldi": {
+			"textures": "textures/blocks/Board_Baldi"
+		},
+		"brr_board_bambi": {
+			"textures": "textures/blocks/Board_Bambi"
+		},
+		"brr_board_bank": {
+			"textures": "textures/blocks/Board_Bank"
+		},
+		"brr_board_dogslander": {
+			"textures": "textures/blocks/Board_DogSlander"
+		},
+		"brr_board_fanfic": {
+			"textures": "textures/blocks/Board_Fanfic"
+		},
+		"brr_board_fart": {
+			"textures": "textures/blocks/Board_Fart"
+		},
+		"brr_board_forgor": {
+			"textures": "textures/blocks/Board_Forgor"
+		},
+		"brr_board_fridayhint": {
+			"textures": "textures/blocks/Board_FridayHint"
+		},
+		"brr_board_getout": {
+			"textures": "textures/blocks/Board_GetOut"
+		},
+		"brr_board_homer": {
+			"textures": "textures/blocks/Board_Homer"
+		},
+		"brr_board_money": {
+			"textures": "textures/blocks/Board_Money"
+		},
+		"brr_board_piss": {
+			"textures": "textures/blocks/Board_Piss"
+		},
+		"brr_board_smile": {
+			"textures": "textures/blocks/Board_Smile"
+		},
+		"brr_carpet": {
+			"textures": "textures/blocks/carpet"
+		},
+		"brr_carpet_checker": {
+			"textures": "textures/blocks/carpet_checker"
+		},
+		"brr_carpet_gradient": {
+			"textures": "textures/blocks/carpet_gradient"
+		},
+		"brr_carpet_mono": {
+			"textures": "textures/blocks/carpet_mono"
+		},
+		"brr_beastbathroom_carpet": {
+			"textures": "textures/blocks/beastbathroom_carpet"
+		},
+		"brr_beastbathroom_carpet2": {
+			"textures": "textures/blocks/beastbathroom_carpet2"
+		},
+		"brr_fence_bottom": {
+			"textures": "textures/blocks/fence_bottom"
+		},
+		"brr_fence_top": {
+			"textures": "textures/blocks/fence_top"
+		},
+		"brr_locker_bottom": {
+			"textures": "textures/blocks/locker_bottom"
+		},
+		"brr_locker_middle": {
+			"textures": "textures/blocks/locker_middle"
+		},
+		"brr_locker_top": {
+			"textures": "textures/blocks/locker_top"
+		},
+		"brr_weird_ceiling": {
+			"textures": "textures/blocks/weird_ceiling"
+		},
+		"brr_actual_floor_tile": {
+			"textures": "textures/blocks/actual_floor_tile"
+		},
+		"brr_bathroom_tile": {
+			"textures": "textures/blocks/bathroom_tile"
+		},
+		"brr_bathroom_tile2": {
+			"textures": "textures/blocks/bathroom_tile2"
+		},
+		"brr_friday_floor": {
+			"textures": "textures/blocks/Friday_Floor"
+		},
+		"brr_friday_wall": {
+			"textures": "textures/blocks/friday_wall"
+		},
+		"brr_friday_wall2": {
+			"textures": "textures/blocks/friday_wall2"
+		},
+		"brr_friday_wall_cutout": {
+			"textures": "textures/blocks/friday_wall"
+		},
+		"brr_friday_wall2_cutout": {
+			"textures": "textures/blocks/friday_wall2"
+		},
+		"brr_floor_gym": {
+			"textures": "textures/blocks/floor_gym"
+		},
+		"brr_floor02": {
+			"textures": "textures/blocks/Floor02"
+		},
+		"brr_wall_molded_cutout": {
+			"textures": "textures/blocks/wall_molded_cutout"
+		},
+		"brr_wall_medical_cutout": {
+			"textures": "textures/blocks/wall_medical"
+		},
+		"brr_wall_gym": {
+			"textures": "textures/blocks/wall_gym"
+		},
+		"brr_full_medical_wall": {
+			"textures": "textures/blocks/full_wall_medical"
+		},
+		"brr_saloon_wall": {
+			"textures": "textures/blocks/saloon_wall"
+		},
+		"brr_locker_b": {
+			"textures": "textures/blocks/Locker_b"
+		},
+		"brr_locker_b_bottom": {
+			"textures": "textures/blocks/locker_b_bottom"
+		},
+		"brr_locker_b_middle": {
+			"textures": "textures/blocks/locker_b_middle"
+		},
+		"brr_locker_b_top": {
+			"textures": "textures/blocks/locker_b_top"
+		},
+		"brr_locker_white": {
+			"textures": "textures/blocks/Locker_white"
+		},
+		"brr_locker_white_bottom": {
+			"textures": "textures/blocks/locker_white_bottom"
+		},
+		"brr_locker_white_middle": {
+			"textures": "textures/blocks/locker_white_middle"
+		},
+		"brr_locker_white_top": {
+			"textures": "textures/blocks/locker_white_top"
+		},
+		"brr_locker": {
+			"textures": "textures/blocks/Locker"
+		},
+		"brr_nothing": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_toilet_bottom": {
+			"textures": "textures/blocks/static2d/toilet_bottom"
+		},
+		"brr_toilet_top": {
+			"textures": "textures/blocks/static2d/toilet_top"
+		},
+		"brr_sink_bottom": {
+			"textures": "textures/blocks/static2d/sink_bottom"
+		},
+		"brr_sink_top": {
+			"textures": "textures/blocks/static2d/sink_top"
+		},
+		"brr_sink_on_bottom": {
+			"textures": "textures/blocks/static2d/sink_on_bottom"
+		},
+		"brr_sink_on_top": {
+			"textures": "textures/blocks/static2d/sink_on_top"
+		},
+		"brr_toilet_paper": {
+			"textures": "textures/2dblocks/ToiletPaper"
+		},
+		"brr_walter_meth_station": {
+			"textures": "textures/blocks/models/walt_meth_station"
+		},
+		"brr_2d_plant": {
+			"textures": "textures/blocks/nothing"
+		},
+		"brr_classtable": {
+			"textures": "textures/blocks/Wood01"
+		},
+		"brr_cafeteria_table": {
+			"textures": "textures/blocks/wood01_cafeteria"
+		},
+		"brr_classchair": {
+			"textures": "textures/blocks/Wood01"
+		},
+		"brr_classteachertable": {
+			"textures": "textures/blocks/Wood01"
+		},
+		"brr_classteachertablemiddle": {
+			"textures": "textures/blocks/Wood01"
+		},
+		"brr_door_closed": {
+			"textures": "textures/blocks/Door"
+		},
+		"brr_door_open": {
+			"textures": "textures/blocks/Door_Open"
+		},
+		"brr_door_closed_top": {
+			"textures": "textures/blocks/Door_top"
+		},
+		"brr_door_closed_bottom": {
+			"textures": "textures/blocks/Door_bottom"
+		},
+		"brr_door_open_top": {
+			"textures": "textures/blocks/Door_Open_top"
+		},
+		"brr_door_open_bottom": {
+			"textures": "textures/blocks/Door_Open_bottom"
+		},
+		"brr_door_fac_closed": {
+			"textures": "textures/blocks/door_fac_closed"
+		},
+		"brr_door_fac_open": {
+			"textures": "textures/blocks/door_fac_open"
+		},
+		"brr_door_fac_closed_top": {
+			"textures": "textures/blocks/door_fac_closed_top"
+		},
+		"brr_door_fac_closed_bottom": {
+			"textures": "textures/blocks/door_fac_closed_bottom"
+		},
+		"brr_door_fac_open_top": {
+			"textures": "textures/blocks/door_fac_open_top"
+		},
+		"brr_door_fac_open_bottom": {
+			"textures": "textures/blocks/door_fac_open_bottom"
+		},
+		"brr_door_office_closed": {
+			"textures": "textures/blocks/door_office_closed"
+		},
+		"brr_door_office_open": {
+			"textures": "textures/blocks/door_office_open"
+		},
+		"brr_door_office_closed_top": {
+			"textures": "textures/blocks/door_office_closed_top"
+		},
+		"brr_door_office_closed_bottom": {
+			"textures": "textures/blocks/door_office_closed_bottom"
+		},
+		"brr_door_office_open_top": {
+			"textures": "textures/blocks/door_office_open_top"
+		},
+		"brr_door_office_open_bottom": {
+			"textures": "textures/blocks/door_office_open_bottom"
+		},
+		"brr_door_poo": {
+			"textures": "textures/blocks/poodoor"
+		},
+		"brr_door_poo_top": {
+			"textures": "textures/blocks/poodoor_top"
+		},
+		"brr_door_poo_bottom": {
+			"textures": "textures/blocks/poodoor_bottom"
+		},
+		"brr_sdoor_closed": {
+			"textures": "textures/blocks/sdoor_closed"
+		},
+		"brr_sdoor_open": {
+			"textures": "textures/blocks/sdoor_open"
+		},
+		"brr_sdoor_closed_top_left": {
+			"textures": "textures/blocks/sdoor_closed_top_left"
+		},
+		"brr_sdoor_closed_top_right": {
+			"textures": "textures/blocks/sdoor_closed_top_right"
+		},
+		"brr_sdoor_closed_mid_left": {
+			"textures": "textures/blocks/sdoor_closed_mid_left"
+		},
+		"brr_sdoor_closed_mid_right": {
+			"textures": "textures/blocks/sdoor_closed_mid_right"
+		},
+		"brr_sdoor_closed_bottom_left": {
+			"textures": "textures/blocks/sdoor_closed_bottom_left"
+		},
+		"brr_sdoor_closed_bottom_right": {
+			"textures": "textures/blocks/sdoor_closed_bottom_right"
+		},
+		"brr_sdoor_open_top_left": {
+			"textures": "textures/blocks/sdoor_open_top_left"
+		},
+		"brr_sdoor_open_top_right": {
+			"textures": "textures/blocks/sdoor_open_top_right"
+		},
+		"brr_sdoor_open_mid_left": {
+			"textures": "textures/blocks/sdoor_open_mid_left"
+		},
+		"brr_sdoor_open_mid_right": {
+			"textures": "textures/blocks/sdoor_open_mid_right"
+		},
+		"brr_sdoor_open_bottom_left": {
+			"textures": "textures/blocks/sdoor_open_bottom_left"
+		},
+		"brr_sdoor_open_bottom_right": {
+			"textures": "textures/blocks/sdoor_open_bottom_right"
+		},
+		"brr_sdoor_locked_top_left": {
+			"textures": "textures/blocks/sdoor_locked_top_left"
+		},
+		"brr_sdoor_locked_top_right": {
+			"textures": "textures/blocks/sdoor_locked_top_right"
+		},
+		"brr_sdoor_locked_mid_left": {
+			"textures": "textures/blocks/sdoor_locked_mid_left"
+		},
+		"brr_sdoor_locked_mid_right": {
+			"textures": "textures/blocks/sdoor_locked_mid_right"
+		},
+		"brr_sdoor_locked_bottom_left": {
+			"textures": "textures/blocks/sdoor_locked_bottom_left"
+		},
+		"brr_sdoor_locked_bottom_right": {
+			"textures": "textures/blocks/sdoor_locked_bottom_right"
+		},
+		"brr_sdoor_kitchen_closed_top_left": {
+			"textures": "textures/blocks/sdoor_kitchen_closed_top_left"
+		},
+		"brr_sdoor_kitchen_closed_top_right": {
+			"textures": "textures/blocks/sdoor_kitchen_closed_top_right"
+		},
+		"brr_sdoor_kitchen_closed_mid_left": {
+			"textures": "textures/blocks/sdoor_kitchen_closed_mid_left"
+		},
+		"brr_sdoor_kitchen_closed_mid_right": {
+			"textures": "textures/blocks/sdoor_kitchen_closed_mid_right"
+		},
+		"brr_sdoor_kitchen_closed_bottom_left": {
+			"textures": "textures/blocks/sdoor_kitchen_closed_bottom_left"
+		},
+		"brr_sdoor_kitchen_closed_bottom_right": {
+			"textures": "textures/blocks/sdoor_kitchen_closed_bottom_right"
+		},
+		"brr_sdoor_kitchen_open_top_left": {
+			"textures": "textures/blocks/sdoor_kitchen_open_top_left"
+		},
+		"brr_sdoor_kitchen_open_top_right": {
+			"textures": "textures/blocks/sdoor_kitchen_open_top_right"
+		},
+		"brr_sdoor_kitchen_open_mid_left": {
+			"textures": "textures/blocks/sdoor_kitchen_open_mid_left"
+		},
+		"brr_sdoor_kitchen_open_mid_right": {
+			"textures": "textures/blocks/sdoor_kitchen_open_mid_right"
+		},
+		"brr_sdoor_kitchen_open_bottom_left": {
+			"textures": "textures/blocks/sdoor_kitchen_open_bottom_left"
+		},
+		"brr_sdoor_kitchen_open_bottom_right": {
+			"textures": "textures/blocks/sdoor_kitchen_open_bottom_right"
+		},
+		"brr_poster_addme": {
+			"textures": "textures/blocks/signs/Poster_AddMe"
+		},
+		"brr_poster_anthony": {
+			"textures": "textures/blocks/signs/Poster_Anthony"
+		},
+		"brr_poster_ballshint03": {
+			"textures": "textures/blocks/signs/Poster_Ballshint03"
+		},
+		"brr_poster_blister_meast": {
+			"textures": "textures/blocks/signs/Poster_BlisterMeast"
+		},
+		"brr_poster_chip_rules01": {
+			"textures": "textures/blocks/signs/Poster_ChipRules01"
+		},
+		"brr_poster_chip_wash": {
+			"textures": "textures/blocks/signs/Poster_ChipWash"
+		},
+		"brr_poster_confusing": {
+			"textures": "textures/blocks/signs/Poster_Confusing"
+		},
+		"brr_poster_crack_xmas": {
+			"textures": "textures/blocks/signs/poster_crack_xmas"
+		},
+		"brr_poster_dog_bound": {
+			"textures": "textures/blocks/signs/Poster_DogBound"
+		},
+		"brr_poster_dog_delta": {
+			"textures": "textures/blocks/signs/Poster_DogDelta"
+		},
+		"brr_poster_dog_hint": {
+			"textures": "textures/blocks/signs/Poster_DogHint"
+		},
+		"brr_poster_dog_pet": {
+			"textures": "textures/blocks/signs/Poster_DogPet"
+		},
+		"brr_poster_dog_tale": {
+			"textures": "textures/blocks/signs/Poster_DogTale"
+		},
+		"brr_poster_eye_test": {
+			"textures": "textures/blocks/signs/Poster_EyeTest"
+		},
+		"brr_poster_fihrwowk": {
+			"textures": "textures/blocks/signs/Poster_fihrwowk"
+		},
+		"brr_poster_flush": {
+			"textures": "textures/blocks/signs/Poster_Flush"
+		},
+		"brr_poster_flush_dent": {
+			"textures": "textures/blocks/signs/Poster_FlushDent"
+		},
+		"brr_poster_flush_bsoda": {
+			"textures": "textures/blocks/signs/Poster_Flush_BSODA"
+		},
+		"brr_poster_glock": {
+			"textures": "textures/blocks/signs/Poster_Glock"
+		},
+		"brr_poster_gold_quart": {
+			"textures": "textures/blocks/signs/Poster_GoldQuart"
+		},
+		"brr_poster_gustav": {
+			"textures": "textures/blocks/signs/Poster_Gustav"
+		},
+		"brr_poster_hammer": {
+			"textures": "textures/blocks/signs/Poster_Hammer"
+		},
+		"brr_poster_lab": {
+			"textures": "textures/blocks/signs/Poster_Lab"
+		},
+		"brr_poster_lario": {
+			"textures": "textures/blocks/signs/Poster_Lario"
+		},
+		"brr_poster_man": {
+			"textures": "textures/blocks/signs/Poster_Man"
+		},
+		"brr_poster_meta": {
+			"textures": "textures/blocks/signs/Poster_meta"
+		},
+		"brr_poster_mr_beast": {
+			"textures": "textures/blocks/signs/Poster_MrBeast"
+		},
+		"brr_poster_mr_beast_card": {
+			"textures": "textures/blocks/signs/Poster_MrBeastCard"
+		},
+		"brr_poster_mystery_machine": {
+			"textures": "textures/blocks/signs/poster_mystery_machine"
+		},
+		"brr_poster_noclip": {
+			"textures": "textures/blocks/signs/Poster_Noclip"
+		},
+		"brr_poster_notebook": {
+			"textures": "textures/blocks/signs/Poster_Notebook"
+		},
+		"brr_poster_omega_problem": {
+			"textures": "textures/blocks/signs/Poster_OmegaProblem"
+		},
+		"brr_poster_ornament": {
+			"textures": "textures/blocks/signs/poster_ornament"
+		},
+		"brr_poster_pearl": {
+			"textures": "textures/blocks/signs/Poster_Pearl"
+		},
+		"brr_poster_pee": {
+			"textures": "textures/blocks/signs/Poster_Pee"
+		},
+		"brr_poster_peter": {
+			"textures": "textures/blocks/signs/Poster_Peter"
+		},
+		"brr_poster_phone": {
+			"textures": "textures/blocks/signs/Poster_Phone"
+		},
+		"brr_poster_pipe": {
+			"textures": "textures/blocks/signs/Poster_Pipe"
+		},
+		"brr_poster_player": {
+			"textures": "textures/blocks/signs/Poster_Player"
+		},
+		"brr_poster_poop": {
+			"textures": "textures/blocks/signs/Poster_Poop"
+		},
+		"brr_poster_problem": {
+			"textures": "textures/blocks/signs/Poster_Problem"
+		},
+		"brr_poster_shit": {
+			"textures": "textures/blocks/signs/Poster_Shit"
+		},
+		"brr_poster_squee": {
+			"textures": "textures/blocks/signs/Poster_Squee"
+		},
+		"brr_poster_stuff": {
+			"textures": "textures/blocks/signs/Poster_Stuff"
+		},
+		"brr_poster_stuff_inbetween": {
+			"textures": "textures/blocks/signs/Poster_Stuff_Inbetween"
+		},
+		"brr_poster_task": {
+			"textures": "textures/blocks/signs/Poster_Task"
+		},
+		"brr_poster_window": {
+			"textures": "textures/blocks/signs/Poster_Window"
+		},
+		"brr_poster_beast00": {
+			"textures": "textures/blocks/signs/Poster_Beast00"
+		},
+		"brr_poster_beast01": {
+			"textures": "textures/blocks/signs/Poster_Beast01"
+		},
+		"brr_poster_beast02": {
+			"textures": "textures/blocks/signs/Poster_Beast02"
+		},
+		"brr_poster_beast03": {
+			"textures": "textures/blocks/signs/Poster_Beast03"
+		},
+		"brr_poster_beast04": {
+			"textures": "textures/blocks/signs/Poster_Beast04"
+		},
+		"brr_poster_beast05": {
+			"textures": "textures/blocks/signs/Poster_Beast05"
+		},
+		"brr_poster_beast06": {
+			"textures": "textures/blocks/signs/Poster_Beast06"
+		},
+		"brr_poster_beast07": {
+			"textures": "textures/blocks/signs/Poster_Beast07"
+		},
+		"brr_poster_bark": {
+			"textures": "textures/blocks/signs/Poster_Bark"
+		},
+		"brr_poster_beast_presents": {
+			"textures": "textures/blocks/signs/poster_beast_presents"
+		},
+		"brr_poster_jeffy": {
+			"textures": "textures/blocks/signs/poster_jeffy"
+		},
+		"brr_poster_trans_flag": {
+			"textures": "textures/blocks/signs/trans_flag"
+		},
+		"brr_poster_gustav_r01": {
+			"textures": "textures/blocks/signs/Poster_GustavR01"
+		},
+		"brr_poster_timer_wall": {
+			"textures": "textures/blocks/signs/timer_wall"
+		},
+		"brr_poster_cookie": {
+			"textures": "textures/blocks/signs/Poster_Cookie"
+		},
+		"brr_poster_free_cow": {
+			"textures": "textures/blocks/signs/Poster_FreeCow"
+		},
+		"brr_poster_ballshint01": {
+			"textures": "textures/blocks/signs/Poster_Ballshint01"
+		},
+		"brr_poster_inbetween": {
+			"textures": "textures/blocks/signs/Poster_Inbetween"
+		},
+		"brr_poster_ballshint02": {
+			"textures": "textures/blocks/signs/Poster_Ballshint02"
+		},
+		"brr_poster_dog_ps5": {
+			"textures": "textures/blocks/signs/poster_dog_ps5"
+		},
+		"brr_poster_gustav_r02": {
+			"textures": "textures/blocks/signs/Poster_GustavR02"
+		},
+		"brr_poster_sheepbird": {
+			"textures": "textures/blocks/signs/poster_sheepbird"
+		},
+		"brr_poster_trade_behind_wall": {
+			"textures": "textures/blocks/signs/Poster_TradeBehindWall"
+		},
+		"brr_poster_mona_beasta_bottom": {
+			"textures": "textures/blocks/signs/poster_mona_beasta_slice_bottom"
+		},
+		"brr_poster_mona_beasta_mid": {
+			"textures": "textures/blocks/signs/poster_mona_beasta_slice_mid"
+		},
+		"brr_poster_mona_beasta_top": {
+			"textures": "textures/blocks/signs/poster_mona_beasta_slice_top"
+		},
+		"brr_poster_comic_01_00_bottom": {
+			"textures": "textures/blocks/signs/comic_01_00_slice_bottom"
+		},
+		"brr_poster_comic_01_00_mid": {
+			"textures": "textures/blocks/signs/comic_01_00_slice_mid"
+		},
+		"brr_poster_comic_01_00_top": {
+			"textures": "textures/blocks/signs/comic_01_00_slice_top"
+		},
+		"brr_poster_comic_01_01_bottom": {
+			"textures": "textures/blocks/signs/comic_01_01_slice_bottom"
+		},
+		"brr_poster_comic_01_01_mid": {
+			"textures": "textures/blocks/signs/comic_01_01_slice_mid"
+		},
+		"brr_poster_comic_01_01_top": {
+			"textures": "textures/blocks/signs/comic_01_01_slice_top"
+		},
+		"brr_poster_comic_02_00_bottom": {
+			"textures": "textures/blocks/signs/comic_02_00_slice_bottom"
+		},
+		"brr_poster_comic_02_00_mid": {
+			"textures": "textures/blocks/signs/comic_02_00_slice_mid"
+		},
+		"brr_poster_comic_02_00_top": {
+			"textures": "textures/blocks/signs/comic_02_00_slice_top"
+		},
+		"brr_poster_comic_02_01_bottom": {
+			"textures": "textures/blocks/signs/comic_02_01_slice_bottom"
+		},
+		"brr_poster_comic_02_01_mid": {
+			"textures": "textures/blocks/signs/comic_02_01_slice_mid"
+		},
+		"brr_poster_comic_02_01_top": {
+			"textures": "textures/blocks/signs/comic_02_01_slice_top"
+		},
+		"brr_poster_comic_03_00_bottom": {
+			"textures": "textures/blocks/signs/comic_03_00_slice_bottom"
+		},
+		"brr_poster_comic_03_00_mid": {
+			"textures": "textures/blocks/signs/comic_03_00_slice_mid"
+		},
+		"brr_poster_comic_03_00_top": {
+			"textures": "textures/blocks/signs/comic_03_00_slice_top"
+		},
+		"brr_poster_comic_03_01_bottom": {
+			"textures": "textures/blocks/signs/comic_03_01_slice_bottom"
+		},
+		"brr_poster_comic_03_01_mid": {
+			"textures": "textures/blocks/signs/comic_03_01_slice_mid"
+		},
+		"brr_poster_comic_03_01_top": {
+			"textures": "textures/blocks/signs/comic_03_01_slice_top"
+		},
+		"brr_poster_exit_wall_bottom_left": {
+			"textures": "textures/blocks/signs/exit_wall_bottom_left"
+		},
+		"brr_poster_exit_wall_top_left": {
+			"textures": "textures/blocks/signs/exit_wall_top_left"
+		},
+		"brr_poster_exit_wall_bottom_right": {
+			"textures": "textures/blocks/signs/exit_wall_bottom_right"
+		},
+		"brr_poster_exit_wall_top_right": {
+			"textures": "textures/blocks/signs/exit_wall_top_right"
+		},
+		"brr_blinds_up_bottom_left": {
+			"textures": "textures/blocks/signs/blwindow_up_bottom_left"
+		},
+		"brr_blinds_up_top_left": {
+			"textures": "textures/blocks/signs/blwindow_up_top_left"
+		},
+		"brr_blinds_down_bottom_left": {
+			"textures": "textures/blocks/signs/blwindow_down_bottom_left"
+		},
+		"brr_blinds_down_top_left": {
+			"textures": "textures/blocks/signs/blwindow_down_top_left"
+		},
+		"brr_blinds_up_bottom_right": {
+			"textures": "textures/blocks/signs/blwindow_up_bottom_right"
+		},
+		"brr_blinds_up_top_right": {
+			"textures": "textures/blocks/signs/blwindow_up_top_right"
+		},
+		"brr_blinds_down_bottom_right": {
+			"textures": "textures/blocks/signs/blwindow_down_bottom_right"
+		},
+		"brr_blinds_down_top_right": {
+			"textures": "textures/blocks/signs/blwindow_down_top_right"
+		},
+		"brr_cobblestone": {
+			"textures": "textures/blocks/Cobblestone"
+		},
+		"brr_door_beast_top": {
+			"textures": "textures/blocks/door_beast_top"
+		},
+		"brr_door_beast_bottom": {
+			"textures": "textures/blocks/door_beast_bottom"
+		},
+		"brr_door_bedroom_closed_top": {
+			"textures": "textures/blocks/door_bedroom_closed_top"
+		},
+		"brr_door_bedroom_closed_bottom": {
+			"textures": "textures/blocks/door_bedroom_closed_bottom"
+		},
+		"brr_door_bedroom_open_top": {
+			"textures": "textures/blocks/door_bedroom_open_top"
+		},
+		"brr_door_bedroom_open_bottom": {
+			"textures": "textures/blocks/door_bedroom_open_bottom"
+		},
+		"brr_door_medical_closed_top": {
+			"textures": "textures/blocks/door_medical_closed_top"
+		},
+		"brr_door_medical_closed_bottom": {
+			"textures": "textures/blocks/door_medical_closed_bottom"
+		},
+		"brr_door_medical_open_top": {
+			"textures": "textures/blocks/door_medical_open_top"
+		},
+		"brr_door_medical_open_bottom": {
+			"textures": "textures/blocks/door_medical_open_bottom"
+		},
+		"brr_window_0": {
+			"textures": "textures/blocks/window_0"
+		},
+		"brr_window_broke_0": {
+			"textures": "textures/blocks/window_broke_0"
+		},
+		"brr_window_obsidian_0": {
+			"textures": "textures/blocks/window_obsidian_0"
+		},
+		"brr_jail_window_0": {
+			"textures": "textures/blocks/jailwindow_0"
+		},
+		"brr_window_1": {
+			"textures": "textures/blocks/window_1"
+		},
+		"brr_window_broke_1": {
+			"textures": "textures/blocks/window_broke_1"
+		},
+		"brr_window_obsidian_1": {
+			"textures": "textures/blocks/window_obsidian_1"
+		},
+		"brr_jail_window_1": {
+			"textures": "textures/blocks/jailwindow_1"
+		},
+		"brr_window_2": {
+			"textures": "textures/blocks/window_2"
+		},
+		"brr_window_broke_2": {
+			"textures": "textures/blocks/window_broke_2"
+		},
+		"brr_window_obsidian_2": {
+			"textures": "textures/blocks/window_obsidian_2"
+		},
+		"brr_jail_window_2": {
+			"textures": "textures/blocks/jailwindow_2"
+		},
+		"brr_window_3": {
+			"textures": "textures/blocks/window_3"
+		},
+		"brr_window_broke_3": {
+			"textures": "textures/blocks/window_broke_3"
+		},
+		"brr_window_obsidian_3": {
+			"textures": "textures/blocks/window_obsidian_3"
+		},
+		"brr_jail_window_3": {
+			"textures": "textures/blocks/jailwindow_3"
+		},
+		"brr_window_obligatory": {
+			"textures": "textures/blocks/Obligatory_window_0"
+		},
+		"brr_fountain": {
+			"textures": "textures/blocks/fountain"
+		},
+		"brr_vending_bsoda_0": {
+			"textures": "textures/blocks/models/vending_bsoda_0"
+		},
+		"brr_vending_bsoda_1": {
+			"textures": "textures/blocks/models/vending_bsoda_1"
+		},
+		"brr_vending_bsoda_free_0": {
+			"textures": "textures/blocks/models/vending_bsoda_free_0"
+		},
+		"brr_vending_bsoda_eth_0": {
+			"textures": "textures/blocks/models/vending_bsoda_eth_0"
+		},
+		"brr_vending_alarm_clock_0": {
+			"textures": "textures/blocks/models/vending_alarm_clock_0"
+		},
+		"brr_vending_alarm_clock_1": {
+			"textures": "textures/blocks/models/vending_alarm_clock_1"
+		},
+		"brr_vending_energy_0": {
+			"textures": "textures/blocks/models/vending_energy_0"
+		},
+		"brr_vending_energy_1": {
+			"textures": "textures/blocks/models/vending_energy_1"
+		},
+		"brr_vending_hammer_0": {
+			"textures": "textures/blocks/models/vending_hammer_0"
+		},
+		"brr_vending_hammer_1": {
+			"textures": "textures/blocks/models/vending_hammer_1"
+		},
+		"brr_vending_monkenator_0": {
+			"textures": "textures/blocks/models/vending_monkenator_0"
+		},
+		"brr_vending_monkenator_1": {
+			"textures": "textures/blocks/models/vending_monkenator_1"
+		},
+		"brr_vending_sprite_cranberry_0": {
+			"textures": "textures/blocks/models/vending_sprite_cranberry_0"
+		},
+		"brr_vending_sprite_cranberry_1": {
+			"textures": "textures/blocks/models/vending_sprite_cranberry_1"
+		},
+		"brr_vending_wd_nosquee_0": {
+			"textures": "textures/blocks/models/vending_wd_nosquee_0"
+		},
+		"brr_vending_wd_nosquee_1": {
+			"textures": "textures/blocks/models/vending_wd_nosquee_1"
+		},
+		"brr_vending_zesty_0": {
+			"textures": "textures/blocks/models/vending_zesty_0"
+		},
+		"brr_vending_zesty_1": {
+			"textures": "textures/blocks/models/vending_zesty_1"
+		},
+		"brr_vending_zesty_eth_0": {
+			"textures": "textures/blocks/models/vending_zesty_eth_0"
+		},
+		"brr_vending_peppermint_bar_0": {
+			"textures": "textures/blocks/models/vending_peppermint_bar_0"
+		},
+		"brr_vending_peppermint_bar_1": {
+			"textures": "textures/blocks/models/vending_peppermint_bar_1"
+		},
+		"brr_vending_ornament_0": {
+			"textures": "textures/blocks/models/vending_ornament_0"
+		},
+		"brr_vending_ornament_1": {
+			"textures": "textures/blocks/models/vending_ornament_1"
+		},
+		"brr_vending_pearl_0": {
+			"textures": "textures/blocks/models/vending_pearl_0"
+		},
+		"brr_vending_pearl_1": {
+			"textures": "textures/blocks/models/vending_pearl_1"
+		},
+		"brr_vending": {
+			"textures": "textures/blocks/models/vending_bg"
+		},
+		"brr_door_other_closed_top": {
+			"textures": "textures/blocks/door_other_closed_top"
+		},
+		"brr_door_other_closed_bottom": {
+			"textures": "textures/blocks/door_other_closed_bottom"
+		},
+		"brr_door_other_open_top": {
+			"textures": "textures/blocks/door_other_open_top"
+		},
+		"brr_door_other_open_bottom": {
+			"textures": "textures/blocks/door_other_open_bottom"
+		},
+		"brr_door_police_closed_top": {
+			"textures": "textures/blocks/door_police_closed_top"
+		},
+		"brr_door_police_closed_bottom": {
+			"textures": "textures/blocks/door_police_closed_bottom"
+		},
+		"brr_door_police_open_top": {
+			"textures": "textures/blocks/door_police_open_top"
+		},
+		"brr_door_police_open_bottom": {
+			"textures": "textures/blocks/door_police_open_bottom"
+		},
+		"brr_door_jail_closed_top": {
+			"textures": "textures/blocks/door_jail_closed_top"
+		},
+		"brr_door_jail_closed_bottom": {
+			"textures": "textures/blocks/door_jail_closed_bottom"
+		},
+		"brr_door_jail_open_top": {
+			"textures": "textures/blocks/door_jail_open_top"
+		},
+		"brr_door_jail_open_bottom": {
+			"textures": "textures/blocks/door_jail_open_bottom"
+		},
+		"brr_door_stall_closed_top": {
+			"textures": "textures/blocks/door_stall_closed_top"
+		},
+		"brr_door_stall_closed_bottom": {
+			"textures": "textures/blocks/door_stall_closed_bottom"
+		},
+		"brr_door_stall_open_top": {
+			"textures": "textures/blocks/door_stall_open_top"
+		},
+		"brr_door_stall_open_bottom": {
+			"textures": "textures/blocks/door_stall_open_bottom"
+		},
+		"brr_classchair_b": {
+			"textures": "textures/blocks/wood_b"
+		},
+		"brr_classchair_g": {
+			"textures": "textures/blocks/wood_g"
+		},
+		"brr_classchair_green": {
+			"textures": "textures/blocks/wood_green"
+		},
+		"brr_classchair_r": {
+			"textures": "textures/blocks/wood_r"
+		},
+		"brr_classchair_w": {
+			"textures": "textures/blocks/wood_w"
+		},
+		"brr_classtable_b": {
+			"textures": "textures/blocks/wood_b"
+		},
+		"brr_classtable_g": {
+			"textures": "textures/blocks/wood_g"
+		},
+		"brr_classtable_green": {
+			"textures": "textures/blocks/wood_green"
+		},
+		"brr_classtable_r": {
+			"textures": "textures/blocks/wood_r"
+		},
+		"brr_classtable_w": {
+			"textures": "textures/blocks/wood_w"
+		},
+		"brr_classteachertable_b": {
+			"textures": "textures/blocks/wood_b"
+		},
+		"brr_classteachertable_g": {
+			"textures": "textures/blocks/wood_g"
+		},
+		"brr_classteachertable_green": {
+			"textures": "textures/blocks/wood_green"
+		},
+		"brr_classteachertable_r": {
+			"textures": "textures/blocks/wood_r"
+		},
+		"brr_classteachertable_w": {
+			"textures": "textures/blocks/wood_w"
+		},
+		"brr_classteachertablemiddle_b": {
+			"textures": "textures/blocks/wood_b"
+		},
+		"brr_classteachertablemiddle_g": {
+			"textures": "textures/blocks/wood_g"
+		},
+		"brr_classteachertablemiddle_green": {
+			"textures": "textures/blocks/wood_green"
+		},
+		"brr_classteachertablemiddle_r": {
+			"textures": "textures/blocks/wood_r"
+		},
+		"brr_classteachertablemiddle_w": {
+			"textures": "textures/blocks/wood_w"
+		},
+		"brr_classchair_floor02": {
+			"textures": "textures/blocks/Floor02"
+		},
+		"brr_classtable_floor02": {
+			"textures": "textures/blocks/Floor02"
+		},
+		"brr_classteachertable_floor02": {
+			"textures": "textures/blocks/Floor02"
+		},
+		"brr_classteachertablemiddle_floor02": {
+			"textures": "textures/blocks/Floor02"
+		},
+		"brr_poster_balls_bottom_left": {
+			"textures": "textures/blocks/poster_balls_bottom_left"
+		},
+		"brr_poster_balls_mid_left": {
+			"textures": "textures/blocks/poster_balls_mid_left"
+		},
+		"brr_poster_balls_top_left": {
+			"textures": "textures/blocks/poster_balls_top_left"
+		},
+		"brr_poster_balls_bottom_right": {
+			"textures": "textures/blocks/poster_balls_bottom_right"
+		},
+		"brr_poster_balls_mid_right": {
+			"textures": "textures/blocks/poster_balls_mid_right"
+		},
+		"brr_poster_balls_top_right": {
+			"textures": "textures/blocks/poster_balls_top_right"
+		},
+		"brr_poster_balls_black_bottom_left": {
+			"textures": "textures/blocks/poster_balls_black_bottom_left"
+		},
+		"brr_poster_balls_black_mid_left": {
+			"textures": "textures/blocks/poster_balls_black_mid_left"
+		},
+		"brr_poster_balls_black_top_left": {
+			"textures": "textures/blocks/poster_balls_black_top_left"
+		},
+		"brr_poster_balls_black_bottom_right": {
+			"textures": "textures/blocks/poster_balls_black_bottom_right"
+		},
+		"brr_poster_balls_black_mid_right": {
+			"textures": "textures/blocks/poster_balls_black_mid_right"
+		},
+		"brr_poster_balls_black_top_right": {
+			"textures": "textures/blocks/poster_balls_black_top_right"
+		},
+		"brr_poster_balls_slight_bottom_left": {
+			"textures": "textures/blocks/poster_balls_slight_bottom_left"
+		},
+		"brr_poster_balls_slight_mid_left": {
+			"textures": "textures/blocks/poster_balls_slight_mid_left"
+		},
+		"brr_poster_balls_slight_top_left": {
+			"textures": "textures/blocks/poster_balls_slight_top_left"
+		},
+		"brr_poster_balls_slight_bottom_right": {
+			"textures": "textures/blocks/poster_balls_slight_bottom_right"
+		},
+		"brr_poster_balls_slight_mid_right": {
+			"textures": "textures/blocks/poster_balls_slight_mid_right"
+		},
+		"brr_poster_balls_slight_top_right": {
+			"textures": "textures/blocks/poster_balls_slight_top_right"
+		},
+		"brr_vault_cracked_bottom_left": {
+			"textures": "textures/blocks/vault_cracked_bottom_left"
+		},
+		"brr_vault_mid_left": {
+			"textures": "textures/blocks/vault_mid_left"
+		},
+		"brr_vault_cracked_mid_left": {
+			"textures": "textures/blocks/vault_cracked_mid_left"
+		},
+		"brr_vault_top_left": {
+			"textures": "textures/blocks/vault_top_left"
+		},
+		"brr_vault_cracked_top_left": {
+			"textures": "textures/blocks/vault_cracked_top_left"
+		},
+		"brr_vault_bottom_left": {
+			"textures": "textures/blocks/vault_bottom_left"
+		},
+		"brr_vault_cracked_bottom_middle": {
+			"textures": "textures/blocks/vault_cracked_bottom_middle"
+		},
+		"brr_vault_mid_middle": {
+			"textures": "textures/blocks/vault_mid_middle"
+		},
+		"brr_vault_cracked_mid_middle": {
+			"textures": "textures/blocks/vault_cracked_mid_middle"
+		},
+		"brr_vault_top_middle": {
+			"textures": "textures/blocks/vault_top_middle"
+		},
+		"brr_vault_cracked_top_middle": {
+			"textures": "textures/blocks/vault_cracked_top_middle"
+		},
+		"brr_vault_bottom_middle": {
+			"textures": "textures/blocks/vault_bottom_middle"
+		},
+		"brr_vault_cracked_bottom_right": {
+			"textures": "textures/blocks/vault_cracked_bottom_right"
+		},
+		"brr_vault_mid_right": {
+			"textures": "textures/blocks/vault_mid_right"
+		},
+		"brr_vault_cracked_mid_right": {
+			"textures": "textures/blocks/vault_cracked_mid_right"
+		},
+		"brr_vault_top_right": {
+			"textures": "textures/blocks/vault_top_right"
+		},
+		"brr_vault_cracked_top_right": {
+			"textures": "textures/blocks/vault_cracked_top_right"
+		},
+		"brr_vault_bottom_right": {
+			"textures": "textures/blocks/vault_bottom_right"
+		},
+		"brr_weird_wall": {
+			"textures": "textures/blocks/weird_wall"
+		},
+		"brr_walterfloor": {
+			"textures": "textures/blocks/walterfloor"
+		},
+		"brr_waltermethwall_1": {
+			"textures": "textures/blocks/waltermethwall_1"
+		},
+		"brr_waltermethwall_2": {
+			"textures": "textures/blocks/waltermethwall_2"
+		},
+		"brr_waltermethwall_3": {
+			"textures": "textures/blocks/waltermethwall_3"
+		},
+		"brr_waltermethwall_4": {
+			"textures": "textures/blocks/waltermethwall_4"
+		},
+		"brr_waltermethceiling_1": {
+			"textures": "textures/blocks/waltermethceiling_1"
+		},
+		"brr_waltermethceiling_2": {
+			"textures": "textures/blocks/waltermethceiling_2"
+		},
+		"brr_waltermethceiling_3": {
+			"textures": "textures/blocks/waltermethceiling_3"
+		},
+		"brr_waltermethceiling_4": {
+			"textures": "textures/blocks/waltermethceiling_4"
+		},
+		"brr_walter_timer_0": {
+			"textures": "textures/blocks/walter_lab/timer_0"
+		},
+		"brr_walter_timer_1": {
+			"textures": "textures/blocks/walter_lab/timer_1"
+		},
+		"brr_walter_timer_2": {
+			"textures": "textures/blocks/walter_lab/timer_2"
+		},
+		"brr_walter_timer_3": {
+			"textures": "textures/blocks/walter_lab/timer_3"
+		},
+		"brr_walter_timer_4": {
+			"textures": "textures/blocks/walter_lab/timer_4"
+		},
+		"brr_walter_timer_5": {
+			"textures": "textures/blocks/walter_lab/timer_5"
+		},
+		"brr_walter_timer_6": {
+			"textures": "textures/blocks/walter_lab/timer_6"
+		},
+		"brr_walter_timer_7": {
+			"textures": "textures/blocks/walter_lab/timer_7"
+		},
+		"brr_walter_timer_8": {
+			"textures": "textures/blocks/walter_lab/timer_8"
+		},
+		"brr_walter_timer_9": {
+			"textures": "textures/blocks/walter_lab/timer_9"
+		},
+		"brr_walter_timer_colon": {
+			"textures": "textures/blocks/walter_lab/timer_colon"
+		},
+		"brr_walter_screen_meth_1": {
+			"textures": "textures/blocks/walter_lab/screen_meth_1"
+		},
+		"brr_walter_screen_meth_2": {
+			"textures": "textures/blocks/walter_lab/screen_meth_2"
+		},
+		"brr_walter_screen_meth_3": {
+			"textures": "textures/blocks/walter_lab/screen_meth_3"
+		},
+		"brr_walter_screen_meth_4": {
+			"textures": "textures/blocks/walter_lab/screen_meth_4"
+		},
+		"brr_walter_screen_meth_5": {
+			"textures": "textures/blocks/walter_lab/screen_meth_5"
+		},
+		"brr_walter_screen_meth_6": {
+			"textures": "textures/blocks/walter_lab/screen_meth_6"
+		},
+		"brr_walter_screen_meth_7": {
+			"textures": "textures/blocks/walter_lab/screen_meth_7"
+		},
+		"brr_walter_screen_meth_8": {
+			"textures": "textures/blocks/walter_lab/screen_meth_8"
+		},
+		"brr_walter_screen_meth_9": {
+			"textures": "textures/blocks/walter_lab/screen_meth_9"
+		},
+		"brr_walter_screen_meth_10": {
+			"textures": "textures/blocks/walter_lab/screen_meth_10"
+		},
+		"brr_walter_screen_candy_1": {
+			"textures": "textures/blocks/walter_lab/screen_candy_1"
+		},
+		"brr_walter_screen_candy_2": {
+			"textures": "textures/blocks/walter_lab/screen_candy_2"
+		},
+		"brr_walter_screen_candy_3": {
+			"textures": "textures/blocks/walter_lab/screen_candy_3"
+		},
+		"brr_walter_screen_candy_4": {
+			"textures": "textures/blocks/walter_lab/screen_candy_4"
+		},
+		"brr_walter_screen_candy_5": {
+			"textures": "textures/blocks/walter_lab/screen_candy_5"
+		},
+		"brr_walter_screen_candy_6": {
+			"textures": "textures/blocks/walter_lab/screen_candy_6"
+		},
+		"brr_walter_screen_candy_7": {
+			"textures": "textures/blocks/walter_lab/screen_candy_7"
+		},
+		"brr_walter_screen_candy_8": {
+			"textures": "textures/blocks/walter_lab/screen_candy_8"
+		},
+		"brr_walter_screen_candy_9": {
+			"textures": "textures/blocks/walter_lab/screen_candy_9"
+		},
+		"brr_walter_screen_candy_10": {
+			"textures": "textures/blocks/walter_lab/screen_candy_10"
+		}
+	}
+}

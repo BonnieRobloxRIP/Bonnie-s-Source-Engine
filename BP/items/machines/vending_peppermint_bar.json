@@ -1,0 +1,16 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:vending_peppermint_bar",
+			"menu_category": { "category": "construction" }
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_machine_peppermint_bar",
+			"minecraft:block_placer": {
+				"block": "brr:vending_peppermint_bar",
+				"replace_block_item": true
+			}
+		}
+	}
+}

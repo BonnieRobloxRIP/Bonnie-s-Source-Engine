@@ -1,0 +1,29 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:mrbeast_card_spot",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:light_dampening": 0,
+			"minecraft:collision_box": false,
+			"minecraft:destructible_by_mining": false,
+			"minecraft:destructible_by_explosion": false,
+			"minecraft:material_instances": {
+				"*": {
+					"render_method": "blend",
+					"texture": "brr_nothing"
+				}
+			},
+			"minecraft:geometry": "geometry.brr_fullblock2",
+			"minecraft:tick": {
+				"interval_range": [4, 4],
+				"looping": true
+			},
+			"brr:card_spot": {}
+		}
+	}
+}

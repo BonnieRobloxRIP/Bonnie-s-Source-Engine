@@ -1,0 +1,71 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.brr.beast_battle": {
+      "arrays": {
+        "textures": {
+          "Array.visuals": [
+            "Texture.v0",
+            "Texture.v1",
+            "Texture.v2",
+            "Texture.v3",
+            "Texture.v4",
+            "Texture.v5",
+            "Texture.v6",
+            "Texture.v7",
+            "Texture.v8",
+            "Texture.v9",
+            "Texture.v10",
+            "Texture.v11",
+            "Texture.v12"
+          ]
+        },
+        "geometries": {
+          "Array.shapes": [
+            "Geometry.sprite",
+            "Geometry.sprite",
+            "Geometry.sprite",
+            "Geometry.sprite",
+            "Geometry.sprite",
+            "Geometry.sprite",
+            "Geometry.sprite",
+            "Geometry.sprite",
+            "Geometry.grid",
+            "Geometry.grid",
+            "Geometry.sprite",
+            "Geometry.sprite",
+            "Geometry.sprite"
+          ]
+        },
+        "materials": {
+          "Array.mats": [
+            "Material.default",
+            "Material.default",
+            "Material.default",
+            "Material.default",
+            "Material.default",
+            "Material.default",
+            "Material.default",
+            "Material.default",
+            "Material.solid",
+            "Material.default",
+            "Material.solid",
+            "Material.default",
+            "Material.solid"
+          ]
+        }
+      },
+      "geometry": "Array.shapes[q.property('brr:visual')]",
+      "materials": [
+        {
+          "*": "Array.mats[q.property('brr:visual')]"
+        }
+      ],
+      "textures": [
+        "Array.visuals[q.property('brr:visual')]"
+      ],
+      "light_color_multiplier": 1,
+      "ignore_lighting": true
+    }
+  }
+}

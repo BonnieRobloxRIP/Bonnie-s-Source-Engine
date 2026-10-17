@@ -1,0 +1,179 @@
+{
+	"format_version": "1.26.40",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:vault_left",
+			"menu_category": {
+				"category": "construction"
+			},
+			"states": {
+				"brr:cracked": [
+					false,
+					true
+				]
+			},
+			"traits": {
+				"minecraft:multi_block": {
+					"direction": "up",
+					"parts": 3,
+					"enabled_states": [
+						"minecraft:multi_block_part"
+					]
+				},
+				"minecraft:placement_direction": {
+					"enabled_states": [
+						"minecraft:cardinal_direction"
+					],
+					"y_rotation_offset": 180
+				}
+			}
+		},
+		"components": {
+			"minecraft:light_dampening": 15,
+			"minecraft:geometry": {
+				"identifier": "geometry.brr_fullblock2",
+				"culling": "brr:cull_tool"
+			},
+			"minecraft:material_instances": {
+				"north": {
+					"texture": "brr_vault_bottom_left",
+					"render_method": "alpha_test"
+				},
+				"*": {
+					"texture": "brr_vault_bottom_left",
+					"render_method": "alpha_test"
+				}
+			},
+			"minecraft:movable": {
+				"movement_type": "immovable",
+				"sticky": "none"
+			},
+			"brr:vault": {}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'north'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							0,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'south'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							180,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'west'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							90,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_state('minecraft:cardinal_direction') == 'east'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							-90,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:multi_block_part') == 0 && q.block_state('brr:cracked')",
+				"components": {
+					"minecraft:material_instances": {
+						"north": {
+							"texture": "brr_vault_cracked_bottom_left",
+							"render_method": "alpha_test"
+						},
+						"*": {
+							"texture": "brr_vault_bottom_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:multi_block_part') == 1",
+				"components": {
+					"minecraft:material_instances": {
+						"north": {
+							"texture": "brr_vault_mid_left",
+							"render_method": "alpha_test"
+						},
+						"*": {
+							"texture": "brr_vault_mid_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:multi_block_part') == 1 && q.block_state('brr:cracked')",
+				"components": {
+					"minecraft:material_instances": {
+						"north": {
+							"texture": "brr_vault_cracked_mid_left",
+							"render_method": "alpha_test"
+						},
+						"*": {
+							"texture": "brr_vault_mid_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:multi_block_part') == 2",
+				"components": {
+					"minecraft:material_instances": {
+						"north": {
+							"texture": "brr_vault_top_left",
+							"render_method": "alpha_test"
+						},
+						"*": {
+							"texture": "brr_vault_top_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:multi_block_part') == 2 && q.block_state('brr:cracked')",
+				"components": {
+					"minecraft:material_instances": {
+						"north": {
+							"texture": "brr_vault_cracked_top_left",
+							"render_method": "alpha_test"
+						},
+						"*": {
+							"texture": "brr_vault_top_left",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			}
+		]
+	}
+}

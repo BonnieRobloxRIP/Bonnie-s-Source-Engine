@@ -1,0 +1,31 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:2d_beastradio_block",
+			"menu_category": {
+				"category": "none",
+				"is_hidden_in_commands": true
+			}
+		},
+		"components": {
+			"minecraft:tick": {
+				"interval_range": [4, 4],
+				"looping": true
+			},
+			"brr:particle_emitter": {},
+			"brr:radio": {},
+			"minecraft:material_instances": {
+				"*": {
+					"render_method": "blend",
+					"texture": "brr_nothing"
+				}
+			},
+			"minecraft:geometry": {
+				"culling": "brr:cull_tool",
+				"identifier": "geometry.brr_fullblock2"
+			},
+			"minecraft:collision_box": false
+		}
+	}
+}

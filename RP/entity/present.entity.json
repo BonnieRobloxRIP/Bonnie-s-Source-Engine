@@ -1,0 +1,31 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:present",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/characters/Present"
+			},
+			"geometry": {
+				"default": "geometry.brr.present"
+			},
+			"animations": {
+				"billboard": "animation.brr.raldi.billboard",
+				"hide": "animation.brr.present.hide"
+			},
+			"scripts": {
+				"animate": [
+					"billboard",
+					{
+						"hide": "q.property('brr:hidden') == 1"
+					}
+				]
+			},
+			"render_controllers": ["controller.render.brr.mrbeast"],
+			"spawn_egg": { "texture": "brr_present_spawn_egg" }
+		}
+	}
+}

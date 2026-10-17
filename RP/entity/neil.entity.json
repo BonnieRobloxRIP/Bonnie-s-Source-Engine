@@ -1,0 +1,24 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:neil",
+			"materials": { "default": "raldi" },
+			"textures": {
+				"default": "textures/characters/Neil",
+				"dead": "textures/characters/Raldi_Dead"
+			},
+			"geometry": {
+				"default": "geometry.brr.neil",
+				"dead": "geometry.brr.raldi_dead"
+			},
+			"animations": { "billboard": "animation.brr.raldi.billboard" },
+			"scripts": { "animate": ["billboard"] },
+			"render_controllers": [
+				{ "controller.render.brr.neil": "q.property('brr:dead') == 0" },
+				{ "controller.render.brr.neil_dead": "q.property('brr:dead') == 1" }
+			],
+			"spawn_egg": { "texture": "brr_neil_spawn_egg" }
+		}
+	}
+}

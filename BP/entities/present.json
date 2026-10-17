@@ -1,0 +1,75 @@
+{
+	"format_version": "1.21.130",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "brr:present",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false,
+			"properties": {
+				"brr:hidden": {
+					"type": "int",
+					"range": [0, 1],
+					"default": 0,
+					"client_sync": true
+				}
+			}
+		},
+		"component_groups": {
+			"brr:present_hidden": {
+				"minecraft:collision_box": {
+					"width": 0.001,
+					"height": 0.001
+				}
+			}
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": ["present", "mob"]
+			},
+			"minecraft:collision_box": {
+				"width": 0.45,
+				"height": 1.7
+			},
+			"minecraft:health": {
+				"value": 1000,
+				"max": 1000
+			},
+			"minecraft:physics": {},
+			"minecraft:knockback_resistance": {
+				"value": 1.0
+			},
+			"minecraft:persistent": {},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:movement": {
+				"value": 0.0
+			}
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"set_property": {
+					"brr:hidden": 0
+				}
+			},
+			"brr:present_hide": {
+				"add": {
+					"component_groups": ["brr:present_hidden"]
+				},
+				"set_property": {
+					"brr:hidden": 1
+				}
+			},
+			"brr:present_show": {
+				"remove": {
+					"component_groups": ["brr:present_hidden"]
+				},
+				"set_property": {
+					"brr:hidden": 0
+				}
+			}
+		}
+	}
+}

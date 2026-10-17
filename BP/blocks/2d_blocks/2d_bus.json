@@ -1,0 +1,36 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:2d_bus_block",
+			"menu_category": {
+				"category": "none",
+				"is_hidden_in_commands": true
+			},
+			"traits": {
+				"minecraft:placement_direction": {
+					"enabled_states": ["minecraft:cardinal_direction"],
+					"y_rotation_offset": 180
+				}
+			}
+		},
+		"components": {
+			"minecraft:tick": {
+				"interval_range": [20, 20],
+				"looping": true
+			},
+			"brr:particle_emitter": {},
+			"minecraft:material_instances": {
+				"*": {
+					"render_method": "blend",
+					"texture": "brr_nothing"
+				}
+			},
+			"minecraft:geometry": {
+				"culling": "brr:cull_tool",
+				"identifier": "geometry.brr_fullblock2"
+			},
+			"minecraft:collision_box": false
+		}
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:raldi",
+			"materials": {
+				"default": "raldi"
+			},
+			"textures": {
+				"shake": "textures/characters/raldi_idle",
+				"dance": "textures/characters/animation/animation_flipbook",
+				"wave": "textures/characters/animation/raldi_wave_atlas",
+				"idle_wave": "textures/characters/raldi_idle_wave",
+				"move": "textures/characters/raldi_move_atlas",
+				"crackpipe": "textures/characters/raldi_crackpipe",
+				"drip": "textures/characters/raldi_drip",
+				"dead": "textures/characters/Raldi_Dead"
+			},
+			"geometry": {
+				"default": "geometry.brr.raldi",
+				"dead": "geometry.brr.raldi_dead"
+			},
+			"animations": {
+				"billboard": "animation.brr.raldi.billboard",
+				"shake": "animation.brr.raldi.shake"
+			},
+			"scripts": {
+				"animate": [
+					{ "billboard": "q.property('brr:visual') != 7" },
+					{ "shake": "q.property('brr:visual') != 1 && q.property('brr:visual') != 5 && q.property('brr:visual') != 6 && q.property('brr:visual') != 7" }
+				]
+			},
+			"render_controllers": [
+				{ "controller.render.brr.raldi_shake": "q.property('brr:visual') == 0" },
+				{ "controller.render.brr.raldi_dance": "q.property('brr:visual') == 1" },
+				{ "controller.render.brr.raldi_wave": "q.property('brr:visual') == 2" },
+				{ "controller.render.brr.raldi_idle_wave": "q.property('brr:visual') == 3" },
+				{ "controller.render.brr.raldi_move": "q.property('brr:visual') == 4" },
+				{ "controller.render.brr.raldi_crackpipe": "q.property('brr:visual') == 5" },
+				{ "controller.render.brr.raldi_drip": "q.property('brr:visual') == 6" },
+				{ "controller.render.brr.raldi_dead": "q.property('brr:visual') == 7" }
+			],
+			"spawn_egg": {
+				"texture": "brr_raldi_spawn_egg"
+			}
+		}
+	}
+}

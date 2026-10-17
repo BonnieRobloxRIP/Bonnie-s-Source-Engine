@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "Grass",
+		"metalness_emissive_roughness": "Grass_mer",
+		"normal": "Grass_normal"
+	}
+}

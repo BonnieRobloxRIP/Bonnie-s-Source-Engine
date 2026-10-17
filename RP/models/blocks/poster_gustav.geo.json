@@ -1,0 +1,37 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.poster_gustav",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, -1, 0]
+				},
+				{
+					"name": "base",
+					"parent": "root",
+					"pivot": [0, -1, 0],
+					"cubes": [
+						{
+							"origin": [-3.91875, 2.51573, 7.8],
+							"size": [13, 19, 0],
+							"pivot": [5.58125, 18.01573, 7.8],
+							"rotation": [0, 0, 10],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [14.26087, 16]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:fence_top",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:light_dampening": 15,
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "brr_fence_top",
+					"render_method": "blend_to_opaque"
+				},
+				"up": {
+					"texture": "brr_nothing",
+					"render_method": "blend_to_opaque"
+				},
+				"down": {
+					"texture": "brr_nothing",
+					"render_method": "blend_to_opaque"
+				}
+			},
+			"minecraft:geometry": {
+				"identifier": "geometry.brr_fullblock2",
+				"culling": "brr:cull_tool"
+			}
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:arts_mexicano_crafters",
+			"materials": {
+				"default": "raldi"
+			},
+			"textures": {
+				"idle": "textures/characters/Crafters_Final",
+				"chase": "textures/characters/animation/crafters_ff_atlas"
+			},
+			"geometry": {
+				"default": "geometry.brr.crafters",
+				"chase": "geometry.brr.crafters_chase"
+			},
+			"animations": {
+				"billboard": "animation.brr.crafters.billboard",
+				"hidden": "animation.brr.crafters.hidden"
+			},
+			"scripts": {
+				"animate": [
+					"billboard",
+					{ "hidden": "q.property('brr:visual') == 2" }
+				]
+			},
+			"render_controllers": [
+				{ "controller.render.brr.crafters_idle": "q.property('brr:visual') != 1" },
+				{ "controller.render.brr.crafters_chase": "q.property('brr:visual') == 1" }
+			],
+			"spawn_egg": {
+				"texture": "brr_crafters_spawn_egg"
+			}
+		}
+	}
+}

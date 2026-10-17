@@ -1,0 +1,17 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:2d_nb_red",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_2d_nb_red",
+			"minecraft:block_placer": {
+				"block": "brr:2d_nb_red_block"
+			}
+		}
+	}
+}

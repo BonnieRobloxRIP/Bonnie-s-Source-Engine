@@ -1,0 +1,18 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:poster_exit_wall_left",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_poster_exit_wall_left",
+			"minecraft:block_placer": {
+				"block": "brr:poster_exit_wall_left",
+				"replace_block_item": true
+			}
+		}
+	}
+}

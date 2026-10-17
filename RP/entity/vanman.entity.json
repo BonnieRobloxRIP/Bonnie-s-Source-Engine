@@ -1,0 +1,29 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:vanman",
+			"materials": { "default": "entity_alphatest" },
+			"textures": {
+				"van": "textures/characters/vanman",
+				"jail": "textures/characters/2dvanman"
+			},
+			"geometry": {
+				"van": "geometry.vanman",
+				"jail": "geometry.brr.vanman_jail"
+			},
+			"animations": { "billboard": "animation.brr.raldi.billboard" },
+			"scripts": {
+				"scale": "q.property('brr:in_jail') == 1 ? 1.0 : 2.0",
+				"animate": [
+					{ "billboard": "q.property('brr:in_jail') == 1" }
+				]
+			},
+			"render_controllers": [
+				{ "controller.render.brr.vanman_3d": "q.property('brr:in_jail') == 0" },
+				{ "controller.render.brr.vanman_jail": "q.property('brr:in_jail') == 1" }
+			],
+			"spawn_egg": { "texture": "brr_vanman_spawn_egg" }
+		}
+	}
+}

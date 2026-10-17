@@ -1,0 +1,15 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:gotta_weep",
+			"materials": { "default": "raldi" },
+			"textures": { "default": "textures/characters/GottaWeep" },
+			"geometry": { "default": "geometry.brr.gotta_weep" },
+			"animations": { "billboard": "animation.brr.raldi.billboard" },
+			"scripts": { "animate": ["billboard"] },
+			"render_controllers": ["controller.render.brr.simple_sprite"],
+			"spawn_egg": { "texture": "brr_gotta_weep_spawn_egg" }
+		}
+	}
+}

@@ -1,0 +1,3600 @@
+{
+  "namespace": "hud",
+
+  //=========================================================================
+  // Raldi's Crackhouse custom HUD
+  //
+  // All live values arrive through one string on the vanilla title binding
+  // (#hud_title_text_string), written by BP/scripts/hud.js. Layout in bytes:
+  //
+  //   [0 ..4)  "HUD:"   marker
+  //   [4 ..14) timer    left aligned,  right padded with spaces
+  //   [14..26) money    right aligned, left padded with spaces
+  //   [26..36) ethereum right aligned, left padded with spaces
+  //   [36..43) stamina  left aligned,  right padded with spaces
+  //   [43..44) flag     "N" = notebooks, "E" = exits
+  //   [44..52) count    right aligned, left padded with spaces
+  //   [52..53) filter   "F" = fiesta overlay on, "-" = off
+  //   [53..60) ammo     G + 6-byte number while holding the Glock
+  //   [60..61) ethereum visibility "V" = shown, "-" = hidden
+  //   [61..62) "C" for MrBeast's challenge, "J" for jail
+  //   [62..68) timed seconds remaining, including §r reset
+  //   [68..69) "R" while Raldi is dead, "-" otherwise
+  //   [69..75) Raldi respawn seconds remaining, including §r reset
+  //   [75..76) hitman phone overlay
+  //   [76..77) noisescalling frame
+  //   [77..78) escape wash R/D, "-" = off
+  //   [78..79) escape opacity a..z = 0..40%, "-" = off
+  //   [79..84) item explosion slots: frame letter a..p while that slot explodes, "-" otherwise
+  //   [84..85) Van Man jump rope frame a..p = Rope01..Rope16, "-" = off
+  //   [85..113) four ordered status slots, each mode + 6-byte value:
+  //     C = challenge, J = jail, V = jump rope, K = kidnapped, P = has to poop,
+  //     M = poop meter seconds, N = poop meter "NOW.", "-" = unused
+  //   [113..120) newest active status: mode + 6-byte value, shown at a fixed position
+  //   [120..121) trophy popup frame: a..h slide in, i hold, j..s fade out, "-" = hidden
+  //   [121..122) trophy popup index: "a" = TROPHIES[0] in BP/scripts/trophies.js
+  //   [122..123) MrBeast credit card in the inventory: "C", "-" = no
+  //   [123..124) Win screen (BP/scripts/win_screen.js): "W" = shown, "-" = hidden
+  //   [124..125) "R" = NEW RECORD! shown, "-" = not
+  //   [125..126) "C" = continue hint shown, "-" = not
+  //   [126..134) counted run time, centred in spaces
+  //
+  // A field is sliced out as (first N bytes) minus (first M bytes), which is
+  // the only substring operation JSON UI bindings give us.
+  //=========================================================================
+
+  "brr_field": {
+    "type": "label",
+    "localize": false,
+    "shadow": true,
+    "font_scale_factor": 1.0,
+    "layer": 2,
+    "size": [ "100%", "default" ],
+    "text": "#text",
+    // a binding can only write to a property that already exists on the control.
+    // the slice expression must be written inline in each field: a $variable is not
+    // substituted into a binding's source_property_name.
+    "controls": [
+      {
+        "data_control": {
+          "type": "panel",
+          "size": [ 0, 0 ],
+          "property_bag": { "#brr_data": "" },
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "brr_outline_text": {
+    "type": "label",
+    "localize": false,
+    "shadow": true,
+    "font_scale_factor": 1.0,
+    "layer": 2,
+    "size": "$brr_size",
+    "text": "#text",
+    "color": "$brr_color",
+    "text_alignment": "$brr_alignment",
+    "font_size": "$brr_font_size",
+    "font_type": "$brr_font_type",
+    "property_bag": { "#brr_data": "" }
+  },
+
+  "brr_glock_ammo_text": {
+    "type": "label",
+    "localize": false,
+    "shadow": true,
+    "font_scale_factor": 1.5,
+    "layer": 2,
+    "size": "$brr_size",
+    "text": "#text",
+    "color": "$brr_color",
+    "text_alignment": "$brr_alignment",
+    "font_size": "$brr_font_size",
+    "font_type": "$brr_font_type",
+    "property_bag": { "#brr_data": "" }
+  },
+
+  //--------------------------------------------------------------- timer ---
+
+  "brr_timer_panel": {
+    "type": "image",
+    "texture": "textures/ui/HUD_flipped",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 4, 4 ],
+    "size": [ 84, 36 ]
+  },
+
+  //------------------------------------------------------------ currency ---
+
+  "brr_currency_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -10, 4 ],
+    "size": [ 126, "100%c" ],
+    "controls": [
+      {
+        "money": {
+          "type": "label",
+          "localize": false,
+          "shadow": true,
+          "font_scale_factor": 1.0,
+          "layer": 2,
+          "size": [ "100%", 22 ],
+          "text_alignment": "right",
+          "font_size": "large",
+          "font_type": "default",
+          "color": [ 0.22, 0.95, 0.22 ],
+          "text": "25.00"
+        }
+      },
+      {
+        "ethereum_row": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%", 20 ],
+          "controls": [
+            { "spacer@common.empty_panel": { "size": [ "fill", "100%" ] } },
+            {
+              "ethereum_icon": {
+                "type": "image",
+                "texture": "textures/ui/brr/icon_ethereum",
+                "size": [ 17, 17 ],
+                "anchor_from": "center",
+                "anchor_to": "center"
+              }
+            },
+            {
+              "ethereum": {
+                "type": "label",
+                "localize": false,
+                "shadow": true,
+                "font_scale_factor": 1.0,
+                "layer": 2,
+                "size": [ 44, "100%" ],
+                "text_alignment": "right",
+                "font_size": "large",
+                "font_type": "default",
+                "color": [ 0.62, 0.66, 0.76 ],
+                "text": "1"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  //-------------------------------------------------------------- hotbar ---
+
+  "brr_hotbar_slot": {
+    "type": "panel",
+    "size": [ 44, 44 ],
+    "$hotbar_collection_name": "hotbar_items",
+    "$stack_count_collection_name": "hotbar_items",
+    "$stack_count_required": true,
+    "$durability_bar_required": true,
+    "$storage_bar_required": true,
+    "controls": [
+      {
+        "slot_background": {
+          "type": "image",
+          "texture": "textures/ui/brr/hud_slot",
+          "size": [ "100% - 8px", "100% - 8px" ],
+          "layer": 1
+        }
+      },
+      {
+        "slot_selected": {
+          "type": "image",
+          "texture": "textures/ui/brr/hud_slot_selected",
+          "size": [ "100% - 8px", "100% - 8px" ],
+          "layer": 2,
+          "bindings": [
+            {
+              "binding_name": "#slot_selected",
+              "binding_name_override": "#visible",
+              "binding_type": "collection",
+              "binding_collection_name": "$hotbar_collection_name"
+            }
+          ]
+        }
+      },
+      {
+        "item_icon@hud.hotbar_hud_item_icon": {
+          "layer": 4,
+          "size": [ 32, 32 ]
+        }
+      },
+      {
+        "item_count@common.stack_count_label": {
+          "layer": 5,
+          "$item_collection_name": "$hotbar_collection_name",
+          "bindings": [
+            {
+              "binding_name": "#inventory_stack_count",
+              "binding_type": "collection",
+              "binding_collection_name": "$stack_count_collection_name"
+            },
+            {
+              "binding_name": "#stack_count_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "collection",
+              "binding_collection_name": "$stack_count_collection_name"
+            }
+          ]
+        }
+      },
+      { "item_dura@hud.item_durability": { "layer": 6 } },
+      { "cooldown@hud.cooldown_renderer": { "layer": 10 } },
+      {
+        "slot_button@hud.gui_hotbar_slot_button_prototype": {
+          "size": [ "100%", "100%" ],
+          "layer": 20
+        }
+      }
+    ]
+  },
+
+  "brr_hotbar_grid": {
+    "type": "grid",
+    "$hotbar_collection_name": "hotbar_items",
+    "grid_item_template": "hud.brr_hotbar_slot",
+    "grid_dimensions": [ 5, 1 ],
+    "collection_name": "hotbar_items",
+    "size": [ 220, 44 ]
+  },
+
+  "brr_hotbar_panel": {
+    "type": "image",
+    "texture": "textures/ui/brr/hud_panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [
+      0,
+      8
+    ],
+    "size": [
+      236,
+      60
+    ],
+    "controls": [
+      {
+        "grid@hud.brr_hotbar_grid": {
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "layer": 2
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#hotbar_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+
+
+
+  //--------------------------------------------------------------- stats ---
+
+  "brr_stats_panel": {
+    "type": "image",
+    "texture": "textures/ui/HUD",
+    "keep_ratio": false,
+    "fill": true,
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ 0, -8 ],
+    "size": [ 208, 56 ],
+    "controls": [
+      {
+        "stamina_caption": {
+          "type": "label",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 10, 30 ],
+          "size": [ 68, 18 ],
+          "text_alignment": "center",
+          "font_type": "default",
+          "font_scale_factor": 1.2,
+          "shadow": true,
+          "color": [ 1, 1, 1 ],
+          "text": "brr.hud.stamina"
+        }
+      },
+      {
+        "player_doll@hud.brr_player_doll": {
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": [ 0, 1 ]
+        }
+      },
+      {
+        "notebooks_caption@hud.brr_collectible_caption": {
+          "text": "brr.hud.notebooks",
+          "property_bag": { "#brr_data": "" },
+          "visible": true,
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.44s' * #brr_data) - ('%.43s' * #brr_data)) = 'N')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "exits_caption@hud.brr_collectible_caption": {
+          "text": "brr.hud.exits",
+          "offset": [ -6, 30 ],
+          "property_bag": { "#brr_data": "" },
+          "visible": false,
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.44s' * #brr_data) - ('%.43s' * #brr_data)) = 'E')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "brr_collectible_caption": {
+    "type": "label",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -10, 30 ],
+    "size": [ 68, 18 ],
+    "text_alignment": "center",
+    "font_type": "default",
+    "font_scale_factor": 1.2,
+    "shadow": true,
+    "color": [ 1, 1, 1 ],
+    "property_bag": { "#brr_data": "" }
+  },
+
+  // Paper doll renderer without the vanilla "#paper_doll_visible" gate, so it
+  // always shows inside the stats panel.
+  "brr_player_doll": {
+    "type": "custom",
+    "renderer": "hud_player_renderer",
+    "size": [ 42, 42 ],
+    "layer": 3
+  },
+
+  //--------------------------------------------------------- fiesta filter ---
+
+  // full screen yellow wash shown while Arts (Mexicano) Crafters is chasing
+  "brr_fiesta_filter": {
+    "type": "image",
+    "texture": "textures/ui/White",
+    "size": [ "100%", "100%" ],
+    "layer": 1,
+    "color": [ 1, 0.85, 0.1 ],
+    "alpha": 0.38,
+    "visible": false,
+    "property_bag": {
+      "#brr_data": ""
+    },
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_name_override": "#brr_data",
+        "binding_type": "global",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((('%.53s' * #brr_data) - ('%.52s' * #brr_data)) = 'F')",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      }
+    ]
+  },
+
+  "brr_glock_ammo_panel": {
+    "type": "image",
+    "texture": "textures/ui/ammo",
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "offset": [ -8, -8 ],
+    "size": [ 96, 48 ],
+    "property_bag": { "#brr_data": "" },
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_name_override": "#brr_data",
+        "binding_type": "global",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((('%.54s' * #brr_data) - ('%.53s' * #brr_data)) = 'G')",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      }
+    ]
+  },
+
+  // Same White-texture wash as fiesta, faded by the appended HUD bytes.
+  // 25 steps * .016 opacity = .4 opacity (60% transparency).
+  "brr_escape_filter_level": {
+    "type": "image",
+    "texture": "textures/ui/White",
+    "size": [ "100%", "100%" ],
+    "color": "$escape_color",
+    "alpha": "$escape_alpha",
+    "visible": false,
+    "property_bag": { "#brr_data": "", "#escape_level": "$escape_level" },
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_name_override": "#brr_data",
+        "binding_type": "global",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((('%.79s' * #brr_data) - ('%.78s' * #brr_data)) = #escape_level)",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      }
+    ]
+  },
+
+  "brr_escape_filter": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "layer": 1,
+    "visible": false,
+    "property_bag": { "#brr_data": "", "#escape_stage": "$escape_stage" },
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_name_override": "#brr_data",
+        "binding_type": "global",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((('%.78s' * #brr_data) - ('%.77s' * #brr_data)) = #escape_stage)",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      }
+    ],
+    "controls": [
+      { "b@hud.brr_escape_filter_level": { "$escape_level": "b", "$escape_alpha": 0.016 } },
+      { "c@hud.brr_escape_filter_level": { "$escape_level": "c", "$escape_alpha": 0.032 } },
+      { "d@hud.brr_escape_filter_level": { "$escape_level": "d", "$escape_alpha": 0.048 } },
+      { "e@hud.brr_escape_filter_level": { "$escape_level": "e", "$escape_alpha": 0.064 } },
+      { "f@hud.brr_escape_filter_level": { "$escape_level": "f", "$escape_alpha": 0.080 } },
+      { "g@hud.brr_escape_filter_level": { "$escape_level": "g", "$escape_alpha": 0.096 } },
+      { "h@hud.brr_escape_filter_level": { "$escape_level": "h", "$escape_alpha": 0.112 } },
+      { "i@hud.brr_escape_filter_level": { "$escape_level": "i", "$escape_alpha": 0.128 } },
+      { "j@hud.brr_escape_filter_level": { "$escape_level": "j", "$escape_alpha": 0.144 } },
+      { "k@hud.brr_escape_filter_level": { "$escape_level": "k", "$escape_alpha": 0.160 } },
+      { "l@hud.brr_escape_filter_level": { "$escape_level": "l", "$escape_alpha": 0.176 } },
+      { "m@hud.brr_escape_filter_level": { "$escape_level": "m", "$escape_alpha": 0.192 } },
+      { "n@hud.brr_escape_filter_level": { "$escape_level": "n", "$escape_alpha": 0.208 } },
+      { "o@hud.brr_escape_filter_level": { "$escape_level": "o", "$escape_alpha": 0.224 } },
+      { "p@hud.brr_escape_filter_level": { "$escape_level": "p", "$escape_alpha": 0.240 } },
+      { "q@hud.brr_escape_filter_level": { "$escape_level": "q", "$escape_alpha": 0.256 } },
+      { "r@hud.brr_escape_filter_level": { "$escape_level": "r", "$escape_alpha": 0.272 } },
+      { "s@hud.brr_escape_filter_level": { "$escape_level": "s", "$escape_alpha": 0.288 } },
+      { "t@hud.brr_escape_filter_level": { "$escape_level": "t", "$escape_alpha": 0.304 } },
+      { "u@hud.brr_escape_filter_level": { "$escape_level": "u", "$escape_alpha": 0.320 } },
+      { "v@hud.brr_escape_filter_level": { "$escape_level": "v", "$escape_alpha": 0.336 } },
+      { "w@hud.brr_escape_filter_level": { "$escape_level": "w", "$escape_alpha": 0.352 } },
+      { "x@hud.brr_escape_filter_level": { "$escape_level": "x", "$escape_alpha": 0.368 } },
+      { "y@hud.brr_escape_filter_level": { "$escape_level": "y", "$escape_alpha": 0.384 } },
+      { "z@hud.brr_escape_filter_level": { "$escape_level": "z", "$escape_alpha": 0.400 } }
+    ]
+  },
+
+  //------------------------------------------------------------ win screen ---
+  // The original's Results scene, drawn over everything but the trophy popup while
+  // [123..124) is "W" (BP/scripts/win_screen.js). Win.png is 4:3 on white, so it sits
+  // centred at full height on a white backdrop.
+
+  "brr_win_label": {
+    "type": "label",
+    "localize": false,
+    "shadow": false,
+    "font_size": "normal",
+    "text_alignment": "center",
+    "anchor_from": "top_left",
+    "anchor_to": "center",
+    "visible": "$brr_visible",
+    "$brr_visible|default": true,
+    "property_bag": { "#brr_data": "" },
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_name_override": "#brr_data",
+        "binding_type": "global",
+        "binding_condition": "always"
+      }
+    ]
+  },
+
+  "brr_win_screen": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "layer": 55,
+    "visible": false,
+    "property_bag": { "#brr_data": "" },
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_name_override": "#brr_data",
+        "binding_type": "global",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((('%.124s' * #brr_data) - ('%.123s' * #brr_data)) = 'W')",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      }
+    ],
+    "controls": [
+      {
+        "backdrop": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": [ "100%", "100%" ],
+          "layer": 1
+        }
+      },
+      {
+        "art": {
+          "type": "panel",
+          "size": [ "133.333%y", "100%" ],
+          "layer": 2,
+          "controls": [
+            {
+              "win": {
+                "type": "image",
+                "texture": "textures/ui/Win",
+                "size": [ "100%", "100%" ],
+                "layer": 1
+              }
+            },
+            // the white space right of the chalkboard
+            {
+              "time@hud.brr_win_label": {
+                "text": "#text",
+                "color": [ 0.13, 0.75, 0.06 ],
+                "font_scale_factor": 3.0,
+                "offset": [ "86.25%", "51%" ],
+                "size": [ "26%", "default" ],
+                "layer": 2,
+                "bindings": [
+                  {
+                    "binding_name": "#hud_title_text_string",
+                    "binding_name_override": "#brr_data",
+                    "binding_type": "global",
+                    "binding_condition": "always"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "(('%.134s' * #brr_data) - ('%.126s' * #brr_data))",
+                    "target_property_name": "#text",
+                    "binding_condition": "always"
+                  }
+                ]
+              }
+            },
+            {
+              "new_record@hud.brr_win_label": {
+                "text": "NEW RECORD!",
+                "color": [ 0.9, 0.1, 0.1 ],
+                "font_scale_factor": 1.6,
+                "offset": [ "86.25%", "62.5%" ],
+                "size": [ "30%", "default" ],
+                "layer": 2,
+                "$brr_visible": false,
+                "bindings": [
+                  {
+                    "binding_name": "#hud_title_text_string",
+                    "binding_name_override": "#brr_data",
+                    "binding_type": "global",
+                    "binding_condition": "always"
+                  },
+                  {
+                    "binding_type": "view",
+                    "source_property_name": "((('%.125s' * #brr_data) - ('%.124s' * #brr_data)) = 'R')",
+                    "target_property_name": "#visible",
+                    "binding_condition": "always"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "continue@hud.brr_win_label": {
+          "text": "Press Jump to continue",
+          "color": [ 0.35, 0.35, 0.35 ],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [ 0, -4 ],
+          "size": [ "100%", "default" ],
+          "layer": 3,
+          "$brr_visible": false,
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.126s' * #brr_data) - ('%.125s' * #brr_data)) = 'C')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  //---------------------------------------------------------------- root ---
+
+  //------------------------------------------------------ stacked statuses ---
+
+  "brr_status_label": {
+    "type": "label",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "localize": false,
+    "shadow": true,
+    "font_size": "large",
+    "font_scale_factor": 1.6,
+    "text_alignment": "center",
+    "size": [ "100%", "default" ],
+    "text": "#text",
+    "visible": false
+  },
+
+  "brr_status_challenge@hud.brr_status_label": {
+    "color": [ 1, 1, 1 ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "(#status_mode = 'C')",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "('LAST TO LEAVE THIS CIRCLE WINS A FREE ITEM!\n\n' + #status_value + ' SECONDS REMAIN!')",
+        "target_property_name": "#text",
+        "binding_condition": "always"
+      }
+    ]
+  },
+
+  "brr_status_jail@hud.brr_status_label": {
+    "color": [ 1, 0, 0 ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "(#status_mode = 'J')",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "('You got jail time!\n\n' + #status_value + ' seconds remain!')",
+        "target_property_name": "#text",
+        "binding_condition": "always"
+      }
+    ]
+  },
+
+  "brr_status_rope": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "size": [ "100%", "100%c" ],
+    "visible": false,
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "(#status_mode = 'V')",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      }
+    ],
+    "controls": [
+      {
+        "caption@hud.brr_status_label": {
+          "visible": true,
+          "color": [ 1, 1, 1 ],
+          "size": [ "100%", "default" ],
+          "text": "Time to play..."
+        }
+      },
+      { "gap1": { "type": "panel", "size": [ "100%", 4 ] } },
+      {
+        "progress@hud.brr_status_label": {
+          "visible": true,
+          "color": [ 1, 1, 1 ],
+          "size": [ "100%", "default" ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "$status_source",
+              "source_property_name": "((((#status_value - ' ') - ' ') - ' ') + '/5')",
+              "target_property_name": "#text",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      { "gap2": { "type": "panel", "size": [ "100%", 4 ] } },
+      {
+        "warning@hud.brr_status_label": {
+          "visible": true,
+          "color": [ 1, 1, 1 ],
+          "size": [ "100%", "default" ],
+          "text": "Dont fail,\nor it's kidnapping time for you!"
+        }
+      }
+    ]
+  },
+
+  "brr_status_kidnap@hud.brr_status_label": {
+    "color": [ 1, 0, 0 ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "(#status_mode = 'K')",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "('You have been kidnapped!\n\n' + #status_value + ' seconds remain!')",
+        "target_property_name": "#text",
+        "binding_condition": "always"
+      }
+    ]
+  },
+
+  // PoopText.cs: shown while the player has to poop
+  "brr_status_poop@hud.brr_status_label": {
+    "color": [ 0.78, 0.63, 0.35 ],
+    "text": "You need to poop!\nGet to the bathroom as soon as possible!",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "(#status_mode = 'P')",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      }
+    ]
+  },
+
+  // AnalMeter.cs: the poop meter's prediction, "M" with the seconds left...
+  "brr_status_meter@hud.brr_status_label": {
+    "color": [ 1, 1, 1 ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "(#status_mode = 'M')",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "('The anal meter predicts.... you have to poop in\n\n' + (((#status_value - ' ') - ' ') - ' ') + ' seconds.')",
+        "target_property_name": "#text",
+        "binding_condition": "always"
+      }
+    ]
+  },
+
+  // ...or "N" once it's due
+  "brr_status_meter_now@hud.brr_status_label": {
+    "color": [ 1, 1, 1 ],
+    "text": "The anal meter predicts.... you have to poop in\n\nNOW.",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$status_source",
+        "source_property_name": "(#status_mode = 'N')",
+        "target_property_name": "#visible",
+        "binding_condition": "always"
+      }
+    ]
+  },
+
+  "brr_status_display": {
+    "type": "panel",
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "size": [ "96%", 168 ],
+    "offset": [ 0, -20 ],
+    "layer": 30,
+    "visible": false,
+    "property_bag": { "#brr_data": "", "#status_mode": "-", "#status_value": "" },
+    "bindings": [
+      { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" },
+      { "binding_type": "view", "source_property_name": "(('%.114s' * #brr_data) - ('%.113s' * #brr_data))", "target_property_name": "#status_mode", "binding_condition": "always" },
+      { "binding_type": "view", "source_property_name": "(('%.120s' * #brr_data) - ('%.114s' * #brr_data))", "target_property_name": "#status_value", "binding_condition": "always" },
+      { "binding_type": "view", "source_property_name": "(not (#status_mode = '-'))", "target_property_name": "#visible", "binding_condition": "always" }
+    ],
+    "controls": [
+      { "challenge@hud.brr_status_challenge": {} },
+      { "jail@hud.brr_status_jail": {} },
+      { "rope@hud.brr_status_rope": {} },
+      { "kidnap@hud.brr_status_kidnap": {} },
+      { "poop@hud.brr_status_poop": {} },
+      { "meter@hud.brr_status_meter": {} },
+      { "meter_now@hud.brr_status_meter_now": {} }
+    ]
+  },
+
+
+  "brr_gameboy_explosion_0": {
+    "type": "panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [
+      -88,
+      38
+    ],
+    "size": [
+      32,
+      45.176
+    ],
+    "layer": 46,
+    "controls": [
+      {
+        "f_a@hud.brr_item_explosion_frame": {
+          "uv": [
+            0,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'a')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_b@hud.brr_item_explosion_frame": {
+          "uv": [
+            68,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'b')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_c@hud.brr_item_explosion_frame": {
+          "uv": [
+            136,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'c')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_d@hud.brr_item_explosion_frame": {
+          "uv": [
+            204,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'd')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_e@hud.brr_item_explosion_frame": {
+          "uv": [
+            272,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'e')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_f@hud.brr_item_explosion_frame": {
+          "uv": [
+            340,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'f')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_g@hud.brr_item_explosion_frame": {
+          "uv": [
+            408,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'g')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_h@hud.brr_item_explosion_frame": {
+          "uv": [
+            476,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'h')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_i@hud.brr_item_explosion_frame": {
+          "uv": [
+            0,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'i')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_j@hud.brr_item_explosion_frame": {
+          "uv": [
+            68,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'j')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_k@hud.brr_item_explosion_frame": {
+          "uv": [
+            136,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'k')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_l@hud.brr_item_explosion_frame": {
+          "uv": [
+            204,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'l')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_m@hud.brr_item_explosion_frame": {
+          "uv": [
+            272,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'm')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_n@hud.brr_item_explosion_frame": {
+          "uv": [
+            340,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'n')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_o@hud.brr_item_explosion_frame": {
+          "uv": [
+            408,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'o')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_p@hud.brr_item_explosion_frame": {
+          "uv": [
+            476,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.80s' * #brr_data) - ('%.79s' * #brr_data)) = 'p')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "brr_gameboy_explosion_1": {
+    "type": "panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [
+      -44,
+      38
+    ],
+    "size": [
+      32,
+      45.176
+    ],
+    "layer": 46,
+    "controls": [
+      {
+        "f_a@hud.brr_item_explosion_frame": {
+          "uv": [
+            0,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'a')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_b@hud.brr_item_explosion_frame": {
+          "uv": [
+            68,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'b')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_c@hud.brr_item_explosion_frame": {
+          "uv": [
+            136,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'c')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_d@hud.brr_item_explosion_frame": {
+          "uv": [
+            204,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'd')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_e@hud.brr_item_explosion_frame": {
+          "uv": [
+            272,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'e')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_f@hud.brr_item_explosion_frame": {
+          "uv": [
+            340,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'f')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_g@hud.brr_item_explosion_frame": {
+          "uv": [
+            408,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'g')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_h@hud.brr_item_explosion_frame": {
+          "uv": [
+            476,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'h')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_i@hud.brr_item_explosion_frame": {
+          "uv": [
+            0,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'i')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_j@hud.brr_item_explosion_frame": {
+          "uv": [
+            68,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'j')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_k@hud.brr_item_explosion_frame": {
+          "uv": [
+            136,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'k')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_l@hud.brr_item_explosion_frame": {
+          "uv": [
+            204,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'l')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_m@hud.brr_item_explosion_frame": {
+          "uv": [
+            272,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'm')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_n@hud.brr_item_explosion_frame": {
+          "uv": [
+            340,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'n')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_o@hud.brr_item_explosion_frame": {
+          "uv": [
+            408,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'o')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_p@hud.brr_item_explosion_frame": {
+          "uv": [
+            476,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.81s' * #brr_data) - ('%.80s' * #brr_data)) = 'p')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "brr_gameboy_explosion_2": {
+    "type": "panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [
+      0,
+      38
+    ],
+    "size": [
+      32,
+      45.176
+    ],
+    "layer": 46,
+    "controls": [
+      {
+        "f_a@hud.brr_item_explosion_frame": {
+          "uv": [
+            0,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'a')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_b@hud.brr_item_explosion_frame": {
+          "uv": [
+            68,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'b')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_c@hud.brr_item_explosion_frame": {
+          "uv": [
+            136,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'c')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_d@hud.brr_item_explosion_frame": {
+          "uv": [
+            204,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'd')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_e@hud.brr_item_explosion_frame": {
+          "uv": [
+            272,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'e')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_f@hud.brr_item_explosion_frame": {
+          "uv": [
+            340,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'f')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_g@hud.brr_item_explosion_frame": {
+          "uv": [
+            408,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'g')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_h@hud.brr_item_explosion_frame": {
+          "uv": [
+            476,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'h')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_i@hud.brr_item_explosion_frame": {
+          "uv": [
+            0,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'i')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_j@hud.brr_item_explosion_frame": {
+          "uv": [
+            68,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'j')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_k@hud.brr_item_explosion_frame": {
+          "uv": [
+            136,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'k')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_l@hud.brr_item_explosion_frame": {
+          "uv": [
+            204,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'l')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_m@hud.brr_item_explosion_frame": {
+          "uv": [
+            272,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'm')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_n@hud.brr_item_explosion_frame": {
+          "uv": [
+            340,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'n')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_o@hud.brr_item_explosion_frame": {
+          "uv": [
+            408,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'o')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_p@hud.brr_item_explosion_frame": {
+          "uv": [
+            476,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.82s' * #brr_data) - ('%.81s' * #brr_data)) = 'p')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "brr_gameboy_explosion_3": {
+    "type": "panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [
+      44,
+      38
+    ],
+    "size": [
+      32,
+      45.176
+    ],
+    "layer": 46,
+    "controls": [
+      {
+        "f_a@hud.brr_item_explosion_frame": {
+          "uv": [
+            0,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'a')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_b@hud.brr_item_explosion_frame": {
+          "uv": [
+            68,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'b')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_c@hud.brr_item_explosion_frame": {
+          "uv": [
+            136,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'c')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_d@hud.brr_item_explosion_frame": {
+          "uv": [
+            204,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'd')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_e@hud.brr_item_explosion_frame": {
+          "uv": [
+            272,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'e')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_f@hud.brr_item_explosion_frame": {
+          "uv": [
+            340,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'f')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_g@hud.brr_item_explosion_frame": {
+          "uv": [
+            408,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'g')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_h@hud.brr_item_explosion_frame": {
+          "uv": [
+            476,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'h')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_i@hud.brr_item_explosion_frame": {
+          "uv": [
+            0,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'i')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_j@hud.brr_item_explosion_frame": {
+          "uv": [
+            68,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'j')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_k@hud.brr_item_explosion_frame": {
+          "uv": [
+            136,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'k')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_l@hud.brr_item_explosion_frame": {
+          "uv": [
+            204,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'l')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_m@hud.brr_item_explosion_frame": {
+          "uv": [
+            272,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'm')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_n@hud.brr_item_explosion_frame": {
+          "uv": [
+            340,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'n')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_o@hud.brr_item_explosion_frame": {
+          "uv": [
+            408,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'o')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_p@hud.brr_item_explosion_frame": {
+          "uv": [
+            476,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.83s' * #brr_data) - ('%.82s' * #brr_data)) = 'p')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "brr_gameboy_explosion_4": {
+    "type": "panel",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [
+      88,
+      38
+    ],
+    "size": [
+      32,
+      45.176
+    ],
+    "layer": 46,
+    "controls": [
+      {
+        "f_a@hud.brr_item_explosion_frame": {
+          "uv": [
+            0,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'a')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_b@hud.brr_item_explosion_frame": {
+          "uv": [
+            68,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'b')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_c@hud.brr_item_explosion_frame": {
+          "uv": [
+            136,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'c')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_d@hud.brr_item_explosion_frame": {
+          "uv": [
+            204,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'd')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_e@hud.brr_item_explosion_frame": {
+          "uv": [
+            272,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'e')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_f@hud.brr_item_explosion_frame": {
+          "uv": [
+            340,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'f')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_g@hud.brr_item_explosion_frame": {
+          "uv": [
+            408,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'g')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_h@hud.brr_item_explosion_frame": {
+          "uv": [
+            476,
+            0
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'h')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_i@hud.brr_item_explosion_frame": {
+          "uv": [
+            0,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'i')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_j@hud.brr_item_explosion_frame": {
+          "uv": [
+            68,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'j')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_k@hud.brr_item_explosion_frame": {
+          "uv": [
+            136,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'k')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_l@hud.brr_item_explosion_frame": {
+          "uv": [
+            204,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'l')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_m@hud.brr_item_explosion_frame": {
+          "uv": [
+            272,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'm')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_n@hud.brr_item_explosion_frame": {
+          "uv": [
+            340,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'n')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_o@hud.brr_item_explosion_frame": {
+          "uv": [
+            408,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'o')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "f_p@hud.brr_item_explosion_frame": {
+          "uv": [
+            476,
+            96
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.84s' * #brr_data) - ('%.83s' * #brr_data)) = 'p')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "brr_item_explosion_frame": {
+    "type": "image",
+    "texture": "textures/items/Kaboom",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "uv_size": [
+      68,
+      96
+    ],
+    "visible": false,
+    "property_bag": {
+      "#brr_data": ""
+    },
+    "layer": 46
+  },
+
+
+
+
+
+  "brr_phone_hitman_message": {
+    "type": "image",
+    "texture": "textures/ui/phone/HitmanMessage",
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "size": [ 182, 61 ],
+    "offset": [ -8, -62 ],
+    "layer": 45,
+    "visible": false,
+    "property_bag": { "#brr_data": "" },
+    "bindings": [
+      { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" },
+      { "binding_type": "view", "source_property_name": "((('%.76s' * #brr_data) - ('%.75s' * #brr_data)) = 'H')", "target_property_name": "#visible", "binding_condition": "always" }
+    ]
+  },
+
+  // the HUD root is rebuilt on every title push, which restarts flipbooks, so hud.js sends the
+  // current frame as a letter at byte [76,77) ('a' = frame 0) and each cell of the 6x5 sheet shows itself.
+  // frame controls and uv_size are written by scripts_gen/make_phone_assets.mjs
+  "brr_phone_noise_frame": {
+    "type": "image",
+    "texture": "textures/ui/phone/noisescalling",
+    "size": [ "100%", "100%" ],
+    "uv_size": [ 160, 320 ],
+    "visible": false,
+    "property_bag": { "#brr_data": "" }
+  },
+
+  "brr_phone_noise": {
+    "type": "panel",
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "size": [ "50%y", "35%" ],
+    "offset": [ "6.6%", "-3.5%" ],
+    "layer": 45,
+    "controls": [
+      // noise frames begin
+      { "f_a@hud.brr_phone_noise_frame": { "uv": [ 0, 0 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'a')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_b@hud.brr_phone_noise_frame": { "uv": [ 160, 0 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'b')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_c@hud.brr_phone_noise_frame": { "uv": [ 320, 0 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'c')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_d@hud.brr_phone_noise_frame": { "uv": [ 480, 0 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'd')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_e@hud.brr_phone_noise_frame": { "uv": [ 640, 0 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'e')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_f@hud.brr_phone_noise_frame": { "uv": [ 800, 0 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'f')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_g@hud.brr_phone_noise_frame": { "uv": [ 0, 320 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'g')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_h@hud.brr_phone_noise_frame": { "uv": [ 160, 320 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'h')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_i@hud.brr_phone_noise_frame": { "uv": [ 320, 320 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'i')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_j@hud.brr_phone_noise_frame": { "uv": [ 480, 320 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'j')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_k@hud.brr_phone_noise_frame": { "uv": [ 640, 320 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'k')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_l@hud.brr_phone_noise_frame": { "uv": [ 800, 320 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'l')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_m@hud.brr_phone_noise_frame": { "uv": [ 0, 640 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'm')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_n@hud.brr_phone_noise_frame": { "uv": [ 160, 640 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'n')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_o@hud.brr_phone_noise_frame": { "uv": [ 320, 640 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'o')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_p@hud.brr_phone_noise_frame": { "uv": [ 480, 640 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'p')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_q@hud.brr_phone_noise_frame": { "uv": [ 640, 640 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'q')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_r@hud.brr_phone_noise_frame": { "uv": [ 800, 640 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'r')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_s@hud.brr_phone_noise_frame": { "uv": [ 0, 960 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 's')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_t@hud.brr_phone_noise_frame": { "uv": [ 160, 960 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 't')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_u@hud.brr_phone_noise_frame": { "uv": [ 320, 960 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'u')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_v@hud.brr_phone_noise_frame": { "uv": [ 480, 960 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'v')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_w@hud.brr_phone_noise_frame": { "uv": [ 640, 960 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'w')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_x@hud.brr_phone_noise_frame": { "uv": [ 800, 960 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'x')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_y@hud.brr_phone_noise_frame": { "uv": [ 0, 1280 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'y')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "f_z@hud.brr_phone_noise_frame": { "uv": [ 160, 1280 ], "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.77s' * #brr_data) - ('%.76s' * #brr_data)) = 'z')", "target_property_name": "#visible", "binding_condition": "always" } ] } }
+      // noise frames end
+    ]
+  },
+
+  // Van Man's jump rope: full-screen transparent frames over the view. hud.js sends the frame as a
+  // letter at byte [84,85) ('a' = Rope01) every tick while the minigame runs; the rope passes
+  // under the player's feet between frames 12 and 13.
+  "brr_jump_rope_frame": {
+    "type": "image",
+    "size": [ "100%", "100%" ],
+    "visible": false,
+    "property_bag": { "#brr_data": "" }
+  },
+
+  "brr_jump_rope": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "layer": 44,
+    "controls": [
+      { "rope_a@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope01", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'a')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_b@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope02", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'b')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_c@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope03", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'c')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_d@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope04", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'd')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_e@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope05", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'e')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_f@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope06", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'f')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_g@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope07", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'g')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_h@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope08", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'h')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_i@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope09", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'i')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_j@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope10", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'j')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_k@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope11", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'k')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_l@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope12", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'l')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_m@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope13", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'm')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_n@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope14", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'n')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_o@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope15", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'o')", "target_property_name": "#visible", "binding_condition": "always" } ] } },
+      { "rope_p@hud.brr_jump_rope_frame": { "texture": "textures/ui/jumprope/Rope16", "bindings": [ { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" }, { "binding_type": "view", "source_property_name": "((('%.85s' * #brr_data) - ('%.84s' * #brr_data)) = 'p')", "target_property_name": "#visible", "binding_condition": "always" } ] } }
+    ]
+  },
+
+  //------------------------------------------------------- trophy popup ---
+
+  // hud.js (via trophies.js) sends the popup frame at byte [120,121) and the trophy index at [121,122).
+  // a..h slide in from the right, i holds, j..s fade out; one control per frame because the
+  // HUD root is rebuilt on every title push and would restart a JSON anim.
+  "brr_trophy_popup_frame": {
+    "type": "panel",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "size": [ 260, 56 ],
+    "offset": [ -8, 6 ],
+    "visible": false,
+    "property_bag": { "#brr_data": "" },
+    "controls": [
+      { "border": { "type": "image", "texture": "textures/ui/White", "color": [ 1.0, 0.85, 0.1 ], "alpha": "$brr_alpha", "size": [ "100%", "100%" ], "layer": 1 } },
+      { "fill": { "type": "image", "texture": "textures/ui/White", "color": [ 0.30, 0.69, 0.23 ], "alpha": "$brr_alpha", "size": [ "100% - 6px", "100% - 6px" ], "layer": 2 } },
+      { "icon_frame": { "type": "image", "texture": "textures/ui/Black", "alpha": "$brr_alpha", "anchor_from": "left_middle", "anchor_to": "left_middle", "offset": [ 7, 0 ], "size": [ 44, 44 ], "layer": 3 } },
+      { "icon_0": {"type":"image","texture":"textures/ui/badges/ggs_storymode","alpha":"$brr_alpha","anchor_from":"left_middle","anchor_to":"left_middle","offset":[9,0],"size":[40,40],"layer":4,"visible":false,"property_bag":{"#brr_data":""},"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.122s' * #brr_data) - ('%.121s' * #brr_data)) = 'a')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "name_0": {"type":"label","localize":false,"text":"Crackhouse Escapist","color":[1,1,1],"alpha":"$brr_alpha","shadow":true,"font_size":"large","font_type":"default","text_alignment":"left","anchor_from":"left_middle","anchor_to":"left_middle","offset":[58,0],"size":[196,"default"],"layer":4,"visible":false,"property_bag":{"#brr_data":""},"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.122s' * #brr_data) - ('%.121s' * #brr_data)) = 'a')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "icon_1": {"type":"image","texture":"textures/ui/badges/ggs_beasticide","alpha":"$brr_alpha","anchor_from":"left_middle","anchor_to":"left_middle","offset":[9,0],"size":[40,40],"layer":4,"visible":false,"property_bag":{"#brr_data":""},"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.122s' * #brr_data) - ('%.121s' * #brr_data)) = 'b')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "name_1": {"type":"label","localize":false,"text":"BEASTICIDE","color":[1,1,1],"alpha":"$brr_alpha","shadow":true,"font_size":"large","font_type":"default","text_alignment":"left","anchor_from":"left_middle","anchor_to":"left_middle","offset":[58,0],"size":[196,"default"],"layer":4,"visible":false,"property_bag":{"#brr_data":""},"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.122s' * #brr_data) - ('%.121s' * #brr_data)) = 'b')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "icon_2": {"type":"image","texture":"textures/ui/badges/ggs_pacibeast","alpha":"$brr_alpha","anchor_from":"left_middle","anchor_to":"left_middle","offset":[9,0],"size":[40,40],"layer":4,"visible":false,"property_bag":{"#brr_data":""},"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.122s' * #brr_data) - ('%.121s' * #brr_data)) = 'c')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "name_2": {"type":"label","localize":false,"text":"PACIBEAST","color":[1,1,1],"alpha":"$brr_alpha","shadow":true,"font_size":"large","font_type":"default","text_alignment":"left","anchor_from":"left_middle","anchor_to":"left_middle","offset":[58,0],"size":[196,"default"],"layer":4,"visible":false,"property_bag":{"#brr_data":""},"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.122s' * #brr_data) - ('%.121s' * #brr_data)) = 'c')","target_property_name":"#visible","binding_condition":"always"}]} }
+    ]
+  },
+
+  "brr_trophy_popup": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "layer": 60,
+    "controls": [
+      { "f_a@hud.brr_trophy_popup_frame": {"offset":[178,6],"$brr_alpha":1,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'a')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_b@hud.brr_trophy_popup_frame": {"offset":[109,6],"$brr_alpha":1,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'b')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_c@hud.brr_trophy_popup_frame": {"offset":[60,6],"$brr_alpha":1,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'c')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_d@hud.brr_trophy_popup_frame": {"offset":[27,6],"$brr_alpha":1,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'd')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_e@hud.brr_trophy_popup_frame": {"offset":[7,6],"$brr_alpha":1,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'e')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_f@hud.brr_trophy_popup_frame": {"offset":[-4,6],"$brr_alpha":1,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'f')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_g@hud.brr_trophy_popup_frame": {"offset":[-7,6],"$brr_alpha":1,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'g')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_h@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":1,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'h')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_i@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":1,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'i')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_j@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":0.9,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'j')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_k@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":0.8,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'k')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_l@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":0.7,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'l')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_m@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":0.6,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'm')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_n@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":0.5,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'n')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_o@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":0.4,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'o')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_p@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":0.3,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'p')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_q@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":0.2,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'q')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_r@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":0.1,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 'r')","target_property_name":"#visible","binding_condition":"always"}]} },
+      { "f_s@hud.brr_trophy_popup_frame": {"offset":[-8,6],"$brr_alpha":0,"bindings":[{"binding_name":"#hud_title_text_string","binding_name_override":"#brr_data","binding_type":"global","binding_condition":"always"},{"binding_type":"view","source_property_name":"((('%.121s' * #brr_data) - ('%.120s' * #brr_data)) = 's')","target_property_name":"#visible","binding_condition":"always"}]} }
+    ]
+  },
+
+  //------------------------------------------------------- MrBeast credit card ---
+  // HudPopups/BeastCard from the original: the CreditCardUI card shaking near the top left (centre 47.8,92.9
+  // of 640x360, 85.3x55.6) and BeastTipText, white size 15, centred and bottom aligned in a full width box
+  // whose bottom is 77.7% down. Both the card holder and the card shake (ShakingMenuText); the text moves
+  // with the holder. Shown while [122..123) is "C" (BP/scripts/hud.js).
+  "brr_card_shake_a0": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 0, -1.5 ], "to": [ 0, -1.5 ], "next": "@hud.brr_card_shake_a1" },
+  "brr_card_shake_a1": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 0, 1.5 ], "to": [ 0, 1.5 ], "next": "@hud.brr_card_shake_a2" },
+  "brr_card_shake_a2": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 0, 0 ], "to": [ 0, 0 ], "next": "@hud.brr_card_shake_a3" },
+  "brr_card_shake_a3": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 1.5, 1.5 ], "to": [ 1.5, 1.5 ], "next": "@hud.brr_card_shake_a4" },
+  "brr_card_shake_a4": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -3, 1.5 ], "to": [ -3, 1.5 ], "next": "@hud.brr_card_shake_a5" },
+  "brr_card_shake_a5": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -3, -3 ], "to": [ -3, -3 ], "next": "@hud.brr_card_shake_a6" },
+  "brr_card_shake_a6": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 1.5, -3 ], "to": [ 1.5, -3 ], "next": "@hud.brr_card_shake_a7" },
+  "brr_card_shake_a7": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -1.5, -3 ], "to": [ -1.5, -3 ], "next": "@hud.brr_card_shake_a8" },
+  "brr_card_shake_a8": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -3, 0 ], "to": [ -3, 0 ], "next": "@hud.brr_card_shake_a9" },
+  "brr_card_shake_a9": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 1.5, 1.5 ], "to": [ 1.5, 1.5 ], "next": "@hud.brr_card_shake_a10" },
+  "brr_card_shake_a10": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 0, -3 ], "to": [ 0, -3 ], "next": "@hud.brr_card_shake_a11" },
+  "brr_card_shake_a11": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 0, -1.5 ], "to": [ 0, -1.5 ], "next": "@hud.brr_card_shake_a0" },
+  "brr_card_shake_b0": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -3, 1.5 ], "to": [ -3, 1.5 ], "next": "@hud.brr_card_shake_b1" },
+  "brr_card_shake_b1": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -3, 1.5 ], "to": [ -3, 1.5 ], "next": "@hud.brr_card_shake_b2" },
+  "brr_card_shake_b2": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -3, -3 ], "to": [ -3, -3 ], "next": "@hud.brr_card_shake_b3" },
+  "brr_card_shake_b3": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 0, 0 ], "to": [ 0, 0 ], "next": "@hud.brr_card_shake_b4" },
+  "brr_card_shake_b4": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 1.5, 1.5 ], "to": [ 1.5, 1.5 ], "next": "@hud.brr_card_shake_b5" },
+  "brr_card_shake_b5": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 1.5, 0 ], "to": [ 1.5, 0 ], "next": "@hud.brr_card_shake_b6" },
+  "brr_card_shake_b6": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -3, -1.5 ], "to": [ -3, -1.5 ], "next": "@hud.brr_card_shake_b7" },
+  "brr_card_shake_b7": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -3, 0 ], "to": [ -3, 0 ], "next": "@hud.brr_card_shake_b8" },
+  "brr_card_shake_b8": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -1.5, -1.5 ], "to": [ -1.5, -1.5 ], "next": "@hud.brr_card_shake_b9" },
+  "brr_card_shake_b9": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 1.5, -1.5 ], "to": [ 1.5, -1.5 ], "next": "@hud.brr_card_shake_b10" },
+  "brr_card_shake_b10": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ 1.5, 0 ], "to": [ 1.5, 0 ], "next": "@hud.brr_card_shake_b11" },
+  "brr_card_shake_b11": { "anim_type": "offset", "easing": "linear", "duration": 0.03, "from": [ -3, -1.5 ], "to": [ -3, -1.5 ], "next": "@hud.brr_card_shake_b0" },
+
+  "brr_beast_card": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "layer": 30,
+    "property_bag": { "#brr_data": "" },
+    "bindings": [
+      { "binding_name": "#hud_title_text_string", "binding_name_override": "#brr_data", "binding_type": "global", "binding_condition": "always" },
+      { "binding_type": "view", "source_property_name": "((('%.123s' * #brr_data) - ('%.122s' * #brr_data)) = 'C')", "target_property_name": "#visible", "binding_condition": "always" }
+    ],
+    "controls": [
+      {
+        "holder_shake": {
+          "type": "panel",
+          "size": [ "100%", "100%" ],
+          "anims": [ "@hud.brr_card_shake_a0" ],
+          "controls": [
+            {
+              "card_spot": {
+                "type": "panel",
+                "anchor_from": "top_left",
+                "anchor_to": "center",
+                "offset": [ "7.46%", "25.81%" ],
+                "size": [ "13.33%", "65.18%x" ],
+                "controls": [
+                  {
+                    "card": {
+                      "type": "image",
+                      "texture": "textures/ui/credit_card_ui",
+                      "size": [ "100%", "100%" ],
+                      "anims": [ "@hud.brr_card_shake_b0" ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "tip": {
+                "type": "label",
+                "text": "You just stole MrBeast's Credit Card!\nIf he starts a challenge and cant find his credit card... your in big trouble...",
+                "localize": false,
+                "shadow": true,
+                "color": [ 1, 1, 1 ],
+                "font_scale_factor": 2.0,
+                "text_alignment": "center",
+                "anchor_from": "top_left",
+                "anchor_to": "bottom_middle",
+                "offset": [ "50%", "77.72%" ],
+                "size": [ "100%", "default" ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "brr_hud_root": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "layer": 20,
+
+    "controls": [
+      {
+        "fiesta_filter@hud.brr_fiesta_filter": {}
+      },
+      {
+        "escape_red@hud.brr_escape_filter": {
+          "$escape_stage": "R",
+          "$escape_color": [
+            0.6392156862745098,
+            0.15294117647058825,
+            0.15294117647058825
+          ]
+        }
+      },
+      {
+        "escape_deep_red@hud.brr_escape_filter": {
+          "$escape_stage": "D",
+          "$escape_color": [
+            0.4588235294117647,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "win_screen@hud.brr_win_screen": {}
+      },
+      {
+        "phone_hitman_message@hud.brr_phone_hitman_message": {}
+      },
+      {
+        "phone_noise@hud.brr_phone_noise": {}
+      },
+      {
+        "jump_rope@hud.brr_jump_rope": {}
+      },
+      {
+        "timer@hud.brr_timer_panel": {}
+      },
+      {
+        "timer_live@hud.brr_outline_text": {
+          "$brr_size": [
+            68,
+            36
+          ],
+          "$brr_color": [
+            1,
+            1,
+            1
+          ],
+          "$brr_alignment": "center",
+          "$brr_font_size": "large",
+          "$brr_font_type": "default",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            12,
+            14
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(('%.14s' * #brr_data) - ('%.4s' * #brr_data))",
+              "target_property_name": "#text",
+              "binding_condition": "always"
+            }
+          ],
+          "layer": 40
+        }
+      },
+      {
+        "hotbar@hud.brr_hotbar_panel": {}
+      },
+      {
+        "raldi_dead_sprite": {
+          "type": "image",
+          "texture": "textures/characters/Raldi_Dead",
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            70
+          ],
+          "size": [
+            112,
+            38.06536
+          ],
+          "layer": 40,
+          "visible": false,
+          "property_bag": {
+            "#brr_data": ""
+          },
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.69s' * #brr_data) - ('%.68s' * #brr_data)) = 'R')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "raldi_respawn_seconds@hud.brr_outline_text": {
+          "$brr_size": [
+            64,
+            24
+          ],
+          "$brr_color": [
+            1,
+            1,
+            1
+          ],
+          "$brr_alignment": "center",
+          "$brr_font_size": "large",
+          "$brr_font_type": "default",
+          "font_scale_factor": 1.2,
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [
+            0,
+            110
+          ],
+          "layer": 40,
+          "visible": false,
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.69s' * #brr_data) - ('%.68s' * #brr_data)) = 'R')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(('%.75s' * #brr_data) - ('%.69s' * #brr_data))",
+              "target_property_name": "#text",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "stats@hud.brr_stats_panel": {}
+      },
+      {
+        "money_static@hud.brr_outline_text": {
+          "$brr_size": [
+            164,
+            42
+          ],
+          "$brr_color": [
+            0.22,
+            0.95,
+            0.22
+          ],
+          "$brr_alignment": "right",
+          "$brr_font_size": "large",
+          "$brr_font_type": "default",
+          "font_scale_factor": 1.3,
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [
+            -10,
+            24
+          ],
+          "property_bag": {
+            "#brr_data": ""
+          },
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(('%.26s' * #brr_data) - ('%.14s' * #brr_data))",
+              "target_property_name": "#text",
+              "binding_condition": "always"
+            }
+          ],
+          "layer": 40
+        }
+      },
+      {
+        "ethereum_icon_static": {
+          "type": "image",
+          "texture": "textures/ui/brr/icon_ethereum",
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [
+            -60,
+            61
+          ],
+          "size": [
+            30,
+            30
+          ],
+          "layer": 40,
+          "visible": false,
+          "property_bag": {
+            "#brr_data": ""
+          },
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.61s' * #brr_data) - ('%.60s' * #brr_data)) = 'V')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "ethereum_static@hud.brr_outline_text": {
+          "$brr_size": [
+            126,
+            30
+          ],
+          "$brr_color": [
+            0.62,
+            0.66,
+            0.76
+          ],
+          "$brr_alignment": "right",
+          "$brr_font_size": "large",
+          "$brr_font_type": "default",
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": [
+            -10,
+            58
+          ],
+          "visible": false,
+          "property_bag": {
+            "#brr_data": ""
+          },
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(('%.36s' * #brr_data) - ('%.26s' * #brr_data))",
+              "target_property_name": "#text",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.61s' * #brr_data) - ('%.60s' * #brr_data)) = 'V')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ],
+          "layer": 40
+        }
+      },
+      {
+        "stamina_static@hud.brr_outline_text": {
+          "$brr_size": [
+            88,
+            32
+          ],
+          "$brr_color": [
+            1,
+            1,
+            1
+          ],
+          "$brr_alignment": "left",
+          "$brr_font_size": "large",
+          "$brr_font_type": "default",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            "50% - 88px",
+            "100% - 55px"
+          ],
+          "property_bag": {
+            "#brr_data": ""
+          },
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(('%.43s' * #brr_data) - ('%.36s' * #brr_data))",
+              "target_property_name": "#text",
+              "binding_condition": "always"
+            }
+          ],
+          "layer": 40
+        }
+      },
+      {
+        "count_static@hud.brr_outline_text": {
+          "$brr_size": [
+            128,
+            32
+          ],
+          "$brr_color": [
+            1,
+            1,
+            1
+          ],
+          "$brr_alignment": "right",
+          "$brr_font_size": "large",
+          "$brr_font_type": "default",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [
+            "50% - 40px",
+            "100% - 55px"
+          ],
+          "property_bag": {
+            "#brr_data": ""
+          },
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(('%.52s' * #brr_data) - ('%.44s' * #brr_data))",
+              "target_property_name": "#text",
+              "binding_condition": "always"
+            }
+          ],
+          "layer": 40
+        }
+      },
+      {
+        "glock_ammo@hud.brr_glock_ammo_panel": {}
+      },
+      {
+        "statuses@hud.brr_status_display": { "$status_source": "statuses" }
+      },
+      {
+        "ammo_live@hud.brr_glock_ammo_text": {
+          "$brr_size": [
+            96,
+            48
+          ],
+          "$brr_color": [
+            1,
+            1,
+            1
+          ],
+          "$brr_alignment": "center",
+          "$brr_font_size": "large",
+          "$brr_font_type": "default",
+          "anchor_from": "bottom_right",
+          "anchor_to": "bottom_right",
+          "offset": [
+            -8,
+            4
+          ],
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#brr_data",
+              "binding_type": "global",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(('%.60s' * #brr_data) - ('%.54s' * #brr_data))",
+              "target_property_name": "#text",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((('%.54s' * #brr_data) - ('%.53s' * #brr_data)) = 'G')",
+              "target_property_name": "#visible",
+              "binding_condition": "always"
+            }
+          ],
+          "layer": 40
+        }
+      },
+      {
+        "gameboy_explosion_0@hud.brr_gameboy_explosion_0": {}
+      },
+      {
+        "gameboy_explosion_1@hud.brr_gameboy_explosion_1": {}
+      },
+      {
+        "gameboy_explosion_2@hud.brr_gameboy_explosion_2": {}
+      },
+      {
+        "gameboy_explosion_3@hud.brr_gameboy_explosion_3": {}
+      },
+      {
+        "gameboy_explosion_4@hud.brr_gameboy_explosion_4": {}
+      }
+      ,{ "trophy_popup@hud.brr_trophy_popup": {} }
+      ,{ "beast_card@hud.brr_beast_card": {} }
+    ]
+  },
+
+
+
+  // #hud_title_text_string only resolves inside a control built by this factory,
+  // so the HUD is instantiated through it rather than added to root_panel directly.
+  "brr_title_root": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      { "regular@hud.brr_hud_root": {} }
+    ]
+  },
+
+  "brr_hud_factory": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "factory": {
+      "name": "hud_title_text_factory",
+      "control_ids": {
+        "hud_title_text": "brr_title_root@hud.brr_title_root"
+      }
+    }
+  },
+
+  "brr_item_name_popup": {
+    "type": "label",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [ 0, 66 ],
+    "size": [ 320, 28 ],
+    "text": "#text",
+    "text_alignment": "center",
+    "font_size": "large",
+    "font_type": "default",
+    "shadow": true,
+    "localize": true,
+    "layer": 41,
+    "$wait_duration": 1,
+    "$destroy_id": "item_name_popup",
+    "alpha": "@hud.anim_item_name_text_alpha_in",
+    "bindings": [
+      {
+        "binding_name": "#item_text",
+        "binding_name_override": "#text"
+      }
+    ]
+  },
+
+  "brr_item_name_factory": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+
+    "factory": {
+      "name": "item_text_factory",
+      "control_ids": {
+        "item_text": "item_name_popup@hud.brr_item_name_popup"
+      }
+    }
+  },
+
+  "root_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_back",
+        "value": [
+          { "brr_hud_factory@hud.brr_hud_factory": {} },
+          { "brr_item_name_factory@hud.brr_item_name_factory": {} }
+        ]
+      }
+    ]
+  },
+
+  //=========================================================================
+  // Vanilla HUD pieces we replace with empty panels.
+  //=========================================================================
+
+  "brr_nothing": {
+    "type": "panel",
+    "size": [ 0, 0 ],
+    "visible": false
+  },
+
+  "heart_renderer@hud.brr_nothing": {},
+  "horse_heart_renderer@hud.brr_nothing": {},
+  "hunger_renderer@hud.brr_nothing": {},
+  "armor_renderer@hud.brr_nothing": {},
+  "bubbles_renderer@hud.brr_nothing": {},
+  "full_progress_bar@hud.brr_nothing": {},
+  "empty_progress_bar@hud.brr_nothing": {},
+  "progress_bar_nub@hud.brr_nothing": {},
+  "progress_text_label@hud.brr_nothing": {},
+
+  // The vanilla hotbar is replaced by brr_hotbar_panel at the top of the screen.
+  "hotbar_panel@hud.brr_nothing": {},
+  "hotbar_panel_pocket@hud.brr_nothing": {},
+  "item_name_text@hud.brr_nothing": {},
+  "item_name_text_root@hud.brr_nothing": {},
+
+  // Titles are the data channel, so only the subtitle still renders text.
+  "hud_title_text": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "offset": [ 0, -19 ],
+    "layer": 1,
+    "alpha": "@hud.anim_title_text_alpha_in",
+    "propagate_alpha": true,
+    "controls": [
+      {
+        "subtitle_frame": {
+          "type": "panel",
+          "size": [ "100%", "100%cm" ],
+          "controls": [
+            {
+              "subtitle_background": {
+                "type": "image",
+                "size": [ "100%sm + 20px", "100%sm + 5px" ],
+                "offset": [ 0, 16 ],
+                "texture": "textures/ui/hud_tip_text_background",
+                "variables": [
+                  {
+                    "requires": "$subtitle_initially_visible",
+                    "$subtitle_bg": "@hud.anim_title_background_alpha_in"
+                  },
+                  {
+                    "requires": "(not $subtitle_initially_visible)",
+                    "$subtitle_bg": "@hud.anim_subtitle_background_alpha_in"
+                  }
+                ],
+                "alpha": "$subtitle_bg"
+              }
+            },
+            {
+              "subtitle": {
+                "type": "label",
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "color": "$title_command_text_color",
+                "enable_profanity_filter": true,
+                "text": "#text",
+                "layer": 31,
+                "localize": false,
+                "font_size": "large",
+                "variables": [
+                  {
+                    "requires": "$subtitle_initially_visible",
+                    "$anim_type": 1.0
+                  },
+                  {
+                    "requires": "(not $subtitle_initially_visible)",
+                    "$anim_type": "@hud.anim_subtitle_text_alpha_in"
+                  }
+                ],
+                "shadow": true,
+                "alpha": "$anim_type",
+                "text_alignment": "center",
+                "offset": [ 1, 19 ],
+                "bindings": [
+                  {
+                    "binding_name": "#hud_subtitle_text_string",
+                    "binding_name_override": "#text",
+                    "binding_type": "global"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

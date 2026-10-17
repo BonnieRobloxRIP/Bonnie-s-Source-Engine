@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "Cobblestone",
+		"metalness_emissive_roughness": "Cobblestone_mer",
+		"normal": "Cobblestone_normal"
+	}
+}

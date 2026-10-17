@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "wood_green",
+		"metalness_emissive_roughness": "Wood01_mer",
+		"normal": "Wood01_normal"
+	}
+}

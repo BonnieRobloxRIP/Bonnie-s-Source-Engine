@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "floor_gym",
+		"metalness_emissive_roughness": "floor_gym_mer",
+		"normal": "floor_gym_normal"
+	}
+}

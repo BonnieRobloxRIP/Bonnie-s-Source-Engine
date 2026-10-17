@@ -1,0 +1,17 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.brr.polish_cow": {
+			"geometry": "Geometry.default",
+			"materials": [{ "*": "Material.default" }],
+			"textures": ["Texture.default"],
+			"uv_anim": {
+				"offset": [
+					"(q.property('brr:frame') < 5 ? q.property('brr:frame') : math.mod(q.property('brr:frame') - 5, 4)) / 5.0",
+					"(q.property('brr:frame') < 5 ? 0 : 1 + math.floor((q.property('brr:frame') - 5) / 4.0)) / 5.0"
+				],
+				"scale": [0.2, 0.2]
+			}
+		}
+	}
+}

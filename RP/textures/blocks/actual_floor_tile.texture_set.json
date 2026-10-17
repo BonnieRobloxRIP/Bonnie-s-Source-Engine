@@ -1,0 +1,8 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "actual_floor_tile",
+		"metalness_emissive_roughness": "actual_floor_tile_mer",
+		"normal": "actual_floor_tile_normal"
+	}
+}

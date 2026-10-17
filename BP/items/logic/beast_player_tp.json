@@ -1,0 +1,21 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:beast_player_tp",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_beast_player_tp",
+			"minecraft:display_name": {
+				"value": "tile.brr:beast_player_tp.name"
+			},
+			"minecraft:block_placer": {
+				"block": "brr:beast_player_tp",
+				"replace_block_item": true
+			}
+		}
+	}
+}

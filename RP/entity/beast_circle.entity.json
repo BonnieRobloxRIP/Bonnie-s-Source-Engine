@@ -1,0 +1,18 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:beast_circle",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/characters/beast_circle"
+			},
+			"geometry": {
+				"default": "geometry.brr.beast_circle"
+			},
+			"render_controllers": ["controller.render.brr.beast_circle"]
+		}
+	}
+}

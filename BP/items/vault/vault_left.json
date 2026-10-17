@@ -1,0 +1,18 @@
+{
+	"format_version": "1.21.90",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:vault_left",
+			"menu_category": {
+				"category": "construction"
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_icon_vault_left",
+			"minecraft:block_placer": {
+				"block": "brr:vault_left",
+				"replace_block_item": true
+			}
+		}
+	}
+}

@@ -1,0 +1,51 @@
+{
+	"format_version": "1.21.130",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "brr:mrbeast",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false,
+			"properties": {
+				"brr:still": {
+					"type": "int",
+					"range": [0, 1],
+					"default": 0,
+					"client_sync": true
+				}
+			}
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"mrbeast",
+					"mob"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0.45,
+				"height": 1.7
+			},
+			"minecraft:health": {
+				"value": 1000,
+				"max": 1000
+			},
+			"minecraft:physics": {},
+			"minecraft:knockback_resistance": {
+				"value": 1.0
+			},
+			"minecraft:persistent": {},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": true
+			},
+			"minecraft:movement": { "value": 0.0 }
+		},
+		"events": {
+			"minecraft:entity_spawned": {
+				"set_property": { "brr:still": 0 }
+			}
+		}
+	}
+}
