@@ -803,6 +803,27 @@ function getCustomNametagParts(player, context) {
     }
 }
 
+// While username mode is hidden or randomized, main.js stores the name chat shows instead of the
+// real one. Ranks and custom tags are left out then too, the same as on nametags.
+const CHAT_DISPLAY_NAME_OVERRIDE_PROPERTY = "brr_display_name_override";
+
+function getChatNameOverride(player) {
+    try {
+        const override = player.getDynamicProperty(CHAT_DISPLAY_NAME_OVERRIDE_PROPERTY);
+        return typeof override === "string" ? override : undefined;
+    } catch {
+        return undefined;
+    }
+}
+
+function formatChatSpeaker(player, tags, includeCustomTags = true) {
+    const override = getChatNameOverride(player);
+    if (override !== undefined) return `§r${override}§r`;
+
+    const nametagParts = includeCustomTags ? getCustomNametagParts(player, "chat") : { prefix: "", suffix: "" };
+    return `§r${chatRank(player, tags)}${nametagParts.prefix}§r${player.name}${nametagParts.suffix}`;
+}
+
 function normalizeChatMessage(rawMessage) {
     return `${rawMessage ?? ""}`
         .replaceAll("\n", " ")
@@ -826,12 +847,9 @@ export function sendRankedMessage(player, rawMessage) {
     }
 
     const tags = player.getTags();
-    const rankPrefix = chatRank(player, tags);
-    const nametagParts = getCustomNametagParts(player, "chat");
-
     const processedMessage = applyEmojiReplacements(normalizeChatMessage(rawMessage));
 
-    const text = `§r${rankPrefix}${nametagParts.prefix}§r${player.name}${nametagParts.suffix}: §f${processedMessage}`;
+    const text = `${formatChatSpeaker(player, tags)}: §f${processedMessage}`;
     world.sendMessage({ rawtext: [{ text: text }] });
 }
 
@@ -931,7 +949,6 @@ export function handleMessage() {
             const player = data.sender;
             const tags = player.getTags();
             let message = data.message;
-            const nametagParts = getCustomNametagParts(player, "chat");
 
             const trimmedMessage = `${message ?? ""}`.trim();
 
@@ -986,13 +1003,6 @@ export function handleMessage() {
                 return;
             }
 
-            const normalizedMessage = `${message ?? ""}`.trim().toLowerCase();
-            if (normalizedMessage === "!emojis" || normalizedMessage === "/emojis" || normalizedMessage === "/brr:emojis") {
-                data.cancel = true;
-                system.run(() => showMainMenu(player));
-                return;
-            }
-
             const muteEntry = getActiveMuteEntry(player);
             if (muteEntry) {
                 data.cancel = true;
@@ -1012,10 +1022,8 @@ export function handleMessage() {
 
             message = applyEmojiReplacements(normalizeChatMessage(message));
 
-            const rankPrefix = chatRank(player, tags);
-
             // Send the message
-            const text = `§r${rankPrefix}${nametagParts.prefix}§r${player.name}${nametagParts.suffix}: §f${message}`;
+            const text = `${formatChatSpeaker(player, tags)}: §f${message}`;
             world.sendMessage({ rawtext: [{ text: text }] });
             data.cancel = true;
         });
@@ -1273,15 +1281,13 @@ export function showDinoSpeecherMenu(player) {
             const targetPlayer = allPlayers.find(p => p.name === targetName);
 
             if (targetPlayer) {
-                // Get Rank Prefix
                 const tags = player.getTags();
-                const rankPrefix = chatRank(player, tags);
 
                 // Process Emojis manually for the whisper
                 let processedMessage = applyEmojiReplacements(normalizeChatMessage(messageText));
 
                 // Format: Rank + Name + "whispers to you:" + Message
-                const whisperText = `§r${rankPrefix}§r${player.name} §iwhispers to you: §f${processedMessage}`;
+                const whisperText = `${formatChatSpeaker(player, tags, false)} §iwhispers to you: §f${processedMessage}`;
 
                 // Send to Target
                 targetPlayer.sendMessage(whisperText);

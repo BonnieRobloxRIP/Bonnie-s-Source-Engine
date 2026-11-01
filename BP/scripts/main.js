@@ -46,7 +46,9 @@ const CHAT_DISPLAY_NAME_OVERRIDE_PROPERTY = "brr_display_name_override";
 const OP_TELEMETRY_TAG = "§8[Moderation]§r";
 const USERNAME_MODE_NORMAL = "normal";
 const USERNAME_MODE_HIDDEN = "hidden";
-const HIDDEN_USERNAME_PLACEHOLDER = "§";
+// An empty nametag draws nothing at all (a lone "§" still rendered). Chat needs a visible stand-in.
+const HIDDEN_USERNAME_PLACEHOLDER = "";
+const HIDDEN_CHAT_NAME = "§7???";
 const USERNAME_MODE_RANDOMIZED = "randomized";
 const GENERIC_PLAYER_ALIASES = [
     "Emily",
@@ -72,7 +74,63 @@ const GENERIC_PLAYER_ALIASES = [
     "Leo",
     "Aria",
     "Elijah",
-    "Nova"
+    "Nova",
+    "Amelia",
+    "Jack",
+    "Grace",
+    "Owen",
+    "Hazel",
+    "Caleb",
+    "Lily",
+    "Isaac",
+    "Stella",
+    "Jasper",
+    "Violet",
+    "Miles",
+    "Clara",
+    "Theo",
+    "Luna",
+    "Ezra",
+    "Maya",
+    "Silas",
+    "Willow",
+    "Hugo",
+    "Elena",
+    "Rowan",
+    "Iris",
+    "Declan",
+    "Sadie",
+    "Arthur",
+    "Penny",
+    "Finn",
+    "Rosie",
+    "Oscar",
+    "Daisy",
+    "Wyatt",
+    "Hannah",
+    "Gavin",
+    "Lucy",
+    "Dylan",
+    "Mabel",
+    "Tobias",
+    "Eliza",
+    "Simon",
+    "June",
+    "Adrian",
+    "Paige",
+    "Colin",
+    "Freya",
+    "Marcus",
+    "Tessa",
+    "Quinn",
+    "Harper",
+    "Jude",
+    "Wren",
+    "Elliot",
+    "Maeve",
+    "Rhys",
+    "Sophie",
+    "Gideon"
 ];
 const INVISIBLE_USERNAME_PATTERN = /[\u00A7\u00AD\u034F\u061C\u180E\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/u;
 const CONTROL_USERNAME_PATTERN = /[\u0000-\u001F\u007F-\u009F]/u;
@@ -224,17 +282,20 @@ function applyUsernameModeToPlayers() {
 
     for (const player of players) {
         let nextNameTag = "";
+        let nextChatName = "";
         let shouldOverrideNameTag = false;
         let shouldOverrideChatName = false;
 
         if (usernameMode === USERNAME_MODE_HIDDEN) {
             nextNameTag = HIDDEN_USERNAME_PLACEHOLDER;
+            nextChatName = HIDDEN_CHAT_NAME;
             shouldOverrideNameTag = true;
             shouldOverrideChatName = true;
         } else if (usernameMode === USERNAME_MODE_RANDOMIZED) {
             const playerId = `${player?.id ?? ""}`.trim();
             const alias = sanitizeAlias(assignedAliasByPlayerId.get(playerId));
             nextNameTag = alias;
+            nextChatName = alias;
             shouldOverrideNameTag = true;
             shouldOverrideChatName = true;
         }
@@ -246,7 +307,7 @@ function applyUsernameModeToPlayers() {
             }
         } catch { }
 
-        const chatOverride = shouldOverrideChatName ? nextNameTag : undefined;
+        const chatOverride = shouldOverrideChatName ? nextChatName : undefined;
         onlineIds.add(player.id);
         if (chatNameOverrideByPlayerId.has(player.id) && chatNameOverrideByPlayerId.get(player.id) === chatOverride) continue;
         try {
@@ -326,19 +387,22 @@ function kickPlayerSafely(player, reason) {
     const kickReason = sanitizeKickReason(reason);
 
     try {
-        world.getDimension("overworld").runCommandAsync(`kick "${escapedName}" ${kickReason}`);
-        return true;
+        if (world.getDimension("overworld").runCommand(`kick "${escapedName}" ${kickReason}`).successCount > 0) return true;
     } catch { }
 
+    // Names the quoted form can't match (invisible characters etc.) are kicked through a temporary tag.
     try {
         player.addTag(tag);
     } catch {
         return false;
     }
 
+    let kicked = false;
     try {
-        world.getDimension("overworld").runCommandAsync(`kick @a[tag=${tag}] ${kickReason}`);
-    } catch {
+        kicked = world.getDimension("overworld").runCommand(`kick @a[tag=${tag}] ${kickReason}`).successCount > 0;
+    } catch { }
+
+    if (!kicked) {
         try {
             player.removeTag(tag);
         } catch { }

@@ -296,29 +296,26 @@ function getPlayerItemCount(player, itemTypeId) {
 }
 
 // SECTION: Weather and Time Helpers
-function readWeatherName(worldObj) {
-	if (typeof worldObj.isThundering === "boolean" && worldObj.isThundering) return "thunder";
-	if (typeof worldObj.isRaining === "boolean") return worldObj.isRaining ? "rain" : "clear";
+// Fallback for when Dimension.getWeather (beta) is unavailable; only updates once the weather changes.
+let lastKnownWeather = "clear";
+try {
+	world.afterEvents.weatherChange.subscribe((event) => {
+		lastKnownWeather = `${event.newWeather ?? ""}`.toLowerCase() || "clear";
+	});
+} catch { }
 
+function readWeatherName(worldObj) {
 	try {
-		if (typeof worldObj.getWeather === "function") {
-			const weatherValue = `${worldObj.getWeather() ?? ""}`.toLowerCase();
+		const overworld = worldObj.getDimension("overworld");
+		if (typeof overworld.getWeather === "function") {
+			const weatherValue = `${overworld.getWeather() ?? ""}`.toLowerCase();
 			if (weatherValue.includes("thunder")) return "thunder";
 			if (weatherValue.includes("rain")) return "rain";
 			if (weatherValue.includes("clear")) return "clear";
 		}
 	} catch { }
 
-	try {
-		const overworld = worldObj.getDimension("overworld");
-		const result = overworld.runCommand("weather query");
-		const status = `${result?.statusMessage ?? ""}`.toLowerCase();
-		if (status.includes("thunder")) return "thunder";
-		if (status.includes("rain")) return "rain";
-		if (status.includes("clear")) return "clear";
-	} catch { }
-
-	return "clear";
+	return lastKnownWeather;
 }
 
 export function evaluateCondition(blockData, player, worldObj) {
