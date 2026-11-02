@@ -61,7 +61,8 @@ const CHARGED_READY_DAMAGE = 13;
 const MAX_BEAM_DISTANCE = 128;
 const SPINUP_DURATION_TICKS = 55;
 const SPIN_LOOP_INTERVAL_TICKS = 6;
-const OVERCHARGING_LOOP_INTERVAL_TICKS = 60;
+// The length of gauss_overcharging.ogg (4.65 s), so each play starts as the last one ends.
+const OVERCHARGING_LOOP_INTERVAL_TICKS = 93;
 const CHARGED_RECOIL_MIN_HORIZONTAL = 0.5;
 const CHARGED_RECOIL_MAX_HORIZONTAL = 3;
 const CHARGED_RECOIL_BASE_VERTICAL = 0.1;
@@ -351,7 +352,8 @@ subscribeAfterEvent("itemStartUse", (eventData) => {
     pressTickByPlayer.set(player.id, tick);
 });
 
-// Using the tau on a block or entity (doors, buttons, villagers) is an interaction, not a shot.
+// Using the tau on an entity (villagers, pets) is an interaction, not a shot. Blocks used to be
+// covered too through itemUseOn, which no longer exists; clicks on doors and buttons still charge.
 const onInteract = (eventData) => {
     const player = getEventSourcePlayer(eventData);
     if (!isPlayerEntity(player) || !isHoldingTau(player)) return;
@@ -359,7 +361,6 @@ const onInteract = (eventData) => {
     pressTickByPlayer.delete(player.id);
     cancelCharge(player);
 };
-subscribeAfterEvent("itemUseOn", onInteract);
 subscribeAfterEvent("playerInteractWithEntity", onInteract);
 
 const onRelease = (eventData) => {

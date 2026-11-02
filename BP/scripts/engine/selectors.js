@@ -110,7 +110,7 @@ export function selectorCanMatchNonPlayers(raw) {
     if (parsed.kind === "literal") return parsed.value !== "minecraft:player";
     if (parsed.base !== "@e") return false;
     const types = parsed.filters?.type ?? [];
-    return !(types.length === 1 && lower(types[0]) === "minecraft:player");
+    return !(types.length === 1 && ["player", "minecraft:player"].includes(lower(types[0])));
 }
 
 // SECTION: Resolution

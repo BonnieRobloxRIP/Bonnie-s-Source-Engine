@@ -573,6 +573,19 @@
                 }
             ]
         },
+        "interactable.health_charger.loop": {
+            "category": "block",
+            "max_distance": 30,
+            "min_distance": 1,
+            "sounds": [
+                {
+                    "load_on_low_memory": false,
+                    "name": "sounds/interactables/healthcharger_loop",
+                    "stream": false,
+                    "volume": 1
+                }
+            ]
+        },
         "npc.scientist_01.ahgordon01": {
             "category": "neutral",
             "max_distance": 24,

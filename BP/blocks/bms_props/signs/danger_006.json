@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.80",
+    "format_version": "1.26.50",
     "minecraft:block": {
         "description": {
             "identifier": "brr:bm_sign_danger_006",
@@ -38,6 +38,10 @@
                     1
                 ]
             },
+            "minecraft:destruction_particles": {
+                "texture": "brr_danger_006_particle",
+                "particle_count": 25
+            },
             "minecraft:destructible_by_explosion": false,
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 1
@@ -49,7 +53,8 @@
                     {
                         "can_contain_liquid": true,
                         "liquid_type": "water",
-                        "on_liquid_touches": "no_reaction"
+                        "on_liquid_touches": "no_reaction",
+                        "use_liquid_clipping": true
                     }
                 ]
             }

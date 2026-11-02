@@ -1,10 +1,13 @@
-import { world } from "@minecraft/server";
+import { system, world } from "@minecraft/server";
+import { parseBooleanLike } from "./core/parse.js";
 
 // SECTION: Constants
 const ADVENTURE_PERMISSION_MESSAGE_COOLDOWN_MS = 1000;
 const PRESSURE_PLATE_PUSH_OFF_COOLDOWN_MS = 180;
-const PRESSURE_PLATE_BLOCK_HALF_EXTENT = 1.0;
+// Half the plate (7/16) plus half the player's width (0.3), rounded up a little.
+const PRESSURE_PLATE_BLOCK_HALF_EXTENT = 0.8;
 
+// /brr:adventure <name> -> permission key. The name is also the world property it is saved under.
 export const ADVENTURE_COMMAND_TO_KEY = {
     can_use_pots: "canUsePots",
     can_use_shelves: "canUseShelves",
@@ -26,26 +29,9 @@ export const ADVENTURE_COMMAND_TO_KEY = {
     can_use_all: "canUseAll"
 };
 
-const ADVENTURE_KEY_TO_PROPERTY = {
-    canUsePots: "can_use_pots",
-    canUseShelves: "can_use_shelves",
-    canUseTrapdoors: "can_use_trapdoors",
-    canUseDoors: "can_use_doors",
-    canUseItemframes: "can_use_itemframes",
-    canUseCandles: "can_use_candles",
-    canOpenContainers: "can_open_containers",
-    canUseButtons: "can_use_buttons",
-    canUsePressurePlates: "can_use_pressure_plates",
-    canUseIncompatibleRespawns: "can_use_incompatible_respawns",
-    canUseDaylightSensors: "can_use_daylight_sensors",
-    canHitEntities: "can_hit_entities",
-    canHitPlayers: "can_hit_players",
-    canUseJukebox: "can_use_jukebox",
-    canUseRedstoneComponents: "can_use_redstone_components",
-    canUseNoteblocks: "can_use_noteblocks",
-    canUseLevers: "can_use_levers",
-    canUseAll: "can_use_all"
-};
+const ADVENTURE_KEY_TO_PROPERTY = Object.fromEntries(Object.entries(ADVENTURE_COMMAND_TO_KEY).map(([property, key]) => [key, property]));
+// Every permission except canUseAll, which is just "all of these are on".
+const SINGLE_PERMISSION_KEYS = Object.values(ADVENTURE_COMMAND_TO_KEY).filter(key => key !== "canUseAll");
 
 const ADVENTURE_BLOCKED_MESSAGES = {
     canUsePots: "You cannot use flower pots right now.",
@@ -72,185 +58,55 @@ const adventureInteractionMessageCooldowns = new Map();
 const pressurePlatePushCooldowns = new Map();
 const pressurePlateEnforcementCache = new Map();
 
-export const adventureInteractionPermissions = {
-    canUsePots: true,
-    canUseShelves: true,
-    canUseTrapdoors: true,
-    canUseDoors: true,
-    canUseItemframes: true,
-    canUseCandles: true,
-    canOpenContainers: true,
-    canUseButtons: true,
-    canUsePressurePlates: true,
-    canUseIncompatibleRespawns: true,
-    canUseDaylightSensors: true,
-    canHitEntities: true,
-    canHitPlayers: true,
-    canUseJukebox: true,
-    canUseRedstoneComponents: true,
-    canUseNoteblocks: true,
-    canUseLevers: true,
-    canUseAll: true
-};
+export const adventureInteractionPermissions = Object.fromEntries(Object.values(ADVENTURE_COMMAND_TO_KEY).map(key => [key, true]));
+
+world.afterEvents.playerLeave.subscribe(({ playerId }) => {
+    adventureInteractionMessageCooldowns.delete(playerId);
+    pressurePlatePushCooldowns.delete(playerId);
+    for (const key of pressurePlateEnforcementCache.keys()) {
+        if (key.startsWith(`${playerId}_`)) pressurePlateEnforcementCache.delete(key);
+    }
+});
 
 // SECTION: Player Helpers
-function getPlayerGameMode(player) {
-    if (!player) return "";
-
-    if (typeof player.getGameMode === "function") {
-        try {
-            const rawMode = `${player.getGameMode()}`.trim().toLowerCase();
-            if (rawMode === "0" || rawMode === "survival") return "survival";
-            if (rawMode === "1" || rawMode === "creative") return "creative";
-            if (rawMode === "2" || rawMode === "adventure") return "adventure";
-            if (rawMode === "6" || rawMode === "spectator") return "spectator";
-            if (rawMode.includes("adventure")) return "adventure";
-            if (rawMode.includes("creative")) return "creative";
-            if (rawMode.includes("survival")) return "survival";
-            if (rawMode.includes("spectator")) return "spectator";
-        } catch { }
-    }
-
-    const modeChecks = [
-        ["survival", "testfor @s[m=survival]", "testfor @s[m=0]"],
-        ["creative", "testfor @s[m=creative]", "testfor @s[m=1]"],
-        ["adventure", "testfor @s[m=adventure]", "testfor @s[m=2]"],
-        ["spectator", "testfor @s[m=spectator]", "testfor @s[m=6]"]
-    ];
-    for (const [modeName, ...tests] of modeChecks) {
-        for (const test of tests) {
-            try {
-                if ((player.runCommand(test)?.successCount ?? 0) > 0) {
-                    return modeName;
-                }
-            } catch { }
-        }
-    }
-
-    return "";
-}
-
 export function isPlayerInAdventure(player) {
-    return getPlayerGameMode(player) === "adventure";
+    try {
+        return `${player.getGameMode()}`.toLowerCase() === "adventure";
+    } catch {
+        return false;
+    }
 }
 
 // SECTION: Persistence
+function updateCanUseAll() {
+    adventureInteractionPermissions.canUseAll = SINGLE_PERMISSION_KEYS.every(key => adventureInteractionPermissions[key]);
+}
+
 function persistAdventurePermissions() {
     for (const [permissionKey, propertyId] of Object.entries(ADVENTURE_KEY_TO_PROPERTY)) {
         world.setDynamicProperty(propertyId, adventureInteractionPermissions[permissionKey]);
     }
 }
 
-export function loadPersistedPermissions(parseBooleanLike) {
-    adventureInteractionPermissions.canUsePots = parseBooleanLike(world.getDynamicProperty("can_use_pots"), true);
-    adventureInteractionPermissions.canUseShelves = parseBooleanLike(world.getDynamicProperty("can_use_shelves"), true);
-    adventureInteractionPermissions.canUseTrapdoors = parseBooleanLike(world.getDynamicProperty("can_use_trapdoors"), true);
-    adventureInteractionPermissions.canUseDoors = parseBooleanLike(world.getDynamicProperty("can_use_doors"), true);
-    adventureInteractionPermissions.canUseItemframes = parseBooleanLike(world.getDynamicProperty("can_use_itemframes"), true);
-    adventureInteractionPermissions.canUseCandles = parseBooleanLike(world.getDynamicProperty("can_use_candles"), true);
-    adventureInteractionPermissions.canOpenContainers = parseBooleanLike(world.getDynamicProperty("can_open_containers"), true);
-    adventureInteractionPermissions.canUseButtons = parseBooleanLike(world.getDynamicProperty("can_use_buttons"), true);
-    adventureInteractionPermissions.canUsePressurePlates = parseBooleanLike(world.getDynamicProperty("can_use_pressure_plates"), true);
-    adventureInteractionPermissions.canUseIncompatibleRespawns = parseBooleanLike(world.getDynamicProperty("can_use_incompatible_respawns"), true);
-    adventureInteractionPermissions.canUseDaylightSensors = parseBooleanLike(world.getDynamicProperty("can_use_daylight_sensors"), true);
-    adventureInteractionPermissions.canHitEntities = parseBooleanLike(world.getDynamicProperty("can_hit_entities"), true);
-    adventureInteractionPermissions.canHitPlayers = parseBooleanLike(world.getDynamicProperty("can_hit_players"), true);
-    adventureInteractionPermissions.canUseJukebox = parseBooleanLike(world.getDynamicProperty("can_use_jukebox"), true);
-    adventureInteractionPermissions.canUseRedstoneComponents = parseBooleanLike(world.getDynamicProperty("can_use_redstone_components"), true);
-    adventureInteractionPermissions.canUseNoteblocks = parseBooleanLike(world.getDynamicProperty("can_use_noteblocks"), true);
-    adventureInteractionPermissions.canUseLevers = parseBooleanLike(world.getDynamicProperty("can_use_levers"), true);
-    adventureInteractionPermissions.canUseAll =
-        adventureInteractionPermissions.canUsePots
-        && adventureInteractionPermissions.canUseShelves
-        && adventureInteractionPermissions.canUseTrapdoors
-        && adventureInteractionPermissions.canUseDoors
-        && adventureInteractionPermissions.canUseItemframes
-        && adventureInteractionPermissions.canUseCandles
-        && adventureInteractionPermissions.canOpenContainers
-        && adventureInteractionPermissions.canUseButtons
-        && adventureInteractionPermissions.canUsePressurePlates
-        && adventureInteractionPermissions.canUseIncompatibleRespawns
-        && adventureInteractionPermissions.canUseDaylightSensors
-        && adventureInteractionPermissions.canHitEntities
-        && adventureInteractionPermissions.canHitPlayers
-        && adventureInteractionPermissions.canUseJukebox
-        && adventureInteractionPermissions.canUseRedstoneComponents
-        && adventureInteractionPermissions.canUseNoteblocks
-        && adventureInteractionPermissions.canUseLevers;
+export function loadPersistedPermissions() {
+    for (const key of SINGLE_PERMISSION_KEYS) {
+        adventureInteractionPermissions[key] = parseBooleanLike(world.getDynamicProperty(ADVENTURE_KEY_TO_PROPERTY[key]), true);
+    }
+    updateCanUseAll();
 }
 
 // SECTION: Permission Management
-export function getAdventurePermissionStatusLines() {
-    return [
-        "Adventure interaction permissions:",
-        `- can_use_pots: ${adventureInteractionPermissions.canUsePots}`,
-        `- can_use_shelves: ${adventureInteractionPermissions.canUseShelves}`,
-        `- can_use_trapdoors: ${adventureInteractionPermissions.canUseTrapdoors}`,
-        `- can_use_doors: ${adventureInteractionPermissions.canUseDoors}`,
-        `- can_use_itemframes: ${adventureInteractionPermissions.canUseItemframes}`,
-        `- can_use_candles: ${adventureInteractionPermissions.canUseCandles}`,
-        `- can_open_containers: ${adventureInteractionPermissions.canOpenContainers}`,
-        `- can_use_buttons: ${adventureInteractionPermissions.canUseButtons}`,
-        `- can_use_pressure_plates: ${adventureInteractionPermissions.canUsePressurePlates}`,
-        `- can_use_incompatible_respawns: ${adventureInteractionPermissions.canUseIncompatibleRespawns}`,
-        `- can_use_daylight_sensors: ${adventureInteractionPermissions.canUseDaylightSensors}`,
-        `- can_hit_entities: ${adventureInteractionPermissions.canHitEntities}`,
-        `- can_hit_players: ${adventureInteractionPermissions.canHitPlayers}`,
-        `- can_use_jukebox: ${adventureInteractionPermissions.canUseJukebox}`,
-        `- can_use_redstone_components: ${adventureInteractionPermissions.canUseRedstoneComponents}`,
-        `- can_use_noteblocks: ${adventureInteractionPermissions.canUseNoteblocks}`,
-        `- can_use_levers: ${adventureInteractionPermissions.canUseLevers}`,
-        `- can_use_all (derived): ${adventureInteractionPermissions.canUseAll}`
-    ];
-}
-
 export function setAdventurePermission(permissionKey, enabled) {
     const normalizedValue = !!enabled;
 
     if (permissionKey === "canUseAll") {
-        adventureInteractionPermissions.canUsePots = normalizedValue;
-        adventureInteractionPermissions.canUseShelves = normalizedValue;
-        adventureInteractionPermissions.canUseTrapdoors = normalizedValue;
-        adventureInteractionPermissions.canUseDoors = normalizedValue;
-        adventureInteractionPermissions.canUseItemframes = normalizedValue;
-        adventureInteractionPermissions.canUseCandles = normalizedValue;
-        adventureInteractionPermissions.canOpenContainers = normalizedValue;
-        adventureInteractionPermissions.canUseButtons = normalizedValue;
-        adventureInteractionPermissions.canUsePressurePlates = normalizedValue;
-        adventureInteractionPermissions.canUseIncompatibleRespawns = normalizedValue;
-        adventureInteractionPermissions.canUseDaylightSensors = normalizedValue;
-        adventureInteractionPermissions.canHitEntities = normalizedValue;
-        adventureInteractionPermissions.canHitPlayers = normalizedValue;
-        adventureInteractionPermissions.canUseJukebox = normalizedValue;
-        adventureInteractionPermissions.canUseRedstoneComponents = normalizedValue;
-        adventureInteractionPermissions.canUseNoteblocks = normalizedValue;
-        adventureInteractionPermissions.canUseLevers = normalizedValue;
-        adventureInteractionPermissions.canUseAll = normalizedValue;
-        persistAdventurePermissions();
+        for (const key of SINGLE_PERMISSION_KEYS) adventureInteractionPermissions[key] = normalizedValue;
+    } else if (SINGLE_PERMISSION_KEYS.includes(permissionKey)) {
+        adventureInteractionPermissions[permissionKey] = normalizedValue;
+    } else {
         return;
     }
-
-    if (!Object.prototype.hasOwnProperty.call(adventureInteractionPermissions, permissionKey)) return;
-
-    adventureInteractionPermissions[permissionKey] = normalizedValue;
-    adventureInteractionPermissions.canUseAll =
-        adventureInteractionPermissions.canUsePots
-        && adventureInteractionPermissions.canUseShelves
-        && adventureInteractionPermissions.canUseTrapdoors
-        && adventureInteractionPermissions.canUseDoors
-        && adventureInteractionPermissions.canUseItemframes
-        && adventureInteractionPermissions.canUseCandles
-        && adventureInteractionPermissions.canOpenContainers
-        && adventureInteractionPermissions.canUseButtons
-        && adventureInteractionPermissions.canUsePressurePlates
-        && adventureInteractionPermissions.canUseIncompatibleRespawns
-        && adventureInteractionPermissions.canUseDaylightSensors
-        && adventureInteractionPermissions.canHitEntities
-        && adventureInteractionPermissions.canHitPlayers
-        && adventureInteractionPermissions.canUseJukebox
-        && adventureInteractionPermissions.canUseRedstoneComponents
-        && adventureInteractionPermissions.canUseNoteblocks
-        && adventureInteractionPermissions.canUseLevers;
+    updateCanUseAll();
     persistAdventurePermissions();
 }
 
@@ -259,8 +115,9 @@ function isContainerBlockType(typeId) {
     const normalizedTypeId = `${typeId ?? ""}`;
     if (!normalizedTypeId) return false;
 
-    return normalizedTypeId === "minecraft:chest"
-        || normalizedTypeId === "minecraft:trapped_chest"
+    // endsWith("chest"): also the ender chest and every copper chest.
+    return normalizedTypeId.endsWith("chest")
+        || normalizedTypeId === "minecraft:crafter"
         || normalizedTypeId === "minecraft:barrel"
         || normalizedTypeId === "minecraft:hopper"
         || normalizedTypeId === "minecraft:dropper"
@@ -323,7 +180,8 @@ export function getAdventurePermissionForBlock(blockTypeId) {
     const normalizedTypeId = `${blockTypeId ?? ""}`;
     if (!normalizedTypeId) return undefined;
 
-    if (normalizedTypeId === "minecraft:flower_pot" || normalizedTypeId.includes("flower_pot") || normalizedTypeId.includes("pot")) return "canUsePots";
+    // "pot" as a whole word (flower_pot, decorated_pot), so potatoes don't count.
+    if (/(^|[:_])pot(_|$)/.test(normalizedTypeId)) return "canUsePots";
     if (normalizedTypeId === "minecraft:chiseled_bookshelf" || normalizedTypeId === "minecraft:bookshelf" || normalizedTypeId.includes("shelf")) return "canUseShelves";
     if (normalizedTypeId.endsWith("_trapdoor") || normalizedTypeId.includes("trapdoor") || normalizedTypeId.includes("trap_door")) return "canUseTrapdoors";
     if (normalizedTypeId.endsWith("_door")) return "canUseDoors";
@@ -356,7 +214,8 @@ export function getIncompatibleRespawnPermissionForBlock(player, blockTypeId, di
     const normalizedDimensionId = `${dimensionId ?? player.dimension?.id ?? ""}`;
     if (!normalizedTypeId || !normalizedDimensionId) return undefined;
 
-    const isBed = normalizedTypeId.endsWith("_bed");
+    // Every colour of bed is minecraft:bed in Bedrock.
+    const isBed = normalizedTypeId === "minecraft:bed" || normalizedTypeId.endsWith("_bed");
     const isRespawnAnchor = normalizedTypeId === "minecraft:respawn_anchor";
 
     const bedIncompatible = isBed && normalizedDimensionId !== "minecraft:overworld";
@@ -417,7 +276,7 @@ function pushPlayerOffPressurePlate(player, platePos) {
     } catch { }
 }
 
-export function enforcePressurePlateRestrictionForPlayer(player) {
+function enforcePressurePlateRestrictionForPlayer(player) {
     // The permission flag is checked first: it is a plain read, the game mode lookup is a native call.
     if (!player || adventureInteractionPermissions.canUsePressurePlates || !isPlayerInAdventure(player)) return;
 
@@ -447,7 +306,12 @@ export function enforcePressurePlateRestrictionForPlayer(player) {
     }
 
     for (const pos of candidatePositions) {
-        const block = dimension.getBlock(pos);
+        let block;
+        try {
+            block = dimension.getBlock(pos);
+        } catch {
+            continue; // above or below the world
+        }
         if (!isPressurePlateBlockType(block?.typeId)) continue;
 
         const centerX = pos.x + 0.5;
@@ -455,45 +319,53 @@ export function enforcePressurePlateRestrictionForPlayer(player) {
         const deltaX = Math.abs(location.x - centerX);
         const deltaZ = Math.abs(location.z - centerZ);
 
-        // Square interaction zone: 1.5 x 1.5 centered on the plate.
+        // Square zone centred on the plate, about where the player's hitbox touches it.
         if (deltaX > PRESSURE_PLATE_BLOCK_HALF_EXTENT || deltaZ > PRESSURE_PLATE_BLOCK_HALF_EXTENT) continue;
 
+        // Not cached: if the push was skipped by its cooldown, the next pass has to try again.
         pushPlayerOffPressurePlate(player, pos);
         notifyAdventureInteractionBlocked(player, "canUsePressurePlates");
-        pressurePlateEnforcementCache.set(cacheKey, { x: baseX, y: baseY, z: baseZ });
-        break;
+        return;
     }
 
     pressurePlateEnforcementCache.set(cacheKey, { x: baseX, y: baseY, z: baseZ });
 }
 
-// SECTION: Entity Interaction Permission
-function getAdventurePermissionForEntityInteraction(entityTypeId) {
-    const normalizedTypeId = `${entityTypeId ?? ""}`.trim().toLowerCase();
-    if (!normalizedTypeId) return undefined;
+// SECTION: Event Subscriptions
+// Taking the item out of a frame is a break (item frames are blocks in Bedrock).
+world.beforeEvents.playerBreakBlock.subscribe((data) => {
+    const player = data.player;
+    const typeId = `${data.block?.typeId ?? ""}`;
+    if (!player || !isPlayerInAdventure(player)) return;
 
-    if (normalizedTypeId === "minecraft:item_frame" || normalizedTypeId === "minecraft:glow_item_frame" || normalizedTypeId === "minecraft:frame" || normalizedTypeId === "minecraft:glow_frame" || normalizedTypeId.includes("item_frame")) {
-        return "canUseItemframes";
+    const isItemFrame = typeId.includes("item_frame") || typeId === "minecraft:frame" || typeId === "minecraft:glow_frame";
+    if (isItemFrame && !adventureInteractionPermissions.canUseItemframes) {
+        data.cancel = true;
+        notifyAdventureInteractionBlocked(player, "canUseItemframes");
+    }
+});
+
+/**
+ * Cancels a block interaction the Adventure rules forbid; true when it did. main.js calls this before
+ * handing the click to the engine, so a forbidden click never reaches an engine block either.
+ */
+export function cancelForbiddenBlockInteraction(data) {
+    const block = data.block;
+    const incompatibleRespawnPermission = getIncompatibleRespawnPermissionForBlock(data.player, block?.typeId, block?.dimension?.id);
+    if (incompatibleRespawnPermission && !adventureInteractionPermissions[incompatibleRespawnPermission]) {
+        data.cancel = true;
+        notifyAdventureInteractionBlocked(data.player, incompatibleRespawnPermission);
+        return true;
     }
 
-    return undefined;
+    const blockedPermission = getAdventurePermissionForBlock(block?.typeId);
+    if (blockedPermission && shouldBlockAdventureInteraction(data.player, block.typeId)) {
+        data.cancel = true;
+        notifyAdventureInteractionBlocked(data.player, blockedPermission);
+        return true;
+    }
+    return false;
 }
-
-// SECTION: Event Subscriptions
-world.beforeEvents.playerInteractWithEntity.subscribe((data) => {
-    if (data.cancel) return;
-
-    const player = data.player;
-    if (!isPlayerInAdventure(player)) return;
-
-    const blockedPermission = getAdventurePermissionForEntityInteraction(data?.target?.typeId);
-    if (!blockedPermission) return;
-
-    if (adventureInteractionPermissions[blockedPermission]) return;
-
-    data.cancel = true;
-    notifyAdventureInteractionBlocked(player, blockedPermission);
-});
 
 world.beforeEvents.entityHurt.subscribe((data) => {
     if (data.cancel) return;
@@ -503,7 +375,7 @@ world.beforeEvents.entityHurt.subscribe((data) => {
     if (!attacker) {
         const projectile = data?.damageSource?.damagingProjectile;
         try {
-            attacker = projectile?.getComponent?.("minecraft:projectile")?.owner ?? projectile?.owner;
+            attacker = projectile?.getComponent?.("minecraft:projectile")?.owner;
         } catch { }
     }
 
@@ -518,3 +390,9 @@ world.beforeEvents.entityHurt.subscribe((data) => {
     data.cancel = true;
     notifyAdventureInteractionBlocked(attacker, permissionKey);
 });
+
+system.runInterval(() => {
+    for (const player of world.getPlayers()) {
+        enforcePressurePlateRestrictionForPlayer(player);
+    }
+}, 2);

@@ -2,6 +2,7 @@ import { EasingType } from "@minecraft/server";
 import { AMMO_ITEM } from "./ammo_system.js";
 import { createMagazineWeapon } from "./magazine_weapon.js";
 import { WEAPON_ACTION, getMainhandTypeId, getWeaponAction, isSneaking, pruneStalePlayerState, registerWeaponTick } from "./weapon_common.js";
+import { loadPlayerSettings } from "../core/player_settings.js";
 
 // .357 Magnum: fires on press; clicking with an empty cylinder reloads automatically.
 // Sneaking holds the centerfire stance (its own fire sound and animations).
@@ -37,9 +38,12 @@ const ZOOM_EASE = { easeTime: 0.2, easeType: EasingType.OutQuad }; // Black Mesa
 const zoomedPlayers = new Map();
 
 function setZoom(player, zoomed) {
+    // Back to the FOV picked in the Black Mesa menu, or the player's own game setting without one.
+    const menuFov = zoomed ? undefined : loadPlayerSettings(player).fov;
     try {
         if (zoomed) player.camera.setFov({ fov: CENTERFIRE_FOV, easeOptions: ZOOM_EASE });
-        else player.runCommand("camera @s fov_clear 0.2 out_quad"); // back to the player's own FOV setting
+        else if (Number.isFinite(menuFov)) player.camera.setFov({ fov: menuFov, easeOptions: ZOOM_EASE });
+        else player.runCommand("camera @s fov_clear 0.2 out_quad");
     } catch {
         // fov_clear unavailable: fall back to the default field of view rather than staying zoomed
         try {

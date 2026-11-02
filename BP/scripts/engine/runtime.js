@@ -53,11 +53,10 @@ export function getHeldEntityClass(player) {
 }
 
 // SECTION: Player Helpers
+// The Operator permission, or operator-level commands without it (dev_privileges' fallback).
 export function isPlayerOperator(player) {
     try {
-        if (mc.PlayerPermissionLevel && player.playerPermissionLevel !== undefined) {
-            return player.playerPermissionLevel === mc.PlayerPermissionLevel.Operator;
-        }
+        if (player.playerPermissionLevel === mc.PlayerPermissionLevel.Operator) return true;
     } catch { }
     try {
         return Number(player.commandPermissionLevel) >= Number(mc.CommandPermissionLevel.GameDirectors);
@@ -69,6 +68,16 @@ export function isPlayerOperator(player) {
 export function isPlayerCreative(player) {
     try {
         return `${player.getGameMode()}`.toLowerCase() === "creative";
+    } catch {
+        return false;
+    }
+}
+
+// What npcclip stops: mobs that walk. Dropped items, XP, arrows, boats and minecarts have no
+// movement component and pass through.
+export function canEntityWalk(entity) {
+    try {
+        return Boolean(entity.getComponent("minecraft:movement"));
     } catch {
         return false;
     }

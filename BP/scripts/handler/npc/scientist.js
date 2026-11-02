@@ -1,5 +1,5 @@
 import { system, world } from "@minecraft/server";
-import { playWorldSound } from "../core/player_settings.js";
+import { playWorldSoundInstances } from "../core/player_settings.js";
 import { showSubtitle } from "../core/action_bar.js";
 import { SCIENTIST_LINES } from "./scientist_lines.js";
 
@@ -105,10 +105,18 @@ function speak(entity, reaction, { interrupt = false } = {}) {
     const line = pool[Math.floor(Math.random() * pool.length)];
     const ticks = Math.ceil(line.seconds * 20);
 
+    // An interrupting line cuts off the one still playing instead of talking over it.
+    for (const instance of state.voice ?? []) {
+        try {
+            instance.stop();
+        } catch { }
+    }
+    state.voice = undefined;
+
     let head;
     try {
         head = entity.getHeadLocation();
-        playWorldSound(entity.dimension, line.id, head, {}, VOICE_RANGE);
+        state.voice = playWorldSoundInstances(entity.dimension, line.id, head, {}, VOICE_RANGE);
     } catch {
         return 0;
     }

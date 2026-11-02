@@ -2,6 +2,7 @@ import { system, world } from "@minecraft/server";
 import { getEntitiesOfClass, getEntityAt, getRegistryRevision } from "../registry.js";
 import { entityOrigin, getPlayerGameModeName, selectorMatchesEntity } from "../selectors.js";
 import {
+    canEntityWalk,
     forEachCellNear,
     getEngineSettings,
     getProbeOffsets,
@@ -198,6 +199,7 @@ function runNpcclipPass() {
         for (const mob of mobs) {
             if (seen.has(mob.id)) continue;
             seen.add(mob.id);
+            if (!canEntityWalk(mob)) continue;
 
             let location;
             try {

@@ -1,6 +1,6 @@
 import * as mc from "@minecraft/server";
 import { ModalFormData, ActionFormData } from "@minecraft/server-ui";
-import { usernameModeOwnsNametags } from "./username_mode.js";
+import { CHAT_DISPLAY_NAME_OVERRIDE_PROPERTY, usernameModeOwnsNametags } from "./username_mode.js";
 
 // SECTION: Runtime Handles and Permissions
 const { world, system } = mc;
@@ -229,13 +229,16 @@ const emojis = [
     { id: ":rabbit6:", emoji: "", displayName: "Rabbit 6" }
 ]
 
+// The developers, by gamertag. Only these get the [Dev] badge: there is no dev tag, since anyone
+// with /tag could give themselves one.
 const DEV_NAMETAG_PLAYERS = new Set([
     "bonnierobloxrip",
     "xxjustmaxxx7546",
     "marshmallow997"
 ]);
 
-const DEV_NAMETAG_TAGS = new Set([
+// Nametag text that would pass for the dev badge.
+const DEV_BADGE_WORDS = new Set([
     "dev",
     "developer"
 ]);
@@ -278,6 +281,7 @@ const BOOK_ITEM_IDS = new Set([
     "minecraft:book_and_quill"
 ]);
 const MUTED_NOTICE_COOLDOWN_MS = 1200;
+const MAX_CHAT_MESSAGE_LENGTH = 512;
 const lastMutedNoticeAtByPlayer = new Map();
 
 // SECTION: Moderation Helpers
@@ -489,13 +493,6 @@ function removeMuteByPlayerName(rawPlayerName) {
     }
 
     return null;
-}
-
-function canRunModerationCommands(player) {
-    if (!player) return false;
-    if (!PlayerPermissionLevel) return true;
-
-    return player.playerPermissionLevel === PlayerPermissionLevel.Operator;
 }
 
 export function executeMuteCommand(actor, targetInput, durationRaw, reasonRaw) {
@@ -712,33 +709,16 @@ system.runInterval(() => {
     cleanupExpiredMutes();
 }, 20);
 
-// Username-only dev check for privileges (op, kick immunity). Ignores the "dev" tag since /tag can grant it.
+// The one dev check: the badge, whisper copies, op and kick immunity all go by gamertag.
 export function isNativeDevPlayer(playerOrName) {
     const name = typeof playerOrName === "string" ? playerOrName : playerOrName?.name;
     return DEV_NAMETAG_PLAYERS.has(`${name ?? ""}`.trim().toLowerCase());
 }
 
-export function isDevNametagPlayer(playerOrName) {
-    const name = typeof playerOrName === "string" ? playerOrName : playerOrName?.name;
-    const normalizedName = `${name ?? ""}`.trim().toLowerCase();
-    if (DEV_NAMETAG_PLAYERS.has(normalizedName)) return true;
-
-    if (typeof playerOrName === "object" && playerOrName) {
-        try {
-            const tags = playerOrName.getTags();
-            return tags.some((tag) => DEV_NAMETAG_TAGS.has(`${tag ?? ""}`.trim().toLowerCase()));
-        } catch {
-            return false;
-        }
-    }
-
-    return false;
-}
-
-// Detects custom nametag text trying to impersonate the real dev tag (e.g. "Dev"/"Developer").
+// Detects custom nametag text trying to impersonate the dev badge (e.g. "Dev"/"Developer").
 export function isDevTagReplicationAttempt(rawText) {
     const normalized = `${rawText ?? ""}`.replace(/§./g, "").trim().toLowerCase();
-    return DEV_NAMETAG_TAGS.has(normalized);
+    return DEV_BADGE_WORDS.has(normalized);
 }
 
 function sendWhisperMirrorToDevs(sender, targetName, processedMessage) {
@@ -747,7 +727,8 @@ function sendWhisperMirrorToDevs(sender, targetName, processedMessage) {
     const mirrorText = `§8[Dev Whisper] §r${rankPrefix}§r${sender.name} §7-> §r${targetName}: §f${processedMessage}`;
 
     for (const onlinePlayer of world.getPlayers()) {
-        if (!isDevNametagPlayer(onlinePlayer)) continue;
+        // The developer accounts only, not anyone given a "dev" tag (a tag is one /tag away).
+        if (!isNativeDevPlayer(onlinePlayer)) continue;
         if (onlinePlayer.id === sender.id) continue;
         if (onlinePlayer.name === targetName) continue;
 
@@ -803,10 +784,8 @@ function getCustomNametagParts(player, context) {
     }
 }
 
-// While username mode is hidden or randomized, main.js stores the name chat shows instead of the
-// real one. Ranks and custom tags are left out then too, the same as on nametags.
-const CHAT_DISPLAY_NAME_OVERRIDE_PROPERTY = "brr_display_name_override";
-
+// While username mode is hidden or randomized, username_mode.js stores the name chat shows instead
+// of the real one. Ranks and custom tags are left out then too, the same as on nametags.
 function getChatNameOverride(player) {
     try {
         const override = player.getDynamicProperty(CHAT_DISPLAY_NAME_OVERRIDE_PROPERTY);
@@ -839,12 +818,27 @@ export function applyEmojiReplacements(message) {
     return processedMessage;
 }
 
+// One rate limit for everything that talks in chat: typed messages, /brr:emojis and the Dino
+// Speecher. True (and the player is told) when this message has to be dropped.
+function isChatOnCooldown(player) {
+    const cooldownKey = `${player?.id ?? player?.name ?? ""}`;
+    const now = Date.now();
+    const lastMessageAt = lastChatMessageAtByPlayer.get(cooldownKey) ?? 0;
+    if (chatMessageCooldownMs > 0 && now - lastMessageAt < chatMessageCooldownMs) {
+        player.sendMessage(getChatSpamBlockedMessage());
+        return true;
+    }
+    lastChatMessageAtByPlayer.set(cooldownKey, now);
+    return false;
+}
+
 export function sendRankedMessage(player, rawMessage) {
     const muteEntry = getActiveMuteEntry(player);
     if (muteEntry) {
         sendMutedNotice(player, muteEntry);
         return;
     }
+    if (isChatOnCooldown(player)) return;
 
     const tags = player.getTags();
     const processedMessage = applyEmojiReplacements(normalizeChatMessage(rawMessage));
@@ -857,7 +851,7 @@ export function chatRank(player, tags) {
     let rankPrefix = "";
 
     // Dev Ranks
-    if (isDevNametagPlayer(player)) {
+    if (isNativeDevPlayer(player)) {
         rankPrefix += "[§l§dDev§r] ";
     }
     if (["DinoDaniel21"].includes(player.name)) {
@@ -901,7 +895,7 @@ export function nametagRank(player, tags, bothSpecialUsersOnline) {
     const uniqueEmoji = getUniqueNametagEmoji(player, bothSpecialUsersOnline);
     if (uniqueEmoji) rankPrefix += `${uniqueEmoji} `;
 
-    if (isDevNametagPlayer(player)) {
+    if (isNativeDevPlayer(player)) {
         rankPrefix += "[§l§dDev§r] ";
     }
     if (["DinoDaniel21"].includes(player.name)) {
@@ -941,7 +935,7 @@ export function nametagRank(player, tags, bothSpecialUsersOnline) {
 }
 
 // SECTION: Message Handling
-export function handleMessage() {
+function handleMessage() {
     try {
         world.beforeEvents.chatSend.subscribe((data) => {
             if (data.cancel) return;
@@ -950,59 +944,8 @@ export function handleMessage() {
             const tags = player.getTags();
             let message = data.message;
 
-            const trimmedMessage = `${message ?? ""}`.trim();
-
-            const brrCooldownMatch = trimmedMessage.match(/^\/brr\s+(?:adjust|set)_chat_cooldown\s+(.+)$/i);
-            if (brrCooldownMatch) {
-                data.cancel = true;
-
-                if (!canRunModerationCommands(player)) {
-                    player.sendMessage("§cYou do not have permission to adjust chat cooldown.");
-                    return;
-                }
-
-                const rawCooldown = normalizeTextToken(brrCooldownMatch[1]);
-                const appliedSeconds = setChatCooldownSeconds(rawCooldown);
-                if (appliedSeconds === undefined) {
-                    player.sendMessage("§cInvalid value. Use a number >= 0 (examples: 0, 0.1, 1).");
-                    return;
-                }
-
-                const formattedSeconds = appliedSeconds
-                    .toFixed(3)
-                    .replace(/\.0+$/, "")
-                    .replace(/(\.\d*?)0+$/, "$1");
-
-                player.sendMessage(`§aChat cooldown set to ${formattedSeconds} second(s).`);
-                return;
-            }
-
-            const muteCommandMatch = trimmedMessage.match(/^\/mute\s+(\S+)\s+(\S+)(?:\s+(.+))?$/i);
-            if (muteCommandMatch) {
-                data.cancel = true;
-
-                if (!canRunModerationCommands(player)) {
-                    player.sendMessage("§cYou do not have permission to use /mute.");
-                    return;
-                }
-
-                executeMuteCommand(player, muteCommandMatch[1], muteCommandMatch[2], muteCommandMatch[3] ?? "");
-                return;
-            }
-
-            const unmuteCommandMatch = trimmedMessage.match(/^\/unmute\s+(\S+)(?:\s+(.+))?$/i);
-            if (unmuteCommandMatch) {
-                data.cancel = true;
-
-                if (!canRunModerationCommands(player)) {
-                    player.sendMessage("§cYou do not have permission to use /unmute.");
-                    return;
-                }
-
-                executeUnmuteCommand(player, unmuteCommandMatch[1], unmuteCommandMatch[2] ?? "");
-                return;
-            }
-
+            // Moderation is /brr:mute, /brr:unmute and /brr:set_chat_cooldown: text starting with "/"
+            // is run as a command and never reaches chat.
             const muteEntry = getActiveMuteEntry(player);
             if (muteEntry) {
                 data.cancel = true;
@@ -1010,15 +953,10 @@ export function handleMessage() {
                 return;
             }
 
-            const cooldownKey = `${player?.id ?? player?.name ?? ""}`;
-            const now = Date.now();
-            const lastMessageAt = lastChatMessageAtByPlayer.get(cooldownKey) ?? 0;
-            if (chatMessageCooldownMs > 0 && now - lastMessageAt < chatMessageCooldownMs) {
+            if (isChatOnCooldown(player)) {
                 data.cancel = true;
-                player.sendMessage(getChatSpamBlockedMessage());
                 return;
             }
-            lastChatMessageAtByPlayer.set(cooldownKey, now);
 
             message = applyEmojiReplacements(normalizeChatMessage(message));
 
@@ -1088,25 +1026,8 @@ try {
     }
 } catch { }
 
-try {
-    const itemUseOnBeforeSignal = world.beforeEvents?.itemUseOn;
-    if (itemUseOnBeforeSignal) {
-        itemUseOnBeforeSignal.subscribe((eventData) => {
-            const player = eventData?.source;
-            if (!player || player.typeId !== "minecraft:player") return;
-
-            const muteEntry = getActiveMuteEntry(player);
-            if (!muteEntry) return;
-
-            const itemId = `${eventData?.itemStack?.typeId ?? ""}`;
-            if (!isMutedRestrictedItem(itemId)) return;
-
-            eventData.cancel = true;
-            sendMutedNotice(player, muteEntry);
-        });
-    }
-} catch { }
-
+// Editing a sign, or using a sign or book on a block (placing a new sign opens its editor, a book
+// goes on a lectern).
 try {
     const playerInteractWithBlockBeforeSignal = world.beforeEvents?.playerInteractWithBlock;
     if (playerInteractWithBlockBeforeSignal) {
@@ -1118,7 +1039,7 @@ try {
             if (!muteEntry) return;
 
             const blockTypeId = `${eventData?.block?.typeId ?? ""}`;
-            if (!isSignTypeId(blockTypeId)) return;
+            if (!isSignTypeId(blockTypeId) && !isMutedRestrictedItem(eventData?.itemStack?.typeId)) return;
 
             eventData.cancel = true;
             sendMutedNotice(player, muteEntry);
@@ -1221,7 +1142,7 @@ export function showMainMenu(player) {
             sendRankedMessage(player, selectedEmoji.emoji);
             system.run(() => showMainMenu(player));
         }
-    });
+    }).catch(() => { });
 }
 
 export function showDinoSpeecherMenu(player) {
@@ -1255,7 +1176,8 @@ export function showDinoSpeecherMenu(player) {
         if (response.canceled) return;
 
         const [selectionIndex, rawMessage] = response.formValues;
-        const messageText = `${rawMessage ?? ""}`;
+        // Same length limit as the chat box: form text fields allow far longer text.
+        const messageText = `${rawMessage ?? ""}`.slice(0, MAX_CHAT_MESSAGE_LENGTH);
 
         const selectedTargetName = options[selectionIndex] ?? options[0];
         const targetToStore = selectionIndex === 0 ? "none" : selectedTargetName;
@@ -1277,8 +1199,10 @@ export function showDinoSpeecherMenu(player) {
             sendRankedMessage(player, messageText);
         } else {
             // - Option 2: Private Whisper
+            if (isChatOnCooldown(player)) return;
             const targetName = options[selectionIndex];
-            const targetPlayer = allPlayers.find(p => p.name === targetName);
+            // Looked up again: the list was taken when the form opened, and they may have left since.
+            const targetPlayer = world.getPlayers({ name: targetName })[0];
 
             if (targetPlayer) {
                 const tags = player.getTags();
@@ -1295,11 +1219,11 @@ export function showDinoSpeecherMenu(player) {
                 // Confirmation for the sender
                 player.sendMessage(`§7You whisper to ${targetName}: ${processedMessage}`);
 
-                // Mirror whispers to all online dev nametag players.
+                // Mirror whispers to the developers who are online.
                 sendWhisperMirrorToDevs(player, targetName, processedMessage);
             } else {
                 player.sendMessage("§cTarget player not found (they may have left).");
             }
         }
-    });
+    }).catch(() => { });
 }

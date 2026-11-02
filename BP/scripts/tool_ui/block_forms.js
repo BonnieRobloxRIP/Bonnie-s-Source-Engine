@@ -35,10 +35,11 @@ const CONDITION_FIELD = (key, label) => drop(
 
 const NONE_OPTION = "(None)";
 
-export function isBlockedCommandText(command) {
-    const normalized = `${command ?? ""}`.trim().replace(/^\/+/, "").trim().toLowerCase();
-    return /^(minecraft:)?(op|deop)(\s|$)/.test(normalized);
-}
+// Three plain numbers: what the engine can read back as a position.
+const isXYZ = (value) => {
+    const parts = `${value ?? ""}`.trim().split(/\s+/);
+    return parts.length === 3 && parts.every(part => part !== "" && Number.isFinite(Number(part)));
+};
 
 const runOutputOptions = (ctx) => [NONE_OPTION, ...ctx.outputNames];
 const runOutputRead = (key) => (data, ctx) => Math.max(0, runOutputOptions(ctx).indexOf(data?.[key] || NONE_OPTION));
@@ -107,9 +108,6 @@ export const BLOCK_FORMS = {
         namespace: "tool_trigger",
         prefix: "trigger",
         conditionsHelp: true,
-        validate: (data) => (isBlockedCommandText(data.runCommand)
-            ? "Blocked command: /op and /deop cannot be run from engine blocks."
-            : ""),
         classFields: [
             NAME_FIELD("trigger"),
             text("conditionValue1", "Condition value 1", "Leave blank if unused", str("conditionValue1")),
@@ -129,9 +127,11 @@ export const BLOCK_FORMS = {
         validate: (data) => {
             // A destination block wins; keeping both set is what used to send players to the wrong place.
             if (data.destinationBlock) data.destination = "";
-            return (data.destination || data.destinationBlock)
-                ? ""
-                : "Set either a Destination or a Destination block.";
+            if (!data.destination && !data.destinationBlock) return "Set either a Destination or a Destination block.";
+            if (data.destination && !isXYZ(data.destination)) {
+                return "Destination must be three numbers, like 0 64 -184 (~ coordinates aren't supported).";
+            }
+            return "";
         },
         classFields: [
             NAME_FIELD("areaportal"),
@@ -238,7 +238,6 @@ export const BLOCK_FORMS = {
             if (!/^[a-z0-9_.:-]+$/i.test(`${data.soundId ?? ""}`)) return "Sound ID is required, e.g. random.orb or ambient.weather.rain.";
             if (!(Number.parseFloat(data.volume) >= 0)) return "Volume must be a number, 0 or more.";
             if (!(Number.parseFloat(data.pitch) > 0)) return "Pitch must be a number above 0.";
-            if (data.loop && !(Number.parseInt(data.loopLength, 10) >= 1)) return "Loop length must be at least 1 tick.";
             return "";
         },
         classFields: [
@@ -246,7 +245,6 @@ export const BLOCK_FORMS = {
             text("soundId", "Sound ID", "random.orb", str("soundId")),
             text("volume", "Volume", "1 = heard ~16 blocks away", (data) => `${data?.volume ?? 1}`),
             text("pitch", "Pitch", "1 = normal", (data) => `${data?.pitch ?? 1}`),
-            text("loopLength", "Loop length (ticks)", "Length of the sound", (data) => `${data?.loopLength ?? 40}`),
             START_DISABLED,
             toggle("loop", "Loop", bool("loop", false)),
             toggle("startSilent", "Start silent", bool("startSilent", true)),
@@ -352,7 +350,7 @@ export const BLOCK_FORMS = {
                 + `out:${entry?.runOutput || "-"} cmd:${entry?.runCommand || "-"}`,
             fields: [
                 text("objective", "Scoreboard objective", "objective name", () => ""),
-                text("entity", "Scoreboard entity", "selector or fake player", () => ""),
+                text("entity", "Scoreboard entity", "player name or fake player", () => ""),
                 text("initialValue", "Initial value", "0", () => "0"),
                 text("runCommand", "Run command", "Command (optional)", () => ""),
                 drop(

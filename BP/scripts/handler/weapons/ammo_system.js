@@ -28,42 +28,50 @@ function getContainer(player) {
     }
 }
 
-/** Every inventory slot holding one of the ammo ids, with its rounds left. */
+/**
+ * Every slot holding one of the ammo ids, with its rounds left: the inventory, then the off-hand
+ * (ammo boxes are allowed there). `store` writes an item back into that slot.
+ */
 function collectAmmoSlots(player, idSet) {
     const container = getContainer(player);
     const slots = [];
-    if (!container) return { container, slots };
-
-    for (let i = 0; i < container.size; i++) {
-        const item = container.getItem(i);
-        if (!item || !idSet.has(item.typeId)) continue;
+    const addSlot = (item, store) => {
+        if (!item || !idSet.has(item.typeId)) return;
 
         const durability = item.getComponent("minecraft:durability");
-        if (!durability) continue;
+        if (!durability) return;
 
-        slots.push({ index: i, item, durability, rounds: Math.max(0, durability.maxDurability - durability.damage) });
+        slots.push({ item, durability, store, rounds: Math.max(0, durability.maxDurability - durability.damage) });
+    };
+
+    for (let i = 0; i < (container?.size ?? 0); i++) {
+        addSlot(container.getItem(i), (item) => container.setItem(i, item));
     }
+    try {
+        const equippable = player.getComponent("minecraft:equippable");
+        addSlot(equippable?.getEquipment("Offhand"), (item) => equippable.setEquipment("Offhand", item));
+    } catch { }
     return { container, slots };
 }
 
-function writeRounds(container, slot, rounds) {
+function writeRounds(slot, rounds) {
     if (rounds <= 0) {
-        container.setItem(slot.index, undefined);
+        slot.store(undefined);
         return;
     }
     slot.durability.damage = slot.durability.maxDurability - rounds;
-    container.setItem(slot.index, slot.item);
+    slot.store(slot.item);
 }
 
 // SECTION: Reserve Pools
-function drainSlots(container, slots, roundsNeeded) {
+function drainSlots(slots, roundsNeeded) {
     let remaining = roundsNeeded;
     let consumed = 0;
     for (const slot of slots) {
         if (remaining <= 0) break;
         const take = Math.min(remaining, slot.rounds);
         if (take <= 0) continue;
-        writeRounds(container, slot, slot.rounds - take);
+        writeRounds(slot, slot.rounds - take);
         consumed += take;
         remaining -= take;
     }
@@ -111,9 +119,9 @@ export function createReserveAmmoPool(ammoItemIds, options = {}) {
             if (isCreativePlayer(player)) return needed;
 
             try {
-                const { container, slots } = collectAmmoSlots(player, idSet);
+                const { slots } = collectAmmoSlots(player, idSet);
                 const total = slots.reduce((sum, slot) => sum + slot.rounds, 0);
-                const consumed = drainSlots(container, slots, needed);
+                const consumed = drainSlots(slots, needed);
                 remember(player, total - consumed);
                 return consumed;
             } catch {
@@ -127,13 +135,13 @@ export function createReserveAmmoPool(ammoItemIds, options = {}) {
             if (cost <= 0 || isCreativePlayer(player)) return true;
 
             try {
-                const { container, slots } = collectAmmoSlots(player, idSet);
+                const { slots } = collectAmmoSlots(player, idSet);
                 const total = slots.reduce((sum, slot) => sum + slot.rounds, 0);
                 if (total < cost) {
                     remember(player, total);
                     return false;
                 }
-                const consumed = drainSlots(container, slots, cost);
+                const consumed = drainSlots(slots, cost);
                 remember(player, total - consumed);
                 return consumed >= cost;
             } catch {
@@ -175,8 +183,8 @@ export function playEmptySound(player) {
 // SECTION: Pickup Merging and Carry Caps
 /** Packs an ammo type into as few boxes as possible (filling from the first slot) and trims it to the cap. */
 function consolidateAmmo(player, typeId) {
-    const { container, slots } = collectAmmoSlots(player, new Set([typeId]));
-    if (!container || slots.length === 0) return;
+    const { slots } = collectAmmoSlots(player, new Set([typeId]));
+    if (slots.length === 0) return;
 
     const capacity = slots[0].durability.maxDurability;
     const cap = CARRY_CAP[typeId] ?? Number.POSITIVE_INFINITY;
@@ -185,7 +193,7 @@ function consolidateAmmo(player, typeId) {
     for (const slot of slots) {
         const rounds = Math.min(capacity, total);
         total -= rounds;
-        if (rounds !== slot.rounds) writeRounds(container, slot, rounds);
+        if (rounds !== slot.rounds) writeRounds(slot, rounds);
     }
 }
 

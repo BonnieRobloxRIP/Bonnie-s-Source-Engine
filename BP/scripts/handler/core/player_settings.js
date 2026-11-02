@@ -72,3 +72,25 @@ export function playWorldSound(dimension, soundId, location, options = {}, range
     }
     return true;
 }
+
+// Same as playWorldSound, but returns the SoundInstances so the caller can stop the sound later.
+// Keep them for as long as the sound should play: a looping sound stops when they are dropped.
+export function playWorldSoundInstances(dimension, soundId, location, options = {}, range) {
+    let players;
+    try {
+        players = range > 0 ? dimension.getPlayers({ location, maxDistance: range }) : dimension.getPlayers();
+    } catch {
+        return [];
+    }
+
+    const instances = [];
+    for (const player of players ?? []) {
+        const scaled = scaleSoundOptions(player, options);
+        if (scaled.volume <= 0) continue;
+        try {
+            const instance = player.playSound(soundId, { ...scaled, location });
+            if (instance) instances.push(instance);
+        } catch { }
+    }
+    return instances;
+}

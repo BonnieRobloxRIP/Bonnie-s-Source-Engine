@@ -1,5 +1,5 @@
 {
-	"format_version": "1.21.80",
+	"format_version": "1.26.50",
 	"minecraft:block": {
 		"description": {
 			"identifier": "brr:hev_charger",
@@ -59,6 +59,10 @@
 					2
 				]
 			},
+			"minecraft:destruction_particles": {
+				"texture": "brr_hev_charger_particle",
+				"particle_count": 19
+			},
 			"minecraft:destructible_by_explosion": false,
 			"minecraft:destructible_by_mining": {
 				"seconds_to_destroy": 3
@@ -70,7 +74,8 @@
 					{
 						"can_contain_liquid": true,
 						"liquid_type": "water",
-						"on_liquid_touches": "no_reaction"
+						"on_liquid_touches": "no_reaction",
+						"use_liquid_clipping": true
 					}
 				]
 			}

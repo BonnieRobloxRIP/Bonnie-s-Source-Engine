@@ -26,10 +26,14 @@ import {
 } from "./weapon_common.js";
 
 // SECTION: Per-Gun Magazine Storage
-// Each gun item gets an id (stored on the item once, the first time it's held); its loaded rounds are kept
-// in a world property under that id. Rounds follow the gun between slots, chests and players without
-// rewriting the held item on every shot.
+// Each gun item gets an id (stored on the item once, the first time it's held). While it's in someone's
+// hand its loaded rounds are kept in a world property under that id, so the held item isn't rewritten on
+// every shot (replacing the item in hand cuts off a held trigger). When the gun is put away, the rounds
+// move onto the item itself and the world property is deleted, so the world only keeps entries for guns
+// in use. A gun dropped or moved into a chest straight from the hand keeps its entry until it's next
+// held and put away.
 const GUN_ID_PROPERTY = "brr_gun_id";
+const ITEM_ROUNDS_PROPERTY = "brr_gun_rounds";
 const ROUNDS_PROPERTY_PREFIX = "brr_gun_rounds:";
 const roundsByGunId = new Map();
 
@@ -53,6 +57,33 @@ function writeRounds(gunId, rounds) {
     try {
         world.setDynamicProperty(ROUNDS_PROPERTY_PREFIX + gunId, rounds);
     } catch { }
+}
+
+/** The rounds the world holds for this gun (memory or property), or undefined when the item has them. */
+function peekWorldRounds(gunId) {
+    if (roundsByGunId.has(gunId)) return roundsByGunId.get(gunId);
+    try {
+        const stored = world.getDynamicProperty(ROUNDS_PROPERTY_PREFIX + gunId);
+        return typeof stored === "number" && Number.isFinite(stored) ? stored : undefined;
+    } catch {
+        return undefined;
+    }
+}
+
+function forgetWorldRounds(gunId) {
+    roundsByGunId.delete(gunId);
+    try {
+        world.setDynamicProperty(ROUNDS_PROPERTY_PREFIX + gunId, undefined);
+    } catch { }
+}
+
+function readItemRounds(item) {
+    try {
+        const stored = item.getDynamicProperty(ITEM_ROUNDS_PROPERTY);
+        return typeof stored === "number" && Number.isFinite(stored) ? stored : undefined;
+    } catch {
+        return undefined;
+    }
 }
 
 const EMPTY_SOUND_COOLDOWN_TICKS = 8;
@@ -130,18 +161,49 @@ export function createMagazineWeapon(config) {
         if (item?.typeId !== itemId) return null;
 
         let gunId = item.getDynamicProperty(GUN_ID_PROPERTY);
+        let itemRounds = readItemRounds(item);
         if (typeof gunId !== "string") {
             gunId = newGunId();
-            writeRounds(gunId, takeLegacyRounds(player));
+            itemRounds = takeLegacyRounds(player);
             try {
                 item.setDynamicProperty(GUN_ID_PROPERTY, gunId);
+                item.setDynamicProperty(ITEM_ROUNDS_PROPERTY, itemRounds);
                 container.setItem(player.selectedSlotIndex, item);
             } catch { }
         }
 
-        const gun = { gunId, slot: player.selectedSlotIndex, tick };
+        const gun = { gunId, itemRounds, slot: player.selectedSlotIndex, tick };
         heldGunByPlayer.set(player.id, gun);
         return gun;
+    }
+
+    /** The gun was put away: its rounds go onto the item and the world entry is deleted. */
+    function stashRounds(player, gunId) {
+        // The cached held gun carries the item's rounds from when it was drawn; drawing it again must re-read them.
+        heldGunByPlayer.delete(player.id);
+        const rounds = peekWorldRounds(gunId);
+        if (rounds === undefined) return;
+
+        let container;
+        try {
+            container = player.getComponent("minecraft:inventory").container;
+        } catch {
+            return;
+        }
+        for (let slot = 0; slot < container.size; slot++) {
+            const item = container.getItem(slot);
+            if (item?.typeId !== itemId || item.getDynamicProperty(GUN_ID_PROPERTY) !== gunId) continue;
+            try {
+                if (readItemRounds(item) !== rounds) {
+                    item.setDynamicProperty(ITEM_ROUNDS_PROPERTY, rounds);
+                    container.setItem(slot, item);
+                }
+                forgetWorldRounds(gunId);
+            } catch { }
+            return;
+        }
+        // Not in the inventory (dropped or stored from the hand): the entry stays for whoever holds it next.
+        roundsByGunId.delete(gunId);
     }
 
     function takeLegacyRounds(player) {
@@ -156,7 +218,7 @@ export function createMagazineWeapon(config) {
         return magSize;
     }
 
-    const getRounds = (gun) => Math.max(0, Math.min(magSize, readRounds(gun.gunId, magSize)));
+    const getRounds = (gun) => Math.max(0, Math.min(magSize, readRounds(gun.gunId, gun.itemRounds ?? magSize)));
 
     function getReserve(player, tick) {
         const cached = reserveCacheByPlayer.get(player.id);
@@ -432,12 +494,14 @@ export function createMagazineWeapon(config) {
                     lastGunIdByPlayer.delete(player.id);
                     holdByPlayer.delete(player.id);
                     cancelReload(player);
+                    stashRounds(player, previousGunId);
                 }
                 continue;
             }
 
             // Drawn (or swapped to another gun of the same kind): match the empty/loaded pose to this gun.
             if (gun.gunId !== previousGunId) {
+                if (previousGunId !== undefined) stashRounds(player, previousGunId);
                 lastGunIdByPlayer.set(player.id, gun.gunId);
                 if (reloadByPlayer.get(player.id)?.gunId !== gun.gunId) cancelReload(player);
                 setWeaponCondition(player, getRounds(gun) <= 0);

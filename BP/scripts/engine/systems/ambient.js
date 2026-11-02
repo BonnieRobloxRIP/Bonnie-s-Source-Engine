@@ -1,4 +1,4 @@
-import { system, world } from "@minecraft/server";
+import { system } from "@minecraft/server";
 import {
     getEntitiesOfClass,
     getEntityById,
@@ -9,23 +9,35 @@ import {
 } from "../registry.js";
 import { registerInputHandlers } from "../io.js";
 import { getEngineSettings, safeGetDimension } from "../runtime.js";
-import { playWorldSound, scaleSoundOptions } from "../../handler/core/player_settings.js";
+import { getSoundVolume } from "../../handler/core/player_settings.js";
 
 // SECTION: ambient_generic
-// Plays a sound from the block (or for every player with Play everywhere). Bedrock sounds cannot
-// loop on their own and scripts cannot tell how long a sound is, so a looping ambient_generic
-// replays its sound every Loop length ticks while it is playing.
+// Plays a sound from the block (or for every player with Play everywhere). Every player in the
+// dimension gets their own SoundInstance, played at their own volume setting, so a looping sound
+// loops by itself and Volume, Pitch, FadeIn and FadeOut change the sound while it plays.
+//
+// A looping sound stops as soon as its last SoundInstance is dropped, so the instances are kept
+// here until the sound stops. Players who join or enter the dimension while it loops get their
+// own instance on the next pass.
 //
 // Without Start silent the sound starts by itself when the world loads (looped) or plays once
 // (not looped), like Source. Whether a looped sound is playing is saved with the world.
 
 const AMBIENT = "brr:ambient_generic_block";
 const PASS_INTERVAL_TICKS = 2;
-// Sound ids are only ever used in /stopsound, so keep them to characters a sound id can contain.
+// Same check as the Sound ID field in the block form.
 const SOUND_ID_PATTERN = /^[a-z0-9_.:-]+$/i;
+// SoundInstance.setVolume / setPitch bounds.
+const MAX_VOLUME = 10;
+const MIN_PITCH = 0.01;
+const MAX_PITCH = 10;
 
-// entity id -> tick when a looping sound plays next.
-const nextPlayTick = new Map();
+// entity id -> Map(player id -> { instance, volume }): the sounds this block is playing.
+// A one-shot only keeps its newest play, so StopSound and FadeOut reach that one.
+const voices = new Map();
+// entity id -> { endTick, stopAtEnd }: a running fade. Volume is left alone until it ends, and
+// a FadeOut stops the sound when it does.
+const fades = new Map();
 
 function toNumber(value, fallback) {
     const parsed = Number.parseFloat(`${value ?? ""}`);
@@ -54,51 +66,138 @@ function setPlaying(entity, playing) {
     markEntityDirty(entity);
 }
 
-// SECTION: Playback
-function playOnce(entity) {
-    const soundId = getSoundId(entity);
-    const dimension = safeGetDimension(entity.dimension);
-    if (!soundId || !dimension) return;
+function getPitch(entity) {
+    return Math.min(MAX_PITCH, Math.max(MIN_PITCH, toNumber(entity.data.pitch, 1)));
+}
 
-    const options = {
-        volume: Math.max(0, toNumber(entity.data.volume, 1)),
-        pitch: Math.max(0.01, toNumber(entity.data.pitch, 1))
-    };
+function getPlayerVolume(entity, player) {
+    return Math.max(0, toNumber(entity.data.volume, 1)) * getSoundVolume(player);
+}
 
+function getPlayers(entity) {
     try {
-        if (toBool(entity.data.playEverywhere)) {
-            for (const player of dimension.getPlayers()) player.playSound(soundId, scaleSoundOptions(player, options));
-        } else {
-            if (!playWorldSound(dimension, soundId, entity.center, options)) dimension.playSound(soundId, entity.center, options);
-        }
-    } catch (error) {
-        console.warn(`[BSE] ambient_generic could not play '${soundId}': ${error}`);
+        return safeGetDimension(entity.dimension)?.getPlayers() ?? [];
+    } catch {
+        return [];
     }
 }
 
-function stopSound(entity) {
-    const soundId = getSoundId(entity);
-    const dimension = safeGetDimension(entity.dimension);
-    if (!soundId || !dimension) return;
+function fadeTicks(seconds) {
+    return Math.max(1, Math.ceil(seconds * 20));
+}
+
+// SECTION: Playback
+function stopInstance(voice) {
     try {
-        dimension.runCommand(`stopsound @a ${soundId}`);
+        voice.instance?.stop();
     } catch { }
 }
 
-function play(entity) {
+function stopVoices(id) {
+    const playing = voices.get(id);
+    if (playing) for (const voice of playing.values()) stopInstance(voice);
+    voices.delete(id);
+    fades.delete(id);
+}
+
+function applyVolume(entity, voice, player) {
+    const volume = getPlayerVolume(entity, player);
+    if (volume === voice.volume) return;
+    voice.volume = volume;
+    try {
+        voice.instance?.setVolume(Math.min(MAX_VOLUME, volume));
+    } catch { }
+}
+
+// Starts the sound for each of `players` who is not hearing it yet. False when the sound could not
+// be played, e.g. an unknown Sound ID.
+function startForPlayers(entity, players, fadeSeconds = 0) {
+    const soundId = getSoundId(entity);
+    if (!soundId) return false;
+
+    if (!voices.has(entity.id)) voices.set(entity.id, new Map());
+    const playing = voices.get(entity.id);
+    const options = { pitch: getPitch(entity), loopCount: toBool(entity.data.loop) ? -1 : 0 };
+    if (!toBool(entity.data.playEverywhere)) options.location = entity.center;
+
+    try {
+        for (const player of players) {
+            const volume = getPlayerVolume(entity, player);
+            if (playing.has(player.id) || volume <= 0) continue;
+
+            const instance = player.playSound(soundId, { ...options, volume });
+            if (fadeSeconds > 0) {
+                instance?.setVolume(0);
+                instance?.fade(fadeSeconds, Math.min(MAX_VOLUME, volume));
+            }
+            playing.set(player.id, { instance, volume });
+        }
+    } catch (error) {
+        console.warn(`[BSE] ambient_generic could not play '${soundId}': ${error}`);
+        return false;
+    }
+    return true;
+}
+
+// Keeps a looping sound going for exactly the players in its dimension, at their current volume.
+function syncLoop(entity) {
+    const players = getPlayers(entity);
+    const playing = voices.get(entity.id);
+    if (playing) {
+        const present = new Map(players.map(player => [player.id, player]));
+        const fading = fades.has(entity.id);
+        for (const [id, voice] of playing) {
+            const player = present.get(id);
+            if (!player) {
+                stopInstance(voice);
+                playing.delete(id);
+            } else if (!fading) {
+                applyVolume(entity, voice, player);
+            }
+        }
+    }
+    if (!startForPlayers(entity, players)) stop(entity);
+}
+
+function play(entity, fadeSeconds = 0) {
     if (entity.disabled || !getSoundId(entity)) return;
-    if (toBool(entity.data.loop)) {
-        setPlaying(entity, true);
-        nextPlayTick.set(entity.id, system.currentTick);
+    const looped = toBool(entity.data.loop);
+
+    // PlaySound restarts a looping sound, like Source. One-shots may overlap, so the older play is
+    // left to finish rather than cut off.
+    if (looped) stopVoices(entity.id);
+    else {
+        voices.delete(entity.id);
+        fades.delete(entity.id);
+    }
+
+    if (!startForPlayers(entity, getPlayers(entity), fadeSeconds)) {
+        if (looped) stop(entity);
         return;
     }
-    playOnce(entity);
+    if (fadeSeconds > 0) fades.set(entity.id, { endTick: system.currentTick + fadeTicks(fadeSeconds), stopAtEnd: false });
+    if (looped) setPlaying(entity, true);
 }
 
 function stop(entity) {
     setPlaying(entity, false);
-    nextPlayTick.delete(entity.id);
-    stopSound(entity);
+    stopVoices(entity.id);
+}
+
+function fadeOut(entity, seconds) {
+    const playing = voices.get(entity.id);
+    if (!(seconds > 0) || !playing?.size) {
+        stop(entity);
+        return;
+    }
+    // Saved as stopped right away, so a world reload during the fade does not restart the loop.
+    setPlaying(entity, false);
+    for (const voice of playing.values()) {
+        try {
+            voice.instance?.fade(seconds, 0);
+        } catch { }
+    }
+    fades.set(entity.id, { endTick: system.currentTick + fadeTicks(seconds), stopAtEnd: true });
 }
 
 function isPlaying(entity) {
@@ -110,17 +209,35 @@ registerInputHandlers(AMBIENT, {
     PlaySound: entity => play(entity),
     StopSound: entity => stop(entity),
     ToggleSound: entity => (isPlaying(entity) ? stop(entity) : play(entity)),
+    FadeIn: (entity, param) => play(entity, Math.max(0, toNumber(param, 0))),
+    FadeOut: (entity, param) => fadeOut(entity, Math.max(0, toNumber(param, 0))),
     Volume: (entity, param) => {
         const volume = toNumber(param, NaN);
         if (!Number.isFinite(volume) || volume < 0) return;
         entity.data.volume = `${volume}`;
         markEntityDirty(entity);
+
+        // A FadeOut keeps fading to silence; anything else takes the new volume now.
+        if (fades.get(entity.id)?.stopAtEnd) return;
+        fades.delete(entity.id);
+        const playing = voices.get(entity.id);
+        if (!playing) return;
+        for (const player of getPlayers(entity)) {
+            const voice = playing.get(player.id);
+            if (voice) applyVolume(entity, voice, player);
+        }
     },
     Pitch: (entity, param) => {
         const pitch = toNumber(param, NaN);
         if (!Number.isFinite(pitch) || pitch <= 0) return;
         entity.data.pitch = `${pitch}`;
         markEntityDirty(entity);
+
+        for (const voice of voices.get(entity.id)?.values() ?? []) {
+            try {
+                voice.instance?.setPitch(getPitch(entity));
+            } catch { }
+        }
     }
 });
 
@@ -131,40 +248,59 @@ onEntityDisabledChanged(entity => {
 // A form save clears the runtime state; stop the old sound so the new settings start cleanly.
 onEntityDataUpdated(entity => {
     if (entity.typeId !== AMBIENT || entity.data.runtime) return;
-    nextPlayTick.delete(entity.id);
-    stopSound(entity);
+    stopVoices(entity.id);
 });
 
 // SECTION: Loop Pass
 let prunedAtRevision = -1;
+// Ambient entities that already had their world-load start this session (not saved).
+const startedThisSession = new Set();
 
 function runAmbientPass() {
-    if (!getEngineSettings().toolsEnabled) return;
+    if (!getEngineSettings().toolsEnabled) {
+        // Silence everything but keep which loops were playing, so they come back with the tools.
+        for (const id of [...voices.keys()]) stopVoices(id);
+        return;
+    }
     const now = system.currentTick;
 
     if (getRegistryRevision() !== prunedAtRevision) {
         prunedAtRevision = getRegistryRevision();
-        for (const id of nextPlayTick.keys()) if (!getEntityById(id)) nextPlayTick.delete(id);
+        for (const id of [...voices.keys()]) if (!getEntityById(id)) stopVoices(id);
     }
 
     for (const entity of getEntitiesOfClass(AMBIENT)) {
-        if (entity.disabled) continue;
+        if (entity.disabled) {
+            startedThisSession.add(entity.id); // disabled at load: no auto-play when enabled later
+            continue;
+        }
         const runtime = getRuntime(entity);
 
-        // First pass after the world loads or the form is saved: apply Start silent.
+        // First pass after the block is placed or the form is saved: apply Start silent.
         if (runtime.playing === undefined) {
             runtime.playing = false;
             markEntityDirty(entity);
+            startedThisSession.add(entity.id);
             if (!toBool(entity.data.startSilent)) play(entity);
             continue;
         }
 
-        if (!runtime.playing || !toBool(entity.data.loop)) continue;
-        if (now < (nextPlayTick.get(entity.id) ?? now)) continue;
+        // After a world load runtime is already saved, so a one-shot without Start silent is
+        // played from here, once someone is in the dimension to hear it. Loops resume below.
+        if (!startedThisSession.has(entity.id) && !toBool(entity.data.loop)) {
+            if (getPlayers(entity).length === 0) continue;
+            startedThisSession.add(entity.id);
+            if (!toBool(entity.data.startSilent)) play(entity);
+            continue;
+        }
 
-        // Nobody can hear it: skip the replay, but keep the loop going.
-        if (world.getPlayers().length > 0) playOnce(entity);
-        nextPlayTick.set(entity.id, now + Math.max(1, Math.round(toNumber(entity.data.loopLength, 40))));
+        const fade = fades.get(entity.id);
+        if (fade && now >= fade.endTick) {
+            fades.delete(entity.id);
+            if (fade.stopAtEnd) stopVoices(entity.id);
+        }
+
+        if (runtime.playing && toBool(entity.data.loop)) syncLoop(entity);
     }
 }
 

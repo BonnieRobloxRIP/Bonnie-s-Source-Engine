@@ -157,8 +157,9 @@ function runNametagPass() {
             suffix: toBool(entity.data.suffix, false)
         };
 
+        // Every dimension: a tag shouldn't drop off when its player goes to the Nether.
         const selector = `${entity.data.selectors ?? ""}`.trim() || "@a";
-        for (const player of resolveSelectorPlayers(selector, entityOrigin(entity))) {
+        for (const player of resolveSelectorPlayers(selector, entityOrigin(entity), "world")) {
             let entries = entriesByPlayer.get(player.id);
             if (!entries) entriesByPlayer.set(player.id, entries = []);
             entries.push(entry);

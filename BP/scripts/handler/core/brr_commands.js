@@ -13,6 +13,8 @@ import { fireInputAt } from "../../engine/io.js";
 import { getEngineSettings, safeGetDimension } from "../../engine/runtime.js";
 import { MAX_FILL_BRUSH_CELLS, MAX_FILL_POINT_CELLS, fillEngineBlocks } from "../../engine/systems/editor.js";
 import { BLOCK_FORMS } from "../../tool_ui/block_forms.js";
+import { banPlayer, describeBans, showBanList, unbanByName } from "./moderation.js";
+import { INVISIBLE_NAME_STYLES, USERNAME_MODES } from "./username_mode.js";
 
 // SECTION: Commands
 // Every command is registered as brr:<name>; Bedrock lets players leave the namespace out when no
@@ -154,7 +156,7 @@ export function registerBrrCommands(data, api = {}) {
     if (typeof api.emojiCommand === "function") api.emojiCommand(data);
 
     const GameDirectors = CommandPermissionLevel.GameDirectors;
-    const { Boolean: BooleanParam, Enum, Float, Integer, Location, String: StringParam } = CustomCommandParamType;
+    const { Boolean: BooleanParam, Enum, Float, Integer, Location, PlayerSelector, String: StringParam } = CustomCommandParamType;
 
     // SECTION: Engine Settings (/brr <setting> <true|false>)
     const SETTINGS = {
@@ -212,7 +214,6 @@ export function registerBrrCommands(data, api = {}) {
     });
 
     // SECTION: Usernames (/brr:username_mode <normal|hidden|randomized>)
-    const USERNAME_MODES = ["normal", "hidden", "randomized"];
     registerEnum(registry, "brr:username_mode", USERNAME_MODES);
 
     register(registry, {
@@ -224,6 +225,60 @@ export function registerBrrCommands(data, api = {}) {
         if (!USERNAME_MODES.includes(mode) || typeof api.setUsernameMode !== "function") return fail(`Unknown mode: ${mode}`);
         later(() => api.setUsernameMode(mode));
         return ok(`Username mode: §b${mode}`);
+    });
+
+    // SECTION: Invisible Names (/brr:invisible_names <off|hidden|obfuscated>)
+    registerEnum(registry, "brr:invisible_names", INVISIBLE_NAME_STYLES);
+
+    register(registry, {
+        name: "invisible_names",
+        description: "Hide invisible players' names in death messages (??? or scrambled)",
+        permissionLevel: GameDirectors,
+        mandatoryParameters: [{ name: "brr:invisible_names", type: Enum }]
+    }, (origin, style) => {
+        if (!INVISIBLE_NAME_STYLES.includes(style) || typeof api.setInvisibleNameStyle !== "function") return fail(`Unknown style: ${style}`);
+        later(() => api.setInvisibleNameStyle(style));
+        return ok(`Invisible players' names: §b${style}`);
+    });
+
+    // SECTION: Bans (/brr:ban, /brr:unban, /brr:bans)
+    // Local worlds have no /ban; banned players are kicked whenever they join (see moderation.js).
+    register(registry, {
+        name: "ban",
+        description: "Ban a player from this world: kicks them now and whenever they rejoin",
+        permissionLevel: GameDirectors,
+        mandatoryParameters: [{ name: "player", type: PlayerSelector }],
+        optionalParameters: [{ name: "reason", type: StringParam }]
+    }, (origin, players, reason) => {
+        if (!Array.isArray(players) || players.length === 0) return fail("No player matched.");
+        const actor = getPlayerSource(origin);
+        later(() => {
+            for (const target of players) reportLater(origin, banPlayer(actor, target, reason));
+        });
+        return ok(`Banning ${players.length} player(s)...`);
+    });
+
+    register(registry, {
+        name: "unban",
+        description: "Unban a player by name (in quotes if it has spaces)",
+        permissionLevel: GameDirectors,
+        mandatoryParameters: [{ name: "name", type: StringParam }]
+    }, (origin, name) => {
+        const text = `${name ?? ""}`.trim();
+        if (!text) return fail("Usage: /brr:unban \"player name\"");
+        later(() => reportLater(origin, unbanByName(text)));
+        return ok(`Unbanning ${text}...`);
+    });
+
+    register(registry, {
+        name: "bans",
+        description: "List banned players; pick one to unban them",
+        permissionLevel: GameDirectors
+    }, (origin) => {
+        const player = getPlayerSource(origin);
+        if (!player) return ok(describeBans());
+        later(() => showBanList(player));
+        return ok("");
     });
 
     // SECTION: Chat (/brr:set_chat_cooldown, /brr:set_spam_message)
@@ -271,6 +326,7 @@ export function registerBrrCommands(data, api = {}) {
             "§e--- Bonnie's Source Engine ---",
             ...Object.values(SETTINGS).map(setting => `${setting.label}: ${onOff(setting.get())}`),
             `Username mode: §b${api.getUsernameMode?.() ?? "normal"}`,
+            `Invisible players' names: §b${api.getInvisibleNameStyle?.() ?? "off"}`,
             `Chat cooldown: §b${getChatCooldownSeconds()}s`,
             `Spam message: §7${getChatSpamBlockedMessage()}`,
             `Engine blocks placed: §b${getEntityCount()}`,

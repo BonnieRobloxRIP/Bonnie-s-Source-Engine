@@ -40,9 +40,27 @@ export function getQueuedEventCount() {
 }
 
 // SECTION: Shared Helpers
+// Commands engine blocks may not run. Any Creative player can configure engine blocks, and their
+// commands run with the script's permissions, above any player's own.
+// Refused wherever they appear as a word: after "execute ... run", in the old "execute @s ~ ~ ~ op"
+// form, glued to a selector ("op@s"). They hand out power or act on other players, and no map needs
+// them; the price is that a message like "say don't kick the door" is refused too.
+const BLOCKED_WORDS = new Set([
+    "op", "deop", "kick", "ban", "unban", "mute", "unmute",
+    "permission", "allowlist", "whitelist", "setmaxplayers", "transferserver", "wsserver", "ability"
+]);
+// Refused only as the command itself (first word, or right after "run"), since the words also
+// mean other things ("gamemode adventure"): this addon's settings commands and server control.
+const BLOCKED_COMMAND_NAMES = new Set([
+    "brr", "bans", "username_mode", "invisible_names", "set_chat_cooldown", "set_spam_message",
+    "adventure", "stop", "reload", "connect"
+]);
+
 export function isBlockedCommand(command) {
-    const normalized = `${command ?? ""}`.trim().replace(/^\/+/, "").trim().toLowerCase();
-    return /^(minecraft:)?(op|deop)(\s|$)/.test(normalized);
+    const words = `${command ?? ""}`.toLowerCase().split(/[^a-z0-9_:]+/).filter(Boolean)
+        .map(word => word.replace(/^(minecraft|brr):/, ""));
+    return words.some((word, index) => BLOCKED_WORDS.has(word)
+        || ((index === 0 || words[index - 1] === "run") && BLOCKED_COMMAND_NAMES.has(word)));
 }
 
 export function runEntityCommand(entity, command) {

@@ -58,7 +58,7 @@ const CONDITION_GROUPS = [
         ["ifPlayerHasNoScore", "<scoreobjective:name>", "if the player has no score in this objective"],
         ["ifPlayerHasScore", "<scoreobjective:name>", "if the player has a score in this objective"],
         ["ifPlayerHasInInventory", "<minecraft:item/blockID> <item:count(optional)>", "if the player has any or a specific amount of this thing in their inventory. If count is blank it checks if you have any of it on you."],
-        ["ifPlayerDoesNotHaveInInventory", "<minecraft:item/blockID> <item:count>", "if the player does not have any or a specific amount of this thing in their inventory"],
+        ["ifPlayerDoesNotHaveInInventory", "<minecraft:item/blockID> <item:count(optional)>", "if the player does not have any or a specific amount of this thing in their inventory"],
         ["ifPlayerHealthIsHigher", "<int>", "if the player's health is higher than this value"],
         ["ifPlayerHealthIsLower", "<int>", "if the player's health is lower than this value"],
         ["ifPlayerHealthIsFull", "<no data>", "if the player's health is full"],
@@ -84,7 +84,7 @@ const CONDITION_GROUPS = [
         ["ifScoreIs", "<scoreobjective:name> <entity:name> <int>", "if this score is exactly that value"],
         ["ifScoreIsNot", "<scoreobjective:name> <entity:name> <int>", "if this score is not exactly that value"]
     ]],
-    ["Entity conditions (none of these work on players, even though a player is an entity)", [
+    ["Entity conditions (the selector can be @e[type=zombie], @a[tag=red], @s, an entity ID like minecraft:cow, or a name)", [
         ["ifEntityHasTag", "<entity:selector> <string>", ""],
         ["ifEntityDoesNotHaveTag", "<entity:selector> <string>", ""],
         ["ifEntityHasName", "<entity:selector> <string>", ""],
@@ -310,15 +310,15 @@ export const BLOCK_INFO = {
 
     "brr:ambient_generic_block": {
         examples: lines(
-            "- Sound ID ambient.weather.rain, Loop on, Loop length 100, Start silent off: rain that plays from the start.",
-            "- A trigger: OnStartTouch > alarm > PlaySound, and OnEndTouchAll > alarm > StopSound.",
+            "- Sound ID ambient.weather.rain, Loop on, Start silent off: rain that plays from the start.",
+            "- A trigger: OnStartTouch > alarm > PlaySound, and OnEndTouchAll > alarm > FadeOut 2: the alarm fades out over 2 seconds.",
             "- Sound ID random.levelup, Play everywhere on: a sound every player hears, wherever they are.",
             "- A math_counter: OutValue > music > Pitch: the pitch follows the counter's value."
         ),
         usage: steps(
             "Sound ID is any sound from the game or a resource pack, e.g. random.orb, mob.zombie.say or ambient.weather.thunder.",
             "Volume: 1 is normal and is heard about 16 blocks away; higher values are heard further. Pitch: 1 is normal, 0.5 is an octave lower, 2 an octave higher.",
-            "Loop replays the sound for as long as it is playing. Bedrock cannot tell how long a sound is, so set Loop length to the sound's length in ticks (20 ticks = 1 second).",
+            "Loop keeps the sound playing seamlessly until it is stopped.",
             "Start silent (on by default) keeps it quiet until it receives PlaySound. With Start silent off it starts by itself when the world loads.",
             "Play everywhere plays the sound for every player in this dimension at their own position, so distance does not matter.",
             ...OUTPUT_STEPS
@@ -326,8 +326,9 @@ export const BLOCK_INFO = {
         info: describe("brr:ambient_generic_block", lines(
             "Plays a sound from this block when it is told to, once or looping.",
             "PlaySound starts it (a looped sound keeps playing until StopSound). StopSound stops it. ToggleSound switches between the two.",
-            "Volume and Pitch set the volume / pitch to the parameter, used from the next time it plays.",
-            "StopSound stops that sound for everyone, including other ambient_generics playing the same Sound ID.",
+            "FadeIn starts it, fading in over the parameter in seconds. FadeOut fades it out over the parameter in seconds, then stops it.",
+            "Volume and Pitch set the volume / pitch to the parameter, right away, even while it plays.",
+            "StopSound only stops this block's sound, not other ambient_generics playing the same Sound ID.",
             "While disabled it stays silent."
         ))
     },

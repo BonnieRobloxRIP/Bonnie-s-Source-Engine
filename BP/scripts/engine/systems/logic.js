@@ -5,6 +5,7 @@ import {
     getEntityById,
     getRegistryRevision,
     markEntityDirty,
+    onEntityDataUpdated,
     onEntityDisabledChanged
 } from "../registry.js";
 import { fireConnectionsByLabel, fireOutput, registerInputHandlers, runEntityCommand } from "../io.js";
@@ -107,6 +108,8 @@ function fireBranch(entity, result, activator) {
 function thinkBranch(entity, now) {
     const state = getState(entity, () => ({ lastResult: null, lastFireTick: -Infinity, hasFired: false }));
     const result = evaluateForEntity(getBranchCondition(entity), entity);
+    // The first pass reports the starting result; it doesn't use up "Run once".
+    const isBaseline = state.lastResult === null;
     const changed = result !== state.lastResult;
     state.lastResult = result;
 
@@ -118,7 +121,7 @@ function thinkBranch(entity, now) {
     if (!shouldFire) return;
 
     state.lastFireTick = now;
-    state.hasFired = true;
+    if (!isBaseline) state.hasFired = true;
     fireBranch(entity, result);
 }
 
@@ -307,6 +310,16 @@ registerInputHandlers(TIMER, {
     FireTimer: (entity, param, context) => fireTimer(entity, context.activator)
 });
 
+// Saving the form (or AddOutput) starts "Run once" over, and logic_auto's per-automation state is
+// rebuilt since it is kept by position in the list. Last results are kept, so saving doesn't
+// fire a branch again.
+onEntityDataUpdated(entity => {
+    const state = states.get(entity.id);
+    if (!state) return;
+    if (entity.typeId === AUTO) state.entries = [];
+    else if (entity.typeId === BRANCH || entity.typeId === RANDOM) state.hasFired = false;
+});
+
 onEntityDisabledChanged(entity => {
     if (entity.typeId !== TIMER) return;
     // Enabling restarts the countdown, as in Source.
@@ -343,6 +356,17 @@ function runThinkPass() {
         forEachEnabled(AUTO, entity => fireOutput(entity, "OnMapSpawn"));
         fireRelaySpawnOutputs();
     }
+    // Marked done only after the thinks below (logic_auto's "On world load" reads it), but a think
+    // that throws must not make the spawn outputs fire again every pass.
+    const firstPass = !mapSpawnDone;
+    try {
+        thinkAll(now, scoreCache);
+    } finally {
+        if (firstPass) mapSpawnDone = true;
+    }
+}
+
+function thinkAll(now, scoreCache) {
     forEachEnabled(AUTO, entity => thinkAuto(entity, now));
     forEachEnabled(BRANCH, entity => thinkBranch(entity, now));
     forEachEnabled(CASE, entity => thinkCase(entity));
@@ -350,7 +374,6 @@ function runThinkPass() {
     forEachEnabled(COOP, entity => thinkCoop(entity));
     forEachEnabled(RANDOM, entity => thinkRandom(entity, now));
     forEachEnabled(TIMER, entity => thinkTimer(entity, now));
-    mapSpawnDone = true;
 }
 
 export function startLogicSystem() {

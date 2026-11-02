@@ -149,6 +149,8 @@ export function handleEngineBlockInteract(event) {
     // Sneaking skips the form so tool blocks can be placed against other tool blocks.
     if (player.isSneaking || !getEngineSettings().toolsEnabled) return;
 
+    // Any Creative player may configure engine blocks (the author's choice). Their commands run with
+    // the script's permissions, so io.js isBlockedCommand refuses moderation and admin commands.
     if (!isPlayerCreative(player)) {
         player.sendMessage("§cOnly players in Creative mode can configure these blocks.");
         event.cancel = true;

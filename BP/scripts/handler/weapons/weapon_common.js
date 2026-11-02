@@ -96,9 +96,10 @@ const WEAPON_SOUND_RANGE = 64;
  */
 export function playSoundForPlayer(player, soundId, options = {}) {
     if (!player?.id || !soundId) return;
+    const instances = [];
 
     try {
-        player.playSound(`${soundId}.fp`, scaleSoundOptions(player, options));
+        instances.push(player.playSound(`${soundId}.fp`, scaleSoundOptions(player, options)));
     } catch (error) {
         logWeaponError(`playSoundForPlayer(${soundId}.fp)`, error);
     }
@@ -112,16 +113,54 @@ export function playSoundForPlayer(player, soundId, options = {}) {
             const scaled = scaleSoundOptions(other, options);
             if (scaled.volume <= 0) continue;
             try {
-                other.playSound(soundId, { ...scaled, location });
+                instances.push(other.playSound(soundId, { ...scaled, location }));
             } catch { }
         }
     } catch { }
+
+    rememberSound(player, soundId, instances.filter(Boolean));
 }
 
-/** Stops a weapon sound for everyone near the player (looping charge/beam sounds): both copies. */
+// Each play's SoundInstances (the shooter's ".fp" copy and everyone else's) are kept for a while by
+// shooter and sound, so stopSoundForPlayer stops this shooter's sound only. A /stopsound by id would
+// also cut the same sound from every other gun nearby. Kept longer than the longest weapon sound that
+// gets stopped early (the gluon beam, 8.6 s).
+const SOUND_KEEP_TICKS = 200;
+const playedSoundsByKey = new Map(); // "<player id>|<sound id>" -> [{ instances, untilTick }]
+const scriptPlayedSoundIds = new Set();
+
+function rememberSound(player, soundId, instances) {
+    scriptPlayedSoundIds.add(soundId);
+    if (instances.length === 0) return;
+    const key = `${player.id}|${soundId}`;
+    const now = system.currentTick;
+    const plays = (playedSoundsByKey.get(key) ?? []).filter(play => play.untilTick > now);
+    plays.push({ instances, untilTick: now + SOUND_KEEP_TICKS });
+    playedSoundsByKey.set(key, plays);
+}
+
+function forgetFinishedSounds() {
+    const now = system.currentTick;
+    for (const [key, plays] of playedSoundsByKey) {
+        if (plays.every(play => play.untilTick <= now)) playedSoundsByKey.delete(key);
+    }
+}
+
+/** Stops a weapon sound this player started (looping charge/beam sounds, reloads): both copies. */
 export function stopSoundForPlayer(player, soundId) {
     if (!player?.id || !soundId) return;
 
+    const plays = playedSoundsByKey.get(`${player.id}|${soundId}`);
+    playedSoundsByKey.delete(`${player.id}|${soundId}`);
+    for (const instance of (plays ?? []).flatMap(play => play.instances)) {
+        try {
+            instance.stop();
+        } catch { }
+    }
+    if (scriptPlayedSoundIds.has(soundId)) return;
+
+    // Never played from a script: the draw and fidget sounds come from the weapon animations, and only
+    // a stop by id reaches those (it stops everyone's copy nearby).
     try {
         player.runCommand(`stopsound @a[r=${WEAPON_SOUND_RANGE}] ${soundId}`);
         player.runCommand(`stopsound @s ${soundId}.fp`);
@@ -132,12 +171,6 @@ export function playRandomSound(player, soundPool) {
     if (!player?.id || !Array.isArray(soundPool) || soundPool.length <= 0) return;
     const randomIndex = Math.floor(Math.random() * soundPool.length);
     playSoundForPlayer(player, soundPool[randomIndex] ?? soundPool[0]);
-}
-
-export function getRandomIntInclusive(minValue, maxValue) {
-    const min = Math.floor(minValue);
-    const max = Math.floor(maxValue);
-    return min + Math.floor(Math.random() * ((max - min) + 1));
 }
 
 // SECTION: Vector Math
@@ -294,11 +327,6 @@ export function getFirstBlockingBlockHit(dimension, origin, direction, maxDistan
     }
 }
 
-export function getDistanceToFirstBlockingBlock(dimension, origin, direction, maxDistance) {
-    const hit = getFirstBlockingBlockHit(dimension, origin, direction, maxDistance);
-    return hit ? Math.max(0, hit.distance - 0.05) : maxDistance;
-}
-
 function getEntityCenter(entity) {
     const feet = entity.location;
     const head = getHeadLocation(entity);
@@ -373,11 +401,6 @@ function findAssistTarget(shooter, origin, direction, limit, assistRadius) {
         best = { entity: target, distance: along, impactPoint: center };
     }
     return best;
-}
-
-/** Nearest entity hit along a ray (see traceShot); kept for callers that only need the entity. */
-export function findEntityHit(shooter, origin, direction, maxDistance, assistRadius = 0) {
-    return traceShot(shooter, origin, direction, maxDistance, assistRadius).entityHit;
 }
 
 // SECTION: Damage
@@ -617,6 +640,7 @@ system.runInterval(() => {
     if (pruneDue) {
         pruneStalePlayerState([actionByPlayer, pulseResetTickByPlayer, conditionByPlayer, lastShotSlotByPlayer, lastDoubleSlotByPlayer, meleeSlotBByPlayer, lastHeldByPlayer], onlinePlayers);
         pruneActionBar(onlinePlayers);
+        forgetFinishedSounds();
         pruneDue = false;
     }
 }, 1);

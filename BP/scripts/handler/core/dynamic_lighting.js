@@ -1,11 +1,21 @@
 import { BlockPermutation, system, world } from "@minecraft/server";
 import { getEquipmentTypeId } from "./held_item.js";
+import { parseBooleanLike } from "./parse.js";
 
 const DYNAMIC_LIGHTS_ENABLED_PROPERTY = "brr_dynamic_lights_enabled";
+// Light blocks this system placed, saved so ones still standing when the world closes (or a
+// player leaves while their chunk unloads) are removed on the next load instead of staying forever.
+const OWNED_LIGHTS_PROPERTY = "brr_dynamic_light_anchors";
+const OWNED_LIGHTS_SAVE_INTERVAL_TICKS = 20;
 const DYNAMIC_LIGHT_TICK_INTERVAL = 1;
 
 const lightStateByPlayerId = new Map();
 const pendingCleanupByAnchorKey = new Map();
+// Anchor keys of light blocks this system placed. Only these are ever replaced or removed, so
+// light blocks a map maker placed are left alone.
+const ownedLightKeys = new Set();
+let ownedLightsDirty = false;
+let lastOwnedLightsSaveTick = 0;
 
 let dynamicLightsEnabled = true;
 let initialized = false;
@@ -41,17 +51,6 @@ const ITEM_LIGHT_LEVELS = new Map([
     ["minecraft:purple_torch", 14],
     ["minecraft:underwater_torch", 14]
 ]);
-
-function parseBooleanLike(value, fallback) {
-    if (typeof value === "boolean") return value;
-    if (typeof value === "number") return value !== 0;
-    if (typeof value === "string") {
-        const normalized = value.trim().toLowerCase();
-        if (["true", "1", "yes", "on", "enabled"].includes(normalized)) return true;
-        if (["false", "0", "no", "off", "disabled"].includes(normalized)) return false;
-    }
-    return fallback;
-}
 
 function floorVector(vector) {
     return {
@@ -190,6 +189,37 @@ function clearPendingLightCleanup(dimensionId, anchor) {
     pendingCleanupByAnchorKey.delete(key);
 }
 
+function setLightOwned(dimensionId, anchor, owned) {
+    const key = getAnchorCleanupKey(dimensionId, anchor);
+    if (!key || ownedLightKeys.has(key) === owned) return;
+    if (owned) ownedLightKeys.add(key);
+    else ownedLightKeys.delete(key);
+    ownedLightsDirty = true;
+}
+
+function saveOwnedLights() {
+    if (!ownedLightsDirty) return;
+    try {
+        world.setDynamicProperty(OWNED_LIGHTS_PROPERTY, ownedLightKeys.size > 0 ? JSON.stringify([...ownedLightKeys]) : undefined);
+        ownedLightsDirty = false;
+    } catch { }
+}
+
+// Lights left over from the last session are queued for removal.
+function loadOwnedLights() {
+    let keys = [];
+    try {
+        keys = JSON.parse(`${world.getDynamicProperty(OWNED_LIGHTS_PROPERTY) ?? "[]"}`);
+    } catch { }
+    for (const key of Array.isArray(keys) ? keys : []) {
+        const [dimensionId, x, y, z] = `${key}`.split("|");
+        const anchor = { x: Number(x), y: Number(y), z: Number(z) };
+        if (!dimensionId || ![anchor.x, anchor.y, anchor.z].every(Number.isFinite)) continue;
+        ownedLightKeys.add(getAnchorCleanupKey(dimensionId, anchor));
+        queuePendingLightCleanup(dimensionId, anchor);
+    }
+}
+
 function clearPlacedLightAt(dimensionId, anchor) {
     if (!dimensionId || !anchor) return true;
 
@@ -208,17 +238,21 @@ function clearPlacedLightAt(dimensionId, anchor) {
 
     if (!block) return false;
 
-    if (!isLightBlockType(block.typeId)) {
+    // Already gone or replaced by something else, or a light block someone else placed.
+    if (!isLightBlockType(block.typeId) || !ownedLightKeys.has(getAnchorCleanupKey(dimensionId, normalizedAnchor))) {
+        setLightOwned(dimensionId, normalizedAnchor, false);
         return true;
     }
 
     try {
         block.setPermutation(BlockPermutation.resolve("minecraft:air"));
+        setLightOwned(dimensionId, normalizedAnchor, false);
         return true;
     } catch { }
 
     try {
         block.setType("minecraft:air");
+        setLightOwned(dimensionId, normalizedAnchor, false);
         return true;
     } catch { }
 
@@ -265,11 +299,8 @@ function placeLightAt(dimensionId, anchor, level) {
     }
 
     const currentTypeId = `${block?.typeId ?? ""}`.trim().toLowerCase();
-    const canReplace = !currentTypeId
-        || currentTypeId === "minecraft:air"
-        || currentTypeId === "minecraft:cave_air"
-        || currentTypeId === "minecraft:void_air"
-        || isLightBlockType(currentTypeId);
+    const canReplace = currentTypeId === "minecraft:air"
+        || (isLightBlockType(currentTypeId) && ownedLightKeys.has(getAnchorCleanupKey(dimensionId, normalizedAnchor)));
     if (!canReplace || !block) return false;
 
     const clampedLevel = Math.max(0, Math.min(15, Math.floor(level)));
@@ -278,16 +309,13 @@ function placeLightAt(dimensionId, anchor, level) {
         // Light blocks are separate ids per level (minecraft:light_block_0 .. _15) since 1.21.
         const permutation = BlockPermutation.resolve(`minecraft:light_block_${clampedLevel}`);
         block.setPermutation(permutation);
+        setLightOwned(dimensionId, normalizedAnchor, true);
         return true;
     } catch { }
 
     try {
         block.setType("minecraft:light_block");
-        return true;
-    } catch { }
-
-    try {
-        block.setType("minecraft:light");
+        setLightOwned(dimensionId, normalizedAnchor, true);
         return true;
     } catch { }
 
@@ -432,6 +460,11 @@ function runDynamicLightingTick() {
     }
 
     processPendingLightCleanup();
+
+    if (system.currentTick - lastOwnedLightsSaveTick >= OWNED_LIGHTS_SAVE_INTERVAL_TICKS) {
+        lastOwnedLightsSaveTick = system.currentTick;
+        saveOwnedLights();
+    }
 }
 
 function subscribePlayerLeaveCleanup(playerLeaveSignal) {
@@ -447,8 +480,14 @@ function subscribePlayerLeaveCleanup(playerLeaveSignal) {
 }
 
 function subscribeCleanupEvents() {
-    subscribePlayerLeaveCleanup(world.beforeEvents?.playerLeave);
+    // After the leave, not before: before-events can't change blocks, so the light would only be
+    // queued while the player's state was already forgotten.
     subscribePlayerLeaveCleanup(world.afterEvents?.playerLeave);
+
+    // The world is closing: remember the lights still standing so the next load removes them.
+    try {
+        system.beforeEvents.shutdown.subscribe(() => saveOwnedLights());
+    } catch { }
 
     const entityDieSignal = world.afterEvents?.entityDie;
     if (entityDieSignal) {
@@ -495,6 +534,7 @@ export function initializeDynamicLightingSystem() {
     initialized = true;
 
     loadPersistedState();
+    loadOwnedLights();
     subscribeCleanupEvents();
 
     system.runInterval(() => {

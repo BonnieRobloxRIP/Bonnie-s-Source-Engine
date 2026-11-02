@@ -100,6 +100,10 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
 
     const [action, id, amount] = `${event.message ?? ""}`.trim().split(/\s+/);
     if (action === "unlock") unlockAchievement(player, id);
-    else if (action === "progress") addAchievementProgress(player, id, amount === undefined ? 1 : Number(amount));
+    else if (action === "progress") {
+        // A typo in the amount is ignored rather than read as 0, which would wipe the progress.
+        const steps = amount === undefined ? 1 : Number(amount);
+        if (Number.isFinite(steps)) addAchievementProgress(player, id, steps);
+    }
     else if (action === "reset") resetAchievements(player);
 });

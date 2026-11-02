@@ -12,6 +12,7 @@ import { cellsToBoxes } from "../storage.js";
 import { selectorMatchesEntity, entityOrigin } from "../selectors.js";
 import { syncEntityBlockState } from "./logic.js";
 import {
+    canEntityWalk,
     getEngineSettings,
     getHeldEntityClass,
     getProbeOffsets,
@@ -182,14 +183,6 @@ function applyUniformType(entity, desired) {
 // SECTION: Npcclip Collision
 // A hidden npcclip cell turns solid while a walking mob is next to it and no player is, so it
 // blocks mobs without blocking players. One query per npcclip brush covers all of its cells.
-function canEntityWalk(entity) {
-    try {
-        return Boolean(entity.getComponent("minecraft:movement"));
-    } catch {
-        return false;
-    }
-}
-
 // Location and probe offsets are read once per mob / player, not once per cell.
 function readProbes(entities) {
     const probes = [];

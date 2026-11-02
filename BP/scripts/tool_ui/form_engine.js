@@ -3,6 +3,7 @@ import { BLOCK_FORMS, buildTabs, NONE_OPTION } from "./block_forms.js";
 import { getBlockInfoSection } from "./block_info.js";
 import { getFormTargets } from "../engine/form_targets.js";
 import { ACTOR_INPUTS, SPECIAL_TARGETS, classAcceptsInput, getAllInputNames } from "../engine/classes.js";
+import { isBlockedCommand } from "../engine/io.js";
 import { validateConditionRequirements } from "../handler/core/condition_executer.js";
 import { sendUiError, sendUiSaved } from "./ui_formatting.js";
 
@@ -61,8 +62,9 @@ export function buildContext(blockEntry, descriptor) {
         inputSummary: inputs.length === 0
             ? (data.name ? "Nothing targets this entity." : "Name this entity so others can target it.")
             : inputs.map(input => `- ${input.sourceName}.${input.output} > ${input.input}`).join("\n"),
+        // Every list summary already starts with its number.
         entryLabels: descriptor.list
-            ? entries.map((entry, index) => `${index + 1}. ${shortLabel(descriptor.list.summary(entry, index))}`)
+            ? entries.map((entry, index) => shortLabel(descriptor.list.summary(entry, index)))
             : [],
         entrySummary: descriptor.slots
             ? slots.map((slot, index) =>
@@ -294,18 +296,48 @@ export function openBlockForm(player, blockEntry, onSave) {
         if (descriptor.list) next[descriptor.list.key] = entries;
         if (descriptor.slots) next[descriptor.slots.key] = slots;
 
-        const validationError = (descriptor.validate?.(next, player) || conditionError(next, "executeCondition"));
+        const validationError = (descriptor.validate?.(next, player)
+            || conditionError(next, "executeCondition")
+            || (findBlockedCommand(next) !== undefined
+                ? "Blocked command: engine blocks can't run moderation or admin commands (op, kick, ban, mute, /brr settings...)."
+                : ""));
         if (validationError) {
             sendUiError(player, validationError);
             return;
         }
 
-        if (onSave?.(blockEntry, next) === false) {
+        // onSave returns false when the block is gone, or a message when the save was refused.
+        const saveResult = onSave?.(blockEntry, next);
+        if (saveResult === false) {
             sendUiError(player, "Save failed: this block was removed while the form was open.");
             return;
         }
+        if (typeof saveResult === "string") {
+            sendUiError(player, saveResult);
+            return;
+        }
         sendUiSaved(player, descriptor.title, next.name);
-    }).catch(() => { });
+    }).catch(error => console.warn(`[BSE] ${descriptor.title} form failed: ${error}`));
+}
+
+// Every command the form would save: fields named like "runCommand" (also inside list entries) and
+// the parameter of RunCommand / AddOutput outputs. Returns the first one that is blocked.
+function findBlockedCommand(data) {
+    const commands = [];
+    const visit = (value, key) => {
+        if (typeof value === "string") {
+            if (/command/i.test(key)) commands.push(value);
+        } else if (Array.isArray(value)) {
+            for (const item of value) visit(item, key);
+        } else if (value && typeof value === "object") {
+            for (const [childKey, child] of Object.entries(value)) visit(child, childKey);
+        }
+    };
+    visit(data, "");
+    for (const output of Array.isArray(data.outputs) ? data.outputs : []) {
+        if (/^(runcommand|addoutput)$/i.test(`${output?.input ?? ""}`.trim())) commands.push(`${output?.param ?? ""}`);
+    }
+    return commands.find(isBlockedCommand);
 }
 
 export function isBlockFormSupported(typeId) {

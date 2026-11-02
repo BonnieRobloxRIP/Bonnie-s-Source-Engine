@@ -21,6 +21,7 @@
     "ui/blocks/filter_class.json",
     "ui/blocks/filter_name.json",
     "ui/blocks/filter_multiple.json",
-    "ui/blocks/math_counter.json"
+    "ui/blocks/math_counter.json",
+    "ui/black_mesa_menu.json"
   ]
 }

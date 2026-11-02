@@ -196,6 +196,102 @@
 		"brr_caution_sign_006": {
 			"textures": "textures/blocks/bms_props/signs/decal_sign_caution_c1a4radiation"
 		},
+		"brr_caution_sign_007": {
+			"textures": "textures/blocks/bms_props/signs/caution_craneoperating"
+		},
+		"brr_caution_sign_008": {
+			"textures": "textures/blocks/bms_props/signs/caution_donotenter_highvoltage"
+		},
+		"brr_caution_sign_009": {
+			"textures": "textures/blocks/bms_props/signs/caution_donotenterconfinedspace"
+		},
+		"brr_caution_sign_010": {
+			"textures": "textures/blocks/bms_props/signs/caution_electricalpanel"
+		},
+		"brr_caution_sign_011": {
+			"textures": "textures/blocks/bms_props/signs/caution_eyeprotectionrequired"
+		},
+		"brr_caution_sign_012": {
+			"textures": "textures/blocks/bms_props/signs/caution_facemaskrequired"
+		},
+		"brr_caution_sign_013": {
+			"textures": "textures/blocks/bms_props/signs/caution_headprotectionrequired"
+		},
+		"brr_caution_sign_014": {
+			"textures": "textures/blocks/bms_props/signs/caution_highradiationarea"
+		},
+		"brr_caution_sign_015": {
+			"textures": "textures/blocks/bms_props/signs/caution_laserarea"
+		},
+		"brr_caution_sign_016": {
+			"textures": "textures/blocks/bms_props/signs/caution_laserradiation"
+		},
+		"brr_caution_sign_017": {
+			"textures": "textures/blocks/bms_props/signs/caution_loto"
+		},
+		"brr_caution_sign_018": {
+			"textures": "textures/blocks/bms_props/signs/caution_radioactivematerials"
+		},
+		"brr_caution_sign_019": {
+			"textures": "textures/blocks/bms_props/signs/caution_standclearofdoor"
+		},
+		"brr_caution_sign_020": {
+			"textures": "textures/blocks/bms_props/signs/caution_storage36in"
+		},
+		"brr_caution_sign_021": {
+			"textures": "textures/blocks/bms_props/signs/caution_tramoverhead"
+		},
+		"brr_caution_sign_022": {
+			"textures": "textures/blocks/bms_props/signs/caution_ultraviolet"
+		},
+		"brr_caution_sign_023": {
+			"textures": "textures/blocks/bms_props/signs/caution_watchyourstep"
+		},
+		"brr_caution_sign_024": {
+			"textures": "textures/blocks/bms_props/signs/caution_weargoggles"
+		},
+		"brr_caution_sign_025": {
+			"textures": "textures/blocks/bms_props/signs/caution_wearhearingprotection"
+		},
+		"brr_caution_sign_026": {
+			"textures": "textures/blocks/bms_props/signs/caution_ansi_smoking2"
+		},
+		"brr_caution_sign_027": {
+			"textures": "textures/blocks/bms_props/signs/caution_turret_control"
+		},
+		"brr_caution_sign_028": {
+			"textures": "textures/blocks/bms_props/signs/caution_vert_crane"
+		},
+		"brr_caution_sign_029": {
+			"textures": "textures/blocks/bms_props/signs/caution_vert_earprotection"
+		},
+		"brr_caution_sign_030": {
+			"textures": "textures/blocks/bms_props/signs/caution_vert_fallhazard"
+		},
+		"brr_caution_sign_031": {
+			"textures": "textures/blocks/bms_props/signs/caution_vert_hot"
+		},
+		"brr_caution_sign_032": {
+			"textures": "textures/blocks/bms_props/signs/caution_vert_hotsurface"
+		},
+		"brr_caution_sign_033": {
+			"textures": "textures/blocks/bms_props/signs/caution_vert_radiationarea"
+		},
+		"brr_caution_sign_034": {
+			"textures": "textures/blocks/bms_props/signs/decalsignc1a4elevator"
+		},
+		"brr_caution_sign_035": {
+			"textures": "textures/blocks/bms_props/signs/decalsignc1a4equipment"
+		},
+		"brr_caution_sign_036": {
+			"textures": "textures/blocks/bms_props/signs/decalsignc1a4hightemp"
+		},
+		"brr_caution_sign_037": {
+			"textures": "textures/blocks/bms_props/signs/caution_forklifts"
+		},
+		"brr_caution_sign_038": {
+			"textures": "textures/blocks/bms_props/signs/exercise_caution"
+		},
 		"brr_notices_sign": {
 			"textures": "textures/blocks/bms_props/signs/notices_sign"
 		},
@@ -283,8 +379,68 @@
 		"brr_warning_003": {
 			"textures": "textures/blocks/bms_props/signs/warning_ansi_smoking1"
 		},
+		"brr_warning_004": {
+			"textures": "textures/blocks/bms_props/signs/warning_alarmwillsound"
+		},
+		"brr_warning_005": {
+			"textures": "textures/blocks/bms_props/signs/warning_ansi_hazardousstorage"
+		},
+		"brr_warning_006": {
+			"textures": "textures/blocks/bms_props/signs/warning_confinedspace"
+		},
+		"brr_warning_007": {
+			"textures": "textures/blocks/bms_props/signs/warning_donotenterwhenlightison"
+		},
+		"brr_warning_008": {
+			"textures": "textures/blocks/bms_props/signs/warning_electricalhazard"
+		},
+		"brr_warning_009": {
+			"textures": "textures/blocks/bms_props/signs/warning_hazmatstorage"
+		},
+		"brr_warning_010": {
+			"textures": "textures/blocks/bms_props/signs/warning_keepout"
+		},
+		"brr_warning_011": {
+			"textures": "textures/blocks/bms_props/signs/warning_storage"
+		},
+		"brr_warning_012": {
+			"textures": "textures/blocks/bms_props/signs/warning_rect_automaticstart"
+		},
+		"brr_warning_013": {
+			"textures": "textures/blocks/bms_props/signs/warning_rect_donotenterpower"
+		},
+		"brr_warning_014": {
+			"textures": "textures/blocks/bms_props/signs/warning_rect_keepoff"
+		},
+		"brr_warning_015": {
+			"textures": "textures/blocks/bms_props/signs/warning_rect_restrictedarea"
+		},
 		"brr_safety_001": {
 			"textures": "textures/blocks/bms_props/signs/safety_firstaidstation"
+		},
+		"brr_safety_002": {
+			"textures": "textures/blocks/bms_props/signs/safety_keepfloorsclear"
+		},
+		"brr_safety_003": {
+			"textures": "textures/blocks/bms_props/signs/safety_nojobtomorrow"
+		},
+		"brr_safety_004": {
+			"textures": "textures/blocks/bms_props/signs/safety_preventbackinjury"
+		},
+		"brr_safety_005": {
+			"textures": "textures/blocks/bms_props/signs/safety_reportinjuries"
+		},
+		"brr_safety_006": {
+			"textures": "textures/blocks/bms_props/signs/safety_stayalert"
+		},
+		"brr_safety_007": {
+			"textures": "textures/blocks/bms_props/signs/safety_walkdontrun"
+		},
+		"brr_safety_008": {
+			"textures": "textures/blocks/bms_props/signs/safety_watchyourstep"
+		},
+		"brr_safety_009": {
+			"textures": "textures/blocks/bms_props/signs/safety_wheelsmustbechocked"
 		},
 		"brr_danger_001": {
 			"textures": "textures/blocks/bms_props/signs/danger_ansi_480volts"
@@ -343,6 +499,579 @@
 		"brr_danger_019": {
 			"textures": "textures/blocks/bms_props/signs/danger_confinedspace_638"
 		},
+		"brr_danger_020": {
+			"textures": "textures/blocks/bms_props/signs/danger_rect_10000volts"
+		},
+		"brr_danger_021": {
+			"textures": "textures/blocks/bms_props/signs/danger_rect_donotoperate"
+		},
+		"brr_danger_022": {
+			"textures": "textures/blocks/bms_props/signs/danger_rect_highvoltage"
+		},
+		"brr_danger_023": {
+			"textures": "textures/blocks/bms_props/signs/danger_rect_esp10000volts"
+		},
+		"brr_danger_024": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_dangersign_1"
+		},
+		"brr_danger_025": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_dangersign_2"
+		},
+		"brr_danger_026": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_dangersign_3"
+		},
+		"brr_danger_027": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_dangersign_4"
+		},
+		"brr_danger_028": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_lazer_dangersign_1"
+		},
+		"brr_danger_029": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_lazer_dangersign_3"
+		},
+		"brr_danger_030": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_lazer_dangersign_4"
+		},
+		"brr_danger_031": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_lazer_dangersign_5"
+		},
+		"brr_danger_032": {
+			"textures": "textures/blocks/bms_props/signs/c1a1c_temp_danger"
+		},
+		"brr_danger_033": {
+			"textures": "textures/blocks/bms_props/signs/decalsignc1a4airlock"
+		},
+		"brr_danger_034": {
+			"textures": "textures/blocks/bms_props/signs/decalsignc1a4contamination"
+		},
+		"brr_danger_035": {
+			"textures": "textures/blocks/bms_props/signs/decalsignc1a4launchcycle"
+		},
+		"brr_danger_036": {
+			"textures": "textures/blocks/bms_props/signs/decalsigndanger001j"
+		},
+		"brr_biohazard_001": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_biohazard_cautionsign_level2"
+		},
+		"brr_biohazard_002": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_biohazard_cautionsign_level3"
+		},
+		"brr_biohazard_003": {
+			"textures": "textures/blocks/bms_props/signs/c2a4x_biohazard_cautionsign_level4"
+		},
+		"brr_biohazard_004": {
+			"textures": "textures/blocks/bms_props/signs/biohazard_vert_observeprecautions"
+		},
+		"brr_hazard_001": {
+			"textures": "textures/blocks/bms_props/signs/flammable_metal_sign"
+		},
+		"brr_hazard_002": {
+			"textures": "textures/blocks/bms_props/signs/metal_chemical_warningsign"
+		},
+		"brr_exit_001": {
+			"textures": "textures/blocks/bms_props/signs/elevator_firesign1"
+		},
+		"brr_exit_002": {
+			"textures": "textures/blocks/bms_props/signs/elevator_firesign2"
+		},
+		"brr_exit_003": {
+			"textures": "textures/blocks/bms_props/signs/fireescape_sign_off"
+		},
+		"brr_exit_004": {
+			"textures": "textures/blocks/bms_props/signs/fireescape_sign_on"
+		},
+		"brr_exit_005": {
+			"textures": "textures/blocks/bms_props/signs/fireexit_downleft"
+		},
+		"brr_exit_006": {
+			"textures": "textures/blocks/bms_props/signs/fireexit_downright"
+		},
+		"brr_exit_007": {
+			"textures": "textures/blocks/bms_props/signs/fireexit_right"
+		},
+		"brr_exit_008": {
+			"textures": "textures/blocks/bms_props/signs/fireexit_left"
+		},
+		"brr_exit_009": {
+			"textures": "textures/blocks/bms_props/signs/fireexit_up"
+		},
+		"brr_exit_010": {
+			"textures": "textures/blocks/bms_props/signs/fireexit_up2"
+		},
+		"brr_exit_011": {
+			"textures": "textures/blocks/bms_props/signs/exit_right"
+		},
+		"brr_exit_012": {
+			"textures": "textures/blocks/bms_props/signs/exit_left"
+		},
+		"brr_facility_001": {
+			"textures": "textures/blocks/bms_props/signs/decalsignc1a4control"
+		},
+		"brr_facility_002": {
+			"textures": "textures/blocks/bms_props/signs/decalsignc1a4fuelready"
+		},
+		"brr_facility_003": {
+			"textures": "textures/blocks/bms_props/signs/decalsignc1a4powerready"
+		},
+		"brr_facility_004": {
+			"textures": "textures/blocks/bms_props/signs/sign_c2a2c_lpconsole1"
+		},
+		"brr_facility_005": {
+			"textures": "textures/blocks/bms_props/signs/sign_c2a2c_workplatforms"
+		},
+		"brr_facility_006": {
+			"textures": "textures/blocks/bms_props/signs/uc_vatsign"
+		},
+		"brr_facility_007": {
+			"textures": "textures/blocks/bms_props/signs/uc_vatsign2"
+		},
+		"brr_weathered_caution_sign_001": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decal_sign_caution_001e"
+		},
+		"brr_weathered_caution_sign_002": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decal_sign_caution_001f"
+		},
+		"brr_weathered_caution_sign_003": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decal_sign_caution_001i"
+		},
+		"brr_weathered_caution_sign_004": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decal_sign_caution_001j"
+		},
+		"brr_weathered_caution_sign_005": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decal_sign_caution_001l"
+		},
+		"brr_weathered_caution_sign_006": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decal_sign_caution_c1a4radiation"
+		},
+		"brr_weathered_caution_sign_007": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_craneoperating"
+		},
+		"brr_weathered_caution_sign_008": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_donotenter_highvoltage"
+		},
+		"brr_weathered_caution_sign_009": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_donotenterconfinedspace"
+		},
+		"brr_weathered_caution_sign_010": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_electricalpanel"
+		},
+		"brr_weathered_caution_sign_011": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_eyeprotectionrequired"
+		},
+		"brr_weathered_caution_sign_012": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_facemaskrequired"
+		},
+		"brr_weathered_caution_sign_013": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_headprotectionrequired"
+		},
+		"brr_weathered_caution_sign_014": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_highradiationarea"
+		},
+		"brr_weathered_caution_sign_015": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_laserarea"
+		},
+		"brr_weathered_caution_sign_016": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_laserradiation"
+		},
+		"brr_weathered_caution_sign_017": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_loto"
+		},
+		"brr_weathered_caution_sign_018": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_radioactivematerials"
+		},
+		"brr_weathered_caution_sign_019": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_standclearofdoor"
+		},
+		"brr_weathered_caution_sign_020": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_storage36in"
+		},
+		"brr_weathered_caution_sign_021": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_tramoverhead"
+		},
+		"brr_weathered_caution_sign_022": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_ultraviolet"
+		},
+		"brr_weathered_caution_sign_023": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_watchyourstep"
+		},
+		"brr_weathered_caution_sign_024": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_weargoggles"
+		},
+		"brr_weathered_caution_sign_025": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_wearhearingprotection"
+		},
+		"brr_weathered_caution_sign_026": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_ansi_smoking2"
+		},
+		"brr_weathered_caution_sign_027": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_turret_control"
+		},
+		"brr_weathered_caution_sign_028": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_vert_crane"
+		},
+		"brr_weathered_caution_sign_029": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_vert_earprotection"
+		},
+		"brr_weathered_caution_sign_030": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_vert_fallhazard"
+		},
+		"brr_weathered_caution_sign_031": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_vert_hot"
+		},
+		"brr_weathered_caution_sign_032": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_vert_hotsurface"
+		},
+		"brr_weathered_caution_sign_033": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_vert_radiationarea"
+		},
+		"brr_weathered_caution_sign_034": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decalsignc1a4elevator"
+		},
+		"brr_weathered_caution_sign_035": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decalsignc1a4equipment"
+		},
+		"brr_weathered_caution_sign_036": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decalsignc1a4hightemp"
+		},
+		"brr_weathered_caution_sign_037": {
+			"textures": "textures/blocks/bms_props/signs_weathered/caution_forklifts"
+		},
+		"brr_weathered_caution_sign_038": {
+			"textures": "textures/blocks/bms_props/signs_weathered/exercise_caution"
+		},
+		"brr_weathered_safety_001": {
+			"textures": "textures/blocks/bms_props/signs_weathered/safety_firstaidstation"
+		},
+		"brr_weathered_safety_002": {
+			"textures": "textures/blocks/bms_props/signs_weathered/safety_keepfloorsclear"
+		},
+		"brr_weathered_safety_003": {
+			"textures": "textures/blocks/bms_props/signs_weathered/safety_nojobtomorrow"
+		},
+		"brr_weathered_safety_004": {
+			"textures": "textures/blocks/bms_props/signs_weathered/safety_preventbackinjury"
+		},
+		"brr_weathered_safety_005": {
+			"textures": "textures/blocks/bms_props/signs_weathered/safety_reportinjuries"
+		},
+		"brr_weathered_safety_006": {
+			"textures": "textures/blocks/bms_props/signs_weathered/safety_stayalert"
+		},
+		"brr_weathered_safety_007": {
+			"textures": "textures/blocks/bms_props/signs_weathered/safety_walkdontrun"
+		},
+		"brr_weathered_safety_008": {
+			"textures": "textures/blocks/bms_props/signs_weathered/safety_watchyourstep"
+		},
+		"brr_weathered_safety_009": {
+			"textures": "textures/blocks/bms_props/signs_weathered/safety_wheelsmustbechocked"
+		},
+		"brr_weathered_notices_sign": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notices_sign"
+		},
+		"brr_weathered_notice_001": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_ansi_smokingarea"
+		},
+		"brr_weathered_notice_002": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_smok"
+		},
+		"brr_weathered_notice_003": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_vert_smoking"
+		},
+		"brr_weathered_notice_004": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_drumstoragearea"
+		},
+		"brr_weathered_notice_005": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_hardhats"
+		},
+		"brr_weathered_notice_006": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_limitedaccessarea"
+		},
+		"brr_weathered_notice_007": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_maintenance"
+		},
+		"brr_weathered_notice_008": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_noeatingordrinking"
+		},
+		"brr_weathered_notice_009": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_thesedoors"
+		},
+		"brr_weathered_notice_010": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_rect_authorizedpersonnelonly"
+		},
+		"brr_weathered_notice_011": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_rect_chemsuit"
+		},
+		"brr_weathered_notice_012": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_rect_coats"
+		},
+		"brr_weathered_notice_013": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_rect_forkliftsprohibited"
+		},
+		"brr_weathered_notice_014": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_rect_watchforforklifts"
+		},
+		"brr_weathered_notice_015": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_rect_keepout"
+		},
+		"brr_weathered_notice_016": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_rect_respirators"
+		},
+		"brr_weathered_notice_017": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_vert_authorizedpersonnel"
+		},
+		"brr_weathered_notice_018": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_vert_authorizedpersonnel_esp"
+		},
+		"brr_weathered_notice_019": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_vert_authorizedpersonnelonly"
+		},
+		"brr_weathered_notice_020": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_vert_dontblockdoor_esp"
+		},
+		"brr_weathered_notice_021": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_vert_nofooddrink"
+		},
+		"brr_weathered_notice_022": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_vert_swimmingforbidden"
+		},
+		"brr_weathered_notice_023": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_vert_ties"
+		},
+		"brr_weathered_notice_024": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_vert_washhands"
+		},
+		"brr_weathered_notice_025": {
+			"textures": "textures/blocks/bms_props/signs_weathered/notice_noadmittance"
+		},
+		"brr_weathered_warning_001": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_ansi_dontenterpower"
+		},
+		"brr_weathered_warning_002": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_ansi_faninuse"
+		},
+		"brr_weathered_warning_003": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_ansi_smoking1"
+		},
+		"brr_weathered_warning_004": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_alarmwillsound"
+		},
+		"brr_weathered_warning_005": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_ansi_hazardousstorage"
+		},
+		"brr_weathered_warning_006": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_confinedspace"
+		},
+		"brr_weathered_warning_007": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_donotenterwhenlightison"
+		},
+		"brr_weathered_warning_008": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_electricalhazard"
+		},
+		"brr_weathered_warning_009": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_hazmatstorage"
+		},
+		"brr_weathered_warning_010": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_keepout"
+		},
+		"brr_weathered_warning_011": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_storage"
+		},
+		"brr_weathered_warning_012": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_rect_automaticstart"
+		},
+		"brr_weathered_warning_013": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_rect_donotenterpower"
+		},
+		"brr_weathered_warning_014": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_rect_keepoff"
+		},
+		"brr_weathered_warning_015": {
+			"textures": "textures/blocks/bms_props/signs_weathered/warning_rect_restrictedarea"
+		},
+		"brr_weathered_danger_001": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_ansi_480volts"
+		},
+		"brr_weathered_danger_002": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_ansi_corrosive"
+		},
+		"brr_weathered_danger_003": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_ansi_noclimbing"
+		},
+		"brr_weathered_danger_004": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_ansi_pinchpoints"
+		},
+		"brr_weathered_danger_005": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_vert_confinedspace"
+		},
+		"brr_weathered_danger_006": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_vert_entrapmenthazard"
+		},
+		"brr_weathered_danger_007": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_vert_highvoltageenclosure"
+		},
+		"brr_weathered_danger_008": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_vert_watchyourhands"
+		},
+		"brr_weathered_danger_009": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_ansi_smoking2"
+		},
+		"brr_weathered_danger_010": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_ansi_unauthorizedpersonnel"
+		},
+		"brr_weathered_danger_011": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_hot"
+		},
+		"brr_weathered_danger_012": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_keepaway"
+		},
+		"brr_weathered_danger_013": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_keepfireaway"
+		},
+		"brr_weathered_danger_014": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_keephandsclear"
+		},
+		"brr_weathered_danger_015": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_keepout"
+		},
+		"brr_weathered_danger_016": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_nonono"
+		},
+		"brr_weathered_danger_017": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_confinedspace_129b"
+		},
+		"brr_weathered_danger_018": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_confinedspace_337"
+		},
+		"brr_weathered_danger_019": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_confinedspace_638"
+		},
+		"brr_weathered_danger_020": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_rect_10000volts"
+		},
+		"brr_weathered_danger_021": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_rect_donotoperate"
+		},
+		"brr_weathered_danger_022": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_rect_highvoltage"
+		},
+		"brr_weathered_danger_023": {
+			"textures": "textures/blocks/bms_props/signs_weathered/danger_rect_esp10000volts"
+		},
+		"brr_weathered_danger_024": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_dangersign_1"
+		},
+		"brr_weathered_danger_025": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_dangersign_2"
+		},
+		"brr_weathered_danger_026": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_dangersign_3"
+		},
+		"brr_weathered_danger_027": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_dangersign_4"
+		},
+		"brr_weathered_danger_028": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_lazer_dangersign_1"
+		},
+		"brr_weathered_danger_029": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_lazer_dangersign_3"
+		},
+		"brr_weathered_danger_030": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_lazer_dangersign_4"
+		},
+		"brr_weathered_danger_031": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_lazer_dangersign_5"
+		},
+		"brr_weathered_danger_032": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c1a1c_temp_danger"
+		},
+		"brr_weathered_danger_033": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decalsignc1a4airlock"
+		},
+		"brr_weathered_danger_034": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decalsignc1a4contamination"
+		},
+		"brr_weathered_danger_035": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decalsignc1a4launchcycle"
+		},
+		"brr_weathered_danger_036": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decalsigndanger001j"
+		},
+		"brr_weathered_biohazard_001": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_biohazard_cautionsign_level2"
+		},
+		"brr_weathered_biohazard_002": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_biohazard_cautionsign_level3"
+		},
+		"brr_weathered_biohazard_003": {
+			"textures": "textures/blocks/bms_props/signs_weathered/c2a4x_biohazard_cautionsign_level4"
+		},
+		"brr_weathered_biohazard_004": {
+			"textures": "textures/blocks/bms_props/signs_weathered/biohazard_vert_observeprecautions"
+		},
+		"brr_weathered_hazard_001": {
+			"textures": "textures/blocks/bms_props/signs_weathered/flammable_metal_sign"
+		},
+		"brr_weathered_hazard_002": {
+			"textures": "textures/blocks/bms_props/signs_weathered/metal_chemical_warningsign"
+		},
+		"brr_weathered_exit_001": {
+			"textures": "textures/blocks/bms_props/signs_weathered/elevator_firesign1"
+		},
+		"brr_weathered_exit_002": {
+			"textures": "textures/blocks/bms_props/signs_weathered/elevator_firesign2"
+		},
+		"brr_weathered_exit_003": {
+			"textures": "textures/blocks/bms_props/signs_weathered/fireescape_sign_off"
+		},
+		"brr_weathered_exit_004": {
+			"textures": "textures/blocks/bms_props/signs_weathered/fireescape_sign_on"
+		},
+		"brr_weathered_exit_005": {
+			"textures": "textures/blocks/bms_props/signs_weathered/fireexit_downleft"
+		},
+		"brr_weathered_exit_006": {
+			"textures": "textures/blocks/bms_props/signs_weathered/fireexit_downright"
+		},
+		"brr_weathered_exit_007": {
+			"textures": "textures/blocks/bms_props/signs_weathered/fireexit_right"
+		},
+		"brr_weathered_exit_008": {
+			"textures": "textures/blocks/bms_props/signs_weathered/fireexit_left"
+		},
+		"brr_weathered_exit_009": {
+			"textures": "textures/blocks/bms_props/signs_weathered/fireexit_up"
+		},
+		"brr_weathered_exit_010": {
+			"textures": "textures/blocks/bms_props/signs_weathered/fireexit_up2"
+		},
+		"brr_weathered_exit_011": {
+			"textures": "textures/blocks/bms_props/signs_weathered/exit_right"
+		},
+		"brr_weathered_exit_012": {
+			"textures": "textures/blocks/bms_props/signs_weathered/exit_left"
+		},
+		"brr_weathered_facility_001": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decalsignc1a4control"
+		},
+		"brr_weathered_facility_002": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decalsignc1a4fuelready"
+		},
+		"brr_weathered_facility_003": {
+			"textures": "textures/blocks/bms_props/signs_weathered/decalsignc1a4powerready"
+		},
+		"brr_weathered_facility_004": {
+			"textures": "textures/blocks/bms_props/signs_weathered/sign_c2a2c_lpconsole1"
+		},
+		"brr_weathered_facility_005": {
+			"textures": "textures/blocks/bms_props/signs_weathered/sign_c2a2c_workplatforms"
+		},
+		"brr_weathered_facility_006": {
+			"textures": "textures/blocks/bms_props/signs_weathered/uc_vatsign"
+		},
+		"brr_weathered_facility_007": {
+			"textures": "textures/blocks/bms_props/signs_weathered/uc_vatsign2"
+		},
 		"brr_hev_charger": {
 			"textures": "textures/blocks/bms_props/hev_charger"
 		},
@@ -396,6 +1125,942 @@
 		},
 		"brr_bms_metalgrate_04": {
 			"textures": "textures/blocks/bms_blocks/metal_grate_c2a2_rusty1"
+		},
+		"brr_bm_acunit01_particle": {
+			"textures": "textures/particle/block_particles/bms_props/acunit01_particle"
+		},
+		"brr_bm_acunit02_particle": {
+			"textures": "textures/particle/block_particles/bms_props/acunit02_particle"
+		},
+		"brr_bm_alarmbell_particle": {
+			"textures": "textures/particle/block_particles/bms_props/alarmbell_particle"
+		},
+		"brr_bm_alarmbox_particle": {
+			"textures": "textures/particle/block_particles/bms_props/alarmbox_particle"
+		},
+		"brr_bm_alarmpull_particle": {
+			"textures": "textures/particle/block_particles/bms_props/alarmpull_particle"
+		},
+		"brr_barrel_particle": {
+			"textures": "textures/particle/block_particles/bms_props/barrel_particle"
+		},
+		"brr_health_charger_particle": {
+			"textures": "textures/particle/block_particles/bms_props/health_charger_particle"
+		},
+		"brr_hev_charger_particle": {
+			"textures": "textures/particle/block_particles/bms_props/hev_charger_particle"
+		},
+		"brr_caution_sign_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decal_sign_caution_001e_particle"
+		},
+		"brr_caution_sign_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decal_sign_caution_001f_particle"
+		},
+		"brr_caution_sign_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decal_sign_caution_001i_particle"
+		},
+		"brr_caution_sign_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decal_sign_caution_001j_particle"
+		},
+		"brr_caution_sign_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decal_sign_caution_001l_particle"
+		},
+		"brr_caution_sign_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decal_sign_caution_c1a4radiation_particle"
+		},
+		"brr_danger_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_ansi_480volts_particle"
+		},
+		"brr_danger_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_ansi_corrosive_particle"
+		},
+		"brr_danger_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_ansi_noclimbing_particle"
+		},
+		"brr_danger_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_ansi_pinchpoints_particle"
+		},
+		"brr_danger_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_vert_confinedspace_particle"
+		},
+		"brr_danger_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_vert_entrapmenthazard_particle"
+		},
+		"brr_danger_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_vert_highvoltageenclosure_particle"
+		},
+		"brr_danger_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_vert_watchyourhands_particle"
+		},
+		"brr_danger_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_ansi_smoking2_particle"
+		},
+		"brr_danger_010_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_ansi_unauthorizedpersonnel_particle"
+		},
+		"brr_danger_011_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_hot_particle"
+		},
+		"brr_danger_012_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_keepaway_particle"
+		},
+		"brr_danger_013_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_keepfireaway_particle"
+		},
+		"brr_danger_014_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_keephandsclear_particle"
+		},
+		"brr_danger_015_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_keepout_particle"
+		},
+		"brr_danger_016_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_nonono_particle"
+		},
+		"brr_danger_017_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_confinedspace_129b_particle"
+		},
+		"brr_danger_018_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_confinedspace_337_particle"
+		},
+		"brr_danger_019_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_confinedspace_638_particle"
+		},
+		"brr_notices_sign_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notices_sign_particle"
+		},
+		"brr_notice_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_ansi_smokingarea_particle"
+		},
+		"brr_notice_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_smok_particle"
+		},
+		"brr_notice_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_vert_smoking_particle"
+		},
+		"brr_notice_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_drumstoragearea_particle"
+		},
+		"brr_notice_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_hardhats_particle"
+		},
+		"brr_notice_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_limitedaccessarea_particle"
+		},
+		"brr_notice_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_maintenance_particle"
+		},
+		"brr_notice_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_noeatingordrinking_particle"
+		},
+		"brr_notice_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_thesedoors_particle"
+		},
+		"brr_notice_010_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_rect_authorizedpersonnelonly_particle"
+		},
+		"brr_notice_011_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_rect_chemsuit_particle"
+		},
+		"brr_notice_012_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_rect_coats_particle"
+		},
+		"brr_notice_013_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_rect_forkliftsprohibited_particle"
+		},
+		"brr_notice_014_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_rect_watchforforklifts_particle"
+		},
+		"brr_notice_015_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_rect_keepout_particle"
+		},
+		"brr_notice_016_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_rect_respirators_particle"
+		},
+		"brr_notice_017_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_vert_authorizedpersonnel_particle"
+		},
+		"brr_notice_018_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_vert_authorizedpersonnel_esp_particle"
+		},
+		"brr_notice_019_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_vert_authorizedpersonnelonly_particle"
+		},
+		"brr_notice_020_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_vert_dontblockdoor_esp_particle"
+		},
+		"brr_notice_021_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_vert_nofooddrink_particle"
+		},
+		"brr_notice_022_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_vert_swimmingforbidden_particle"
+		},
+		"brr_notice_023_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_vert_ties_particle"
+		},
+		"brr_notice_024_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_vert_washhands_particle"
+		},
+		"brr_notice_025_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/notice_noadmittance_particle"
+		},
+		"brr_safety_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/safety_firstaidstation_particle"
+		},
+		"brr_warning_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_ansi_dontenterpower_particle"
+		},
+		"brr_warning_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_ansi_faninuse_particle"
+		},
+		"brr_warning_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_ansi_smoking1_particle"
+		},
+		"brr_tool_areaportal_particle": {
+			"textures": "textures/particle/block_particles/tool_blocks/brr_areaPortal_particle"
+		},
+		"brr_tool_blocklight_particle": {
+			"textures": "textures/particle/block_particles/tool_blocks/brr_blockLight_particle"
+		},
+		"brr_tool_invisible_particle": {
+			"textures": "textures/particle/block_particles/tool_blocks/brr_invisible_particle"
+		},
+		"brr_tool_npcclip_particle": {
+			"textures": "textures/particle/block_particles/tool_blocks/brr_npcClip_particle"
+		},
+		"brr_tool_playerclip_particle": {
+			"textures": "textures/particle/block_particles/tool_blocks/brr_playerClip_particle"
+		},
+		"brr_tool_trigger_particle": {
+			"textures": "textures/particle/block_particles/tool_blocks/brr_trigger_particle"
+		},
+		"brr_biohazard_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_biohazard_cautionsign_level2_particle"
+		},
+		"brr_biohazard_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_biohazard_cautionsign_level3_particle"
+		},
+		"brr_biohazard_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_biohazard_cautionsign_level4_particle"
+		},
+		"brr_biohazard_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/biohazard_vert_observeprecautions_particle"
+		},
+		"brr_caution_sign_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_craneoperating_particle"
+		},
+		"brr_caution_sign_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_donotenter_highvoltage_particle"
+		},
+		"brr_caution_sign_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_donotenterconfinedspace_particle"
+		},
+		"brr_caution_sign_010_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_electricalpanel_particle"
+		},
+		"brr_caution_sign_011_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_eyeprotectionrequired_particle"
+		},
+		"brr_caution_sign_012_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_facemaskrequired_particle"
+		},
+		"brr_caution_sign_013_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_headprotectionrequired_particle"
+		},
+		"brr_caution_sign_014_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_highradiationarea_particle"
+		},
+		"brr_caution_sign_015_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_laserarea_particle"
+		},
+		"brr_caution_sign_016_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_laserradiation_particle"
+		},
+		"brr_caution_sign_017_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_loto_particle"
+		},
+		"brr_caution_sign_018_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_radioactivematerials_particle"
+		},
+		"brr_caution_sign_019_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_standclearofdoor_particle"
+		},
+		"brr_caution_sign_020_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_storage36in_particle"
+		},
+		"brr_caution_sign_021_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_tramoverhead_particle"
+		},
+		"brr_caution_sign_022_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_ultraviolet_particle"
+		},
+		"brr_caution_sign_023_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_watchyourstep_particle"
+		},
+		"brr_caution_sign_024_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_weargoggles_particle"
+		},
+		"brr_caution_sign_025_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_wearhearingprotection_particle"
+		},
+		"brr_caution_sign_026_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_ansi_smoking2_particle"
+		},
+		"brr_caution_sign_027_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_turret_control_particle"
+		},
+		"brr_caution_sign_028_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_vert_crane_particle"
+		},
+		"brr_caution_sign_029_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_vert_earprotection_particle"
+		},
+		"brr_caution_sign_030_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_vert_fallhazard_particle"
+		},
+		"brr_caution_sign_031_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_vert_hot_particle"
+		},
+		"brr_caution_sign_032_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_vert_hotsurface_particle"
+		},
+		"brr_caution_sign_033_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_vert_radiationarea_particle"
+		},
+		"brr_caution_sign_034_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decalsignc1a4elevator_particle"
+		},
+		"brr_caution_sign_035_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decalsignc1a4equipment_particle"
+		},
+		"brr_caution_sign_036_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decalsignc1a4hightemp_particle"
+		},
+		"brr_caution_sign_037_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/caution_forklifts_particle"
+		},
+		"brr_caution_sign_038_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/exercise_caution_particle"
+		},
+		"brr_danger_020_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_rect_10000volts_particle"
+		},
+		"brr_danger_021_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_rect_donotoperate_particle"
+		},
+		"brr_danger_022_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_rect_highvoltage_particle"
+		},
+		"brr_danger_023_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/danger_rect_esp10000volts_particle"
+		},
+		"brr_danger_024_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_dangersign_1_particle"
+		},
+		"brr_danger_025_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_dangersign_2_particle"
+		},
+		"brr_danger_026_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_dangersign_3_particle"
+		},
+		"brr_danger_027_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_dangersign_4_particle"
+		},
+		"brr_danger_028_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_lazer_dangersign_1_particle"
+		},
+		"brr_danger_029_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_lazer_dangersign_3_particle"
+		},
+		"brr_danger_030_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_lazer_dangersign_4_particle"
+		},
+		"brr_danger_031_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c2a4x_lazer_dangersign_5_particle"
+		},
+		"brr_danger_032_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/c1a1c_temp_danger_particle"
+		},
+		"brr_danger_033_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decalsignc1a4airlock_particle"
+		},
+		"brr_danger_034_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decalsignc1a4contamination_particle"
+		},
+		"brr_danger_035_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decalsignc1a4launchcycle_particle"
+		},
+		"brr_danger_036_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decalsigndanger001j_particle"
+		},
+		"brr_exit_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/elevator_firesign1_particle"
+		},
+		"brr_exit_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/elevator_firesign2_particle"
+		},
+		"brr_exit_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/fireescape_sign_off_particle"
+		},
+		"brr_exit_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/fireescape_sign_on_particle"
+		},
+		"brr_exit_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/fireexit_downleft_particle"
+		},
+		"brr_exit_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/fireexit_downright_particle"
+		},
+		"brr_exit_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/fireexit_right_particle"
+		},
+		"brr_exit_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/fireexit_left_particle"
+		},
+		"brr_exit_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/fireexit_up_particle"
+		},
+		"brr_exit_010_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/fireexit_up2_particle"
+		},
+		"brr_exit_011_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/exit_right_particle"
+		},
+		"brr_exit_012_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/exit_left_particle"
+		},
+		"brr_facility_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decalsignc1a4control_particle"
+		},
+		"brr_facility_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decalsignc1a4fuelready_particle"
+		},
+		"brr_facility_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/decalsignc1a4powerready_particle"
+		},
+		"brr_facility_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/sign_c2a2c_lpconsole1_particle"
+		},
+		"brr_facility_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/sign_c2a2c_workplatforms_particle"
+		},
+		"brr_facility_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/uc_vatsign_particle"
+		},
+		"brr_facility_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/uc_vatsign2_particle"
+		},
+		"brr_hazard_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/flammable_metal_sign_particle"
+		},
+		"brr_hazard_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/metal_chemical_warningsign_particle"
+		},
+		"brr_safety_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/safety_keepfloorsclear_particle"
+		},
+		"brr_safety_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/safety_nojobtomorrow_particle"
+		},
+		"brr_safety_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/safety_preventbackinjury_particle"
+		},
+		"brr_safety_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/safety_reportinjuries_particle"
+		},
+		"brr_safety_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/safety_stayalert_particle"
+		},
+		"brr_safety_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/safety_walkdontrun_particle"
+		},
+		"brr_safety_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/safety_watchyourstep_particle"
+		},
+		"brr_safety_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/safety_wheelsmustbechocked_particle"
+		},
+		"brr_warning_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_alarmwillsound_particle"
+		},
+		"brr_warning_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_ansi_hazardousstorage_particle"
+		},
+		"brr_warning_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_confinedspace_particle"
+		},
+		"brr_warning_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_donotenterwhenlightison_particle"
+		},
+		"brr_warning_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_electricalhazard_particle"
+		},
+		"brr_warning_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_hazmatstorage_particle"
+		},
+		"brr_warning_010_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_keepout_particle"
+		},
+		"brr_warning_011_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_storage_particle"
+		},
+		"brr_warning_012_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_rect_automaticstart_particle"
+		},
+		"brr_warning_013_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_rect_donotenterpower_particle"
+		},
+		"brr_warning_014_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_rect_keepoff_particle"
+		},
+		"brr_warning_015_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs/warning_rect_restrictedarea_particle"
+		},
+		"brr_weathered_biohazard_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_biohazard_cautionsign_level2_particle"
+		},
+		"brr_weathered_biohazard_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_biohazard_cautionsign_level3_particle"
+		},
+		"brr_weathered_biohazard_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_biohazard_cautionsign_level4_particle"
+		},
+		"brr_weathered_biohazard_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/biohazard_vert_observeprecautions_particle"
+		},
+		"brr_weathered_caution_sign_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decal_sign_caution_001e_particle"
+		},
+		"brr_weathered_caution_sign_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decal_sign_caution_001f_particle"
+		},
+		"brr_weathered_caution_sign_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decal_sign_caution_001i_particle"
+		},
+		"brr_weathered_caution_sign_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decal_sign_caution_001j_particle"
+		},
+		"brr_weathered_caution_sign_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decal_sign_caution_001l_particle"
+		},
+		"brr_weathered_caution_sign_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decal_sign_caution_c1a4radiation_particle"
+		},
+		"brr_weathered_caution_sign_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_craneoperating_particle"
+		},
+		"brr_weathered_caution_sign_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_donotenter_highvoltage_particle"
+		},
+		"brr_weathered_caution_sign_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_donotenterconfinedspace_particle"
+		},
+		"brr_weathered_caution_sign_010_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_electricalpanel_particle"
+		},
+		"brr_weathered_caution_sign_011_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_eyeprotectionrequired_particle"
+		},
+		"brr_weathered_caution_sign_012_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_facemaskrequired_particle"
+		},
+		"brr_weathered_caution_sign_013_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_headprotectionrequired_particle"
+		},
+		"brr_weathered_caution_sign_014_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_highradiationarea_particle"
+		},
+		"brr_weathered_caution_sign_015_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_laserarea_particle"
+		},
+		"brr_weathered_caution_sign_016_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_laserradiation_particle"
+		},
+		"brr_weathered_caution_sign_017_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_loto_particle"
+		},
+		"brr_weathered_caution_sign_018_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_radioactivematerials_particle"
+		},
+		"brr_weathered_caution_sign_019_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_standclearofdoor_particle"
+		},
+		"brr_weathered_caution_sign_020_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_storage36in_particle"
+		},
+		"brr_weathered_caution_sign_021_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_tramoverhead_particle"
+		},
+		"brr_weathered_caution_sign_022_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_ultraviolet_particle"
+		},
+		"brr_weathered_caution_sign_023_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_watchyourstep_particle"
+		},
+		"brr_weathered_caution_sign_024_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_weargoggles_particle"
+		},
+		"brr_weathered_caution_sign_025_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_wearhearingprotection_particle"
+		},
+		"brr_weathered_caution_sign_026_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_ansi_smoking2_particle"
+		},
+		"brr_weathered_caution_sign_027_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_turret_control_particle"
+		},
+		"brr_weathered_caution_sign_028_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_vert_crane_particle"
+		},
+		"brr_weathered_caution_sign_029_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_vert_earprotection_particle"
+		},
+		"brr_weathered_caution_sign_030_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_vert_fallhazard_particle"
+		},
+		"brr_weathered_caution_sign_031_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_vert_hot_particle"
+		},
+		"brr_weathered_caution_sign_032_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_vert_hotsurface_particle"
+		},
+		"brr_weathered_caution_sign_033_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_vert_radiationarea_particle"
+		},
+		"brr_weathered_caution_sign_034_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decalsignc1a4elevator_particle"
+		},
+		"brr_weathered_caution_sign_035_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decalsignc1a4equipment_particle"
+		},
+		"brr_weathered_caution_sign_036_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decalsignc1a4hightemp_particle"
+		},
+		"brr_weathered_caution_sign_037_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/caution_forklifts_particle"
+		},
+		"brr_weathered_caution_sign_038_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/exercise_caution_particle"
+		},
+		"brr_weathered_danger_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_ansi_480volts_particle"
+		},
+		"brr_weathered_danger_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_ansi_corrosive_particle"
+		},
+		"brr_weathered_danger_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_ansi_noclimbing_particle"
+		},
+		"brr_weathered_danger_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_ansi_pinchpoints_particle"
+		},
+		"brr_weathered_danger_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_vert_confinedspace_particle"
+		},
+		"brr_weathered_danger_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_vert_entrapmenthazard_particle"
+		},
+		"brr_weathered_danger_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_vert_highvoltageenclosure_particle"
+		},
+		"brr_weathered_danger_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_vert_watchyourhands_particle"
+		},
+		"brr_weathered_danger_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_ansi_smoking2_particle"
+		},
+		"brr_weathered_danger_010_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_ansi_unauthorizedpersonnel_particle"
+		},
+		"brr_weathered_danger_011_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_hot_particle"
+		},
+		"brr_weathered_danger_012_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_keepaway_particle"
+		},
+		"brr_weathered_danger_013_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_keepfireaway_particle"
+		},
+		"brr_weathered_danger_014_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_keephandsclear_particle"
+		},
+		"brr_weathered_danger_015_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_keepout_particle"
+		},
+		"brr_weathered_danger_016_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_nonono_particle"
+		},
+		"brr_weathered_danger_017_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_confinedspace_129b_particle"
+		},
+		"brr_weathered_danger_018_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_confinedspace_337_particle"
+		},
+		"brr_weathered_danger_019_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_confinedspace_638_particle"
+		},
+		"brr_weathered_danger_020_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_rect_10000volts_particle"
+		},
+		"brr_weathered_danger_021_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_rect_donotoperate_particle"
+		},
+		"brr_weathered_danger_022_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_rect_highvoltage_particle"
+		},
+		"brr_weathered_danger_023_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/danger_rect_esp10000volts_particle"
+		},
+		"brr_weathered_danger_024_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_dangersign_1_particle"
+		},
+		"brr_weathered_danger_025_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_dangersign_2_particle"
+		},
+		"brr_weathered_danger_026_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_dangersign_3_particle"
+		},
+		"brr_weathered_danger_027_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_dangersign_4_particle"
+		},
+		"brr_weathered_danger_028_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_lazer_dangersign_1_particle"
+		},
+		"brr_weathered_danger_029_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_lazer_dangersign_3_particle"
+		},
+		"brr_weathered_danger_030_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_lazer_dangersign_4_particle"
+		},
+		"brr_weathered_danger_031_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c2a4x_lazer_dangersign_5_particle"
+		},
+		"brr_weathered_danger_032_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/c1a1c_temp_danger_particle"
+		},
+		"brr_weathered_danger_033_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decalsignc1a4airlock_particle"
+		},
+		"brr_weathered_danger_034_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decalsignc1a4contamination_particle"
+		},
+		"brr_weathered_danger_035_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decalsignc1a4launchcycle_particle"
+		},
+		"brr_weathered_danger_036_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decalsigndanger001j_particle"
+		},
+		"brr_weathered_exit_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/elevator_firesign1_particle"
+		},
+		"brr_weathered_exit_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/elevator_firesign2_particle"
+		},
+		"brr_weathered_exit_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/fireescape_sign_off_particle"
+		},
+		"brr_weathered_exit_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/fireescape_sign_on_particle"
+		},
+		"brr_weathered_exit_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/fireexit_downleft_particle"
+		},
+		"brr_weathered_exit_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/fireexit_downright_particle"
+		},
+		"brr_weathered_exit_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/fireexit_right_particle"
+		},
+		"brr_weathered_exit_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/fireexit_left_particle"
+		},
+		"brr_weathered_exit_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/fireexit_up_particle"
+		},
+		"brr_weathered_exit_010_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/fireexit_up2_particle"
+		},
+		"brr_weathered_exit_011_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/exit_right_particle"
+		},
+		"brr_weathered_exit_012_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/exit_left_particle"
+		},
+		"brr_weathered_facility_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decalsignc1a4control_particle"
+		},
+		"brr_weathered_facility_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decalsignc1a4fuelready_particle"
+		},
+		"brr_weathered_facility_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/decalsignc1a4powerready_particle"
+		},
+		"brr_weathered_facility_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/sign_c2a2c_lpconsole1_particle"
+		},
+		"brr_weathered_facility_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/sign_c2a2c_workplatforms_particle"
+		},
+		"brr_weathered_facility_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/uc_vatsign_particle"
+		},
+		"brr_weathered_facility_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/uc_vatsign2_particle"
+		},
+		"brr_weathered_hazard_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/flammable_metal_sign_particle"
+		},
+		"brr_weathered_hazard_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/metal_chemical_warningsign_particle"
+		},
+		"brr_weathered_notices_sign_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notices_sign_particle"
+		},
+		"brr_weathered_notice_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_ansi_smokingarea_particle"
+		},
+		"brr_weathered_notice_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_smok_particle"
+		},
+		"brr_weathered_notice_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_vert_smoking_particle"
+		},
+		"brr_weathered_notice_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_drumstoragearea_particle"
+		},
+		"brr_weathered_notice_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_hardhats_particle"
+		},
+		"brr_weathered_notice_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_limitedaccessarea_particle"
+		},
+		"brr_weathered_notice_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_maintenance_particle"
+		},
+		"brr_weathered_notice_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_noeatingordrinking_particle"
+		},
+		"brr_weathered_notice_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_thesedoors_particle"
+		},
+		"brr_weathered_notice_010_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_rect_authorizedpersonnelonly_particle"
+		},
+		"brr_weathered_notice_011_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_rect_chemsuit_particle"
+		},
+		"brr_weathered_notice_012_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_rect_coats_particle"
+		},
+		"brr_weathered_notice_013_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_rect_forkliftsprohibited_particle"
+		},
+		"brr_weathered_notice_014_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_rect_watchforforklifts_particle"
+		},
+		"brr_weathered_notice_015_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_rect_keepout_particle"
+		},
+		"brr_weathered_notice_016_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_rect_respirators_particle"
+		},
+		"brr_weathered_notice_017_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_vert_authorizedpersonnel_particle"
+		},
+		"brr_weathered_notice_018_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_vert_authorizedpersonnel_esp_particle"
+		},
+		"brr_weathered_notice_019_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_vert_authorizedpersonnelonly_particle"
+		},
+		"brr_weathered_notice_020_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_vert_dontblockdoor_esp_particle"
+		},
+		"brr_weathered_notice_021_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_vert_nofooddrink_particle"
+		},
+		"brr_weathered_notice_022_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_vert_swimmingforbidden_particle"
+		},
+		"brr_weathered_notice_023_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_vert_ties_particle"
+		},
+		"brr_weathered_notice_024_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_vert_washhands_particle"
+		},
+		"brr_weathered_notice_025_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/notice_noadmittance_particle"
+		},
+		"brr_weathered_safety_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/safety_firstaidstation_particle"
+		},
+		"brr_weathered_safety_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/safety_keepfloorsclear_particle"
+		},
+		"brr_weathered_safety_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/safety_nojobtomorrow_particle"
+		},
+		"brr_weathered_safety_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/safety_preventbackinjury_particle"
+		},
+		"brr_weathered_safety_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/safety_reportinjuries_particle"
+		},
+		"brr_weathered_safety_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/safety_stayalert_particle"
+		},
+		"brr_weathered_safety_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/safety_walkdontrun_particle"
+		},
+		"brr_weathered_safety_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/safety_watchyourstep_particle"
+		},
+		"brr_weathered_safety_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/safety_wheelsmustbechocked_particle"
+		},
+		"brr_weathered_warning_001_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_ansi_dontenterpower_particle"
+		},
+		"brr_weathered_warning_002_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_ansi_faninuse_particle"
+		},
+		"brr_weathered_warning_003_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_ansi_smoking1_particle"
+		},
+		"brr_weathered_warning_004_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_alarmwillsound_particle"
+		},
+		"brr_weathered_warning_005_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_ansi_hazardousstorage_particle"
+		},
+		"brr_weathered_warning_006_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_confinedspace_particle"
+		},
+		"brr_weathered_warning_007_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_donotenterwhenlightison_particle"
+		},
+		"brr_weathered_warning_008_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_electricalhazard_particle"
+		},
+		"brr_weathered_warning_009_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_hazmatstorage_particle"
+		},
+		"brr_weathered_warning_010_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_keepout_particle"
+		},
+		"brr_weathered_warning_011_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_storage_particle"
+		},
+		"brr_weathered_warning_012_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_rect_automaticstart_particle"
+		},
+		"brr_weathered_warning_013_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_rect_donotenterpower_particle"
+		},
+		"brr_weathered_warning_014_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_rect_keepoff_particle"
+		},
+		"brr_weathered_warning_015_particle": {
+			"textures": "textures/particle/block_particles/bms_props/signs_weathered/warning_rect_restrictedarea_particle"
 		}
 	}
 }

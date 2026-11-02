@@ -65,9 +65,9 @@ const ENTITY_CLASSES = {
     "brr:ambient_generic_block": {
         kind: POINT,
         outputs: [],
-        inputs: ["PlaySound", "StopSound", "ToggleSound", "Volume", "Pitch"],
+        inputs: ["PlaySound", "StopSound", "ToggleSound", "FadeIn", "FadeOut", "Volume", "Pitch"],
         particle: "brr:ambient_generic",
-        defaults: { volume: "1", pitch: "1", loop: false, loopLength: "40", startSilent: true, playEverywhere: false }
+        defaults: { volume: "1", pitch: "1", loop: false, startSilent: true, playEverywhere: false }
     },
 
     "brr:filter_class_block": {

@@ -1,7 +1,7 @@
 import { BlockPermutation, MolangVariableMap, system, world } from "@minecraft/server";
-import { getCurrentTick, getHeadLocation } from "./weapon_common.js";
+import { add, getCurrentTick, getHeadLocation, scale } from "./weapon_common.js";
 
-const AIR_TYPE_IDS = new Set(["minecraft:air", "minecraft:cave_air", "minecraft:void_air"]);
+const AIR_TYPE_IDS = new Set(["minecraft:air"]);
 const pendingLightCleanupByKey = new Map();
 const MAX_LIGHT_CLEANUP_ATTEMPTS = 1200;
 // Pending flash lights are saved so ones placed right before the world closes are removed on next load.
@@ -129,18 +129,6 @@ function floorVector(vec) {
         x: Math.floor(Number(vec?.x) || 0),
         y: Math.floor(Number(vec?.y) || 0),
         z: Math.floor(Number(vec?.z) || 0)
-    };
-}
-
-function add(a, b) {
-    return { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z };
-}
-
-function scale(vector, scalar) {
-    return {
-        x: vector.x * scalar,
-        y: vector.y * scalar,
-        z: vector.z * scalar
     };
 }
 

@@ -103,6 +103,8 @@ function updateTrigger(trigger, occupants) {
 }
 
 // SECTION: Area Portals
+const PLAYER_EYE_HEIGHT = 1.62;
+
 function getPortalDestination(portal) {
     const data = portal.data ?? {};
     const destinationName = `${data.destinationBlock ?? ""}`.trim();
@@ -116,11 +118,12 @@ function getPortalDestination(portal) {
         const facing = `${target.data?.targetFacingDirection ?? ""}`.trim().split(/\s+/).map(Number.parseFloat);
         if (facing.length !== 3 || !facing.every(Number.isFinite)) return { location, dimension: target.dimension };
 
+        // Aimed from eye height. Minecraft pitch is negative when looking up.
         const dx = facing[0] - location.x;
-        const dy = facing[1] - location.y;
+        const dy = facing[1] - (location.y + PLAYER_EYE_HEIGHT);
         const dz = facing[2] - location.z;
         const rotation = {
-            x: Math.atan2(dy, Math.sqrt(dx * dx + dz * dz)) * (180 / Math.PI),
+            x: -Math.atan2(dy, Math.sqrt(dx * dx + dz * dz)) * (180 / Math.PI),
             y: Math.atan2(-dx, dz) * (180 / Math.PI)
         };
         return { location, dimension: target.dimension, rotation };

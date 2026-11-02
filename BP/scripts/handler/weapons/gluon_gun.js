@@ -109,6 +109,8 @@ const isHoldingGluon = (player) => isGluonItem(getMainhandTypeId(player));
 // SECTION: Firing State
 function beginFiring(player, tick) {
     if (getAmmoRemaining(player) <= 0) {
+        // One click per press: the press is used up, or the tick loop would retry every tick.
+        pressTickByPlayer.delete(player.id);
         playEmptySound(player);
         return;
     }

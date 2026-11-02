@@ -1,5 +1,5 @@
 {
-	"format_version": "1.21.80",
+	"format_version": "1.26.50",
 	"minecraft:block": {
 		"description": {
 			"identifier": "brr:bms_metalgrate_04",
@@ -28,7 +28,8 @@
 					{
 						"can_contain_liquid": true,
 						"liquid_type": "water",
-						"on_liquid_touches": "no_reaction"
+						"on_liquid_touches": "no_reaction",
+						"use_liquid_clipping": true
 					}
 				]
 			}

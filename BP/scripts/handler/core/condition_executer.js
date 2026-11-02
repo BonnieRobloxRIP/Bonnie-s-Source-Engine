@@ -1,4 +1,5 @@
-import { world } from "@minecraft/server";
+import { BlockVolume, system, world } from "@minecraft/server";
+import { applyEntityFilters, parseSelectorFilters } from "./selector_filters.js";
 
 // SECTION: Block and Entity Helpers
 function parseBlockPos(rawValue) {
@@ -21,6 +22,15 @@ function getBlockAtPlayerDimension(player, pos) {
 	}
 }
 
+// Whether a location is inside the blocks between two corners, both corners included, the way
+// /fill reads an area: standing anywhere in the block at x=10 counts as x 10.
+function isInBlockArea(location, corner1, corner2) {
+	return ["x", "y", "z"].every(axis => {
+		const block = Math.floor(location[axis]);
+		return block >= Math.min(corner1[axis], corner2[axis]) && block <= Math.max(corner1[axis], corner2[axis]);
+	});
+}
+
 const lastKnownHealthByEntity = new Map();
 const lastDamageTickByEntity = new Map();
 const lastDamageCauseByEntity = new Map();
@@ -37,7 +47,7 @@ try {
 		const id = getEntityIdentity(hurtEntity);
 		if (!id) return;
 
-		const tick = getCurrentTick(world);
+		const tick = getCurrentTick();
 		const cause = `${event?.damageSource?.cause ?? ""}`.trim().toLowerCase();
 		lastDamageTickByEntity.set(id, tick);
 		if (cause) lastDamageCauseByEntity.set(id, cause);
@@ -83,12 +93,9 @@ function parseOptionalInt(value, fallback = undefined) {
 	return Number.isFinite(parsed) ? parsed : fallback;
 }
 
-function getCurrentTick(worldObj) {
-	try {
-		return Number.parseInt(`${worldObj.getAbsoluteTime?.() ?? 0}`, 10) || 0;
-	} catch {
-		return 0;
-	}
+// Script ticks rather than world time, which /time set moves and a frozen daylight cycle stops.
+function getCurrentTick() {
+	return system.currentTick;
 }
 
 function wasEntityRecentlyDamaged(entity, worldObj, windowTicks = 2) {
@@ -103,7 +110,7 @@ function wasEntityRecentlyDamaged(entity, worldObj, windowTicks = 2) {
 	if (!Number.isFinite(healthValue)) return false;
 
 	const previous = lastKnownHealthByEntity.get(id);
-	const now = getCurrentTick(worldObj);
+	const now = getCurrentTick();
 	if (Number.isFinite(previous) && healthValue < previous) {
 		lastDamageTickByEntity.set(id, now);
 	}
@@ -112,8 +119,7 @@ function wasEntityRecentlyDamaged(entity, worldObj, windowTicks = 2) {
 	const lastHitTick = lastDamageTickByEntity.get(id);
 	if (!Number.isFinite(lastHitTick)) return false;
 
-	const elapsed = now >= lastHitTick ? now - lastHitTick : (24000 - lastHitTick + now);
-	return elapsed <= Math.max(1, windowTicks);
+	return now - lastHitTick <= Math.max(1, windowTicks);
 }
 
 function wasEntityRecentlyDamagedFromSource(entity, worldObj, expectedSource, windowTicks = 2) {
@@ -165,6 +171,14 @@ function normalizeLiteralSelector(rawSelector) {
 	return `${quoted ? quoted[2] : raw}`.trim();
 }
 
+function getGameModeName(player) {
+	try {
+		return `${player.getGameMode()}`.toLowerCase();
+	} catch {
+		return "";
+	}
+}
+
 function resolveEntitiesBySelector(player, selectorRaw, radiusRaw = "") {
 	const selector = `${selectorRaw ?? ""}`.trim();
 	const literalSelector = normalizeLiteralSelector(selector);
@@ -182,25 +196,31 @@ function resolveEntitiesBySelector(player, selectorRaw, radiusRaw = "") {
 		return (dx * dx + dy * dy + dz * dz) <= maxDistanceSq;
 	};
 
-	try {
-		if (selector === "@s") return [player];
-		if (selector === "@a") return player.dimension.getPlayers().filter(withinRadius);
-		if (selector === "@p") {
-			const players = player.dimension.getPlayers().filter(withinRadius);
-			if (!players.length) return [];
-			players.sort((a, b) => {
-				const adx = a.location.x - location.x, ady = a.location.y - location.y, adz = a.location.z - location.z;
-				const bdx = b.location.x - location.x, bdy = b.location.y - location.y, bdz = b.location.z - location.z;
-				return (adx * adx + ady * ady + adz * adz) - (bdx * bdx + bdy * bdy + bdz * bdz);
-			});
-			return [players[0]];
+	// @s/@a/@p/@r/@e, with or without [filters] (the same ones the engine's selector fields take).
+	const filters = selector.startsWith("@") ? parseSelectorFilters(selector) : null;
+	if (filters) {
+		try {
+			const base = selector.slice(0, 2).toLowerCase();
+			let found;
+			if (base === "@s") found = [player];
+			else if (base === "@e") {
+				found = Number.isFinite(maxDistanceSq)
+					? player.dimension.getEntities({ location, maxDistance: optionalRadius })
+					: player.dimension.getEntities();
+			} else found = player.dimension.getPlayers().filter(withinRadius);
+			found = applyEntityFilters(found, filters, getGameModeName);
+
+			if (base === "@r") return found.length ? [found[Math.floor(Math.random() * found.length)]] : [];
+			if (base !== "@p" || found.length <= 1) return found;
+			const distanceSq = entity => {
+				const dx = entity.location.x - location.x, dy = entity.location.y - location.y, dz = entity.location.z - location.z;
+				return dx * dx + dy * dy + dz * dz;
+			};
+			return [found.reduce((nearest, entity) => distanceSq(entity) < distanceSq(nearest) ? entity : nearest)];
+		} catch {
+			return [];
 		}
-		if (selector === "@e") {
-			return Number.isFinite(maxDistanceSq)
-				? player.dimension.getEntities({ location, maxDistance: optionalRadius })
-				: player.dimension.getEntities();
-		}
-	} catch { }
+	}
 
 	if (literalSelector.toLowerCase().startsWith("minecraft:")) {
 		try {
@@ -231,7 +251,8 @@ function isPlatformGroup(player, group) {
 	if (!platform) return false;
 
 	const groups = {
-		console: ["xbox", "playstation", "ps", "switch", "nintendo"],
+		// The game reports "Console", "Mobile" or "Desktop"; the other names cover older versions.
+		console: ["console", "xbox", "playstation", "ps", "switch", "nintendo"],
 		mobile: ["android", "ios", "mobile", "iphone", "ipad"],
 		desktop: ["windows", "win", "linux", "mac", "desktop", "osx"]
 	};
@@ -360,29 +381,11 @@ export function evaluateCondition(blockData, player, worldObj) {
 				if (!v1) return false;
 				try { const score = worldObj.scoreboard.getObjective(v1)?.getScore(player); return score === undefined || score === null; } catch { return true; }
 			}
-			case "ifPlayerIsAt": {
-				if (!v1 || !v2) return false;
-				const coords1 = v1.split(/\s+/); const coords2 = v2.split(/\s+/);
-				if (coords1.length === 3 && coords2.length === 3) {
-					const x1 = Math.min(parseFloat(coords1[0]), parseFloat(coords2[0])); const x2 = Math.max(parseFloat(coords1[0]), parseFloat(coords2[0]));
-					const y1 = Math.min(parseFloat(coords1[1]), parseFloat(coords2[1])); const y2 = Math.max(parseFloat(coords1[1]), parseFloat(coords2[1]));
-					const z1 = Math.min(parseFloat(coords1[2]), parseFloat(coords2[2])); const z2 = Math.max(parseFloat(coords1[2]), parseFloat(coords2[2]));
-					const loc = player.location;
-					return loc.x >= x1 && loc.x <= x2 && loc.y >= y1 && loc.y <= y2 && loc.z >= z1 && loc.z <= z2;
-				}
-				return false;
-			}
+			case "ifPlayerIsAt":
 			case "ifPlayerIsNotAt": {
-				if (!v1 || !v2) return false;
-				const coords1 = v1.split(/\s+/); const coords2 = v2.split(/\s+/);
-				if (coords1.length === 3 && coords2.length === 3) {
-					const x1 = Math.min(parseFloat(coords1[0]), parseFloat(coords2[0])); const x2 = Math.max(parseFloat(coords1[0]), parseFloat(coords2[0]));
-					const y1 = Math.min(parseFloat(coords1[1]), parseFloat(coords2[1])); const y2 = Math.max(parseFloat(coords1[1]), parseFloat(coords2[1]));
-					const z1 = Math.min(parseFloat(coords1[2]), parseFloat(coords2[2])); const z2 = Math.max(parseFloat(coords1[2]), parseFloat(coords2[2]));
-					const loc = player.location;
-					return !(loc.x >= x1 && loc.x <= x2 && loc.y >= y1 && loc.y <= y2 && loc.z >= z1 && loc.z <= z2);
-				}
-				return false;
+				const pos1 = parseBlockPos(v1); const pos2 = parseBlockPos(v2);
+				if (!pos1 || !pos2) return false;
+				return isInBlockArea(player.location, pos1, pos2) === (condition === "ifPlayerIsAt");
 			}
 			case "ifPlayerHasInInventory": {
 				if (!v1) return false;
@@ -404,8 +407,15 @@ export function evaluateCondition(blockData, player, worldObj) {
 					return ["Head", "Chest", "Legs", "Feet", "Offhand", "Mainhand"].some(slot => equip?.getEquipment(slot)?.typeId?.toLowerCase() === normalizedType);
 				} catch { return false; }
 			}
-			case "ifPlayerIsRiding":
-				try { return player.getComponent("minecraft:rideable") !== undefined; } catch { return false; }
+			case "ifPlayerIsRiding": {
+				// "minecraft:riding" is on the rider; "minecraft:rideable" (which players always have,
+				// for shoulder riding) is on the thing being ridden.
+				let mount;
+				try { mount = player.getComponent("minecraft:riding")?.entityRidingOn; } catch { }
+				if (!mount) return false;
+				if (!v1) return true;
+				return resolveEntitiesBySelector(player, v1).some(entity => entity.id === mount.id);
+			}
 			case "ifPlayerIsOnConsole":
 				return isPlatformGroup(player, "console");
 			case "ifPlayerIsOnMobile":
@@ -593,26 +603,14 @@ export function evaluateCondition(blockData, player, worldObj) {
 				if (!v1 || !v2 || !v3) return false;
 				const pos1 = parseBlockPos(v2); const pos2 = parseBlockPos(v3);
 				if (!pos1 || !pos2) return false;
-				const x1 = Math.min(pos1.x, pos2.x), x2 = Math.max(pos1.x, pos2.x);
-				const y1 = Math.min(pos1.y, pos2.y), y2 = Math.max(pos1.y, pos2.y);
-				const z1 = Math.min(pos1.z, pos2.z), z2 = Math.max(pos1.z, pos2.z);
-				return resolveEntitiesBySelector(player, v1).some(entity => {
-					const loc = entity.location;
-					return loc.x >= x1 && loc.x <= x2 && loc.y >= y1 && loc.y <= y2 && loc.z >= z1 && loc.z <= z2;
-				});
+				return resolveEntitiesBySelector(player, v1).some(entity => isInBlockArea(entity.location, pos1, pos2));
 			}
 			case "ifEntityIsNotAt": {
 				if (!v1 || !v2 || !v3) return false;
 				const pos1 = parseBlockPos(v2); const pos2 = parseBlockPos(v3);
 				if (!pos1 || !pos2) return false;
-				const x1 = Math.min(pos1.x, pos2.x), x2 = Math.max(pos1.x, pos2.x);
-				const y1 = Math.min(pos1.y, pos2.y), y2 = Math.max(pos1.y, pos2.y);
-				const z1 = Math.min(pos1.z, pos2.z), z2 = Math.max(pos1.z, pos2.z);
 				const entities = resolveEntitiesBySelector(player, v1);
-				return entities.length > 0 && entities.every(entity => {
-					const loc = entity.location;
-					return !(loc.x >= x1 && loc.x <= x2 && loc.y >= y1 && loc.y <= y2 && loc.z >= z1 && loc.z <= z2);
-				});
+				return entities.length > 0 && entities.every(entity => !isInBlockArea(entity.location, pos1, pos2));
 			}
 			case "ifEntityDamaged": {
 				if (!v1) return false;
@@ -662,39 +660,32 @@ export function evaluateCondition(blockData, player, worldObj) {
 				if (!v1 || !v2 || !v3) return false;
 				const pos1 = parseBlockPos(v1); const pos2 = parseBlockPos(v2);
 				if (!pos1 || !pos2) return false;
-				const x1 = Math.min(pos1.x, pos2.x), x2 = Math.max(pos1.x, pos2.x);
-				const y1 = Math.min(pos1.y, pos2.y), y2 = Math.max(pos1.y, pos2.y);
-				const z1 = Math.min(pos1.z, pos2.z), z2 = Math.max(pos1.z, pos2.z);
 				const compareType = v3.trim().toLowerCase();
 
-				let hasAny = false;
-				let allMatch = true;
-				for (let x = x1; x <= x2; x++) {
-					for (let y = y1; y <= y2; y++) {
-						for (let z = z1; z <= z2; z++) {
-							const typeId = getBlockAtPlayerDimension(player, { x, y, z })?.typeId?.toLowerCase();
-							const match = typeId === compareType;
-							hasAny = hasAny || match;
-							allMatch = allMatch && match;
-						}
-					}
-				}
+				// The game scans the area itself: a script loop over a big area every couple of ticks
+				// would hang the server. An unknown block ID simply matches nothing.
+				const volume = new BlockVolume(pos1, pos2);
+				const containsBlockWhere = filter => {
+					try { return player.dimension.containsBlock(volume, filter, true); } catch { return undefined; }
+				};
+				const hasAny = containsBlockWhere({ includeTypes: [compareType] }) ?? false;
+				const allMatch = hasAny && containsBlockWhere({ excludeTypes: [compareType] }) === false;
 
 				if (condition === "ifBlocksAre") return allMatch;
-				if (condition === "ifBlocksAreNot") return !hasAny;
+				if (condition === "ifBlocksAreNot") return !allMatch;
 				if (condition === "ifBlockAreaHas") return hasAny;
 				return !hasAny;
 			}
 			case "ifTimeIs": {
 				if (!v1 || !v2) return false;
-				const currentTime = worldObj.getAbsoluteTime() % 24000;
+				const currentTime = worldObj.getTimeOfDay();
 				const minTime = Math.min(parseInt(v1), parseInt(v2));
 				const maxTime = Math.max(parseInt(v1), parseInt(v2));
 				return currentTime >= minTime && currentTime <= maxTime;
 			}
 			case "ifTimeIsNot": {
 				if (!v1 || !v2) return false;
-				const currentTime = worldObj.getAbsoluteTime() % 24000;
+				const currentTime = worldObj.getTimeOfDay();
 				const minTime = Math.min(parseInt(v1), parseInt(v2));
 				const maxTime = Math.max(parseInt(v1), parseInt(v2));
 				return !(currentTime >= minTime && currentTime <= maxTime);
@@ -722,21 +713,26 @@ export function evaluateCondition(blockData, player, worldObj) {
 			case "ifItemDurabilityIsHigher":
 			case "ifItemDurabilityIsLower": {
 				if (!v1 || !v2 || (condition !== "ifItemDurabilityFull" && !v3)) return false;
-				try {
-					const inv = player.getComponent("inventory")?.container;
-					for (let i = 0; i < inv.size; i++) {
-						const item = inv.getItem(i);
-						if (item?.typeId !== v2) continue;
-						const durability = item.getComponent("minecraft:durability");
-						if (!durability) return false;
-						const remaining = durability.maxDurability - durability.damage;
-						if (condition === "ifItemDurabilityIs") return durability.damage === parseInt(v3);
-						if (condition === "ifItemDurabilityFull") return durability.damage === 0;
-						if (condition === "ifItemDurabilityIsHigher") return remaining > parseInt(v3);
-						if (condition === "ifItemDurabilityIsLower") return remaining < parseInt(v3);
-					}
+				const itemTypeId = normalizeItemTypeId(v2);
+				const expected = parseInt(v3, 10);
+				// The first stack of that item in each matching entity's inventory.
+				return resolveEntitiesBySelector(player, v1).some(entity => {
+					try {
+						const inv = entity.getComponent("inventory")?.container;
+						for (let i = 0; i < (inv?.size ?? 0); i++) {
+							const item = inv.getItem(i);
+							if (item?.typeId?.toLowerCase() !== itemTypeId) continue;
+							const durability = item.getComponent("minecraft:durability");
+							if (!durability) return false;
+							const remaining = durability.maxDurability - durability.damage;
+							if (condition === "ifItemDurabilityIs") return remaining === expected;
+							if (condition === "ifItemDurabilityFull") return durability.damage === 0;
+							if (condition === "ifItemDurabilityIsHigher") return remaining > expected;
+							return remaining < expected;
+						}
+					} catch { }
 					return false;
-				} catch { return false; }
+				});
 			}
 			default:
 				return false;

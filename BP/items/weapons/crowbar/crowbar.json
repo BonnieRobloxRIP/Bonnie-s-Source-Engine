@@ -1,5 +1,5 @@
 {
-	"format_version": "1.21.80",
+	"format_version": "1.26.50",
 	"minecraft:item": {
 		"description": {
 			"identifier": "brr:crowbar",
@@ -13,6 +13,7 @@
 			"minecraft:hand_equipped": true,
 			"minecraft:use_animation": "crossbow",
 			"minecraft:use_modifiers": {
+				"start_using": "always",
 				"use_duration": 72000,
 				"movement_modifier": 1
 			},
