@@ -18,7 +18,7 @@
             }
         },
         "components": {
-            "minecraft:geometry": "geometry.brr_bms_sign",
+            "minecraft:geometry": "geometry.brr_bms_sign_pad96",
             "minecraft:material_instances": {
                 "*": {
                     "texture": "brr_weathered_hazard_001",

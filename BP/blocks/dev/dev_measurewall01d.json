@@ -17,6 +17,12 @@
 			"minecraft:geometry": {
 				"identifier": "geometry.brr_fullblock",
 				"culling": "brr:cull_tool"
+			},
+			"minecraft:material_instances": {
+				"*": {
+					"render_method": "opaque",
+					"texture": "brr_dev_measurewall01d"
+				}
 			}
 		}
 	}

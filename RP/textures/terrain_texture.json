@@ -112,6 +112,9 @@
 		"brr_plush_niceninjapro": {
 			"textures": "textures/blocks/plushies/niceninjapro_plush"
 		},
+		"brr_plush_cookiescript": {
+			"textures": "textures/blocks/plushies/cookiescript_plush"
+		},
 		"brr_plush_brr_particle": {
 			"textures": "textures/particle/block_particles/plushies/bonnie_plush_particle"
 		},
@@ -162,6 +165,9 @@
 		},
 		"brr_plush_niceninjapro_particle": {
 			"textures": "textures/particle/block_particles/plushies/niceninjapro_plush_particle"
+		},
+		"brr_plush_cookiescript_particle": {
+			"textures": "textures/particle/block_particles/plushies/cookiescript_plush_particle"
 		},
 		"brr_bm_acunit01": {
 			"textures": "textures/blocks/bms_props/acunit01"

@@ -18,7 +18,7 @@
 			}
 		},
 		"components": {
-			"minecraft:geometry": "geometry.brr_bms_sign",
+			"minecraft:geometry": "geometry.brr_bms_sign_pad160",
 			"minecraft:material_instances": {
 				"*": {
 					"texture": "brr_notices_sign",
