@@ -1,0 +1,180 @@
+{
+	"format_version": "1.26.50",
+	"minecraft:block": {
+		"description": {
+			"identifier": "brr:dev_measurewall01d_slab",
+			"menu_category": {
+				"category": "construction",
+				"is_hidden_in_commands": false
+			},
+			"traits": {
+				"minecraft:placement_position": {
+					"enabled_states": [
+						"minecraft:vertical_half"
+					]
+				}
+			},
+			"states": {
+				"brr:double": [
+					false,
+					true
+				]
+			}
+		},
+		"components": {
+			"minecraft:destructible_by_explosion": false,
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 2
+			},
+			"minecraft:map_color": "#5b5b58",
+			"minecraft:material_instances": {
+				"*": {
+					"render_method": "opaque",
+					"texture": "brr_dev_measurewall01d"
+				}
+			},
+			"minecraft:geometry": {
+				"identifier": "geometry.brr_dev_slab",
+				"culling": "brr:cull_dev_slab",
+				"culling_shape": "brr:dev_slab_bottom",
+				"bone_visibility": {
+					"bottom": true,
+					"top": false
+				}
+			},
+			"minecraft:collision_box": {
+				"origin": [
+					-8,
+					0,
+					-8
+				],
+				"size": [
+					16,
+					8,
+					16
+				]
+			},
+			"minecraft:selection_box": {
+				"origin": [
+					-8,
+					0,
+					-8
+				],
+				"size": [
+					16,
+					8,
+					16
+				]
+			},
+			"minecraft:light_dampening": 0,
+			"minecraft:item_visual": {
+				"geometry": {
+					"identifier": "geometry.brr_dev_slab_item"
+				},
+				"material_instances": {
+					"*": {
+						"render_method": "opaque",
+						"texture": "brr_dev_measurewall01d"
+					}
+				}
+			}
+		},
+		"permutations": [
+			{
+				"condition": "!q.block_state('brr:double') && q.block_state('minecraft:vertical_half') == 'bottom'",
+				"components": {
+					"minecraft:geometry": {
+						"identifier": "geometry.brr_dev_slab",
+						"culling": "brr:cull_dev_slab",
+						"culling_shape": "brr:dev_slab_bottom",
+						"bone_visibility": {
+							"bottom": true,
+							"top": false
+						}
+					},
+					"minecraft:collision_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					},
+					"minecraft:light_dampening": 0
+				}
+			},
+			{
+				"condition": "!q.block_state('brr:double') && q.block_state('minecraft:vertical_half') == 'top'",
+				"components": {
+					"minecraft:geometry": {
+						"identifier": "geometry.brr_dev_slab",
+						"culling": "brr:cull_dev_slab",
+						"culling_shape": "brr:dev_slab_top",
+						"bone_visibility": {
+							"bottom": false,
+							"top": true
+						}
+					},
+					"minecraft:collision_box": {
+						"origin": [
+							-8,
+							8,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							-8,
+							8,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					},
+					"minecraft:light_dampening": 0
+				}
+			},
+			{
+				"condition": "q.block_state('brr:double')",
+				"components": {
+					"minecraft:geometry": {
+						"identifier": "geometry.brr_dev_slab",
+						"culling": "brr:cull_dev_slab",
+						"culling_shape": "minecraft:unit_cube",
+						"bone_visibility": {
+							"bottom": true,
+							"top": true
+						}
+					},
+					"minecraft:collision_box": true,
+					"minecraft:selection_box": true,
+					"minecraft:light_dampening": 15
+				}
+			}
+		]
+	}
+}

@@ -12,6 +12,7 @@ import "./handler/weapons/magnum357.js";
 import "./handler/weapons/spas12.js";
 import "./handler/interactables/chargers.js";
 import "./handler/interactables/plushies.js";
+import "./handler/core/slabs_and_stairs.js";
 import "./handler/npc/scientist.js";
 import "./handler/anticheat/index.js";
 import { cancelForbiddenBlockInteraction, loadPersistedPermissions } from "./handler/permissions.js";
@@ -34,7 +35,7 @@ import "./antiexploit.js";
 // subscriptions); this file registers the commands, loads saved settings and routes block clicks.
 
 const { world, system } = mc;
-const VERSION_TEXT = "§aBonnie's Source Engine Demo v0.5.2. Property of: BonnieRobloxRIP";
+const VERSION_TEXT = "§aBonnie's Source Engine Beta v0.1. Property of: BonnieRobloxRIP";
 
 // SECTION: Startup Commands & Persisted Toggles
 try {

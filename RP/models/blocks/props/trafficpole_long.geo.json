@@ -1,0 +1,663 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bm_trafficpole_long_part0",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "base",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.25,
+								0,
+								-1.25
+							],
+							"size": [
+								2.5,
+								16,
+								2.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										28,
+										0
+									],
+									"uv_size": [
+										2.5,
+										2.5
+									]
+								},
+								"down": {
+									"uv": [
+										24.5,
+										2.5
+									],
+									"uv_size": [
+										2.5,
+										2.5
+									]
+								}
+							}
+						},
+						{
+							"origin": [
+								-1.75,
+								0.5,
+								-1.75
+							],
+							"size": [
+								3.5,
+								2.5,
+								3.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										24.5,
+										0
+									],
+									"uv_size": [
+										3.5,
+										2.5
+									]
+								},
+								"south": {
+									"uv": [
+										24.5,
+										0
+									],
+									"uv_size": [
+										3.5,
+										2.5
+									]
+								},
+								"east": {
+									"uv": [
+										24.5,
+										0
+									],
+									"uv_size": [
+										3.5,
+										2.5
+									]
+								},
+								"west": {
+									"uv": [
+										24.5,
+										0
+									],
+									"uv_size": [
+										3.5,
+										2.5
+									]
+								},
+								"up": {
+									"uv": [
+										15,
+										0
+									],
+									"uv_size": [
+										3.5,
+										3.5
+									]
+								},
+								"down": {
+									"uv": [
+										15,
+										0
+									],
+									"uv_size": [
+										3.5,
+										3.5
+									]
+								}
+							}
+						},
+						{
+							"origin": [
+								-2.5,
+								0,
+								-2.5
+							],
+							"size": [
+								5,
+								0.5,
+								5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										18.5,
+										3
+									],
+									"uv_size": [
+										5,
+										0.5
+									]
+								},
+								"south": {
+									"uv": [
+										18.5,
+										3
+									],
+									"uv_size": [
+										5,
+										0.5
+									]
+								},
+								"east": {
+									"uv": [
+										18.5,
+										3
+									],
+									"uv_size": [
+										5,
+										0.5
+									]
+								},
+								"west": {
+									"uv": [
+										18.5,
+										3
+									],
+									"uv_size": [
+										5,
+										0.5
+									]
+								},
+								"up": {
+									"uv": [
+										10,
+										0
+									],
+									"uv_size": [
+										5,
+										5
+									]
+								},
+								"down": {
+									"uv": [
+										10,
+										0
+									],
+									"uv_size": [
+										5,
+										5
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.bm_trafficpole_long_part1",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "base",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.25,
+								0,
+								-1.25
+							],
+							"size": [
+								2.5,
+								16,
+								2.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										2.5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										2.5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										2.5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										2.5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										27,
+										2.5
+									],
+									"uv_size": [
+										2.5,
+										2.5
+									]
+								},
+								"down": {
+									"uv": [
+										28,
+										0
+									],
+									"uv_size": [
+										2.5,
+										2.5
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.bm_trafficpole_long_part2",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "base",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.25,
+								0,
+								-1.25
+							],
+							"size": [
+								2.5,
+								16,
+								2.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"east": {
+									"uv": [
+										5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										29.5,
+										2.5
+									],
+									"uv_size": [
+										2.5,
+										2.5
+									]
+								},
+								"down": {
+									"uv": [
+										27,
+										2.5
+									],
+									"uv_size": [
+										2.5,
+										2.5
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.bm_trafficpole_long_part3",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "base",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1.25,
+								0,
+								-1.25
+							],
+							"size": [
+								2.5,
+								15.5,
+								2.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										7.5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										15.5
+									]
+								},
+								"south": {
+									"uv": [
+										7.5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										15.5
+									]
+								},
+								"east": {
+									"uv": [
+										7.5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										15.5
+									]
+								},
+								"west": {
+									"uv": [
+										7.5,
+										0
+									],
+									"uv_size": [
+										2.5,
+										15.5
+									]
+								},
+								"up": {
+									"uv": [
+										27,
+										2.5
+									],
+									"uv_size": [
+										2.5,
+										2.5
+									]
+								},
+								"down": {
+									"uv": [
+										29.5,
+										2.5
+									],
+									"uv_size": [
+										2.5,
+										2.5
+									]
+								}
+							}
+						},
+						{
+							"origin": [
+								-1.5,
+								15.5,
+								-1.5
+							],
+							"size": [
+								3,
+								0.5,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										23.625,
+										3.125
+									],
+									"uv_size": [
+										0.25,
+										0.25
+									]
+								},
+								"south": {
+									"uv": [
+										23.625,
+										3.125
+									],
+									"uv_size": [
+										0.25,
+										0.25
+									]
+								},
+								"east": {
+									"uv": [
+										23.625,
+										3.125
+									],
+									"uv_size": [
+										0.25,
+										0.25
+									]
+								},
+								"west": {
+									"uv": [
+										23.625,
+										3.125
+									],
+									"uv_size": [
+										0.25,
+										0.25
+									]
+								},
+								"up": {
+									"uv": [
+										18.5,
+										0
+									],
+									"uv_size": [
+										3,
+										3
+									]
+								},
+								"down": {
+									"uv": [
+										21.5,
+										0
+									],
+									"uv_size": [
+										3,
+										3
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

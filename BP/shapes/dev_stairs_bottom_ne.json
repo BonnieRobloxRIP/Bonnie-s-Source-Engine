@@ -1,0 +1,36 @@
+{
+	"format_version": "1.21.110",
+	"minecraft:voxel_shape": {
+		"description": {
+			"identifier": "brr:dev_stairs_bottom_ne"
+		},
+		"shape": {
+			"boxes": [
+				{
+					"min": [
+						0,
+						0,
+						0
+					],
+					"max": [
+						16,
+						8,
+						16
+					]
+				},
+				{
+					"min": [
+						8,
+						8,
+						0
+					],
+					"max": [
+						16,
+						16,
+						8
+					]
+				}
+			]
+		}
+	}
+}

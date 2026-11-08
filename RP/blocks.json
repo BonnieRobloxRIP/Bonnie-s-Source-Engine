@@ -68,36 +68,76 @@
 		"sound": "stone"
 	},
 	"brr:dev_measuregeneric01": {
-		"sound": "stone",
-		"textures": "brr_dev_measuregeneric01"
+		"sound": "stone"
+	},
+	"brr:dev_measuregeneric01_slab": {
+		"sound": "stone"
+	},
+	"brr:dev_measuregeneric01_stairs": {
+		"sound": "stone"
 	},
 	"brr:dev_measuregeneric02": {
-		"sound": "stone",
-		"textures": "brr_dev_measuregeneric02"
+		"sound": "stone"
+	},
+	"brr:dev_measuregeneric02_slab": {
+		"sound": "stone"
+	},
+	"brr:dev_measuregeneric02_stairs": {
+		"sound": "stone"
 	},
 	"brr:dev_measuregeneric03": {
-		"sound": "stone",
-		"textures": "brr_dev_measuregeneric03"
+		"sound": "stone"
+	},
+	"brr:dev_measuregeneric03_slab": {
+		"sound": "stone"
+	},
+	"brr:dev_measuregeneric03_stairs": {
+		"sound": "stone"
 	},
 	"brr:dev_measuregeneric04": {
-		"sound": "stone",
-		"textures": "brr_dev_measuregeneric04"
+		"sound": "stone"
+	},
+	"brr:dev_measuregeneric04_slab": {
+		"sound": "stone"
+	},
+	"brr:dev_measuregeneric04_stairs": {
+		"sound": "stone"
 	},
 	"brr:dev_measurewall01a": {
-		"sound": "stone",
-		"textures": "brr_dev_measurewall01a"
+		"sound": "stone"
+	},
+	"brr:dev_measurewall01a_slab": {
+		"sound": "stone"
+	},
+	"brr:dev_measurewall01a_stairs": {
+		"sound": "stone"
 	},
 	"brr:dev_measurewall01b": {
-		"sound": "stone",
-		"textures": "brr_dev_measurewall01b"
+		"sound": "stone"
+	},
+	"brr:dev_measurewall01b_slab": {
+		"sound": "stone"
+	},
+	"brr:dev_measurewall01b_stairs": {
+		"sound": "stone"
 	},
 	"brr:dev_measurewall01c": {
-		"sound": "stone",
-		"textures": "brr_dev_measurewall01c"
+		"sound": "stone"
+	},
+	"brr:dev_measurewall01c_slab": {
+		"sound": "stone"
+	},
+	"brr:dev_measurewall01c_stairs": {
+		"sound": "stone"
 	},
 	"brr:dev_measurewall01d": {
-		"sound": "stone",
-		"textures": "brr_dev_measurewall01d"
+		"sound": "stone"
+	},
+	"brr:dev_measurewall01d_slab": {
+		"sound": "stone"
+	},
+	"brr:dev_measurewall01d_stairs": {
+		"sound": "stone"
 	},
 	"brr:data_blocklight": {
 		"sound": "stone"
@@ -203,5 +243,284 @@
 	},
 	"brr:bms_metalgrate_04": {
 		"sound": "iron"
+	},
+	"brr:bm_geigercounter": {
+		"sound": "stone"
+	},
+	"brr:bm_batteryradio": {
+		"sound": "stone"
+	},
+	"brr:bm_citizenradio": {
+		"sound": "stone"
+	},
+	"brr:bm_elevator_callbuttons": {
+		"sound": "stone"
+	},
+	"brr:bm_elevator_arrows": {
+		"sound": "stone"
+	},
+	"brr:bm_fireexit_sign_wall": {
+		"sound": "stone"
+	},
+	"brr:bm_fireexit_sign_ceiling": {
+		"sound": "stone"
+	},
+	"brr:bm_phone": {
+		"sound": "stone"
+	},
+	"brr:bm_handdryer": {
+		"sound": "stone"
+	},
+	"brr:bm_trafficbox": {
+		"sound": "stone"
+	},
+	"brr:bm_warninglight": {
+		"sound": "stone"
+	},
+	"brr:bm_loudspeaker": {
+		"sound": "stone"
+	},
+	"brr:bm_loudspeaker_round": {
+		"sound": "stone"
+	},
+	"brr:bm_walkietalkie": {
+		"sound": "stone"
+	},
+	"brr:bm_cablereel": {
+		"sound": "wood"
+	},
+	"brr:bm_crate": {
+		"sound": "wood"
+	},
+	"brr:bm_crate_small": {
+		"sound": "wood"
+	},
+	"brr:bm_supplycrate": {
+		"sound": "wood"
+	},
+	"brr:bm_trafficbox_yellow": {
+		"sound": "stone"
+	},
+	"brr:bm_trafficbox_green": {
+		"sound": "stone"
+	},
+	"brr:bm_warninglight_lit": {
+		"sound": "stone"
+	},
+	"brr:bm_warninglight_yellow": {
+		"sound": "stone"
+	},
+	"brr:bm_warninglight_yellow_lit": {
+		"sound": "stone"
+	},
+	"brr:bm_warninglight_green": {
+		"sound": "stone"
+	},
+	"brr:bm_warninglight_green_lit": {
+		"sound": "stone"
+	},
+	"brr:bm_warninglight_blue": {
+		"sound": "stone"
+	},
+	"brr:bm_warninglight_blue_lit": {
+		"sound": "stone"
+	},
+	"brr:bm_fireexit_sign_wall_toward": {
+		"sound": "stone"
+	},
+	"brr:bm_fireexit_sign_wall_away": {
+		"sound": "stone"
+	},
+	"brr:bm_fireexit_sign_wall_up": {
+		"sound": "stone"
+	},
+	"brr:bm_fireexit_sign_ceiling_right": {
+		"sound": "stone"
+	},
+	"brr:bm_fireexit_sign_ceiling_left": {
+		"sound": "stone"
+	},
+	"brr:bm_fireexit_sign_ceiling_up": {
+		"sound": "stone"
+	},
+	"brr:bm_toilet": {
+		"sound": "stone"
+	},
+	"brr:bm_slidecabinet": {
+		"sound": "stone"
+	},
+	"brr:bm_slidecabinet_open": {
+		"sound": "stone"
+	},
+	"brr:bm_ledindicator": {
+		"sound": "stone"
+	},
+	"brr:bm_trafficpole_short": {
+		"sound": "stone"
+	},
+	"brr:bm_trafficpole_medium": {
+		"sound": "stone"
+	},
+	"brr:bm_trafficpole_long": {
+		"sound": "stone"
+	},
+	"brr:bm_keypad": {
+		"sound": "stone"
+	},
+	"brr:bm_retinalscanner": {
+		"sound": "stone"
+	},
+	"brr:bm_chemjar": {
+		"sound": "glass"
+	},
+	"brr:bm_flask": {
+		"sound": "glass"
+	},
+	"brr:bm_labmonitor": {
+		"sound": "stone"
+	},
+	"brr:bm_robotarm": {
+		"sound": "stone"
+	},
+	"brr:bm_substancetray": {
+		"sound": "stone"
+	},
+	"brr:bm_substancetray_black": {
+		"sound": "stone"
+	},
+	"brr:bm_fireextinguisher": {
+		"sound": "metal"
+	},
+	"brr:bm_securitycamera": {
+		"sound": "metal"
+	},
+	"brr:bm_wallconsole": {
+		"sound": "metal"
+	},
+	"brr:bm_nuclearcontrolbox": {
+		"sound": "metal"
+	},
+	"brr:bm_wallclock": {
+		"sound": "metal"
+	},
+	"brr:bm_light_wall01": {
+		"sound": "metal"
+	},
+	"brr:bm_light_wall01_on": {
+		"sound": "metal"
+	},
+	"brr:bm_light_wall02": {
+		"sound": "metal"
+	},
+	"brr:bm_light_wall02_on": {
+		"sound": "metal"
+	},
+	"brr:bm_light_wall03": {
+		"sound": "metal"
+	},
+	"brr:bm_light_wall03_on": {
+		"sound": "metal"
+	},
+	"brr:bm_light_wall04": {
+		"sound": "metal"
+	},
+	"brr:bm_light_wall04_on": {
+		"sound": "metal"
+	},
+	"brr:bm_light_sconce02": {
+		"sound": "metal"
+	},
+	"brr:bm_light_sconce02_on": {
+		"sound": "metal"
+	},
+	"brr:bm_light_sconce03": {
+		"sound": "metal"
+	},
+	"brr:bm_light_sconce03_on": {
+		"sound": "metal"
+	},
+	"brr:bm_light_sleek01": {
+		"sound": "metal"
+	},
+	"brr:bm_light_sleek01_on": {
+		"sound": "metal"
+	},
+	"brr:bm_light_sleek02": {
+		"sound": "metal"
+	},
+	"brr:bm_light_sleek02_on": {
+		"sound": "metal"
+	},
+	"brr:bm_light_lowprofile01": {
+		"sound": "metal"
+	},
+	"brr:bm_light_lowprofile01_on": {
+		"sound": "metal"
+	},
+	"brr:bm_metalcrate": {
+		"sound": "metal"
+	},
+	"brr:bm_barrel_explosive": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_pipe": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_pipe_h": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_strap": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_strap_h": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_elbow_dr": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_elbow_dl": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_elbow_ul": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_elbow_ur": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_box2": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_box2_h": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_box3_d": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_box3_u": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_box3_l": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_box3_r": {
+		"sound": "metal"
+	},
+	"brr:bm_conduit_box4": {
+		"sound": "metal"
+	},
+	"brr:bm_valve": {
+		"sound": "metal"
+	},
+	"brr:bm_valvewheel": {
+		"sound": "metal"
+	},
+	"brr:bm_restroomsink": {
+		"sound": "stone"
+	},
+	"brr:bm_stackingchair": {
+		"sound": "stone"
+	},
+	"brr:bm_barrel_olive": {
+		"sound": "metal"
 	}
 }

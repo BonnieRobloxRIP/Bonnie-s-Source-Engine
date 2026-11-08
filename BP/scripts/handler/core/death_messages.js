@@ -1,5 +1,6 @@
 import { system, world } from "@minecraft/server";
 import { getDisplayName, namesNeedHiding, onNameSettingsChanged } from "./username_mode.js";
+import { isOversizedName } from "../anticheat/items.js";
 
 // SECTION: Death Messages
 // Vanilla death messages always print the real gamertag, which would undo hidden or randomized names
@@ -95,7 +96,9 @@ function nameOf(entity) {
 function renamedWeaponOf(entity) {
     try {
         const name = entity.getComponent("minecraft:equippable")?.getEquipment("Mainhand")?.nameTag;
-        return name ? { text: name } : undefined;
+        // Kill crashers: anti-cheat deletes these items, but never print one in the meantime.
+        if (!name || isOversizedName(name)) return undefined;
+        return { text: name };
     } catch {
         return undefined;
     }
