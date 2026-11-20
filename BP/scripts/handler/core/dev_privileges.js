@@ -10,12 +10,6 @@ const PlayerPermissionLevel = mc.PlayerPermissionLevel;
 const DEV_OP_CHECK_INTERVAL_TICKS = 100;
 const DEV_OP_SPAWN_DELAY_TICKS = 20;
 
-// @minecraft/server-admin only exists on Bedrock Dedicated Server; see antiexploit.js.
-let serverAdmin;
-import("@minecraft/server-admin").then((admin) => {
-    serverAdmin = admin;
-}).catch(() => { });
-
 function isOperator(player) {
     try {
         return player.playerPermissionLevel === PlayerPermissionLevel.Operator;
@@ -31,15 +25,7 @@ function escapeForCommand(rawName) {
 function ensureDevOperator(player) {
     if (!player?.isValid || !isNativeDevPlayer(player) || isOperator(player)) return;
 
-    // Dedicated server: real op through server-admin.
-    try {
-        if (typeof serverAdmin?.opPlayer === "function") {
-            serverAdmin.opPlayer(player);
-            if (isOperator(player)) return;
-        }
-    } catch { }
-
-    // Local worlds and Realms: vanilla /op from the script's command context.
+    // Vanilla /op from the script's command context.
     try {
         player.dimension.runCommand(`op "${escapeForCommand(player.name)}"`);
         if (isOperator(player)) return;

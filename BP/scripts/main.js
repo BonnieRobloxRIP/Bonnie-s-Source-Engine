@@ -28,7 +28,6 @@ import {
     handleEngineBlockInteract,
     handlePlayerSpawn
 } from "./engine/index.js";
-import "./antiexploit.js";
 
 // SECTION: Entry Point
 // Wires the systems together: every feature lives in its own module (imported above for its event

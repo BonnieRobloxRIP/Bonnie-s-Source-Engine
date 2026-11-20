@@ -143,7 +143,7 @@ system.runInterval(kickPlayersWithInvalidNames, 10);
 // SECTION: Bans
 // Local worlds have no /ban (only Realms and dedicated servers' allow lists do), so banned players
 // are kept in a world list and kicked whenever they join. Matched by player id (stable across name
-// changes) or by name. On a dedicated server antiexploit.js also turns them away before they load in.
+// changes) or by name.
 const BANS_PROPERTY = "brr_bans";
 const MAX_BANS_LENGTH = 30000; // dynamic property strings stop at 32767 characters
 const MAX_REASON_LENGTH = 100;
