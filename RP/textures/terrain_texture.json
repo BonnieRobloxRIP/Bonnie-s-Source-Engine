@@ -26,6 +26,9 @@
 		},
 		"brr_flood_wall_pad": {
 			"textures": "textures/blocks/wall_pad"
+		},
+		"brr_lift_floor": {
+			"textures": "textures/blocks/lift_floor"
 		}
 	}
 }

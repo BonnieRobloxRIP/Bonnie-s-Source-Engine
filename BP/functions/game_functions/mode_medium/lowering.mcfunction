@@ -1,7 +1,8 @@
 # = SCORES =
 execute if score start medium matches 1 run scoreboard players add lift medium 1
 execute if score start medium matches 1 run scoreboard players add alarm medium 1
-execute if score reset medium matches 1 run scoreboard players remove lift medium 1
+# only rewind during a real reset (game in progress), so a leftover reset score can't freeze the lift
+execute if score reset medium matches 1 if score start medium matches 2 run scoreboard players remove lift medium 1
 # = CORE EVENTS IN ORDER =
 # // - sound effects -
 execute if score lift medium matches 1 run playsound sfx.alarm.lift @a 0 91 53

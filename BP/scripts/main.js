@@ -2,7 +2,13 @@ import { system, world } from "@minecraft/server";
 import { registerFloodButtonSystems } from "./flood_button.js";
 import { registerFloodExitButtonSystems } from "./flood_exit_button.js";
 import { registerItemSystems } from "./items.js";
+import { registerLiftReadySystems } from "./lift_ready.js";
 import { registerLaserSystems } from "./laser_system.js";
+import { registerRoomSystems } from "./rooms/index.js";
+// Entity lift support (invisible floor that follows brr:mainelevator). Not used while the lifts are structure based.
+// import { registerLiftSystems } from "./lift.js";
+import { registerHudSystems } from "./hud.js";
+import { registerWinWidgets } from "./hud_widgets.js";
 // import { registerCraftalogBadgeSystems } from "./craftalog/badges.js";
 
 const DEAD_PLAYER_SOUND_IDS = [
@@ -36,7 +42,12 @@ function playDeadPlayerAmbianceForAllPlayers() {
 registerFloodButtonSystems();
 registerFloodExitButtonSystems();
 registerItemSystems();
+registerLiftReadySystems();
 registerLaserSystems();
+registerRoomSystems();
+// registerLiftSystems();
+registerHudSystems();
+registerWinWidgets();
 // registerCraftalogBadgeSystems();
 
 world.afterEvents.entityDie.subscribe((event) => {

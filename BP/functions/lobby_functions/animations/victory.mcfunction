@@ -142,7 +142,7 @@ execute if score lift lobby matches 210 as @a[x=-41, y=56, z=-20, dx=5, dy=70, d
 execute if score lift lobby matches 210 as @a[x=-41, y=56, z=-20, dx=5, dy=70, dz=4] at @s run tag @s remove endlesslift
 execute if score lift lobby matches 210 as @a[x=-41, y=56, z=-20, dx=5, dy=70, dz=4] at @s run tag @s remove endlesstunnel
 execute if score lift lobby matches 210 as @a[x=-41, y=56, z=-20, dx=5, dy=70, dz=4] at @s run tag @s remove endless_music
-execute if score lift lobby matches 210 as @a[x=-41, y=56, z=-20, dx=5, dy=70, dz=4] at @s run title @s times 20 80 20
+execute if score lift lobby matches 210 as @a[x=-41, y=56, z=-20, dx=5, dy=70, dz=4] at @s run scriptevent brr:hud times 20 80 20
 execute if score lift lobby matches 300 run tp @a[x=-41, y=56, z=-20, dx=5, dy=70, dz=4] -35 92 -18
 execute if score lift lobby matches 300 positioned -35 94 -18 run playsound metal_door.pushbar @a[r=15] ~ ~ ~ 1 0.5
 execute if score lift lobby matches 300 run structure load "lobby/animated:VictoryBarrier5" -36 92 -20

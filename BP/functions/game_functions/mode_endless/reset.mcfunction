@@ -1,122 +1,22 @@
+# = ROOMS =
+# Stop the room script for this mode (BP/scripts/rooms). The room entities are cleaned up below.
+scriptevent brr:rooms stop endless
 # = SCORES =
 # // lift
 scoreboard players reset lift endless
 scoreboard players set start endless 0
-scoreboard players set timer_s endless 20
+scoreboard players set timer_s endless 10
 scoreboard players set timer_ms endless 0
 scoreboard players reset p_game endless
 scoreboard players reset room_count endless
-scoreboard players reset difficulty endless
-scoreboard players reset room endless
 scoreboard players set reset endless 0
-scoreboard players reset variant endless
-scoreboard players reset loaded endless
 scoreboard players reset started endless
-# // buttons
-scoreboard players reset R1B1 endless
-scoreboard players reset R1B2 endless
-scoreboard players reset R1B3 endless
-scoreboard players reset R1B4 endless
-scoreboard players reset R1B5 endless
-scoreboard players reset R1B6 endless
-scoreboard players reset R1B7 endless
-scoreboard players reset R1B8 endless
-scoreboard players reset R1B9 endless
-scoreboard players reset R1B10 endless
-scoreboard players reset R2B1 endless
-scoreboard players reset R2B2 endless
-scoreboard players reset R2B3 endless
-scoreboard players reset R2B4 endless
-scoreboard players reset R2B5 endless
-scoreboard players reset R2B6 endless
-scoreboard players reset R2B7 endless
-scoreboard players reset R2B8 endless
-scoreboard players reset R2B9 endless
-scoreboard players reset R2B10 endless
-scoreboard players reset R3B1 endless
-scoreboard players reset R3B2 endless
-scoreboard players reset R3B3 endless
-scoreboard players reset R3B4 endless
-scoreboard players reset R3B5 endless
-scoreboard players reset R3B6 endless
-scoreboard players reset R3B7 endless
-scoreboard players reset R3B8 endless
-scoreboard players reset R3B9 endless
-scoreboard players reset R3B10 endless
-# // active buttons
-scoreboard players reset R1B1a endless
-scoreboard players reset R1B2a endless
-scoreboard players reset R1B3a endless
-scoreboard players reset R1B4a endless
-scoreboard players reset R1B5a endless
-scoreboard players reset R1B6a endless
-scoreboard players reset R1B7a endless
-scoreboard players reset R1B8a endless
-scoreboard players reset R1B9a endless
-scoreboard players reset R1B10a endless
-scoreboard players reset R2B1a endless
-scoreboard players reset R2B2a endless
-scoreboard players reset R2B3a endless
-scoreboard players reset R2B4a endless
-scoreboard players reset R2B5a endless
-scoreboard players reset R2B6a endless
-scoreboard players reset R2B7a endless
-scoreboard players reset R2B8a endless
-scoreboard players reset R2B9a endless
-scoreboard players reset R2B10a endless
-scoreboard players reset R3B1a endless
-scoreboard players reset R3B2a endless
-scoreboard players reset R3B3a endless
-scoreboard players reset R3B4a endless
-scoreboard players reset R3B5a endless
-scoreboard players reset R3B6a endless
-scoreboard players reset R3B7a endless
-scoreboard players reset R3B8a endless
-scoreboard players reset R3B9a endless
-scoreboard players reset R3B10a endless
-# // Random buttons
-scoreboard players reset R1B1P endless
-scoreboard players reset R2B1P endless
-scoreboard players reset R3B1P endless
-# // Extra time
-scoreboard players set endless_extended endless 0
-# // code buttons
-scoreboard players reset code_match endless
-scoreboard players reset R2Code endless
-scoreboard players reset R2Code1 endless
-scoreboard players reset R2C1 endless
-scoreboard players reset R2C2 endless
-scoreboard players reset R2C3 endless
-scoreboard players reset R2C4 endless
-scoreboard players reset R2C5 endless
-# // animations
-scoreboard players reset R2Animation endless
-scoreboard players reset R2Ambiance endless
-scoreboard players reset r3_animation endless
-# // random button position
-scoreboard players reset R1B1P endless
-scoreboard players reset R2B1P endless
-scoreboard players reset R3B1P endless
-# // flooding
-scoreboard players reset flood endless
-scoreboard players reset endless_timer_s endless
-scoreboard players reset endless_timer_ms endless
-# // exit tunnel
-scoreboard players reset p_tunnel endless
-scoreboard players reset endless_transition endless
-scoreboard players reset endless_end endless
-# // core
-scoreboard players reset core endless
-scoreboard players reset core1 endless
-scoreboard players reset core_laser1 endless
-scoreboard players reset core_laser2 endless
-scoreboard players reset core_laser3 endless
-scoreboard players reset core_laser4 endless
 # = STRUCTURES =
 # // unload
 execute as @e[type=brr:flood_room, name=endless] at @s run structure load "endless:EndlessRemove" ~-16 ~1 ~-16
 # // kill
 execute as @e[type=brr:flood_room, name=endless] at @s run kill @s
+kill @e[type=brr:flood_room, name=laser, tag=endless]
 # = PLAYERS =
 tp @a[tag=endless] 23 23 38
 tag @a[x=23, y=23, z=38, dx=0,dy=1,dz=0] remove endless

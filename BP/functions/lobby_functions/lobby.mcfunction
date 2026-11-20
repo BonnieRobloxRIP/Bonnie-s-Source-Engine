@@ -42,11 +42,11 @@ execute if score teaser1 lobby matches 525 run camera @a fov_set 110 4 in_quad
 execute if score teaser1 lobby matches 550 run structure load teaser1a -77 86 3 0_degrees none block_by_block 2
 execute if score teaser1 lobby matches 600 run camera @a fov_set 40 2 in_quad
 execute if score teaser1 lobby matches 630 run camera @a fade time 0 10 0 color 0 0 0
-execute if score teaser1 lobby matches 630 run title @a times 100 100 100
-execute if score teaser1 lobby matches 640 run title @a title §5§lEXTREME MODE
-execute if score teaser1 lobby matches 690 run title @a subtitle §5§lis coming.
+execute if score teaser1 lobby matches 630 as @a run scriptevent brr:hud times 100 100 100
+execute if score teaser1 lobby matches 640 as @a run scriptevent brr:hud title §5§lEXTREME MODE
+execute if score teaser1 lobby matches 690 as @a run scriptevent brr:hud subtitle §5§lis coming.
 execute if score teaser1 lobby matches 690 run camera @a fade time 0 10 0 color 0 0 0
-execute if score teaser1 lobby matches 780 run title @a title §8§lsoon :>
+execute if score teaser1 lobby matches 780 as @a run scriptevent brr:hud title §8§lsoon :>
 execute if score teaser1 lobby matches 780 run camera @a fade time 0 10 0 color 0 0 0
 execute if score teaser1 lobby matches 850 run camera @a fade time 0 10 0 color 0 0 0
 execute if score teaser1 lobby matches 950 run camera @a fade time 0 10 0 color 0 0 0

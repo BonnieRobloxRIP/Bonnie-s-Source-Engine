@@ -1,7 +1,8 @@
 # = SCORES =
 execute if score start hard matches 1 run scoreboard players add lift hard 1
 execute if score start hard matches 1 unless score lift hard matches 320..550 run scoreboard players add alarm hard 1
-execute if score reset hard matches 1 run scoreboard players remove lift hard 1
+# only rewind during a real reset (game in progress), so a leftover reset score can't freeze the lift
+execute if score reset hard matches 1 if score start hard matches 2 run scoreboard players remove lift hard 1
 # = CORE EVENTS IN ORDER =
 # // - sound effects -
 execute if score lift hard matches 1 run playsound sfx.alarm.hard @a -8 91 52

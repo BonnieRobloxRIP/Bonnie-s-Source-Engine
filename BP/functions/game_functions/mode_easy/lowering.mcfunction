@@ -1,27 +1,18 @@
-# = SCORES =
 execute if score start easy matches 1 run scoreboard players add lift easy 1
 execute if score start easy matches 1 run scoreboard players add alarm easy 1
-execute if score reset easy matches 1 run scoreboard players remove lift easy 1
-# = CORE EVENTS IN ORDER =
-# // - sound effects -
+execute if score reset easy matches 1 if score start easy matches 2 run scoreboard players remove lift easy 1
 execute if score lift easy matches 1 run playsound sfx.alarm.lift @a 8 91 52
 execute if score lift easy matches 1 run gamemode a @a[tag=easylift]
-# // silo door open
 execute if score lift easy matches 350 run playsound silo_door.open @a 8 -34 52
 execute if score lift easy matches 410 run stopsound @a silo_door.open
 execute if score lift easy matches 410 run playsound silo_door.opened @a 8 -35 52
-# // silo door close
 execute if score lift easy matches 644 run playsound silo_door.open @a 8 -34 52
 execute if score lift easy matches 704 run stopsound @a silo_door.open
 execute if score lift easy matches 704 run playsound silo_door.opened @a 8 -35 52
-# // - lift door -
-# // shut the main door (as if it matters lol, they can jump over it)
 execute if score lift easy matches 1 run structure load "easy:EasyLiftDoor2" 6 89 49
 execute if score lift easy matches 15 run structure load "easy:EasyLiftDoor1" 6 89 49
-# // open the door after the lift has risen again
 execute if score lift easy matches 940 run structure load "easy:EasyLiftDoor2" 6 89 49
 execute if score lift easy matches 955 run structure load "easy:EasyLiftDoor3" 6 89 49
-# // lower the elevator
 execute if score lift easy matches 25 positioned 8 89 52 run playsound sfx.elevator.lift @a[r=20] ~ ~ ~
 execute if score lift easy matches 25 run playsound sfx.elevator.move @a[tag=easylift]
 execute if score lift easy matches 25 run structure load "lobby/elevators:MainElevator" 6 86 50
@@ -90,7 +81,6 @@ execute if score lift easy matches 255 run structure load "lobby/elevators:MainE
 execute if score lift easy matches 257 run structure load "lobby/elevators:MainElevator" 6 23 50
 execute if score lift easy matches 259 run structure load "lobby/elevators:MainElevator" 6 22 50
 execute if score lift easy matches 261 run structure load "lobby/elevators:MainElevator" 6 21 50
-# // - entering the gamemode shaft
 execute if score lift easy matches 263 run function game_functions/mode_easy/decider
 execute if score lift easy matches 263 run structure load "lobby/elevators:MainElevator" 6 20 50
 execute if score lift easy matches 265 run structure load "lobby/elevators:MainElevator" 6 19 50
@@ -148,7 +138,6 @@ execute if score lift easy matches 435 run structure load "lobby/elevators:MainE
 execute if score lift easy matches 440 run structure load "lobby/elevators:MainElevator" 6 -33 50
 execute if score lift easy matches 445 run structure load "lobby/elevators:MainElevator" 6 -34 50
 execute if score lift easy matches 450 run structure load "lobby/elevators:MainElevator" 6 -35 50
-# // Entering Room 1
 execute if score lift easy matches 329 run kill @a[x=5.5, y=23, z=49.5, dx=5, dy=68, dz=5, tag=easy]
 execute if score lift easy matches 329 run structure load "lobby:LiftBorderPrecaution" 5 -59 49
 execute if score lift easy matches 455 run structure load "lobby/elevators:MainElevator" 6 -36 50
@@ -163,7 +152,6 @@ execute if score lift easy matches 505 run structure load "lobby/elevators:MainE
 execute if score lift easy matches 520 run structure load "lobby/elevators:MainElevator" 6 -45 50
 execute if score lift easy matches 520 run playsound sfx.elevator.stop @a[tag=easy]
 execute if score lift easy matches 520 run stopsound @a[tag=easy] sfx.elevator.move
-# // Release players
 execute if score lift easy matches 530 run playsound sfx.doors.liftsepparate @a 8 -49 52
 execute if score lift easy matches 530 run structure load "lobby/elevators:MainElevatorOpen1" 6 -49 50
 execute if score lift easy matches 532 run structure load "lobby/elevators:MainElevatorOpen2" 6 -49 50
@@ -171,9 +159,7 @@ execute if score lift easy matches 534 run structure load "lobby/elevators:MainE
 execute if score lift easy matches 538 run structure load "lobby/elevators:MainElevatorOpen2" 6 -49 50
 execute if score lift easy matches 540 run structure load "lobby/elevators:MainElevatorOpen3" 6 -49 50
 execute if score lift easy matches 540 run kill @a[x=5.5, y=-36, z=49.5, dx=5, dy=68, dz=5, tag=easy]
-# // begin game
 execute if score lift easy matches 540 run scoreboard players set started easy 1
-# // Raise elevator back to the surface
 execute if score lift easy matches 550 run structure load "lobby/elevators:MainElevatorOpen3" 6 -48 50
 execute if score lift easy matches 560 run structure load "lobby/elevators:MainElevatorOpen3" 6 -47 50
 execute if score lift easy matches 565 run structure load "lobby:LiftBorderRemove" 5 -59 49
@@ -189,7 +175,6 @@ execute if score lift easy matches 620 run structure load "lobby/elevators:MainE
 execute if score lift easy matches 625 run structure load "lobby/elevators:MainElevatorOpen3" 6 -37 50
 execute if score lift easy matches 630 run structure load "lobby/elevators:MainElevatorOpen3" 6 -36 50
 execute if score lift easy matches 635 run structure load "lobby/elevators:MainElevatorOpen3" 6 -35 50
-# // Exiting Room 1
 execute if score lift easy matches 640 run structure load "lobby/elevators:MainElevatorOpen3" 6 -35 50
 execute if score lift easy matches 644 run structure load "lobby/elevators:MainElevatorOpen3" 6 -34 50
 execute if score lift easy matches 648 run structure load "lobby/elevators:MainElevatorOpen3" 6 -33 50
@@ -246,7 +231,6 @@ execute if score lift easy matches 752 run structure load "lobby/elevators:MainE
 execute if score lift easy matches 753 run structure load "lobby/elevators:MainElevatorOpen3" 6 18 50
 execute if score lift easy matches 754 run structure load "lobby/elevators:MainElevatorOpen3" 6 19 50
 execute if score lift easy matches 755 run structure load "lobby/elevators:MainElevatorOpen3" 6 20 50
-# // Exiting Gamemode Shaft
 execute if score lift easy matches 756 run structure load "lobby/elevators:MainElevatorOpen3" 6 21 50
 execute if score lift easy matches 757 run structure load "lobby/elevators:MainElevatorOpen3" 6 22 50
 execute if score lift easy matches 758 run structure load "lobby/elevators:MainElevatorOpen3" 6 23 50
@@ -310,29 +294,22 @@ execute if score lift easy matches 891 run structure load "lobby/elevators:MainE
 execute if score lift easy matches 898 run structure load "lobby/elevators:MainElevatorOpen3" 6 81 50
 execute if score lift easy matches 904 run structure load "lobby/elevators:MainElevatorOpen3" 6 82 50
 execute if score lift easy matches 913 run structure load "lobby/elevators:MainElevatorOpen3" 6 83 50
-# // Close the Elevator
 execute if score lift easy matches 920 run structure load "lobby/elevators:MainElevatorOpen2" 6 83 50
 execute if score lift easy matches 930 run structure load "lobby/elevators:MainElevatorOpen1" 6 83 50
 execute if score lift easy matches 940 run structure load "lobby/elevators:MainElevator" 6 87 50
-# = OTHER THINGS =
-# // Silo door open
 execute if score lift easy matches 350 run structure load "lobby/doors:SiloDoor2" 6 -36 47
 execute if score lift easy matches 380 run structure load "lobby/doors:SiloDoor3" 6 -36 47
 execute if score lift easy matches 410 run structure load "lobby/doors:SiloDoor4" 6 -36 47
-# // Silo door close
 execute if score lift easy matches 644 run structure load "lobby/doors:SiloDoor3" 6 -36 47
 execute if score lift easy matches 674 run structure load "lobby/doors:SiloDoor2" 6 -36 47
 execute if score lift easy matches 704 run structure load "lobby/doors:SiloDoor1" 6 -36 47
-# = ALARM EFFECT =
 execute if score alarm easy matches 1 run structure load "easy:EasyStateLower1" 5 93 49
 execute if score alarm easy matches 4 run structure load "easy:EasyStateLower2" 5 93 49
 execute if score alarm easy matches 7 run structure load "easy:EasyStateLower3" 5 93 49
 execute if score alarm easy matches 10 run structure load "easy:EasyStateLower4" 5 93 49
 execute if score alarm easy matches 13.. run scoreboard players set alarm easy 0
-# // change elevator status
 execute if score lift easy matches 955 run scoreboard players set start easy 2
 execute if score lift easy matches 955 run structure load "easy:EasyStateBusy" 5 93 49
 execute if score lift easy matches 955 if score p_game easy matches 0 run scoreboard players set reset easy 1
 execute if score lift easy matches 955 run scoreboard players set lift easy 0
-# = RESET =
 execute if score reset easy matches 1 if score p_game easy matches 0 if score lift easy matches -40 if score start easy matches 2 run function game_functions/mode_easy/reset

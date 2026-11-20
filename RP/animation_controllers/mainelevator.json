@@ -1,0 +1,46 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.mainelevator.doors": {
+			"initial_state": "closed",
+			"states": {
+				"closed": {
+					"transitions": [
+						{
+							"open": "query.property('brr:doors') == 'open'"
+						},
+						{
+							"closing": "query.property('brr:doors') == 'closing'"
+						}
+					]
+				},
+				"open": {
+					"animations": [
+						"me_open"
+					],
+					"transitions": [
+						{
+							"closing": "query.property('brr:doors') == 'closing'"
+						},
+						{
+							"closed": "query.property('brr:doors') == 'closed'"
+						}
+					]
+				},
+				"closing": {
+					"animations": [
+						"me_close"
+					],
+					"transitions": [
+						{
+							"open": "query.property('brr:doors') == 'open'"
+						},
+						{
+							"closed": "query.property('brr:doors') == 'closed'"
+						}
+					]
+				}
+			}
+		}
+	}
+}

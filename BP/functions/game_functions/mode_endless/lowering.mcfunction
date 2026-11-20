@@ -1,6 +1,7 @@
 # = SCORES =
 execute if score start endless matches 1 run scoreboard players add lift endless 1
-execute if score reset endless matches 1 run scoreboard players remove lift endless 1
+# only rewind during a real reset (game in progress), so a leftover reset score can't freeze the lift
+execute if score reset endless matches 1 if score start endless matches 2 run scoreboard players remove lift endless 1
 # = CORE EVENTS IN ORDER =
 # = Players =
 execute as @a[tag=endlesslift] at @s run tag @s add endless
@@ -25,5 +26,5 @@ execute if score reset endless matches 1 if score lift endless matches -30 run f
 # // hmmmm
 execute if score lift endless matches 30 run scoreboard players set started endless 1
 # // change elevator status
-execute if score lift endless matches 31.. if score start endless matches 1 run function game_functions/mode_endless/reset_room
+execute if score lift endless matches 31.. if score start endless matches 1 run scriptevent brr:rooms start endless
 execute if score lift endless matches 31.. run scoreboard players set start endless 2

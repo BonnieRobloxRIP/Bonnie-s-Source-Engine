@@ -15,5 +15,8 @@
 	},
 	"brr:flood_wall_pad": {
 		"sound": "stone"
+	},
+	"brr:lift_floor": {
+		"sound": "stone"
 	}
 }

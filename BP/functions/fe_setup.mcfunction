@@ -46,6 +46,8 @@ scoreboard objectives add easy dummy
 scoreboard objectives add medium dummy
 scoreboard objectives add hard dummy
 scoreboard objectives add extreme dummy
+scoreboard objectives add extremechallenge1 dummy
+scoreboard objectives add extremechallenge2 dummy
 scoreboard objectives add training dummy
 scoreboard objectives add endless dummy
 # // player scores

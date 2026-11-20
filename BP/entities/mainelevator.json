@@ -1,0 +1,75 @@
+{
+	"format_version": "1.21.80",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "brr:mainelevator",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false,
+			"properties": {
+				"brr:doors": {
+					"type": "enum",
+					"values": [
+						"closed",
+						"open",
+						"closing"
+					],
+					"default": "closed",
+					"client_sync": true
+				}
+			}
+		},
+		"component_groups": {
+			"brr:despawn": {
+				"minecraft:instant_despawn": {}
+			}
+		},
+		"components": {
+			"minecraft:collision_box": {
+				"height": 1,
+				"width": 5
+			},
+			"minecraft:physics": {
+				"has_collision": false,
+				"has_gravity": false
+			},
+			"minecraft:knockback_resistance": {
+				"value": 255
+			},
+			"minecraft:nameable": {
+				"allow_name_tag_renaming": true,
+				"always_show": false
+			},
+			"minecraft:damage_sensor": {
+				"triggers": {
+					"cause": "all",
+					"deals_damage": "no"
+				}
+			}
+		},
+		"events": {
+			"brr:open": {
+				"set_property": {
+					"brr:doors": "open"
+				}
+			},
+			"brr:close": {
+				"set_property": {
+					"brr:doors": "closing"
+				}
+			},
+			"brr:closed": {
+				"set_property": {
+					"brr:doors": "closed"
+				}
+			},
+			"brr:despawn": {
+				"add": {
+					"component_groups": [
+						"brr:despawn"
+					]
+				}
+			}
+		}
+	}
+}

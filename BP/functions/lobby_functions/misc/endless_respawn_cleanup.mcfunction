@@ -38,6 +38,6 @@ tag @s remove endless
 tag @s remove endlesslift
 tag @s remove endlesstunnel
 tag @s remove endless_music
-title @s times 20 80 20
+scriptevent brr:hud times 20 80 20
 effect @s clear
 clear @s[tag=!easylift2, tag=!mediumlift2, tag=!hardlift2] brr:fe_spectate

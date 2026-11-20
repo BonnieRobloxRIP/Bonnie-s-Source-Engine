@@ -1,0 +1,37 @@
+{
+	"format_version": "1.20.80",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:mainelevator",
+			"materials": {
+				"default": "entity_alphablend"
+			},
+			"textures": {
+				"default": "textures/entity/MainElevator"
+			},
+			"geometry": {
+				"default": "geometry.mainelevator"
+			},
+			"render_controllers": [
+				"controller.render.mainelevator"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			},
+			"animations": {
+				"me_close": "animation.MainElevator.close",
+				"me_open": "animation.MainElevator.open",
+				"me_monorail": "animation.MainElevator.monorail_loop",
+				"me_reattach": "animation.MainElevator.reattach",
+				"me_deattach": "animation.MainElevator.deattach",
+				"doors": "controller.animation.mainelevator.doors"
+			},
+			"scripts": {
+				"animate": [
+					"doors"
+				]
+			}
+		}
+	}
+}

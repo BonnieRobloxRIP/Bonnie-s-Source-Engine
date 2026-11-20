@@ -3,6 +3,9 @@
 		"brr_fe_spectate": {
 			"textures": "textures/items/spectate"
 		},
+		"brr_fe_ready": {
+			"textures": "textures/items/ready"
+		},
 		"brr_soda_red": {
 			"textures": "textures/items/red_soda"
 		},

@@ -571,6 +571,9 @@ function processLaser(laser, tick) {
 		renderBeam(laser.dimension, origin, oppositeDirection, tick);
 	}
 
+	// A hidden laser is switched off: it must not hurt anyone either.
+	if (!shouldRenderParticles) return;
+
 	let targets = [];
 	try {
 		targets = laser.dimension.getEntities({

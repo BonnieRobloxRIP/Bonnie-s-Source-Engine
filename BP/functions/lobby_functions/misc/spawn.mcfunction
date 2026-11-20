@@ -39,7 +39,7 @@ execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove endles
 execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove endlesslift
 execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove endlesstunnel
 execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run tag @s remove endless_music
-execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run title @s times 20 80 20
+execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run scriptevent brr:hud times 20 80 20
 # = ITEMS =
 #execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run clear @s
 execute as @a[x=0, y=86, z=-16, dx=0, dy=0, dz=0] at @s run effect @s clear
