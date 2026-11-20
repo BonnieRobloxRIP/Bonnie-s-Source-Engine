@@ -92,8 +92,14 @@ find the way out and crack the exit code before the water gets them. Author: Bon
   RP `3a601308-...`, project folder `..\Bonnie's Source Engine`). It provides props, anti-cheat, the chat system,
   emojis/glyphs and dev tools. Before building something new, check how BSE (or Horrific Housing, which shares this
   HUD's design) already does it and reuse the concept.
-- Git repo at the project root (branch `main`, created 2026-11-17, like HH's). **No commits yet**, so nothing is
-  backed up by git until the user asks for a first commit.
+- **Git / GitHub:** the project lives on the **`fe` branch** of `https://github.com/BonnieRobloxRIP/Bonnie-s-Source-Engine`
+  (remote `origin`; that repo has one branch per map: `fe`, `hh`, `rch`, `main` for BSE...). Local branch `fe` tracks
+  `origin/fe`. Commit as `BonnieRobloxRIP` (set in this repo's config, matching the earlier commits). The branch also
+  holds files that are **not in the project folder**: `README.md`, `LICENSE`, `Flood Escape.mcaddon`,
+  `Flood Escape Music.mcaddon`, `Flood Escape.brproject` and three `.mcworld` files. They show as "deleted" in
+  `git status`; **never `git add -A`** (it would delete them from the branch). Stage the project folders by name.
+- Lift structures `lobby/elevators:MainElevator2/3, MainElevatorFalls/Falls1, MainElevatorOpen1/2/3` had gone missing
+  from the project (still used ~370 times by the lowering functions) and were restored from the fe branch on 2026-11-20.
 
 ## Skills to use (Bedrock-specific, made by the user)
 
@@ -232,5 +238,7 @@ The new HUD (2026-11-17) is working well in the user's own testing.
   regenerated). Title steps are now letters, the HUD root is static, toast text is clipped, and there are per-player widgets.
   Fixed `%sm` in the bedrock-ui-preview renderer (it used the parent's size instead of the largest sibling's).
 - 2026-11-17: Lift start timer 20 s -> 10 s; new Ready item + `lift_ready.js` (launch at 60% ready). Not tested in game yet.
+- 2026-11-20: Pushed everything to GitHub (`fe` branch, commit 44f85c9) on top of the September history; restored the
+  7 missing lift structures first.
 - 2026-11-17: Removed bridge. leftovers: `.bridge/`, `config.json`, `deno.json`, `builds/` (old releases moved to
   `archive/`), the empty `BP/.git`, and the manifests' `generated_with`. New HH-style `.gitignore`, `git init` at the root.
