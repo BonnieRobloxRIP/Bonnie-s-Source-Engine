@@ -151,6 +151,22 @@ const ENTITY_CLASSES = {
         inputs: ["RefireTime", "ResetTimer", "FireTimer"],
         particle: "brr:logic_timer",
         defaults: { startDisabled: true }
+    },
+
+    // A track node for trains (engine/systems/tracks.js). It draws itself as a small cube, so it needs no icon particle.
+    "brr:path_track_block": {
+        kind: POINT,
+        outputs: ["OnPass", "OnTeleport"],
+        inputs: ["EnablePath", "DisablePath", "TogglePath", "EnableAlternatePath", "DisableAlternatePath", "ToggleAlternatePath"],
+        defaults: { target: "", altTarget: "", speed: "0", orientation: "travel", yaw: "0", stopHere: false, teleportHere: false, passOnce: false, branchOn: false }
+    },
+    // A train: moves the platform chosen with the Platform Tool along path_track nodes (engine/systems/platforms.js).
+    "brr:func_tracktrain_block": {
+        kind: POINT,
+        outputs: ["OnStart", "OnNext", "OnStop", "OnArrivedAtDestinationNode"],
+        inputs: ["StartForward", "StartBackward", "Stop", "Resume", "Reverse", "SetSpeed", "MoveToPathNode", "TeleportToPathNode"],
+        particle: "brr:func_tracktrain",
+        defaults: { firstStop: "", speed: "4", motion: "smooth", turns: true, atEnd: "stop", startMoving: false }
     }
 };
 

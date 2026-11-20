@@ -4,6 +4,9 @@
 	"resource_pack_name": "Bonnie's Source Engine",
 	"texture_name": "atlas.terrain",
 	"texture_data": {
+		"brr_path_track": {
+			"textures": "textures/blocks/game_tools/path_track"
+		},
 		"brr_dev_measuregeneric01": {
 			"textures": "textures/blocks/dev/dev_measuregeneric01"
 		},
@@ -2625,6 +2628,2244 @@
 		},
 		"brr_bm_barrel_olive_particle": {
 			"textures": "textures/particle/block_particles/bms_props/barrel_olive_particle"
+		},
+		"brr_bm_cagelight01": {
+			"textures": "textures/blocks/bms_props/cagelight01"
+		},
+		"brr_bm_cagelight01_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight01_particle"
+		},
+		"brr_bm_cagelight01_on": {
+			"textures": "textures/blocks/bms_props/cagelight01_on"
+		},
+		"brr_bm_cagelight01_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight01_on_particle"
+		},
+		"brr_bm_cagelight01_red": {
+			"textures": "textures/blocks/bms_props/cagelight01_red"
+		},
+		"brr_bm_cagelight01_red_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight01_red_particle"
+		},
+		"brr_bm_cagelight01_red_on": {
+			"textures": "textures/blocks/bms_props/cagelight01_red_on"
+		},
+		"brr_bm_cagelight01_red_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight01_red_on_particle"
+		},
+		"brr_bm_cagelight02": {
+			"textures": "textures/blocks/bms_props/cagelight02"
+		},
+		"brr_bm_cagelight02_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight02_particle"
+		},
+		"brr_bm_cagelight02_on": {
+			"textures": "textures/blocks/bms_props/cagelight02_on"
+		},
+		"brr_bm_cagelight02_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight02_on_particle"
+		},
+		"brr_bm_cagelight02_red": {
+			"textures": "textures/blocks/bms_props/cagelight02_red"
+		},
+		"brr_bm_cagelight02_red_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight02_red_particle"
+		},
+		"brr_bm_cagelight02_red_on": {
+			"textures": "textures/blocks/bms_props/cagelight02_red_on"
+		},
+		"brr_bm_cagelight02_red_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight02_red_on_particle"
+		},
+		"brr_bm_cagelight03a": {
+			"textures": "textures/blocks/bms_props/cagelight03a"
+		},
+		"brr_bm_cagelight03a_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03a_particle"
+		},
+		"brr_bm_cagelight03a_on": {
+			"textures": "textures/blocks/bms_props/cagelight03a_on"
+		},
+		"brr_bm_cagelight03a_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03a_on_particle"
+		},
+		"brr_bm_cagelight03a_white": {
+			"textures": "textures/blocks/bms_props/cagelight03a_white"
+		},
+		"brr_bm_cagelight03a_white_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03a_white_particle"
+		},
+		"brr_bm_cagelight03a_white_on": {
+			"textures": "textures/blocks/bms_props/cagelight03a_white_on"
+		},
+		"brr_bm_cagelight03a_white_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03a_white_on_particle"
+		},
+		"brr_bm_cagelight03a_yellow": {
+			"textures": "textures/blocks/bms_props/cagelight03a_yellow"
+		},
+		"brr_bm_cagelight03a_yellow_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03a_yellow_particle"
+		},
+		"brr_bm_cagelight03a_yellow_on": {
+			"textures": "textures/blocks/bms_props/cagelight03a_yellow_on"
+		},
+		"brr_bm_cagelight03a_yellow_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03a_yellow_on_particle"
+		},
+		"brr_bm_cagelight03b": {
+			"textures": "textures/blocks/bms_props/cagelight03b"
+		},
+		"brr_bm_cagelight03b_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03b_particle"
+		},
+		"brr_bm_cagelight03b_on": {
+			"textures": "textures/blocks/bms_props/cagelight03b_on"
+		},
+		"brr_bm_cagelight03b_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03b_on_particle"
+		},
+		"brr_bm_cagelight03b_white": {
+			"textures": "textures/blocks/bms_props/cagelight03b_white"
+		},
+		"brr_bm_cagelight03b_white_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03b_white_particle"
+		},
+		"brr_bm_cagelight03b_white_on": {
+			"textures": "textures/blocks/bms_props/cagelight03b_white_on"
+		},
+		"brr_bm_cagelight03b_white_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03b_white_on_particle"
+		},
+		"brr_bm_cagelight03b_yellow": {
+			"textures": "textures/blocks/bms_props/cagelight03b_yellow"
+		},
+		"brr_bm_cagelight03b_yellow_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03b_yellow_particle"
+		},
+		"brr_bm_cagelight03b_yellow_on": {
+			"textures": "textures/blocks/bms_props/cagelight03b_yellow_on"
+		},
+		"brr_bm_cagelight03b_yellow_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cagelight03b_yellow_on_particle"
+		},
+		"brr_bm_floodlight": {
+			"textures": "textures/blocks/bms_props/floodlight"
+		},
+		"brr_bm_floodlight_particle": {
+			"textures": "textures/particle/block_particles/bms_props/floodlight_particle"
+		},
+		"brr_bm_floodlight_on": {
+			"textures": "textures/blocks/bms_props/floodlight_on"
+		},
+		"brr_bm_floodlight_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/floodlight_on_particle"
+		},
+		"brr_bm_lowbay": {
+			"textures": "textures/blocks/bms_props/lowbay"
+		},
+		"brr_bm_lowbay_particle": {
+			"textures": "textures/particle/block_particles/bms_props/lowbay_particle"
+		},
+		"brr_bm_lowbay_on": {
+			"textures": "textures/blocks/bms_props/lowbay_on"
+		},
+		"brr_bm_lowbay_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/lowbay_on_particle"
+		},
+		"brr_bm_powerbox": {
+			"textures": "textures/blocks/bms_props/powerbox"
+		},
+		"brr_bm_powerbox_particle": {
+			"textures": "textures/particle/block_particles/bms_props/powerbox_particle"
+		},
+		"brr_bm_blastdoorswitch": {
+			"textures": "textures/blocks/bms_props/blastdoorswitch"
+		},
+		"brr_bm_blastdoorswitch_particle": {
+			"textures": "textures/particle/block_particles/bms_props/blastdoorswitch_particle"
+		},
+		"brr_bm_cardboardbox01a": {
+			"textures": "textures/blocks/bms_props/cardboardbox01a"
+		},
+		"brr_bm_cardboardbox01a_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cardboardbox01a_particle"
+		},
+		"brr_bm_cardboardbox01b": {
+			"textures": "textures/blocks/bms_props/cardboardbox01b"
+		},
+		"brr_bm_cardboardbox01b_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cardboardbox01b_particle"
+		},
+		"brr_bm_cardboardbox02": {
+			"textures": "textures/blocks/bms_props/cardboardbox02"
+		},
+		"brr_bm_cardboardbox02_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cardboardbox02_particle"
+		},
+		"brr_bm_cardboardbox03": {
+			"textures": "textures/blocks/bms_props/cardboardbox03"
+		},
+		"brr_bm_cardboardbox03_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cardboardbox03_particle"
+		},
+		"brr_bm_cardboardbox04": {
+			"textures": "textures/blocks/bms_props/cardboardbox04"
+		},
+		"brr_bm_cardboardbox04_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cardboardbox04_particle"
+		},
+		"brr_bm_cardboardbox06": {
+			"textures": "textures/blocks/bms_props/cardboardbox06"
+		},
+		"brr_bm_cardboardbox06_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cardboardbox06_particle"
+		},
+		"brr_bm_cardboardbox07": {
+			"textures": "textures/blocks/bms_props/cardboardbox07"
+		},
+		"brr_bm_cardboardbox07_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cardboardbox07_particle"
+		},
+		"brr_bm_cardboardbox08a": {
+			"textures": "textures/blocks/bms_props/cardboardbox08a"
+		},
+		"brr_bm_cardboardbox08a_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cardboardbox08a_particle"
+		},
+		"brr_bm_mopbucket": {
+			"textures": "textures/blocks/bms_props/mopbucket"
+		},
+		"brr_bm_mopbucket_particle": {
+			"textures": "textures/particle/block_particles/bms_props/mopbucket_particle"
+		},
+		"brr_bm_wetfloorsign": {
+			"textures": "textures/blocks/bms_props/wetfloorsign"
+		},
+		"brr_bm_wetfloorsign_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wetfloorsign_particle"
+		},
+		"brr_bm_refusebin": {
+			"textures": "textures/blocks/bms_props/refusebin"
+		},
+		"brr_bm_refusebin_particle": {
+			"textures": "textures/particle/block_particles/bms_props/refusebin_particle"
+		},
+		"brr_bm_lab_stool": {
+			"textures": "textures/blocks/bms_props/lab_stool"
+		},
+		"brr_bm_lab_stool_particle": {
+			"textures": "textures/particle/block_particles/bms_props/lab_stool_particle"
+		},
+		"brr_bm_labcupboard": {
+			"textures": "textures/blocks/bms_props/labcupboard"
+		},
+		"brr_bm_labcupboard_particle": {
+			"textures": "textures/particle/block_particles/bms_props/labcupboard_particle"
+		},
+		"brr_bm_labcupboard_closed": {
+			"textures": "textures/blocks/bms_props/labcupboard_closed"
+		},
+		"brr_bm_labcupboard_closed_particle": {
+			"textures": "textures/particle/block_particles/bms_props/labcupboard_closed_particle"
+		},
+		"brr_bm_labsocket": {
+			"textures": "textures/blocks/bms_props/labsocket"
+		},
+		"brr_bm_labsocket_particle": {
+			"textures": "textures/particle/block_particles/bms_props/labsocket_particle"
+		},
+		"brr_bm_labsocket_double": {
+			"textures": "textures/blocks/bms_props/labsocket_double"
+		},
+		"brr_bm_labsocket_double_particle": {
+			"textures": "textures/particle/block_particles/bms_props/labsocket_double_particle"
+		},
+		"brr_bm_sterilizer": {
+			"textures": "textures/blocks/bms_props/sterilizer"
+		},
+		"brr_bm_sterilizer_particle": {
+			"textures": "textures/particle/block_particles/bms_props/sterilizer_particle"
+		},
+		"brr_bm_surgical_laser": {
+			"textures": "textures/blocks/bms_props/surgical_laser"
+		},
+		"brr_bm_surgical_laser_particle": {
+			"textures": "textures/particle/block_particles/bms_props/surgical_laser_particle"
+		},
+		"brr_bm_tuberack": {
+			"textures": "textures/blocks/bms_props/tuberack"
+		},
+		"brr_bm_tuberack_particle": {
+			"textures": "textures/particle/block_particles/bms_props/tuberack_particle"
+		},
+		"brr_bm_tpplugholder": {
+			"textures": "textures/blocks/bms_props/tpplugholder"
+		},
+		"brr_bm_tpplugholder_particle": {
+			"textures": "textures/particle/block_particles/bms_props/tpplugholder_particle"
+		},
+		"brr_bm_wallunit_control": {
+			"textures": "textures/blocks/bms_props/wallunit_control"
+		},
+		"brr_bm_wallunit_control_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wallunit_control_particle"
+		},
+		"brr_bm_wallunit_display": {
+			"textures": "textures/blocks/bms_props/wallunit_display"
+		},
+		"brr_bm_wallunit_display_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wallunit_display_particle"
+		},
+		"brr_bm_wallunit_housing": {
+			"textures": "textures/blocks/bms_props/wallunit_housing"
+		},
+		"brr_bm_wallunit_housing_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wallunit_housing_particle"
+		},
+		"brr_bm_wallunit_metres": {
+			"textures": "textures/blocks/bms_props/wallunit_metres"
+		},
+		"brr_bm_wallunit_metres_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wallunit_metres_particle"
+		},
+		"brr_bm_wallunit_power": {
+			"textures": "textures/blocks/bms_props/wallunit_power"
+		},
+		"brr_bm_wallunit_power_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wallunit_power_particle"
+		},
+		"brr_bm_wallunit_vents": {
+			"textures": "textures/blocks/bms_props/wallunit_vents"
+		},
+		"brr_bm_wallunit_vents_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wallunit_vents_particle"
+		},
+		"brr_bm_bms_vent": {
+			"textures": "textures/blocks/bms_props/bms_vent"
+		},
+		"brr_bm_bms_vent_particle": {
+			"textures": "textures/particle/block_particles/bms_props/bms_vent_particle"
+		},
+		"brr_bm_carcass_hook": {
+			"textures": "textures/blocks/bms_props/carcass_hook"
+		},
+		"brr_bm_carcass_hook_particle": {
+			"textures": "textures/particle/block_particles/bms_props/carcass_hook_particle"
+		},
+		"brr_bm_gunrack": {
+			"textures": "textures/blocks/bms_props/gunrack"
+		},
+		"brr_bm_gunrack_particle": {
+			"textures": "textures/particle/block_particles/bms_props/gunrack_particle"
+		},
+		"brr_bm_lamppost_base": {
+			"textures": "textures/blocks/bms_props/lamppost_base"
+		},
+		"brr_bm_lamppost_base_particle": {
+			"textures": "textures/particle/block_particles/bms_props/lamppost_base_particle"
+		},
+		"brr_bm_octodog": {
+			"textures": "textures/blocks/bms_props/octodog"
+		},
+		"brr_bm_octodog_particle": {
+			"textures": "textures/particle/block_particles/bms_props/octodog_particle"
+		},
+		"brr_bm_railing": {
+			"textures": "textures/blocks/bms_props/railing"
+		},
+		"brr_bm_railing_particle": {
+			"textures": "textures/particle/block_particles/bms_props/railing_particle"
+		},
+		"brr_bm_shack_light": {
+			"textures": "textures/blocks/bms_props/shack_light"
+		},
+		"brr_bm_shack_light_particle": {
+			"textures": "textures/particle/block_particles/bms_props/shack_light_particle"
+		},
+		"brr_bm_shack_light_on": {
+			"textures": "textures/blocks/bms_props/shack_light_on"
+		},
+		"brr_bm_shack_light_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/shack_light_on_particle"
+		},
+		"brr_bm_gascanister": {
+			"textures": "textures/blocks/bms_props/gascanister"
+		},
+		"brr_bm_gascanister_particle": {
+			"textures": "textures/particle/block_particles/bms_props/gascanister_particle"
+		},
+		"brr_bm_hydrantwheel": {
+			"textures": "textures/blocks/bms_props/hydrantwheel"
+		},
+		"brr_bm_hydrantwheel_particle": {
+			"textures": "textures/particle/block_particles/bms_props/hydrantwheel_particle"
+		},
+		"brr_bm_nitrogentank": {
+			"textures": "textures/blocks/bms_props/nitrogentank"
+		},
+		"brr_bm_nitrogentank_particle": {
+			"textures": "textures/particle/block_particles/bms_props/nitrogentank_particle"
+		},
+		"brr_bm_nitrogentank_small": {
+			"textures": "textures/blocks/bms_props/nitrogentank_small"
+		},
+		"brr_bm_nitrogentank_small_particle": {
+			"textures": "textures/particle/block_particles/bms_props/nitrogentank_small_particle"
+		},
+		"brr_bm_petrolcan": {
+			"textures": "textures/blocks/bms_props/petrolcan"
+		},
+		"brr_bm_petrolcan_particle": {
+			"textures": "textures/particle/block_particles/bms_props/petrolcan_particle"
+		},
+		"brr_bm_smalltoolbox": {
+			"textures": "textures/blocks/bms_props/smalltoolbox"
+		},
+		"brr_bm_smalltoolbox_particle": {
+			"textures": "textures/particle/block_particles/bms_props/smalltoolbox_particle"
+		},
+		"brr_bm_steelshelf_packed": {
+			"textures": "textures/blocks/bms_props/steelshelf_packed"
+		},
+		"brr_bm_steelshelf_packed_particle": {
+			"textures": "textures/particle/block_particles/bms_props/steelshelf_packed_particle"
+		},
+		"brr_bm_vent4040": {
+			"textures": "textures/blocks/bms_props/vent4040"
+		},
+		"brr_bm_vent4040_particle": {
+			"textures": "textures/particle/block_particles/bms_props/vent4040_particle"
+		},
+		"brr_bm_vent4040_open": {
+			"textures": "textures/blocks/bms_props/vent4040_open"
+		},
+		"brr_bm_vent4040_open_particle": {
+			"textures": "textures/particle/block_particles/bms_props/vent4040_open_particle"
+		},
+		"brr_bm_ventilationduct": {
+			"textures": "textures/blocks/bms_props/ventilationduct"
+		},
+		"brr_bm_ventilationduct_particle": {
+			"textures": "textures/particle/block_particles/bms_props/ventilationduct_particle"
+		},
+		"brr_bm_warehouse_infosign": {
+			"textures": "textures/blocks/bms_props/warehouse_infosign"
+		},
+		"brr_bm_warehouse_infosign_particle": {
+			"textures": "textures/particle/block_particles/bms_props/warehouse_infosign_particle"
+		},
+		"brr_bm_welder": {
+			"textures": "textures/blocks/bms_props/welder"
+		},
+		"brr_bm_welder_particle": {
+			"textures": "textures/particle/block_particles/bms_props/welder_particle"
+		},
+		"brr_bm_aircan": {
+			"textures": "textures/blocks/bms_props/aircan"
+		},
+		"brr_bm_aircan_particle": {
+			"textures": "textures/particle/block_particles/bms_props/aircan_particle"
+		},
+		"brr_bm_book": {
+			"textures": "textures/blocks/bms_props/book"
+		},
+		"brr_bm_book_particle": {
+			"textures": "textures/particle/block_particles/bms_props/book_particle"
+		},
+		"brr_bm_books": {
+			"textures": "textures/blocks/bms_props/books"
+		},
+		"brr_bm_books_particle": {
+			"textures": "textures/particle/block_particles/bms_props/books_particle"
+		},
+		"brr_bm_calculator": {
+			"textures": "textures/blocks/bms_props/calculator"
+		},
+		"brr_bm_calculator_particle": {
+			"textures": "textures/particle/block_particles/bms_props/calculator_particle"
+		},
+		"brr_bm_closed_laptop": {
+			"textures": "textures/blocks/bms_props/closed_laptop"
+		},
+		"brr_bm_closed_laptop_particle": {
+			"textures": "textures/particle/block_particles/bms_props/closed_laptop_particle"
+		},
+		"brr_bm_open_laptop": {
+			"textures": "textures/blocks/bms_props/open_laptop"
+		},
+		"brr_bm_open_laptop_particle": {
+			"textures": "textures/particle/block_particles/bms_props/open_laptop_particle"
+		},
+		"brr_bm_coffe_machine": {
+			"textures": "textures/blocks/bms_props/coffe_machine"
+		},
+		"brr_bm_coffe_machine_particle": {
+			"textures": "textures/particle/block_particles/bms_props/coffe_machine_particle"
+		},
+		"brr_bm_coffe_pot": {
+			"textures": "textures/blocks/bms_props/coffe_pot"
+		},
+		"brr_bm_coffe_pot_particle": {
+			"textures": "textures/particle/block_particles/bms_props/coffe_pot_particle"
+		},
+		"brr_bm_computer_desktop": {
+			"textures": "textures/blocks/bms_props/computer_desktop"
+		},
+		"brr_bm_computer_desktop_particle": {
+			"textures": "textures/particle/block_particles/bms_props/computer_desktop_particle"
+		},
+		"brr_bm_computer_tower": {
+			"textures": "textures/blocks/bms_props/computer_tower"
+		},
+		"brr_bm_computer_tower_particle": {
+			"textures": "textures/particle/block_particles/bms_props/computer_tower_particle"
+		},
+		"brr_bm_computer_server": {
+			"textures": "textures/blocks/bms_props/computer_server"
+		},
+		"brr_bm_computer_server_particle": {
+			"textures": "textures/particle/block_particles/bms_props/computer_server_particle"
+		},
+		"brr_bm_computer_keyboard": {
+			"textures": "textures/blocks/bms_props/computer_keyboard"
+		},
+		"brr_bm_computer_keyboard_particle": {
+			"textures": "textures/particle/block_particles/bms_props/computer_keyboard_particle"
+		},
+		"brr_bm_computer_mouse": {
+			"textures": "textures/blocks/bms_props/computer_mouse"
+		},
+		"brr_bm_computer_mouse_particle": {
+			"textures": "textures/particle/block_particles/bms_props/computer_mouse_particle"
+		},
+		"brr_bm_computer_monitor": {
+			"textures": "textures/blocks/bms_props/computer_monitor"
+		},
+		"brr_bm_computer_monitor_particle": {
+			"textures": "textures/particle/block_particles/bms_props/computer_monitor_particle"
+		},
+		"brr_bm_computer_monitor_small": {
+			"textures": "textures/blocks/bms_props/computer_monitor_small"
+		},
+		"brr_bm_computer_monitor_small_particle": {
+			"textures": "textures/particle/block_particles/bms_props/computer_monitor_small_particle"
+		},
+		"brr_bm_computer_monitor_large": {
+			"textures": "textures/blocks/bms_props/computer_monitor_large"
+		},
+		"brr_bm_computer_monitor_large_particle": {
+			"textures": "textures/particle/block_particles/bms_props/computer_monitor_large_particle"
+		},
+		"brr_bm_computer_monitor_flat": {
+			"textures": "textures/blocks/bms_props/computer_monitor_flat"
+		},
+		"brr_bm_computer_monitor_flat_particle": {
+			"textures": "textures/particle/block_particles/bms_props/computer_monitor_flat_particle"
+		},
+		"brr_bm_desk_cupboard": {
+			"textures": "textures/blocks/bms_props/desk_cupboard"
+		},
+		"brr_bm_desk_cupboard_particle": {
+			"textures": "textures/particle/block_particles/bms_props/desk_cupboard_particle"
+		},
+		"brr_bm_furniture_cupboard": {
+			"textures": "textures/blocks/bms_props/furniture_cupboard"
+		},
+		"brr_bm_furniture_cupboard_particle": {
+			"textures": "textures/particle/block_particles/bms_props/furniture_cupboard_particle"
+		},
+		"brr_bm_furniture_table": {
+			"textures": "textures/blocks/bms_props/furniture_table"
+		},
+		"brr_bm_furniture_table_particle": {
+			"textures": "textures/particle/block_particles/bms_props/furniture_table_particle"
+		},
+		"brr_bm_furniture_sofa": {
+			"textures": "textures/blocks/bms_props/furniture_sofa"
+		},
+		"brr_bm_furniture_sofa_particle": {
+			"textures": "textures/particle/block_particles/bms_props/furniture_sofa_particle"
+		},
+		"brr_bm_office_chair": {
+			"textures": "textures/blocks/bms_props/office_chair"
+		},
+		"brr_bm_office_chair_particle": {
+			"textures": "textures/particle/block_particles/bms_props/office_chair_particle"
+		},
+		"brr_bm_file_box": {
+			"textures": "textures/blocks/bms_props/file_box"
+		},
+		"brr_bm_file_box_particle": {
+			"textures": "textures/particle/block_particles/bms_props/file_box_particle"
+		},
+		"brr_bm_folder": {
+			"textures": "textures/blocks/bms_props/folder"
+		},
+		"brr_bm_folder_particle": {
+			"textures": "textures/particle/block_particles/bms_props/folder_particle"
+		},
+		"brr_bm_holepunch": {
+			"textures": "textures/blocks/bms_props/holepunch"
+		},
+		"brr_bm_holepunch_particle": {
+			"textures": "textures/particle/block_particles/bms_props/holepunch_particle"
+		},
+		"brr_bm_notepad": {
+			"textures": "textures/blocks/bms_props/notepad"
+		},
+		"brr_bm_notepad_particle": {
+			"textures": "textures/particle/block_particles/bms_props/notepad_particle"
+		},
+		"brr_bm_paper_box": {
+			"textures": "textures/blocks/bms_props/paper_box"
+		},
+		"brr_bm_paper_box_particle": {
+			"textures": "textures/particle/block_particles/bms_props/paper_box_particle"
+		},
+		"brr_bm_paperfolder": {
+			"textures": "textures/blocks/bms_props/paperfolder"
+		},
+		"brr_bm_paperfolder_particle": {
+			"textures": "textures/particle/block_particles/bms_props/paperfolder_particle"
+		},
+		"brr_bm_woodpaperfile": {
+			"textures": "textures/blocks/bms_props/woodpaperfile"
+		},
+		"brr_bm_woodpaperfile_particle": {
+			"textures": "textures/particle/block_particles/bms_props/woodpaperfile_particle"
+		},
+		"brr_bm_noticeboard": {
+			"textures": "textures/blocks/bms_props/noticeboard"
+		},
+		"brr_bm_noticeboard_particle": {
+			"textures": "textures/particle/block_particles/bms_props/noticeboard_particle"
+		},
+		"brr_bm_pictureframe_portrait": {
+			"textures": "textures/blocks/bms_props/pictureframe_portrait"
+		},
+		"brr_bm_pictureframe_portrait_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pictureframe_portrait_particle"
+		},
+		"brr_bm_pictureframe_crystal": {
+			"textures": "textures/blocks/bms_props/pictureframe_crystal"
+		},
+		"brr_bm_pictureframe_crystal_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pictureframe_crystal_particle"
+		},
+		"brr_bm_pictureframe_desk": {
+			"textures": "textures/blocks/bms_props/pictureframe_desk"
+		},
+		"brr_bm_pictureframe_desk_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pictureframe_desk_particle"
+		},
+		"brr_bm_deskfan": {
+			"textures": "textures/blocks/bms_props/deskfan"
+		},
+		"brr_bm_deskfan_particle": {
+			"textures": "textures/particle/block_particles/bms_props/deskfan_particle"
+		},
+		"brr_bm_lamp_flexible": {
+			"textures": "textures/blocks/bms_props/lamp_flexible"
+		},
+		"brr_bm_lamp_flexible_particle": {
+			"textures": "textures/particle/block_particles/bms_props/lamp_flexible_particle"
+		},
+		"brr_bm_lamp_flexible_on": {
+			"textures": "textures/blocks/bms_props/lamp_flexible_on"
+		},
+		"brr_bm_lamp_flexible_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/lamp_flexible_on_particle"
+		},
+		"brr_bm_light_sconce01": {
+			"textures": "textures/blocks/bms_props/light_sconce01"
+		},
+		"brr_bm_light_sconce01_particle": {
+			"textures": "textures/particle/block_particles/bms_props/light_sconce01_particle"
+		},
+		"brr_bm_light_sconce01_on": {
+			"textures": "textures/blocks/bms_props/light_sconce01_on"
+		},
+		"brr_bm_light_sconce01_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/light_sconce01_on_particle"
+		},
+		"brr_bm_metalbin": {
+			"textures": "textures/blocks/bms_props/metalbin"
+		},
+		"brr_bm_metalbin_particle": {
+			"textures": "textures/particle/block_particles/bms_props/metalbin_particle"
+		},
+		"brr_bm_stapler": {
+			"textures": "textures/blocks/bms_props/stapler"
+		},
+		"brr_bm_stapler_particle": {
+			"textures": "textures/particle/block_particles/bms_props/stapler_particle"
+		},
+		"brr_bm_stereosystem": {
+			"textures": "textures/blocks/bms_props/stereosystem"
+		},
+		"brr_bm_stereosystem_particle": {
+			"textures": "textures/particle/block_particles/bms_props/stereosystem_particle"
+		},
+		"brr_bm_taxidermy_roadrunner": {
+			"textures": "textures/blocks/bms_props/taxidermy_roadrunner"
+		},
+		"brr_bm_taxidermy_roadrunner_particle": {
+			"textures": "textures/particle/block_particles/bms_props/taxidermy_roadrunner_particle"
+		},
+		"brr_bm_tv_small": {
+			"textures": "textures/blocks/bms_props/tv_small"
+		},
+		"brr_bm_tv_small_particle": {
+			"textures": "textures/particle/block_particles/bms_props/tv_small_particle"
+		},
+		"brr_bm_vcr": {
+			"textures": "textures/blocks/bms_props/vcr"
+		},
+		"brr_bm_vcr_particle": {
+			"textures": "textures/particle/block_particles/bms_props/vcr_particle"
+		},
+		"brr_bm_videocassettes": {
+			"textures": "textures/blocks/bms_props/videocassettes"
+		},
+		"brr_bm_videocassettes_particle": {
+			"textures": "textures/particle/block_particles/bms_props/videocassettes_particle"
+		},
+		"brr_bm_breezeblock": {
+			"textures": "textures/blocks/bms_props/breezeblock"
+		},
+		"brr_bm_breezeblock_particle": {
+			"textures": "textures/particle/block_particles/bms_props/breezeblock_particle"
+		},
+		"brr_bm_drill": {
+			"textures": "textures/blocks/bms_props/drill"
+		},
+		"brr_bm_drill_particle": {
+			"textures": "textures/particle/block_particles/bms_props/drill_particle"
+		},
+		"brr_bm_duct_tape": {
+			"textures": "textures/blocks/bms_props/duct_tape"
+		},
+		"brr_bm_duct_tape_particle": {
+			"textures": "textures/particle/block_particles/bms_props/duct_tape_particle"
+		},
+		"brr_bm_funnel": {
+			"textures": "textures/blocks/bms_props/funnel"
+		},
+		"brr_bm_funnel_particle": {
+			"textures": "textures/particle/block_particles/bms_props/funnel_particle"
+		},
+		"brr_bm_gluegun": {
+			"textures": "textures/blocks/bms_props/gluegun"
+		},
+		"brr_bm_gluegun_particle": {
+			"textures": "textures/particle/block_particles/bms_props/gluegun_particle"
+		},
+		"brr_bm_handtowel": {
+			"textures": "textures/blocks/bms_props/handtowel"
+		},
+		"brr_bm_handtowel_particle": {
+			"textures": "textures/particle/block_particles/bms_props/handtowel_particle"
+		},
+		"brr_bm_hardhat": {
+			"textures": "textures/blocks/bms_props/hardhat"
+		},
+		"brr_bm_hardhat_particle": {
+			"textures": "textures/particle/block_particles/bms_props/hardhat_particle"
+		},
+		"brr_bm_junk_caulkgun": {
+			"textures": "textures/blocks/bms_props/junk_caulkgun"
+		},
+		"brr_bm_junk_caulkgun_particle": {
+			"textures": "textures/particle/block_particles/bms_props/junk_caulkgun_particle"
+		},
+		"brr_bm_junk_earmuffs": {
+			"textures": "textures/blocks/bms_props/junk_earmuffs"
+		},
+		"brr_bm_junk_earmuffs_particle": {
+			"textures": "textures/particle/block_particles/bms_props/junk_earmuffs_particle"
+		},
+		"brr_bm_junk_hacksaw": {
+			"textures": "textures/blocks/bms_props/junk_hacksaw"
+		},
+		"brr_bm_junk_hacksaw_particle": {
+			"textures": "textures/particle/block_particles/bms_props/junk_hacksaw_particle"
+		},
+		"brr_bm_junk_screwdriver": {
+			"textures": "textures/blocks/bms_props/junk_screwdriver"
+		},
+		"brr_bm_junk_screwdriver_particle": {
+			"textures": "textures/particle/block_particles/bms_props/junk_screwdriver_particle"
+		},
+		"brr_bm_junk_spanner": {
+			"textures": "textures/blocks/bms_props/junk_spanner"
+		},
+		"brr_bm_junk_spanner_particle": {
+			"textures": "textures/particle/block_particles/bms_props/junk_spanner_particle"
+		},
+		"brr_bm_oil_can": {
+			"textures": "textures/blocks/bms_props/oil_can"
+		},
+		"brr_bm_oil_can_particle": {
+			"textures": "textures/particle/block_particles/bms_props/oil_can_particle"
+		},
+		"brr_bm_soldering_iron": {
+			"textures": "textures/blocks/bms_props/soldering_iron"
+		},
+		"brr_bm_soldering_iron_particle": {
+			"textures": "textures/particle/block_particles/bms_props/soldering_iron_particle"
+		},
+		"brr_bm_wirespool": {
+			"textures": "textures/blocks/bms_props/wirespool"
+		},
+		"brr_bm_wirespool_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wirespool_particle"
+		},
+		"brr_bm_wirespool_silver": {
+			"textures": "textures/blocks/bms_props/wirespool_silver"
+		},
+		"brr_bm_wirespool_silver_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wirespool_silver_particle"
+		},
+		"brr_bm_drinkcan": {
+			"textures": "textures/blocks/bms_props/drinkcan"
+		},
+		"brr_bm_drinkcan_particle": {
+			"textures": "textures/particle/block_particles/bms_props/drinkcan_particle"
+		},
+		"brr_bm_popcan_wormjuice": {
+			"textures": "textures/blocks/bms_props/popcan_wormjuice"
+		},
+		"brr_bm_popcan_wormjuice_particle": {
+			"textures": "textures/particle/block_particles/bms_props/popcan_wormjuice_particle"
+		},
+		"brr_bm_junk_wd43": {
+			"textures": "textures/blocks/bms_props/junk_wd43"
+		},
+		"brr_bm_junk_wd43_particle": {
+			"textures": "textures/particle/block_particles/bms_props/junk_wd43_particle"
+		},
+		"brr_bm_spraycan": {
+			"textures": "textures/blocks/bms_props/spraycan"
+		},
+		"brr_bm_spraycan_particle": {
+			"textures": "textures/particle/block_particles/bms_props/spraycan_particle"
+		},
+		"brr_bm_metalcontainer": {
+			"textures": "textures/blocks/bms_props/metalcontainer"
+		},
+		"brr_bm_metalcontainer_particle": {
+			"textures": "textures/particle/block_particles/bms_props/metalcontainer_particle"
+		},
+		"brr_bm_metalcontainer_rusty": {
+			"textures": "textures/blocks/bms_props/metalcontainer_rusty"
+		},
+		"brr_bm_metalcontainer_rusty_particle": {
+			"textures": "textures/particle/block_particles/bms_props/metalcontainer_rusty_particle"
+		},
+		"brr_bm_plasticcontainer_oil": {
+			"textures": "textures/blocks/bms_props/plasticcontainer_oil"
+		},
+		"brr_bm_plasticcontainer_oil_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plasticcontainer_oil_particle"
+		},
+		"brr_bm_plasticcontainer_white": {
+			"textures": "textures/blocks/bms_props/plasticcontainer_white"
+		},
+		"brr_bm_plasticcontainer_white_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plasticcontainer_white_particle"
+		},
+		"brr_bm_plasticcontainer_bleach": {
+			"textures": "textures/blocks/bms_props/plasticcontainer_bleach"
+		},
+		"brr_bm_plasticcontainer_bleach_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plasticcontainer_bleach_particle"
+		},
+		"brr_bm_cleanerbottle": {
+			"textures": "textures/blocks/bms_props/cleanerbottle"
+		},
+		"brr_bm_cleanerbottle_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cleanerbottle_particle"
+		},
+		"brr_bm_plasticcontainer_spray": {
+			"textures": "textures/blocks/bms_props/plasticcontainer_spray"
+		},
+		"brr_bm_plasticcontainer_spray_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plasticcontainer_spray_particle"
+		},
+		"brr_bm_propanecanister": {
+			"textures": "textures/blocks/bms_props/propanecanister"
+		},
+		"brr_bm_propanecanister_particle": {
+			"textures": "textures/particle/block_particles/bms_props/propanecanister_particle"
+		},
+		"brr_bm_plasticbasket": {
+			"textures": "textures/blocks/bms_props/plasticbasket"
+		},
+		"brr_bm_plasticbasket_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plasticbasket_particle"
+		},
+		"brr_bm_plate": {
+			"textures": "textures/blocks/bms_props/plate"
+		},
+		"brr_bm_plate_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plate_particle"
+		},
+		"brr_bm_vegbox": {
+			"textures": "textures/blocks/bms_props/vegbox"
+		},
+		"brr_bm_vegbox_particle": {
+			"textures": "textures/particle/block_particles/bms_props/vegbox_particle"
+		},
+		"brr_bm_wideognomes": {
+			"textures": "textures/blocks/bms_props/wideognomes"
+		},
+		"brr_bm_wideognomes_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wideognomes_particle"
+		},
+		"brr_bm_quaff": {
+			"textures": "textures/blocks/bms_props/quaff"
+		},
+		"brr_bm_quaff_particle": {
+			"textures": "textures/particle/block_particles/bms_props/quaff_particle"
+		},
+		"brr_bm_canteenbin": {
+			"textures": "textures/blocks/bms_props/canteenbin"
+		},
+		"brr_bm_canteenbin_particle": {
+			"textures": "textures/particle/block_particles/bms_props/canteenbin_particle"
+		},
+		"brr_bm_canteenseat": {
+			"textures": "textures/blocks/bms_props/canteenseat"
+		},
+		"brr_bm_canteenseat_particle": {
+			"textures": "textures/particle/block_particles/bms_props/canteenseat_particle"
+		},
+		"brr_bm_donutbox": {
+			"textures": "textures/blocks/bms_props/donutbox"
+		},
+		"brr_bm_donutbox_particle": {
+			"textures": "textures/particle/block_particles/bms_props/donutbox_particle"
+		},
+		"brr_bm_food_tray": {
+			"textures": "textures/blocks/bms_props/food_tray"
+		},
+		"brr_bm_food_tray_particle": {
+			"textures": "textures/particle/block_particles/bms_props/food_tray_particle"
+		},
+		"brr_bm_microwave": {
+			"textures": "textures/blocks/bms_props/microwave"
+		},
+		"brr_bm_microwave_particle": {
+			"textures": "textures/particle/block_particles/bms_props/microwave_particle"
+		},
+		"brr_bm_pizza_box": {
+			"textures": "textures/blocks/bms_props/pizza_box"
+		},
+		"brr_bm_pizza_box_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pizza_box_particle"
+		},
+		"brr_bm_soda_fountain": {
+			"textures": "textures/blocks/bms_props/soda_fountain"
+		},
+		"brr_bm_soda_fountain_particle": {
+			"textures": "textures/particle/block_particles/bms_props/soda_fountain_particle"
+		},
+		"brr_bm_taco": {
+			"textures": "textures/blocks/bms_props/taco"
+		},
+		"brr_bm_taco_particle": {
+			"textures": "textures/particle/block_particles/bms_props/taco_particle"
+		},
+		"brr_bm_vacuumflask": {
+			"textures": "textures/blocks/bms_props/vacuumflask"
+		},
+		"brr_bm_vacuumflask_particle": {
+			"textures": "textures/particle/block_particles/bms_props/vacuumflask_particle"
+		},
+		"brr_bm_c4": {
+			"textures": "textures/blocks/bms_props/c4"
+		},
+		"brr_bm_c4_particle": {
+			"textures": "textures/particle/block_particles/bms_props/c4_particle"
+		},
+		"brr_bm_bucket": {
+			"textures": "textures/blocks/bms_props/bucket"
+		},
+		"brr_bm_bucket_particle": {
+			"textures": "textures/particle/block_particles/bms_props/bucket_particle"
+		},
+		"brr_bm_epbox": {
+			"textures": "textures/blocks/bms_props/epbox"
+		},
+		"brr_bm_epbox_particle": {
+			"textures": "textures/particle/block_particles/bms_props/epbox_particle"
+		},
+		"brr_bm_jumpplatform_lever": {
+			"textures": "textures/blocks/bms_props/jumpplatform_lever"
+		},
+		"brr_bm_jumpplatform_lever_particle": {
+			"textures": "textures/particle/block_particles/bms_props/jumpplatform_lever_particle"
+		},
+		"brr_bm_pathwaylight": {
+			"textures": "textures/blocks/bms_props/pathwaylight"
+		},
+		"brr_bm_pathwaylight_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pathwaylight_particle"
+		},
+		"brr_bm_pathwaylight_on": {
+			"textures": "textures/blocks/bms_props/pathwaylight_on"
+		},
+		"brr_bm_pathwaylight_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pathwaylight_on_particle"
+		},
+		"brr_bm_portablebattery": {
+			"textures": "textures/blocks/bms_props/portablebattery"
+		},
+		"brr_bm_portablebattery_particle": {
+			"textures": "textures/particle/block_particles/bms_props/portablebattery_particle"
+		},
+		"brr_bm_shovel": {
+			"textures": "textures/blocks/bms_props/shovel"
+		},
+		"brr_bm_shovel_particle": {
+			"textures": "textures/particle/block_particles/bms_props/shovel_particle"
+		},
+		"brr_bm_rake": {
+			"textures": "textures/blocks/bms_props/rake"
+		},
+		"brr_bm_rake_particle": {
+			"textures": "textures/particle/block_particles/bms_props/rake_particle"
+		},
+		"brr_bm_sifter": {
+			"textures": "textures/blocks/bms_props/sifter"
+		},
+		"brr_bm_sifter_particle": {
+			"textures": "textures/particle/block_particles/bms_props/sifter_particle"
+		},
+		"brr_bm_specimencontainer": {
+			"textures": "textures/blocks/bms_props/specimencontainer"
+		},
+		"brr_bm_specimencontainer_particle": {
+			"textures": "textures/particle/block_particles/bms_props/specimencontainer_particle"
+		},
+		"brr_bm_specimencontainer_broken": {
+			"textures": "textures/blocks/bms_props/specimencontainer_broken"
+		},
+		"brr_bm_specimencontainer_broken_particle": {
+			"textures": "textures/particle/block_particles/bms_props/specimencontainer_broken_particle"
+		},
+		"brr_bm_storagetrunk": {
+			"textures": "textures/blocks/bms_props/storagetrunk"
+		},
+		"brr_bm_storagetrunk_particle": {
+			"textures": "textures/particle/block_particles/bms_props/storagetrunk_particle"
+		},
+		"brr_bm_survey_dopplerscanner": {
+			"textures": "textures/blocks/bms_props/survey_dopplerscanner"
+		},
+		"brr_bm_survey_dopplerscanner_particle": {
+			"textures": "textures/particle/block_particles/bms_props/survey_dopplerscanner_particle"
+		},
+		"brr_bm_survey_theodolite": {
+			"textures": "textures/blocks/bms_props/survey_theodolite"
+		},
+		"brr_bm_survey_theodolite_particle": {
+			"textures": "textures/particle/block_particles/bms_props/survey_theodolite_particle"
+		},
+		"brr_bm_survey_airmonitor": {
+			"textures": "textures/blocks/bms_props/survey_airmonitor"
+		},
+		"brr_bm_survey_airmonitor_particle": {
+			"textures": "textures/particle/block_particles/bms_props/survey_airmonitor_particle"
+		},
+		"brr_bm_pipe_small": {
+			"textures": "textures/blocks/bms_props/pipe_small"
+		},
+		"brr_bm_pipe_small_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_particle"
+		},
+		"brr_bm_pipe_small_joint": {
+			"textures": "textures/blocks/bms_props/pipe_small_joint"
+		},
+		"brr_bm_pipe_small_joint_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_joint_particle"
+		},
+		"brr_bm_pipe_small_end": {
+			"textures": "textures/blocks/bms_props/pipe_small_end"
+		},
+		"brr_bm_pipe_small_end_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_end_particle"
+		},
+		"brr_bm_pipe_small_v": {
+			"textures": "textures/blocks/bms_props/pipe_small_v"
+		},
+		"brr_bm_pipe_small_v_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_v_particle"
+		},
+		"brr_bm_pipe_small_v_joint": {
+			"textures": "textures/blocks/bms_props/pipe_small_v_joint"
+		},
+		"brr_bm_pipe_small_v_joint_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_v_joint_particle"
+		},
+		"brr_bm_pipe_small_elbow": {
+			"textures": "textures/blocks/bms_props/pipe_small_elbow"
+		},
+		"brr_bm_pipe_small_elbow_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_elbow_particle"
+		},
+		"brr_bm_pipe_small_elbow_up": {
+			"textures": "textures/blocks/bms_props/pipe_small_elbow_up"
+		},
+		"brr_bm_pipe_small_elbow_up_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_elbow_up_particle"
+		},
+		"brr_bm_pipe_small_elbow_down": {
+			"textures": "textures/blocks/bms_props/pipe_small_elbow_down"
+		},
+		"brr_bm_pipe_small_elbow_down_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_elbow_down_particle"
+		},
+		"brr_bm_pipe_small_tee": {
+			"textures": "textures/blocks/bms_props/pipe_small_tee"
+		},
+		"brr_bm_pipe_small_tee_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_tee_particle"
+		},
+		"brr_bm_pipe_small_tee_up": {
+			"textures": "textures/blocks/bms_props/pipe_small_tee_up"
+		},
+		"brr_bm_pipe_small_tee_up_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_tee_up_particle"
+		},
+		"brr_bm_pipe_small_tee_down": {
+			"textures": "textures/blocks/bms_props/pipe_small_tee_down"
+		},
+		"brr_bm_pipe_small_tee_down_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_tee_down_particle"
+		},
+		"brr_bm_pipe_small_tee_side": {
+			"textures": "textures/blocks/bms_props/pipe_small_tee_side"
+		},
+		"brr_bm_pipe_small_tee_side_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_tee_side_particle"
+		},
+		"brr_bm_pipe_small_cross": {
+			"textures": "textures/blocks/bms_props/pipe_small_cross"
+		},
+		"brr_bm_pipe_small_cross_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_small_cross_particle"
+		},
+		"brr_bm_pipe_medium": {
+			"textures": "textures/blocks/bms_props/pipe_medium"
+		},
+		"brr_bm_pipe_medium_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_particle"
+		},
+		"brr_bm_pipe_medium_joint": {
+			"textures": "textures/blocks/bms_props/pipe_medium_joint"
+		},
+		"brr_bm_pipe_medium_joint_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_joint_particle"
+		},
+		"brr_bm_pipe_medium_end": {
+			"textures": "textures/blocks/bms_props/pipe_medium_end"
+		},
+		"brr_bm_pipe_medium_end_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_end_particle"
+		},
+		"brr_bm_pipe_medium_v": {
+			"textures": "textures/blocks/bms_props/pipe_medium_v"
+		},
+		"brr_bm_pipe_medium_v_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_v_particle"
+		},
+		"brr_bm_pipe_medium_v_joint": {
+			"textures": "textures/blocks/bms_props/pipe_medium_v_joint"
+		},
+		"brr_bm_pipe_medium_v_joint_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_v_joint_particle"
+		},
+		"brr_bm_pipe_medium_elbow": {
+			"textures": "textures/blocks/bms_props/pipe_medium_elbow"
+		},
+		"brr_bm_pipe_medium_elbow_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_elbow_particle"
+		},
+		"brr_bm_pipe_medium_elbow_up": {
+			"textures": "textures/blocks/bms_props/pipe_medium_elbow_up"
+		},
+		"brr_bm_pipe_medium_elbow_up_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_elbow_up_particle"
+		},
+		"brr_bm_pipe_medium_elbow_down": {
+			"textures": "textures/blocks/bms_props/pipe_medium_elbow_down"
+		},
+		"brr_bm_pipe_medium_elbow_down_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_elbow_down_particle"
+		},
+		"brr_bm_pipe_medium_tee": {
+			"textures": "textures/blocks/bms_props/pipe_medium_tee"
+		},
+		"brr_bm_pipe_medium_tee_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_tee_particle"
+		},
+		"brr_bm_pipe_medium_tee_up": {
+			"textures": "textures/blocks/bms_props/pipe_medium_tee_up"
+		},
+		"brr_bm_pipe_medium_tee_up_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_tee_up_particle"
+		},
+		"brr_bm_pipe_medium_tee_down": {
+			"textures": "textures/blocks/bms_props/pipe_medium_tee_down"
+		},
+		"brr_bm_pipe_medium_tee_down_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_tee_down_particle"
+		},
+		"brr_bm_pipe_medium_tee_side": {
+			"textures": "textures/blocks/bms_props/pipe_medium_tee_side"
+		},
+		"brr_bm_pipe_medium_tee_side_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_tee_side_particle"
+		},
+		"brr_bm_pipe_medium_cross": {
+			"textures": "textures/blocks/bms_props/pipe_medium_cross"
+		},
+		"brr_bm_pipe_medium_cross_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_medium_cross_particle"
+		},
+		"brr_bm_pipe_large": {
+			"textures": "textures/blocks/bms_props/pipe_large"
+		},
+		"brr_bm_pipe_large_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_particle"
+		},
+		"brr_bm_pipe_large_joint": {
+			"textures": "textures/blocks/bms_props/pipe_large_joint"
+		},
+		"brr_bm_pipe_large_joint_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_joint_particle"
+		},
+		"brr_bm_pipe_large_end": {
+			"textures": "textures/blocks/bms_props/pipe_large_end"
+		},
+		"brr_bm_pipe_large_end_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_end_particle"
+		},
+		"brr_bm_pipe_large_v": {
+			"textures": "textures/blocks/bms_props/pipe_large_v"
+		},
+		"brr_bm_pipe_large_v_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_v_particle"
+		},
+		"brr_bm_pipe_large_v_joint": {
+			"textures": "textures/blocks/bms_props/pipe_large_v_joint"
+		},
+		"brr_bm_pipe_large_v_joint_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_v_joint_particle"
+		},
+		"brr_bm_pipe_large_elbow": {
+			"textures": "textures/blocks/bms_props/pipe_large_elbow"
+		},
+		"brr_bm_pipe_large_elbow_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_elbow_particle"
+		},
+		"brr_bm_pipe_large_elbow_up": {
+			"textures": "textures/blocks/bms_props/pipe_large_elbow_up"
+		},
+		"brr_bm_pipe_large_elbow_up_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_elbow_up_particle"
+		},
+		"brr_bm_pipe_large_elbow_down": {
+			"textures": "textures/blocks/bms_props/pipe_large_elbow_down"
+		},
+		"brr_bm_pipe_large_elbow_down_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_elbow_down_particle"
+		},
+		"brr_bm_pipe_large_tee": {
+			"textures": "textures/blocks/bms_props/pipe_large_tee"
+		},
+		"brr_bm_pipe_large_tee_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_tee_particle"
+		},
+		"brr_bm_pipe_large_tee_up": {
+			"textures": "textures/blocks/bms_props/pipe_large_tee_up"
+		},
+		"brr_bm_pipe_large_tee_up_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_tee_up_particle"
+		},
+		"brr_bm_pipe_large_tee_down": {
+			"textures": "textures/blocks/bms_props/pipe_large_tee_down"
+		},
+		"brr_bm_pipe_large_tee_down_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_tee_down_particle"
+		},
+		"brr_bm_pipe_large_tee_side": {
+			"textures": "textures/blocks/bms_props/pipe_large_tee_side"
+		},
+		"brr_bm_pipe_large_tee_side_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_tee_side_particle"
+		},
+		"brr_bm_pipe_large_cross": {
+			"textures": "textures/blocks/bms_props/pipe_large_cross"
+		},
+		"brr_bm_pipe_large_cross_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_large_cross_particle"
+		},
+		"brr_bm_pipe_rusty": {
+			"textures": "textures/blocks/bms_props/pipe_rusty"
+		},
+		"brr_bm_pipe_rusty_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_rusty_particle"
+		},
+		"brr_bm_pipe_rusty_v": {
+			"textures": "textures/blocks/bms_props/pipe_rusty_v"
+		},
+		"brr_bm_pipe_rusty_v_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_rusty_v_particle"
+		},
+		"brr_bm_pipe_rusty_elbow": {
+			"textures": "textures/blocks/bms_props/pipe_rusty_elbow"
+		},
+		"brr_bm_pipe_rusty_elbow_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_rusty_elbow_particle"
+		},
+		"brr_bm_pipe_rusty_elbow_up": {
+			"textures": "textures/blocks/bms_props/pipe_rusty_elbow_up"
+		},
+		"brr_bm_pipe_rusty_elbow_up_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_rusty_elbow_up_particle"
+		},
+		"brr_bm_pipe_rusty_elbow_down": {
+			"textures": "textures/blocks/bms_props/pipe_rusty_elbow_down"
+		},
+		"brr_bm_pipe_rusty_elbow_down_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_rusty_elbow_down_particle"
+		},
+		"brr_bm_pipe_support": {
+			"textures": "textures/blocks/bms_props/pipe_support"
+		},
+		"brr_bm_pipe_support_particle": {
+			"textures": "textures/particle/block_particles/bms_props/pipe_support_particle"
+		},
+		"brr_bm_autopsy_hammer": {
+			"textures": "textures/blocks/bms_props/autopsy_hammer"
+		},
+		"brr_bm_autopsy_hammer_particle": {
+			"textures": "textures/particle/block_particles/bms_props/autopsy_hammer_particle"
+		},
+		"brr_bm_bonesaw": {
+			"textures": "textures/blocks/bms_props/bonesaw"
+		},
+		"brr_bm_bonesaw_particle": {
+			"textures": "textures/particle/block_particles/bms_props/bonesaw_particle"
+		},
+		"brr_bm_ripcutters": {
+			"textures": "textures/blocks/bms_props/ripcutters"
+		},
+		"brr_bm_ripcutters_particle": {
+			"textures": "textures/particle/block_particles/bms_props/ripcutters_particle"
+		},
+		"brr_bm_scalpel": {
+			"textures": "textures/blocks/bms_props/scalpel"
+		},
+		"brr_bm_scalpel_particle": {
+			"textures": "textures/particle/block_particles/bms_props/scalpel_particle"
+		},
+		"brr_bm_microscope": {
+			"textures": "textures/blocks/bms_props/microscope"
+		},
+		"brr_bm_microscope_particle": {
+			"textures": "textures/particle/block_particles/bms_props/microscope_particle"
+		},
+		"brr_bm_qe_cage_crab": {
+			"textures": "textures/blocks/bms_props/qe_cage_crab"
+		},
+		"brr_bm_qe_cage_crab_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_cage_crab_particle"
+		},
+		"brr_bm_qe_canvaspainting": {
+			"textures": "textures/blocks/bms_props/qe_canvaspainting"
+		},
+		"brr_bm_qe_canvaspainting_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_canvaspainting_particle"
+		},
+		"brr_bm_qe_collector_fan": {
+			"textures": "textures/blocks/bms_props/qe_collector_fan"
+		},
+		"brr_bm_qe_collector_fan_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_collector_fan_particle"
+		},
+		"brr_bm_qe_desk_nameplaque": {
+			"textures": "textures/blocks/bms_props/qe_desk_nameplaque"
+		},
+		"brr_bm_qe_desk_nameplaque_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_desk_nameplaque_particle"
+		},
+		"brr_bm_qe_director": {
+			"textures": "textures/blocks/bms_props/qe_director"
+		},
+		"brr_bm_qe_director_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_director_particle"
+		},
+		"brr_bm_qe_gas_cylinder": {
+			"textures": "textures/blocks/bms_props/qe_gas_cylinder"
+		},
+		"brr_bm_qe_gas_cylinder_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_gas_cylinder_particle"
+		},
+		"brr_bm_qe_gas_holder": {
+			"textures": "textures/blocks/bms_props/qe_gas_holder"
+		},
+		"brr_bm_qe_gas_holder_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_gas_holder_particle"
+		},
+		"brr_bm_qe_jenn0desk": {
+			"textures": "textures/blocks/bms_props/qe_jenn0desk"
+		},
+		"brr_bm_qe_jenn0desk_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_jenn0desk_particle"
+		},
+		"brr_bm_qe_lasersign": {
+			"textures": "textures/blocks/bms_props/qe_lasersign"
+		},
+		"brr_bm_qe_lasersign_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_lasersign_particle"
+		},
+		"brr_bm_qe_lasersign_on": {
+			"textures": "textures/blocks/bms_props/qe_lasersign_on"
+		},
+		"brr_bm_qe_lasersign_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_lasersign_on_particle"
+		},
+		"brr_bm_qe_lenses": {
+			"textures": "textures/blocks/bms_props/qe_lenses"
+		},
+		"brr_bm_qe_lenses_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_lenses_particle"
+		},
+		"brr_bm_qe_portraitframe": {
+			"textures": "textures/blocks/bms_props/qe_portraitframe"
+		},
+		"brr_bm_qe_portraitframe_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_portraitframe_particle"
+		},
+		"brr_bm_qe_reflector": {
+			"textures": "textures/blocks/bms_props/qe_reflector"
+		},
+		"brr_bm_qe_reflector_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_reflector_particle"
+		},
+		"brr_bm_qe_tv_stand": {
+			"textures": "textures/blocks/bms_props/qe_tv_stand"
+		},
+		"brr_bm_qe_tv_stand_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_tv_stand_particle"
+		},
+		"brr_bm_qe_zapper": {
+			"textures": "textures/blocks/bms_props/qe_zapper"
+		},
+		"brr_bm_qe_zapper_particle": {
+			"textures": "textures/particle/block_particles/bms_props/qe_zapper_particle"
+		},
+		"brr_bm_smoking_boots": {
+			"textures": "textures/blocks/bms_props/smoking_boots"
+		},
+		"brr_bm_smoking_boots_particle": {
+			"textures": "textures/particle/block_particles/bms_props/smoking_boots_particle"
+		},
+		"brr_bm_alicepack": {
+			"textures": "textures/blocks/bms_props/alicepack"
+		},
+		"brr_bm_alicepack_particle": {
+			"textures": "textures/particle/block_particles/bms_props/alicepack_particle"
+		},
+		"brr_bm_ammobox": {
+			"textures": "textures/blocks/bms_props/ammobox"
+		},
+		"brr_bm_ammobox_particle": {
+			"textures": "textures/particle/block_particles/bms_props/ammobox_particle"
+		},
+		"brr_bm_ammocrate": {
+			"textures": "textures/blocks/bms_props/ammocrate"
+		},
+		"brr_bm_ammocrate_particle": {
+			"textures": "textures/particle/block_particles/bms_props/ammocrate_particle"
+		},
+		"brr_bm_etool": {
+			"textures": "textures/blocks/bms_props/etool"
+		},
+		"brr_bm_etool_particle": {
+			"textures": "textures/particle/block_particles/bms_props/etool_particle"
+		},
+		"brr_bm_ivstand_bag": {
+			"textures": "textures/blocks/bms_props/ivstand_bag"
+		},
+		"brr_bm_ivstand_bag_particle": {
+			"textures": "textures/particle/block_particles/bms_props/ivstand_bag_particle"
+		},
+		"brr_bm_mil_flashlight": {
+			"textures": "textures/blocks/bms_props/mil_flashlight"
+		},
+		"brr_bm_mil_flashlight_particle": {
+			"textures": "textures/particle/block_particles/bms_props/mil_flashlight_particle"
+		},
+		"brr_bm_missile_crate": {
+			"textures": "textures/blocks/bms_props/missile_crate"
+		},
+		"brr_bm_missile_crate_particle": {
+			"textures": "textures/particle/block_particles/bms_props/missile_crate_particle"
+		},
+		"brr_bm_prc77_radio": {
+			"textures": "textures/blocks/bms_props/prc77_radio"
+		},
+		"brr_bm_prc77_radio_particle": {
+			"textures": "textures/particle/block_particles/bms_props/prc77_radio_particle"
+		},
+		"brr_bm_sandbag": {
+			"textures": "textures/blocks/bms_props/sandbag"
+		},
+		"brr_bm_sandbag_particle": {
+			"textures": "textures/particle/block_particles/bms_props/sandbag_particle"
+		},
+		"brr_bm_sentry_undeployed": {
+			"textures": "textures/blocks/bms_props/sentry_undeployed"
+		},
+		"brr_bm_sentry_undeployed_particle": {
+			"textures": "textures/particle/block_particles/bms_props/sentry_undeployed_particle"
+		},
+		"brr_bm_tow_missile": {
+			"textures": "textures/blocks/bms_props/tow_missile"
+		},
+		"brr_bm_tow_missile_particle": {
+			"textures": "textures/particle/block_particles/bms_props/tow_missile_particle"
+		},
+		"brr_bm_triplaser": {
+			"textures": "textures/blocks/bms_props/triplaser"
+		},
+		"brr_bm_triplaser_particle": {
+			"textures": "textures/particle/block_particles/bms_props/triplaser_particle"
+		},
+		"brr_bm_acl": {
+			"textures": "textures/blocks/bms_props/acl"
+		},
+		"brr_bm_acl_particle": {
+			"textures": "textures/particle/block_particles/bms_props/acl_particle"
+		},
+		"brr_bm_acl_on": {
+			"textures": "textures/blocks/bms_props/acl_on"
+		},
+		"brr_bm_acl_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/acl_on_particle"
+		},
+		"brr_bm_bounce_lantern": {
+			"textures": "textures/blocks/bms_props/bounce_lantern"
+		},
+		"brr_bm_bounce_lantern_particle": {
+			"textures": "textures/particle/block_particles/bms_props/bounce_lantern_particle"
+		},
+		"brr_bm_bounce_lantern_on": {
+			"textures": "textures/blocks/bms_props/bounce_lantern_on"
+		},
+		"brr_bm_bounce_lantern_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/bounce_lantern_on_particle"
+		},
+		"brr_bm_lantern_camping": {
+			"textures": "textures/blocks/bms_props/lantern_camping"
+		},
+		"brr_bm_lantern_camping_particle": {
+			"textures": "textures/particle/block_particles/bms_props/lantern_camping_particle"
+		},
+		"brr_bm_lantern_camping_on": {
+			"textures": "textures/blocks/bms_props/lantern_camping_on"
+		},
+		"brr_bm_lantern_camping_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/lantern_camping_on_particle"
+		},
+		"brr_bm_worklight": {
+			"textures": "textures/blocks/bms_props/worklight"
+		},
+		"brr_bm_worklight_particle": {
+			"textures": "textures/particle/block_particles/bms_props/worklight_particle"
+		},
+		"brr_bm_worklight_on": {
+			"textures": "textures/blocks/bms_props/worklight_on"
+		},
+		"brr_bm_worklight_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/worklight_on_particle"
+		},
+		"brr_bm_helipadbeacon": {
+			"textures": "textures/blocks/bms_props/helipadbeacon"
+		},
+		"brr_bm_helipadbeacon_particle": {
+			"textures": "textures/particle/block_particles/bms_props/helipadbeacon_particle"
+		},
+		"brr_bm_helipadbeacon_on": {
+			"textures": "textures/blocks/bms_props/helipadbeacon_on"
+		},
+		"brr_bm_helipadbeacon_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/helipadbeacon_on_particle"
+		},
+		"brr_bm_light_inset": {
+			"textures": "textures/blocks/bms_props/light_inset"
+		},
+		"brr_bm_light_inset_particle": {
+			"textures": "textures/particle/block_particles/bms_props/light_inset_particle"
+		},
+		"brr_bm_light_inset_on": {
+			"textures": "textures/blocks/bms_props/light_inset_on"
+		},
+		"brr_bm_light_inset_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/light_inset_on_particle"
+		},
+		"brr_bm_underwater_light": {
+			"textures": "textures/blocks/bms_props/underwater_light"
+		},
+		"brr_bm_underwater_light_particle": {
+			"textures": "textures/particle/block_particles/bms_props/underwater_light_particle"
+		},
+		"brr_bm_underwater_light_on": {
+			"textures": "textures/blocks/bms_props/underwater_light_on"
+		},
+		"brr_bm_underwater_light_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/underwater_light_on_particle"
+		},
+		"brr_bm_uc_vatlight": {
+			"textures": "textures/blocks/bms_props/uc_vatlight"
+		},
+		"brr_bm_uc_vatlight_particle": {
+			"textures": "textures/particle/block_particles/bms_props/uc_vatlight_particle"
+		},
+		"brr_bm_uc_vatlight_on": {
+			"textures": "textures/blocks/bms_props/uc_vatlight_on"
+		},
+		"brr_bm_uc_vatlight_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/uc_vatlight_on_particle"
+		},
+		"brr_bm_firealarm_light": {
+			"textures": "textures/blocks/bms_props/firealarm_light"
+		},
+		"brr_bm_firealarm_light_particle": {
+			"textures": "textures/particle/block_particles/bms_props/firealarm_light_particle"
+		},
+		"brr_bm_firealarm_light_on": {
+			"textures": "textures/blocks/bms_props/firealarm_light_on"
+		},
+		"brr_bm_firealarm_light_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/firealarm_light_on_particle"
+		},
+		"brr_bm_floodlight_double": {
+			"textures": "textures/blocks/bms_props/floodlight_double"
+		},
+		"brr_bm_floodlight_double_particle": {
+			"textures": "textures/particle/block_particles/bms_props/floodlight_double_particle"
+		},
+		"brr_bm_floodlight_double_on": {
+			"textures": "textures/blocks/bms_props/floodlight_double_on"
+		},
+		"brr_bm_floodlight_double_on_particle": {
+			"textures": "textures/particle/block_particles/bms_props/floodlight_double_on_particle"
+		},
+		"brr_bm_ibeam": {
+			"textures": "textures/blocks/bms_props/ibeam"
+		},
+		"brr_bm_ibeam_particle": {
+			"textures": "textures/particle/block_particles/bms_props/ibeam_particle"
+		},
+		"brr_bm_ibeam_v": {
+			"textures": "textures/blocks/bms_props/ibeam_v"
+		},
+		"brr_bm_ibeam_v_particle": {
+			"textures": "textures/particle/block_particles/bms_props/ibeam_v_particle"
+		},
+		"brr_bm_rung": {
+			"textures": "textures/blocks/bms_props/rung"
+		},
+		"brr_bm_rung_particle": {
+			"textures": "textures/particle/block_particles/bms_props/rung_particle"
+		},
+		"brr_bm_ladder_top": {
+			"textures": "textures/blocks/bms_props/ladder_top"
+		},
+		"brr_bm_ladder_top_particle": {
+			"textures": "textures/particle/block_particles/bms_props/ladder_top_particle"
+		},
+		"brr_bm_wall_bracket": {
+			"textures": "textures/blocks/bms_props/wall_bracket"
+		},
+		"brr_bm_wall_bracket_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wall_bracket_particle"
+		},
+		"brr_bm_jbox_small": {
+			"textures": "textures/blocks/bms_props/jbox_small"
+		},
+		"brr_bm_jbox_small_particle": {
+			"textures": "textures/particle/block_particles/bms_props/jbox_small_particle"
+		},
+		"brr_bm_jbox_large": {
+			"textures": "textures/blocks/bms_props/jbox_large"
+		},
+		"brr_bm_jbox_large_particle": {
+			"textures": "textures/particle/block_particles/bms_props/jbox_large_particle"
+		},
+		"brr_bm_power_cabinet": {
+			"textures": "textures/blocks/bms_props/power_cabinet"
+		},
+		"brr_bm_power_cabinet_particle": {
+			"textures": "textures/particle/block_particles/bms_props/power_cabinet_particle"
+		},
+		"brr_bm_hanging_buttons": {
+			"textures": "textures/blocks/bms_props/hanging_buttons"
+		},
+		"brr_bm_hanging_buttons_particle": {
+			"textures": "textures/particle/block_particles/bms_props/hanging_buttons_particle"
+		},
+		"brr_bm_hanging_dial": {
+			"textures": "textures/blocks/bms_props/hanging_dial"
+		},
+		"brr_bm_hanging_dial_particle": {
+			"textures": "textures/particle/block_particles/bms_props/hanging_dial_particle"
+		},
+		"brr_bm_electricalpanel": {
+			"textures": "textures/blocks/bms_props/electricalpanel"
+		},
+		"brr_bm_electricalpanel_particle": {
+			"textures": "textures/particle/block_particles/bms_props/electricalpanel_particle"
+		},
+		"brr_bm_elevator_floorpanel": {
+			"textures": "textures/blocks/bms_props/elevator_floorpanel"
+		},
+		"brr_bm_elevator_floorpanel_particle": {
+			"textures": "textures/particle/block_particles/bms_props/elevator_floorpanel_particle"
+		},
+		"brr_bm_tank_hatch": {
+			"textures": "textures/blocks/bms_props/tank_hatch"
+		},
+		"brr_bm_tank_hatch_particle": {
+			"textures": "textures/particle/block_particles/bms_props/tank_hatch_particle"
+		},
+		"brr_bm_spill_pallet": {
+			"textures": "textures/blocks/bms_props/spill_pallet"
+		},
+		"brr_bm_spill_pallet_particle": {
+			"textures": "textures/particle/block_particles/bms_props/spill_pallet_particle"
+		},
+		"brr_bm_supply_cabinet": {
+			"textures": "textures/blocks/bms_props/supply_cabinet"
+		},
+		"brr_bm_supply_cabinet_particle": {
+			"textures": "textures/particle/block_particles/bms_props/supply_cabinet_particle"
+		},
+		"brr_bm_silo_monitor": {
+			"textures": "textures/blocks/bms_props/silo_monitor"
+		},
+		"brr_bm_silo_monitor_particle": {
+			"textures": "textures/particle/block_particles/bms_props/silo_monitor_particle"
+		},
+		"brr_bm_gauge": {
+			"textures": "textures/blocks/bms_props/gauge"
+		},
+		"brr_bm_gauge_particle": {
+			"textures": "textures/particle/block_particles/bms_props/gauge_particle"
+		},
+		"brr_bm_am_blind": {
+			"textures": "textures/blocks/bms_props/am_blind"
+		},
+		"brr_bm_am_blind_particle": {
+			"textures": "textures/particle/block_particles/bms_props/am_blind_particle"
+		},
+		"brr_bm_am_babypictureframe": {
+			"textures": "textures/blocks/bms_props/am_babypictureframe"
+		},
+		"brr_bm_am_babypictureframe_particle": {
+			"textures": "textures/particle/block_particles/bms_props/am_babypictureframe_particle"
+		},
+		"brr_bm_am_certificateframe": {
+			"textures": "textures/blocks/bms_props/am_certificateframe"
+		},
+		"brr_bm_am_certificateframe_particle": {
+			"textures": "textures/particle/block_particles/bms_props/am_certificateframe_particle"
+		},
+		"brr_bm_guard_vest": {
+			"textures": "textures/blocks/bms_props/guard_vest"
+		},
+		"brr_bm_guard_vest_particle": {
+			"textures": "textures/particle/block_particles/bms_props/guard_vest_particle"
+		},
+		"brr_bm_helmet": {
+			"textures": "textures/blocks/bms_props/helmet"
+		},
+		"brr_bm_helmet_particle": {
+			"textures": "textures/particle/block_particles/bms_props/helmet_particle"
+		},
+		"brr_bm_mixer_with_lid": {
+			"textures": "textures/blocks/bms_props/mixer_with_lid"
+		},
+		"brr_bm_mixer_with_lid_particle": {
+			"textures": "textures/particle/block_particles/bms_props/mixer_with_lid_particle"
+		},
+		"brr_bm_xencrystal": {
+			"textures": "textures/blocks/bms_props/xencrystal"
+		},
+		"brr_bm_xencrystal_particle": {
+			"textures": "textures/particle/block_particles/bms_props/xencrystal_particle"
+		},
+		"brr_bm_lasertube_emitter": {
+			"textures": "textures/blocks/bms_props/lasertube_emitter"
+		},
+		"brr_bm_lasertube_emitter_particle": {
+			"textures": "textures/particle/block_particles/bms_props/lasertube_emitter_particle"
+		},
+		"brr_bm_office_phone": {
+			"textures": "textures/blocks/bms_props/office_phone"
+		},
+		"brr_bm_office_phone_particle": {
+			"textures": "textures/particle/block_particles/bms_props/office_phone_particle"
+		},
+		"brr_bm_heartpump": {
+			"textures": "textures/blocks/bms_props/heartpump"
+		},
+		"brr_bm_heartpump_particle": {
+			"textures": "textures/particle/block_particles/bms_props/heartpump_particle"
+		},
+		"brr_bm_ljs_console": {
+			"textures": "textures/blocks/bms_props/ljs_console"
+		},
+		"brr_bm_ljs_console_particle": {
+			"textures": "textures/particle/block_particles/bms_props/ljs_console_particle"
+		},
+		"brr_bm_trashcan": {
+			"textures": "textures/blocks/bms_props/trashcan"
+		},
+		"brr_bm_trashcan_particle": {
+			"textures": "textures/particle/block_particles/bms_props/trashcan_particle"
+		},
+		"brr_bm_constructioncone": {
+			"textures": "textures/blocks/bms_props/constructioncone"
+		},
+		"brr_bm_constructioncone_particle": {
+			"textures": "textures/particle/block_particles/bms_props/constructioncone_particle"
+		},
+		"brr_bm_constructioncone_stack": {
+			"textures": "textures/blocks/bms_props/constructioncone_stack"
+		},
+		"brr_bm_constructioncone_stack_particle": {
+			"textures": "textures/particle/block_particles/bms_props/constructioncone_stack_particle"
+		},
+		"brr_bm_chem_light": {
+			"textures": "textures/blocks/bms_props/chem_light"
+		},
+		"brr_bm_chem_light_particle": {
+			"textures": "textures/particle/block_particles/bms_props/chem_light_particle"
+		},
+		"brr_bm_cattle_skull": {
+			"textures": "textures/blocks/bms_props/cattle_skull"
+		},
+		"brr_bm_cattle_skull_particle": {
+			"textures": "textures/particle/block_particles/bms_props/cattle_skull_particle"
+		},
+		"brr_bm_tumbleweed": {
+			"textures": "textures/blocks/bms_props/tumbleweed"
+		},
+		"brr_bm_tumbleweed_particle": {
+			"textures": "textures/particle/block_particles/bms_props/tumbleweed_particle"
+		},
+		"brr_bm_red_cactus": {
+			"textures": "textures/blocks/bms_props/red_cactus"
+		},
+		"brr_bm_red_cactus_particle": {
+			"textures": "textures/particle/block_particles/bms_props/red_cactus_particle"
+		},
+		"brr_bm_turd": {
+			"textures": "textures/blocks/bms_props/turd"
+		},
+		"brr_bm_turd_particle": {
+			"textures": "textures/particle/block_particles/bms_props/turd_particle"
+		},
+		"brr_bm_boundingmine": {
+			"textures": "textures/blocks/bms_props/boundingmine"
+		},
+		"brr_bm_boundingmine_particle": {
+			"textures": "textures/particle/block_particles/bms_props/boundingmine_particle"
+		},
+		"brr_bm_st_sign": {
+			"textures": "textures/blocks/bms_props/st_sign"
+		},
+		"brr_bm_st_sign_particle": {
+			"textures": "textures/particle/block_particles/bms_props/st_sign_particle"
+		},
+		"brr_bm_life_preserver": {
+			"textures": "textures/blocks/bms_props/life_preserver"
+		},
+		"brr_bm_life_preserver_particle": {
+			"textures": "textures/particle/block_particles/bms_props/life_preserver_particle"
+		},
+		"brr_bm_life_preserver_washy": {
+			"textures": "textures/blocks/bms_props/life_preserver_washy"
+		},
+		"brr_bm_life_preserver_washy_particle": {
+			"textures": "textures/particle/block_particles/bms_props/life_preserver_washy_particle"
+		},
+		"brr_bm_wooden_barrel": {
+			"textures": "textures/blocks/bms_props/wooden_barrel"
+		},
+		"brr_bm_wooden_barrel_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wooden_barrel_particle"
+		},
+		"brr_bm_wood_crate_explosive": {
+			"textures": "textures/blocks/bms_props/wood_crate_explosive"
+		},
+		"brr_bm_wood_crate_explosive_particle": {
+			"textures": "textures/particle/block_particles/bms_props/wood_crate_explosive_particle"
+		},
+		"brr_bm_road_sign_winding": {
+			"textures": "textures/blocks/bms_props/road_sign_winding"
+		},
+		"brr_bm_road_sign_winding_particle": {
+			"textures": "textures/particle/block_particles/bms_props/road_sign_winding_particle"
+		},
+		"brr_bm_road_sign_twoway": {
+			"textures": "textures/blocks/bms_props/road_sign_twoway"
+		},
+		"brr_bm_road_sign_twoway_particle": {
+			"textures": "textures/particle/block_particles/bms_props/road_sign_twoway_particle"
+		},
+		"brr_bm_road_sign_arrows": {
+			"textures": "textures/blocks/bms_props/road_sign_arrows"
+		},
+		"brr_bm_road_sign_arrows_particle": {
+			"textures": "textures/particle/block_particles/bms_props/road_sign_arrows_particle"
+		},
+		"brr_bm_road_sign_lowgear": {
+			"textures": "textures/blocks/bms_props/road_sign_lowgear"
+		},
+		"brr_bm_road_sign_lowgear_particle": {
+			"textures": "textures/particle/block_particles/bms_props/road_sign_lowgear_particle"
+		},
+		"brr_bm_road_sign_stop": {
+			"textures": "textures/blocks/bms_props/road_sign_stop"
+		},
+		"brr_bm_road_sign_stop_particle": {
+			"textures": "textures/particle/block_particles/bms_props/road_sign_stop_particle"
+		},
+		"brr_bm_plant_fern": {
+			"textures": "textures/blocks/bms_props/plant_fern"
+		},
+		"brr_bm_plant_fern_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_fern_particle"
+		},
+		"brr_bm_plant_fern_cluster": {
+			"textures": "textures/blocks/bms_props/plant_fern_cluster"
+		},
+		"brr_bm_plant_fern_cluster_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_fern_cluster_particle"
+		},
+		"brr_bm_plant_fern_cluster_dead": {
+			"textures": "textures/blocks/bms_props/plant_fern_cluster_dead"
+		},
+		"brr_bm_plant_fern_cluster_dead_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_fern_cluster_dead_particle"
+		},
+		"brr_bm_plant_palm": {
+			"textures": "textures/blocks/bms_props/plant_palm"
+		},
+		"brr_bm_plant_palm_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_palm_particle"
+		},
+		"brr_bm_plant_cycad": {
+			"textures": "textures/blocks/bms_props/plant_cycad"
+		},
+		"brr_bm_plant_cycad_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_cycad_particle"
+		},
+		"brr_bm_plant_office": {
+			"textures": "textures/blocks/bms_props/plant_office"
+		},
+		"brr_bm_plant_office_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_office_particle"
+		},
+		"brr_bm_plant_yucca": {
+			"textures": "textures/blocks/bms_props/plant_yucca"
+		},
+		"brr_bm_plant_yucca_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_yucca_particle"
+		},
+		"brr_bm_plant_agave": {
+			"textures": "textures/blocks/bms_props/plant_agave"
+		},
+		"brr_bm_plant_agave_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_agave_particle"
+		},
+		"brr_bm_plant_agave_small": {
+			"textures": "textures/blocks/bms_props/plant_agave_small"
+		},
+		"brr_bm_plant_agave_small_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_agave_small_particle"
+		},
+		"brr_bm_plant_yucca_flowering": {
+			"textures": "textures/blocks/bms_props/plant_yucca_flowering"
+		},
+		"brr_bm_plant_yucca_flowering_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_yucca_flowering_particle"
+		},
+		"brr_bm_plant_sotol": {
+			"textures": "textures/blocks/bms_props/plant_sotol"
+		},
+		"brr_bm_plant_sotol_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_sotol_particle"
+		},
+		"brr_bm_plant_desert_small": {
+			"textures": "textures/blocks/bms_props/plant_desert_small"
+		},
+		"brr_bm_plant_desert_small_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_desert_small_particle"
+		},
+		"brr_bm_plant_desert_tall": {
+			"textures": "textures/blocks/bms_props/plant_desert_tall"
+		},
+		"brr_bm_plant_desert_tall_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_desert_tall_particle"
+		},
+		"brr_bm_plant_grass_flowering": {
+			"textures": "textures/blocks/bms_props/plant_grass_flowering"
+		},
+		"brr_bm_plant_grass_flowering_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_grass_flowering_particle"
+		},
+		"brr_bm_plant_ocotillo": {
+			"textures": "textures/blocks/bms_props/plant_ocotillo"
+		},
+		"brr_bm_plant_ocotillo_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_ocotillo_particle"
+		},
+		"brr_bm_plant_grass_tall": {
+			"textures": "textures/blocks/bms_props/plant_grass_tall"
+		},
+		"brr_bm_plant_grass_tall_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_grass_tall_particle"
+		},
+		"brr_bm_plant_grass_strip": {
+			"textures": "textures/blocks/bms_props/plant_grass_strip"
+		},
+		"brr_bm_plant_grass_strip_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_grass_strip_particle"
+		},
+		"brr_bm_plant_creosote": {
+			"textures": "textures/blocks/bms_props/plant_creosote"
+		},
+		"brr_bm_plant_creosote_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_creosote_particle"
+		},
+		"brr_bm_plant_creosote_large": {
+			"textures": "textures/blocks/bms_props/plant_creosote_large"
+		},
+		"brr_bm_plant_creosote_large_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_creosote_large_particle"
+		},
+		"brr_bm_plant_brittlebush": {
+			"textures": "textures/blocks/bms_props/plant_brittlebush"
+		},
+		"brr_bm_plant_brittlebush_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_brittlebush_particle"
+		},
+		"brr_bm_plant_sagebrush": {
+			"textures": "textures/blocks/bms_props/plant_sagebrush"
+		},
+		"brr_bm_plant_sagebrush_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_sagebrush_particle"
+		},
+		"brr_bm_plant_sagebrush_large": {
+			"textures": "textures/blocks/bms_props/plant_sagebrush_large"
+		},
+		"brr_bm_plant_sagebrush_large_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_sagebrush_large_particle"
+		},
+		"brr_bm_plant_silversage": {
+			"textures": "textures/blocks/bms_props/plant_silversage"
+		},
+		"brr_bm_plant_silversage_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_silversage_particle"
+		},
+		"brr_bm_plant_broombaccharis": {
+			"textures": "textures/blocks/bms_props/plant_broombaccharis"
+		},
+		"brr_bm_plant_broombaccharis_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_broombaccharis_particle"
+		},
+		"brr_bm_plant_thistle": {
+			"textures": "textures/blocks/bms_props/plant_thistle"
+		},
+		"brr_bm_plant_thistle_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_thistle_particle"
+		},
+		"brr_bm_plant_tiered": {
+			"textures": "textures/blocks/bms_props/plant_tiered"
+		},
+		"brr_bm_plant_tiered_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_tiered_particle"
+		},
+		"brr_bm_plant_amber": {
+			"textures": "textures/blocks/bms_props/plant_amber"
+		},
+		"brr_bm_plant_amber_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_amber_particle"
+		},
+		"brr_bm_plant_bush": {
+			"textures": "textures/blocks/bms_props/plant_bush"
+		},
+		"brr_bm_plant_bush_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_bush_particle"
+		},
+		"brr_bm_plant_bush_low": {
+			"textures": "textures/blocks/bms_props/plant_bush_low"
+		},
+		"brr_bm_plant_bush_low_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_bush_low_particle"
+		},
+		"brr_bm_plant_bush_low_dead": {
+			"textures": "textures/blocks/bms_props/plant_bush_low_dead"
+		},
+		"brr_bm_plant_bush_low_dead_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_bush_low_dead_particle"
+		},
+		"brr_bm_plant_brush_dry": {
+			"textures": "textures/blocks/bms_props/plant_brush_dry"
+		},
+		"brr_bm_plant_brush_dry_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_brush_dry_particle"
+		},
+		"brr_bm_plant_shrub": {
+			"textures": "textures/blocks/bms_props/plant_shrub"
+		},
+		"brr_bm_plant_shrub_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_shrub_particle"
+		},
+		"brr_bm_plant_forestiera": {
+			"textures": "textures/blocks/bms_props/plant_forestiera"
+		},
+		"brr_bm_plant_forestiera_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_forestiera_particle"
+		},
+		"brr_bm_plant_saguaro_small": {
+			"textures": "textures/blocks/bms_props/plant_saguaro_small"
+		},
+		"brr_bm_plant_saguaro_small_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_saguaro_small_particle"
+		},
+		"brr_bm_plant_saguaro": {
+			"textures": "textures/blocks/bms_props/plant_saguaro"
+		},
+		"brr_bm_plant_saguaro_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_saguaro_particle"
+		},
+		"brr_bm_plant_saguaro_large": {
+			"textures": "textures/blocks/bms_props/plant_saguaro_large"
+		},
+		"brr_bm_plant_saguaro_large_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_saguaro_large_particle"
+		},
+		"brr_bm_plant_cactus_candelabra": {
+			"textures": "textures/blocks/bms_props/plant_cactus_candelabra"
+		},
+		"brr_bm_plant_cactus_candelabra_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_cactus_candelabra_particle"
+		},
+		"brr_bm_plant_cactus_forked": {
+			"textures": "textures/blocks/bms_props/plant_cactus_forked"
+		},
+		"brr_bm_plant_cactus_forked_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_cactus_forked_particle"
+		},
+		"brr_bm_plant_cactus_branching": {
+			"textures": "textures/blocks/bms_props/plant_cactus_branching"
+		},
+		"brr_bm_plant_cactus_branching_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_cactus_branching_particle"
+		},
+		"brr_bm_plant_cactus_barrel": {
+			"textures": "textures/blocks/bms_props/plant_cactus_barrel"
+		},
+		"brr_bm_plant_cactus_barrel_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_cactus_barrel_particle"
+		},
+		"brr_bm_plant_cactus_column": {
+			"textures": "textures/blocks/bms_props/plant_cactus_column"
+		},
+		"brr_bm_plant_cactus_column_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_cactus_column_particle"
+		},
+		"brr_bm_plant_tree_sapling": {
+			"textures": "textures/blocks/bms_props/plant_tree_sapling"
+		},
+		"brr_bm_plant_tree_sapling_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_tree_sapling_particle"
+		},
+		"brr_bm_plant_tree_courtyard": {
+			"textures": "textures/blocks/bms_props/plant_tree_courtyard"
+		},
+		"brr_bm_plant_tree_courtyard_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_tree_courtyard_particle"
+		},
+		"brr_bm_plant_tree_gnarled": {
+			"textures": "textures/blocks/bms_props/plant_tree_gnarled"
+		},
+		"brr_bm_plant_tree_gnarled_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_tree_gnarled_particle"
+		},
+		"brr_bm_plant_tree_desert": {
+			"textures": "textures/blocks/bms_props/plant_tree_desert"
+		},
+		"brr_bm_plant_tree_desert_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_tree_desert_particle"
+		},
+		"brr_bm_plant_juniper_snag": {
+			"textures": "textures/blocks/bms_props/plant_juniper_snag"
+		},
+		"brr_bm_plant_juniper_snag_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_juniper_snag_particle"
+		},
+		"brr_bm_plant_juniper_dead": {
+			"textures": "textures/blocks/bms_props/plant_juniper_dead"
+		},
+		"brr_bm_plant_juniper_dead_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_juniper_dead_particle"
+		},
+		"brr_bm_plant_juniper": {
+			"textures": "textures/blocks/bms_props/plant_juniper"
+		},
+		"brr_bm_plant_juniper_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_juniper_particle"
+		},
+		"brr_bm_plant_vines_wall": {
+			"textures": "textures/blocks/bms_props/plant_vines_wall"
+		},
+		"brr_bm_plant_vines_wall_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_vines_wall_particle"
+		},
+		"brr_bm_plant_vines_hanging": {
+			"textures": "textures/blocks/bms_props/plant_vines_hanging"
+		},
+		"brr_bm_plant_vines_hanging_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_vines_hanging_particle"
+		},
+		"brr_bm_plant_vines_climbing": {
+			"textures": "textures/blocks/bms_props/plant_vines_climbing"
+		},
+		"brr_bm_plant_vines_climbing_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_vines_climbing_particle"
+		},
+		"brr_bm_plant_moss_hanging": {
+			"textures": "textures/blocks/bms_props/plant_moss_hanging"
+		},
+		"brr_bm_plant_moss_hanging_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_moss_hanging_particle"
+		},
+		"brr_bm_plant_ivy": {
+			"textures": "textures/blocks/bms_props/plant_ivy"
+		},
+		"brr_bm_plant_ivy_particle": {
+			"textures": "textures/particle/block_particles/bms_props/plant_ivy_particle"
 		}
 	}
 }

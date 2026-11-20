@@ -16,6 +16,8 @@ import { forgetCellAppearance } from "./visibility.js";
 import { ENTITY_CLASS_TO_ITEM, getEngineSettings, getMainhandTypeId, isPlayerCreative, safeGetDimension } from "../runtime.js";
 import { invalidateHeldItem } from "../../handler/core/held_item.js";
 import { openToolUIForBlock } from "../../tool_ui/tool_ui_dispatch.js";
+import { PATH_TRACK, TRACK_LINKER, linkerClick } from "./tracks.js";
+import { PLATFORM_TOOL, TRAIN, platformToolClickBlock, platformToolClickTrain, trainFormSaved } from "./platforms.js";
 
 // SECTION: Editor
 // Placing a tool block next to one of the same type extends that brush (and joins brushes it
@@ -139,13 +141,72 @@ function saveEntityFromForm(entity, nextData) {
 
 const lastInteractTick = new Map();
 
+function handlePlatformTool(player, block) {
+    if (!isPlayerCreative(player)) {
+        player.sendMessage("§cOnly players in Creative mode can set up platforms.");
+        return;
+    }
+    const now = system.currentTick;
+    if (now - (lastInteractTick.get(player.id) ?? -Infinity) < INTERACT_COOLDOWN_TICKS) return;
+    lastInteractTick.set(player.id, now);
+    const typeId = block.typeId;
+    const sneaking = player.isSneaking;
+    const dimension = block.dimension.id;
+    const cell = { x: block.x, y: block.y, z: block.z };
+    system.run(() => {
+        if (typeId !== TRAIN) {
+            player.sendMessage(platformToolClickBlock(player.id, dimension, cell));
+            return;
+        }
+        let entity = getEntityAt(dimension, cell.x, cell.y, cell.z);
+        if (!entity || entity.typeId !== typeId) {
+            removeCellAt(dimension, cell.x, cell.y, cell.z);
+            entity = createEntity(typeId, dimension, [cell]);
+        }
+        player.sendMessage(platformToolClickTrain(player.id, entity, sneaking));
+    });
+}
+
 // Called from main.js's playerInteractWithBlock before-event once permission checks passed.
 export function handleEngineBlockInteract(event) {
     const block = event.block;
     const typeId = block?.typeId;
+
+    // The Platform Tool works on any block: click a train, then its platform's two corners.
+    if (block && isRegistryLoaded() && getMainhandTypeId(event.player) === PLATFORM_TOOL) {
+        event.cancel = true;
+        handlePlatformTool(event.player, block);
+        return;
+    }
+
     if (!isEntityClass(typeId) || !isRegistryLoaded()) return;
 
     const player = event.player;
+
+    // The Track Linker links track nodes instead of opening their form; sneak-click unlinks.
+    if (typeId === PATH_TRACK && getMainhandTypeId(player) === TRACK_LINKER) {
+        event.cancel = true;
+        if (!isPlayerCreative(player)) {
+            player.sendMessage("§cOnly players in Creative mode can link track nodes.");
+            return;
+        }
+        const now = system.currentTick;
+        if (now - (lastInteractTick.get(player.id) ?? -Infinity) < INTERACT_COOLDOWN_TICKS) return;
+        lastInteractTick.set(player.id, now);
+        const sneaking = player.isSneaking;
+        const dimension = block.dimension.id;
+        const cell = { x: block.x, y: block.y, z: block.z };
+        system.run(() => {
+            let entity = getEntityAt(dimension, cell.x, cell.y, cell.z);
+            if (!entity || entity.typeId !== typeId) {
+                removeCellAt(dimension, cell.x, cell.y, cell.z);
+                entity = createEntity(typeId, dimension, [cell]);
+            }
+            player.sendMessage(linkerClick(player.id, entity, sneaking));
+        });
+        return;
+    }
+
     // Sneaking skips the form so tool blocks can be placed against other tool blocks.
     if (player.isSneaking || !getEngineSettings().toolsEnabled) return;
 
@@ -170,7 +231,16 @@ export function handleEngineBlockInteract(event) {
             removeCellAt(dimension, cell.x, cell.y, cell.z);
             entity = createEntity(typeId, dimension, [cell]);
         }
-        openToolUIForBlock(player, entity, { onSave: saveEntityFromForm });
+        // A train also says what it still needs (or how to start it) once its form is saved.
+        const onSave = entity.typeId !== TRAIN ? saveEntityFromForm : (saved, nextData) => {
+            // The form holds a copy from when it opened; the platform may have moved since.
+            if (saved.data.platform !== undefined) nextData.platform = saved.data.platform;
+            else delete nextData.platform;
+            const result = saveEntityFromForm(saved, nextData);
+            if (result === true) system.run(() => player.sendMessage(trainFormSaved(saved)));
+            return result;
+        };
+        openToolUIForBlock(player, entity, { onSave });
     });
 }
 

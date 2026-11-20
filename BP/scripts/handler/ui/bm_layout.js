@@ -14,6 +14,8 @@ export const TITLE = {
         "AUDIO": "BM_MAIN::OPTIONS::AUDIO"
     },
     "achievements": "BM_MAIN::ACH::",
+    "quit": "BM_MAIN::QUIT::",
+    "unsaved": "BM_MAIN::UNSAVED::",
     "splash": "BM_BOOT::SPLASH",
     "bootLoad": "BM_BOOT::LOAD",
     "chapterLoad": "BM_LOAD::CHAPTER"
@@ -30,7 +32,8 @@ export const IDX = {
         "primary": 4,
         "chapter": 5,
         "time": 6,
-        "count": 7
+        "quit": 7,
+        "count": 8
     },
     "campaign": {
         "newGame": 5,
@@ -42,7 +45,8 @@ export const IDX = {
         "cardHit": 11,
         "cardTitle": 15,
         "cardNumber": 19,
-        "count": 23
+        "quit": 23,
+        "count": 24
     },
     "options": {
         "subtabs": 5,
@@ -51,18 +55,31 @@ export const IDX = {
         "rowBase": 10,
         "rowStride": 4,
         "rows": 5,
-        "count": 30
+        "quit": 30,
+        "count": 31
     },
     "achievements": {
-        "up": 5,
-        "down": 6,
-        "done": 7,
-        "total": 8,
-        "bar": 9,
-        "cardBase": 10,
+        "done": 5,
+        "total": 6,
+        "bar": 7,
+        "quit": 8,
+        "cardBase": 9,
         "cardStride": 4,
-        "cards": 10,
-        "count": 50
+        "cards": 50,
+        "count": 209
+    },
+    "quit": {
+        "quote": 5,
+        "quit": 6,
+        "cancel": 7,
+        "count": 8
+    },
+    "unsaved": {
+        "apply": 5,
+        "discard": 6,
+        "cancel": 7,
+        "quit": 8,
+        "count": 9
     },
     "load": {
         "title": 0,
@@ -71,7 +88,6 @@ export const IDX = {
 };
 export const SLIDER_STEPS = 10;
 export const PROGRESS_STEPS = 50;
-export const THUMB_POSITIONS = 20;
 export const SEGMENTS = {"min":2,"max":5};
 export const OPTION_TABS = ["GAME","VIDEO","AUDIO"];
 export const DURATION = {"splash":3,"bootLoad":2.5,"chapterLoad":3};

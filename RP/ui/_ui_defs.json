@@ -17,6 +17,8 @@
     "ui/blocks/logic_coop_manager.json",
     "ui/blocks/logic_random_outputs.json",
     "ui/blocks/logic_timer.json",
+    "ui/blocks/path_track.json",
+    "ui/blocks/func_tracktrain.json",
     "ui/blocks/logic_relay.json",
     "ui/blocks/filter_class.json",
     "ui/blocks/filter_name.json",

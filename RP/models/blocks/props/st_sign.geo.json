@@ -1,0 +1,114 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bm_st_sign",
+				"texture_width": 21.333333333333332,
+				"texture_height": 21.333333333333332,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "sign",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-8,
+								5.67,
+								7
+							],
+							"size": [
+								16,
+								5.33,
+								1
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										16,
+										5.33
+									]
+								},
+								"south": {
+									"uv": [
+										16.083,
+										0.083
+									],
+									"uv_size": [
+										0.167,
+										0.167
+									]
+								},
+								"east": {
+									"uv": [
+										16.417,
+										0.083
+									],
+									"uv_size": [
+										0.167,
+										0.167
+									]
+								},
+								"west": {
+									"uv": [
+										16.75,
+										0.083
+									],
+									"uv_size": [
+										0.167,
+										0.167
+									]
+								},
+								"up": {
+									"uv": [
+										17.083,
+										0.083
+									],
+									"uv_size": [
+										0.167,
+										0.167
+									]
+								},
+								"down": {
+									"uv": [
+										17.417,
+										0.083
+									],
+									"uv_size": [
+										0.167,
+										0.167
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

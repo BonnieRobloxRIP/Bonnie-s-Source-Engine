@@ -288,7 +288,8 @@ function dispatchActorInput(actor, inputName, param) {
 
 // "AddOutput <key> <value>" sets a keyvalue, matching Source's keyvalue form of AddOutput.
 // Booleans stay booleans so toggled fields keep working after an I/O edit.
-const PROTECTED_KEYS = new Set(["outputs", "runtime"]);
+// "platform" is a train's live position and saved blocks (systems/platforms.js).
+const PROTECTED_KEYS = new Set(["outputs", "runtime", "platform"]);
 
 function applyAddOutput(entity, param) {
     const text = `${param ?? ""}`.trim();

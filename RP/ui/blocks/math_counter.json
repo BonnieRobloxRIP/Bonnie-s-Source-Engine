@@ -2,7 +2,34 @@
   "namespace": "math_counter",
   "form_panel": {
     "type": "panel",
-    "offset": [0, 10],
+    "size": ["100%", "100%"],
+    "layer": 2,
+    "controls": [
+      {
+        "form_scroll@server_form.brr_tool_scroll": {
+          "size": [298.13, "100% - 12px"],
+          "max_size": [298.13, 267.19],
+          "offset": [2.81, 5.78],
+          "$content_control": "math_counter.form_area"
+        }
+      }
+    ]
+  },
+  "form_area": {
+    "type": "panel",
+    "size": [298.13, 267.19],
+    "controls": [
+      {
+        "form_body@math_counter.form_body": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [-33.75, -42.19]
+        }
+      }
+    ]
+  },
+  "form_body": {
+    "type": "panel",
     "size": [360, 360],
     "layer": 2,
     "controls": [
@@ -22,6 +49,133 @@
       },
       {
         "close_button@server_form.close_button": {}
+      },
+      {
+        "error_banner@math_counter.error_banner": {}
+      }
+    ]
+  },
+  "error_banner": {
+    "type": "panel",
+    "size": [263, "100%c"],
+    "offset": [52, 70],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 40,
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#title_text - 'Math Counter') = ''))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "shown": {
+          "type": "panel",
+          "size": ["100%", "100%cm"],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "math_counter_error_ok",
+              "source_property_name": "(not #toggle_state)",
+              "target_property_name": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "bg": {
+                "type": "image",
+                "texture": "textures/ui/black_mesa/menu/shapes/solid",
+                "color": [0.78, 0.141, 0.141],
+                "keep_ratio": false,
+                "size": ["100%", "100%sm"],
+                "layer": 1
+              }
+            },
+            {
+              "rows": {
+                "type": "stack_panel",
+                "orientation": "vertical",
+                "size": ["100%", "100%c"],
+                "layer": 2,
+                "controls": [
+                  {
+                    "pad_top": {
+                      "type": "panel",
+                      "size": ["100%", 4]
+                    }
+                  },
+                  {
+                    "message": {
+                      "type": "panel",
+                      "size": ["100%", "100%c"],
+                      "controls": [
+                        {
+                          "text": {
+                            "type": "label",
+                            "size": ["100% - 12px", "default"],
+                            "text": "#text",
+                            "color": [1, 1, 1],
+                            "font_type": "default",
+                            "shadow": false,
+                            "anchor_from": "top_middle",
+                            "anchor_to": "top_middle",
+                            "bindings": [
+                              {
+                                "binding_name": "#title_text"
+                              },
+                              {
+                                "binding_type": "view",
+                                "source_property_name": "(#title_text - 'Math Counter')",
+                                "target_property_name": "#text"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "pad_mid": {
+                      "type": "panel",
+                      "size": ["100%", 3]
+                    }
+                  },
+                  {
+                    "ok_row": {
+                      "type": "panel",
+                      "size": ["100%", 12],
+                      "controls": [
+                        {
+                          "ok@server_form.brr_help_toggle": {
+                            "size": [40, 12],
+                            "offset": [-6, 0],
+                            "anchor_from": "right_middle",
+                            "anchor_to": "right_middle",
+                            "$name": "math_counter_error_ok",
+                            "$group": "math_counter_error_mode",
+                            "$index": 1,
+                            "$text": "OK"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "pad_bottom": {
+                      "type": "panel",
+                      "size": ["100%", 4]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     ]
   },
@@ -475,6 +629,57 @@
       }
     ]
   },
+  "help_pages": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "help0@server_form.brr_scroll_panel": {
+          "size": ["83.33%", "62.78%"],
+          "offset": ["-10.53%", "-19.61%"],
+          "$content_control": "math_counter.help0_content",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "math_counter_help_tab0",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "help1@server_form.brr_scroll_panel": {
+          "size": ["83.33%", "62.78%"],
+          "offset": ["-10.53%", "-19.61%"],
+          "$content_control": "math_counter.help1_content",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "math_counter_help_tab1",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "help2@server_form.brr_scroll_panel": {
+          "size": ["83.33%", "62.78%"],
+          "offset": ["-10.53%", "-19.61%"],
+          "$content_control": "math_counter.help2_content",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "math_counter_help_tab2",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
   "category_content_panel": {
     "type": "panel",
     "size": ["48%", "100%"],
@@ -715,61 +920,21 @@
       },
       {
         "help_content": {
-          "type": "panel",
+          "type": "collection_panel",
           "size": ["100%", "100%"],
+          "factory": {
+            "name": "math_counter_help_pages",
+            "control_name": "math_counter.help_pages"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
           "bindings": [
             {
               "binding_type": "view",
               "source_control_name": "math_counter_help",
-              "source_property_name": "#toggle_state",
-              "target_property_name": "#visible"
-            }
-          ],
-          "controls": [
-            {
-              "help0@server_form.brr_scroll_panel": {
-                "size": ["83.33%", "62.78%"],
-                "offset": ["-10.53%", "-19.61%"],
-                "$content_control": "math_counter.help0_content",
-                "bindings": [
-                  {
-                    "binding_type": "view",
-                    "source_control_name": "math_counter_help_tab0",
-                    "source_property_name": "#toggle_state",
-                    "target_property_name": "#visible"
-                  }
-                ]
-              }
-            },
-            {
-              "help1@server_form.brr_scroll_panel": {
-                "size": ["83.33%", "62.78%"],
-                "offset": ["-10.53%", "-19.61%"],
-                "$content_control": "math_counter.help1_content",
-                "bindings": [
-                  {
-                    "binding_type": "view",
-                    "source_control_name": "math_counter_help_tab1",
-                    "source_property_name": "#toggle_state",
-                    "target_property_name": "#visible"
-                  }
-                ]
-              }
-            },
-            {
-              "help2@server_form.brr_scroll_panel": {
-                "size": ["83.33%", "62.78%"],
-                "offset": ["-10.53%", "-19.61%"],
-                "$content_control": "math_counter.help2_content",
-                "bindings": [
-                  {
-                    "binding_type": "view",
-                    "source_control_name": "math_counter_help_tab2",
-                    "source_property_name": "#toggle_state",
-                    "target_property_name": "#visible"
-                  }
-                ]
-              }
+              "source_property_name": "(#toggle_state * 1)",
+              "target_property_name": "#collection_length"
             }
           ]
         }

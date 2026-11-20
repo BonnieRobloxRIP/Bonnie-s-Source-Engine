@@ -5,7 +5,7 @@
 			"identifier": "brr:bm_valvewheel",
 			"menu_category": {
 				"category": "construction",
-				"group": "brr:itemGroup.name.bms_prop",
+				"group": "brr:itemGroup.name.bms_prop_pipes",
 				"is_hidden_in_commands": false
 			},
 			"traits": {
@@ -29,24 +29,24 @@
 				"origin": [
 					-7,
 					1,
-					1.5
+					1
 				],
 				"size": [
 					14,
 					14,
-					6.5
+					7
 				]
 			},
 			"minecraft:selection_box": {
 				"origin": [
 					-7,
 					1,
-					1.5
+					1
 				],
 				"size": [
 					14,
 					14,
-					6.5
+					7
 				]
 			},
 			"minecraft:destruction_particles": {

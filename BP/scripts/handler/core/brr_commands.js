@@ -12,6 +12,8 @@ import { findEntitiesByName, getAllEntities, getEntityCount, setEntityDisabled, 
 import { fireInputAt } from "../../engine/io.js";
 import { getEngineSettings, safeGetDimension } from "../../engine/runtime.js";
 import { MAX_FILL_BRUSH_CELLS, MAX_FILL_POINT_CELLS, fillEngineBlocks } from "../../engine/systems/editor.js";
+import { clearStandinTest, startStandinTest } from "../../engine/systems/platforms.js";
+import { clearDisplayTest, startDisplayTest } from "../../engine/systems/platform_display.js";
 import { BLOCK_FORMS } from "../../tool_ui/block_forms.js";
 import { banPlayer, describeBans, showBanList, unbanByName } from "./moderation.js";
 import { INVISIBLE_NAME_STYLES, USERNAME_MODES } from "./username_mode.js";
@@ -509,6 +511,33 @@ export function registerBrrCommands(data, api = {}) {
             if (result.error) reportLater(origin, `§c${result.error}`);
         });
         return ok(`Filling ${count} ${blockName} block(s)${fillData.name ? ` named "${fillData.name}"` : ""}.`);
+    });
+
+    // SECTION: Platform Stand-ins (/brr:platform_test [start|clear])
+    // Smooth platforms draw their blocks with stand-ins (invisible sulfur cubes holding the block) while moving.
+    // "displays" shows the turning block-display pilot (platform_display.js) instead.
+    registerEnum(registry, "brr:platform_test_action", ["start", "clear", "displays"]);
+    register(registry, {
+        name: "platform_test",
+        description: "Show platform stand-ins (or, with displays, the turning block displays) next to real blocks",
+        permissionLevel: GameDirectors,
+        optionalParameters: [{ name: "brr:platform_test_action", type: Enum }]
+    }, (origin, action) => {
+        if (action === "clear") {
+            later(() => {
+                clearStandinTest();
+                clearDisplayTest();
+            });
+            return ok("Removed the platform tests.");
+        }
+        const player = origin?.sourceEntity;
+        if (player?.typeId !== "minecraft:player") return fail("Run this as a player: the test is built in front of you.");
+        if (action === "displays") {
+            later(() => reportLater(origin, startDisplayTest(player)));
+            return { status: CustomCommandStatus.Success };
+        }
+        later(() => reportLater(origin, startStandinTest(player)));
+        return { status: CustomCommandStatus.Success };
     });
 
     // SECTION: Version (/brr:version)

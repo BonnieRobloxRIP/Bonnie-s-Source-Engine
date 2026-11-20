@@ -49,6 +49,12 @@
 	"brr:ambient_generic_block": {
 		"sound": "stone"
 	},
+	"brr:path_track_block": {
+		"sound": "stone"
+	},
+	"brr:func_tracktrain_block": {
+		"sound": "stone"
+	},
 	"brr:filter_class_block": {
 		"sound": "stone"
 	},
@@ -522,5 +528,1124 @@
 	},
 	"brr:bm_barrel_olive": {
 		"sound": "metal"
+	},
+	"brr:bm_cagelight01": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight01_on": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight01_red": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight01_red_on": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight02": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight02_on": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight02_red": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight02_red_on": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03a": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03a_on": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03a_white": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03a_white_on": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03a_yellow": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03a_yellow_on": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03b": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03b_on": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03b_white": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03b_white_on": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03b_yellow": {
+		"sound": "metal"
+	},
+	"brr:bm_cagelight03b_yellow_on": {
+		"sound": "metal"
+	},
+	"brr:bm_floodlight": {
+		"sound": "metal"
+	},
+	"brr:bm_floodlight_on": {
+		"sound": "metal"
+	},
+	"brr:bm_lowbay": {
+		"sound": "metal"
+	},
+	"brr:bm_lowbay_on": {
+		"sound": "metal"
+	},
+	"brr:bm_powerbox": {
+		"sound": "metal"
+	},
+	"brr:bm_blastdoorswitch": {
+		"sound": "metal"
+	},
+	"brr:bm_cardboardbox01a": {
+		"sound": "wool"
+	},
+	"brr:bm_cardboardbox01b": {
+		"sound": "wool"
+	},
+	"brr:bm_cardboardbox02": {
+		"sound": "wool"
+	},
+	"brr:bm_cardboardbox03": {
+		"sound": "wool"
+	},
+	"brr:bm_cardboardbox04": {
+		"sound": "wool"
+	},
+	"brr:bm_cardboardbox06": {
+		"sound": "wool"
+	},
+	"brr:bm_cardboardbox07": {
+		"sound": "wool"
+	},
+	"brr:bm_cardboardbox08a": {
+		"sound": "wool"
+	},
+	"brr:bm_mopbucket": {
+		"sound": "stone"
+	},
+	"brr:bm_wetfloorsign": {
+		"sound": "stone"
+	},
+	"brr:bm_refusebin": {
+		"sound": "stone"
+	},
+	"brr:bm_lab_stool": {
+		"sound": "metal"
+	},
+	"brr:bm_labcupboard": {
+		"sound": "metal"
+	},
+	"brr:bm_labcupboard_closed": {
+		"sound": "metal"
+	},
+	"brr:bm_labsocket": {
+		"sound": "metal"
+	},
+	"brr:bm_labsocket_double": {
+		"sound": "metal"
+	},
+	"brr:bm_sterilizer": {
+		"sound": "metal"
+	},
+	"brr:bm_surgical_laser": {
+		"sound": "metal"
+	},
+	"brr:bm_tuberack": {
+		"sound": "metal"
+	},
+	"brr:bm_tpplugholder": {
+		"sound": "metal"
+	},
+	"brr:bm_wallunit_control": {
+		"sound": "metal"
+	},
+	"brr:bm_wallunit_display": {
+		"sound": "metal"
+	},
+	"brr:bm_wallunit_housing": {
+		"sound": "metal"
+	},
+	"brr:bm_wallunit_metres": {
+		"sound": "metal"
+	},
+	"brr:bm_wallunit_power": {
+		"sound": "metal"
+	},
+	"brr:bm_wallunit_vents": {
+		"sound": "metal"
+	},
+	"brr:bm_bms_vent": {
+		"sound": "metal"
+	},
+	"brr:bm_carcass_hook": {
+		"sound": "metal"
+	},
+	"brr:bm_gunrack": {
+		"sound": "metal"
+	},
+	"brr:bm_lamppost_base": {
+		"sound": "stone"
+	},
+	"brr:bm_octodog": {
+		"sound": "wool"
+	},
+	"brr:bm_railing": {
+		"sound": "metal"
+	},
+	"brr:bm_shack_light": {
+		"sound": "metal"
+	},
+	"brr:bm_shack_light_on": {
+		"sound": "metal"
+	},
+	"brr:bm_gascanister": {
+		"sound": "metal"
+	},
+	"brr:bm_hydrantwheel": {
+		"sound": "metal"
+	},
+	"brr:bm_nitrogentank": {
+		"sound": "metal"
+	},
+	"brr:bm_nitrogentank_small": {
+		"sound": "metal"
+	},
+	"brr:bm_petrolcan": {
+		"sound": "metal"
+	},
+	"brr:bm_smalltoolbox": {
+		"sound": "metal"
+	},
+	"brr:bm_steelshelf_packed": {
+		"sound": "wool"
+	},
+	"brr:bm_vent4040": {
+		"sound": "metal"
+	},
+	"brr:bm_vent4040_open": {
+		"sound": "metal"
+	},
+	"brr:bm_ventilationduct": {
+		"sound": "metal"
+	},
+	"brr:bm_warehouse_infosign": {
+		"sound": "metal"
+	},
+	"brr:bm_welder": {
+		"sound": "metal"
+	},
+	"brr:bm_aircan": {
+		"sound": "stone"
+	},
+	"brr:bm_book": {
+		"sound": "stone"
+	},
+	"brr:bm_books": {
+		"sound": "stone"
+	},
+	"brr:bm_calculator": {
+		"sound": "stone"
+	},
+	"brr:bm_closed_laptop": {
+		"sound": "stone"
+	},
+	"brr:bm_open_laptop": {
+		"sound": "stone"
+	},
+	"brr:bm_coffe_machine": {
+		"sound": "stone"
+	},
+	"brr:bm_coffe_pot": {
+		"sound": "stone"
+	},
+	"brr:bm_computer_desktop": {
+		"sound": "stone"
+	},
+	"brr:bm_computer_tower": {
+		"sound": "stone"
+	},
+	"brr:bm_computer_server": {
+		"sound": "stone"
+	},
+	"brr:bm_computer_keyboard": {
+		"sound": "stone"
+	},
+	"brr:bm_computer_mouse": {
+		"sound": "stone"
+	},
+	"brr:bm_computer_monitor": {
+		"sound": "stone"
+	},
+	"brr:bm_computer_monitor_small": {
+		"sound": "stone"
+	},
+	"brr:bm_computer_monitor_large": {
+		"sound": "stone"
+	},
+	"brr:bm_computer_monitor_flat": {
+		"sound": "stone"
+	},
+	"brr:bm_desk_cupboard": {
+		"sound": "stone"
+	},
+	"brr:bm_furniture_cupboard": {
+		"sound": "wood"
+	},
+	"brr:bm_furniture_table": {
+		"sound": "wood"
+	},
+	"brr:bm_furniture_sofa": {
+		"sound": "wool"
+	},
+	"brr:bm_office_chair": {
+		"sound": "stone"
+	},
+	"brr:bm_file_box": {
+		"sound": "stone"
+	},
+	"brr:bm_folder": {
+		"sound": "stone"
+	},
+	"brr:bm_holepunch": {
+		"sound": "stone"
+	},
+	"brr:bm_notepad": {
+		"sound": "stone"
+	},
+	"brr:bm_paper_box": {
+		"sound": "stone"
+	},
+	"brr:bm_paperfolder": {
+		"sound": "stone"
+	},
+	"brr:bm_woodpaperfile": {
+		"sound": "wood"
+	},
+	"brr:bm_noticeboard": {
+		"sound": "wood"
+	},
+	"brr:bm_pictureframe_portrait": {
+		"sound": "wood"
+	},
+	"brr:bm_pictureframe_crystal": {
+		"sound": "wood"
+	},
+	"brr:bm_pictureframe_desk": {
+		"sound": "wood"
+	},
+	"brr:bm_deskfan": {
+		"sound": "stone"
+	},
+	"brr:bm_lamp_flexible": {
+		"sound": "stone"
+	},
+	"brr:bm_lamp_flexible_on": {
+		"sound": "stone"
+	},
+	"brr:bm_light_sconce01": {
+		"sound": "stone"
+	},
+	"brr:bm_light_sconce01_on": {
+		"sound": "stone"
+	},
+	"brr:bm_metalbin": {
+		"sound": "stone"
+	},
+	"brr:bm_stapler": {
+		"sound": "stone"
+	},
+	"brr:bm_stereosystem": {
+		"sound": "stone"
+	},
+	"brr:bm_taxidermy_roadrunner": {
+		"sound": "stone"
+	},
+	"brr:bm_tv_small": {
+		"sound": "stone"
+	},
+	"brr:bm_vcr": {
+		"sound": "stone"
+	},
+	"brr:bm_videocassettes": {
+		"sound": "stone"
+	},
+	"brr:bm_breezeblock": {
+		"sound": "stone"
+	},
+	"brr:bm_drill": {
+		"sound": "stone"
+	},
+	"brr:bm_duct_tape": {
+		"sound": "stone"
+	},
+	"brr:bm_funnel": {
+		"sound": "stone"
+	},
+	"brr:bm_gluegun": {
+		"sound": "stone"
+	},
+	"brr:bm_handtowel": {
+		"sound": "wool"
+	},
+	"brr:bm_hardhat": {
+		"sound": "stone"
+	},
+	"brr:bm_junk_caulkgun": {
+		"sound": "stone"
+	},
+	"brr:bm_junk_earmuffs": {
+		"sound": "stone"
+	},
+	"brr:bm_junk_hacksaw": {
+		"sound": "stone"
+	},
+	"brr:bm_junk_screwdriver": {
+		"sound": "stone"
+	},
+	"brr:bm_junk_spanner": {
+		"sound": "stone"
+	},
+	"brr:bm_oil_can": {
+		"sound": "stone"
+	},
+	"brr:bm_soldering_iron": {
+		"sound": "stone"
+	},
+	"brr:bm_wirespool": {
+		"sound": "stone"
+	},
+	"brr:bm_wirespool_silver": {
+		"sound": "stone"
+	},
+	"brr:bm_drinkcan": {
+		"sound": "stone"
+	},
+	"brr:bm_popcan_wormjuice": {
+		"sound": "stone"
+	},
+	"brr:bm_junk_wd43": {
+		"sound": "stone"
+	},
+	"brr:bm_spraycan": {
+		"sound": "stone"
+	},
+	"brr:bm_metalcontainer": {
+		"sound": "stone"
+	},
+	"brr:bm_metalcontainer_rusty": {
+		"sound": "stone"
+	},
+	"brr:bm_plasticcontainer_oil": {
+		"sound": "stone"
+	},
+	"brr:bm_plasticcontainer_white": {
+		"sound": "stone"
+	},
+	"brr:bm_plasticcontainer_bleach": {
+		"sound": "stone"
+	},
+	"brr:bm_cleanerbottle": {
+		"sound": "stone"
+	},
+	"brr:bm_plasticcontainer_spray": {
+		"sound": "stone"
+	},
+	"brr:bm_propanecanister": {
+		"sound": "stone"
+	},
+	"brr:bm_plasticbasket": {
+		"sound": "stone"
+	},
+	"brr:bm_plate": {
+		"sound": "stone"
+	},
+	"brr:bm_vegbox": {
+		"sound": "wood"
+	},
+	"brr:bm_wideognomes": {
+		"sound": "stone"
+	},
+	"brr:bm_quaff": {
+		"sound": "wool"
+	},
+	"brr:bm_canteenbin": {
+		"sound": "stone"
+	},
+	"brr:bm_canteenseat": {
+		"sound": "stone"
+	},
+	"brr:bm_donutbox": {
+		"sound": "stone"
+	},
+	"brr:bm_food_tray": {
+		"sound": "stone"
+	},
+	"brr:bm_microwave": {
+		"sound": "stone"
+	},
+	"brr:bm_pizza_box": {
+		"sound": "wool"
+	},
+	"brr:bm_soda_fountain": {
+		"sound": "stone"
+	},
+	"brr:bm_taco": {
+		"sound": "wool"
+	},
+	"brr:bm_vacuumflask": {
+		"sound": "stone"
+	},
+	"brr:bm_c4": {
+		"sound": "stone"
+	},
+	"brr:bm_bucket": {
+		"sound": "stone"
+	},
+	"brr:bm_epbox": {
+		"sound": "stone"
+	},
+	"brr:bm_jumpplatform_lever": {
+		"sound": "stone"
+	},
+	"brr:bm_pathwaylight": {
+		"sound": "stone"
+	},
+	"brr:bm_pathwaylight_on": {
+		"sound": "stone"
+	},
+	"brr:bm_portablebattery": {
+		"sound": "stone"
+	},
+	"brr:bm_shovel": {
+		"sound": "wood"
+	},
+	"brr:bm_rake": {
+		"sound": "wood"
+	},
+	"brr:bm_sifter": {
+		"sound": "wood"
+	},
+	"brr:bm_specimencontainer": {
+		"sound": "stone"
+	},
+	"brr:bm_specimencontainer_broken": {
+		"sound": "stone"
+	},
+	"brr:bm_storagetrunk": {
+		"sound": "stone"
+	},
+	"brr:bm_survey_dopplerscanner": {
+		"sound": "stone"
+	},
+	"brr:bm_survey_theodolite": {
+		"sound": "stone"
+	},
+	"brr:bm_survey_airmonitor": {
+		"sound": "stone"
+	},
+	"brr:bm_pipe_small": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_joint": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_end": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_v": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_v_joint": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_elbow": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_elbow_up": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_elbow_down": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_tee": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_tee_up": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_tee_down": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_tee_side": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_small_cross": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_joint": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_end": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_v": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_v_joint": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_elbow": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_elbow_up": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_elbow_down": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_tee": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_tee_up": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_tee_down": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_tee_side": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_medium_cross": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_joint": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_end": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_v": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_v_joint": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_elbow": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_elbow_up": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_elbow_down": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_tee": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_tee_up": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_tee_down": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_tee_side": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_large_cross": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_rusty": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_rusty_v": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_rusty_elbow": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_rusty_elbow_up": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_rusty_elbow_down": {
+		"sound": "metal"
+	},
+	"brr:bm_pipe_support": {
+		"sound": "metal"
+	},
+	"brr:bm_autopsy_hammer": {
+		"sound": "stone"
+	},
+	"brr:bm_bonesaw": {
+		"sound": "stone"
+	},
+	"brr:bm_ripcutters": {
+		"sound": "stone"
+	},
+	"brr:bm_scalpel": {
+		"sound": "stone"
+	},
+	"brr:bm_microscope": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_cage_crab": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_canvaspainting": {
+		"sound": "wood"
+	},
+	"brr:bm_qe_collector_fan": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_desk_nameplaque": {
+		"sound": "wood"
+	},
+	"brr:bm_qe_director": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_gas_cylinder": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_gas_holder": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_jenn0desk": {
+		"sound": "wool"
+	},
+	"brr:bm_qe_lasersign": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_lasersign_on": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_lenses": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_portraitframe": {
+		"sound": "wood"
+	},
+	"brr:bm_qe_reflector": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_tv_stand": {
+		"sound": "stone"
+	},
+	"brr:bm_qe_zapper": {
+		"sound": "stone"
+	},
+	"brr:bm_smoking_boots": {
+		"sound": "wool"
+	},
+	"brr:bm_alicepack": {
+		"sound": "wool"
+	},
+	"brr:bm_ammobox": {
+		"sound": "stone"
+	},
+	"brr:bm_ammocrate": {
+		"sound": "wood"
+	},
+	"brr:bm_etool": {
+		"sound": "stone"
+	},
+	"brr:bm_ivstand_bag": {
+		"sound": "wool"
+	},
+	"brr:bm_mil_flashlight": {
+		"sound": "stone"
+	},
+	"brr:bm_missile_crate": {
+		"sound": "wood"
+	},
+	"brr:bm_prc77_radio": {
+		"sound": "stone"
+	},
+	"brr:bm_sandbag": {
+		"sound": "sand"
+	},
+	"brr:bm_sentry_undeployed": {
+		"sound": "stone"
+	},
+	"brr:bm_tow_missile": {
+		"sound": "stone"
+	},
+	"brr:bm_triplaser": {
+		"sound": "stone"
+	},
+	"brr:bm_acl": {
+		"sound": "glass"
+	},
+	"brr:bm_acl_on": {
+		"sound": "glass"
+	},
+	"brr:bm_bounce_lantern": {
+		"sound": "stone"
+	},
+	"brr:bm_bounce_lantern_on": {
+		"sound": "stone"
+	},
+	"brr:bm_lantern_camping": {
+		"sound": "stone"
+	},
+	"brr:bm_lantern_camping_on": {
+		"sound": "stone"
+	},
+	"brr:bm_worklight": {
+		"sound": "glass"
+	},
+	"brr:bm_worklight_on": {
+		"sound": "glass"
+	},
+	"brr:bm_helipadbeacon": {
+		"sound": "stone"
+	},
+	"brr:bm_helipadbeacon_on": {
+		"sound": "stone"
+	},
+	"brr:bm_light_inset": {
+		"sound": "glass"
+	},
+	"brr:bm_light_inset_on": {
+		"sound": "glass"
+	},
+	"brr:bm_underwater_light": {
+		"sound": "glass"
+	},
+	"brr:bm_underwater_light_on": {
+		"sound": "glass"
+	},
+	"brr:bm_uc_vatlight": {
+		"sound": "glass"
+	},
+	"brr:bm_uc_vatlight_on": {
+		"sound": "glass"
+	},
+	"brr:bm_firealarm_light": {
+		"sound": "stone"
+	},
+	"brr:bm_firealarm_light_on": {
+		"sound": "stone"
+	},
+	"brr:bm_floodlight_double": {
+		"sound": "stone"
+	},
+	"brr:bm_floodlight_double_on": {
+		"sound": "stone"
+	},
+	"brr:bm_ibeam": {
+		"sound": "metal"
+	},
+	"brr:bm_ibeam_v": {
+		"sound": "metal"
+	},
+	"brr:bm_rung": {
+		"sound": "metal"
+	},
+	"brr:bm_ladder_top": {
+		"sound": "metal"
+	},
+	"brr:bm_wall_bracket": {
+		"sound": "metal"
+	},
+	"brr:bm_jbox_small": {
+		"sound": "metal"
+	},
+	"brr:bm_jbox_large": {
+		"sound": "metal"
+	},
+	"brr:bm_power_cabinet": {
+		"sound": "metal"
+	},
+	"brr:bm_hanging_buttons": {
+		"sound": "metal"
+	},
+	"brr:bm_hanging_dial": {
+		"sound": "metal"
+	},
+	"brr:bm_electricalpanel": {
+		"sound": "metal"
+	},
+	"brr:bm_elevator_floorpanel": {
+		"sound": "metal"
+	},
+	"brr:bm_tank_hatch": {
+		"sound": "metal"
+	},
+	"brr:bm_spill_pallet": {
+		"sound": "metal"
+	},
+	"brr:bm_supply_cabinet": {
+		"sound": "metal"
+	},
+	"brr:bm_silo_monitor": {
+		"sound": "stone"
+	},
+	"brr:bm_gauge": {
+		"sound": "metal"
+	},
+	"brr:bm_am_blind": {
+		"sound": "wool"
+	},
+	"brr:bm_am_babypictureframe": {
+		"sound": "wood"
+	},
+	"brr:bm_am_certificateframe": {
+		"sound": "wood"
+	},
+	"brr:bm_guard_vest": {
+		"sound": "wool"
+	},
+	"brr:bm_helmet": {
+		"sound": "wool"
+	},
+	"brr:bm_mixer_with_lid": {
+		"sound": "metal"
+	},
+	"brr:bm_xencrystal": {
+		"sound": "glass"
+	},
+	"brr:bm_lasertube_emitter": {
+		"sound": "metal"
+	},
+	"brr:bm_office_phone": {
+		"sound": "stone"
+	},
+	"brr:bm_heartpump": {
+		"sound": "stone"
+	},
+	"brr:bm_ljs_console": {
+		"sound": "stone"
+	},
+	"brr:bm_trashcan": {
+		"sound": "stone"
+	},
+	"brr:bm_constructioncone": {
+		"sound": "wool"
+	},
+	"brr:bm_constructioncone_stack": {
+		"sound": "wool"
+	},
+	"brr:bm_chem_light": {
+		"sound": "stone"
+	},
+	"brr:bm_cattle_skull": {
+		"sound": "stone"
+	},
+	"brr:bm_tumbleweed": {
+		"sound": "grass"
+	},
+	"brr:bm_red_cactus": {
+		"sound": "grass"
+	},
+	"brr:bm_turd": {
+		"sound": "wool"
+	},
+	"brr:bm_boundingmine": {
+		"sound": "stone"
+	},
+	"brr:bm_st_sign": {
+		"sound": "wood"
+	},
+	"brr:bm_life_preserver": {
+		"sound": "wool"
+	},
+	"brr:bm_life_preserver_washy": {
+		"sound": "wool"
+	},
+	"brr:bm_wooden_barrel": {
+		"sound": "wood"
+	},
+	"brr:bm_wood_crate_explosive": {
+		"sound": "wood"
+	},
+	"brr:bm_road_sign_winding": {
+		"sound": "metal"
+	},
+	"brr:bm_road_sign_twoway": {
+		"sound": "metal"
+	},
+	"brr:bm_road_sign_arrows": {
+		"sound": "metal"
+	},
+	"brr:bm_road_sign_lowgear": {
+		"sound": "metal"
+	},
+	"brr:bm_road_sign_stop": {
+		"sound": "metal"
+	},
+	"brr:bm_plant_fern": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_fern_cluster": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_fern_cluster_dead": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_palm": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_cycad": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_office": {
+		"sound": "stone"
+	},
+	"brr:bm_plant_yucca": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_agave": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_agave_small": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_yucca_flowering": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_sotol": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_desert_small": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_desert_tall": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_grass_flowering": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_ocotillo": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_grass_tall": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_grass_strip": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_creosote": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_creosote_large": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_brittlebush": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_sagebrush": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_sagebrush_large": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_silversage": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_broombaccharis": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_thistle": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_tiered": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_amber": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_bush": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_bush_low": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_bush_low_dead": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_brush_dry": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_shrub": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_forestiera": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_saguaro_small": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_saguaro": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_saguaro_large": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_cactus_candelabra": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_cactus_forked": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_cactus_branching": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_cactus_barrel": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_cactus_column": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_tree_sapling": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_tree_courtyard": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_tree_gnarled": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_tree_desert": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_juniper_snag": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_juniper_dead": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_juniper": {
+		"sound": "wood"
+	},
+	"brr:bm_plant_vines_wall": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_vines_hanging": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_vines_climbing": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_moss_hanging": {
+		"sound": "grass"
+	},
+	"brr:bm_plant_ivy": {
+		"sound": "grass"
 	}
 }

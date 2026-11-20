@@ -1,0 +1,350 @@
+{
+	"format_version": "1.21.50",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "brr:platform_display",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"properties": {
+				"brr:a0": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a1": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a2": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a3": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a4": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a5": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a6": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a7": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a8": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a9": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a10": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a11": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a12": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a13": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a14": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:a15": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"brr:p0": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p1": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p2": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p3": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p4": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p5": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p6": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p7": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p8": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p9": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p10": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p11": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p12": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p13": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p14": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				},
+				"brr:p15": {
+					"type": "int",
+					"range": [
+						0,
+						999999
+					],
+					"default": 505050,
+					"client_sync": true
+				}
+			}
+		},
+		"components": {
+			"minecraft:type_family": {
+				"family": [
+					"brr_platform_display",
+					"inanimate"
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 0,
+				"height": 0
+			},
+			"minecraft:physics": {
+				"has_gravity": false,
+				"has_collision": false
+			},
+			"minecraft:pushable": {
+				"is_pushable": false,
+				"is_pushable_by_piston": false
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "all",
+						"deals_damage": "no"
+					}
+				]
+			},
+			"minecraft:health": {
+				"value": 1,
+				"max": 1,
+				"min": 1
+			},
+			"minecraft:knockback_resistance": {
+				"value": 1
+			},
+			"minecraft:fire_immune": true,
+			"minecraft:breathable": {
+				"breathes_air": true,
+				"breathes_water": true,
+				"breathes_solids": true,
+				"suffocate_time": 0
+			},
+			"minecraft:conditional_bandwidth_optimization": {
+				"default_values": {
+					"max_optimized_distance": 0,
+					"max_dropped_ticks": 0,
+					"use_motion_prediction_hints": true
+				}
+			}
+		}
+	}
+}

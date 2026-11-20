@@ -1,0 +1,284 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bm_jumpplatform_lever",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "base",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								0,
+								5
+							],
+							"size": [
+								4,
+								3,
+								3
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										12,
+										0
+									],
+									"uv_size": [
+										4,
+										3
+									]
+								},
+								"south": {
+									"uv": [
+										12,
+										3
+									],
+									"uv_size": [
+										4,
+										3
+									]
+								},
+								"east": {
+									"uv": [
+										4,
+										5
+									],
+									"uv_size": [
+										3,
+										3
+									]
+								},
+								"west": {
+									"uv": [
+										7,
+										5
+									],
+									"uv_size": [
+										3,
+										3
+									]
+								},
+								"up": {
+									"uv": [
+										10.25,
+										5.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								},
+								"down": {
+									"uv": [
+										11.25,
+										5.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "rod",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-0.5,
+								2,
+								5.5
+							],
+							"size": [
+								1,
+								9,
+								1
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										1,
+										9
+									]
+								},
+								"south": {
+									"uv": [
+										1,
+										0
+									],
+									"uv_size": [
+										1,
+										9
+									]
+								},
+								"east": {
+									"uv": [
+										2,
+										0
+									],
+									"uv_size": [
+										1,
+										9
+									]
+								},
+								"west": {
+									"uv": [
+										3,
+										0
+									],
+									"uv_size": [
+										1,
+										9
+									]
+								},
+								"up": {
+									"uv": [
+										10.25,
+										6.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								},
+								"down": {
+									"uv": [
+										11.25,
+										6.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "grip",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1,
+								11,
+								5
+							],
+							"size": [
+								2,
+								5,
+								2
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										4,
+										0
+									],
+									"uv_size": [
+										2,
+										5
+									]
+								},
+								"south": {
+									"uv": [
+										6,
+										0
+									],
+									"uv_size": [
+										2,
+										5
+									]
+								},
+								"east": {
+									"uv": [
+										8,
+										0
+									],
+									"uv_size": [
+										2,
+										5
+									]
+								},
+								"west": {
+									"uv": [
+										10,
+										0
+									],
+									"uv_size": [
+										2,
+										5
+									]
+								},
+								"up": {
+									"uv": [
+										12.25,
+										6.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								},
+								"down": {
+									"uv": [
+										13.25,
+										6.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

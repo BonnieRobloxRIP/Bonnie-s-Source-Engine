@@ -2,6 +2,18 @@
 	"resource_pack_name": "Bonnie's Source Engine",
 	"texture_name": "atlas.items",
 	"texture_data": {
+		"brr_func_tracktrain": {
+			"textures": "textures/items/game_tools/func_tracktrain"
+		},
+		"brr_platform_tool": {
+			"textures": "textures/items/game_tools/platform_tool"
+		},
+		"brr_path_track": {
+			"textures": "textures/items/game_tools/path_track"
+		},
+		"brr_track_linker": {
+			"textures": "textures/items/game_tools/track_linker"
+		},
 		"brr_info_playerspawn": {
 			"textures": "textures/items/info_blocks/info_playerspawn"
 		},

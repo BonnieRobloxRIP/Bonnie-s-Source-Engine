@@ -10,6 +10,9 @@ import { startPlayerRuleSystem, handlePlayerSpawn } from "./systems/player_rules
 import { startEditorSystem, handleEngineBlockInteract } from "./systems/editor.js";
 import { startAmbientSystem } from "./systems/ambient.js";
 import { syncAllCounters } from "./systems/math_counter.js";
+import { startTrackSystem } from "./systems/tracks.js";
+import { startPlatformSystem } from "./systems/platforms.js";
+import { startDisplaySystem } from "./systems/platform_display.js";
 import "./systems/filters.js";
 
 // SECTION: Engine Bootstrap
@@ -32,6 +35,9 @@ export function startEngine() {
         startLogicSystem();
         startPlayerRuleSystem();
         startAmbientSystem();
+        startTrackSystem();
+        startPlatformSystem();
+        startDisplaySystem();
         syncAllCounters();
 
         system.runInterval(processEventQueue, 1);

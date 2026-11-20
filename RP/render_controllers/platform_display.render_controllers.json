@@ -1,0 +1,933 @@
+{
+	"format_version": "1.8.0",
+	"render_controllers": {
+		"controller.render.brr_platform_display.s0": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s0_cube",
+						"Geometry.s0_slab_bottom",
+						"Geometry.s0_slab_top",
+						"Geometry.s0_stairs_north",
+						"Geometry.s0_stairs_east",
+						"Geometry.s0_stairs_south",
+						"Geometry.s0_stairs_west",
+						"Geometry.s0_stairs_top_north",
+						"Geometry.s0_stairs_top_east",
+						"Geometry.s0_stairs_top_south",
+						"Geometry.s0_stairs_top_west",
+						"Geometry.s0_fence_post",
+						"Geometry.s0_fence_north",
+						"Geometry.s0_fence_east",
+						"Geometry.s0_fence_south",
+						"Geometry.s0_fence_west",
+						"Geometry.s0_wall_post",
+						"Geometry.s0_wall_short_north",
+						"Geometry.s0_wall_short_east",
+						"Geometry.s0_wall_short_south",
+						"Geometry.s0_wall_short_west",
+						"Geometry.s0_wall_tall_north",
+						"Geometry.s0_wall_tall_east",
+						"Geometry.s0_wall_tall_south",
+						"Geometry.s0_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a0') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a0') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a0') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a0') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a0') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s1": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s1_cube",
+						"Geometry.s1_slab_bottom",
+						"Geometry.s1_slab_top",
+						"Geometry.s1_stairs_north",
+						"Geometry.s1_stairs_east",
+						"Geometry.s1_stairs_south",
+						"Geometry.s1_stairs_west",
+						"Geometry.s1_stairs_top_north",
+						"Geometry.s1_stairs_top_east",
+						"Geometry.s1_stairs_top_south",
+						"Geometry.s1_stairs_top_west",
+						"Geometry.s1_fence_post",
+						"Geometry.s1_fence_north",
+						"Geometry.s1_fence_east",
+						"Geometry.s1_fence_south",
+						"Geometry.s1_fence_west",
+						"Geometry.s1_wall_post",
+						"Geometry.s1_wall_short_north",
+						"Geometry.s1_wall_short_east",
+						"Geometry.s1_wall_short_south",
+						"Geometry.s1_wall_short_west",
+						"Geometry.s1_wall_tall_north",
+						"Geometry.s1_wall_tall_east",
+						"Geometry.s1_wall_tall_south",
+						"Geometry.s1_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a1') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a1') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a1') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a1') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a1') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s2": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s2_cube",
+						"Geometry.s2_slab_bottom",
+						"Geometry.s2_slab_top",
+						"Geometry.s2_stairs_north",
+						"Geometry.s2_stairs_east",
+						"Geometry.s2_stairs_south",
+						"Geometry.s2_stairs_west",
+						"Geometry.s2_stairs_top_north",
+						"Geometry.s2_stairs_top_east",
+						"Geometry.s2_stairs_top_south",
+						"Geometry.s2_stairs_top_west",
+						"Geometry.s2_fence_post",
+						"Geometry.s2_fence_north",
+						"Geometry.s2_fence_east",
+						"Geometry.s2_fence_south",
+						"Geometry.s2_fence_west",
+						"Geometry.s2_wall_post",
+						"Geometry.s2_wall_short_north",
+						"Geometry.s2_wall_short_east",
+						"Geometry.s2_wall_short_south",
+						"Geometry.s2_wall_short_west",
+						"Geometry.s2_wall_tall_north",
+						"Geometry.s2_wall_tall_east",
+						"Geometry.s2_wall_tall_south",
+						"Geometry.s2_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a2') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a2') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a2') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a2') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a2') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s3": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s3_cube",
+						"Geometry.s3_slab_bottom",
+						"Geometry.s3_slab_top",
+						"Geometry.s3_stairs_north",
+						"Geometry.s3_stairs_east",
+						"Geometry.s3_stairs_south",
+						"Geometry.s3_stairs_west",
+						"Geometry.s3_stairs_top_north",
+						"Geometry.s3_stairs_top_east",
+						"Geometry.s3_stairs_top_south",
+						"Geometry.s3_stairs_top_west",
+						"Geometry.s3_fence_post",
+						"Geometry.s3_fence_north",
+						"Geometry.s3_fence_east",
+						"Geometry.s3_fence_south",
+						"Geometry.s3_fence_west",
+						"Geometry.s3_wall_post",
+						"Geometry.s3_wall_short_north",
+						"Geometry.s3_wall_short_east",
+						"Geometry.s3_wall_short_south",
+						"Geometry.s3_wall_short_west",
+						"Geometry.s3_wall_tall_north",
+						"Geometry.s3_wall_tall_east",
+						"Geometry.s3_wall_tall_south",
+						"Geometry.s3_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a3') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a3') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a3') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a3') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a3') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s4": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s4_cube",
+						"Geometry.s4_slab_bottom",
+						"Geometry.s4_slab_top",
+						"Geometry.s4_stairs_north",
+						"Geometry.s4_stairs_east",
+						"Geometry.s4_stairs_south",
+						"Geometry.s4_stairs_west",
+						"Geometry.s4_stairs_top_north",
+						"Geometry.s4_stairs_top_east",
+						"Geometry.s4_stairs_top_south",
+						"Geometry.s4_stairs_top_west",
+						"Geometry.s4_fence_post",
+						"Geometry.s4_fence_north",
+						"Geometry.s4_fence_east",
+						"Geometry.s4_fence_south",
+						"Geometry.s4_fence_west",
+						"Geometry.s4_wall_post",
+						"Geometry.s4_wall_short_north",
+						"Geometry.s4_wall_short_east",
+						"Geometry.s4_wall_short_south",
+						"Geometry.s4_wall_short_west",
+						"Geometry.s4_wall_tall_north",
+						"Geometry.s4_wall_tall_east",
+						"Geometry.s4_wall_tall_south",
+						"Geometry.s4_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a4') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a4') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a4') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a4') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a4') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s5": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s5_cube",
+						"Geometry.s5_slab_bottom",
+						"Geometry.s5_slab_top",
+						"Geometry.s5_stairs_north",
+						"Geometry.s5_stairs_east",
+						"Geometry.s5_stairs_south",
+						"Geometry.s5_stairs_west",
+						"Geometry.s5_stairs_top_north",
+						"Geometry.s5_stairs_top_east",
+						"Geometry.s5_stairs_top_south",
+						"Geometry.s5_stairs_top_west",
+						"Geometry.s5_fence_post",
+						"Geometry.s5_fence_north",
+						"Geometry.s5_fence_east",
+						"Geometry.s5_fence_south",
+						"Geometry.s5_fence_west",
+						"Geometry.s5_wall_post",
+						"Geometry.s5_wall_short_north",
+						"Geometry.s5_wall_short_east",
+						"Geometry.s5_wall_short_south",
+						"Geometry.s5_wall_short_west",
+						"Geometry.s5_wall_tall_north",
+						"Geometry.s5_wall_tall_east",
+						"Geometry.s5_wall_tall_south",
+						"Geometry.s5_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a5') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a5') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a5') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a5') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a5') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s6": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s6_cube",
+						"Geometry.s6_slab_bottom",
+						"Geometry.s6_slab_top",
+						"Geometry.s6_stairs_north",
+						"Geometry.s6_stairs_east",
+						"Geometry.s6_stairs_south",
+						"Geometry.s6_stairs_west",
+						"Geometry.s6_stairs_top_north",
+						"Geometry.s6_stairs_top_east",
+						"Geometry.s6_stairs_top_south",
+						"Geometry.s6_stairs_top_west",
+						"Geometry.s6_fence_post",
+						"Geometry.s6_fence_north",
+						"Geometry.s6_fence_east",
+						"Geometry.s6_fence_south",
+						"Geometry.s6_fence_west",
+						"Geometry.s6_wall_post",
+						"Geometry.s6_wall_short_north",
+						"Geometry.s6_wall_short_east",
+						"Geometry.s6_wall_short_south",
+						"Geometry.s6_wall_short_west",
+						"Geometry.s6_wall_tall_north",
+						"Geometry.s6_wall_tall_east",
+						"Geometry.s6_wall_tall_south",
+						"Geometry.s6_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a6') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a6') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a6') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a6') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a6') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s7": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s7_cube",
+						"Geometry.s7_slab_bottom",
+						"Geometry.s7_slab_top",
+						"Geometry.s7_stairs_north",
+						"Geometry.s7_stairs_east",
+						"Geometry.s7_stairs_south",
+						"Geometry.s7_stairs_west",
+						"Geometry.s7_stairs_top_north",
+						"Geometry.s7_stairs_top_east",
+						"Geometry.s7_stairs_top_south",
+						"Geometry.s7_stairs_top_west",
+						"Geometry.s7_fence_post",
+						"Geometry.s7_fence_north",
+						"Geometry.s7_fence_east",
+						"Geometry.s7_fence_south",
+						"Geometry.s7_fence_west",
+						"Geometry.s7_wall_post",
+						"Geometry.s7_wall_short_north",
+						"Geometry.s7_wall_short_east",
+						"Geometry.s7_wall_short_south",
+						"Geometry.s7_wall_short_west",
+						"Geometry.s7_wall_tall_north",
+						"Geometry.s7_wall_tall_east",
+						"Geometry.s7_wall_tall_south",
+						"Geometry.s7_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a7') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a7') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a7') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a7') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a7') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s8": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s8_cube",
+						"Geometry.s8_slab_bottom",
+						"Geometry.s8_slab_top",
+						"Geometry.s8_stairs_north",
+						"Geometry.s8_stairs_east",
+						"Geometry.s8_stairs_south",
+						"Geometry.s8_stairs_west",
+						"Geometry.s8_stairs_top_north",
+						"Geometry.s8_stairs_top_east",
+						"Geometry.s8_stairs_top_south",
+						"Geometry.s8_stairs_top_west",
+						"Geometry.s8_fence_post",
+						"Geometry.s8_fence_north",
+						"Geometry.s8_fence_east",
+						"Geometry.s8_fence_south",
+						"Geometry.s8_fence_west",
+						"Geometry.s8_wall_post",
+						"Geometry.s8_wall_short_north",
+						"Geometry.s8_wall_short_east",
+						"Geometry.s8_wall_short_south",
+						"Geometry.s8_wall_short_west",
+						"Geometry.s8_wall_tall_north",
+						"Geometry.s8_wall_tall_east",
+						"Geometry.s8_wall_tall_south",
+						"Geometry.s8_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a8') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a8') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a8') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a8') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a8') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s9": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s9_cube",
+						"Geometry.s9_slab_bottom",
+						"Geometry.s9_slab_top",
+						"Geometry.s9_stairs_north",
+						"Geometry.s9_stairs_east",
+						"Geometry.s9_stairs_south",
+						"Geometry.s9_stairs_west",
+						"Geometry.s9_stairs_top_north",
+						"Geometry.s9_stairs_top_east",
+						"Geometry.s9_stairs_top_south",
+						"Geometry.s9_stairs_top_west",
+						"Geometry.s9_fence_post",
+						"Geometry.s9_fence_north",
+						"Geometry.s9_fence_east",
+						"Geometry.s9_fence_south",
+						"Geometry.s9_fence_west",
+						"Geometry.s9_wall_post",
+						"Geometry.s9_wall_short_north",
+						"Geometry.s9_wall_short_east",
+						"Geometry.s9_wall_short_south",
+						"Geometry.s9_wall_short_west",
+						"Geometry.s9_wall_tall_north",
+						"Geometry.s9_wall_tall_east",
+						"Geometry.s9_wall_tall_south",
+						"Geometry.s9_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a9') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a9') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a9') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a9') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a9') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s10": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s10_cube",
+						"Geometry.s10_slab_bottom",
+						"Geometry.s10_slab_top",
+						"Geometry.s10_stairs_north",
+						"Geometry.s10_stairs_east",
+						"Geometry.s10_stairs_south",
+						"Geometry.s10_stairs_west",
+						"Geometry.s10_stairs_top_north",
+						"Geometry.s10_stairs_top_east",
+						"Geometry.s10_stairs_top_south",
+						"Geometry.s10_stairs_top_west",
+						"Geometry.s10_fence_post",
+						"Geometry.s10_fence_north",
+						"Geometry.s10_fence_east",
+						"Geometry.s10_fence_south",
+						"Geometry.s10_fence_west",
+						"Geometry.s10_wall_post",
+						"Geometry.s10_wall_short_north",
+						"Geometry.s10_wall_short_east",
+						"Geometry.s10_wall_short_south",
+						"Geometry.s10_wall_short_west",
+						"Geometry.s10_wall_tall_north",
+						"Geometry.s10_wall_tall_east",
+						"Geometry.s10_wall_tall_south",
+						"Geometry.s10_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a10') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a10') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a10') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a10') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a10') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s11": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s11_cube",
+						"Geometry.s11_slab_bottom",
+						"Geometry.s11_slab_top",
+						"Geometry.s11_stairs_north",
+						"Geometry.s11_stairs_east",
+						"Geometry.s11_stairs_south",
+						"Geometry.s11_stairs_west",
+						"Geometry.s11_stairs_top_north",
+						"Geometry.s11_stairs_top_east",
+						"Geometry.s11_stairs_top_south",
+						"Geometry.s11_stairs_top_west",
+						"Geometry.s11_fence_post",
+						"Geometry.s11_fence_north",
+						"Geometry.s11_fence_east",
+						"Geometry.s11_fence_south",
+						"Geometry.s11_fence_west",
+						"Geometry.s11_wall_post",
+						"Geometry.s11_wall_short_north",
+						"Geometry.s11_wall_short_east",
+						"Geometry.s11_wall_short_south",
+						"Geometry.s11_wall_short_west",
+						"Geometry.s11_wall_tall_north",
+						"Geometry.s11_wall_tall_east",
+						"Geometry.s11_wall_tall_south",
+						"Geometry.s11_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a11') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a11') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a11') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a11') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a11') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s12": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s12_cube",
+						"Geometry.s12_slab_bottom",
+						"Geometry.s12_slab_top",
+						"Geometry.s12_stairs_north",
+						"Geometry.s12_stairs_east",
+						"Geometry.s12_stairs_south",
+						"Geometry.s12_stairs_west",
+						"Geometry.s12_stairs_top_north",
+						"Geometry.s12_stairs_top_east",
+						"Geometry.s12_stairs_top_south",
+						"Geometry.s12_stairs_top_west",
+						"Geometry.s12_fence_post",
+						"Geometry.s12_fence_north",
+						"Geometry.s12_fence_east",
+						"Geometry.s12_fence_south",
+						"Geometry.s12_fence_west",
+						"Geometry.s12_wall_post",
+						"Geometry.s12_wall_short_north",
+						"Geometry.s12_wall_short_east",
+						"Geometry.s12_wall_short_south",
+						"Geometry.s12_wall_short_west",
+						"Geometry.s12_wall_tall_north",
+						"Geometry.s12_wall_tall_east",
+						"Geometry.s12_wall_tall_south",
+						"Geometry.s12_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a12') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a12') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a12') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a12') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a12') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s13": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s13_cube",
+						"Geometry.s13_slab_bottom",
+						"Geometry.s13_slab_top",
+						"Geometry.s13_stairs_north",
+						"Geometry.s13_stairs_east",
+						"Geometry.s13_stairs_south",
+						"Geometry.s13_stairs_west",
+						"Geometry.s13_stairs_top_north",
+						"Geometry.s13_stairs_top_east",
+						"Geometry.s13_stairs_top_south",
+						"Geometry.s13_stairs_top_west",
+						"Geometry.s13_fence_post",
+						"Geometry.s13_fence_north",
+						"Geometry.s13_fence_east",
+						"Geometry.s13_fence_south",
+						"Geometry.s13_fence_west",
+						"Geometry.s13_wall_post",
+						"Geometry.s13_wall_short_north",
+						"Geometry.s13_wall_short_east",
+						"Geometry.s13_wall_short_south",
+						"Geometry.s13_wall_short_west",
+						"Geometry.s13_wall_tall_north",
+						"Geometry.s13_wall_tall_east",
+						"Geometry.s13_wall_tall_south",
+						"Geometry.s13_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a13') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a13') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a13') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a13') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a13') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s14": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s14_cube",
+						"Geometry.s14_slab_bottom",
+						"Geometry.s14_slab_top",
+						"Geometry.s14_stairs_north",
+						"Geometry.s14_stairs_east",
+						"Geometry.s14_stairs_south",
+						"Geometry.s14_stairs_west",
+						"Geometry.s14_stairs_top_north",
+						"Geometry.s14_stairs_top_east",
+						"Geometry.s14_stairs_top_south",
+						"Geometry.s14_stairs_top_west",
+						"Geometry.s14_fence_post",
+						"Geometry.s14_fence_north",
+						"Geometry.s14_fence_east",
+						"Geometry.s14_fence_south",
+						"Geometry.s14_fence_west",
+						"Geometry.s14_wall_post",
+						"Geometry.s14_wall_short_north",
+						"Geometry.s14_wall_short_east",
+						"Geometry.s14_wall_short_south",
+						"Geometry.s14_wall_short_west",
+						"Geometry.s14_wall_tall_north",
+						"Geometry.s14_wall_tall_east",
+						"Geometry.s14_wall_tall_south",
+						"Geometry.s14_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a14') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a14') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a14') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a14') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a14') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		},
+		"controller.render.brr_platform_display.s15": {
+			"arrays": {
+				"textures": {
+					"Array.sheets": [
+						"Texture.sheet0",
+						"Texture.sheet1"
+					]
+				},
+				"geometries": {
+					"Array.shapes": [
+						"Geometry.s15_cube",
+						"Geometry.s15_slab_bottom",
+						"Geometry.s15_slab_top",
+						"Geometry.s15_stairs_north",
+						"Geometry.s15_stairs_east",
+						"Geometry.s15_stairs_south",
+						"Geometry.s15_stairs_west",
+						"Geometry.s15_stairs_top_north",
+						"Geometry.s15_stairs_top_east",
+						"Geometry.s15_stairs_top_south",
+						"Geometry.s15_stairs_top_west",
+						"Geometry.s15_fence_post",
+						"Geometry.s15_fence_north",
+						"Geometry.s15_fence_east",
+						"Geometry.s15_fence_south",
+						"Geometry.s15_fence_west",
+						"Geometry.s15_wall_post",
+						"Geometry.s15_wall_short_north",
+						"Geometry.s15_wall_short_east",
+						"Geometry.s15_wall_short_south",
+						"Geometry.s15_wall_short_west",
+						"Geometry.s15_wall_tall_north",
+						"Geometry.s15_wall_tall_east",
+						"Geometry.s15_wall_tall_south",
+						"Geometry.s15_wall_tall_west"
+					]
+				}
+			},
+			"geometry": "Array.shapes[math.floor(q.property('brr:a15') / 10000)]",
+			"textures": [
+				"Array.sheets[math.floor((math.mod(math.floor(q.property('brr:a15') / 10), 1000) - 1) / 256)]"
+			],
+			"materials": [
+				{
+					"*": "(math.mod(math.floor(q.property('brr:a15') / 10), 1000) - 1) >= 388 ? Material.blend : Material.default"
+				}
+			],
+			"uv_anim": {
+				"offset": [
+					"math.floor(math.mod((math.mod(math.floor(q.property('brr:a15') / 10), 1000) - 1), 256) / 32) / 8",
+					"math.mod(math.mod((math.mod(math.floor(q.property('brr:a15') / 10), 1000) - 1), 256), 32) / 32"
+				],
+				"scale": [
+					1,
+					1
+				]
+			}
+		}
+	}
+}

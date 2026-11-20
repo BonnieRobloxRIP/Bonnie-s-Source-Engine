@@ -35,12 +35,21 @@ export const ITEM_TO_ENTITY_CLASS = {
     "brr:logic_coop_manager": "brr:logic_coop_manager_block",
     "brr:logic_random_outputs": "brr:logic_random_outputs_block",
     "brr:logic_relay": "brr:logic_relay_block",
-    "brr:logic_timer": "brr:logic_timer_block"
+    "brr:logic_timer": "brr:logic_timer_block",
+    "brr:path_track": "brr:path_track_block",
+    "brr:func_tracktrain": "brr:func_tracktrain_block"
 };
 
 export const ENTITY_CLASS_TO_ITEM = Object.fromEntries(
     Object.entries(ITEM_TO_ENTITY_CLASS).map(([itemTypeId, classId]) => [classId, itemTypeId])
 );
+
+// Items that aren't an engine block but should show one while held: the Track Linker shows track
+// nodes, the Platform Tool shows trains.
+const SHOWS_CLASS = {
+    "brr:track_linker": "brr:path_track_block",
+    "brr:platform_tool": "brr:func_tracktrain_block"
+};
 
 export function getMainhandTypeId(player) {
     return getCachedMainhandTypeId(player);
@@ -49,7 +58,7 @@ export function getMainhandTypeId(player) {
 // The entity class a held item shows (tool block items are the block itself).
 export function getHeldEntityClass(player) {
     const held = getMainhandTypeId(player);
-    return ITEM_TO_ENTITY_CLASS[held] ?? held;
+    return ITEM_TO_ENTITY_CLASS[held] ?? SHOWS_CLASS[held] ?? held;
 }
 
 // SECTION: Player Helpers

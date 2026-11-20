@@ -5,7 +5,7 @@
 			"identifier": "brr:bm_light_wall03_on",
 			"menu_category": {
 				"category": "construction",
-				"group": "brr:itemGroup.name.bms_prop",
+				"group": "brr:itemGroup.name.bms_prop_lights",
 				"is_hidden_in_commands": false
 			},
 			"traits": {

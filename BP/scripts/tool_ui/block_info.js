@@ -480,6 +480,63 @@ export const BLOCK_INFO = {
         ))
     },
 
+    "brr:path_track_block": {
+        examples: lines(
+            "- A tram line: a chain of nodes from station to station. Set New train speed on the first few nodes to ease the tram out (Black Mesa's Inbound tram goes 60, 75, 100, 150 and up).",
+            "- An elevator: two nodes, one per floor. OnPass on the top node > door > Open opens the doors when it arrives.",
+            "- A switch in the track: Branch path names the other line. A lever sends ToggleAlternatePath to switch trains between the two.",
+            "- OnPass > map_transition: a level change as the train reaches the end of the line."
+        ),
+        usage: steps(
+            "Place nodes along the route. Hold the Track Linker and click a node, then the node it leads to; repeat down the line. Sneak-click a node with the Linker to remove its link. You can also type names into Next stop target.",
+            "Linked nodes show a dotted line toward their next node while you hold a node or the Linker; an orange line leads to the branch path.",
+            "New train speed changes a passing train's speed (blocks per second). 0 keeps its current speed.",
+            "Train faces: Direction of travel turns the train along the track, Keep current facing leaves it, Fixed facing turns it to the degrees in Fixed facing.",
+            "Stop the train here stops a train when it reaches this node. A disabled node is a dead end: trains stop before entering it.",
+            ...OUTPUT_STEPS
+        ),
+        info: describe("brr:path_track_block", lines(
+            "A node on a track for trains, elevators and moving platforms, like Source's path_track. Each node names the next one, so tracks can branch and loop.",
+            "OnPass fires when a train reaches this node (only the first time with Fire OnPass only once). OnTeleport fires when a train is teleported to it.",
+            "EnablePath / DisablePath / TogglePath open or close the node. EnableAlternatePath / DisableAlternatePath / ToggleAlternatePath switch the branch path.",
+            "func_tracktrain follows these tracks. Trains don't turn yet, so Train faces has no effect for now."
+        ))
+    },
+
+    "brr:func_tracktrain_block": {
+        examples: lines(
+            "- An elevator: a two-node track, one node per floor. A button sends StartForward to go up and StartBackward to come down; Stop the train here on the top node.",
+            "- A tram: a long track from station to station, Smooth motion, path_track speeds easing it in and out.",
+            "- A lift that waits: MoveToPathNode top_floor sends it to that node from wherever it is, and OnArrivedAtDestinationNode opens the doors.",
+            "- A moving wall or crusher: Stepped motion, so the blocks are real the whole way."
+        ),
+        usage: steps(
+            `${H("1. The platform:")} build it out of ordinary blocks. Place this block anywhere nearby (it isn't part of the platform). Hold the Platform Tool, click this block, then two opposite corners of the build. Sneak-click this block with the Tool to clear its platform.`,
+            `${H("2. The track:")} place path_track nodes along the route and link them with the Track Linker (click a node, then the next). Type the first node's name into First stop. The platform keeps its distance from that node and moves the way the track goes, so nodes can sit under, inside or beside it.`,
+            lines(
+                `${H("3. Making it move:")} a train only moves when it's sent StartForward (or StartBackward). Any of these does it:`,
+                "- Quick test: turn on Start moving right away and Submit; it sets off at once, and again whenever the world loads.",
+                "- Type /brr:fire <this train's name> StartForward.",
+                "- A trigger brush with an Output OnStartTouch > this train > StartForward: it goes when a player walks in.",
+                "- A logic_auto with OnMapSpawn > this train > StartForward: it goes when the world loads.",
+                "- A vanilla button or lever: wire it to a command block that runs /brr:fire <this train's name> StartForward."
+            ),
+            "After you save this form or set the platform, a chat message lists anything still missing.",
+            `${H("Motion:")} Smooth saves the blocks and glides a moving copy in their place, then puts the real blocks back where it stops. Stepped moves the real blocks one whole block at a time and carries whatever stands on them.`,
+            "Turn with the track (Smooth only): the platform turns as the track bends, easing round corners; the way the track ran when it first set off counts as straight ahead. It stops on the nearest quarter turn, with stairs, doors and other blocks that face a way turned to match. Turn it off for things that should only slide, like a moving wall on an L-shaped path.",
+            "At the end of the line: Stop leaves it there (send StartBackward to bring it back); Go back turns it around, so it shuttles back and forth until it's sent Stop.",
+            "What moves is what's in the box the first time it starts (except air, water, lava and engine blocks); set the platform again with the Tool after adding blocks to it. It passes through things in its way without breaking them: engine blocks such as path nodes always stay, and other blocks come back once it has passed.",
+            ...OUTPUT_STEPS
+        ),
+        info: describe("brr:func_tracktrain_block", lines(
+            "A moving platform that follows path_track nodes, like Source's func_tracktrain: trams, elevators, lifts and moving walls.",
+            "StartForward / StartBackward start it; Stop stops it; Resume carries on the way it last went; Reverse turns it around. SetSpeed <blocks per second> changes its speed (0 stops it).",
+            "MoveToPathNode <node> sends it along the track to that node and stops it there; TeleportToPathNode <node> moves it there at once.",
+            "OnStart and OnStop fire as it starts and stops, OnNext at every node it reaches, OnArrivedAtDestinationNode at the end of a MoveToPathNode.",
+            "Whoever stands on or inside the platform rides along, in both motions. Players are carried with the boat trick (a boat that exists for a single tick), so they can still walk and look around freely; mobs and items are moved with it."
+        ))
+    },
+
     "brr:filter_class_block": {
         examples: lines(
             "- Entity type minecraft:player: a trigger with this filter reacts to players only.",

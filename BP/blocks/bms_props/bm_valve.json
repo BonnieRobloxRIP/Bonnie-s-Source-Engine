@@ -5,7 +5,7 @@
 			"identifier": "brr:bm_valve",
 			"menu_category": {
 				"category": "construction",
-				"group": "brr:itemGroup.name.bms_prop",
+				"group": "brr:itemGroup.name.bms_prop_pipes",
 				"is_hidden_in_commands": false
 			},
 			"traits": {
@@ -33,7 +33,7 @@
 				],
 				"size": [
 					16,
-					13.5,
+					14,
 					16
 				]
 			},
@@ -45,7 +45,7 @@
 				],
 				"size": [
 					16,
-					13.5,
+					14,
 					16
 				]
 			},

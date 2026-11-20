@@ -5,7 +5,7 @@
 			"identifier": "brr:bm_stackingchair",
 			"menu_category": {
 				"category": "construction",
-				"group": "brr:itemGroup.name.bms_prop",
+				"group": "brr:itemGroup.name.bms_prop_furniture",
 				"is_hidden_in_commands": false
 			},
 			"traits": {
@@ -34,7 +34,7 @@
 				"size": [
 					10,
 					16,
-					10
+					10.968
 				]
 			},
 			"minecraft:selection_box": {
@@ -46,7 +46,7 @@
 				"size": [
 					10,
 					16,
-					10
+					10.968
 				]
 			},
 			"minecraft:destruction_particles": {

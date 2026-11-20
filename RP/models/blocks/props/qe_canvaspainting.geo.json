@@ -1,0 +1,114 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bm_qe_canvaspainting",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "canvas",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-6.5,
+								1,
+								6.5
+							],
+							"size": [
+								13,
+								14,
+								1.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										13,
+										14
+									]
+								},
+								"south": {
+									"uv": [
+										13.125,
+										14.125
+									],
+									"uv_size": [
+										0.25,
+										0.25
+									]
+								},
+								"east": {
+									"uv": [
+										13,
+										0
+									],
+									"uv_size": [
+										1.5,
+										14
+									]
+								},
+								"west": {
+									"uv": [
+										14.5,
+										0
+									],
+									"uv_size": [
+										1.5,
+										14
+									]
+								},
+								"up": {
+									"uv": [
+										0,
+										14
+									],
+									"uv_size": [
+										13,
+										1.5
+									]
+								},
+								"down": {
+									"uv": [
+										13.625,
+										14.125
+									],
+									"uv_size": [
+										0.25,
+										0.25
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

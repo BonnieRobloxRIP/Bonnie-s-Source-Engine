@@ -1,4 +1,5 @@
-import { ModalFormData } from "@minecraft/server-ui";
+import { system } from "@minecraft/server";
+import { FormCancelationReason, ModalFormData } from "@minecraft/server-ui";
 import { BLOCK_FORMS, buildTabs, NONE_OPTION } from "./block_forms.js";
 import { getBlockInfoSection } from "./block_info.js";
 import { getFormTargets } from "../engine/form_targets.js";
@@ -8,6 +9,9 @@ import { validateConditionRequirements } from "../handler/core/condition_execute
 import { sendUiError, sendUiSaved } from "./ui_formatting.js";
 
 const INPUT_OPTIONS = getAllInputNames();
+const REOPEN_TICKS = 4;       // a refused save's form reopens this long after the last one closed
+const BUSY_RETRY_TICKS = 4;   // same retry as the Black Mesa menu's present()
+const BUSY_RETRY_LIMIT = 50;
 
 function formatBlockType(typeId) {
     const normalized = `${typeId ?? ""}`;
@@ -87,18 +91,19 @@ function normalizeSlots(rawSlots, count) {
 }
 
 // SECTION: Form Rendering
-function renderField(form, field, data, ctx) {
+function renderField(form, field, data, ctx, entered) {
+    const value = entered !== undefined ? entered : field.read?.(data, ctx);
     switch (field.kind) {
         case "text":
-            form.textField(field.label, field.placeholder ?? "", { defaultValue: `${field.read?.(data, ctx) ?? ""}` });
+            form.textField(field.label, field.placeholder ?? "", { defaultValue: `${value ?? ""}` });
             return;
         case "toggle":
-            form.toggle(field.label, { defaultValue: Boolean(field.read?.(data, ctx)) });
+            form.toggle(field.label, { defaultValue: Boolean(value) });
             return;
         case "drop": {
             const options = field.options(ctx);
             const safeOptions = options.length > 0 ? options : [NONE_OPTION];
-            const index = Number(field.read?.(data, ctx) ?? 0);
+            const index = Number(value ?? 0);
             form.dropdown(field.label, safeOptions, {
                 defaultValueIndex: Math.min(Math.max(0, Number.isFinite(index) ? index : 0), safeOptions.length - 1)
             });
@@ -205,7 +210,8 @@ function conditionError(source, conditionKey) {
 }
 
 // SECTION: Public Entry Point
-export function openBlockForm(player, blockEntry, onSave) {
+// retry: { values, error } reopens a refused save with what the player entered and the reason shown in the form.
+export function openBlockForm(player, blockEntry, onSave, retry) {
     const descriptor = BLOCK_FORMS[blockEntry?.typeId];
     if (!descriptor || !player) return;
 
@@ -218,18 +224,39 @@ export function openBlockForm(player, blockEntry, onSave) {
     const flatFields = tabs.flatMap(tab => tab.fields);
 
     const form = new ModalFormData();
-    form.title(descriptor.title);
-    for (const field of flatFields) renderField(form, field, data, ctx);
+    // The reason goes after the title: the UI router matches titles containing the tool's name, and the layout
+    // shows the rest in its error banner.
+    form.title(retry?.error ? `${descriptor.title}${retry.error}` : descriptor.title);
+    flatFields.forEach((field, index) => renderField(form, field, data, ctx, retry?.values?.[index]));
     form.submitButton("Submit");
 
     form.show(player).then(response => {
-        if (response.canceled) return;
+        if (response.canceled) {
+            // The game can still be closing the last screen ("busy"): try again shortly, like the Black Mesa menu.
+            const attempt = retry?.attempt ?? 0;
+            if (response.cancelationReason === FormCancelationReason.UserBusy && attempt < BUSY_RETRY_LIMIT) {
+                system.runTimeout(() => {
+                    if (player.isValid) openBlockForm(player, blockEntry, onSave, { ...retry, attempt: attempt + 1 });
+                }, BUSY_RETRY_TICKS);
+            }
+            return;
+        }
 
         const values = response.formValues ?? [];
         if (values.length < flatFields.length) {
             sendUiError(player, "Save failed: the form returned incomplete data.");
             return;
         }
+
+        // A refused save: the reason in chat, and the form again with everything the player entered. It opens a
+        // few ticks later, once the screen it was typed in has fully closed; sent in the same tick it could arrive
+        // while that screen was still being torn down, and come up slowly or not draw.
+        const refuse = (message) => {
+            sendUiError(player, message);
+            system.runTimeout(() => {
+                if (player.isValid) openBlockForm(player, blockEntry, onSave, { values, error: message });
+            }, REOPEN_TICKS);
+        };
 
         const cursor = { value: 0 };
         const next = applyFieldsTo({ ...data }, descriptor.classFields, values, cursor, ctx);
@@ -241,12 +268,12 @@ export function openBlockForm(player, blockEntry, onSave) {
 
             if (shouldAdd) {
                 if (entries.length >= descriptor.list.max) {
-                    sendUiError(player, `Maximum of ${descriptor.list.max} ${descriptor.list.noun}s per block.`);
+                    refuse(`Maximum of ${descriptor.list.max} ${descriptor.list.noun}s per block.`);
                     return;
                 }
                 const error = descriptor.list.validate?.(candidate) || conditionError(candidate, "condition");
                 if (error) {
-                    sendUiError(player, error);
+                    refuse(error);
                     return;
                 }
                 entries.push(candidate);
@@ -273,7 +300,7 @@ export function openBlockForm(player, blockEntry, onSave) {
 
         const outputResult = buildNewOutput(values, cursor, ctx);
         if (outputResult.error) {
-            sendUiError(player, outputResult.error);
+            refuse(outputResult.error);
             return;
         }
 
@@ -302,7 +329,7 @@ export function openBlockForm(player, blockEntry, onSave) {
                 ? "Blocked command: engine blocks can't run moderation or admin commands (op, kick, ban, mute, /brr settings...)."
                 : ""));
         if (validationError) {
-            sendUiError(player, validationError);
+            refuse(validationError);
             return;
         }
 
@@ -313,7 +340,7 @@ export function openBlockForm(player, blockEntry, onSave) {
             return;
         }
         if (typeof saveResult === "string") {
-            sendUiError(player, saveResult);
+            refuse(saveResult);
             return;
         }
         sendUiSaved(player, descriptor.title, next.name);

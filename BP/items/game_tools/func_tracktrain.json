@@ -1,0 +1,20 @@
+{
+	"format_version": "1.26.50",
+	"minecraft:item": {
+		"description": {
+			"identifier": "brr:func_tracktrain",
+			"menu_category": {
+				"category": "equipment",
+				"is_hidden_in_commands": false
+			}
+		},
+		"components": {
+			"minecraft:icon": "brr_func_tracktrain",
+			"minecraft:block_placer": {
+				"block": "brr:func_tracktrain_block"
+			},
+			"minecraft:can_destroy_in_creative": true,
+			"minecraft:allow_off_hand": true
+		}
+	}
+}

@@ -6,13 +6,14 @@
     "controls": [
       {
         "default_form@server_form.default_custom_form": {
+          "$brr_form_length": "((not ((not ((#title_text - 'Trigger Tool') = #title_text)) or (not ((#title_text - 'Area Portal Tool') = #title_text)) or (not ((#title_text - 'Tool Invisible') = #title_text)) or (not ((#title_text - 'Tool Playerclip') = #title_text)) or (not ((#title_text - 'Tool Npcclip') = #title_text)) or (not ((#title_text - 'Info Playerspawn Block') = #title_text)) or (not ((#title_text - 'Info Target AreaPortal Block') = #title_text)) or (not ((#title_text - 'Game Nametag Block') = #title_text)) or (not ((#title_text - 'Ambient Generic') = #title_text)) or (not ((#title_text - 'Logic Auto') = #title_text)) or (not ((#title_text - 'Logic Branch') = #title_text)) or (not ((#title_text - 'Logic Case') = #title_text)) or (not ((#title_text - 'Logic Compare') = #title_text)) or (not ((#title_text - 'Logic Coop Manager') = #title_text)) or (not ((#title_text - 'Logic Random Outputs') = #title_text)) or (not ((#title_text - 'Logic Timer') = #title_text)) or (not ((#title_text - 'Path Track') = #title_text)) or (not ((#title_text - 'Func Tracktrain') = #title_text)) or (not ((#title_text - 'Logic Relay') = #title_text)) or (not ((#title_text - 'Filter Class') = #title_text)) or (not ((#title_text - 'Filter Name') = #title_text)) or (not ((#title_text - 'Filter Multiple') = #title_text)) or (not ((#title_text - 'Math Counter') = #title_text)))) * #custom_form_length)",
           "bindings": [
             {
               "binding_name": "#title_text"
             },
             {
               "binding_type": "view",
-              "source_property_name": "(not ((#title_text = 'Trigger Tool') or (#title_text = 'Area Portal Tool') or (#title_text = 'Tool Invisible') or (#title_text = 'Tool Playerclip') or (#title_text = 'Tool Npcclip') or (#title_text = 'Info Playerspawn Block') or (#title_text = 'Info Target AreaPortal Block') or (#title_text = 'Game Nametag Block') or (#title_text = 'Ambient Generic') or (#title_text = 'Logic Auto') or (#title_text = 'Logic Branch') or (#title_text = 'Logic Case') or (#title_text = 'Logic Compare') or (#title_text = 'Logic Coop Manager') or (#title_text = 'Logic Random Outputs') or (#title_text = 'Logic Timer') or (#title_text = 'Logic Relay') or (#title_text = 'Filter Class') or (#title_text = 'Filter Name') or (#title_text = 'Filter Multiple') or (#title_text = 'Math Counter')))",
+              "source_property_name": "(not ((not ((#title_text - 'Trigger Tool') = #title_text)) or (not ((#title_text - 'Area Portal Tool') = #title_text)) or (not ((#title_text - 'Tool Invisible') = #title_text)) or (not ((#title_text - 'Tool Playerclip') = #title_text)) or (not ((#title_text - 'Tool Npcclip') = #title_text)) or (not ((#title_text - 'Info Playerspawn Block') = #title_text)) or (not ((#title_text - 'Info Target AreaPortal Block') = #title_text)) or (not ((#title_text - 'Game Nametag Block') = #title_text)) or (not ((#title_text - 'Ambient Generic') = #title_text)) or (not ((#title_text - 'Logic Auto') = #title_text)) or (not ((#title_text - 'Logic Branch') = #title_text)) or (not ((#title_text - 'Logic Case') = #title_text)) or (not ((#title_text - 'Logic Compare') = #title_text)) or (not ((#title_text - 'Logic Coop Manager') = #title_text)) or (not ((#title_text - 'Logic Random Outputs') = #title_text)) or (not ((#title_text - 'Logic Timer') = #title_text)) or (not ((#title_text - 'Path Track') = #title_text)) or (not ((#title_text - 'Func Tracktrain') = #title_text)) or (not ((#title_text - 'Logic Relay') = #title_text)) or (not ((#title_text - 'Filter Class') = #title_text)) or (not ((#title_text - 'Filter Name') = #title_text)) or (not ((#title_text - 'Filter Multiple') = #title_text)) or (not ((#title_text - 'Math Counter') = #title_text))))",
               "target_property_name": "#visible"
             }
           ]
@@ -35,7 +36,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Trigger Tool') * 1)",
+              "source_property_name": "((not ((#title_text - 'Trigger Tool') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -58,7 +59,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Area Portal Tool') * 1)",
+              "source_property_name": "((not ((#title_text - 'Area Portal Tool') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -81,7 +82,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Tool Invisible') * 1)",
+              "source_property_name": "((not ((#title_text - 'Tool Invisible') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -104,7 +105,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Tool Playerclip') * 1)",
+              "source_property_name": "((not ((#title_text - 'Tool Playerclip') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -127,7 +128,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Tool Npcclip') * 1)",
+              "source_property_name": "((not ((#title_text - 'Tool Npcclip') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -150,7 +151,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Info Playerspawn Block') * 1)",
+              "source_property_name": "((not ((#title_text - 'Info Playerspawn Block') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -173,7 +174,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Info Target AreaPortal Block') * 1)",
+              "source_property_name": "((not ((#title_text - 'Info Target AreaPortal Block') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -196,7 +197,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Game Nametag Block') * 1)",
+              "source_property_name": "((not ((#title_text - 'Game Nametag Block') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -219,7 +220,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Ambient Generic') * 1)",
+              "source_property_name": "((not ((#title_text - 'Ambient Generic') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -242,7 +243,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Logic Auto') * 1)",
+              "source_property_name": "((not ((#title_text - 'Logic Auto') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -265,7 +266,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Logic Branch') * 1)",
+              "source_property_name": "((not ((#title_text - 'Logic Branch') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -288,7 +289,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Logic Case') * 1)",
+              "source_property_name": "((not ((#title_text - 'Logic Case') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -311,7 +312,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Logic Compare') * 1)",
+              "source_property_name": "((not ((#title_text - 'Logic Compare') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -334,7 +335,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Logic Coop Manager') * 1)",
+              "source_property_name": "((not ((#title_text - 'Logic Coop Manager') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -357,7 +358,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Logic Random Outputs') * 1)",
+              "source_property_name": "((not ((#title_text - 'Logic Random Outputs') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -380,7 +381,53 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Logic Timer') * 1)",
+              "source_property_name": "((not ((#title_text - 'Logic Timer') = #title_text)) * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "path_track_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "path_track_form_factory",
+            "control_name": "path_track.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((not ((#title_text - 'Path Track') = #title_text)) * 1)",
+              "target_property_name": "#collection_length"
+            }
+          ]
+        }
+      },
+      {
+        "func_tracktrain_form_factory": {
+          "type": "collection_panel",
+          "size": ["100%", "100%"],
+          "factory": {
+            "name": "func_tracktrain_form_factory",
+            "control_name": "func_tracktrain.form_panel"
+          },
+          "property_bag": {
+            "#collection_length": 0
+          },
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "((not ((#title_text - 'Func Tracktrain') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -403,7 +450,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Logic Relay') * 1)",
+              "source_property_name": "((not ((#title_text - 'Logic Relay') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -426,7 +473,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Filter Class') * 1)",
+              "source_property_name": "((not ((#title_text - 'Filter Class') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -449,7 +496,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Filter Name') * 1)",
+              "source_property_name": "((not ((#title_text - 'Filter Name') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -472,7 +519,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Filter Multiple') * 1)",
+              "source_property_name": "((not ((#title_text - 'Filter Multiple') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]
@@ -495,7 +542,7 @@
             },
             {
               "binding_type": "view",
-              "source_property_name": "((#title_text = 'Math Counter') * 1)",
+              "source_property_name": "((not ((#title_text - 'Math Counter') = #title_text)) * 1)",
               "target_property_name": "#collection_length"
             }
           ]

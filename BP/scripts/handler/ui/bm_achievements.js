@@ -1,23 +1,19 @@
 import { system } from "@minecraft/server";
 import { TEX } from "./bm_layout.js";
+import { ACHIEVEMENT_LIST } from "./bm_achievement_list.js";
 
 // SECTION: Registry
-// Placeholder entries taken from the reference screen; none are triggered by gameplay yet.
-// goal > 1 shows a "progress / goal" counter on the card. icon defaults to the placeholder art.
+// Black Mesa's 50 achievements (bm_achievement_list.js); none are triggered by gameplay yet.
+// goal > 1 shows a "progress / goal" counter on the card.
 export const PLACEHOLDER_ICON = `${TEX}/shapes/ach_placeholder`;
 
-export const ACHIEVEMENTS = [
-    { id: "convection_refinement", name: "CONVECTION REFINEMENT", description: "Ruin the microwave casserole." },
-    { id: "proverbial_tinkerer", name: "PROVERBIAL TINKERER", description: "Interfere with the alarm and laptop in Anomalous Materials." },
-    { id: "brownian_motion", name: "BROWNIAN MOTION", description: "Pass the toilet paper to the scientist in need." },
-    { id: "mega_hertz", name: "MEGA HERTZ", description: "Kill 5 enemies with one grenade." },
-    { id: "remote_detonation", name: "REMOTE DETONATION", description: "Kill a Barnacle with a Satchel." },
-    { id: "universal_gravitation", name: "UNIVERSAL GRAVITATION", description: "Get killed by your own Snarks." },
-    { id: "nuclear_fishin", name: "NUCLEAR FISHIN'", description: "Kill an Ichthyosaur with either the Tau or Gluon." },
-    { id: "resonance_procrastinator", name: "RESONANCE PROCRASTINATOR", description: "Refuse to insert the specimen into the Anti-Mass Spectrometer." },
-    { id: "ethically_questionable", name: "ETHICALLY QUESTIONABLE", description: "Conduct all of the questionable research experiments.", goal: 5 },
-    { id: "inflammatory_actions", name: "INFLAMMATORY ACTIONS", description: "Kill a Headcrab using fire." }
-];
+export const ACHIEVEMENTS = ACHIEVEMENT_LIST;
+
+// Pixel-art icons made from Black Mesa's by tools/bm_menu/ach_icons.mjs: <id>.png, and <id>_locked.png in grey.
+const ICON_DIR = "textures/ui/black_mesa/achievements";
+export function achievementIcon(achievement, unlocked) {
+    return achievement.icon ?? `${ICON_DIR}/${achievement.id}${unlocked ? "" : "_locked"}`;
+}
 
 const ACHIEVEMENTS_BY_ID = new Map(ACHIEVEMENTS.map((a) => [a.id, a]));
 const goalOf = (achievement) => Math.max(1, achievement.goal ?? 1);

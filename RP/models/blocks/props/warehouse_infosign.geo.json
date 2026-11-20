@@ -1,0 +1,114 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bm_warehouse_infosign",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "base",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-7,
+								3,
+								7.5
+							],
+							"size": [
+								14,
+								10,
+								0.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										14,
+										10
+									]
+								},
+								"south": {
+									"uv": [
+										14.25,
+										0.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								},
+								"east": {
+									"uv": [
+										14.25,
+										0.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								},
+								"west": {
+									"uv": [
+										14.25,
+										0.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								},
+								"up": {
+									"uv": [
+										14.25,
+										0.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								},
+								"down": {
+									"uv": [
+										14.25,
+										0.25
+									],
+									"uv_size": [
+										0.5,
+										0.5
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

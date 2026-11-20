@@ -1,0 +1,10 @@
+{
+	"materials": {
+		"version": "1.0.0",
+		"brr_display_blend:entity_alphablend": {
+			"+defines": [
+				"USE_UV_ANIM"
+			]
+		}
+	}
+}

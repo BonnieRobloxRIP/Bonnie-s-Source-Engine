@@ -11,7 +11,7 @@
     "type": "image",
     "layer": 0,
     "size": "@server_form.custom_form_bg_anim_start",
-    "texture": "textures/assets/background"
+    "texture": "textures/ui/bm_tool/panel"
   },
   "toggle_button_appear_animation": {
     "anim_type": "alpha",
@@ -39,17 +39,35 @@
     "controls": [
       {
         "custom_toggle@common_toggles.light_text_toggle": {
-          "$default_texture": "textures/ui/recipe_book_item_bg",
-          "$default_size": ["100%", "100%"],
-          "$hover_size": ["100%", "100%"],
-          "$hover_checked_text_color": [1, 1, 1],
-          "$default_checked_text_color": [1, 1, 1],
+          "$default_texture": "textures/ui/bm_tool/tab_off",
+          "$default_size": [
+            "100%",
+            "100%"
+          ],
+          "$hover_size": [
+            "100%",
+            "100%"
+          ],
+          "$hover_checked_text_color": [
+            0.894,
+            0.443,
+            0.145
+          ],
+          "$default_checked_text_color": [
+            0.894,
+            0.443,
+            0.145
+          ],
           "$hover_text_color": [
             1,
             1,
             1
           ],
-          "$default_text_color": [1, 1, 1],
+          "$default_text_color": [
+            1,
+            1,
+            1
+          ],
           "$default_border_visible": false,
           "$hover_border_visible": false,
           "$toggle_name": "$group",
@@ -65,7 +83,10 @@
           "$new_ui_label_offset": [
             0,
             -2
-          ]
+          ],
+          "$hover_texture": "textures/ui/bm_tool/tab_on",
+          "$pressed_texture": "textures/ui/bm_tool/tab_hover",
+          "$pressed_no_hover_texture": "textures/ui/bm_tool/tab_on"
         }
       }
     ]
@@ -86,12 +107,12 @@
     ],
     "default_control": "default",
     "hover_control": "hover",
-    "$default_texture|default": "textures/ui/exit_button",
-    "$hover_texture|default": "textures/ui/exit_button_hover",
+    "$default_texture|default": "textures/ui/bm_tool/close",
+    "$hover_texture|default": "textures/ui/bm_tool/close_hover",
     "$alpha|default": "@server_form.close_button_appear_animation",
     "$size|default": [
-      25,
-      25
+      9,
+      9
     ],
     "anchor_from": "top_right",
     "anchor_to": "top_right",
@@ -139,9 +160,9 @@
     "easing": "linear"
   },
   "submit_button@common_buttons.light_text_button": {
-    "$default_button_texture": "textures/ui/recipe_book_item_bg",
-    "$hover_button_texture": "textures/ui/recipe_book_item_bg",
-    "$pressed_button_texture": "textures/ui/recipe_book_item_bg",
+    "$default_button_texture": "textures/ui/bm_tool/btn_orange",
+    "$hover_button_texture": "textures/ui/bm_tool/btn_orange_fill",
+    "$pressed_button_texture": "textures/ui/bm_tool/btn_orange_fill",
     "$default_border_visible": false,
     "$hover_border_visible": false,
     "$pressed_button_name": "button.submit_custom_form",
@@ -161,12 +182,22 @@
       -2
     ],
     "$hover_text_color": [
-      0,
       1,
-      0.2
+      1,
+      1
     ],
     "$font_type": "MinecraftTen",
-    "$button_text": "Submit"
+    "$button_text": "Submit",
+    "$default_text_color": [
+      1,
+      1,
+      1
+    ],
+    "$pressed_text_color": [
+      1,
+      1,
+      1
+    ]
   },
   "option_slider@settings_common.option_slider": {
     "size": [
@@ -202,12 +233,19 @@
   },
   "brr_help_label": {
     "type": "label",
-    "size": ["100%", "default"],
+    "size": [
+      "100%",
+      "default"
+    ],
     "text": "#custom_text",
     "text_alignment": "left",
     "anchor_from": "top_left",
     "anchor_to": "top_left",
-    "color": [1, 1, 1],
+    "color": [
+      1,
+      1,
+      1
+    ],
     "font_type": "default",
     "shadow": false,
     "bindings": [
@@ -233,8 +271,8 @@
       16,
       1
     ],
-    "$dropdown_content": "server_form.brr_dropdown_content",
-    "$dropdown_area": "generated_form",
+    "$dropdown_content": "server_form.brr_dropdown_list",
+    "$dropdown_area": "brr_tool_form_area",
     "$dropdown_name": "custom_dropdown",
     "$toggle_binding_type": "collection",
     "$toggle_grid_collection_name": "custom_form",
@@ -252,7 +290,8 @@
         "binding_condition": "always_when_visible",
         "binding_collection_name": "custom_form"
       }
-    ]
+    ],
+    "$control_name": "server_form.bm_dropdown_control"
   },
   "brr_dropdown_content@server_form.custom_dropdown_content": {
     "$radio_factory": {
@@ -282,7 +321,15 @@
       {
         "binding_type": "collection_details"
       }
-    ]
+    ],
+    "$unchecked_control": "server_form.bm_radio_off",
+    "$checked_control": "server_form.bm_radio_on",
+    "$unchecked_hover_control": "server_form.bm_radio_off_hover",
+    "$checked_hover_control": "server_form.bm_radio_on_hover",
+    "$unchecked_locked_control": "server_form.bm_radio_off_locked",
+    "$unchecked_locked_hover_control": "server_form.bm_radio_off_locked",
+    "$checked_locked_control": "server_form.bm_radio_on_locked",
+    "$checked_locked_hover_control": "server_form.bm_radio_on_locked"
   },
   "option_toggle@settings_common.option_toggle": {
     "$custom_option_label": "#custom_text",
@@ -336,7 +383,8 @@
         "binding_condition": "always_when_visible",
         "binding_collection_name": "custom_form"
       }
-    ]
+    ],
+    "$control_name": "server_form.bm_text_edit_control"
   },
   "brr_help_toggle": {
     "type": "panel",
@@ -348,10 +396,10 @@
     "controls": [
       {
         "custom_toggle@common_toggles.light_text_toggle": {
-          "$default_texture": "textures/ui/recipe_book_item_bg",
-          "$hover_texture": "textures/ui/recipe_book_item_bg",
-          "$pressed_texture": "textures/ui/recipe_book_item_bg",
-          "$pressed_no_hover_texture": "textures/ui/recipe_book_item_bg",
+          "$default_texture": "textures/ui/bm_tool/btn_white_thin",
+          "$hover_texture": "textures/ui/bm_tool/btn_white_thin",
+          "$pressed_texture": "textures/ui/bm_tool/btn_white_thin_fill",
+          "$pressed_no_hover_texture": "textures/ui/bm_tool/btn_white_thin_fill",
           "$default_border_visible": false,
           "$hover_border_visible": false,
           "$default_text_color": [
@@ -359,16 +407,20 @@
             1,
             1
           ],
-          "$default_checked_text_color": [1, 1, 1],
-          "$hover_text_color": [
-            0,
+          "$default_checked_text_color": [
             1,
-            0.2
+            1,
+            1
+          ],
+          "$hover_text_color": [
+            0.894,
+            0.443,
+            0.145
           ],
           "$hover_checked_text_color": [
-            0,
-            1,
-            0.2
+            0.894,
+            0.443,
+            0.145
           ],
           "$toggle_name": "$group",
           "$radio_toggle_group": true,
@@ -687,7 +739,489 @@
         }
       },
       {
-        "black_mesa_long_form@bm.root": {}
+        "black_mesa_long_form@server_form.bm_menu_lazy": {}
+      }
+    ]
+  },
+  "long_form_dynamic_buttons_panel": {
+    "visible": false,
+    "modifications": [
+      {
+        "array_name": "bindings",
+        "operation": "remove",
+        "where": {
+          "binding_name": "#form_button_contents",
+          "binding_name_override": "#collection_length"
+        }
+      },
+      {
+        "array_name": "bindings",
+        "operation": "insert_back",
+        "value": [
+          {
+            "binding_name": "#title_text"
+          },
+          {
+            "binding_type": "view",
+            "source_property_name": "((#title_text - 'BM_') = #title_text)",
+            "target_property_name": "#visible"
+          },
+          {
+            "binding_name": "#form_button_contents",
+            "binding_name_override": "#collection_length",
+            "binding_condition": "always_when_visible"
+          }
+        ]
+      }
+    ]
+  },
+  "bm_menu_lazy": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "bindings": [
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#title_text - 'BM_') = #title_text))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "grid": {
+          "type": "grid",
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "grid_dimensions": [
+            1,
+            1
+          ],
+          "maximum_grid_items": 0,
+          "grid_item_template": "bm.root",
+          "collection_name": "form_buttons",
+          "bindings": [
+            {
+              "binding_name": "#form_button_contents",
+              "binding_name_override": "#maximum_grid_items",
+              "binding_condition": "always_when_visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bm_field": {
+    "type": "image",
+    "texture": "textures/ui/bm_tool/field"
+  },
+  "bm_field_hover": {
+    "type": "image",
+    "texture": "textures/ui/bm_tool/field_hover"
+  },
+  "bm_text_edit_control@settings_common.option_text_edit_control": {
+    "$text_background_default": "server_form.bm_field",
+    "$text_background_hover": "server_form.bm_field_hover",
+    "$text_box_text_color": [
+      1,
+      1,
+      1
+    ],
+    "$place_holder_text_color": [
+      0.533,
+      0.533,
+      0.533
+    ]
+  },
+  "bm_dropdown_control@settings_common.option_dropdown_control": {
+    "$default_texture": "textures/ui/bm_tool/field",
+    "$hover_texture": "textures/ui/bm_tool/field",
+    "$pressed_texture": "textures/ui/bm_tool/field_hover",
+    "$pressed_no_hover_texture": "textures/ui/bm_tool/field_hover",
+    "$default_chevron": "textures/ui/bm_tool/chevron",
+    "$default_chevron_nohover": "textures/ui/bm_tool/chevron",
+    "$default_chevron_hover": "textures/ui/bm_tool/chevron",
+    "$default_border_visible": false,
+    "$hover_border_visible": false,
+    "$default_text_color": [
+      1,
+      1,
+      1
+    ],
+    "$hover_text_color": [
+      1,
+      1,
+      1
+    ],
+    "$default_checked_text_color": [
+      1,
+      1,
+      1
+    ],
+    "$hover_checked_text_color": [
+      1,
+      1,
+      1
+    ],
+    "$dropdown_background_control": "server_form.bm_dropdown_bg"
+  },
+  "brr_tool_scroll": {
+    "type": "scroll_view",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "scroll_speed": 10,
+    "scrollbar_track_button": "button.scrollbar_skip_track",
+    "scrollbar_touch_button": "button.scrollbar_touch",
+    "clips_children": true,
+    "always_listen_to_input": true,
+    "always_handle_pointer": true,
+    "always_handle_scrolling": true,
+    "scrollbar_always_visible": false,
+    "scrollbar_track": "track",
+    "scrollbar_box": "box",
+    "scroll_content": "scrolling_content",
+    "scroll_view_port": "scrolling_view_port",
+    "scroll_box_and_track_panel": "centered_panel",
+    "jump_to_bottom_on_update": false,
+    "$content_control|default": "common.empty_panel",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.scrollbar_touch",
+        "mapping_type": "pressed",
+        "button_up_right_of_first_refusal": true
+      }
+    ],
+    "controls": [
+      {
+        "scrolling_view_port": {
+          "type": "panel",
+          "size": [
+            "100%",
+            "100%"
+          ]
+        }
+      },
+      {
+        "scrolling_content": {
+          "type": "panel",
+          "size": [
+            "100%",
+            "100%c"
+          ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "controls": [
+            {
+              "brr_tool_form_area@$content_control": {}
+            }
+          ]
+        }
+      },
+      {
+        "bar_and_track": {
+          "type": "panel",
+          "size": [
+            4,
+            "100% - 8px"
+          ],
+          "offset": [
+            -2,
+            0
+          ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "layer": 10,
+          "controls": [
+            {
+              "centered_panel": {
+                "type": "panel",
+                "size": [
+                  "100%",
+                  "100%"
+                ],
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "controls": [
+                  {
+                    "track": {
+                      "type": "scroll_track",
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+                      "layer": 2,
+                      "button_mappings": [
+                        {
+                          "from_button_id": "button.menu_select",
+                          "to_button_id": "button.scrollbar_skip_track",
+                          "mapping_type": "pressed"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "scroll_box": {
+                      "type": "panel",
+                      "controls": [
+                        {
+                          "box": {
+                            "type": "scrollbar_box",
+                            "layer": 5,
+                            "anchor_from": "top_middle",
+                            "anchor_to": "top_middle",
+                            "contained": true,
+                            "draggable": "vertical",
+                            "button_mappings": [
+                              {
+                                "from_button_id": "button.menu_select",
+                                "to_button_id": "button.menu_select",
+                                "mapping_type": "pressed",
+                                "button_up_right_of_first_refusal": true
+                              }
+                            ],
+                            "controls": [
+                              {
+                                "thumb": {
+                                  "type": "image",
+                                  "texture": "textures/ui/black_mesa/menu/shapes/solid",
+                                  "color": [
+                                    0.894,
+                                    0.443,
+                                    0.145
+                                  ],
+                                  "keep_ratio": false,
+                                  "size": [
+                                    "100%",
+                                    "100%"
+                                  ],
+                                  "layer": 6
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "brr_dropdown_close@common_buttons.light_text_button": {
+    "size": [
+      "100%",
+      14
+    ],
+    "$new_ui_label_offset": [
+      0,
+      -2
+    ],
+    "$pressed_button_name": "button.dropdown_exit",
+    "$button_text": "X  CLOSE",
+    "$default_button_texture": "textures/ui/bm_tool/field",
+    "$hover_button_texture": "textures/ui/bm_tool/field_hover",
+    "$pressed_button_texture": "textures/ui/bm_tool/field_hover",
+    "$default_border_visible": false,
+    "$hover_border_visible": false,
+    "$default_text_color": [
+      0.894,
+      0.443,
+      0.145
+    ],
+    "$hover_text_color": [
+      0.894,
+      0.443,
+      0.145
+    ],
+    "$pressed_text_color": [
+      0.894,
+      0.443,
+      0.145
+    ],
+    "$font_type": "MinecraftTen",
+    "$button_font_scale_factor": 0.8
+  },
+  "brr_dropdown_list": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [
+      "100%",
+      "100%c"
+    ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "close@server_form.brr_dropdown_close": {}
+      },
+      {
+        "options@server_form.brr_dropdown_content": {}
+      }
+    ]
+  },
+  "bm_dropdown_bg": {
+    "type": "image",
+    "texture": "textures/ui/bm_tool/field",
+    "layer": 1
+  },
+  "bm_radio_visuals": {
+    "type": "panel",
+    "size": [
+      "100%",
+      16
+    ],
+    "$alpha|default": 1,
+    "$radio_label_bindings|default": [],
+    "$radio_label_font_type|default": "default",
+    "$bm_box|default": "textures/ui/bm_tool/check_off",
+    "$bm_text|default": [
+      1,
+      1,
+      1
+    ],
+    "$bm_hl|default": 0,
+    "$bm_hl_color|default": [
+      1,
+      1,
+      1
+    ],
+    "controls": [
+      {
+        "radio_image": {
+          "type": "image",
+          "texture": "$bm_box",
+          "alpha": "$alpha",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "size": [
+            10,
+            10
+          ],
+          "layer": 2
+        }
+      },
+      {
+        "radio_label": {
+          "type": "label",
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "text": "$radio_label_text",
+          "font_type": "$radio_label_font_type",
+          "font_scale_factor": 0.8,
+          "color": "$bm_text",
+          "offset": [
+            16,
+            -2
+          ],
+          "size": [
+            "100% - 16px",
+            "default"
+          ],
+          "alpha": "$alpha",
+          "bindings": "$radio_label_bindings",
+          "layer": 2
+        }
+      },
+      {
+        "highlight": {
+          "type": "image",
+          "texture": "textures/ui/black_mesa/menu/shapes/solid",
+          "color": "$bm_hl_color",
+          "alpha": "$bm_hl",
+          "keep_ratio": false,
+          "size": [
+            "100% + 4px",
+            "100% + 2px"
+          ],
+          "layer": 1
+        }
+      }
+    ]
+  },
+  "bm_radio_off@server_form.bm_radio_visuals": {
+    "$bm_text": [
+      1,
+      1,
+      1
+    ]
+  },
+  "bm_radio_on@server_form.bm_radio_visuals": {
+    "$bm_box": "textures/ui/bm_tool/check_on",
+    "$bm_text": [
+      0.894,
+      0.443,
+      0.145
+    ],
+    "$bm_hl": 0.12,
+    "$bm_hl_color": [
+      0.894,
+      0.443,
+      0.145
+    ]
+  },
+  "bm_radio_off_hover@server_form.bm_radio_visuals": {
+    "$bm_text": [
+      1,
+      1,
+      1
+    ],
+    "$bm_hl": 0.1
+  },
+  "bm_radio_on_hover@server_form.bm_radio_visuals": {
+    "$bm_box": "textures/ui/bm_tool/check_on",
+    "$bm_text": [
+      0.894,
+      0.443,
+      0.145
+    ],
+    "$bm_hl": 0.2,
+    "$bm_hl_color": [
+      0.894,
+      0.443,
+      0.145
+    ]
+  },
+  "bm_radio_off_locked@server_form.bm_radio_visuals": {
+    "$bm_text": [
+      1,
+      1,
+      1
+    ],
+    "$alpha": 0.5
+  },
+  "bm_radio_on_locked@server_form.bm_radio_visuals": {
+    "$bm_box": "textures/ui/bm_tool/check_on",
+    "$bm_text": [
+      0.894,
+      0.443,
+      0.145
+    ],
+    "$alpha": 0.5
+  },
+  "generated_contents": {
+    "$brr_form_length|default": "#custom_form_length",
+    "bindings": [
+      {
+        "binding_name": "#custom_form_length"
+      },
+      {
+        "binding_name": "#title_text"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "$brr_form_length",
+        "target_property_name": "#collection_length"
       }
     ]
   }

@@ -1,0 +1,20 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "brr:platform_collider_half",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/platform_display/empty"
+			},
+			"geometry": {
+				"default": "geometry.brr_platform_carrier"
+			},
+			"render_controllers": [
+				"controller.render.default"
+			]
+		}
+	}
+}

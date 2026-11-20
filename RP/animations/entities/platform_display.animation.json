@@ -1,0 +1,277 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.brr_platform_display.s0": {
+			"loop": true,
+			"bones": {
+				"s0": {
+					"position": [
+						"(math.floor(q.property('brr:p0') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p0') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p0'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a0'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a0'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s1": {
+			"loop": true,
+			"bones": {
+				"s1": {
+					"position": [
+						"(math.floor(q.property('brr:p1') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p1') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p1'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a1'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a1'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s2": {
+			"loop": true,
+			"bones": {
+				"s2": {
+					"position": [
+						"(math.floor(q.property('brr:p2') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p2') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p2'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a2'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a2'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s3": {
+			"loop": true,
+			"bones": {
+				"s3": {
+					"position": [
+						"(math.floor(q.property('brr:p3') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p3') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p3'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a3'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a3'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s4": {
+			"loop": true,
+			"bones": {
+				"s4": {
+					"position": [
+						"(math.floor(q.property('brr:p4') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p4') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p4'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a4'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a4'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s5": {
+			"loop": true,
+			"bones": {
+				"s5": {
+					"position": [
+						"(math.floor(q.property('brr:p5') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p5') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p5'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a5'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a5'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s6": {
+			"loop": true,
+			"bones": {
+				"s6": {
+					"position": [
+						"(math.floor(q.property('brr:p6') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p6') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p6'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a6'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a6'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s7": {
+			"loop": true,
+			"bones": {
+				"s7": {
+					"position": [
+						"(math.floor(q.property('brr:p7') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p7') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p7'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a7'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a7'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s8": {
+			"loop": true,
+			"bones": {
+				"s8": {
+					"position": [
+						"(math.floor(q.property('brr:p8') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p8') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p8'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a8'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a8'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s9": {
+			"loop": true,
+			"bones": {
+				"s9": {
+					"position": [
+						"(math.floor(q.property('brr:p9') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p9') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p9'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a9'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a9'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s10": {
+			"loop": true,
+			"bones": {
+				"s10": {
+					"position": [
+						"(math.floor(q.property('brr:p10') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p10') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p10'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a10'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a10'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s11": {
+			"loop": true,
+			"bones": {
+				"s11": {
+					"position": [
+						"(math.floor(q.property('brr:p11') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p11') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p11'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a11'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a11'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s12": {
+			"loop": true,
+			"bones": {
+				"s12": {
+					"position": [
+						"(math.floor(q.property('brr:p12') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p12') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p12'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a12'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a12'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s13": {
+			"loop": true,
+			"bones": {
+				"s13": {
+					"position": [
+						"(math.floor(q.property('brr:p13') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p13') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p13'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a13'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a13'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s14": {
+			"loop": true,
+			"bones": {
+				"s14": {
+					"position": [
+						"(math.floor(q.property('brr:p14') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p14') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p14'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a14'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a14'), 10) == 1) * 90"
+					]
+				}
+			}
+		},
+		"animation.brr_platform_display.s15": {
+			"loop": true,
+			"bones": {
+				"s15": {
+					"position": [
+						"(math.floor(q.property('brr:p15') / 10000) - 50) * 16",
+						"(math.mod(math.floor(q.property('brr:p15') / 100), 100) - 50) * 16",
+						"(math.mod(q.property('brr:p15'), 100) - 50) * 16"
+					],
+					"rotation": [
+						"(math.mod(q.property('brr:a15'), 10) == 2) * 90",
+						0,
+						"(math.mod(q.property('brr:a15'), 10) == 1) * 90"
+					]
+				}
+			}
+		}
+	}
+}

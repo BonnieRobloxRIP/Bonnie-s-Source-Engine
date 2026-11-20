@@ -1,0 +1,269 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bm_wall_bracket",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [
+					0,
+					0.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "plate",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								0,
+								7
+							],
+							"size": [
+								4,
+								16,
+								1
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										3,
+										0
+									],
+									"uv_size": [
+										4,
+										16
+									]
+								},
+								"south": {
+									"uv": [
+										10,
+										0
+									],
+									"uv_size": [
+										2,
+										8
+									]
+								},
+								"east": {
+									"uv": [
+										7.125,
+										0
+									],
+									"uv_size": [
+										0.25,
+										16
+									]
+								},
+								"west": {
+									"uv": [
+										7.625,
+										0
+									],
+									"uv_size": [
+										0.25,
+										16
+									]
+								},
+								"up": {
+									"uv": [
+										14,
+										1.125
+									],
+									"uv_size": [
+										4,
+										0.25
+									]
+								},
+								"down": {
+									"uv": [
+										31.125,
+										0.125
+									],
+									"uv_size": [
+										0.25,
+										0.25
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "arm",
+					"parent": "root",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-2,
+								13.5,
+								-8
+							],
+							"size": [
+								4,
+								2,
+								15
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										29,
+										0
+									],
+									"uv_size": [
+										2,
+										1
+									]
+								},
+								"south": {
+									"uv": [
+										31.625,
+										0.125
+									],
+									"uv_size": [
+										0.25,
+										0.25
+									]
+								},
+								"east": {
+									"uv": [
+										14,
+										0
+									],
+									"uv_size": [
+										7.5,
+										1
+									]
+								},
+								"west": {
+									"uv": [
+										21.5,
+										0
+									],
+									"uv_size": [
+										7.5,
+										1
+									]
+								},
+								"up": {
+									"uv": [
+										12,
+										0
+									],
+									"uv_size": [
+										2,
+										7.5
+									]
+								},
+								"down": {
+									"uv": [
+										31.125,
+										0.125
+									],
+									"uv_size": [
+										0.25,
+										0.25
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "strut",
+					"parent": "root",
+					"pivot": [
+						0,
+						13.5,
+						-5
+					],
+					"rotation": [
+						46.22,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1,
+								-3.121,
+								-5
+							],
+							"size": [
+								2,
+								16.621,
+								1.5
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										8,
+										0
+									],
+									"uv_size": [
+										1,
+										8.31
+									]
+								},
+								"south": {
+									"uv": [
+										9,
+										0
+									],
+									"uv_size": [
+										1,
+										8.31
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										1.5,
+										16.621
+									]
+								},
+								"west": {
+									"uv": [
+										1.5,
+										0
+									],
+									"uv_size": [
+										1.5,
+										16.621
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

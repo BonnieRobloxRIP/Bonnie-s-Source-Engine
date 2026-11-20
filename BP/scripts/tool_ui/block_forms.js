@@ -434,6 +434,60 @@ export const BLOCK_FORMS = {
         ]
     },
 
+    "brr:path_track_block": {
+        title: "Path Track",
+        namespace: "path_track",
+        prefix: "path_track",
+        validate: (data) => {
+            const speed = Number(`${data.speed ?? 0}`.trim() || 0);
+            if (!Number.isFinite(speed) || speed < 0) return "New train speed must be 0 or more blocks per second.";
+            if (!Number.isFinite(Number(`${data.yaw ?? 0}`.trim() || 0))) return "Fixed facing must be a number of degrees.";
+            return "";
+        },
+        classFields: [
+            NAME_FIELD("path_track"),
+            text("target", "Next stop target", "Name of the next node", str("target")),
+            text("altTarget", "Branch path", "Next node while the branch is on", str("altTarget")),
+            text("speed", "New train speed", "Blocks per second, 0 = keep", (data) => `${data?.speed ?? 0}`),
+            text("yaw", "Fixed facing (degrees)", "0 = south, 90 = west", (data) => `${data?.yaw ?? 0}`),
+            drop("orientation", "Train faces",
+                () => ["Direction of travel", "Keep current facing", "Fixed facing"],
+                (data) => Math.max(0, ["travel", "keep", "fixed"].indexOf(data?.orientation ?? "travel")),
+                (index) => ["travel", "keep", "fixed"][index] ?? "travel"),
+            START_DISABLED,
+            toggle("stopHere", "Stop the train here", bool("stopHere", false)),
+            toggle("passOnce", "Fire OnPass only once", bool("passOnce", false)),
+            toggle("branchOn", "Branch on at start", bool("branchOn", false))
+        ]
+    },
+
+    "brr:func_tracktrain_block": {
+        title: "Func Tracktrain",
+        namespace: "func_tracktrain",
+        prefix: "func_tracktrain",
+        validate: (data) => {
+            const speed = Number(`${data.speed ?? ""}`.trim());
+            if (!Number.isFinite(speed) || speed <= 0) return "Speed must be more than 0 blocks per second.";
+            return "";
+        },
+        classFields: [
+            NAME_FIELD("func_tracktrain"),
+            text("firstStop", "First stop", "Name of the path_track it starts at", str("firstStop")),
+            text("speed", "Speed", "Blocks per second", (data) => `${data?.speed ?? 4}`),
+            drop("motion", "Motion",
+                () => ["Smooth (a moving copy that can turn)", "Stepped (real blocks, one block at a time)"],
+                (data) => (data?.motion === "stepped" ? 1 : 0),
+                (index) => (index === 1 ? "stepped" : "smooth")),
+            toggle("turns", "Turn with the track (Smooth only)", bool("turns", true)),
+            drop("atEnd", "At the end of the line",
+                () => ["Stop", "Go back"],
+                (data) => (data?.atEnd === "reverse" ? 1 : 0),
+                (index) => (index === 1 ? "reverse" : "stop")),
+            toggle("startMoving", "Start moving right away (on save and world load)", bool("startMoving", false)),
+            START_DISABLED
+        ]
+    },
+
     "brr:logic_relay_block": {
         title: "Logic Relay",
         namespace: "logic_relay",

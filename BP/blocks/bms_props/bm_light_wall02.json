@@ -5,7 +5,7 @@
 			"identifier": "brr:bm_light_wall02",
 			"menu_category": {
 				"category": "construction",
-				"group": "brr:itemGroup.name.bms_prop",
+				"group": "brr:itemGroup.name.bms_prop_lights",
 				"is_hidden_in_commands": false
 			},
 			"traits": {
@@ -28,25 +28,25 @@
 			"minecraft:collision_box": {
 				"origin": [
 					-7,
-					3,
-					2
+					2,
+					1.999
 				],
 				"size": [
 					14,
-					9,
-					6
+					10,
+					6.001
 				]
 			},
 			"minecraft:selection_box": {
 				"origin": [
 					-7,
-					3,
-					2
+					2,
+					1.999
 				],
 				"size": [
 					14,
-					9,
-					6
+					10,
+					6.001
 				]
 			},
 			"minecraft:destruction_particles": {
